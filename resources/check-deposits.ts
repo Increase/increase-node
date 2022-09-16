@@ -158,10 +158,11 @@ export namespace CheckDeposit {
       | 'duplicate_submission'
       | 'insufficient_funds'
       | 'no_account'
-      | 'unmatched_details'
-      | 'unreadable_image'
+      | 'not_authorized'
+      | 'stale_dated'
       | 'unknown_reason'
-      | 'not_authorized';
+      | 'unmatched_details'
+      | 'unreadable_image';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

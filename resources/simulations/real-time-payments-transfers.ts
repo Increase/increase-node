@@ -3,65 +3,45 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 
-export class ACHTransfers extends APIResource {
+export class RealTimePaymentsTransfers extends APIResource {
   /**
-   * Simulates an inbound ACH transfer to your account. The transfer may be either a
-   * credit or a debit depending on if the `amount` is positive or negative. This
-   * will result in either a Transaction or a Declined Transaction depending on if
-   * the transfer is allowed.
+   * Simulates an inbound Real Time Payments transfer to your account.
    */
   createInbound(
-    body: ACHTransferCreateInboundParams,
+    body: RealTimePaymentsTransferCreateInboundParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ACHTransferSimulation>> {
-    return this.post('/simulations/inbound_ach_transfers', { body, ...options });
-  }
-
-  /**
-   * Simulates the return of an ACH Transfer by the Federal Reserve due to error
-   * conditions. This will also create a Transaction to account for the returned
-   * funds. This transfer must first have a `status` of `submitted`.
-   */
-  return(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
-    return this.post(`/simulations/ach_transfers/${id}/return`, options);
-  }
-
-  /**
-   * Simulates the submission of an ACH Transfer to the Federal Reserve. This
-   * transfer must first have a `status` of `pending_approval` or
-   * `pending_submission`.
-   */
-  submit(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
-    return this.post(`/simulations/ach_transfers/${id}/submit`, options);
+  ): Promise<Core.APIResponse<InboundRealTimePaymentsTransferSimulationResult>> {
+    return this.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
 }
 
 /**
- * The results of an inbound ACH Transfer simulation.
+ * The results of an inbound Real Time Payments Transfer simulation.
  */
-export interface ACHTransferSimulation {
+export interface InboundRealTimePaymentsTransferSimulationResult {
   /**
-   * If the ACH Transfer attempt fails, this will contain the resulting
-   * [Declined Transaction](#declined-transactions) object. The Declined
-   * Transaction's `source` will be of `category: inbound_ach_transfer`.
+   * If the Real Time Payments Transfer attempt fails, this will contain the
+   * resulting [Declined Transaction](#declined-transactions) object. The Declined
+   * Transaction's `source` will be of
+   * `category: inbound_real_time_payments_transfer_decline`.
    */
-  declined_transaction: ACHTransferSimulation.DeclinedTransaction | null;
+  declined_transaction: InboundRealTimePaymentsTransferSimulationResult.DeclinedTransaction | null;
 
   /**
-   * If the ACH Transfer attempt succeeds, this will contain the resulting
-   * [Transaction](#transactions) object. The Transaction's `source` will be of
-   * `category: inbound_ach_transfer`.
+   * If the Real Time Payments Transfer attempt succeeds, this will contain the
+   * resulting [Transaction](#transactions) object. The Transaction's `source` will
+   * be of `category: inbound_real_time_payments_transfer_confirmation`.
    */
-  transaction: ACHTransferSimulation.Transaction | null;
+  transaction: InboundRealTimePaymentsTransferSimulationResult.Transaction | null;
 
   /**
    * A constant representing the object's type. For this resource it will always be
-   * `inbound_ach_transfer_simulation_result`.
+   * `inbound_real_time_payments_transfer_simulation_result`.
    */
-  type: 'inbound_ach_transfer_simulation_result';
+  type: 'inbound_real_time_payments_transfer_simulation_result';
 }
 
-export namespace ACHTransferSimulation {
+export namespace InboundRealTimePaymentsTransferSimulationResult {
   export interface Transaction {
     /**
      * The identifier for the Account the Transaction belongs to.
@@ -1588,227 +1568,15 @@ export namespace ACHTransferSimulation {
   }
 }
 
-/**
- * ACH transfers move funds between your Increase account and any other account
- * accessible by the Automated Clearing House (ACH).
- */
-export interface ACHTransfer {
+export interface RealTimePaymentsTransferCreateInboundParams {
   /**
-   * The Account to which the transfer belongs.
-   */
-  account_id: string;
-
-  /**
-   * The destination account number.
-   */
-  account_number: string;
-
-  /**
-   * Additional information that will be sent to the recipient.
-   */
-  addendum: string | null;
-
-  /**
-   * The transfer amount in USD cents. A positive amount indicates a credit transfer
-   * pushing funds to the receiving account. A negative amount indicates a debit
-   * transfer pulling funds from the receiving account.
-   */
-  amount: number;
-
-  /**
-   * If your account requires approvals for transfers and the transfer was approved,
-   * this will contain details of the approval.
-   */
-  approval: ACHTransfer.Approval | null;
-
-  /**
-   * If your account requires approvals for transfers and the transfer was not
-   * approved, this will contain details of the cancellation.
-   */
-  cancellation: ACHTransfer.Cancellation | null;
-
-  /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-   * the transfer was created.
-   */
-  created_at: string;
-
-  /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-   * currency. For ACH transfers this is always equal to `usd`.
-   */
-  currency: string;
-
-  /**
-   * The identifier of the External Account the transfer was made to, if any.
-   */
-  external_account_id: string | null;
-
-  /**
-   * The ACH transfer's identifier.
-   */
-  id: string;
-
-  /**
-   * The transfer's network.
-   */
-  network: 'ach';
-
-  /**
-   * If the receiving bank accepts the transfer but notifies that future transfers
-   * should use different details, this will contain those details.
-   */
-  notification_of_change: ACHTransfer.NotificationOfChange | null;
-
-  /**
-   * If your transfer is returned, this will contain details of the return.
-   */
-  return: ACHTransfer.Return | null;
-
-  /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN).
-   */
-  routing_number: string;
-
-  /**
-   * The descriptor that will show on the recipient's bank statement.
-   */
-  statement_descriptor: string;
-
-  /**
-   * The lifecycle status of the transfer.
-   */
-  status:
-    | 'pending_approval'
-    | 'pending_submission'
-    | 'rejected'
-    | 'returned'
-    | 'canceled'
-    | 'requires_attention'
-    | 'flagged_by_operator'
-    | 'submitted';
-
-  /**
-   * After the transfer is submitted to FedACH, this will contain supplemental
-   * details.
-   */
-  submission: ACHTransfer.Submission | null;
-
-  /**
-   * If the transfer was created from a template, this will be the template's ID.
-   */
-  template_id: string | null;
-
-  /**
-   * The ID for the transaction funding the transfer.
-   */
-  transaction_id: string | null;
-
-  /**
-   * A constant representing the object's type. For this resource it will always be
-   * `ach_transfer`.
-   */
-  type: 'ach_transfer';
-}
-
-export namespace ACHTransfer {
-  export interface Approval {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the transfer was approved.
-     */
-    approved_at: string;
-  }
-
-  export interface Cancellation {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the Transfer was canceled.
-     */
-    canceled_at: string;
-  }
-
-  export interface NotificationOfChange {
-    /**
-     * The type of change that occurred.
-     */
-    change_code: string;
-
-    /**
-     * The corrected data.
-     */
-    corrected_data: string;
-
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the notification occurred.
-     */
-    created_at: string;
-  }
-
-  export interface Return {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the transfer was created.
-     */
-    created_at: string;
-
-    /**
-     * Why the ACH Transfer was returned.
-     */
-    return_reason_code:
-      | 'insufficient_fund'
-      | 'no_account'
-      | 'account_closed'
-      | 'invalid_account_number_structure'
-      | 'account_frozen_entry_returned_per_ofac_instruction'
-      | 'credit_entry_refused_by_receiver'
-      | 'unauthorized_debit_to_consumer_account_using_corporate_sec_code'
-      | 'corporate_customer_advised_not_authorized'
-      | 'payment_stopped'
-      | 'non_transaction_account'
-      | 'uncollected_funds'
-      | 'routing_number_check_digit_error'
-      | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-      | 'amount_field_error'
-      | 'authorization_revoked_by_customer'
-      | 'invalid_ach_routing_number'
-      | 'file_record_edit_criteria'
-      | 'enr_invalid_individual_name'
-      | 'returned_per_odfi_request'
-      | 'addenda_error'
-      | 'limited_participation_dfi'
-      | 'other';
-
-    /**
-     * The identifier of the Tranasaction associated with this return.
-     */
-    transaction_id: string;
-
-    /**
-     * The identifier of the ACH Transfer associated with this return.
-     */
-    transfer_id: string;
-  }
-
-  export interface Submission {
-    /**
-     * The trace number for the submission.
-     */
-    trace_number: string;
-  }
-}
-
-export interface ACHTransferCreateInboundParams {
-  /**
-   * The identifier of the Account Number the inbound ACH Transfer is for.
+   * The identifier of the Account Number the inbound Real Time Payments Transfer is
+   * for.
    */
   account_number_id: string;
 
   /**
-   * The transfer amount in cents. A positive amount originates a credit transfer
-   * pushing funds to the receiving account. A negative amount originates a debit
-   * transfer pulling funds from the receiving account.
+   * The transfer amount in USD cents. Must be positive.
    */
   amount: number;
 }

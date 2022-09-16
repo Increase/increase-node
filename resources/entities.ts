@@ -191,6 +191,11 @@ export namespace Entity {
         submitted_address_zip: string;
 
         /**
+         * This person's role or title within the entity.
+         */
+        submitted_company_title: string | null;
+
+        /**
          * The person's date of birth in YYYY-MM-DD format.
          */
         submitted_date_of_birth: string;
@@ -381,6 +386,11 @@ export namespace EntityCreateCorporationParams {
      * room number.
      */
     address_line2?: string;
+
+    /**
+     * This person's role or title within the entity.
+     */
+    company_title?: string;
   }
 }
 

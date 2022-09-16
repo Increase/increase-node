@@ -110,6 +110,11 @@ export interface CheckTransfer {
   stop_payment_request: CheckTransfer.StopPaymentRequest | null;
 
   /**
+   * After the transfer is submitted, this will contain supplemental details.
+   */
+  submission: CheckTransfer.Submission | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the check was submitted.
    */
@@ -133,6 +138,13 @@ export interface CheckTransfer {
 }
 
 export namespace CheckTransfer {
+  export interface Submission {
+    /**
+     * The identitying number of the check.
+     */
+    check_number: string;
+  }
+
   export interface StopPaymentRequest {
     /**
      * The time the stop-payment was requested.

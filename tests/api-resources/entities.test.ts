@@ -37,7 +37,8 @@ describe('resource entities', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('create_corporation: only required params', async () => {
+  // Prism tests are broken
+  test.skip('create_corporation: only required params', async () => {
     const response = await increase.entities.createCorporation({
       address_line1: '33 Liberty Street',
       address_city: 'New York',
@@ -48,7 +49,8 @@ describe('resource entities', () => {
     });
   });
 
-  test('create_corporation: required and optional params', async () => {
+  // Prism tests are broken
+  test.skip('create_corporation: required and optional params', async () => {
     const response = await increase.entities.createCorporation({
       address_line1: '33 Liberty Street',
       address_line2: 'x',
@@ -66,6 +68,7 @@ describe('resource entities', () => {
           name: 'x',
           social_security_number_last4: 'xxxx',
           prong: 'ownership',
+          company_title: 'x',
         },
         {
           address_line1: 'x',
@@ -77,6 +80,7 @@ describe('resource entities', () => {
           name: 'x',
           social_security_number_last4: 'xxxx',
           prong: 'ownership',
+          company_title: 'x',
         },
         {
           address_line1: 'x',
@@ -88,36 +92,39 @@ describe('resource entities', () => {
           name: 'x',
           social_security_number_last4: 'xxxx',
           prong: 'ownership',
+          company_title: 'x',
         },
       ],
       name: 'National Phonograph Company',
-      website: 'https://example.com',
       state: 'NJ',
       tax_id: '602214076',
       ss4_file_id: 'string',
+      website: 'https://example.com',
     });
   });
 
-  test('create_person: only required params', async () => {
+  // Prism tests are broken
+  test.skip('create_person: only required params', async () => {
     const response = await increase.entities.createPerson({
       address_line1: '33 Liberty Street',
       address_city: 'New York',
       address_state: 'NY',
       address_zip: '10045',
-      date_of_birth: '1970-01-31T18:11:19.117Z',
+      date_of_birth: '1970-01-31',
       name: 'Ian Crease',
       social_security_number_last4: '1120',
     });
   });
 
-  test('create_person: required and optional params', async () => {
+  // Prism tests are broken
+  test.skip('create_person: required and optional params', async () => {
     const response = await increase.entities.createPerson({
       address_line1: '33 Liberty Street',
       address_line2: 'x',
       address_city: 'New York',
       address_state: 'NY',
       address_zip: '10045',
-      date_of_birth: '1970-01-31T18:11:19.117Z',
+      date_of_birth: '1970-01-31',
       name: 'Ian Crease',
       social_security_number_last4: '1120',
     });

@@ -137,6 +137,13 @@ export namespace DeclinedTransaction {
     check_decline: Source.CheckDecline | null;
 
     /**
+     * A Inbound Real Time Payments Transfer Decline object. This field will be present
+     * in the JSON response if and only if `category` is equal to
+     * `inbound_real_time_payments_transfer_decline`.
+     */
+    inbound_real_time_payments_transfer_decline: Source.InboundRealTimePaymentsTransferDecline | null;
+
+    /**
      * A International ACH Decline object. This field will be present in the JSON
      * response if and only if `category` is equal to `international_ach_decline`.
      */
@@ -241,6 +248,61 @@ export namespace DeclinedTransaction {
         | 'unable_to_process'
         | 'refer_to_image'
         | 'stop_payment_requested';
+    }
+
+    export interface InboundRealTimePaymentsTransferDecline {
+      /**
+       * The declined amount in the minor unit of the destination account currency. For
+       * dollars, for example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The name the sender of the transfer specified as the recipient of the transfer.
+       */
+      creditor_name: string;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+       * transfer's currency. This will always be "USD" for a Real Time Payments
+       * transfer.
+       */
+      currency: string;
+
+      /**
+       * The account number of the account that sent the transfer.
+       */
+      debtor_account_number: string;
+
+      /**
+       * The name provided by the sender of the transfer.
+       */
+      debtor_name: string;
+
+      /**
+       * The routing number of the account that sent the transfer.
+       */
+      debtor_routing_number: string;
+
+      /**
+       * Why the transfer was declined.
+       */
+      reason:
+        | 'account_number_canceled'
+        | 'account_number_disabled'
+        | 'group_locked'
+        | 'entity_not_active'
+        | 'real_time_payments_not_enabled';
+
+      /**
+       * Additional information included with the transfer.
+       */
+      remittance_information: string | null;
+
+      /**
+       * The Real Time Payments network identification of the declined transfer.
+       */
+      transaction_identification: string;
     }
 
     export interface InternationalACHDecline {

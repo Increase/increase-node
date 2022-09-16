@@ -95,6 +95,11 @@ export interface WireTransfer {
   currency: string;
 
   /**
+   * The identifier of the External Account the transfer was made to, if any.
+   */
+  external_account_id: string | null;
+
+  /**
    * The wire transfer's identifier.
    */
   id: string;
@@ -250,11 +255,6 @@ export interface WireTransferCreateParams {
   account_id: string;
 
   /**
-   * The account number for the destination account.
-   */
-  account_number: string;
-
-  /**
    * The transfer amount in cents.
    */
   amount: number;
@@ -265,10 +265,9 @@ export interface WireTransferCreateParams {
   message_to_recipient: string;
 
   /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-   * destination account.
+   * The account number for the destination account.
    */
-  routing_number: string;
+  account_number?: string;
 
   /**
    * The beneficiary's address line 1.
@@ -289,6 +288,18 @@ export interface WireTransferCreateParams {
    * The beneficiary's name.
    */
   beneficiary_name?: string;
+
+  /**
+   * The ID of an External Account to initiate a transfer to. If this parameter is
+   * provided, `account_number` and `routing_number` must be absent.
+   */
+  external_account_id?: string;
+
+  /**
+   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+   * destination account.
+   */
+  routing_number?: string;
 }
 
 export interface WireTransferListParams extends PageParams {
@@ -298,6 +309,11 @@ export interface WireTransferListParams extends PageParams {
   account_id?: string;
 
   created_at?: WireTransferListParams.CreatedAt;
+
+  /**
+   * Filter Wire Transfers to those made to the specified External Account.
+   */
+  external_account_id?: string;
 }
 
 export namespace WireTransferListParams {

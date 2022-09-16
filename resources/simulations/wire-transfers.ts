@@ -269,6 +269,13 @@ export namespace WireTransferSimulation {
       inbound_international_ach_transfer: Source.InboundInternationalACHTransfer | null;
 
       /**
+       * A Inbound Real Time Payments Transfer Confirmation object. This field will be
+       * present in the JSON response if and only if `category` is equal to
+       * `inbound_real_time_payments_transfer_confirmation`.
+       */
+      inbound_real_time_payments_transfer_confirmation: Source.InboundRealTimePaymentsTransferConfirmation | null;
+
+      /**
        * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
        * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
        */
@@ -532,6 +539,11 @@ export namespace WireTransferSimulation {
         merchant_state: string | null;
 
         /**
+         * The identifier of the Pending Transaction associated with this Transaction.
+         */
+        pending_transaction_id: string | null;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `card_settlement`.
          */
@@ -580,10 +592,11 @@ export namespace WireTransferSimulation {
           | 'duplicate_submission'
           | 'insufficient_funds'
           | 'no_account'
-          | 'unmatched_details'
-          | 'unreadable_image'
+          | 'not_authorized'
+          | 'stale_dated'
           | 'unknown_reason'
-          | 'not_authorized';
+          | 'unmatched_details'
+          | 'unreadable_image';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -827,6 +840,50 @@ export namespace WireTransferSimulation {
         receiving_depository_financial_institution_name: string;
 
         trace_number: string;
+      }
+
+      export interface InboundRealTimePaymentsTransferConfirmation {
+        /**
+         * The amount in the minor unit of the transfer's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The name the sender of the transfer specified as the recipient of the transfer.
+         */
+        creditor_name: string;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+         * currency. This will always be "USD" for a Real Time Payments transfer.
+         */
+        currency: string;
+
+        /**
+         * The account number of the account that sent the transfer.
+         */
+        debtor_account_number: string;
+
+        /**
+         * The name provided by the sender of the transfer.
+         */
+        debtor_name: string;
+
+        /**
+         * The routing number of the account that sent the transfer.
+         */
+        debtor_routing_number: string;
+
+        /**
+         * Additional information included with the transfer.
+         */
+        remittance_information: string | null;
+
+        /**
+         * The Real Time Payments network identification of the transfer
+         */
+        transaction_identification: string;
       }
 
       export interface InboundWireDrawdownPaymentReversal {

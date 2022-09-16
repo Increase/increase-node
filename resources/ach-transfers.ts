@@ -85,6 +85,11 @@ export interface ACHTransfer {
   currency: string;
 
   /**
+   * The identifier of the External Account the transfer was made to, if any.
+   */
+  external_account_id: string | null;
+
+  /**
    * The ACH transfer's identifier.
    */
   id: string;
@@ -246,11 +251,6 @@ export interface ACHTransferCreateParams {
   account_id: string;
 
   /**
-   * The account number for the destination account.
-   */
-  account_number: string;
-
-  /**
    * The transfer amount in cents. A positive amount originates a credit transfer
    * pushing funds to the receiving account. A negative amount originates a debit
    * transfer pulling funds from the receiving account.
@@ -258,16 +258,15 @@ export interface ACHTransferCreateParams {
   amount: number;
 
   /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-   * destination account.
-   */
-  routing_number: string;
-
-  /**
    * The description you choose to give the transfer. This will be shown to the
    * recipient.
    */
   statement_descriptor: string;
+
+  /**
+   * The account number for the destination account.
+   */
+  account_number?: string;
 
   /**
    * Additional information that will be sent to the recipient.
@@ -301,6 +300,12 @@ export interface ACHTransferCreateParams {
   effective_date?: string;
 
   /**
+   * The ID of an External Account to initiate a transfer to. If this parameter is
+   * provided, `account_number`, `routing_number`, and `funding` must be absent.
+   */
+  external_account_id?: string;
+
+  /**
    * The type of the account to which the transfer will be sent.
    */
   funding?: 'checking' | 'savings';
@@ -315,6 +320,12 @@ export interface ACHTransferCreateParams {
    * by the recipient's bank.
    */
   individual_name?: string;
+
+  /**
+   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+   * destination account.
+   */
+  routing_number?: string;
 
   /**
    * The Standard Entry Class (SEC) code to use for the transfer.
@@ -332,6 +343,11 @@ export interface ACHTransferListParams extends PageParams {
   account_id?: string;
 
   created_at?: ACHTransferListParams.CreatedAt;
+
+  /**
+   * Filter ACH Transfers to those made to the specified External Account.
+   */
+  external_account_id?: string;
 }
 
 export namespace ACHTransferListParams {

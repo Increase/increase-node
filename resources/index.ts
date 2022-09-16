@@ -13,6 +13,7 @@ export * from './declined-transactions';
 export * from './entities';
 export * from './event-subscriptions';
 export * from './events';
+export * from './external-accounts';
 export * from './files';
 export * from './groups';
 export * from './limits';

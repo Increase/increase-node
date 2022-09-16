@@ -7,8 +7,6 @@ describe('resource wire_transfers', () => {
   test('create: only required params', async () => {
     const response = await increase.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
-      account_number: '987654321',
-      routing_number: '101050001',
       amount: 100,
       message_to_recipient: 'New account transfer',
     });
@@ -19,6 +17,7 @@ describe('resource wire_transfers', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',
+      external_account_id: 'string',
       amount: 100,
       message_to_recipient: 'New account transfer',
       beneficiary_name: 'Ian Crease',
@@ -48,6 +47,7 @@ describe('resource wire_transfers', () => {
       cursor: 'string',
       limit: 0,
       account_id: 'string',
+      external_account_id: 'string',
       created_at: {
         after: '2019-12-27T18:11:19.117Z',
         before: '2019-12-27T18:11:19.117Z',
@@ -72,6 +72,7 @@ describe('resource wire_transfers', () => {
           cursor: 'string',
           limit: 0,
           account_id: 'string',
+          external_account_id: 'string',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
