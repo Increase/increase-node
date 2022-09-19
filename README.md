@@ -75,9 +75,9 @@ async function main() {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.error?.type); // missing_param
-                    console.log(err.error?.title); // Missing param "name"
-                    console.log(err.error?.detail); // Looks like "naem" may have been a typo?
-                    console.log(err.error?.status); // 400
+        console.log(err.error?.title); // Missing param "name"
+        console.log(err.error?.detail); // Looks like "naem" may have been a typo?
+        console.log(err.error?.status); // 400
         console.log(err.headers); // {server: 'nginx', ...}
       }
     })
