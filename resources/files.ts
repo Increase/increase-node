@@ -86,7 +86,10 @@ export interface File {
     | 'form_ss_4'
     | 'identity_document'
     | 'increase_statement'
-    | 'other';
+    | 'other'
+    | 'trust_formation_document'
+    | 'digital_wallet_artwork'
+    | 'digital_wallet_app_icon';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -106,7 +109,15 @@ export interface FileCreateParams {
   /**
    * What the File will be used for in Increase's systems.
    */
-  purpose: 'check_image_front' | 'check_image_back' | 'form_ss_4' | 'identity_document' | 'other';
+  purpose:
+    | 'check_image_front'
+    | 'check_image_back'
+    | 'form_ss_4'
+    | 'identity_document'
+    | 'other'
+    | 'trust_formation_document'
+    | 'digital_wallet_artwork'
+    | 'digital_wallet_app_icon';
 
   /**
    * The description you choose to give the File.
@@ -160,6 +171,9 @@ export namespace FileListParams {
       | 'identity_document'
       | 'increase_statement'
       | 'other'
+      | 'trust_formation_document'
+      | 'digital_wallet_artwork'
+      | 'digital_wallet_app_icon'
     >;
   }
 }

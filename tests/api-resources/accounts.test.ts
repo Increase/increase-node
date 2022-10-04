@@ -23,6 +23,14 @@ describe('resource accounts', () => {
     );
   });
 
+  test('update: only required params', async () => {
+    const response = await increase.accounts.update('string', {});
+  });
+
+  test('update: required and optional params', async () => {
+    const response = await increase.accounts.update('string', { name: 'My renamed account' });
+  });
+
   test('list: only required params', async () => {
     const response = await increase.accounts.list();
   });

@@ -22,4 +22,5 @@ export * from './pending-transactions';
 export * from './routing-numbers';
 export * from './simulations/simulations';
 export * from './transactions';
+export * from './wire-drawdown-requests';
 export * from './wire-transfers';

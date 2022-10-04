@@ -14,6 +14,14 @@ export class Accounts extends APIResource {
     return this.get(`/accounts/${id}`, options);
   }
 
+  update(
+    id: string,
+    body: AccountUpdateParams,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<Account>> {
+    return this.patch(`/accounts/${id}`, { body, ...options });
+  }
+
   list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
   list(
@@ -106,6 +114,13 @@ export interface AccountCreateParams {
    * The identifier for the Entity that will own the Account.
    */
   entity_id?: string;
+}
+
+export interface AccountUpdateParams {
+  /**
+   * The new name of the Account.
+   */
+  name?: string;
 }
 
 export interface AccountListParams extends PageParams {

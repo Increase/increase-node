@@ -85,4 +85,39 @@ export interface AccountStatement {
   type: 'account_statement';
 }
 
-export interface AccountStatementListParams extends PageParams {}
+export interface AccountStatementListParams extends PageParams {
+  /**
+   * Filter Account Statements to those belonging to the specified Account.
+   */
+  account_id?: string;
+
+  statement_period_start?: AccountStatementListParams.StatementPeriodStart;
+}
+
+export namespace AccountStatementListParams {
+  export interface StatementPeriodStart {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
+  }
+}

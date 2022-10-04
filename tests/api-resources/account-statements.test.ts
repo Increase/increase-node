@@ -20,7 +20,17 @@ describe('resource account_statements', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await increase.accountStatements.list({ cursor: 'string', limit: 0 });
+    const response = await increase.accountStatements.list({
+      cursor: 'string',
+      limit: 0,
+      account_id: 'string',
+      statement_period_start: {
+        after: '2019-12-27T18:11:19.117Z',
+        before: '2019-12-27T18:11:19.117Z',
+        on_or_after: '2019-12-27T18:11:19.117Z',
+        on_or_before: '2019-12-27T18:11:19.117Z',
+      },
+    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -33,7 +43,20 @@ describe('resource account_statements', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountStatements.list({ cursor: 'string', limit: 0 }, { path: '/_stainless_unknown_path' }),
+      increase.accountStatements.list(
+        {
+          cursor: 'string',
+          limit: 0,
+          account_id: 'string',
+          statement_period_start: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });
