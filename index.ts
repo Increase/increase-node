@@ -22,6 +22,8 @@ type Config = {
 };
 
 export class Increase extends Core.APIClient {
+  apiKey: string | null;
+
   constructor(config?: Config) {
     const options: Config = {
       apiKey: process.env['INCREASE_API_KEY'] || '',
@@ -36,11 +38,11 @@ export class Increase extends Core.APIClient {
     }
 
     super({
-      apiKey: options.apiKey,
       baseURL: options.baseURL || environments[options.environment || 'production'],
       timeout: options.timeout,
       httpAgent: options.httpAgent,
     });
+    this.apiKey = options.apiKey;
   }
 
   accounts: API.Accounts = new API.Accounts(this);

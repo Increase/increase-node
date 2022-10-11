@@ -17,12 +17,12 @@ describe('instantiate client', () => {
   });
 
   test('with minimal arguments', () => {
-    // fails if no api key provided
+    // fails if no API Key provided
     expect(() => {
       new Increase();
     }).toThrow();
 
-    // set api key via env var
+    // set API Key via env var
     process.env['INCREASE_API_KEY'] = 'env var api key';
     const client = new Increase();
     expect(client.apiKey).toBe('env var api key');
