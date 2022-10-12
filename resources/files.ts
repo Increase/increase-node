@@ -2,9 +2,9 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
-import { isRequestOptions } from '~/core';
 import type * as FormData from 'formdata-node';
 import { multipartFormRequestOptions } from '~/core';
+import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Files extends APIResource {
