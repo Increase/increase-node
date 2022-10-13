@@ -786,6 +786,11 @@ const addFormValue = (form: FormData, key: string, value: unknown) => {
   }
 };
 
+export const ensurePresent = <T>(value: T | null | undefined): T => {
+  if (value == null) throw new Error(`Expected a value to be given but received ${value} instead.`);
+  return value;
+};
+
 export const coerceInteger = (value: unknown): number => {
   if (typeof value === 'number') return Math.round(value);
   if (typeof value === 'string') return parseInt(value);
