@@ -198,11 +198,13 @@ export abstract class APIClient {
     if (contentType?.includes('application/json')) {
       const json = await response.json();
 
-      Object.defineProperty(json, 'responseHeaders', {
-        enumerable: false,
-        writable: false,
-        value: responseHeaders,
-      });
+      if (typeof json === 'object' && json != null) {
+        Object.defineProperty(json, 'responseHeaders', {
+          enumerable: false,
+          writable: false,
+          value: responseHeaders,
+        });
+      }
 
       this.debug('response', response.status, url, responseHeaders, json);
 
