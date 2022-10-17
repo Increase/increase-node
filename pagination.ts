@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec by Stainless.
-import { AbstractPage, APIResponse, APIClient, FinalRequestOptions } from './core';
+import { AbstractPage, APIResponse, APIClient, FinalRequestOptions, PageInfo } from './core';
 
 export interface PageResponse<Item> {
   /**
@@ -42,9 +42,19 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
     return this.data;
   }
 
+  // @deprecated Please use `nextPageInfo()` instead
   nextPageParams(): Partial<PageParams> | null {
+    const info = this.nextPageInfo();
+    if (!info) return null;
+    if ('params' in info) return info.params;
+    const params = Object.fromEntries(info.url.searchParams);
+    if (!Object.keys(params).length) return null;
+    return params;
+  }
+
+  nextPageInfo(): PageInfo | null {
     if (!this.next_cursor) return null;
 
-    return { cursor: this.next_cursor };
+    return { params: { cursor: this.next_cursor } };
   }
 }

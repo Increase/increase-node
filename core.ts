@@ -349,6 +349,8 @@ export class APIResource {
   protected getAPIList: APIClient['getAPIList'];
 }
 
+export type PageInfo = { url: URL } | { params: Record<string, unknown> | null };
+
 export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
   #client: APIClient;
   protected options: FinalRequestOptions;
@@ -358,24 +360,37 @@ export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
     this.options = options;
   }
 
+  /**
+   * @deprecated Use nextPageInfo instead
+   */
   abstract nextPageParams(): Partial<Record<string, unknown>> | null;
+  abstract nextPageInfo(): PageInfo | null;
 
   abstract getPaginatedItems(): Item[];
 
   hasNextPage(): boolean {
     const items = this.getPaginatedItems();
     if (!items.length) return false;
-    return this.nextPageParams() != null;
+    return this.nextPageInfo() != null;
   }
 
   async getNextPage(): Promise<AbstractPage<Item>> {
-    const nextQuery = this.nextPageParams();
-    if (!nextQuery) {
+    const nextInfo = this.nextPageInfo();
+    if (!nextInfo) {
       throw new Error(
         'No next page expected; please check `.hasNextPage()` before calling `.getNextPage()`.',
       );
     }
-    const nextOptions = { ...this.options, query: { ...this.options.query, ...nextQuery } };
+    const nextOptions = { ...this.options };
+    if ('params' in nextInfo) nextOptions.query = { ...nextOptions.query, ...nextInfo.params };
+    else {
+      const qs = [...Object.entries(nextOptions.query || {}), ...nextInfo.url.searchParams.entries()];
+      for (const [key, value] of qs) {
+        nextInfo.url.searchParams.set(key, value);
+      }
+      nextOptions.query = undefined;
+      nextOptions.path = nextInfo.url.toString();
+    }
     return await this.#client.requestAPIList(this.constructor as any, nextOptions);
   }
 
