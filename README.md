@@ -53,7 +53,7 @@ const increase = new Increase({
 async function main() {
   const params: Increase.AccountCreateParams = { name: 'My First Increase Account' };
 
-  const account: Increase.Account = await increase.accounts.create(params)
+  const account: Increase.Account = await increase.accounts.create(params);
 
 }
 main().catch(console.error)
