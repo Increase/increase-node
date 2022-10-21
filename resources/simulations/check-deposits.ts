@@ -8,16 +8,16 @@ export class CheckDeposits extends APIResource {
    * Simulates the rejection of a Check Deposit by Increase due to factors like poor
    * image quality. This Check Deposit must first have a `status` of `pending`.
    */
-  reject(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
-    return this.post(`/simulations/check_deposits/${id}/reject`, options);
+  reject(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+    return this.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
   }
 
   /**
    * Simulates the submission of a Check Deposit to the Federal Reserve. This Check
    * Deposit must first have a `status` of `pending`.
    */
-  submit(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
-    return this.post(`/simulations/check_deposits/${id}/submit`, options);
+  submit(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+    return this.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
   }
 }
 

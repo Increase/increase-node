@@ -17,8 +17,8 @@ export class Files extends APIResource {
     return this.post('/files', multipartFormRequestOptions({ body, ...options }));
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
-    return this.get(`/files/${id}`, options);
+  retrieve(fileId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
+    return this.get(`/files/${fileId}`, options);
   }
 
   list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage>;

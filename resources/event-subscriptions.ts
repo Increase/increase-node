@@ -13,16 +13,19 @@ export class EventSubscriptions extends APIResource {
     return this.post('/event_subscriptions', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<EventSubscription>> {
-    return this.get(`/event_subscriptions/${id}`, options);
+  retrieve(
+    eventSubscriptionId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<EventSubscription>> {
+    return this.get(`/event_subscriptions/${eventSubscriptionId}`, options);
   }
 
   update(
-    id: string,
+    eventSubscriptionId: string,
     body: EventSubscriptionUpdateParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<EventSubscription>> {
-    return this.patch(`/event_subscriptions/${id}`, { body, ...options });
+    return this.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
   }
 
   list(

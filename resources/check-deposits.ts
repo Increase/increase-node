@@ -13,8 +13,8 @@ export class CheckDeposits extends APIResource {
     return this.post('/check_deposits', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
-    return this.get(`/check_deposits/${id}`, options);
+  retrieve(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+    return this.get(`/check_deposits/${checkDepositId}`, options);
   }
 
   list(query?: CheckDepositListParams, options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage>;

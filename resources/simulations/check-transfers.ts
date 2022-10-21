@@ -8,8 +8,8 @@ export class CheckTransfers extends APIResource {
    * Simulates the mailing of a Check Transfer. This transfer must first have a
    * `status` of `pending_approval` or `pending_submission`.
    */
-  mail(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
-    return this.post(`/simulations/check_transfers/${id}/mail`, options);
+  mail(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+    return this.post(`/simulations/check_transfers/${checkTransferId}/mail`, options);
   }
 }
 

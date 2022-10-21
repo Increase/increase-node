@@ -13,8 +13,8 @@ export class CheckTransfers extends APIResource {
     return this.post('/check_transfers', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
-    return this.get(`/check_transfers/${id}`, options);
+  retrieve(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+    return this.get(`/check_transfers/${checkTransferId}`, options);
   }
 
   list(query?: CheckTransferListParams, options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage>;
@@ -30,8 +30,11 @@ export class CheckTransfers extends APIResource {
     return this.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
   }
 
-  stopPayment(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
-    return this.post(`/check_transfers/${id}/stop_payment`, options);
+  stopPayment(
+    checkTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<CheckTransfer>> {
+    return this.post(`/check_transfers/${checkTransferId}/stop_payment`, options);
   }
 }
 

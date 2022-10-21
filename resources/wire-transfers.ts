@@ -13,8 +13,8 @@ export class WireTransfers extends APIResource {
     return this.post('/wire_transfers', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
-    return this.get(`/wire_transfers/${id}`, options);
+  retrieve(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+    return this.get(`/wire_transfers/${wireTransferId}`, options);
   }
 
   list(query?: WireTransferListParams, options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage>;
@@ -35,16 +35,16 @@ export class WireTransfers extends APIResource {
    * conditions. This will also create a Transaction to account for the returned
    * funds. This transfer must first have a `status` of `complete`.
    */
-  reverse(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
-    return this.post(`/simulations/wire_transfers/${id}/reverse`, options);
+  reverse(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+    return this.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
   }
 
   /**
    * Simulates the submission of a Wire Transfer to the Federal Reserve. This
    * transfer must first have a `status` of `pending_approval` or `pending_creating`.
    */
-  submit(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
-    return this.post(`/simulations/wire_transfers/${id}/submit`, options);
+  submit(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+    return this.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
   }
 }
 

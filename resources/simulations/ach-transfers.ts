@@ -22,8 +22,8 @@ export class ACHTransfers extends APIResource {
    * conditions. This will also create a Transaction to account for the returned
    * funds. This transfer must first have a `status` of `submitted`.
    */
-  return(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
-    return this.post(`/simulations/ach_transfers/${id}/return`, options);
+  return(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+    return this.post(`/simulations/ach_transfers/${achTransferId}/return`, options);
   }
 
   /**
@@ -31,8 +31,8 @@ export class ACHTransfers extends APIResource {
    * transfer must first have a `status` of `pending_approval` or
    * `pending_submission`.
    */
-  submit(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
-    return this.post(`/simulations/ach_transfers/${id}/submit`, options);
+  submit(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+    return this.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
   }
 }
 

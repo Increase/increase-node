@@ -10,8 +10,8 @@ export class Entities extends APIResource {
     return this.post('/entities', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Entity>> {
-    return this.get(`/entities/${id}`, options);
+  retrieve(entityId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Entity>> {
+    return this.get(`/entities/${entityId}`, options);
   }
 
   list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage>;

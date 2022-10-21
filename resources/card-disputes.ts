@@ -13,8 +13,8 @@ export class CardDisputes extends APIResource {
     return this.post('/card_disputes', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardDispute>> {
-    return this.get(`/card_disputes/${id}`, options);
+  retrieve(cardDisputeId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardDispute>> {
+    return this.get(`/card_disputes/${cardDisputeId}`, options);
   }
 
   list(query?: CardDisputeListParams, options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage>;

@@ -10,16 +10,16 @@ export class Accounts extends APIResource {
     return this.post('/accounts', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
-    return this.get(`/accounts/${id}`, options);
+  retrieve(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
+    return this.get(`/accounts/${accountId}`, options);
   }
 
   update(
-    id: string,
+    accountId: string,
     body: AccountUpdateParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<Account>> {
-    return this.patch(`/accounts/${id}`, { body, ...options });
+    return this.patch(`/accounts/${accountId}`, { body, ...options });
   }
 
   list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
@@ -35,8 +35,8 @@ export class Accounts extends APIResource {
     return this.getAPIList('/accounts', AccountsPage, { query, ...options });
   }
 
-  close(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
-    return this.post(`/accounts/${id}/close`, options);
+  close(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
+    return this.post(`/accounts/${accountId}/close`, options);
   }
 }
 

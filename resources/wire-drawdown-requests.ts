@@ -13,8 +13,11 @@ export class WireDrawdownRequests extends APIResource {
     return this.post('/wire_drawdown_requests', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireDrawdownRequest>> {
-    return this.get(`/wire_drawdown_requests/${id}`, options);
+  retrieve(
+    wireDrawdownRequestId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<WireDrawdownRequest>> {
+    return this.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
   }
 
   list(

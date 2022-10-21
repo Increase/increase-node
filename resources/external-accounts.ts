@@ -13,16 +13,19 @@ export class ExternalAccounts extends APIResource {
     return this.post('/external_accounts', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ExternalAccount>> {
-    return this.get(`/external_accounts/${id}`, options);
+  retrieve(
+    externalAccountId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<ExternalAccount>> {
+    return this.get(`/external_accounts/${externalAccountId}`, options);
   }
 
   update(
-    id: string,
+    externalAccountId: string,
     body: ExternalAccountUpdateParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<ExternalAccount>> {
-    return this.patch(`/external_accounts/${id}`, { body, ...options });
+    return this.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
   }
 
   list(

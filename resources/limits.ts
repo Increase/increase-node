@@ -10,16 +10,16 @@ export class Limits extends APIResource {
     return this.post('/limits', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
-    return this.get(`/limits/${id}`, options);
+  retrieve(limitId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
+    return this.get(`/limits/${limitId}`, options);
   }
 
   update(
-    id: string,
+    limitId: string,
     body: LimitUpdateParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<Limit>> {
-    return this.patch(`/limits/${id}`, { body, ...options });
+    return this.patch(`/limits/${limitId}`, { body, ...options });
   }
 
   list(query?: LimitListParams, options?: Core.RequestOptions): Core.PagePromise<LimitsPage>;

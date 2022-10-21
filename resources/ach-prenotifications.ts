@@ -13,8 +13,11 @@ export class ACHPrenotifications extends APIResource {
     return this.post('/ach_prenotifications', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHPrenotification>> {
-    return this.get(`/ach_prenotifications/${id}`, options);
+  retrieve(
+    achPrenotificationId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<ACHPrenotification>> {
+    return this.get(`/ach_prenotifications/${achPrenotificationId}`, options);
   }
 
   list(

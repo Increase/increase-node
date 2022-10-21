@@ -13,8 +13,11 @@ export class AccountTransfers extends APIResource {
     return this.post('/account_transfers', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountTransfer>> {
-    return this.get(`/account_transfers/${id}`, options);
+  retrieve(
+    accountTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<AccountTransfer>> {
+    return this.get(`/account_transfers/${accountTransferId}`, options);
   }
 
   list(

@@ -13,8 +13,8 @@ export class ACHTransfers extends APIResource {
     return this.post('/ach_transfers', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
-    return this.get(`/ach_transfers/${id}`, options);
+  retrieve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+    return this.get(`/ach_transfers/${achTransferId}`, options);
   }
 
   list(query?: ACHTransferListParams, options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage>;

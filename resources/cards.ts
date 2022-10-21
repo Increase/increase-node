@@ -10,12 +10,16 @@ export class Cards extends APIResource {
     return this.post('/cards', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
-    return this.get(`/cards/${id}`, options);
+  retrieve(cardId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
+    return this.get(`/cards/${cardId}`, options);
   }
 
-  update(id: string, body: CardUpdateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
-    return this.patch(`/cards/${id}`, { body, ...options });
+  update(
+    cardId: string,
+    body: CardUpdateParams,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<Card>> {
+    return this.patch(`/cards/${cardId}`, { body, ...options });
   }
 
   list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage>;
@@ -32,10 +36,10 @@ export class Cards extends APIResource {
   }
 
   retrieveSensitiveDetails(
-    id: string,
+    cardId: string,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<CardDetails>> {
-    return this.get(`/cards/${id}/details`, options);
+    return this.get(`/cards/${cardId}/details`, options);
   }
 }
 

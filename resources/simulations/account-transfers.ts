@@ -8,8 +8,11 @@ export class AccountTransfers extends APIResource {
    * Simulates the completion of an Account Transfer. This transfer must first have a
    * `status` of `pending_approval`.
    */
-  complete(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountTransfer>> {
-    return this.post(`/simulations/account_transfers/${id}/complete`, options);
+  complete(
+    accountTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<AccountTransfer>> {
+    return this.post(`/simulations/account_transfers/${accountTransferId}/complete`, options);
   }
 }
 

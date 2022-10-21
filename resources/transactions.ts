@@ -6,8 +6,8 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Transactions extends APIResource {
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Transaction>> {
-    return this.get(`/transactions/${id}`, options);
+  retrieve(transactionId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Transaction>> {
+    return this.get(`/transactions/${transactionId}`, options);
   }
 
   list(query?: TransactionListParams, options?: Core.RequestOptions): Core.PagePromise<TransactionsPage>;

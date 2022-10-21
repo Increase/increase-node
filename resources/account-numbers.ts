@@ -13,16 +13,16 @@ export class AccountNumbers extends APIResource {
     return this.post('/account_numbers', { body, ...options });
   }
 
-  retrieve(id: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountNumber>> {
-    return this.get(`/account_numbers/${id}`, options);
+  retrieve(accountNumberId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountNumber>> {
+    return this.get(`/account_numbers/${accountNumberId}`, options);
   }
 
   update(
-    id: string,
+    accountNumberId: string,
     body: AccountNumberUpdateParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<AccountNumber>> {
-    return this.patch(`/account_numbers/${id}`, { body, ...options });
+    return this.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
   }
 
   list(query?: AccountNumberListParams, options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage>;
