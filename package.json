@@ -28,6 +28,7 @@
     "qs": "^6.10.3"
   },
   "devDependencies": {
+    "increase": "link:.",
     "@types/jest": "^27.5.0",
     "@types/node": "^17.0.21",
     "@types/node-fetch": "^2.6.1",
