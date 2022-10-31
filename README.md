@@ -5,8 +5,6 @@
 The Increase Node library provides convenient access to the Increase REST API from applications written in server-side JavaScript.
 It includes TypeScript definitions for all request params and response fields.
 
-
-
 ## Documentation
 
 The API documentation can be found [here](https://increase.com/documentation).
@@ -36,7 +34,7 @@ async function main() {
 
   console.log(account.id);
 }
-main().catch(console.error)
+main().catch(console.error);
 ```
 
 ### Usage with TypeScript
@@ -56,9 +54,8 @@ async function main() {
   const params: Increase.AccountCreateParams = { name: 'My First Increase Account' };
 
   const account: Increase.Account = await increase.accounts.create(params);
-
 }
-main().catch(console.error)
+main().catch(console.error);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -71,21 +68,19 @@ a subclass of `APIError` will be thrown:
 
 ```ts
 async function main() {
-  const account = await increase.accounts.create({ naem: 'Oops' })
-    .catch((err) => {
-      if (err instanceof Increase.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.error?.type); // missing_param
-        console.log(err.error?.title); // Missing param "name"
-        console.log(err.error?.detail); // Looks like "naem" may have been a typo?
-        console.log(err.error?.status); // 400
-        console.log(err.headers); // {server: 'nginx', ...}
-      }
-    })
-
+  const account = await increase.accounts.create({ naem: 'Oops' }).catch((err) => {
+    if (err instanceof Increase.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.error?.type); // missing_param
+      console.log(err.error?.title); // Missing param "name"
+      console.log(err.error?.detail); // Looks like "naem" may have been a typo?
+      console.log(err.error?.status); // 400
+      console.log(err.headers); // {server: 'nginx', ...}
+    }
+  });
 }
-main().catch(console.error)
+main().catch(console.error);
 ```
 
 Error codes are as followed:
@@ -156,7 +151,7 @@ async function fetchAllAccounts(params) {
     allAccounts.push(account);
   }
   return allAccounts;
-};
+}
 ```
 
 ## Configuring an HTTP(S) Agent (e.g., for proxies)
