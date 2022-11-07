@@ -12,6 +12,7 @@ describe('resource event_subscriptions', () => {
     const response = await increase.eventSubscriptions.create({
       url: 'https://website.com/webhooks',
       shared_secret: 'x',
+      selected_event_category: 'account.created',
     });
   });
 

@@ -57,7 +57,7 @@ export namespace WireTransferSimulation {
      * Transaction's currency. This will match the currency on the Transcation's
      * Account.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * For a Transaction related to a transfer, this is the description you provide.
@@ -75,7 +75,7 @@ export namespace WireTransferSimulation {
      * The identifier for the route this Transaction came through. Routes are things
      * like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Transaction came through.
@@ -310,7 +310,7 @@ export namespace WireTransferSimulation {
        * A Sample Funds object. This field will be present in the JSON response if and
        * only if `category` is equal to `sample_funds`.
        */
-      sample_funds: unknown | null;
+      sample_funds: Source.SampleFunds | null;
 
       /**
        * A Wire Drawdown Payment Intention object. This field will be present in the JSON
@@ -351,7 +351,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The description you chose to give the transfer.
@@ -506,7 +506,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * A constant representing the object's type. For this resource it will always be
@@ -526,7 +526,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_category_code: string;
 
@@ -566,7 +566,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       export interface CheckDepositReturn {
@@ -585,7 +585,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         return_reason:
           | 'ach_conversion_not_supported'
@@ -594,6 +594,7 @@ export namespace WireTransferSimulation {
           | 'no_account'
           | 'not_authorized'
           | 'stale_dated'
+          | 'stop_payment'
           | 'unknown_reason'
           | 'unmatched_details'
           | 'unreadable_image';
@@ -646,7 +647,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The name that will be printed on the check.
@@ -700,7 +701,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The identifier of the Transaction that was disputed.
@@ -761,7 +762,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       export interface InboundInternationalACHTransfer {
@@ -858,7 +859,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
          * currency. This will always be "USD" for a Real Time Payments transfer.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The account number of the account that sent the transfer.
@@ -1076,9 +1077,17 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
-        reason: 'cashback' | 'error' | 'error_correction' | 'fees' | 'interest' | 'sample_funds';
+        reason:
+          | 'cashback'
+          | 'empyreal_adjustment'
+          | 'error'
+          | 'error_correction'
+          | 'fees'
+          | 'interest'
+          | 'sample_funds'
+          | 'sample_funds_return';
       }
 
       export interface CardRouteRefund {
@@ -1092,7 +1101,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1118,7 +1127,7 @@ export namespace WireTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1131,6 +1140,13 @@ export namespace WireTransferSimulation {
         merchant_descriptor: string;
 
         merchant_state: string | null;
+      }
+
+      export interface SampleFunds {
+        /**
+         * Where the sample funds came from.
+         */
+        originator: string;
       }
 
       export interface WireDrawdownPaymentIntention {

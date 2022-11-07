@@ -5,7 +5,10 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource entities', () => {
   test('create: only required params', async () => {
-    const response = await increase.entities.create({ structure: 'corporation' });
+    const response = await increase.entities.create({
+      structure: 'corporation',
+      relationship: 'informational',
+    });
   });
 
   test('create: required and optional params', async () => {
@@ -23,7 +26,11 @@ describe('resource entities', () => {
               name: 'x',
               date_of_birth: '2019-12-27T18:11:19.117Z',
               address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'x', country: 'x' },
+              identification: {
+                method: 'social_security_number',
+                number: 'x',
+                passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+              },
             },
             company_title: 'x',
             prong: 'ownership',
@@ -33,7 +40,11 @@ describe('resource entities', () => {
               name: 'x',
               date_of_birth: '2019-12-27T18:11:19.117Z',
               address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'x', country: 'x' },
+              identification: {
+                method: 'social_security_number',
+                number: 'x',
+                passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+              },
             },
             company_title: 'x',
             prong: 'ownership',
@@ -43,7 +54,11 @@ describe('resource entities', () => {
               name: 'x',
               date_of_birth: '2019-12-27T18:11:19.117Z',
               address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'x', country: 'x' },
+              identification: {
+                method: 'social_security_number',
+                number: 'x',
+                passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+              },
             },
             company_title: 'x',
             prong: 'ownership',
@@ -54,7 +69,11 @@ describe('resource entities', () => {
         name: 'x',
         date_of_birth: '2019-12-27T18:11:19.117Z',
         address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-        identification: { method: 'social_security_number', number: 'x', country: 'x' },
+        identification: {
+          method: 'social_security_number',
+          number: 'x',
+          passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+        },
       },
       joint: {
         name: 'x',
@@ -63,19 +82,31 @@ describe('resource entities', () => {
             name: 'x',
             date_of_birth: '2019-12-27T18:11:19.117Z',
             address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'x', country: 'x' },
+            identification: {
+              method: 'social_security_number',
+              number: 'x',
+              passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+            },
           },
           {
             name: 'x',
             date_of_birth: '2019-12-27T18:11:19.117Z',
             address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'x', country: 'x' },
+            identification: {
+              method: 'social_security_number',
+              number: 'x',
+              passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+            },
           },
           {
             name: 'x',
             date_of_birth: '2019-12-27T18:11:19.117Z',
             address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'x', country: 'x' },
+            identification: {
+              method: 'social_security_number',
+              number: 'x',
+              passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+            },
           },
         ],
       },
@@ -92,17 +123,26 @@ describe('resource entities', () => {
             name: 'x',
             date_of_birth: '2019-12-27T18:11:19.117Z',
             address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'x', country: 'x' },
+            identification: {
+              method: 'social_security_number',
+              number: 'x',
+              passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+            },
           },
         },
         grantor: {
           name: 'x',
           date_of_birth: '2019-12-27T18:11:19.117Z',
           address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-          identification: { method: 'social_security_number', number: 'x', country: 'x' },
+          identification: {
+            method: 'social_security_number',
+            number: 'x',
+            passport: { file_id: 'string', expiration_date: '2019-12-27T18:11:19.117Z', country: 'x' },
+          },
         },
       },
       description: 'x',
+      relationship: 'informational',
     });
   });
 

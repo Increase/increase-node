@@ -95,8 +95,8 @@ export interface LimitCreateParams {
   metric: 'count' | 'volume';
 
   /**
-   * The identifier of the Account, Card, or Account Number you wish to associate the
-   * limit with.
+   * The identifier of the Account or Account Number you wish to associate the limit
+   * with.
    */
   model_id: string;
 

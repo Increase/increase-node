@@ -63,7 +63,7 @@ export interface CheckTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
    * currency.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The Check transfer's identifier.
@@ -90,18 +90,17 @@ export interface CheckTransfer {
    * The lifecycle status of the transfer.
    */
   status:
+    | 'pending_approval'
     | 'pending_submission'
     | 'submitting'
-    | 'pending_mailing'
-    | 'canceled'
-    | 'requires_attention'
-    | 'flagged_by_operator'
-    | 'mailed'
-    | 'pending_approval'
-    | 'rejected'
     | 'submitted'
+    | 'pending_mailing'
+    | 'mailed'
+    | 'canceled'
     | 'deposited'
-    | 'stopped';
+    | 'stopped'
+    | 'rejected'
+    | 'requires_attention';
 
   /**
    * After a stop-payment is requested on the check, this will contain supplemental

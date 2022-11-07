@@ -89,7 +89,8 @@ export interface File {
     | 'other'
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
-    | 'digital_wallet_app_icon';
+    | 'digital_wallet_app_icon'
+    | 'entity_supplemental_document';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -117,7 +118,8 @@ export interface FileCreateParams {
     | 'other'
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
-    | 'digital_wallet_app_icon';
+    | 'digital_wallet_app_icon'
+    | 'entity_supplemental_document';
 
   /**
    * The description you choose to give the File.
@@ -174,6 +176,7 @@ export namespace FileListParams {
       | 'trust_formation_document'
       | 'digital_wallet_artwork'
       | 'digital_wallet_app_icon'
+      | 'entity_supplemental_document'
     >;
   }
 }

@@ -63,7 +63,7 @@ export interface Account {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
    * currency.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The identifier for the Entity the Account belongs to.
@@ -74,6 +74,12 @@ export interface Account {
    * The Account identifier.
    */
   id: string;
+
+  /**
+   * The identifier of an Entity that, while not owning the Account, is associated
+   * with its activity.
+   */
+  informational_entity_id: string | null;
 
   /**
    * The interest accrued but not yet paid, expressed as a string containing a
@@ -114,6 +120,12 @@ export interface AccountCreateParams {
    * The identifier for the Entity that will own the Account.
    */
   entity_id?: string;
+
+  /**
+   * The identifier of an Entity that, while not owning the Account, is associated
+   * with its activity. Its relationship to your group must be `informational`.
+   */
+  informational_entity_id?: string;
 }
 
 export interface AccountUpdateParams {

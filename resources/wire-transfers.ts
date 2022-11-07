@@ -92,7 +92,7 @@ export interface WireTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For wire transfers this is always equal to `usd`.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The identifier of the External Account the transfer was made to, if any.
@@ -134,8 +134,7 @@ export interface WireTransfer {
     | 'rejected'
     | 'reversed'
     | 'complete'
-    | 'pending_creating'
-    | 'pending_sending';
+    | 'pending_creating';
 
   /**
    * After the transfer is submitted to Fedwire, this will contain supplemental

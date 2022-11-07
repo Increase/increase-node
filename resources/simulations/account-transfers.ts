@@ -53,7 +53,7 @@ export interface AccountTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
    * account currency.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The description that will show on the transactions.

@@ -63,6 +63,11 @@ export interface Entity {
   natural_person: Entity.NaturalPerson | null;
 
   /**
+   * The relationship between your group and the entity.
+   */
+  relationship: 'affiliated' | 'informational' | 'unaffiliated';
+
+  /**
    * The entity's legal structure.
    */
   structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
@@ -214,14 +219,9 @@ export namespace Entity {
 
         export interface Identification {
           /**
-           * The country that issued the provided identification number.
-           */
-          country: string;
-
-          /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'passport';
+          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -286,14 +286,9 @@ export namespace Entity {
 
     export interface Identification {
       /**
-       * The country that issued the provided identification number.
-       */
-      country: string;
-
-      /**
        * A method that can be used to verify the individual's identity.
        */
-      method: 'social_security_number' | 'passport';
+      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
 
       /**
        * The last 4 digits of the identification number that can be used to verify the
@@ -369,14 +364,9 @@ export namespace Entity {
 
       export interface Identification {
         /**
-         * The country that issued the provided identification number.
-         */
-        country: string;
-
-        /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'passport';
+        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -526,14 +516,9 @@ export namespace Entity {
 
         export interface Identification {
           /**
-           * The country that issued the provided identification number.
-           */
-          country: string;
-
-          /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'passport';
+          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -597,14 +582,9 @@ export namespace Entity {
 
       export interface Identification {
         /**
-         * The country that issued the provided identification number.
-         */
-        country: string;
-
-        /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'passport';
+        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -617,6 +597,11 @@ export namespace Entity {
 }
 
 export interface EntityCreateParams {
+  /**
+   * The relationship between your group and the entity.
+   */
+  relationship: 'affiliated' | 'informational' | 'unaffiliated';
+
   /**
    * The type of Entity to create.
    */
@@ -787,20 +772,40 @@ export namespace EntityCreateParams {
 
         export interface Identification {
           /**
+           * A method that can be used to verify the individual's identity.
+           */
+          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+
+          /**
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number.
            */
           number: string;
 
           /**
-           * The country that issued the provided identification number.
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
            */
-          country?: string;
+          passport?: Identification.Passport;
+        }
 
-          /**
-           * A method that can be used to verify the individual's identity.
-           */
-          method?: 'social_security_number' | 'passport';
+        export namespace Identification {
+          export interface Passport {
+            /**
+             * The country that issued the passport.
+             */
+            country: string;
+
+            /**
+             * The passport's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the passport.
+             */
+            file_id: string;
+          }
         }
       }
     }
@@ -859,20 +864,40 @@ export namespace EntityCreateParams {
 
     export interface Identification {
       /**
+       * A method that can be used to verify the individual's identity.
+       */
+      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+
+      /**
        * An identification number that can be used to verify the individual's identity,
        * such as a social security number.
        */
       number: string;
 
       /**
-       * The country that issued the provided identification number.
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
        */
-      country?: string;
+      passport?: Identification.Passport;
+    }
 
-      /**
-       * A method that can be used to verify the individual's identity.
-       */
-      method?: 'social_security_number' | 'passport';
+    export namespace Identification {
+      export interface Passport {
+        /**
+         * The country that issued the passport.
+         */
+        country: string;
+
+        /**
+         * The passport's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date: string;
+
+        /**
+         * The identifier of the File containing the passport.
+         */
+        file_id: string;
+      }
     }
   }
 
@@ -942,20 +967,40 @@ export namespace EntityCreateParams {
 
       export interface Identification {
         /**
+         * A method that can be used to verify the individual's identity.
+         */
+        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+
+        /**
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number.
          */
         number: string;
 
         /**
-         * The country that issued the provided identification number.
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
          */
-        country?: string;
+        passport?: Identification.Passport;
+      }
 
-        /**
-         * A method that can be used to verify the individual's identity.
-         */
-        method?: 'social_security_number' | 'passport';
+      export namespace Identification {
+        export interface Passport {
+          /**
+           * The country that issued the passport.
+           */
+          country: string;
+
+          /**
+           * The passport's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the passport.
+           */
+          file_id: string;
+        }
       }
     }
   }
@@ -1102,20 +1147,40 @@ export namespace EntityCreateParams {
 
         export interface Identification {
           /**
+           * A method that can be used to verify the individual's identity.
+           */
+          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+
+          /**
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number.
            */
           number: string;
 
           /**
-           * The country that issued the provided identification number.
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
            */
-          country?: string;
+          passport?: Identification.Passport;
+        }
 
-          /**
-           * A method that can be used to verify the individual's identity.
-           */
-          method?: 'social_security_number' | 'passport';
+        export namespace Identification {
+          export interface Passport {
+            /**
+             * The country that issued the passport.
+             */
+            country: string;
+
+            /**
+             * The passport's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the passport.
+             */
+            file_id: string;
+          }
         }
       }
     }
@@ -1173,20 +1238,40 @@ export namespace EntityCreateParams {
 
       export interface Identification {
         /**
+         * A method that can be used to verify the individual's identity.
+         */
+        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+
+        /**
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number.
          */
         number: string;
 
         /**
-         * The country that issued the provided identification number.
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
          */
-        country?: string;
+        passport?: Identification.Passport;
+      }
 
-        /**
-         * A method that can be used to verify the individual's identity.
-         */
-        method?: 'social_security_number' | 'passport';
+      export namespace Identification {
+        export interface Passport {
+          /**
+           * The country that issued the passport.
+           */
+          country: string;
+
+          /**
+           * The passport's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the passport.
+           */
+          file_id: string;
+        }
       }
     }
   }

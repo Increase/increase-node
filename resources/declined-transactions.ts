@@ -60,7 +60,7 @@ export interface DeclinedTransaction {
    * Transaction's currency. This will match the currency on the Declined
    * Transcation's Account.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * This is the description the vendor provides.
@@ -201,7 +201,7 @@ export namespace DeclinedTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 
@@ -270,7 +270,7 @@ export namespace DeclinedTransaction {
        * transfer's currency. This will always be "USD" for a Real Time Payments
        * transfer.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The account number of the account that sent the transfer.
@@ -397,7 +397,7 @@ export namespace DeclinedTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 

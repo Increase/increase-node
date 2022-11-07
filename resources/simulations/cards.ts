@@ -74,7 +74,7 @@ export namespace CardAuthorizationSimulation {
      * Transaction's currency. This will match the currency on the Pending
      * Transcation's Account.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * For a Pending Transaction related to a transfer, this is the description you
@@ -92,7 +92,7 @@ export namespace CardAuthorizationSimulation {
      * The identifier for the route this Pending Transaction came through. Routes are
      * things like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Pending Transaction came through.
@@ -200,7 +200,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The identifier of the Account Transfer that led to this Pending Transaction.
@@ -232,7 +232,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -262,7 +262,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The identifier of the File containing the image of the front of the check that
@@ -282,7 +282,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The identifier of the Check Transfer that led to this Pending Transaction.
@@ -301,7 +301,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -371,7 +371,7 @@ export namespace CardAuthorizationSimulation {
      * Transaction's currency. This will match the currency on the Declined
      * Transcation's Account.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * This is the description the vendor provides.
@@ -512,7 +512,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -581,7 +581,7 @@ export namespace CardAuthorizationSimulation {
          * transfer's currency. This will always be "USD" for a Real Time Payments
          * transfer.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The account number of the account that sent the transfer.
@@ -708,7 +708,7 @@ export namespace CardAuthorizationSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -753,7 +753,7 @@ export interface Transaction {
    * Transaction's currency. This will match the currency on the Transcation's
    * Account.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * For a Transaction related to a transfer, this is the description you provide.
@@ -771,7 +771,7 @@ export interface Transaction {
    * The identifier for the route this Transaction came through. Routes are things
    * like cards and ACH details.
    */
-  route_id: string;
+  route_id: string | null;
 
   /**
    * The type of the route this Transaction came through.
@@ -1006,7 +1006,7 @@ export namespace Transaction {
      * A Sample Funds object. This field will be present in the JSON response if and
      * only if `category` is equal to `sample_funds`.
      */
-    sample_funds: unknown | null;
+    sample_funds: Source.SampleFunds | null;
 
     /**
      * A Wire Drawdown Payment Intention object. This field will be present in the JSON
@@ -1047,7 +1047,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The description you chose to give the transfer.
@@ -1202,7 +1202,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * A constant representing the object's type. For this resource it will always be
@@ -1222,7 +1222,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_category_code: string;
 
@@ -1262,7 +1262,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
     }
 
     export interface CheckDepositReturn {
@@ -1281,7 +1281,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       return_reason:
         | 'ach_conversion_not_supported'
@@ -1290,6 +1290,7 @@ export namespace Transaction {
         | 'no_account'
         | 'not_authorized'
         | 'stale_dated'
+        | 'stop_payment'
         | 'unknown_reason'
         | 'unmatched_details'
         | 'unreadable_image';
@@ -1342,7 +1343,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
        * currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The name that will be printed on the check.
@@ -1396,7 +1397,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The identifier of the Transaction that was disputed.
@@ -1457,7 +1458,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
     }
 
     export interface InboundInternationalACHTransfer {
@@ -1554,7 +1555,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
        * currency. This will always be "USD" for a Real Time Payments transfer.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The account number of the account that sent the transfer.
@@ -1772,9 +1773,17 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
-      reason: 'cashback' | 'error' | 'error_correction' | 'fees' | 'interest' | 'sample_funds';
+      reason:
+        | 'cashback'
+        | 'empyreal_adjustment'
+        | 'error'
+        | 'error_correction'
+        | 'fees'
+        | 'interest'
+        | 'sample_funds'
+        | 'sample_funds_return';
     }
 
     export interface CardRouteRefund {
@@ -1788,7 +1797,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
        * currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 
@@ -1814,7 +1823,7 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
        * currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 
@@ -1827,6 +1836,13 @@ export namespace Transaction {
       merchant_descriptor: string;
 
       merchant_state: string | null;
+    }
+
+    export interface SampleFunds {
+      /**
+       * Where the sample funds came from.
+       */
+      originator: string;
     }
 
     export interface WireDrawdownPaymentIntention {

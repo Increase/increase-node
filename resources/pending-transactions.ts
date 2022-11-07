@@ -59,7 +59,7 @@ export interface PendingTransaction {
    * Transaction's currency. This will match the currency on the Pending
    * Transcation's Account.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * For a Pending Transaction related to a transfer, this is the description you
@@ -77,7 +77,7 @@ export interface PendingTransaction {
    * The identifier for the route this Pending Transaction came through. Routes are
    * things like cards and ACH details.
    */
-  route_id: string;
+  route_id: string | null;
 
   /**
    * The type of the route this Pending Transaction came through.
@@ -185,7 +185,7 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The identifier of the Account Transfer that led to this Pending Transaction.
@@ -217,7 +217,7 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 
@@ -247,7 +247,7 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The identifier of the File containing the image of the front of the check that
@@ -267,7 +267,7 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
        * currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
        * The identifier of the Check Transfer that led to this Pending Transaction.
@@ -286,7 +286,7 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        */
-      currency: string;
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       merchant_acceptor_id: string;
 

@@ -50,7 +50,13 @@ export interface CheckDeposit {
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+  /**
+   * If your deposit is successfully parsed and accepted by Increase, this will
+   * contain details of the parsed check.
+   */
+  deposit_acceptance: CheckDeposit.DepositAcceptance | null;
 
   /**
    * If your deposit is rejected by Increase, this will contain details as to why it
@@ -92,6 +98,36 @@ export interface CheckDeposit {
 }
 
 export namespace CheckDeposit {
+  export interface DepositAcceptance {
+    /**
+     * The account number printed on the check.
+     */
+    account_number: string;
+
+    /**
+     * The amount to be deposited in the minor unit of the transaction's currency. For
+     * dollars, for example, this is cents.
+     */
+    amount: number;
+
+    /**
+     * An additional line of metadata printed on the check. This typically includes the
+     * check number.
+     */
+    auxiliary_on_us: string | null;
+
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+     * transaction's currency.
+     */
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+    /**
+     * The routing number printed on the check.
+     */
+    routing_number: string;
+  }
+
   export interface DepositRejection {
     /**
      * The rejected amount in the minor unit of check's currency. For dollars, for
@@ -103,7 +139,7 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
      * currency.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * Why the check deposit was rejected.
@@ -139,7 +175,7 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     return_reason:
       | 'ach_conversion_not_supported'
@@ -148,6 +184,7 @@ export namespace CheckDeposit {
       | 'no_account'
       | 'not_authorized'
       | 'stale_dated'
+      | 'stop_payment'
       | 'unknown_reason'
       | 'unmatched_details'
       | 'unreadable_image';

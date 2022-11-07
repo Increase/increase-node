@@ -82,7 +82,7 @@ export interface ACHTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For ACH transfers this is always equal to `usd`.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The identifier of the External Account the transfer was made to, if any.
@@ -125,13 +125,12 @@ export interface ACHTransfer {
    */
   status:
     | 'pending_approval'
-    | 'pending_submission'
-    | 'rejected'
-    | 'returned'
     | 'canceled'
+    | 'pending_submission'
+    | 'submitted'
+    | 'returned'
     | 'requires_attention'
-    | 'flagged_by_operator'
-    | 'submitted';
+    | 'rejected';
 
   /**
    * After the transfer is submitted to FedACH, this will contain supplemental

@@ -51,8 +51,8 @@ export class EventSubscriptionsPage extends Page<EventSubscription> {}
  * Webhooks are event notifications we send to you by HTTPS POST requests. Event
  * Subscriptions are how you configure your application to listen for them. You can
  * create an Event Subscription through your
- * [team settings](https://dashboard.increase.com/applications/webhooks) or the
- * API. For more information, see our
+ * [team settings](http://localhost:3000/applications/webhooks) or the API. For
+ * more information, see our
  * [webhooks guide](https://increase.com/documentation/webhooks).
  */
 export interface EventSubscription {
@@ -65,6 +65,54 @@ export interface EventSubscription {
    * The event subscription identifier.
    */
   id: string;
+
+  /**
+   * If specified, this subscription will only receive webhooks for Events with the
+   * specified `category`.
+   */
+  selected_event_category:
+    | 'account.created'
+    | 'account.updated'
+    | 'account_number.created'
+    | 'account_number.updated'
+    | 'account_statement.created'
+    | 'account_transfer.created'
+    | 'account_transfer.updated'
+    | 'ach_prenotification.created'
+    | 'ach_prenotification.updated'
+    | 'ach_transfer.created'
+    | 'ach_transfer.updated'
+    | 'card.created'
+    | 'card.updated'
+    | 'card_dispute.created'
+    | 'card_dispute.updated'
+    | 'check_deposit.created'
+    | 'check_deposit.updated'
+    | 'check_transfer.created'
+    | 'check_transfer.updated'
+    | 'declined_transaction.created'
+    | 'document.created'
+    | 'entity.created'
+    | 'entity.updated'
+    | 'external_account.created'
+    | 'file.created'
+    | 'group.updated'
+    | 'group.heartbeat'
+    | 'oauth_connection.created'
+    | 'oauth_connection.deactivated'
+    | 'pending_transaction.created'
+    | 'pending_transaction.updated'
+    | 'real_time_decision.card_authorization_requested'
+    | 'real_time_decision.digital_wallet_token_requested'
+    | 'real_time_decision.digital_wallet_authentication_requested'
+    | 'real_time_payments_transfer.created'
+    | 'real_time_payments_transfer.updated'
+    | 'transaction.created'
+    | 'wire_drawdown_request.created'
+    | 'wire_drawdown_request.updated'
+    | 'wire_transfer.created'
+    | 'wire_transfer.updated'
+    | null;
 
   /**
    * The key that will be used to sign webhooks.
@@ -93,6 +141,53 @@ export interface EventSubscriptionCreateParams {
    * The URL you'd like us to send webhooks to.
    */
   url: string;
+
+  /**
+   * If specified, this subscription will only receive webhooks for Events with the
+   * specified `category`.
+   */
+  selected_event_category?:
+    | 'account.created'
+    | 'account.updated'
+    | 'account_number.created'
+    | 'account_number.updated'
+    | 'account_statement.created'
+    | 'account_transfer.created'
+    | 'account_transfer.updated'
+    | 'ach_prenotification.created'
+    | 'ach_prenotification.updated'
+    | 'ach_transfer.created'
+    | 'ach_transfer.updated'
+    | 'card.created'
+    | 'card.updated'
+    | 'card_dispute.created'
+    | 'card_dispute.updated'
+    | 'check_deposit.created'
+    | 'check_deposit.updated'
+    | 'check_transfer.created'
+    | 'check_transfer.updated'
+    | 'declined_transaction.created'
+    | 'document.created'
+    | 'entity.created'
+    | 'entity.updated'
+    | 'external_account.created'
+    | 'file.created'
+    | 'group.updated'
+    | 'group.heartbeat'
+    | 'oauth_connection.created'
+    | 'oauth_connection.deactivated'
+    | 'pending_transaction.created'
+    | 'pending_transaction.updated'
+    | 'real_time_decision.card_authorization_requested'
+    | 'real_time_decision.digital_wallet_token_requested'
+    | 'real_time_decision.digital_wallet_authentication_requested'
+    | 'real_time_payments_transfer.created'
+    | 'real_time_payments_transfer.updated'
+    | 'transaction.created'
+    | 'wire_drawdown_request.created'
+    | 'wire_drawdown_request.updated'
+    | 'wire_transfer.created'
+    | 'wire_transfer.updated';
 
   /**
    * The key that will be used to sign webhooks. If no value is passed, a random

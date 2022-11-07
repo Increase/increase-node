@@ -85,7 +85,7 @@ export namespace ACHTransferSimulation {
      * Transaction's currency. This will match the currency on the Transcation's
      * Account.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * For a Transaction related to a transfer, this is the description you provide.
@@ -103,7 +103,7 @@ export namespace ACHTransferSimulation {
      * The identifier for the route this Transaction came through. Routes are things
      * like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Transaction came through.
@@ -338,7 +338,7 @@ export namespace ACHTransferSimulation {
        * A Sample Funds object. This field will be present in the JSON response if and
        * only if `category` is equal to `sample_funds`.
        */
-      sample_funds: unknown | null;
+      sample_funds: Source.SampleFunds | null;
 
       /**
        * A Wire Drawdown Payment Intention object. This field will be present in the JSON
@@ -379,7 +379,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The description you chose to give the transfer.
@@ -534,7 +534,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * A constant representing the object's type. For this resource it will always be
@@ -554,7 +554,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_category_code: string;
 
@@ -594,7 +594,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       export interface CheckDepositReturn {
@@ -613,7 +613,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         return_reason:
           | 'ach_conversion_not_supported'
@@ -622,6 +622,7 @@ export namespace ACHTransferSimulation {
           | 'no_account'
           | 'not_authorized'
           | 'stale_dated'
+          | 'stop_payment'
           | 'unknown_reason'
           | 'unmatched_details'
           | 'unreadable_image';
@@ -674,7 +675,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The name that will be printed on the check.
@@ -728,7 +729,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The identifier of the Transaction that was disputed.
@@ -789,7 +790,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       export interface InboundInternationalACHTransfer {
@@ -886,7 +887,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
          * currency. This will always be "USD" for a Real Time Payments transfer.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The account number of the account that sent the transfer.
@@ -1104,9 +1105,17 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
-        reason: 'cashback' | 'error' | 'error_correction' | 'fees' | 'interest' | 'sample_funds';
+        reason:
+          | 'cashback'
+          | 'empyreal_adjustment'
+          | 'error'
+          | 'error_correction'
+          | 'fees'
+          | 'interest'
+          | 'sample_funds'
+          | 'sample_funds_return';
       }
 
       export interface CardRouteRefund {
@@ -1120,7 +1129,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1146,7 +1155,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
          * currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1159,6 +1168,13 @@ export namespace ACHTransferSimulation {
         merchant_descriptor: string;
 
         merchant_state: string | null;
+      }
+
+      export interface SampleFunds {
+        /**
+         * Where the sample funds came from.
+         */
+        originator: string;
       }
 
       export interface WireDrawdownPaymentIntention {
@@ -1233,7 +1249,7 @@ export namespace ACHTransferSimulation {
      * Transaction's currency. This will match the currency on the Declined
      * Transcation's Account.
      */
-    currency: string;
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * This is the description the vendor provides.
@@ -1374,7 +1390,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1443,7 +1459,7 @@ export namespace ACHTransferSimulation {
          * transfer's currency. This will always be "USD" for a Real Time Payments
          * transfer.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
          * The account number of the account that sent the transfer.
@@ -1570,7 +1586,7 @@ export namespace ACHTransferSimulation {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          */
-        currency: string;
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         merchant_acceptor_id: string;
 
@@ -1637,7 +1653,7 @@ export interface ACHTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For ACH transfers this is always equal to `usd`.
    */
-  currency: string;
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
    * The identifier of the External Account the transfer was made to, if any.
@@ -1680,13 +1696,12 @@ export interface ACHTransfer {
    */
   status:
     | 'pending_approval'
-    | 'pending_submission'
-    | 'rejected'
-    | 'returned'
     | 'canceled'
+    | 'pending_submission'
+    | 'submitted'
+    | 'returned'
     | 'requires_attention'
-    | 'flagged_by_operator'
-    | 'submitted';
+    | 'rejected';
 
   /**
    * After the transfer is submitted to FedACH, this will contain supplemental
