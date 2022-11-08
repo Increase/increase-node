@@ -3,6 +3,7 @@ import * as Core from './core';
 import * as Pagination from './pagination';
 import * as API from './resources';
 import type { Agent } from 'http';
+import * as FileFromPath from 'formdata-node/file-from-path';
 
 const environments = {
   production: 'https://api.increase.com',
@@ -95,6 +96,9 @@ export class Increase extends Core.APIClient {
 }
 
 export namespace Increase {
+  // Helper functions
+  export import fileFromPath = FileFromPath.fileFromPath;
+
   export import Page = Pagination.Page;
   export import PageParams = Pagination.PageParams;
   export import PageResponse = Pagination.PageResponse;

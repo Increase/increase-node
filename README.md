@@ -60,6 +60,21 @@ main().catch(console.error);
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
 
+## File Uploads
+
+Request parameters that correspond to file uploads can be passed as either a `FormData.Blob` or a `FormData.File` instance.
+
+We provide a `fileFromPath` helper function to easily create `FormData.File` instances from a given class.
+
+```ts
+import ModernTreasury, { fileFromPath } from 'increase';
+
+const increase = new Increase();
+
+const file = await fileFromPath('/my/file.txt');
+await increase.files.create({ file: file, purpose: 'other' });
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API,
