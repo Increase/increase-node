@@ -415,9 +415,9 @@ export namespace Entity {
     tax_identifier: string | null;
 
     /**
-     * The trustee of the trust.
+     * The trustees of the trust.
      */
-    trustee: Trust.Trustee;
+    trustees: Array<Trust.Trustees>;
   }
 
   export namespace Trust {
@@ -449,20 +449,20 @@ export namespace Entity {
       zip: string;
     }
 
-    export interface Trustee {
+    export interface Trustees {
       /**
        * The individual trustee of the trust. Will be present if the trustee's
        * `structure` is equal to `individual`.
        */
-      individual: Trustee.Individual | null;
+      individual: Trustees.Individual | null;
 
       /**
-       * The structure of the trust's trustee. Will always be equal to `individual`.
+       * The structure of the trustee. Will always be equal to `individual`.
        */
       structure: 'individual';
     }
 
-    export namespace Trustee {
+    export namespace Trustees {
       export interface Individual {
         /**
          * The person's address.
@@ -1024,9 +1024,9 @@ export namespace EntityCreateParams {
     name: string;
 
     /**
-     * The trustee of the trust.
+     * The trustees of the trust.
      */
-    trustee: Trust.Trustee;
+    trustees: Array<Trust.Trustees>;
 
     /**
      * The identifier of the File containing the formation document of the trust.
@@ -1080,9 +1080,9 @@ export namespace EntityCreateParams {
       line2?: string;
     }
 
-    export interface Trustee {
+    export interface Trustees {
       /**
-       * The structure of the trust's trustee.
+       * The structure of the trustee.
        */
       structure: 'individual';
 
@@ -1090,10 +1090,10 @@ export namespace EntityCreateParams {
        * Details of the individual trustee. Required when the trustee `structure` is
        * equal to `individual`.
        */
-      individual?: Trustee.Individual;
+      individual?: Trustees.Individual;
     }
 
-    export namespace Trustee {
+    export namespace Trustees {
       export interface Individual {
         /**
          * The individual's address.
