@@ -228,6 +228,12 @@ export namespace PendingTransaction {
       merchant_country: string;
 
       merchant_descriptor: string;
+
+      /**
+       * The identifier of the Real-Time Decision sent to approve or decline this
+       * transaction.
+       */
+      real_time_decision_id: string | null;
     }
 
     export interface CheckDepositInstruction {

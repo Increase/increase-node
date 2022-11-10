@@ -243,6 +243,12 @@ export namespace CardAuthorizationSimulation {
         merchant_country: string;
 
         merchant_descriptor: string;
+
+        /**
+         * The identifier of the Real-Time Decision sent to approve or decline this
+         * transaction.
+         */
+        real_time_decision_id: string | null;
       }
 
       export interface CheckDepositInstruction {
@@ -525,6 +531,12 @@ export namespace CardAuthorizationSimulation {
         merchant_descriptor: string;
 
         merchant_state: string | null;
+
+        /**
+         * The identifier of the Real-Time Decision sent to approve or decline this
+         * transaction.
+         */
+        real_time_decision_id: string | null;
 
         /**
          * Why the transaction was declined.
