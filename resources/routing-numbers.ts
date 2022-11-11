@@ -7,8 +7,9 @@ import { Page, PageParams } from '~/pagination';
 export class RoutingNumbers extends APIResource {
   /**
    * You can use this API to confirm if a routing number is valid, such as when a
-   * user is providing you with bank account details. In Sandbox, the only valid
-   * routing number for this method is 110000000.
+   * user is providing you with bank account details. Since routing numbers uniquely
+   * identify a bank, this will always return 0 or 1 entry. In Sandbox, the only
+   * valid routing number for this method is 110000000.
    */
   list(query: RoutingNumberListParams, options?: Core.RequestOptions): Core.PagePromise<RoutingNumbersPage> {
     return this.getAPIList('/routing_numbers', RoutingNumbersPage, { query, ...options });
