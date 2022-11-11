@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import Increase from '../index';
+import Increase from "../index";
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -26,6 +26,7 @@ describe('instantiate client', () => {
     process.env['INCREASE_API_KEY'] = 'env var api key';
     const client = new Increase();
     expect(client.apiKey).toBe('env var api key');
+
   });
 
   test('with apiKey argument', () => {
@@ -38,7 +39,7 @@ describe('instantiate client', () => {
   test('with options argument', () => {
     process.env['INCREASE_API_KEY'] = 'env var api key';
 
-    // apiKey
+    // apiKey 
     const client = new Increase({ apiKey: 'my api key' });
     expect(client.apiKey).toBe('my api key');
   });

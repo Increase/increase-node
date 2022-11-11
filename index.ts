@@ -2,13 +2,17 @@
 import * as Core from './core';
 import * as Pagination from './pagination';
 import * as API from './resources';
+import type * as FormData from 'formdata-node'
+import { multipartFormRequestOptions, maybeMultipartFormRequestOptions } from '~/core'
+import { isRequestOptions } from './core';
 import type { Agent } from 'http';
-import * as FileFromPath from 'formdata-node/file-from-path';
+import DigestFetch from 'digest-fetch';
+import * as FileFromPath from 'formdata-node/file-from-path'
 
 const environments = {
   production: 'https://api.increase.com',
   sandbox: 'https://sandbox.increase.com',
-};
+}
 
 type Config = {
   /**
@@ -28,8 +32,8 @@ export class Increase extends Core.APIClient {
     const options: Config = {
       apiKey: process.env['INCREASE_API_KEY'] || '',
       environment: 'production',
-      ...config,
-    };
+      ...config
+    }
 
     if (!options.apiKey && options.apiKey !== null) {
       throw new Error(
@@ -43,6 +47,7 @@ export class Increase extends Core.APIClient {
       httpAgent: options.httpAgent,
     });
     this.apiKey = options.apiKey;
+
   }
 
   accounts: API.Accounts = new API.Accounts(this);
@@ -72,13 +77,13 @@ export class Increase extends Core.APIClient {
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   simulations: API.Simulations = new API.Simulations(this);
 
-  protected override authHeaders(): Core.Headers {
-    return { Authorization: `Bearer ${this.apiKey}` };
-  }
+  protected override authHeaders(): Core.Headers{
+         return { Authorization: `Bearer ${this.apiKey}` }
+       };
 
-  protected override qsOptions(): qs.IStringifyOptions {
-    return { allowDots: true, arrayFormat: 'comma' };
-  }
+  protected override qsOptions(): qs.IStringifyOptions{
+         return { allowDots: true,arrayFormat: 'comma' }
+       };
 
   static APIError = Core.APIError;
 
@@ -99,130 +104,131 @@ export namespace Increase {
   // Helper functions
   export import fileFromPath = FileFromPath.fileFromPath;
 
-  export import Page = Pagination.Page;
-  export import PageParams = Pagination.PageParams;
-  export import PageResponse = Pagination.PageResponse;
+  export import Page = Pagination.Page
+  export import PageParams = Pagination.PageParams
+  export import PageResponse = Pagination.PageResponse
 
-  export import Account = API.Account;
-  export import AccountsPage = API.AccountsPage;
-  export import AccountCreateParams = API.AccountCreateParams;
-  export import AccountUpdateParams = API.AccountUpdateParams;
-  export import AccountListParams = API.AccountListParams;
+  export import Account = API.Account
+  export import AccountsPage = API.AccountsPage
+  export import AccountCreateParams = API.AccountCreateParams
+  export import AccountUpdateParams = API.AccountUpdateParams
+  export import AccountListParams = API.AccountListParams
 
-  export import AccountNumber = API.AccountNumber;
-  export import AccountNumbersPage = API.AccountNumbersPage;
-  export import AccountNumberCreateParams = API.AccountNumberCreateParams;
-  export import AccountNumberUpdateParams = API.AccountNumberUpdateParams;
-  export import AccountNumberListParams = API.AccountNumberListParams;
+  export import AccountNumber = API.AccountNumber
+  export import AccountNumbersPage = API.AccountNumbersPage
+  export import AccountNumberCreateParams = API.AccountNumberCreateParams
+  export import AccountNumberUpdateParams = API.AccountNumberUpdateParams
+  export import AccountNumberListParams = API.AccountNumberListParams
 
-  export import RealTimeDecision = API.RealTimeDecision;
-  export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams;
+  export import RealTimeDecision = API.RealTimeDecision
+  export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams
 
-  export import Card = API.Card;
-  export import CardDetails = API.CardDetails;
-  export import CardsPage = API.CardsPage;
-  export import CardCreateParams = API.CardCreateParams;
-  export import CardUpdateParams = API.CardUpdateParams;
-  export import CardListParams = API.CardListParams;
+  export import Card = API.Card
+  export import CardDetails = API.CardDetails
+  export import CardsPage = API.CardsPage
+  export import CardCreateParams = API.CardCreateParams
+  export import CardUpdateParams = API.CardUpdateParams
+  export import CardListParams = API.CardListParams
 
-  export import CardDispute = API.CardDispute;
-  export import CardDisputesPage = API.CardDisputesPage;
-  export import CardDisputeCreateParams = API.CardDisputeCreateParams;
-  export import CardDisputeListParams = API.CardDisputeListParams;
+  export import CardDispute = API.CardDispute
+  export import CardDisputesPage = API.CardDisputesPage
+  export import CardDisputeCreateParams = API.CardDisputeCreateParams
+  export import CardDisputeListParams = API.CardDisputeListParams
 
-  export import ExternalAccount = API.ExternalAccount;
-  export import ExternalAccountsPage = API.ExternalAccountsPage;
-  export import ExternalAccountCreateParams = API.ExternalAccountCreateParams;
-  export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
-  export import ExternalAccountListParams = API.ExternalAccountListParams;
+  export import ExternalAccount = API.ExternalAccount
+  export import ExternalAccountsPage = API.ExternalAccountsPage
+  export import ExternalAccountCreateParams = API.ExternalAccountCreateParams
+  export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams
+  export import ExternalAccountListParams = API.ExternalAccountListParams
 
-  export import Transaction = API.Transaction;
-  export import TransactionsPage = API.TransactionsPage;
-  export import TransactionListParams = API.TransactionListParams;
+  export import Transaction = API.Transaction
+  export import TransactionsPage = API.TransactionsPage
+  export import TransactionListParams = API.TransactionListParams
 
-  export import PendingTransaction = API.PendingTransaction;
-  export import PendingTransactionsPage = API.PendingTransactionsPage;
-  export import PendingTransactionListParams = API.PendingTransactionListParams;
+  export import PendingTransaction = API.PendingTransaction
+  export import PendingTransactionsPage = API.PendingTransactionsPage
+  export import PendingTransactionListParams = API.PendingTransactionListParams
 
-  export import DeclinedTransaction = API.DeclinedTransaction;
-  export import DeclinedTransactionsPage = API.DeclinedTransactionsPage;
-  export import DeclinedTransactionListParams = API.DeclinedTransactionListParams;
+  export import DeclinedTransaction = API.DeclinedTransaction
+  export import DeclinedTransactionsPage = API.DeclinedTransactionsPage
+  export import DeclinedTransactionListParams = API.DeclinedTransactionListParams
 
-  export import Limit = API.Limit;
-  export import LimitsPage = API.LimitsPage;
-  export import LimitCreateParams = API.LimitCreateParams;
-  export import LimitUpdateParams = API.LimitUpdateParams;
-  export import LimitListParams = API.LimitListParams;
+  export import Limit = API.Limit
+  export import LimitsPage = API.LimitsPage
+  export import LimitCreateParams = API.LimitCreateParams
+  export import LimitUpdateParams = API.LimitUpdateParams
+  export import LimitListParams = API.LimitListParams
 
-  export import AccountTransfer = API.AccountTransfer;
-  export import AccountTransfersPage = API.AccountTransfersPage;
-  export import AccountTransferCreateParams = API.AccountTransferCreateParams;
-  export import AccountTransferListParams = API.AccountTransferListParams;
+  export import AccountTransfer = API.AccountTransfer
+  export import AccountTransfersPage = API.AccountTransfersPage
+  export import AccountTransferCreateParams = API.AccountTransferCreateParams
+  export import AccountTransferListParams = API.AccountTransferListParams
 
-  export import ACHTransfer = API.ACHTransfer;
-  export import ACHTransfersPage = API.ACHTransfersPage;
-  export import ACHTransferCreateParams = API.ACHTransferCreateParams;
-  export import ACHTransferListParams = API.ACHTransferListParams;
+  export import ACHTransfer = API.ACHTransfer
+  export import ACHTransfersPage = API.ACHTransfersPage
+  export import ACHTransferCreateParams = API.ACHTransferCreateParams
+  export import ACHTransferListParams = API.ACHTransferListParams
 
-  export import ACHPrenotification = API.ACHPrenotification;
-  export import ACHPrenotificationsPage = API.ACHPrenotificationsPage;
-  export import ACHPrenotificationCreateParams = API.ACHPrenotificationCreateParams;
-  export import ACHPrenotificationListParams = API.ACHPrenotificationListParams;
+  export import ACHPrenotification = API.ACHPrenotification
+  export import ACHPrenotificationsPage = API.ACHPrenotificationsPage
+  export import ACHPrenotificationCreateParams = API.ACHPrenotificationCreateParams
+  export import ACHPrenotificationListParams = API.ACHPrenotificationListParams
 
-  export import WireTransfer = API.WireTransfer;
-  export import WireTransfersPage = API.WireTransfersPage;
-  export import WireTransferCreateParams = API.WireTransferCreateParams;
-  export import WireTransferListParams = API.WireTransferListParams;
+  export import WireTransfer = API.WireTransfer
+  export import WireTransfersPage = API.WireTransfersPage
+  export import WireTransferCreateParams = API.WireTransferCreateParams
+  export import WireTransferListParams = API.WireTransferListParams
 
-  export import CheckTransfer = API.CheckTransfer;
-  export import CheckTransfersPage = API.CheckTransfersPage;
-  export import CheckTransferCreateParams = API.CheckTransferCreateParams;
-  export import CheckTransferListParams = API.CheckTransferListParams;
+  export import CheckTransfer = API.CheckTransfer
+  export import CheckTransfersPage = API.CheckTransfersPage
+  export import CheckTransferCreateParams = API.CheckTransferCreateParams
+  export import CheckTransferListParams = API.CheckTransferListParams
 
-  export import Entity = API.Entity;
-  export import EntitiesPage = API.EntitiesPage;
-  export import EntityCreateParams = API.EntityCreateParams;
-  export import EntityListParams = API.EntityListParams;
+  export import Entity = API.Entity
+  export import EntitiesPage = API.EntitiesPage
+  export import EntityCreateParams = API.EntityCreateParams
+  export import EntityListParams = API.EntityListParams
 
-  export import WireDrawdownRequest = API.WireDrawdownRequest;
-  export import WireDrawdownRequestsPage = API.WireDrawdownRequestsPage;
-  export import WireDrawdownRequestCreateParams = API.WireDrawdownRequestCreateParams;
-  export import WireDrawdownRequestListParams = API.WireDrawdownRequestListParams;
+  export import WireDrawdownRequest = API.WireDrawdownRequest
+  export import WireDrawdownRequestsPage = API.WireDrawdownRequestsPage
+  export import WireDrawdownRequestCreateParams = API.WireDrawdownRequestCreateParams
+  export import WireDrawdownRequestListParams = API.WireDrawdownRequestListParams
 
-  export import Event = API.Event;
-  export import EventsPage = API.EventsPage;
-  export import EventListParams = API.EventListParams;
+  export import Event = API.Event
+  export import EventsPage = API.EventsPage
+  export import EventListParams = API.EventListParams
 
-  export import EventSubscription = API.EventSubscription;
-  export import EventSubscriptionsPage = API.EventSubscriptionsPage;
-  export import EventSubscriptionCreateParams = API.EventSubscriptionCreateParams;
-  export import EventSubscriptionUpdateParams = API.EventSubscriptionUpdateParams;
-  export import EventSubscriptionListParams = API.EventSubscriptionListParams;
+  export import EventSubscription = API.EventSubscription
+  export import EventSubscriptionsPage = API.EventSubscriptionsPage
+  export import EventSubscriptionCreateParams = API.EventSubscriptionCreateParams
+  export import EventSubscriptionUpdateParams = API.EventSubscriptionUpdateParams
+  export import EventSubscriptionListParams = API.EventSubscriptionListParams
 
-  export import File = API.File;
-  export import FilesPage = API.FilesPage;
-  export import FileCreateParams = API.FileCreateParams;
-  export import FileListParams = API.FileListParams;
+  export import File = API.File
+  export import FilesPage = API.FilesPage
+  export import FileCreateParams = API.FileCreateParams
+  export import FileListParams = API.FileListParams
 
-  export import Group = API.Group;
+  export import Group = API.Group
 
-  export import OauthConnection = API.OauthConnection;
-  export import OauthConnectionsPage = API.OauthConnectionsPage;
-  export import OauthConnectionListParams = API.OauthConnectionListParams;
+  export import OauthConnection = API.OauthConnection
+  export import OauthConnectionsPage = API.OauthConnectionsPage
+  export import OauthConnectionListParams = API.OauthConnectionListParams
 
-  export import CheckDeposit = API.CheckDeposit;
-  export import CheckDepositsPage = API.CheckDepositsPage;
-  export import CheckDepositCreateParams = API.CheckDepositCreateParams;
-  export import CheckDepositListParams = API.CheckDepositListParams;
+  export import CheckDeposit = API.CheckDeposit
+  export import CheckDepositsPage = API.CheckDepositsPage
+  export import CheckDepositCreateParams = API.CheckDepositCreateParams
+  export import CheckDepositListParams = API.CheckDepositListParams
 
-  export import RoutingNumber = API.RoutingNumber;
-  export import RoutingNumbersPage = API.RoutingNumbersPage;
-  export import RoutingNumberListParams = API.RoutingNumberListParams;
+  export import RoutingNumber = API.RoutingNumber
+  export import RoutingNumbersPage = API.RoutingNumbersPage
+  export import RoutingNumberListParams = API.RoutingNumberListParams
 
-  export import AccountStatement = API.AccountStatement;
-  export import AccountStatementsPage = API.AccountStatementsPage;
-  export import AccountStatementListParams = API.AccountStatementListParams;
-}
+  export import AccountStatement = API.AccountStatement
+  export import AccountStatementsPage = API.AccountStatementsPage
+  export import AccountStatementListParams = API.AccountStatementListParams
+
+};
 
 exports = module.exports = Increase;
 export default Increase;
