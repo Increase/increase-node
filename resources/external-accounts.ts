@@ -66,7 +66,7 @@ export interface ExternalAccount {
   /**
    * The External Account's description for display purposes.
    */
-  description: string | null;
+  description: string;
 
   /**
    * The type of the account to which the transfer will be sent.

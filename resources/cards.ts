@@ -74,6 +74,13 @@ export interface Card {
   description: string | null;
 
   /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
+  digital_wallet: Card.DigitalWallet | null;
+
+  /**
    * The month the card expires in MM format (e.g., August is 08).
    */
   expiration_month: string;
@@ -132,6 +139,20 @@ export namespace Card {
      */
     state: string | null;
   }
+
+  export interface DigitalWallet {
+    /**
+     * An email address that can be used to verify the cardholder via one-time passcode
+     * over email.
+     */
+    email: string | null;
+
+    /**
+     * A phone number that can be used to verify the cardholder via one-time passcode
+     * over SMS.
+     */
+    phone: string | null;
+  }
 }
 
 /**
@@ -187,6 +208,13 @@ export interface CardCreateParams {
    * The description you choose to give the card.
    */
   description?: string;
+
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
+  digital_wallet?: CardCreateParams.DigitalWallet;
 }
 
 export namespace CardCreateParams {
@@ -216,6 +244,20 @@ export namespace CardCreateParams {
      */
     line2?: string;
   }
+
+  export interface DigitalWallet {
+    /**
+     * An email address that can be used to verify the cardholder via one-time passcode
+     * over email.
+     */
+    email?: string;
+
+    /**
+     * A phone number that can be used to verify the cardholder via one-time passcode
+     * over SMS.
+     */
+    phone?: string;
+  }
 }
 
 export interface CardUpdateParams {
@@ -228,6 +270,13 @@ export interface CardUpdateParams {
    * The description you choose to give the card.
    */
   description?: string;
+
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
+  digital_wallet?: CardUpdateParams.DigitalWallet;
 
   /**
    * The status to update the Card with.
@@ -261,6 +310,20 @@ export namespace CardUpdateParams {
      * The second line of the billing address.
      */
     line2?: string;
+  }
+
+  export interface DigitalWallet {
+    /**
+     * An email address that can be used to verify the cardholder via one-time passcode
+     * over email.
+     */
+    email?: string;
+
+    /**
+     * A phone number that can be used to verify the cardholder via one-time passcode
+     * over SMS.
+     */
+    phone?: string;
   }
 }
 
