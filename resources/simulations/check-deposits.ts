@@ -1,191 +1,204 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import * as Core from '~/core'
-import { APIResource } from '~/resource'
-import type * as FormData from 'formdata-node'
-import { multipartFormRequestOptions, maybeMultipartFormRequestOptions } from '~/core'
-import { isRequestOptions } from '~/core'
-import * as Shared from '~/resources/shared'
+import * as Core from '~/core';
+import { APIResource } from '~/resource';
 
 export class CheckDeposits extends APIResource {
-
   /**
    * Simulates the rejection of a Check Deposit by Increase due to factors like poor
    * image quality. This Check Deposit must first have a `status` of `pending`.
    */
-  reject(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>>{
-         return this.post(`/simulations/check_deposits/${checkDepositId}/reject`, options)
-       };
+  reject(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+    return this.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
+  }
 
   /**
    * Simulates the submission of a Check Deposit to the Federal Reserve. This Check
    * Deposit must first have a `status` of `pending`.
    */
-  submit(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>>{
-         return this.post(`/simulations/check_deposits/${checkDepositId}/submit`, options)
-       };
+  submit(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+    return this.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
+  }
 }
 
 /**
  * Check Deposits allow you to deposit images of paper checks into your account.
  */
-export interface CheckDeposit  {
+export interface CheckDeposit {
   /**
- * The Account the check was deposited into.
- */
-account_id: string
+   * The Account the check was deposited into.
+   */
+  account_id: string;
 
-/**
- * The deposited amount in the minor unit of the destination account currency. For
- * dollars, for example, this is cents.
- */
-amount: number
+  /**
+   * The deposited amount in the minor unit of the destination account currency. For
+   * dollars, for example, this is cents.
+   */
+  amount: number;
 
-/**
- * The ID for the File containing the image of the back of the check.
- */
-back_image_file_id: string | null
+  /**
+   * The ID for the File containing the image of the back of the check.
+   */
+  back_image_file_id: string | null;
 
-/**
- * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
- * the transfer was created.
- */
-created_at: string
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the transfer was created.
+   */
+  created_at: string;
 
-/**
- * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
- */
-currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD'
+  /**
+   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+   */
+  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
-/**
- * If your deposit is successfully parsed and accepted by Increase, this will
- * contain details of the parsed check.
- */
-deposit_acceptance: CheckDeposit.DepositAcceptance | null
+  /**
+   * If your deposit is successfully parsed and accepted by Increase, this will
+   * contain details of the parsed check.
+   */
+  deposit_acceptance: CheckDeposit.DepositAcceptance | null;
 
-/**
- * If your deposit is rejected by Increase, this will contain details as to why it
- * was rejected.
- */
-deposit_rejection: CheckDeposit.DepositRejection | null
+  /**
+   * If your deposit is rejected by Increase, this will contain details as to why it
+   * was rejected.
+   */
+  deposit_rejection: CheckDeposit.DepositRejection | null;
 
-/**
- * If your deposit is returned, this will contain details as to why it was
- * returned.
- */
-deposit_return: CheckDeposit.DepositReturn | null
+  /**
+   * If your deposit is returned, this will contain details as to why it was
+   * returned.
+   */
+  deposit_return: CheckDeposit.DepositReturn | null;
 
-/**
- * The ID for the File containing the image of the front of the check.
- */
-front_image_file_id: string
+  /**
+   * The ID for the File containing the image of the front of the check.
+   */
+  front_image_file_id: string;
 
-/**
- * The deposit's identifier.
- */
-id: string
+  /**
+   * The deposit's identifier.
+   */
+  id: string;
 
-/**
- * The status of the Check Deposit.
- */
-status: 'pending' | 'submitted' | 'rejected' | 'returned'
+  /**
+   * The status of the Check Deposit.
+   */
+  status: 'pending' | 'submitted' | 'rejected' | 'returned';
 
-/**
- * The ID for the Transaction created by the deposit.
- */
-transaction_id: string | null
+  /**
+   * The ID for the Transaction created by the deposit.
+   */
+  transaction_id: string | null;
 
-/**
- * A constant representing the object's type. For this resource it will always be
- * `check_deposit`.
- */
-type: 'check_deposit'
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `check_deposit`.
+   */
+  type: 'check_deposit';
 }
 
-export namespace CheckDeposit {export interface DepositAcceptance  {
-  /**
- * The account number printed on the check.
- */
-account_number: string
+export namespace CheckDeposit {
+  export interface DepositAcceptance {
+    /**
+     * The account number printed on the check.
+     */
+    account_number: string;
 
-/**
- * The amount to be deposited in the minor unit of the transaction's currency. For
- * dollars, for example, this is cents.
- */
-amount: number
+    /**
+     * The amount to be deposited in the minor unit of the transaction's currency. For
+     * dollars, for example, this is cents.
+     */
+    amount: number;
 
-/**
- * An additional line of metadata printed on the check. This typically includes the
- * check number.
- */
-auxiliary_on_us: string | null
+    /**
+     * An additional line of metadata printed on the check. This typically includes the
+     * check number.
+     */
+    auxiliary_on_us: string | null;
 
-/**
- * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
- * transaction's currency.
- */
-currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD'
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+     * transaction's currency.
+     */
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
-/**
- * The routing number printed on the check.
- */
-routing_number: string
+    /**
+     * The routing number printed on the check.
+     */
+    routing_number: string;
+  }
+
+  export interface DepositRejection {
+    /**
+     * The rejected amount in the minor unit of check's currency. For dollars, for
+     * example, this is cents.
+     */
+    amount: number;
+
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+     * currency.
+     */
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+    /**
+     * Why the check deposit was rejected.
+     */
+    reason:
+      | 'incomplete_image'
+      | 'duplicate'
+      | 'poor_image_quality'
+      | 'incorrect_amount'
+      | 'incorrect_recipient'
+      | 'unknown';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the check deposit was rejected.
+     */
+    rejected_at: string;
+  }
+
+  export interface DepositReturn {
+    /**
+     * The amount in the minor unit of the transaction's currency. For dollars, for
+     * example, this is cents.
+     */
+    amount: number;
+
+    /**
+     * The identifier of the Check Deposit that was returned.
+     */
+    check_deposit_id: string;
+
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+     * transaction's currency.
+     */
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+    return_reason:
+      | 'ach_conversion_not_supported'
+      | 'duplicate_submission'
+      | 'insufficient_funds'
+      | 'no_account'
+      | 'not_authorized'
+      | 'stale_dated'
+      | 'stop_payment'
+      | 'unknown_reason'
+      | 'unmatched_details'
+      | 'unreadable_image';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the check deposit was returned.
+     */
+    returned_at: string;
+
+    /**
+     * The identifier of the transaction that reversed the original check deposit
+     * transaction.
+     */
+    transaction_id: string;
+  }
 }
-
-export interface DepositRejection  {
-  /**
- * The rejected amount in the minor unit of check's currency. For dollars, for
- * example, this is cents.
- */
-amount: number
-
-/**
- * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
- * currency.
- */
-currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD'
-
-/**
- * Why the check deposit was rejected.
- */
-reason: 'incomplete_image' | 'duplicate' | 'poor_image_quality' | 'incorrect_amount' | 'incorrect_recipient' | 'unknown'
-
-/**
- * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
- * the check deposit was rejected.
- */
-rejected_at: string
-}
-
-export interface DepositReturn  {
-  /**
- * The amount in the minor unit of the transaction's currency. For dollars, for
- * example, this is cents.
- */
-amount: number
-
-/**
- * The identifier of the Check Deposit that was returned.
- */
-check_deposit_id: string
-
-/**
- * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
- * transaction's currency.
- */
-currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD'
-
-return_reason: 'ach_conversion_not_supported' | 'duplicate_submission' | 'insufficient_funds' | 'no_account' | 'not_authorized' | 'stale_dated' | 'stop_payment' | 'unknown_reason' | 'unmatched_details' | 'unreadable_image'
-
-/**
- * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
- * the check deposit was returned.
- */
-returned_at: string
-
-/**
- * The identifier of the transaction that reversed the original check deposit
- * transaction.
- */
-transaction_id: string
-}}

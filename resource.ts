@@ -1,4 +1,4 @@
-import type { Increase } from './index'
+import type { Increase } from './index';
 
 export class APIResource {
   protected client: Increase;
