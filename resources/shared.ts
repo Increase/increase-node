@@ -1,5 +1,8 @@
 // File generated from our OpenAPI spec by Stainless.
 
+/**
+ * The results of a Digital Wallet Token simulation.
+ */
 export interface InboundDigitalWalletTokenRequestSimulationResult {
   /**
    * If the simulated tokenization attempt was declined, this field contains details
