@@ -95,6 +95,22 @@ export class Increase extends Core.APIClient {
   static InternalServerError = Core.InternalServerError;
 }
 
+export const {
+  APIError,
+
+  APIConnectionError,
+  APIConnectionTimeoutError,
+
+  BadRequestError,
+  AuthenticationError,
+  PermissionDeniedError,
+  NotFoundError,
+  ConflictError,
+  UnprocessableEntityError,
+  RateLimitError,
+  InternalServerError,
+} = Increase;
+
 export namespace Increase {
   // Helper functions
   export import fileFromPath = FileFromPath.fileFromPath;
