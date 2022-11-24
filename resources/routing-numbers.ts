@@ -23,9 +23,19 @@ export class RoutingNumbersPage extends Page<RoutingNumber> {}
  */
 export interface RoutingNumber {
   /**
+   * This routing number's support for ACH Transfers.
+   */
+  ach_transfers: 'supported' | 'not_supported';
+
+  /**
    * The name of the financial institution belonging to a routing number.
    */
   name: string;
+
+  /**
+   * This routing number's support for Real Time Payments Transfers.
+   */
+  real_time_payments_transfers: 'supported' | 'not_supported';
 
   /**
    * The nine digit routing number identifier.
@@ -37,6 +47,11 @@ export interface RoutingNumber {
    * `routing_number`.
    */
   type: 'routing_number';
+
+  /**
+   * This routing number's support for Wire Transfers.
+   */
+  wire_transfers: 'supported' | 'not_supported';
 }
 
 export interface RoutingNumberListParams extends PageParams {

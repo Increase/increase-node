@@ -16,6 +16,12 @@ export interface InboundDigitalWalletTokenRequestSimulationResult {
     | null;
 
   /**
+   * If the simulated tokenization attempt was accepted, this field contains the id
+   * of the Digital Wallet Token that was created.
+   */
+  digital_wallet_token_id: string | null;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `inbound_digital_wallet_token_request_simulation_result`.
    */

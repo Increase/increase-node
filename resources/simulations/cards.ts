@@ -5,7 +5,8 @@ import { APIResource } from '~/resource';
 
 export class Cards extends APIResource {
   /**
-   * Simulates activity on a Card.
+   * Simulates activity on a Card. You can pass either a Card id or a Digital Wallet
+   * Token id to simulate the two different ways purchases can be made.
    */
   authorize(
     body: CardAuthorizeParams,
@@ -233,6 +234,12 @@ export namespace CardAuthorizationSimulation {
          * transaction's currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+         * purchase), the identifier of the token that was used.
+         */
+        digital_wallet_token_id: string | null;
 
         merchant_acceptor_id: string;
 
@@ -519,6 +526,12 @@ export namespace CardAuthorizationSimulation {
          * account currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * If the authorization was attempted using a Digital Wallet Token (such as an
+         * Apple Pay purchase), the identifier of the token that was used.
+         */
+        digital_wallet_token_id: string | null;
 
         merchant_acceptor_id: string;
 
@@ -1915,7 +1928,12 @@ export interface CardAuthorizeParams {
   /**
    * The identifier of the Card to be authorized.
    */
-  card_id: string;
+  card_id?: string;
+
+  /**
+   * The identifier of the Digital Wallet Token to be authorized.
+   */
+  digital_wallet_token_id?: string;
 }
 
 export interface CardSettlementParams {

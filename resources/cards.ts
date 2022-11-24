@@ -142,6 +142,12 @@ export namespace Card {
 
   export interface DigitalWallet {
     /**
+     * The card profile assigned to this digital card. Card profiles may also be
+     * assigned at the program level.
+     */
+    card_profile_id: string | null;
+
+    /**
      * An email address that can be used to verify the cardholder via one-time passcode
      * over email.
      */
@@ -247,6 +253,12 @@ export namespace CardCreateParams {
 
   export interface DigitalWallet {
     /**
+     * The card profile assigned to this digital card. Card profiles may also be
+     * assigned at the program level.
+     */
+    card_profile_id?: string;
+
+    /**
      * An email address that can be used to verify the cardholder via one-time passcode
      * over email.
      */
@@ -313,6 +325,12 @@ export namespace CardUpdateParams {
   }
 
   export interface DigitalWallet {
+    /**
+     * The card profile assigned to this digital card. Card profiles may also be
+     * assigned at the program level.
+     */
+    card_profile_id?: string;
+
     /**
      * An email address that can be used to verify the cardholder via one-time passcode
      * over email.

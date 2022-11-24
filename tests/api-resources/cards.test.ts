@@ -13,7 +13,7 @@ describe('resource cards', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       description: 'Card for Ian Crease',
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-      digital_wallet: { email: 'x', phone: 'x' },
+      digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
     });
   });
 
@@ -37,7 +37,7 @@ describe('resource cards', () => {
       description: 'New description',
       status: 'active',
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-      digital_wallet: { email: 'x', phone: 'x' },
+      digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
     });
   });
 

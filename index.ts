@@ -50,7 +50,9 @@ export class Increase extends Core.APIClient {
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
   cards: API.Cards = new API.Cards(this);
   cardDisputes: API.CardDisputes = new API.CardDisputes(this);
+  cardProfiles: API.CardProfiles = new API.CardProfiles(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
+  digitalWalletTokens: API.DigitalWalletTokens = new API.DigitalWalletTokens(this);
   transactions: API.Transactions = new API.Transactions(this);
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
@@ -146,11 +148,20 @@ export namespace Increase {
   export import CardDisputeCreateParams = API.CardDisputeCreateParams;
   export import CardDisputeListParams = API.CardDisputeListParams;
 
+  export import CardProfile = API.CardProfile;
+  export import CardProfilesPage = API.CardProfilesPage;
+  export import CardProfileCreateParams = API.CardProfileCreateParams;
+  export import CardProfileListParams = API.CardProfileListParams;
+
   export import ExternalAccount = API.ExternalAccount;
   export import ExternalAccountsPage = API.ExternalAccountsPage;
   export import ExternalAccountCreateParams = API.ExternalAccountCreateParams;
   export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
   export import ExternalAccountListParams = API.ExternalAccountListParams;
+
+  export import DigitalWalletToken = API.DigitalWalletToken;
+  export import DigitalWalletTokensPage = API.DigitalWalletTokensPage;
+  export import DigitalWalletTokenListParams = API.DigitalWalletTokenListParams;
 
   export import Transaction = API.Transaction;
   export import TransactionsPage = API.TransactionsPage;

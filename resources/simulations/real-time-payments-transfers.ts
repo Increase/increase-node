@@ -1372,6 +1372,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
+        /**
+         * If the authorization was attempted using a Digital Wallet Token (such as an
+         * Apple Pay purchase), the identifier of the token that was used.
+         */
+        digital_wallet_token_id: string | null;
+
         merchant_acceptor_id: string;
 
         merchant_category_code: string | null;

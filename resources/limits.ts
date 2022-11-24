@@ -39,10 +39,11 @@ export class Limits extends APIResource {
 export class LimitsPage extends Page<Limit> {}
 
 /**
- * You can set limits at the Account or Account Number level. Limits applied to
- * Accounts will apply to all Account Numbers in the Account. You can specify any
- * number of Limits and they will all be applied. Volume and count Limits are
- * designed to prevent unauthorized debits.
+ * You can set limits at the Account, Account Number, or Card level. Limits applied
+ * to Accounts will apply to all Account Numbers and Cards in the Account. You can
+ * specify any number of Limits and they will all be applied to inbound debits and
+ * card authorizations. Volume and count Limits are designed to prevent
+ * unauthorized debits.
  */
 export interface Limit {
   /**
@@ -62,14 +63,14 @@ export interface Limit {
   metric: 'count' | 'volume';
 
   /**
-   * The identifier of the Account Number or Account the Limit applies to.
+   * The identifier of the Account Number, Account, or Card the Limit applies to.
    */
   model_id: string;
 
   /**
    * The type of the model you wish to associate the Limit with.
    */
-  model_type: 'account' | 'account_number';
+  model_type: 'account' | 'account_number' | 'card';
 
   /**
    * The current status of the Limit.
