@@ -158,7 +158,7 @@ Note that requests which time out will be [retried twice by default](#retries).
 List methods in the Increase API are paginated.
 Use `for await … of` syntax to iterate through items across all pages.
 
-```js
+```ts
 async function fetchAllAccounts(params) {
   const allAccounts = [];
   // Automatically fetches more pages as needed.
