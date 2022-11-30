@@ -28,11 +28,7 @@ describe('resource limits', () => {
     );
   });
 
-  test('update: only required params', async () => {
-    const response = await increase.limits.update('string', { status: 'inactive' });
-  });
-
-  test('update: required and optional params', async () => {
+  test('update', async () => {
     const response = await increase.limits.update('string', { status: 'inactive' });
   });
 

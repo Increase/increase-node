@@ -4,14 +4,7 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource card_disputes', () => {
-  test('create: only required params', async () => {
-    const response = await increase.cardDisputes.create({
-      disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
-      explanation: 'Unauthorized recurring transaction.',
-    });
-  });
-
-  test('create: required and optional params', async () => {
+  test('create', async () => {
     const response = await increase.cardDisputes.create({
       disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
       explanation: 'Unauthorized recurring transaction.',

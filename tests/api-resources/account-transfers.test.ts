@@ -4,16 +4,7 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource account_transfers', () => {
-  test('create: only required params', async () => {
-    const response = await increase.accountTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 100,
-      description: 'Creating liquidity',
-      destination_account_id: 'account_uf16sut2ct5bevmq3eh',
-    });
-  });
-
-  test('create: required and optional params', async () => {
+  test('create', async () => {
     const response = await increase.accountTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,

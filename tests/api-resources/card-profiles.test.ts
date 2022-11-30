@@ -4,23 +4,7 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource card_profiles', () => {
-  test('create: only required params', async () => {
-    const response = await increase.cardProfiles.create({
-      description: 'My Card Profile',
-      digital_wallets: {
-        text_color: { red: 26, green: 43, blue: 59 },
-        issuer_name: 'MyBank',
-        card_description: 'MyBank Signature Card',
-        contact_website: 'https://example.com',
-        contact_email: 'user@example.com',
-        contact_phone: '+18885551212',
-        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
-      },
-    });
-  });
-
-  test('create: required and optional params', async () => {
+  test('create', async () => {
     const response = await increase.cardProfiles.create({
       description: 'My Card Profile',
       digital_wallets: {

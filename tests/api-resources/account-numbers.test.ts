@@ -4,14 +4,7 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource account_numbers', () => {
-  test('create: only required params', async () => {
-    const response = await increase.accountNumbers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      name: 'Rent payments',
-    });
-  });
-
-  test('create: required and optional params', async () => {
+  test('create', async () => {
     const response = await increase.accountNumbers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       name: 'Rent payments',

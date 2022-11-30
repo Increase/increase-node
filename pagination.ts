@@ -2,9 +2,6 @@
 import { AbstractPage, APIResponse, APIClient, FinalRequestOptions, PageInfo } from './core';
 
 export interface PageResponse<Item> {
-  /**
-   * The contents of the list.
-   */
   data: Array<Item>;
 
   /**

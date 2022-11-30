@@ -4,17 +4,7 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource check_deposits', () => {
-  test('create: only required params', async () => {
-    const response = await increase.checkDeposits.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 1000,
-      currency: 'USD',
-      front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
-      back_image_file_id: 'file_26khfk98mzfz90a11oqx',
-    });
-  });
-
-  test('create: required and optional params', async () => {
+  test('create', async () => {
     const response = await increase.checkDeposits.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
