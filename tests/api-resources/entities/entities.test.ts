@@ -171,6 +171,7 @@ describe('resource entities', () => {
       },
       description: 'x',
       relationship: 'informational',
+      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
     });
   });
 

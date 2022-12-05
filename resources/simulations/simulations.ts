@@ -4,6 +4,7 @@ import { APIResource } from '~/resource';
 import { AccountTransfers } from './account-transfers';
 import { AccountStatements } from './account-statements';
 import { ACHTransfers } from './ach-transfers';
+import { CardDisputes } from './card-disputes';
 import { CheckTransfers } from './check-transfers';
 import { DigitalWalletTokenRequests } from './digital-wallet-token-requests';
 import { CheckDeposits } from './check-deposits';
@@ -15,6 +16,7 @@ export class Simulations extends APIResource {
   accountTransfers: AccountTransfers = new AccountTransfers(this.client);
   accountStatements: AccountStatements = new AccountStatements(this.client);
   achTransfers: ACHTransfers = new ACHTransfers(this.client);
+  cardDisputes: CardDisputes = new CardDisputes(this.client);
   checkTransfers: CheckTransfers = new CheckTransfers(this.client);
   digitalWalletTokenRequests: DigitalWalletTokenRequests = new DigitalWalletTokenRequests(this.client);
   checkDeposits: CheckDeposits = new CheckDeposits(this.client);

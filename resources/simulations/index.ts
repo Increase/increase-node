@@ -2,6 +2,7 @@
 export * from './account-statements';
 export * from './account-transfers';
 export * from './ach-transfers';
+export * from './card-disputes';
 export * from './cards';
 export * from './check-deposits';
 export * from './check-transfers';

@@ -12,7 +12,7 @@ export * from './check-deposits';
 export * from './check-transfers';
 export * from './declined-transactions';
 export * from './digital-wallet-tokens';
-export * from './entities';
+export * from './entities/entities';
 export * from './event-subscriptions';
 export * from './events';
 export * from './external-accounts';
