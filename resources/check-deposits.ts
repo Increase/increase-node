@@ -162,6 +162,7 @@ export namespace CheckDeposit {
       | 'poor_image_quality'
       | 'incorrect_amount'
       | 'incorrect_recipient'
+      | 'not_eligible_for_mobile_deposit'
       | 'unknown';
 
     /**
