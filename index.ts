@@ -14,7 +14,7 @@ type Config = {
   /**
    * Defaults to to process.env["INCREASE_API_KEY"]. Set it to null if you want to send unauthenticated requests.
    */
-  apiKey?: string | null;
+  apiKey?: string;
   environment?: keyof typeof environments;
   baseURL?: string;
   timeout?: number;
@@ -22,7 +22,7 @@ type Config = {
 };
 
 export class Increase extends Core.APIClient {
-  apiKey: string | null;
+  apiKey: string;
 
   constructor(config?: Config) {
     const options: Config = {

@@ -17,11 +17,6 @@ describe('instantiate client', () => {
   });
 
   test('with minimal arguments', () => {
-    // fails if no API Key provided
-    expect(() => {
-      new Increase();
-    }).toThrow();
-
     // set API Key via env var
     process.env['INCREASE_API_KEY'] = 'env var api key';
     const client = new Increase();
@@ -44,9 +39,9 @@ describe('instantiate client', () => {
   });
 
   test('with disabled authentication', () => {
-    process.env['INCREASE_API_KEY'] = 'env var api key';
-
-    const client = new Increase({ apiKey: null });
-    expect(client.apiKey).toBeNull();
+    // fails if no API Key provided
+    expect(() => {
+      new Increase();
+    }).toThrow();
   });
 });
