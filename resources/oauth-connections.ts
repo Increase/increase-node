@@ -5,38 +5,38 @@ import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
-export class OAuthConnections extends APIResource {
+export class OauthConnections extends APIResource {
   retrieve(
     oauthConnectionId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<OAuthConnection>> {
+  ): Promise<Core.APIResponse<OauthConnection>> {
     return this.get(`/oauth_connections/${oauthConnectionId}`, options);
   }
 
   list(
-    query?: OAuthConnectionListParams,
+    query?: OauthConnectionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthConnectionsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OAuthConnectionsPage>;
+  ): Core.PagePromise<OauthConnectionsPage>;
+  list(options?: Core.RequestOptions): Core.PagePromise<OauthConnectionsPage>;
   list(
-    query: OAuthConnectionListParams | Core.RequestOptions = {},
+    query: OauthConnectionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthConnectionsPage> {
+  ): Core.PagePromise<OauthConnectionsPage> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
 
-    return this.getAPIList('/oauth_connections', OAuthConnectionsPage, { query, ...options });
+    return this.getAPIList('/oauth_connections', OauthConnectionsPage, { query, ...options });
   }
 }
 
-export class OAuthConnectionsPage extends Page<OAuthConnection> {}
+export class OauthConnectionsPage extends Page<OauthConnection> {}
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
  * created.
  */
-export interface OAuthConnection {
+export interface OauthConnection {
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
    * Connection was created.
@@ -65,4 +65,4 @@ export interface OAuthConnection {
   type: 'oauth_connection';
 }
 
-export interface OAuthConnectionListParams extends PageParams {}
+export interface OauthConnectionListParams extends PageParams {}

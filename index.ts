@@ -68,7 +68,7 @@ export class Increase extends Core.APIClient {
   eventSubscriptions: API.EventSubscriptions = new API.EventSubscriptions(this);
   files: API.Files = new API.Files(this);
   groups: API.Groups = new API.Groups(this);
-  oauthConnections: API.OAuthConnections = new API.OAuthConnections(this);
+  oauthConnections: API.OauthConnections = new API.OauthConnections(this);
   checkDeposits: API.CheckDeposits = new API.CheckDeposits(this);
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
@@ -232,9 +232,9 @@ export namespace Increase {
 
   export import Group = API.Group;
 
-  export import OAuthConnection = API.OAuthConnection;
-  export import OAuthConnectionsPage = API.OAuthConnectionsPage;
-  export import OAuthConnectionListParams = API.OAuthConnectionListParams;
+  export import OauthConnection = API.OauthConnection;
+  export import OauthConnectionsPage = API.OauthConnectionsPage;
+  export import OauthConnectionListParams = API.OauthConnectionListParams;
 
   export import CheckDeposit = API.CheckDeposit;
   export import CheckDepositsPage = API.CheckDepositsPage;
