@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class OauthConnections extends APIResource {
+  /**
+   * Retrieve an OAuth Connection
+   */
   retrieve(
     oauthConnectionId: string,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class OauthConnections extends APIResource {
     return this.get(`/oauth_connections/${oauthConnectionId}`, options);
   }
 
+  /**
+   * List OAuth Connections
+   */
   list(
     query?: OauthConnectionListParams,
     options?: Core.RequestOptions,

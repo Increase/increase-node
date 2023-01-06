@@ -5,6 +5,9 @@ import { APIResource } from '~/resource';
 import * as Shared from '~/resources/shared';
 
 export class SupplementalDocuments extends APIResource {
+  /**
+   * Create a supplemental document for an Entity
+   */
   create(
     entityId: string,
     body: SupplementalDocumentCreateParams,

@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class DigitalWalletTokens extends APIResource {
+  /**
+   * Retrieve a Digital Wallet Token
+   */
   retrieve(
     digitalWalletTokenId: string,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class DigitalWalletTokens extends APIResource {
     return this.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
   }
 
+  /**
+   * List Digital Wallet Tokens
+   */
   list(
     query?: DigitalWalletTokenListParams,
     options?: Core.RequestOptions,

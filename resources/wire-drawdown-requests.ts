@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class WireDrawdownRequests extends APIResource {
+  /**
+   * Create a Wire Drawdown Request
+   */
   create(
     body: WireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class WireDrawdownRequests extends APIResource {
     return this.post('/wire_drawdown_requests', { body, ...options });
   }
 
+  /**
+   * Retrieve a Wire Drawdown Request
+   */
   retrieve(
     wireDrawdownRequestId: string,
     options?: Core.RequestOptions,
@@ -20,6 +26,9 @@ export class WireDrawdownRequests extends APIResource {
     return this.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
   }
 
+  /**
+   * List Wire Drawdown Requests
+   */
   list(
     query?: WireDrawdownRequestListParams,
     options?: Core.RequestOptions,

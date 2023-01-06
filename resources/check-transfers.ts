@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class CheckTransfers extends APIResource {
+  /**
+   * Create a Check Transfer
+   */
   create(
     body: CheckTransferCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class CheckTransfers extends APIResource {
     return this.post('/check_transfers', { body, ...options });
   }
 
+  /**
+   * Retrieve a Check Transfer
+   */
   retrieve(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
     return this.get(`/check_transfers/${checkTransferId}`, options);
   }
 
+  /**
+   * List Check Transfers
+   */
   list(query?: CheckTransferListParams, options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage>;
   list(
@@ -30,6 +39,9 @@ export class CheckTransfers extends APIResource {
     return this.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
   }
 
+  /**
+   * Request a stop payment on a Check Transfer
+   */
   stopPayment(
     checkTransferId: string,
     options?: Core.RequestOptions,

@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class EventSubscriptions extends APIResource {
+  /**
+   * Create an Event Subscription
+   */
   create(
     body: EventSubscriptionCreateParams,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class EventSubscriptions extends APIResource {
     return this.post('/event_subscriptions', { body, ...options });
   }
 
+  /**
+   * Retrieve an Event Subscription
+   */
   retrieve(
     eventSubscriptionId: string,
     options?: Core.RequestOptions,
@@ -20,6 +26,9 @@ export class EventSubscriptions extends APIResource {
     return this.get(`/event_subscriptions/${eventSubscriptionId}`, options);
   }
 
+  /**
+   * Update an Event Subscription
+   */
   update(
     eventSubscriptionId: string,
     body: EventSubscriptionUpdateParams,
@@ -28,6 +37,9 @@ export class EventSubscriptions extends APIResource {
     return this.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
   }
 
+  /**
+   * List Event Subscriptions
+   */
   list(
     query?: EventSubscriptionListParams,
     options?: Core.RequestOptions,

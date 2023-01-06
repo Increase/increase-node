@@ -6,14 +6,23 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Accounts extends APIResource {
+  /**
+   * Create an Account
+   */
   create(body: AccountCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
     return this.post('/accounts', { body, ...options });
   }
 
+  /**
+   * Retrieve an Account
+   */
   retrieve(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
     return this.get(`/accounts/${accountId}`, options);
   }
 
+  /**
+   * Update an Account
+   */
   update(
     accountId: string,
     body: AccountUpdateParams,
@@ -22,6 +31,9 @@ export class Accounts extends APIResource {
     return this.patch(`/accounts/${accountId}`, { body, ...options });
   }
 
+  /**
+   * List Accounts
+   */
   list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
   list(
@@ -35,6 +47,9 @@ export class Accounts extends APIResource {
     return this.getAPIList('/accounts', AccountsPage, { query, ...options });
   }
 
+  /**
+   * Close an Account
+   */
   close(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
     return this.post(`/accounts/${accountId}/close`, options);
   }

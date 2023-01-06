@@ -6,14 +6,23 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Limits extends APIResource {
+  /**
+   * Create a Limit
+   */
   create(body: LimitCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
     return this.post('/limits', { body, ...options });
   }
 
+  /**
+   * Retrieve a Limit
+   */
   retrieve(limitId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
     return this.get(`/limits/${limitId}`, options);
   }
 
+  /**
+   * Update a Limit
+   */
   update(
     limitId: string,
     body: LimitUpdateParams,
@@ -22,6 +31,9 @@ export class Limits extends APIResource {
     return this.patch(`/limits/${limitId}`, { body, ...options });
   }
 
+  /**
+   * List Limits
+   */
   list(query?: LimitListParams, options?: Core.RequestOptions): Core.PagePromise<LimitsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<LimitsPage>;
   list(

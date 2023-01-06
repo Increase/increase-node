@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class AccountStatements extends APIResource {
+  /**
+   * Retrieve an Account Statement
+   */
   retrieve(
     accountStatementId: string,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class AccountStatements extends APIResource {
     return this.get(`/account_statements/${accountStatementId}`, options);
   }
 
+  /**
+   * List Account Statements
+   */
   list(
     query?: AccountStatementListParams,
     options?: Core.RequestOptions,

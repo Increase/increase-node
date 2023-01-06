@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class CheckDeposits extends APIResource {
+  /**
+   * Create a Check Deposit
+   */
   create(
     body: CheckDepositCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class CheckDeposits extends APIResource {
     return this.post('/check_deposits', { body, ...options });
   }
 
+  /**
+   * Retrieve a Check Deposit
+   */
   retrieve(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
     return this.get(`/check_deposits/${checkDepositId}`, options);
   }
 
+  /**
+   * List Check Deposits
+   */
   list(query?: CheckDepositListParams, options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage>;
   list(

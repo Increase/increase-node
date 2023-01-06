@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class AccountNumbers extends APIResource {
+  /**
+   * Create an Account Number
+   */
   create(
     body: AccountNumberCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class AccountNumbers extends APIResource {
     return this.post('/account_numbers', { body, ...options });
   }
 
+  /**
+   * Retrieve an Account Number
+   */
   retrieve(accountNumberId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountNumber>> {
     return this.get(`/account_numbers/${accountNumberId}`, options);
   }
 
+  /**
+   * Update an Account Number
+   */
   update(
     accountNumberId: string,
     body: AccountNumberUpdateParams,
@@ -25,6 +34,9 @@ export class AccountNumbers extends APIResource {
     return this.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
   }
 
+  /**
+   * List Account Numbers
+   */
   list(query?: AccountNumberListParams, options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage>;
   list(

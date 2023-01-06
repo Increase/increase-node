@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class PendingTransactions extends APIResource {
+  /**
+   * Retrieve a Pending Transaction
+   */
   retrieve(
     pendingTransactionId: string,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class PendingTransactions extends APIResource {
     return this.get(`/pending_transactions/${pendingTransactionId}`, options);
   }
 
+  /**
+   * List Pending Transactions
+   */
   list(
     query?: PendingTransactionListParams,
     options?: Core.RequestOptions,

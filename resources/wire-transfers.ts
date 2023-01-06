@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class WireTransfers extends APIResource {
+  /**
+   * Create a Wire Transfer
+   */
   create(
     body: WireTransferCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class WireTransfers extends APIResource {
     return this.post('/wire_transfers', { body, ...options });
   }
 
+  /**
+   * Retrieve a Wire Transfer
+   */
   retrieve(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
     return this.get(`/wire_transfers/${wireTransferId}`, options);
   }
 
+  /**
+   * List Wire Transfers
+   */
   list(query?: WireTransferListParams, options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage>;
   list(

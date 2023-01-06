@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class ExternalAccounts extends APIResource {
+  /**
+   * Create an External Account
+   */
   create(
     body: ExternalAccountCreateParams,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class ExternalAccounts extends APIResource {
     return this.post('/external_accounts', { body, ...options });
   }
 
+  /**
+   * Retrieve an External Account
+   */
   retrieve(
     externalAccountId: string,
     options?: Core.RequestOptions,
@@ -20,6 +26,9 @@ export class ExternalAccounts extends APIResource {
     return this.get(`/external_accounts/${externalAccountId}`, options);
   }
 
+  /**
+   * Update an External Account
+   */
   update(
     externalAccountId: string,
     body: ExternalAccountUpdateParams,
@@ -28,6 +37,9 @@ export class ExternalAccounts extends APIResource {
     return this.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
   }
 
+  /**
+   * List External Accounts
+   */
   list(
     query?: ExternalAccountListParams,
     options?: Core.RequestOptions,

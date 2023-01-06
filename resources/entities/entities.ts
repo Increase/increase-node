@@ -10,14 +10,23 @@ import * as Shared from '~/resources/shared';
 export class Entities extends APIResource {
   supplementalDocuments: SupplementalDocuments = new SupplementalDocuments(this.client);
 
+  /**
+   * Create an Entity
+   */
   create(body: EntityCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Shared.Entity>> {
     return this.post('/entities', { body, ...options });
   }
 
+  /**
+   * Retrieve an Entity
+   */
   retrieve(entityId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Shared.Entity>> {
     return this.get(`/entities/${entityId}`, options);
   }
 
+  /**
+   * List Entities
+   */
   list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<EntitiesPage>;
   list(

@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class ACHTransfers extends APIResource {
+  /**
+   * Create an ACH Transfer
+   */
   create(
     body: ACHTransferCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class ACHTransfers extends APIResource {
     return this.post('/ach_transfers', { body, ...options });
   }
 
+  /**
+   * Retrieve an ACH Transfer
+   */
   retrieve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
     return this.get(`/ach_transfers/${achTransferId}`, options);
   }
 
+  /**
+   * List ACH Transfers
+   */
   list(query?: ACHTransferListParams, options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage>;
   list(

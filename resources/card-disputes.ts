@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class CardDisputes extends APIResource {
+  /**
+   * Create a Card Dispute
+   */
   create(
     body: CardDisputeCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class CardDisputes extends APIResource {
     return this.post('/card_disputes', { body, ...options });
   }
 
+  /**
+   * Retrieve a Card Dispute
+   */
   retrieve(cardDisputeId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardDispute>> {
     return this.get(`/card_disputes/${cardDisputeId}`, options);
   }
 
+  /**
+   * List Card Disputes
+   */
   list(query?: CardDisputeListParams, options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage>;
   list(

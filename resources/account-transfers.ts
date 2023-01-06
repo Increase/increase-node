@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class AccountTransfers extends APIResource {
+  /**
+   * Create an Account Transfer
+   */
   create(
     body: AccountTransferCreateParams,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class AccountTransfers extends APIResource {
     return this.post('/account_transfers', { body, ...options });
   }
 
+  /**
+   * Retrieve an Account Transfer
+   */
   retrieve(
     accountTransferId: string,
     options?: Core.RequestOptions,
@@ -20,6 +26,9 @@ export class AccountTransfers extends APIResource {
     return this.get(`/account_transfers/${accountTransferId}`, options);
   }
 
+  /**
+   * List Account Transfers
+   */
   list(
     query?: AccountTransferListParams,
     options?: Core.RequestOptions,

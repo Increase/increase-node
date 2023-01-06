@@ -4,6 +4,9 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 
 export class RealTimeDecisions extends APIResource {
+  /**
+   * Retrieve a Real-Time Decision
+   */
   retrieve(
     realTimeDecisionId: string,
     options?: Core.RequestOptions,
@@ -11,6 +14,9 @@ export class RealTimeDecisions extends APIResource {
     return this.get(`/real_time_decisions/${realTimeDecisionId}`, options);
   }
 
+  /**
+   * Action a Real-Time Decision
+   */
   action(
     realTimeDecisionId: string,
     body: RealTimeDecisionActionParams,

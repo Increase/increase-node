@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class CardProfiles extends APIResource {
+  /**
+   * Create a Card Profile
+   */
   create(
     body: CardProfileCreateParams,
     options?: Core.RequestOptions,
@@ -13,10 +16,16 @@ export class CardProfiles extends APIResource {
     return this.post('/card_profiles', { body, ...options });
   }
 
+  /**
+   * Retrieve a Card Profile
+   */
   retrieve(cardProfileId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardProfile>> {
     return this.get(`/card_profiles/${cardProfileId}`, options);
   }
 
+  /**
+   * List Card Profiles
+   */
   list(query?: CardProfileListParams, options?: Core.RequestOptions): Core.PagePromise<CardProfilesPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<CardProfilesPage>;
   list(

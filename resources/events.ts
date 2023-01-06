@@ -6,10 +6,16 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Events extends APIResource {
+  /**
+   * Retrieve an Event
+   */
   retrieve(eventId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Event>> {
     return this.get(`/events/${eventId}`, options);
   }
 
+  /**
+   * List Events
+   */
   list(query?: EventListParams, options?: Core.RequestOptions): Core.PagePromise<EventsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<EventsPage>;
   list(

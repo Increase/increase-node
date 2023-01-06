@@ -17,10 +17,16 @@ export class Files extends APIResource {
     return this.post('/files', multipartFormRequestOptions({ body, ...options }));
   }
 
+  /**
+   * Retrieve a File
+   */
   retrieve(fileId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
     return this.get(`/files/${fileId}`, options);
   }
 
+  /**
+   * List Files
+   */
   list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<FilesPage>;
   list(

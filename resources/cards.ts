@@ -6,14 +6,23 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class Cards extends APIResource {
+  /**
+   * Create a Card
+   */
   create(body: CardCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
     return this.post('/cards', { body, ...options });
   }
 
+  /**
+   * Retrieve a Card
+   */
   retrieve(cardId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
     return this.get(`/cards/${cardId}`, options);
   }
 
+  /**
+   * Update a Card
+   */
   update(
     cardId: string,
     body: CardUpdateParams,
@@ -22,6 +31,9 @@ export class Cards extends APIResource {
     return this.patch(`/cards/${cardId}`, { body, ...options });
   }
 
+  /**
+   * List Cards
+   */
   list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage>;
   list(options?: Core.RequestOptions): Core.PagePromise<CardsPage>;
   list(
@@ -35,6 +47,9 @@ export class Cards extends APIResource {
     return this.getAPIList('/cards', CardsPage, { query, ...options });
   }
 
+  /**
+   * Retrieve sensitive details for a Card
+   */
   retrieveSensitiveDetails(
     cardId: string,
     options?: Core.RequestOptions,

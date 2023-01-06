@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class DeclinedTransactions extends APIResource {
+  /**
+   * Retrieve a Declined Transaction
+   */
   retrieve(
     declinedTransactionId: string,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class DeclinedTransactions extends APIResource {
     return this.get(`/declined_transactions/${declinedTransactionId}`, options);
   }
 
+  /**
+   * List Declined Transactions
+   */
   list(
     query?: DeclinedTransactionListParams,
     options?: Core.RequestOptions,

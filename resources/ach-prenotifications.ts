@@ -6,6 +6,9 @@ import { isRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
 
 export class ACHPrenotifications extends APIResource {
+  /**
+   * Create an ACH Prenotification
+   */
   create(
     body: ACHPrenotificationCreateParams,
     options?: Core.RequestOptions,
@@ -13,6 +16,9 @@ export class ACHPrenotifications extends APIResource {
     return this.post('/ach_prenotifications', { body, ...options });
   }
 
+  /**
+   * Retrieve an ACH Prenotification
+   */
   retrieve(
     achPrenotificationId: string,
     options?: Core.RequestOptions,
@@ -20,6 +26,9 @@ export class ACHPrenotifications extends APIResource {
     return this.get(`/ach_prenotifications/${achPrenotificationId}`, options);
   }
 
+  /**
+   * List ACH Prenotifications
+   */
   list(
     query?: ACHPrenotificationListParams,
     options?: Core.RequestOptions,
