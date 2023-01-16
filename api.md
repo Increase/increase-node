@@ -222,10 +222,6 @@ Methods:
 
 ## SupplementalDocuments
 
-Models:
-
-- <code><a href="./resources/entities/supplemental-documents.ts">Entity</a></code>
-
 Methods:
 
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Promise<Core.APIResponse<Entity>></code>
@@ -336,19 +332,11 @@ Methods:
 
 ## AccountTransfers
 
-Models:
-
-- <code><a href="./resources/simulations/account-transfers.ts">AccountTransfer</a></code>
-
 Methods:
 
 - <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./resources/simulations/account-transfers.ts">complete</a>(accountTransferId) -> Promise<Core.APIResponse<AccountTransfer>></code>
 
 ## AccountStatements
-
-Models:
-
-- <code><a href="./resources/simulations/account-statements.ts">AccountStatement</a></code>
 
 Methods:
 
@@ -359,7 +347,6 @@ Methods:
 Models:
 
 - <code><a href="./resources/simulations/ach-transfers.ts">ACHTransferSimulation</a></code>
-- <code><a href="./resources/simulations/ach-transfers.ts">ACHTransfer</a></code>
 
 Methods:
 
@@ -369,19 +356,11 @@ Methods:
 
 ## CardDisputes
 
-Models:
-
-- <code><a href="./resources/simulations/card-disputes.ts">CardDispute</a></code>
-
 Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> Promise<Core.APIResponse<CardDispute>></code>
 
 ## CheckTransfers
-
-Models:
-
-- <code><a href="./resources/simulations/check-transfers.ts">CheckTransfer</a></code>
 
 Methods:
 
@@ -391,17 +370,13 @@ Methods:
 
 Models:
 
-- <code><a href="./resources/simulations/digital-wallet-token-requests.ts">InboundDigitalWalletTokenRequestSimulationResult</a></code>
+- <code><a href="./resources/simulations/digital-wallet-token-requests.ts">DigitalWalletTokenRequestCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /simulations/digital_wallet_token_requests">client.simulations.digitalWalletTokenRequests.<a href="./resources/simulations/digital-wallet-token-requests.ts">create</a>({ ...params }) -> Promise<Core.APIResponse<InboundDigitalWalletTokenRequestSimulationResult>></code>
+- <code title="post /simulations/digital_wallet_token_requests">client.simulations.digitalWalletTokenRequests.<a href="./resources/simulations/digital-wallet-token-requests.ts">create</a>({ ...params }) -> Promise<Core.APIResponse<DigitalWalletTokenRequestCreateResponse>></code>
 
 ## CheckDeposits
-
-Models:
-
-- <code><a href="./resources/simulations/check-deposits.ts">CheckDeposit</a></code>
 
 Methods:
 
@@ -423,7 +398,6 @@ Methods:
 Models:
 
 - <code><a href="./resources/simulations/cards.ts">CardAuthorizationSimulation</a></code>
-- <code><a href="./resources/simulations/cards.ts">Transaction</a></code>
 
 Methods:
 

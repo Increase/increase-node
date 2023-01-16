@@ -2,7 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
-import * as Shared from '~/resources/shared';
+import * as Entities from '~/resources/entities';
 
 export class SupplementalDocuments extends APIResource {
   /**
@@ -12,7 +12,7 @@ export class SupplementalDocuments extends APIResource {
     entityId: string,
     body: SupplementalDocumentCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Shared.Entity>> {
+  ): Promise<Core.APIResponse<Entities.Entity>> {
     return this.post(`/entities/${entityId}/supplemental_documents`, { body, ...options });
   }
 }

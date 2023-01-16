@@ -207,6 +207,7 @@ export namespace Increase {
   export import CheckTransferCreateParams = API.CheckTransferCreateParams;
   export import CheckTransferListParams = API.CheckTransferListParams;
 
+  export import Entity = API.Entity;
   export import EntitiesPage = API.EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;

@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as ACHTransfers_ from '~/resources/ach-transfers';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -22,7 +23,10 @@ export class ACHTransfers extends APIResource {
    * conditions. This will also create a Transaction to account for the returned
    * funds. This transfer must first have a `status` of `submitted`.
    */
-  return(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+  return(
+    achTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<ACHTransfers_.ACHTransfer>> {
     return this.post(`/simulations/ach_transfers/${achTransferId}/return`, options);
   }
 
@@ -31,7 +35,10 @@ export class ACHTransfers extends APIResource {
    * transfer must first have a `status` of `pending_approval` or
    * `pending_submission`.
    */
-  submit(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+  submit(
+    achTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<ACHTransfers_.ACHTransfer>> {
     return this.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
   }
 }
@@ -1613,216 +1620,6 @@ export namespace ACHTransferSimulation {
         merchant_state: string | null;
       }
     }
-  }
-}
-
-/**
- * ACH transfers move funds between your Increase account and any other account
- * accessible by the Automated Clearing House (ACH).
- */
-export interface ACHTransfer {
-  /**
-   * The Account to which the transfer belongs.
-   */
-  account_id: string;
-
-  /**
-   * The destination account number.
-   */
-  account_number: string;
-
-  /**
-   * Additional information that will be sent to the recipient.
-   */
-  addendum: string | null;
-
-  /**
-   * The transfer amount in USD cents. A positive amount indicates a credit transfer
-   * pushing funds to the receiving account. A negative amount indicates a debit
-   * transfer pulling funds from the receiving account.
-   */
-  amount: number;
-
-  /**
-   * If your account requires approvals for transfers and the transfer was approved,
-   * this will contain details of the approval.
-   */
-  approval: ACHTransfer.Approval | null;
-
-  /**
-   * If your account requires approvals for transfers and the transfer was not
-   * approved, this will contain details of the cancellation.
-   */
-  cancellation: ACHTransfer.Cancellation | null;
-
-  /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-   * the transfer was created.
-   */
-  created_at: string;
-
-  /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-   * currency. For ACH transfers this is always equal to `usd`.
-   */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-  /**
-   * The identifier of the External Account the transfer was made to, if any.
-   */
-  external_account_id: string | null;
-
-  /**
-   * The ACH transfer's identifier.
-   */
-  id: string;
-
-  /**
-   * The transfer's network.
-   */
-  network: 'ach';
-
-  /**
-   * If the receiving bank accepts the transfer but notifies that future transfers
-   * should use different details, this will contain those details.
-   */
-  notification_of_change: ACHTransfer.NotificationOfChange | null;
-
-  /**
-   * If your transfer is returned, this will contain details of the return.
-   */
-  return: ACHTransfer.Return | null;
-
-  /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN).
-   */
-  routing_number: string;
-
-  /**
-   * The descriptor that will show on the recipient's bank statement.
-   */
-  statement_descriptor: string;
-
-  /**
-   * The lifecycle status of the transfer.
-   */
-  status:
-    | 'pending_approval'
-    | 'canceled'
-    | 'pending_submission'
-    | 'submitted'
-    | 'returned'
-    | 'requires_attention'
-    | 'rejected';
-
-  /**
-   * After the transfer is submitted to FedACH, this will contain supplemental
-   * details.
-   */
-  submission: ACHTransfer.Submission | null;
-
-  /**
-   * If the transfer was created from a template, this will be the template's ID.
-   */
-  template_id: string | null;
-
-  /**
-   * The ID for the transaction funding the transfer.
-   */
-  transaction_id: string | null;
-
-  /**
-   * A constant representing the object's type. For this resource it will always be
-   * `ach_transfer`.
-   */
-  type: 'ach_transfer';
-}
-
-export namespace ACHTransfer {
-  export interface Approval {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the transfer was approved.
-     */
-    approved_at: string;
-  }
-
-  export interface Cancellation {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the Transfer was canceled.
-     */
-    canceled_at: string;
-  }
-
-  export interface NotificationOfChange {
-    /**
-     * The type of change that occurred.
-     */
-    change_code: string;
-
-    /**
-     * The corrected data.
-     */
-    corrected_data: string;
-
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the notification occurred.
-     */
-    created_at: string;
-  }
-
-  export interface Return {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the transfer was created.
-     */
-    created_at: string;
-
-    /**
-     * Why the ACH Transfer was returned.
-     */
-    return_reason_code:
-      | 'insufficient_fund'
-      | 'no_account'
-      | 'account_closed'
-      | 'invalid_account_number_structure'
-      | 'account_frozen_entry_returned_per_ofac_instruction'
-      | 'credit_entry_refused_by_receiver'
-      | 'unauthorized_debit_to_consumer_account_using_corporate_sec_code'
-      | 'corporate_customer_advised_not_authorized'
-      | 'payment_stopped'
-      | 'non_transaction_account'
-      | 'uncollected_funds'
-      | 'routing_number_check_digit_error'
-      | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-      | 'amount_field_error'
-      | 'authorization_revoked_by_customer'
-      | 'invalid_ach_routing_number'
-      | 'file_record_edit_criteria'
-      | 'enr_invalid_individual_name'
-      | 'returned_per_odfi_request'
-      | 'addenda_error'
-      | 'limited_participation_dfi'
-      | 'other';
-
-    /**
-     * The identifier of the Tranasaction associated with this return.
-     */
-    transaction_id: string;
-
-    /**
-     * The identifier of the ACH Transfer associated with this return.
-     */
-    transfer_id: string;
-  }
-
-  export interface Submission {
-    /**
-     * The trace number for the submission.
-     */
-    trace_number: string;
   }
 }
 

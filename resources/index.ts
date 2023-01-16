@@ -23,7 +23,6 @@ export * from './oauth-connections';
 export * from './pending-transactions';
 export * from './real-time-decisions';
 export * from './routing-numbers';
-export * from './shared';
 export * from './simulations/simulations';
 export * from './transactions';
 export * from './wire-drawdown-requests';
