@@ -1,3 +1,3 @@
 // File generated from our OpenAPI spec by Stainless.
-export * from './entities';
-export * from './supplemental-documents';
+export { Entity, EntityCreateParams, EntityListParams, EntitiesPage } from './entities';
+export { SupplementalDocumentCreateParams } from './supplemental-documents';
