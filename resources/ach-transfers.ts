@@ -38,6 +38,20 @@ export class ACHTransfers extends APIResource {
 
     return this.getAPIList('/ach_transfers', ACHTransfersPage, { query, ...options });
   }
+
+  /**
+   * Approve an ACH Transfer
+   */
+  approve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+    return this.post(`/ach_transfers/${achTransferId}/approve`, options);
+  }
+
+  /**
+   * Cancel a pending ACH Transfer
+   */
+  cancel(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+    return this.post(`/ach_transfers/${achTransferId}/cancel`, options);
+  }
 }
 
 export class ACHTransfersPage extends Page<ACHTransfer> {}
@@ -82,6 +96,26 @@ export interface ACHTransfer {
   cancellation: ACHTransfer.Cancellation | null;
 
   /**
+   * The description of the date of the transfer.
+   */
+  company_descriptive_date: string | null;
+
+  /**
+   * The data you chose to associate with the transfer.
+   */
+  company_discretionary_data: string | null;
+
+  /**
+   * The description of the transfer you set to be shown to the recipient.
+   */
+  company_entry_description: string | null;
+
+  /**
+   * The name by which the recipient knows you.
+   */
+  company_name: string | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
@@ -99,9 +133,25 @@ export interface ACHTransfer {
   external_account_id: string | null;
 
   /**
+   * The type of the account to which the transfer will be sent.
+   */
+  funding: 'checking' | 'savings';
+
+  /**
    * The ACH transfer's identifier.
    */
   id: string;
+
+  /**
+   * Your identifer for the transfer recipient.
+   */
+  individual_id: string | null;
+
+  /**
+   * The name of the transfer recipient. This value is information and not verified
+   * by the recipient's bank.
+   */
+  individual_name: string | null;
 
   /**
    * The transfer's network.
@@ -123,6 +173,14 @@ export interface ACHTransfer {
    * The American Bankers' Association (ABA) Routing Transit Number (RTN).
    */
   routing_number: string;
+
+  /**
+   * The Standard Entry Class (SEC) code to use for the transfer.
+   */
+  standard_entry_class_code:
+    | 'corporate_credit_or_debit'
+    | 'prearranged_payments_and_deposit'
+    | 'internet_initiated';
 
   /**
    * The descriptor that will show on the recipient's bank statement.
@@ -231,6 +289,7 @@ export namespace ACHTransfer {
       | 'returned_per_odfi_request'
       | 'addenda_error'
       | 'limited_participation_dfi'
+      | 'incorrectly_coded_outbound_international_payment'
       | 'other';
 
     /**
@@ -245,6 +304,11 @@ export namespace ACHTransfer {
   }
 
   export interface Submission {
+    /**
+     * When the ACH transfer was sent to FedACH.
+     */
+    submitted_at: string;
+
     /**
      * The trace number for the submission.
      */
@@ -328,6 +392,11 @@ export interface ACHTransferCreateParams {
    * by the recipient's bank.
    */
   individual_name?: string;
+
+  /**
+   * Whether the transfer requires explicit approval via the dashboard or API.
+   */
+  require_approval?: boolean;
 
   /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the

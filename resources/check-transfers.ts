@@ -40,6 +40,20 @@ export class CheckTransfers extends APIResource {
   }
 
   /**
+   * Approve a Check Transfer
+   */
+  approve(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+    return this.post(`/check_transfers/${checkTransferId}/approve`, options);
+  }
+
+  /**
+   * Cancel a pending Check Transfer
+   */
+  cancel(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+    return this.post(`/check_transfers/${checkTransferId}/cancel`, options);
+  }
+
+  /**
    * Request a stop payment on a Check Transfer
    */
   stopPayment(
@@ -105,6 +119,11 @@ export interface CheckTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
+   * After a check transfer is deposited, this will contain supplemental details.
+   */
+  deposit: CheckTransfer.Deposit | null;
+
+  /**
    * The Check transfer's identifier.
    */
   id: string;
@@ -126,6 +145,11 @@ export interface CheckTransfer {
   recipient_name: string;
 
   /**
+   * The return address to be printed on the check.
+   */
+  return_address: CheckTransfer.ReturnAddress | null;
+
+  /**
    * The lifecycle status of the transfer.
    */
   status:
@@ -138,6 +162,7 @@ export interface CheckTransfer {
     | 'canceled'
     | 'deposited'
     | 'stopped'
+    | 'returned'
     | 'rejected'
     | 'requires_attention';
 
@@ -176,6 +201,38 @@ export interface CheckTransfer {
 }
 
 export namespace CheckTransfer {
+  export interface ReturnAddress {
+    /**
+     * The city of the address.
+     */
+    city: string | null;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string | null;
+
+    /**
+     * The second line of the address.
+     */
+    line2: string | null;
+
+    /**
+     * The name of the address.
+     */
+    name: string | null;
+
+    /**
+     * The US state of the address.
+     */
+    state: string | null;
+
+    /**
+     * The postal code of the address.
+     */
+    zip: string | null;
+  }
+
   export interface Submission {
     /**
      * The identitying number of the check.
@@ -204,6 +261,24 @@ export namespace CheckTransfer {
      * `check_transfer_stop_payment_request`.
      */
     type: 'check_transfer_stop_payment_request';
+  }
+
+  export interface Deposit {
+    /**
+     * The ID for the File containing the image of the rear of the check.
+     */
+    back_image_file_id: string | null;
+
+    /**
+     * The ID for the File containing the image of the front of the check.
+     */
+    front_image_file_id: string | null;
+
+    /**
+     * A constant representing the object's type. For this resource it will always be
+     * `check_transfer_deposit`.
+     */
+    type: 'check_transfer_deposit';
   }
 }
 
@@ -252,6 +327,51 @@ export interface CheckTransferCreateParams {
    * The second line of the address of the check's destination.
    */
   address_line2?: string;
+
+  /**
+   * Whether the transfer requires explicit approval via the dashboard or API.
+   */
+  require_approval?: boolean;
+
+  /**
+   * The return address to be printed on the check. If omitted this will default to
+   * the address of the Entity of the Account used to make the Check Transfer.
+   */
+  return_address?: CheckTransferCreateParams.ReturnAddress;
+}
+
+export namespace CheckTransferCreateParams {
+  export interface ReturnAddress {
+    /**
+     * The city of the return address.
+     */
+    city: string;
+
+    /**
+     * The first line of the return address.
+     */
+    line1: string;
+
+    /**
+     * The name of the return address.
+     */
+    name: string;
+
+    /**
+     * The US state of the return address.
+     */
+    state: string;
+
+    /**
+     * The postal code of the return address.
+     */
+    zip: string;
+
+    /**
+     * The second line of the return address.
+     */
+    line2?: string;
+  }
 }
 
 export interface CheckTransferListParams extends PageParams {

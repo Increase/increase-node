@@ -40,17 +40,33 @@ export class WireTransfers extends APIResource {
   }
 
   /**
-   * Simulates the reversal of an Wire Transfer by the Federal Reserve due to error
-   * conditions. This will also create a Transaction to account for the returned
-   * funds. This transfer must first have a `status` of `complete`.
+   * Approve a Wire Transfer
+   */
+  approve(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+    return this.post(`/wire_transfers/${wireTransferId}/approve`, options);
+  }
+
+  /**
+   * Cancel a pending Wire Transfer
+   */
+  cancel(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+    return this.post(`/wire_transfers/${wireTransferId}/cancel`, options);
+  }
+
+  /**
+   * Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+   * Reserve due to error conditions. This will also create a
+   * [Transaction](#transaction) to account for the returned funds. This Wire
+   * Transfer must first have a `status` of `complete`.'
    */
   reverse(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
     return this.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
   }
 
   /**
-   * Simulates the submission of a Wire Transfer to the Federal Reserve. This
-   * transfer must first have a `status` of `pending_approval` or `pending_creating`.
+   * Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+   * Reserve. This transfer must first have a `status` of `pending_approval` or
+   * `pending_creating`.
    */
   submit(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
     return this.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
@@ -84,6 +100,26 @@ export interface WireTransfer {
    * this will contain details of the approval.
    */
   approval: WireTransfer.Approval | null;
+
+  /**
+   * The beneficiary's address line 1.
+   */
+  beneficiary_address_line1: string | null;
+
+  /**
+   * The beneficiary's address line 2.
+   */
+  beneficiary_address_line2: string | null;
+
+  /**
+   * The beneficiary's address line 3.
+   */
+  beneficiary_address_line3: string | null;
+
+  /**
+   * The beneficiary's name.
+   */
+  beneficiary_name: string | null;
 
   /**
    * If your account requires approvals for transfers and the transfer was not
@@ -253,6 +289,11 @@ export namespace WireTransfer {
      * The accountability data for the submission.
      */
     input_message_accountability_data: string;
+
+    /**
+     * When this wire transfer was submitted to Fedwire.
+     */
+    submitted_at: string;
   }
 }
 
@@ -266,6 +307,11 @@ export interface WireTransferCreateParams {
    * The transfer amount in cents.
    */
   amount: number;
+
+  /**
+   * The beneficiary's name.
+   */
+  beneficiary_name: string;
 
   /**
    * The message that will show on the recipient's bank statement.
@@ -293,15 +339,15 @@ export interface WireTransferCreateParams {
   beneficiary_address_line3?: string;
 
   /**
-   * The beneficiary's name.
-   */
-  beneficiary_name?: string;
-
-  /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
    * provided, `account_number` and `routing_number` must be absent.
    */
   external_account_id?: string;
+
+  /**
+   * Whether the transfer requires explicit approval via the dashboard or API.
+   */
+  require_approval?: boolean;
 
   /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the

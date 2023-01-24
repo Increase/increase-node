@@ -138,6 +138,11 @@ export namespace CheckDeposit {
     auxiliary_on_us: string | null;
 
     /**
+     * The ID of the Check Deposit that was accepted.
+     */
+    check_deposit_id: string;
+
+    /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
      */

@@ -6,7 +6,8 @@ import * as AccountStatements_ from '~/resources/account-statements';
 
 export class AccountStatements extends APIResource {
   /**
-   * Simulates an Account Statement being created for an account.
+   * Simulates an [Account Statement](#account-statements) being created for an
+   * account. In production, Account Statements are generated once per month.
    */
   create(
     body: AccountStatementCreateParams,

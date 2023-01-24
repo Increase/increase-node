@@ -12,6 +12,7 @@ describe('resource wire_drawdown_requests', () => {
       message_to_recipient: 'Invoice 29582',
       recipient_account_number: '987654321',
       recipient_routing_number: '101050001',
+      recipient_name: 'Ian Crease',
     });
   });
 

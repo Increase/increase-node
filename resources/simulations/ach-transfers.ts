@@ -6,10 +6,12 @@ import * as ACHTransfers_ from '~/resources/ach-transfers';
 
 export class ACHTransfers extends APIResource {
   /**
-   * Simulates an inbound ACH transfer to your account. The transfer may be either a
-   * credit or a debit depending on if the `amount` is positive or negative. This
-   * will result in either a Transaction or a Declined Transaction depending on if
-   * the transfer is allowed.
+   * Simulates an inbound ACH transfer to your account. This imitates initiating a
+   * transaction to an Increase account from a different financial institution. The
+   * transfer may be either a credit or a debit depending on if the `amount` is
+   * positive or negative. The result of calling this API will be either a
+   * [Transaction](#transactions) or a [Declined Transaction](#declined-transactions)
+   * depending on whether or not the transfer is allowed.
    */
   createInbound(
     body: ACHTransferCreateInboundParams,
@@ -19,21 +21,25 @@ export class ACHTransfers extends APIResource {
   }
 
   /**
-   * Simulates the return of an ACH Transfer by the Federal Reserve due to error
-   * conditions. This will also create a Transaction to account for the returned
-   * funds. This transfer must first have a `status` of `submitted`.
+   * Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
+   * due to an error condition. This will also create a Transaction to account for
+   * the returned funds. This transfer must first have a `status` of `submitted`.
    */
   return(
     achTransferId: string,
+    body: ACHTransferReturnParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<ACHTransfers_.ACHTransfer>> {
-    return this.post(`/simulations/ach_transfers/${achTransferId}/return`, options);
+    return this.post(`/simulations/ach_transfers/${achTransferId}/return`, { body, ...options });
   }
 
   /**
-   * Simulates the submission of an ACH Transfer to the Federal Reserve. This
-   * transfer must first have a `status` of `pending_approval` or
-   * `pending_submission`.
+   * Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
+   * Reserve. This transfer must first have a `status` of `pending_approval` or
+   * `pending_submission`. In production, Increase submits ACH Transfers to the
+   * Federal Reserve three times per day on weekdays. Since sandbox ACH Transfers are
+   * not submitted to the Federal Reserve, this endpoint allows you to skip that
+   * delay and transition the ACH Transfer to a status of `submitted`.
    */
   submit(
     achTransferId: string,
@@ -218,6 +224,7 @@ export namespace ACHTransferSimulation {
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
         | 'check_transfer_intention'
+        | 'check_transfer_return'
         | 'check_transfer_rejection'
         | 'check_transfer_stop_payment_request'
         | 'dispute_resolution'
@@ -264,6 +271,12 @@ export namespace ACHTransferSimulation {
        * response if and only if `category` is equal to `check_transfer_rejection`.
        */
       check_transfer_rejection: Source.CheckTransferRejection | null;
+
+      /**
+       * A Check Transfer Return object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_return`.
+       */
+      check_transfer_return: Source.CheckTransferReturn | null;
 
       /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -493,6 +506,7 @@ export namespace ACHTransferSimulation {
           | 'returned_per_odfi_request'
           | 'addenda_error'
           | 'limited_participation_dfi'
+          | 'incorrectly_coded_outbound_international_payment'
           | 'other';
 
         /**
@@ -552,14 +566,14 @@ export namespace ACHTransferSimulation {
 
       export interface CardSettlement {
         /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
+         * The amount in the minor unit of the transaction's settlement currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
+         * transaction's settlement currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -579,6 +593,17 @@ export namespace ACHTransferSimulation {
         pending_transaction_id: string | null;
 
         /**
+         * The amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `card_settlement`.
          */
@@ -587,13 +612,24 @@ export namespace ACHTransferSimulation {
 
       export interface CheckDepositAcceptance {
         /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
+         * The account number printed on the check.
+         */
+        account_number: string;
+
+        /**
+         * The amount to be deposited in the minor unit of the transaction's currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
-         * The ID of the Check Deposit that led to the Transaction.
+         * An additional line of metadata printed on the check. This typically includes the
+         * check number.
+         */
+        auxiliary_on_us: string | null;
+
+        /**
+         * The ID of the Check Deposit that was accepted.
          */
         check_deposit_id: string;
 
@@ -602,6 +638,11 @@ export namespace ACHTransferSimulation {
          * transaction's currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The routing number printed on the check.
+         */
+        routing_number: string;
       }
 
       export interface CheckDepositReturn {
@@ -691,6 +732,18 @@ export namespace ACHTransferSimulation {
 
         /**
          * The identifier of the Check Transfer with which this is associated.
+         */
+        transfer_id: string;
+      }
+
+      export interface CheckTransferReturn {
+        /**
+         * If available, a document with additional information about the return.
+         */
+        file_id: string | null;
+
+        /**
+         * The identifier of the returned Check Transfer.
          */
         transfer_id: string;
       }
@@ -1099,6 +1152,14 @@ export namespace ACHTransferSimulation {
         originator_name: string | null;
 
         originator_to_beneficiary_information: string | null;
+
+        originator_to_beneficiary_information_line1: string | null;
+
+        originator_to_beneficiary_information_line2: string | null;
+
+        originator_to_beneficiary_information_line3: string | null;
+
+        originator_to_beneficiary_information_line4: string | null;
       }
 
       export interface InternalSource {
@@ -1272,7 +1333,7 @@ export namespace ACHTransferSimulation {
      * The identifier for the route this Declined Transaction came through. Routes are
      * things like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Declined Transaction came through.
@@ -1371,12 +1432,13 @@ export namespace ACHTransferSimulation {
         reason:
           | 'ach_route_canceled'
           | 'ach_route_disabled'
-          | 'no_ach_route'
           | 'breaches_limit'
           | 'credit_entry_refused_by_receiver'
-          | 'group_locked'
+          | 'duplicate_return'
           | 'entity_not_active'
+          | 'group_locked'
           | 'insufficient_funds'
+          | 'no_ach_route'
           | 'originator_request';
 
         receiver_id_number: string | null;
@@ -1431,6 +1493,7 @@ export namespace ACHTransferSimulation {
           | 'entity_not_active'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'transaction_not_allowed'
           | 'breaches_limit'
           | 'webhook_declined'
           | 'webhook_timed_out';
@@ -1458,7 +1521,8 @@ export namespace ACHTransferSimulation {
           | 'unable_to_locate_account'
           | 'unable_to_process'
           | 'refer_to_image'
-          | 'stop_payment_requested';
+          | 'stop_payment_requested'
+          | 'returned';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {
@@ -1635,4 +1699,60 @@ export interface ACHTransferCreateInboundParams {
    * transfer pulling funds from the receiving account.
    */
   amount: number;
+
+  /**
+   * The description of the date of the transfer.
+   */
+  company_descriptive_date?: string;
+
+  /**
+   * Data associated with the transfer set by the sender.
+   */
+  company_discretionary_data?: string;
+
+  /**
+   * The description of the transfer set by the sender.
+   */
+  company_entry_description?: string;
+
+  /**
+   * The sender's company id.
+   */
+  company_id?: string;
+
+  /**
+   * The name of the sender.
+   */
+  company_name?: string;
+}
+
+export interface ACHTransferReturnParams {
+  /**
+   * The reason why the Federal Reserve or destination bank returned this transfer.
+   * Defaults to `no_account`.
+   */
+  reason?:
+    | 'insufficient_fund'
+    | 'no_account'
+    | 'account_closed'
+    | 'invalid_account_number_structure'
+    | 'account_frozen_entry_returned_per_ofac_instruction'
+    | 'credit_entry_refused_by_receiver'
+    | 'unauthorized_debit_to_consumer_account_using_corporate_sec_code'
+    | 'corporate_customer_advised_not_authorized'
+    | 'payment_stopped'
+    | 'non_transaction_account'
+    | 'uncollected_funds'
+    | 'routing_number_check_digit_error'
+    | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
+    | 'amount_field_error'
+    | 'authorization_revoked_by_customer'
+    | 'invalid_ach_routing_number'
+    | 'file_record_edit_criteria'
+    | 'enr_invalid_individual_name'
+    | 'returned_per_odfi_request'
+    | 'addenda_error'
+    | 'limited_participation_dfi'
+    | 'incorrectly_coded_outbound_international_payment'
+    | 'other';
 }

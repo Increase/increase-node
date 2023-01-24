@@ -82,7 +82,7 @@ export interface DeclinedTransaction {
    * The identifier for the route this Declined Transaction came through. Routes are
    * things like cards and ACH details.
    */
-  route_id: string;
+  route_id: string | null;
 
   /**
    * The type of the route this Declined Transaction came through.
@@ -181,12 +181,13 @@ export namespace DeclinedTransaction {
       reason:
         | 'ach_route_canceled'
         | 'ach_route_disabled'
-        | 'no_ach_route'
         | 'breaches_limit'
         | 'credit_entry_refused_by_receiver'
-        | 'group_locked'
+        | 'duplicate_return'
         | 'entity_not_active'
+        | 'group_locked'
         | 'insufficient_funds'
+        | 'no_ach_route'
         | 'originator_request';
 
       receiver_id_number: string | null;
@@ -241,6 +242,7 @@ export namespace DeclinedTransaction {
         | 'entity_not_active'
         | 'group_locked'
         | 'insufficient_funds'
+        | 'transaction_not_allowed'
         | 'breaches_limit'
         | 'webhook_declined'
         | 'webhook_timed_out';
@@ -268,7 +270,8 @@ export namespace DeclinedTransaction {
         | 'unable_to_locate_account'
         | 'unable_to_process'
         | 'refer_to_image'
-        | 'stop_payment_requested';
+        | 'stop_payment_requested'
+        | 'returned';
     }
 
     export interface InboundRealTimePaymentsTransferDecline {

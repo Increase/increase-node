@@ -5,14 +5,18 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource limits', () => {
   test('create: only required params', async () => {
-    const response = await increase.limits.create({ metric: 'volume', model_id: 'account0', value: 1234 });
+    const response = await increase.limits.create({
+      metric: 'volume',
+      model_id: 'account_in71c4amph0vgo2qllky',
+      value: 1234,
+    });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.limits.create({
       metric: 'volume',
       interval: 'month',
-      model_id: 'account0',
+      model_id: 'account_in71c4amph0vgo2qllky',
       value: 1234,
     });
   });

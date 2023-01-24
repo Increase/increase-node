@@ -63,10 +63,10 @@ export class AccountsPage extends Page<Account> {}
  */
 export interface Account {
   /**
-   * The current balance of the Account in the minor unit of the currency. For
-   * dollars, for example, this is cents.
+   * The Account's balances in the minor unit of its currency. For dollars, for
+   * example, these values will represent cents.
    */
-  balance: number;
+  balances: Account.Balances;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
@@ -123,6 +123,22 @@ export interface Account {
    * `account`.
    */
   type: 'account';
+}
+
+export namespace Account {
+  export interface Balances {
+    /**
+     * The Account's available balance, representing the current balance less any open
+     * Pending Transactions on the Account.
+     */
+    available_balance: number;
+
+    /**
+     * The Account's current balance, representing the sum of all posted Transactions
+     * on the Account.
+     */
+    current_balance: number;
+  }
 }
 
 export interface AccountCreateParams {

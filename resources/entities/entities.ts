@@ -238,7 +238,11 @@ export namespace Entity {
           /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+          method:
+            | 'social_security_number'
+            | 'individual_taxpayer_identification_number'
+            | 'passport'
+            | 'drivers_license';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -305,7 +309,11 @@ export namespace Entity {
       /**
        * A method that can be used to verify the individual's identity.
        */
-      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license';
 
       /**
        * The last 4 digits of the identification number that can be used to verify the
@@ -383,7 +391,11 @@ export namespace Entity {
         /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -535,7 +547,11 @@ export namespace Entity {
           /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+          method:
+            | 'social_security_number'
+            | 'individual_taxpayer_identification_number'
+            | 'passport'
+            | 'drivers_license';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -601,7 +617,11 @@ export namespace Entity {
         /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -768,6 +788,13 @@ export namespace EntityCreateParams {
          * The person's legal name.
          */
         name: string;
+
+        /**
+         * The identification method for an individual can only be a passport or driver's
+         * license if you've confirmed they do not have a US tax id (either a Social
+         * Security Number or Individual Taxpayer Identification Number).
+         */
+        confirmed_no_us_tax_id?: boolean;
       }
 
       export namespace Individual {
@@ -803,13 +830,23 @@ export namespace EntityCreateParams {
           /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+          method:
+            | 'social_security_number'
+            | 'individual_taxpayer_identification_number'
+            | 'passport'
+            | 'drivers_license';
 
           /**
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number.
            */
           number: string;
+
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
+          drivers_license?: Identification.DriversLicense;
 
           /**
            * Information about the passport used for identification. Required if `method` is
@@ -834,6 +871,23 @@ export namespace EntityCreateParams {
              * The identifier of the File containing the passport.
              */
             file_id: string;
+          }
+
+          export interface DriversLicense {
+            /**
+             * The driver's license's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the driver's license.
+             */
+            file_id: string;
+
+            /**
+             * The state that issued the provided driver's license.
+             */
+            state: string;
           }
         }
       }
@@ -860,6 +914,13 @@ export namespace EntityCreateParams {
      * The person's legal name.
      */
     name: string;
+
+    /**
+     * The identification method for an individual can only be a passport or driver's
+     * license if you've confirmed they do not have a US tax id (either a Social
+     * Security Number or Individual Taxpayer Identification Number).
+     */
+    confirmed_no_us_tax_id?: boolean;
   }
 
   export namespace NaturalPerson {
@@ -895,13 +956,23 @@ export namespace EntityCreateParams {
       /**
        * A method that can be used to verify the individual's identity.
        */
-      method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license';
 
       /**
        * An identification number that can be used to verify the individual's identity,
        * such as a social security number.
        */
       number: string;
+
+      /**
+       * Information about the United States driver's license used for identification.
+       * Required if `method` is equal to `drivers_license`.
+       */
+      drivers_license?: Identification.DriversLicense;
 
       /**
        * Information about the passport used for identification. Required if `method` is
@@ -926,6 +997,23 @@ export namespace EntityCreateParams {
          * The identifier of the File containing the passport.
          */
         file_id: string;
+      }
+
+      export interface DriversLicense {
+        /**
+         * The driver's license's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date: string;
+
+        /**
+         * The identifier of the File containing the driver's license.
+         */
+        file_id: string;
+
+        /**
+         * The state that issued the provided driver's license.
+         */
+        state: string;
       }
     }
   }
@@ -963,6 +1051,13 @@ export namespace EntityCreateParams {
        * The person's legal name.
        */
       name: string;
+
+      /**
+       * The identification method for an individual can only be a passport or driver's
+       * license if you've confirmed they do not have a US tax id (either a Social
+       * Security Number or Individual Taxpayer Identification Number).
+       */
+      confirmed_no_us_tax_id?: boolean;
     }
 
     export namespace Individuals {
@@ -998,13 +1093,23 @@ export namespace EntityCreateParams {
         /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license';
 
         /**
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number.
          */
         number: string;
+
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
+        drivers_license?: Identification.DriversLicense;
 
         /**
          * Information about the passport used for identification. Required if `method` is
@@ -1029,6 +1134,23 @@ export namespace EntityCreateParams {
            * The identifier of the File containing the passport.
            */
           file_id: string;
+        }
+
+        export interface DriversLicense {
+          /**
+           * The driver's license's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the driver's license.
+           */
+          file_id: string;
+
+          /**
+           * The state that issued the provided driver's license.
+           */
+          state: string;
         }
       }
     }
@@ -1143,6 +1265,13 @@ export namespace EntityCreateParams {
          * The person's legal name.
          */
         name: string;
+
+        /**
+         * The identification method for an individual can only be a passport or driver's
+         * license if you've confirmed they do not have a US tax id (either a Social
+         * Security Number or Individual Taxpayer Identification Number).
+         */
+        confirmed_no_us_tax_id?: boolean;
       }
 
       export namespace Individual {
@@ -1178,13 +1307,23 @@ export namespace EntityCreateParams {
           /**
            * A method that can be used to verify the individual's identity.
            */
-          method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+          method:
+            | 'social_security_number'
+            | 'individual_taxpayer_identification_number'
+            | 'passport'
+            | 'drivers_license';
 
           /**
            * An identification number that can be used to verify the individual's identity,
            * such as a social security number.
            */
           number: string;
+
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
+          drivers_license?: Identification.DriversLicense;
 
           /**
            * Information about the passport used for identification. Required if `method` is
@@ -1210,6 +1349,23 @@ export namespace EntityCreateParams {
              */
             file_id: string;
           }
+
+          export interface DriversLicense {
+            /**
+             * The driver's license's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the driver's license.
+             */
+            file_id: string;
+
+            /**
+             * The state that issued the provided driver's license.
+             */
+            state: string;
+          }
         }
       }
     }
@@ -1234,6 +1390,13 @@ export namespace EntityCreateParams {
        * The person's legal name.
        */
       name: string;
+
+      /**
+       * The identification method for an individual can only be a passport or driver's
+       * license if you've confirmed they do not have a US tax id (either a Social
+       * Security Number or Individual Taxpayer Identification Number).
+       */
+      confirmed_no_us_tax_id?: boolean;
     }
 
     export namespace Grantor {
@@ -1269,13 +1432,23 @@ export namespace EntityCreateParams {
         /**
          * A method that can be used to verify the individual's identity.
          */
-        method: 'social_security_number' | 'individual_taxpayer_identification_number' | 'passport';
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license';
 
         /**
          * An identification number that can be used to verify the individual's identity,
          * such as a social security number.
          */
         number: string;
+
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
+        drivers_license?: Identification.DriversLicense;
 
         /**
          * Information about the passport used for identification. Required if `method` is
@@ -1300,6 +1473,23 @@ export namespace EntityCreateParams {
            * The identifier of the File containing the passport.
            */
           file_id: string;
+        }
+
+        export interface DriversLicense {
+          /**
+           * The driver's license's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the driver's license.
+           */
+          file_id: string;
+
+          /**
+           * The state that issued the provided driver's license.
+           */
+          state: string;
         }
       }
     }

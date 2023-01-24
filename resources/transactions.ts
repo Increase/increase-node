@@ -185,6 +185,7 @@ export namespace Transaction {
       | 'check_deposit_acceptance'
       | 'check_deposit_return'
       | 'check_transfer_intention'
+      | 'check_transfer_return'
       | 'check_transfer_rejection'
       | 'check_transfer_stop_payment_request'
       | 'dispute_resolution'
@@ -231,6 +232,12 @@ export namespace Transaction {
      * response if and only if `category` is equal to `check_transfer_rejection`.
      */
     check_transfer_rejection: Source.CheckTransferRejection | null;
+
+    /**
+     * A Check Transfer Return object. This field will be present in the JSON response
+     * if and only if `category` is equal to `check_transfer_return`.
+     */
+    check_transfer_return: Source.CheckTransferReturn | null;
 
     /**
      * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -460,6 +467,7 @@ export namespace Transaction {
         | 'returned_per_odfi_request'
         | 'addenda_error'
         | 'limited_participation_dfi'
+        | 'incorrectly_coded_outbound_international_payment'
         | 'other';
 
       /**
@@ -519,14 +527,14 @@ export namespace Transaction {
 
     export interface CardSettlement {
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The amount in the minor unit of the transaction's settlement currency. For
+       * dollars, for example, this is cents.
        */
       amount: number;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-       * transaction's currency.
+       * transaction's settlement currency.
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -546,6 +554,17 @@ export namespace Transaction {
       pending_transaction_id: string | null;
 
       /**
+       * The amount in the minor unit of the transaction's presentment currency.
+       */
+      presentment_amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+       * transaction's presentment currency.
+       */
+      presentment_currency: string;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_settlement`.
        */
@@ -554,13 +573,24 @@ export namespace Transaction {
 
     export interface CheckDepositAcceptance {
       /**
-       * The amount in the minor unit of the transaction's currency. For dollars, for
-       * example, this is cents.
+       * The account number printed on the check.
+       */
+      account_number: string;
+
+      /**
+       * The amount to be deposited in the minor unit of the transaction's currency. For
+       * dollars, for example, this is cents.
        */
       amount: number;
 
       /**
-       * The ID of the Check Deposit that led to the Transaction.
+       * An additional line of metadata printed on the check. This typically includes the
+       * check number.
+       */
+      auxiliary_on_us: string | null;
+
+      /**
+       * The ID of the Check Deposit that was accepted.
        */
       check_deposit_id: string;
 
@@ -569,6 +599,11 @@ export namespace Transaction {
        * transaction's currency.
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * The routing number printed on the check.
+       */
+      routing_number: string;
     }
 
     export interface CheckDepositReturn {
@@ -658,6 +693,18 @@ export namespace Transaction {
 
       /**
        * The identifier of the Check Transfer with which this is associated.
+       */
+      transfer_id: string;
+    }
+
+    export interface CheckTransferReturn {
+      /**
+       * If available, a document with additional information about the return.
+       */
+      file_id: string | null;
+
+      /**
+       * The identifier of the returned Check Transfer.
        */
       transfer_id: string;
     }
@@ -1066,6 +1113,14 @@ export namespace Transaction {
       originator_name: string | null;
 
       originator_to_beneficiary_information: string | null;
+
+      originator_to_beneficiary_information_line1: string | null;
+
+      originator_to_beneficiary_information_line2: string | null;
+
+      originator_to_beneficiary_information_line3: string | null;
+
+      originator_to_beneficiary_information_line4: string | null;
     }
 
     export interface InternalSource {
@@ -1206,6 +1261,8 @@ export interface TransactionListParams extends PageParams {
    */
   account_id?: string;
 
+  category?: TransactionListParams.Category;
+
   created_at?: TransactionListParams.CreatedAt;
 
   /**
@@ -1239,5 +1296,49 @@ export namespace TransactionListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Category {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'account_transfer_intention'
+      | 'ach_check_conversion_return'
+      | 'ach_check_conversion'
+      | 'ach_transfer_intention'
+      | 'ach_transfer_rejection'
+      | 'ach_transfer_return'
+      | 'card_dispute_acceptance'
+      | 'card_refund'
+      | 'card_settlement'
+      | 'check_deposit_acceptance'
+      | 'check_deposit_return'
+      | 'check_transfer_intention'
+      | 'check_transfer_return'
+      | 'check_transfer_rejection'
+      | 'check_transfer_stop_payment_request'
+      | 'dispute_resolution'
+      | 'empyreal_cash_deposit'
+      | 'inbound_ach_transfer'
+      | 'inbound_check'
+      | 'inbound_international_ach_transfer'
+      | 'inbound_real_time_payments_transfer_confirmation'
+      | 'inbound_wire_drawdown_payment_reversal'
+      | 'inbound_wire_drawdown_payment'
+      | 'inbound_wire_reversal'
+      | 'inbound_wire_transfer'
+      | 'internal_source'
+      | 'card_route_refund'
+      | 'card_route_settlement'
+      | 'real_time_payments_transfer_acknowledgement'
+      | 'sample_funds'
+      | 'wire_drawdown_payment_intention'
+      | 'wire_drawdown_payment_rejection'
+      | 'wire_transfer_intention'
+      | 'wire_transfer_rejection'
+      | 'other'
+    >;
   }
 }

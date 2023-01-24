@@ -147,6 +147,7 @@ export namespace PendingTransaction {
       | 'card_authorization'
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
+      | 'inbound_funds_hold'
       | 'card_route_authorization'
       | 'real_time_payments_transfer_instruction'
       | 'wire_drawdown_payment_instruction'
@@ -164,6 +165,12 @@ export namespace PendingTransaction {
      * response if and only if `category` is equal to `check_transfer_instruction`.
      */
     check_transfer_instruction: Source.CheckTransferInstruction | null;
+
+    /**
+     * A Inbound Funds Hold object. This field will be present in the JSON response if
+     * and only if `category` is equal to `inbound_funds_hold`.
+     */
+    inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
      * A Wire Drawdown Payment Instruction object. This field will be present in the
@@ -291,6 +298,41 @@ export namespace PendingTransaction {
        * The identifier of the Check Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+    }
+
+    export interface InboundFundsHold {
+      /**
+       * The held amount in the minor unit of the account's currency. For dollars, for
+       * example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * When the hold will be released automatically. Certain conditions may cause it to
+       * be released before this time.
+       */
+      automatically_releases_at: string;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+       * currency.
+       */
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * The ID of the Transaction for which funds were held.
+       */
+      held_transaction_id: string | null;
+
+      /**
+       * When the hold was released (if it has been released).
+       */
+      released_at: string | null;
+
+      /**
+       * The status of the hold.
+       */
+      status: 'held' | 'complete';
     }
 
     export interface CardRouteAuthorization {

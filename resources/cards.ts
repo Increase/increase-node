@@ -96,14 +96,14 @@ export interface Card {
   digital_wallet: Card.DigitalWallet | null;
 
   /**
-   * The month the card expires in MM format (e.g., August is 08).
+   * The month the card expires in M format (e.g., August is 8).
    */
-  expiration_month: string;
+  expiration_month: number;
 
   /**
    * The year the card expires in YYYY format (e.g., 2025).
    */
-  expiration_year: string;
+  expiration_year: number;
 
   /**
    * The card identifier.
@@ -186,14 +186,14 @@ export interface CardDetails {
   card_id: string;
 
   /**
-   * The month the card expires in MM format (e.g., August is 08).
+   * The month the card expires in M format (e.g., August is 8).
    */
-  expiration_month: string;
+  expiration_month: number;
 
   /**
    * The year the card expires in YYYY format (e.g., 2025).
    */
-  expiration_year: string;
+  expiration_year: number;
 
   /**
    * The card number.

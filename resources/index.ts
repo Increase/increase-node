@@ -91,6 +91,7 @@ export {
   DigitalWalletTokensPage,
   DigitalWalletTokens,
 } from './digital-wallet-tokens';
+export { Document, DocumentListParams, DocumentsPage, Documents } from './documents';
 export { Entity, EntityCreateParams, EntityListParams, EntitiesPage, Entities } from './entities/entities';
 export { Event, EventListParams, EventsPage, Events } from './events';
 export {

@@ -5,7 +5,8 @@ import { APIResource } from '~/resource';
 
 export class DigitalWalletTokenRequests extends APIResource {
   /**
-   * Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
+   * Simulates a user attempting add a [Card](#cards) to a digital wallet such as
+   * Apple Pay.
    */
   create(
     body: DigitalWalletTokenRequestCreateParams,

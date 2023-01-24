@@ -6,8 +6,10 @@ import * as CardDisputes_ from '~/resources/card-disputes';
 
 export class CardDisputes extends APIResource {
   /**
-   * Simulates moving a card dispute into a rejected or accepted state. A dispute can
-   * only be actioned once and must have a status of `pending_reviewing`.
+   * After a [Card Dispute](#card-disputes) is created in production, the dispute
+   * will be reviewed. Since no review happens in sandbox, this endpoint simulates
+   * moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
+   * be actioned one time and must have a status of `pending_reviewing`.
    */
   action(
     cardDisputeId: string,

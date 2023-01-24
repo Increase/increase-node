@@ -9,6 +9,7 @@ describe('resource wire_transfers', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       message_to_recipient: 'New account transfer',
+      beneficiary_name: 'Ian Crease',
     });
   });
 
@@ -24,6 +25,7 @@ describe('resource wire_transfers', () => {
       beneficiary_address_line1: '33 Liberty Street',
       beneficiary_address_line2: 'New York',
       beneficiary_address_line3: 'NY 10045',
+      require_approval: true,
     });
   });
 
@@ -82,6 +84,28 @@ describe('resource wire_transfers', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('approve', async () => {
+    const response = await increase.wireTransfers.approve('string');
+  });
+
+  test('approve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.wireTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('cancel', async () => {
+    const response = await increase.wireTransfers.cancel('string');
+  });
+
+  test('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.wireTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

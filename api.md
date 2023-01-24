@@ -156,6 +156,8 @@ Methods:
 - <code title="post /account_transfers">client.accountTransfers.<a href="./resources/account-transfers.ts">create</a>({ ...params }) -> AccountTransfer</code>
 - <code title="get /account_transfers/{account_transfer_id}">client.accountTransfers.<a href="./resources/account-transfers.ts">retrieve</a>(accountTransferId) -> AccountTransfer</code>
 - <code title="get /account_transfers">client.accountTransfers.<a href="./resources/account-transfers.ts">list</a>({ ...params }) -> AccountTransfersPage</code>
+- <code title="post /account_transfers/{account_transfer_id}/approve">client.accountTransfers.<a href="./resources/account-transfers.ts">approve</a>(accountTransferId) -> AccountTransfer</code>
+- <code title="post /account_transfers/{account_transfer_id}/cancel">client.accountTransfers.<a href="./resources/account-transfers.ts">cancel</a>(accountTransferId) -> AccountTransfer</code>
 
 # ACHTransfers
 
@@ -168,6 +170,8 @@ Methods:
 - <code title="post /ach_transfers">client.achTransfers.<a href="./resources/ach-transfers.ts">create</a>({ ...params }) -> ACHTransfer</code>
 - <code title="get /ach_transfers/{ach_transfer_id}">client.achTransfers.<a href="./resources/ach-transfers.ts">retrieve</a>(achTransferId) -> ACHTransfer</code>
 - <code title="get /ach_transfers">client.achTransfers.<a href="./resources/ach-transfers.ts">list</a>({ ...params }) -> ACHTransfersPage</code>
+- <code title="post /ach_transfers/{ach_transfer_id}/approve">client.achTransfers.<a href="./resources/ach-transfers.ts">approve</a>(achTransferId) -> ACHTransfer</code>
+- <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.achTransfers.<a href="./resources/ach-transfers.ts">cancel</a>(achTransferId) -> ACHTransfer</code>
 
 # ACHPrenotifications
 
@@ -181,6 +185,17 @@ Methods:
 - <code title="get /ach_prenotifications/{ach_prenotification_id}">client.achPrenotifications.<a href="./resources/ach-prenotifications.ts">retrieve</a>(achPrenotificationId) -> ACHPrenotification</code>
 - <code title="get /ach_prenotifications">client.achPrenotifications.<a href="./resources/ach-prenotifications.ts">list</a>({ ...params }) -> ACHPrenotificationsPage</code>
 
+# Documents
+
+Models:
+
+- <code><a href="./resources/documents.ts">Document</a></code>
+
+Methods:
+
+- <code title="get /documents/{document_id}">client.documents.<a href="./resources/documents.ts">retrieve</a>(documentId) -> Document</code>
+- <code title="get /documents">client.documents.<a href="./resources/documents.ts">list</a>({ ...params }) -> DocumentsPage</code>
+
 # WireTransfers
 
 Models:
@@ -192,6 +207,8 @@ Methods:
 - <code title="post /wire_transfers">client.wireTransfers.<a href="./resources/wire-transfers.ts">create</a>({ ...params }) -> WireTransfer</code>
 - <code title="get /wire_transfers/{wire_transfer_id}">client.wireTransfers.<a href="./resources/wire-transfers.ts">retrieve</a>(wireTransferId) -> WireTransfer</code>
 - <code title="get /wire_transfers">client.wireTransfers.<a href="./resources/wire-transfers.ts">list</a>({ ...params }) -> WireTransfersPage</code>
+- <code title="post /wire_transfers/{wire_transfer_id}/approve">client.wireTransfers.<a href="./resources/wire-transfers.ts">approve</a>(wireTransferId) -> WireTransfer</code>
+- <code title="post /wire_transfers/{wire_transfer_id}/cancel">client.wireTransfers.<a href="./resources/wire-transfers.ts">cancel</a>(wireTransferId) -> WireTransfer</code>
 - <code title="post /simulations/wire_transfers/{wire_transfer_id}/reverse">client.wireTransfers.<a href="./resources/wire-transfers.ts">reverse</a>(wireTransferId) -> WireTransfer</code>
 - <code title="post /simulations/wire_transfers/{wire_transfer_id}/submit">client.wireTransfers.<a href="./resources/wire-transfers.ts">submit</a>(wireTransferId) -> WireTransfer</code>
 
@@ -206,6 +223,8 @@ Methods:
 - <code title="post /check_transfers">client.checkTransfers.<a href="./resources/check-transfers.ts">create</a>({ ...params }) -> CheckTransfer</code>
 - <code title="get /check_transfers/{check_transfer_id}">client.checkTransfers.<a href="./resources/check-transfers.ts">retrieve</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="get /check_transfers">client.checkTransfers.<a href="./resources/check-transfers.ts">list</a>({ ...params }) -> CheckTransfersPage</code>
+- <code title="post /check_transfers/{check_transfer_id}/approve">client.checkTransfers.<a href="./resources/check-transfers.ts">approve</a>(checkTransferId) -> CheckTransfer</code>
+- <code title="post /check_transfers/{check_transfer_id}/cancel">client.checkTransfers.<a href="./resources/check-transfers.ts">cancel</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.checkTransfers.<a href="./resources/check-transfers.ts">stopPayment</a>(checkTransferId) -> CheckTransfer</code>
 
 # Entities
@@ -351,7 +370,7 @@ Models:
 Methods:
 
 - <code title="post /simulations/inbound_ach_transfers">client.simulations.achTransfers.<a href="./resources/simulations/ach-transfers.ts">createInbound</a>({ ...params }) -> ACHTransferSimulation</code>
-- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./resources/simulations/ach-transfers.ts">return</a>(achTransferId) -> ACHTransfer</code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfer</code>
 
 ## CardDisputes
@@ -360,11 +379,24 @@ Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDispute</code>
 
+## CardRefunds
+
+Methods:
+
+- <code title="post /simulations/card_refunds">client.simulations.cardRefunds.<a href="./resources/simulations/card-refunds.ts">create</a>({ ...params }) -> Transaction</code>
+
 ## CheckTransfers
 
 Methods:
 
+- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfer</code>
+
+## Documents
+
+Methods:
+
+- <code title="post /simulations/documents">client.simulations.documents.<a href="./resources/simulations/documents.ts">create</a>({ ...params }) -> Document</code>
 
 ## DigitalWalletTokenRequests
 

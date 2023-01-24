@@ -5,7 +5,7 @@ import { APIResource } from '~/resource';
 
 export class WireTransfers extends APIResource {
   /**
-   * Simulates an inbound Wire transfer to your account.
+   * Simulates an inbound Wire Transfer to your account.
    */
   createInbound(
     body: WireTransferCreateInboundParams,
@@ -183,6 +183,7 @@ export namespace WireTransferSimulation {
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
         | 'check_transfer_intention'
+        | 'check_transfer_return'
         | 'check_transfer_rejection'
         | 'check_transfer_stop_payment_request'
         | 'dispute_resolution'
@@ -229,6 +230,12 @@ export namespace WireTransferSimulation {
        * response if and only if `category` is equal to `check_transfer_rejection`.
        */
       check_transfer_rejection: Source.CheckTransferRejection | null;
+
+      /**
+       * A Check Transfer Return object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_return`.
+       */
+      check_transfer_return: Source.CheckTransferReturn | null;
 
       /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -458,6 +465,7 @@ export namespace WireTransferSimulation {
           | 'returned_per_odfi_request'
           | 'addenda_error'
           | 'limited_participation_dfi'
+          | 'incorrectly_coded_outbound_international_payment'
           | 'other';
 
         /**
@@ -517,14 +525,14 @@ export namespace WireTransferSimulation {
 
       export interface CardSettlement {
         /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
+         * The amount in the minor unit of the transaction's settlement currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
+         * transaction's settlement currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -544,6 +552,17 @@ export namespace WireTransferSimulation {
         pending_transaction_id: string | null;
 
         /**
+         * The amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `card_settlement`.
          */
@@ -552,13 +571,24 @@ export namespace WireTransferSimulation {
 
       export interface CheckDepositAcceptance {
         /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
+         * The account number printed on the check.
+         */
+        account_number: string;
+
+        /**
+         * The amount to be deposited in the minor unit of the transaction's currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
-         * The ID of the Check Deposit that led to the Transaction.
+         * An additional line of metadata printed on the check. This typically includes the
+         * check number.
+         */
+        auxiliary_on_us: string | null;
+
+        /**
+         * The ID of the Check Deposit that was accepted.
          */
         check_deposit_id: string;
 
@@ -567,6 +597,11 @@ export namespace WireTransferSimulation {
          * transaction's currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The routing number printed on the check.
+         */
+        routing_number: string;
       }
 
       export interface CheckDepositReturn {
@@ -656,6 +691,18 @@ export namespace WireTransferSimulation {
 
         /**
          * The identifier of the Check Transfer with which this is associated.
+         */
+        transfer_id: string;
+      }
+
+      export interface CheckTransferReturn {
+        /**
+         * If available, a document with additional information about the return.
+         */
+        file_id: string | null;
+
+        /**
+         * The identifier of the returned Check Transfer.
          */
         transfer_id: string;
       }
@@ -1064,6 +1111,14 @@ export namespace WireTransferSimulation {
         originator_name: string | null;
 
         originator_to_beneficiary_information: string | null;
+
+        originator_to_beneficiary_information_line1: string | null;
+
+        originator_to_beneficiary_information_line2: string | null;
+
+        originator_to_beneficiary_information_line3: string | null;
+
+        originator_to_beneficiary_information_line4: string | null;
       }
 
       export interface InternalSource {
@@ -1209,4 +1264,82 @@ export interface WireTransferCreateInboundParams {
    * The transfer amount in cents. Must be positive.
    */
   amount: number;
+
+  /**
+   * The sending bank will set beneficiary_address_line1 in production. You can
+   * simulate any value here.
+   */
+  beneficiary_address_line1?: string;
+
+  /**
+   * The sending bank will set beneficiary_address_line2 in production. You can
+   * simulate any value here.
+   */
+  beneficiary_address_line2?: string;
+
+  /**
+   * The sending bank will set beneficiary_address_line3 in production. You can
+   * simulate any value here.
+   */
+  beneficiary_address_line3?: string;
+
+  /**
+   * The sending bank will set beneficiary_name in production. You can simulate any
+   * value here.
+   */
+  beneficiary_name?: string;
+
+  /**
+   * The sending bank will set beneficiary_reference in production. You can simulate
+   * any value here.
+   */
+  beneficiary_reference?: string;
+
+  /**
+   * The sending bank will set originator_address_line1 in production. You can
+   * simulate any value here.
+   */
+  originator_address_line1?: string;
+
+  /**
+   * The sending bank will set originator_address_line2 in production. You can
+   * simulate any value here.
+   */
+  originator_address_line2?: string;
+
+  /**
+   * The sending bank will set originator_address_line3 in production. You can
+   * simulate any value here.
+   */
+  originator_address_line3?: string;
+
+  /**
+   * The sending bank will set originator_name in production. You can simulate any
+   * value here.
+   */
+  originator_name?: string;
+
+  /**
+   * The sending bank will set originator_to_beneficiary_information_line1 in
+   * production. You can simulate any value here.
+   */
+  originator_to_beneficiary_information_line1?: string;
+
+  /**
+   * The sending bank will set originator_to_beneficiary_information_line2 in
+   * production. You can simulate any value here.
+   */
+  originator_to_beneficiary_information_line2?: string;
+
+  /**
+   * The sending bank will set originator_to_beneficiary_information_line3 in
+   * production. You can simulate any value here.
+   */
+  originator_to_beneficiary_information_line3?: string;
+
+  /**
+   * The sending bank will set originator_to_beneficiary_information_line4 in
+   * production. You can simulate any value here.
+   */
+  originator_to_beneficiary_information_line4?: string;
 }

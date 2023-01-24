@@ -6,8 +6,20 @@ import * as CheckTransfers_ from '~/resources/check-transfers';
 
 export class CheckTransfers extends APIResource {
   /**
-   * Simulates the mailing of a Check Transfer. This transfer must first have a
-   * `status` of `pending_approval` or `pending_submission`.
+   * Simulates a [Check Transfer](#check-transfers) being deposited at a bank. This
+   * transfer must first have a `status` of `mailed`.
+   */
+  deposit(
+    checkTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<CheckTransfers_.CheckTransfer>> {
+    return this.post(`/simulations/check_transfers/${checkTransferId}/deposit`, options);
+  }
+
+  /**
+   * Simulates the mailing of a [Check Transfer](#check-transfers), which happens
+   * once per weekday in production but can be sped up in sandbox. This transfer must
+   * first have a `status` of `pending_approval` or `pending_submission`.
    */
   mail(
     checkTransferId: string,

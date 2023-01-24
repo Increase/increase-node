@@ -44,6 +44,26 @@ export class AccountTransfers extends APIResource {
 
     return this.getAPIList('/account_transfers', AccountTransfersPage, { query, ...options });
   }
+
+  /**
+   * Approve an Account Transfer
+   */
+  approve(
+    accountTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<AccountTransfer>> {
+    return this.post(`/account_transfers/${accountTransferId}/approve`, options);
+  }
+
+  /**
+   * Cancel an Account Transfer
+   */
+  cancel(
+    accountTransferId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<AccountTransfer>> {
+    return this.post(`/account_transfers/${accountTransferId}/cancel`, options);
+  }
 }
 
 export class AccountTransfersPage extends Page<AccountTransfer> {}
@@ -179,6 +199,11 @@ export interface AccountTransferCreateParams {
    * The identifier for the account that will receive the transfer.
    */
   destination_account_id: string;
+
+  /**
+   * Whether the transfer requires explicit approval via the dashboard or API.
+   */
+  require_approval?: boolean;
 }
 
 export interface AccountTransferListParams extends PageParams {

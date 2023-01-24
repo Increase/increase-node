@@ -25,9 +25,11 @@ describe('resource check_transfers', () => {
       address_city: 'New York',
       address_state: 'NY',
       address_zip: '10045',
+      return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
       amount: 1000,
       message: 'Check payment',
       recipient_name: 'Ian Crease',
+      require_approval: true,
     });
   });
 
@@ -84,6 +86,28 @@ describe('resource check_transfers', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('approve', async () => {
+    const response = await increase.checkTransfers.approve('string');
+  });
+
+  test('approve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.checkTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('cancel', async () => {
+    const response = await increase.checkTransfers.cancel('string');
+  });
+
+  test('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.checkTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

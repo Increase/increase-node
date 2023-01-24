@@ -6,8 +6,13 @@ import * as Transactions from '~/resources/transactions';
 
 export class Cards extends APIResource {
   /**
-   * Simulates activity on a Card. You can pass either a Card id or a Digital Wallet
-   * Token id to simulate the two different ways purchases can be made.
+   * Simulates a purchase authorization on a [Card](#cards). Depending on the balance
+   * available to the card and the `amount` submitted, the authorization activity
+   * will result in a [Pending Transaction](#pending-transactions) of type
+   * `card_authorization` or a [Declined Transaction](#declined-transactions) of type
+   * `card_decline`. You can pass either a Card id or a
+   * [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
+   * ways purchases can be made.
    */
   authorize(
     body: CardAuthorizeParams,
@@ -17,7 +22,11 @@ export class Cards extends APIResource {
   }
 
   /**
-   * Simulates the settlement of an authorization by a card acquirer.
+   * Simulates the settlement of an authorization by a card acquirer. After a card
+   * authorization is created, the merchant will eventually send a settlement. This
+   * simulates that event, which may occur many days after the purchase in
+   * production. The amount settled can be different from the amount originally
+   * authorized, for example, when adding a tip to a restaurant bill.
    */
   settlement(
     body: CardSettlementParams,
@@ -158,6 +167,7 @@ export namespace CardAuthorizationSimulation {
         | 'card_authorization'
         | 'check_deposit_instruction'
         | 'check_transfer_instruction'
+        | 'inbound_funds_hold'
         | 'card_route_authorization'
         | 'real_time_payments_transfer_instruction'
         | 'wire_drawdown_payment_instruction'
@@ -175,6 +185,12 @@ export namespace CardAuthorizationSimulation {
        * response if and only if `category` is equal to `check_transfer_instruction`.
        */
       check_transfer_instruction: Source.CheckTransferInstruction | null;
+
+      /**
+       * A Inbound Funds Hold object. This field will be present in the JSON response if
+       * and only if `category` is equal to `inbound_funds_hold`.
+       */
+      inbound_funds_hold: Source.InboundFundsHold | null;
 
       /**
        * A Wire Drawdown Payment Instruction object. This field will be present in the
@@ -304,6 +320,41 @@ export namespace CardAuthorizationSimulation {
         transfer_id: string;
       }
 
+      export interface InboundFundsHold {
+        /**
+         * The held amount in the minor unit of the account's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * When the hold will be released automatically. Certain conditions may cause it to
+         * be released before this time.
+         */
+        automatically_releases_at: string;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+         * currency.
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The ID of the Transaction for which funds were held.
+         */
+        held_transaction_id: string | null;
+
+        /**
+         * When the hold was released (if it has been released).
+         */
+        released_at: string | null;
+
+        /**
+         * The status of the hold.
+         */
+        status: 'held' | 'complete';
+      }
+
       export interface CardRouteAuthorization {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -401,7 +452,7 @@ export namespace CardAuthorizationSimulation {
      * The identifier for the route this Declined Transaction came through. Routes are
      * things like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Declined Transaction came through.
@@ -500,12 +551,13 @@ export namespace CardAuthorizationSimulation {
         reason:
           | 'ach_route_canceled'
           | 'ach_route_disabled'
-          | 'no_ach_route'
           | 'breaches_limit'
           | 'credit_entry_refused_by_receiver'
-          | 'group_locked'
+          | 'duplicate_return'
           | 'entity_not_active'
+          | 'group_locked'
           | 'insufficient_funds'
+          | 'no_ach_route'
           | 'originator_request';
 
         receiver_id_number: string | null;
@@ -560,6 +612,7 @@ export namespace CardAuthorizationSimulation {
           | 'entity_not_active'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'transaction_not_allowed'
           | 'breaches_limit'
           | 'webhook_declined'
           | 'webhook_timed_out';
@@ -587,7 +640,8 @@ export namespace CardAuthorizationSimulation {
           | 'unable_to_locate_account'
           | 'unable_to_process'
           | 'refer_to_image'
-          | 'stop_payment_requested';
+          | 'stop_payment_requested'
+          | 'returned';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {

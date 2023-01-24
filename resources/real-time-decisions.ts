@@ -162,7 +162,15 @@ export namespace RealTimeDecision {
     card_id: string;
 
     /**
-     * Whether or not the provisioning request was approved.
+     * The identifier of the Card Profile that was set via the real time decision. This
+     * will be null until the real time decision is responded to or if the real time
+     * decision did not set a card profile.
+     */
+    card_profile_id: string | null;
+
+    /**
+     * Whether or not the provisioning request was approved. This will be null until
+     * the real time decision is responded to.
      */
     decision: 'approve' | 'decline' | null;
 

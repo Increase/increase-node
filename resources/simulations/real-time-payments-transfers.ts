@@ -5,7 +5,8 @@ import { APIResource } from '~/resource';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
-   * Simulates an inbound Real Time Payments transfer to your account.
+   * Simulates an inbound Real Time Payments transfer to your account. Real Time
+   * Payments are a beta feature.
    */
   createInbound(
     body: RealTimePaymentsTransferCreateInboundParams,
@@ -191,6 +192,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
         | 'check_transfer_intention'
+        | 'check_transfer_return'
         | 'check_transfer_rejection'
         | 'check_transfer_stop_payment_request'
         | 'dispute_resolution'
@@ -237,6 +239,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * response if and only if `category` is equal to `check_transfer_rejection`.
        */
       check_transfer_rejection: Source.CheckTransferRejection | null;
+
+      /**
+       * A Check Transfer Return object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_return`.
+       */
+      check_transfer_return: Source.CheckTransferReturn | null;
 
       /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -466,6 +474,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'returned_per_odfi_request'
           | 'addenda_error'
           | 'limited_participation_dfi'
+          | 'incorrectly_coded_outbound_international_payment'
           | 'other';
 
         /**
@@ -525,14 +534,14 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
 
       export interface CardSettlement {
         /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
+         * The amount in the minor unit of the transaction's settlement currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
+         * transaction's settlement currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -552,6 +561,17 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         pending_transaction_id: string | null;
 
         /**
+         * The amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `card_settlement`.
          */
@@ -560,13 +580,24 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
 
       export interface CheckDepositAcceptance {
         /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
+         * The account number printed on the check.
+         */
+        account_number: string;
+
+        /**
+         * The amount to be deposited in the minor unit of the transaction's currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
-         * The ID of the Check Deposit that led to the Transaction.
+         * An additional line of metadata printed on the check. This typically includes the
+         * check number.
+         */
+        auxiliary_on_us: string | null;
+
+        /**
+         * The ID of the Check Deposit that was accepted.
          */
         check_deposit_id: string;
 
@@ -575,6 +606,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * transaction's currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The routing number printed on the check.
+         */
+        routing_number: string;
       }
 
       export interface CheckDepositReturn {
@@ -664,6 +700,18 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
 
         /**
          * The identifier of the Check Transfer with which this is associated.
+         */
+        transfer_id: string;
+      }
+
+      export interface CheckTransferReturn {
+        /**
+         * If available, a document with additional information about the return.
+         */
+        file_id: string | null;
+
+        /**
+         * The identifier of the returned Check Transfer.
          */
         transfer_id: string;
       }
@@ -1072,6 +1120,14 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         originator_name: string | null;
 
         originator_to_beneficiary_information: string | null;
+
+        originator_to_beneficiary_information_line1: string | null;
+
+        originator_to_beneficiary_information_line2: string | null;
+
+        originator_to_beneficiary_information_line3: string | null;
+
+        originator_to_beneficiary_information_line4: string | null;
       }
 
       export interface InternalSource {
@@ -1245,7 +1301,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
      * The identifier for the route this Declined Transaction came through. Routes are
      * things like cards and ACH details.
      */
-    route_id: string;
+    route_id: string | null;
 
     /**
      * The type of the route this Declined Transaction came through.
@@ -1344,12 +1400,13 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         reason:
           | 'ach_route_canceled'
           | 'ach_route_disabled'
-          | 'no_ach_route'
           | 'breaches_limit'
           | 'credit_entry_refused_by_receiver'
-          | 'group_locked'
+          | 'duplicate_return'
           | 'entity_not_active'
+          | 'group_locked'
           | 'insufficient_funds'
+          | 'no_ach_route'
           | 'originator_request';
 
         receiver_id_number: string | null;
@@ -1404,6 +1461,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'entity_not_active'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'transaction_not_allowed'
           | 'breaches_limit'
           | 'webhook_declined'
           | 'webhook_timed_out';
@@ -1431,7 +1489,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'unable_to_locate_account'
           | 'unable_to_process'
           | 'refer_to_image'
-          | 'stop_payment_requested';
+          | 'stop_payment_requested'
+          | 'returned';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {
@@ -1607,4 +1666,29 @@ export interface RealTimePaymentsTransferCreateInboundParams {
    * The transfer amount in USD cents. Must be positive.
    */
   amount: number;
+
+  /**
+   * The account number of the account that sent the transfer.
+   */
+  debtor_account_number?: string;
+
+  /**
+   * The name provided by the sender of the transfer.
+   */
+  debtor_name?: string;
+
+  /**
+   * The routing number of the account that sent the transfer.
+   */
+  debtor_routing_number?: string;
+
+  /**
+   * Additional information included with the transfer.
+   */
+  remittance_information?: string;
+
+  /**
+   * The identifier of a pending Request for Payment that this transfer will fulfill.
+   */
+  request_for_payment_id?: string;
 }

@@ -27,6 +27,7 @@ describe('resource ach_transfers', () => {
       funding: 'checking',
       individual_id: 'x',
       individual_name: 'x',
+      require_approval: true,
       routing_number: '101050001',
       standard_entry_class_code: 'corporate_credit_or_debit',
       statement_descriptor: 'New ACH transfer',
@@ -88,6 +89,28 @@ describe('resource ach_transfers', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('approve', async () => {
+    const response = await increase.achTransfers.approve('string');
+  });
+
+  test('approve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.achTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('cancel', async () => {
+    const response = await increase.achTransfers.cancel('string');
+  });
+
+  test('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.achTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });
