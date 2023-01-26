@@ -626,6 +626,7 @@ export namespace Transaction {
 
       return_reason:
         | 'ach_conversion_not_supported'
+        | 'closed_account'
         | 'duplicate_submission'
         | 'insufficient_funds'
         | 'no_account'

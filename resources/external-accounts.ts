@@ -100,6 +100,11 @@ export interface ExternalAccount {
    * `external_account`.
    */
   type: 'external_account';
+
+  /**
+   * If you have verified ownership of the External Account.
+   */
+  verification_status: 'unverified' | 'pending' | 'verified';
 }
 
 export interface ExternalAccountCreateParams {

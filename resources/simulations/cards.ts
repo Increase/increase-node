@@ -612,10 +612,12 @@ export namespace CardAuthorizationSimulation {
           | 'entity_not_active'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'cvv2_mismatch'
           | 'transaction_not_allowed'
           | 'breaches_limit'
           | 'webhook_declined'
-          | 'webhook_timed_out';
+          | 'webhook_timed_out'
+          | 'declined_by_stand_in_processing';
       }
 
       export interface CheckDecline {

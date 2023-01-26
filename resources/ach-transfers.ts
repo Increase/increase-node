@@ -318,7 +318,7 @@ export namespace ACHTransfer {
 
 export interface ACHTransferCreateParams {
   /**
-   * The identifier for the account that will send the transfer.
+   * The Increase identifier for the account that will send the transfer.
    */
   account_id: string;
 
@@ -330,8 +330,12 @@ export interface ACHTransferCreateParams {
   amount: number;
 
   /**
-   * The description you choose to give the transfer. This will be shown to the
-   * recipient.
+   * A description you choose to give the transfer. This will be saved with the
+   * transfer details, displayed in the dashboard, and returned by the API. If
+   * `individual_name` and `company_name` are not explicitly set by this API, the
+   * `statement_descriptor` will be sent in those fields to the receiving bank to
+   * help the customer recognize the transfer. You are highly encouraged to pass
+   * `individual_name` and `company_name` instead of relying on this fallback.
    */
   statement_descriptor: string;
 
@@ -341,27 +345,32 @@ export interface ACHTransferCreateParams {
   account_number?: string;
 
   /**
-   * Additional information that will be sent to the recipient.
+   * Additional information that will be sent to the recipient. This is included in
+   * the transfer data sent to the receiving bank.
    */
   addendum?: string;
 
   /**
-   * The description of the date of the transfer.
+   * The description of the date of the transfer, usually in the format `YYYYMMDD`.
+   * This is included in the transfer data sent to the receiving bank.
    */
   company_descriptive_date?: string;
 
   /**
-   * The data you choose to associate with the transfer.
+   * The data you choose to associate with the transfer. This is included in the
+   * transfer data sent to the receiving bank.
    */
   company_discretionary_data?: string;
 
   /**
-   * The description of the transfer you wish to be shown to the recipient.
+   * A description of the transfer. This is included in the transfer data sent to the
+   * receiving bank.
    */
   company_entry_description?: string;
 
   /**
-   * The name by which the recipient knows you.
+   * The name by which the recipient knows you. This is included in the transfer data
+   * sent to the receiving bank.
    */
   company_name?: string;
 
@@ -388,7 +397,7 @@ export interface ACHTransferCreateParams {
   individual_id?: string;
 
   /**
-   * The name of the transfer recipient. This value is information and not verified
+   * The name of the transfer recipient. This value is informational and not verified
    * by the recipient's bank.
    */
   individual_name?: string;
