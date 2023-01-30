@@ -1437,6 +1437,7 @@ export namespace ACHTransferSimulation {
           | 'credit_entry_refused_by_receiver'
           | 'duplicate_return'
           | 'entity_not_active'
+          | 'transaction_not_allowed'
           | 'group_locked'
           | 'insufficient_funds'
           | 'no_ach_route'
@@ -1468,17 +1469,53 @@ export namespace ACHTransferSimulation {
          */
         digital_wallet_token_id: string | null;
 
+        /**
+         * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+         * is transacting with.
+         */
         merchant_acceptor_id: string;
 
+        /**
+         * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+         * card is transacting with.
+         */
         merchant_category_code: string | null;
 
+        /**
+         * The city the merchant resides in.
+         */
         merchant_city: string | null;
 
+        /**
+         * The country the merchant resides in.
+         */
         merchant_country: string | null;
 
+        /**
+         * The merchant descriptor of the merchant the card is transacting with.
+         */
         merchant_descriptor: string;
 
+        /**
+         * The state the merchant resides in.
+         */
         merchant_state: string | null;
+
+        /**
+         * The method used to enter the cardholder's primary account number and card
+         * expiration date
+         */
+        point_of_service_entry_mode:
+          | 'manual'
+          | 'magnetic_stripe_no_cvv'
+          | 'optical_code'
+          | 'integrated_circuit_card'
+          | 'contactless'
+          | 'credential_on_file'
+          | 'magnetic_stripe'
+          | 'contactless_magnetic_stripe'
+          | 'integrated_circuit_card_no_cvv'
+          | null;
 
         /**
          * The identifier of the Real-Time Decision sent to approve or decline this

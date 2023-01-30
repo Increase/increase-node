@@ -112,7 +112,7 @@ export namespace RealTimeDecision {
      * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
      * card is transacting with.
      */
-    merchant_category_code: string;
+    merchant_category_code: string | null;
 
     /**
      * The city the merchant resides in.
@@ -122,12 +122,28 @@ export namespace RealTimeDecision {
     /**
      * The country the merchant resides in.
      */
-    merchant_country: string;
+    merchant_country: string | null;
 
     /**
      * The merchant descriptor of the merchant the card is transacting with.
      */
     merchant_descriptor: string;
+
+    /**
+     * The method used to enter the cardholder's primary account number and card
+     * expiration date
+     */
+    point_of_service_entry_mode:
+      | 'manual'
+      | 'magnetic_stripe_no_cvv'
+      | 'optical_code'
+      | 'integrated_circuit_card'
+      | 'contactless'
+      | 'credential_on_file'
+      | 'magnetic_stripe'
+      | 'contactless_magnetic_stripe'
+      | 'integrated_circuit_card_no_cvv'
+      | null;
 
     /**
      * The amount of the attempted authorization in the currency the card user sees at
