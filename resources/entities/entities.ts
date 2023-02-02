@@ -242,7 +242,8 @@ export namespace Entity {
             | 'social_security_number'
             | 'individual_taxpayer_identification_number'
             | 'passport'
-            | 'drivers_license';
+            | 'drivers_license'
+            | 'other';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -313,7 +314,8 @@ export namespace Entity {
         | 'social_security_number'
         | 'individual_taxpayer_identification_number'
         | 'passport'
-        | 'drivers_license';
+        | 'drivers_license'
+        | 'other';
 
       /**
        * The last 4 digits of the identification number that can be used to verify the
@@ -395,7 +397,8 @@ export namespace Entity {
           | 'social_security_number'
           | 'individual_taxpayer_identification_number'
           | 'passport'
-          | 'drivers_license';
+          | 'drivers_license'
+          | 'other';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -551,7 +554,8 @@ export namespace Entity {
             | 'social_security_number'
             | 'individual_taxpayer_identification_number'
             | 'passport'
-            | 'drivers_license';
+            | 'drivers_license'
+            | 'other';
 
           /**
            * The last 4 digits of the identification number that can be used to verify the
@@ -621,7 +625,8 @@ export namespace Entity {
           | 'social_security_number'
           | 'individual_taxpayer_identification_number'
           | 'passport'
-          | 'drivers_license';
+          | 'drivers_license'
+          | 'other';
 
         /**
          * The last 4 digits of the identification number that can be used to verify the
@@ -670,7 +675,9 @@ export interface EntityCreateParams {
 
   /**
    * Details of the natural person entity to create. Required if `structure` is equal
-   * to `natural_person`.
+   * to `natural_person`. Natural people entities should be submitted with
+   * `social_security_number` or `individual_taxpayer_identification_number`
+   * identification methods.
    */
   natural_person?: EntityCreateParams.NaturalPerson;
 
@@ -790,9 +797,10 @@ export namespace EntityCreateParams {
         name: string;
 
         /**
-         * The identification method for an individual can only be a passport or driver's
-         * license if you've confirmed they do not have a US tax id (either a Social
-         * Security Number or Individual Taxpayer Identification Number).
+         * The identification method for an individual can only be a passport, driver's
+         * license, or other document if you've confirmed the individual does not have a US
+         * tax id (either a Social Security Number or Individual Taxpayer Identification
+         * Number).
          */
         confirmed_no_us_tax_id?: boolean;
       }
@@ -834,7 +842,8 @@ export namespace EntityCreateParams {
             | 'social_security_number'
             | 'individual_taxpayer_identification_number'
             | 'passport'
-            | 'drivers_license';
+            | 'drivers_license'
+            | 'other';
 
           /**
            * An identification number that can be used to verify the individual's identity,
@@ -847,6 +856,12 @@ export namespace EntityCreateParams {
            * Required if `method` is equal to `drivers_license`.
            */
           drivers_license?: Identification.DriversLicense;
+
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
+          other?: Identification.Other;
 
           /**
            * Information about the passport used for identification. Required if `method` is
@@ -889,6 +904,29 @@ export namespace EntityCreateParams {
              */
             state: string;
           }
+
+          export interface Other {
+            /**
+             * The two-character ISO 3166-1 code representing the country that issued the
+             * document.
+             */
+            country: string;
+
+            /**
+             * A description of the document submitted.
+             */
+            description: string;
+
+            /**
+             * The identifier of the File containing the document.
+             */
+            file_id: string;
+
+            /**
+             * The document's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date?: string;
+          }
         }
       }
     }
@@ -916,9 +954,10 @@ export namespace EntityCreateParams {
     name: string;
 
     /**
-     * The identification method for an individual can only be a passport or driver's
-     * license if you've confirmed they do not have a US tax id (either a Social
-     * Security Number or Individual Taxpayer Identification Number).
+     * The identification method for an individual can only be a passport, driver's
+     * license, or other document if you've confirmed the individual does not have a US
+     * tax id (either a Social Security Number or Individual Taxpayer Identification
+     * Number).
      */
     confirmed_no_us_tax_id?: boolean;
   }
@@ -960,7 +999,8 @@ export namespace EntityCreateParams {
         | 'social_security_number'
         | 'individual_taxpayer_identification_number'
         | 'passport'
-        | 'drivers_license';
+        | 'drivers_license'
+        | 'other';
 
       /**
        * An identification number that can be used to verify the individual's identity,
@@ -973,6 +1013,12 @@ export namespace EntityCreateParams {
        * Required if `method` is equal to `drivers_license`.
        */
       drivers_license?: Identification.DriversLicense;
+
+      /**
+       * Information about the identification document provided. Required if `method` is
+       * equal to `other`.
+       */
+      other?: Identification.Other;
 
       /**
        * Information about the passport used for identification. Required if `method` is
@@ -1015,6 +1061,29 @@ export namespace EntityCreateParams {
          */
         state: string;
       }
+
+      export interface Other {
+        /**
+         * The two-character ISO 3166-1 code representing the country that issued the
+         * document.
+         */
+        country: string;
+
+        /**
+         * A description of the document submitted.
+         */
+        description: string;
+
+        /**
+         * The identifier of the File containing the document.
+         */
+        file_id: string;
+
+        /**
+         * The document's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date?: string;
+      }
     }
   }
 
@@ -1053,9 +1122,10 @@ export namespace EntityCreateParams {
       name: string;
 
       /**
-       * The identification method for an individual can only be a passport or driver's
-       * license if you've confirmed they do not have a US tax id (either a Social
-       * Security Number or Individual Taxpayer Identification Number).
+       * The identification method for an individual can only be a passport, driver's
+       * license, or other document if you've confirmed the individual does not have a US
+       * tax id (either a Social Security Number or Individual Taxpayer Identification
+       * Number).
        */
       confirmed_no_us_tax_id?: boolean;
     }
@@ -1097,7 +1167,8 @@ export namespace EntityCreateParams {
           | 'social_security_number'
           | 'individual_taxpayer_identification_number'
           | 'passport'
-          | 'drivers_license';
+          | 'drivers_license'
+          | 'other';
 
         /**
          * An identification number that can be used to verify the individual's identity,
@@ -1110,6 +1181,12 @@ export namespace EntityCreateParams {
          * Required if `method` is equal to `drivers_license`.
          */
         drivers_license?: Identification.DriversLicense;
+
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
+        other?: Identification.Other;
 
         /**
          * Information about the passport used for identification. Required if `method` is
@@ -1151,6 +1228,29 @@ export namespace EntityCreateParams {
            * The state that issued the provided driver's license.
            */
           state: string;
+        }
+
+        export interface Other {
+          /**
+           * The two-character ISO 3166-1 code representing the country that issued the
+           * document.
+           */
+          country: string;
+
+          /**
+           * A description of the document submitted.
+           */
+          description: string;
+
+          /**
+           * The identifier of the File containing the document.
+           */
+          file_id: string;
+
+          /**
+           * The document's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date?: string;
         }
       }
     }
@@ -1267,9 +1367,10 @@ export namespace EntityCreateParams {
         name: string;
 
         /**
-         * The identification method for an individual can only be a passport or driver's
-         * license if you've confirmed they do not have a US tax id (either a Social
-         * Security Number or Individual Taxpayer Identification Number).
+         * The identification method for an individual can only be a passport, driver's
+         * license, or other document if you've confirmed the individual does not have a US
+         * tax id (either a Social Security Number or Individual Taxpayer Identification
+         * Number).
          */
         confirmed_no_us_tax_id?: boolean;
       }
@@ -1311,7 +1412,8 @@ export namespace EntityCreateParams {
             | 'social_security_number'
             | 'individual_taxpayer_identification_number'
             | 'passport'
-            | 'drivers_license';
+            | 'drivers_license'
+            | 'other';
 
           /**
            * An identification number that can be used to verify the individual's identity,
@@ -1324,6 +1426,12 @@ export namespace EntityCreateParams {
            * Required if `method` is equal to `drivers_license`.
            */
           drivers_license?: Identification.DriversLicense;
+
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
+          other?: Identification.Other;
 
           /**
            * Information about the passport used for identification. Required if `method` is
@@ -1366,6 +1474,29 @@ export namespace EntityCreateParams {
              */
             state: string;
           }
+
+          export interface Other {
+            /**
+             * The two-character ISO 3166-1 code representing the country that issued the
+             * document.
+             */
+            country: string;
+
+            /**
+             * A description of the document submitted.
+             */
+            description: string;
+
+            /**
+             * The identifier of the File containing the document.
+             */
+            file_id: string;
+
+            /**
+             * The document's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date?: string;
+          }
         }
       }
     }
@@ -1392,9 +1523,10 @@ export namespace EntityCreateParams {
       name: string;
 
       /**
-       * The identification method for an individual can only be a passport or driver's
-       * license if you've confirmed they do not have a US tax id (either a Social
-       * Security Number or Individual Taxpayer Identification Number).
+       * The identification method for an individual can only be a passport, driver's
+       * license, or other document if you've confirmed the individual does not have a US
+       * tax id (either a Social Security Number or Individual Taxpayer Identification
+       * Number).
        */
       confirmed_no_us_tax_id?: boolean;
     }
@@ -1436,7 +1568,8 @@ export namespace EntityCreateParams {
           | 'social_security_number'
           | 'individual_taxpayer_identification_number'
           | 'passport'
-          | 'drivers_license';
+          | 'drivers_license'
+          | 'other';
 
         /**
          * An identification number that can be used to verify the individual's identity,
@@ -1449,6 +1582,12 @@ export namespace EntityCreateParams {
          * Required if `method` is equal to `drivers_license`.
          */
         drivers_license?: Identification.DriversLicense;
+
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
+        other?: Identification.Other;
 
         /**
          * Information about the passport used for identification. Required if `method` is
@@ -1490,6 +1629,29 @@ export namespace EntityCreateParams {
            * The state that issued the provided driver's license.
            */
           state: string;
+        }
+
+        export interface Other {
+          /**
+           * The two-character ISO 3166-1 code representing the country that issued the
+           * document.
+           */
+          country: string;
+
+          /**
+           * A description of the document submitted.
+           */
+          description: string;
+
+          /**
+           * The identifier of the File containing the document.
+           */
+          file_id: string;
+
+          /**
+           * The document's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date?: string;
         }
       }
     }

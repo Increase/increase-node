@@ -28,6 +28,7 @@ describe('resource check_transfers', () => {
       return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
       amount: 1000,
       message: 'Check payment',
+      note: 'x',
       recipient_name: 'Ian Crease',
       require_approval: true,
     });

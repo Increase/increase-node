@@ -495,7 +495,7 @@ export namespace WireTransferSimulation {
          * The identifier of the Transaction that was created to return the disputed funds
          * to your account.
          */
-        transaction_id: string;
+        transaction_id: string | null;
       }
 
       export interface CardRefund {

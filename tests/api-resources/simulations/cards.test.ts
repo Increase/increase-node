@@ -27,7 +27,7 @@ describe('resource cards', () => {
     const response = await increase.simulations.cards.settlement({
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
-      amount: 0,
+      amount: 1,
     });
   });
 });

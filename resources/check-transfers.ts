@@ -135,9 +135,14 @@ export interface CheckTransfer {
   mailed_at: string | null;
 
   /**
-   * The descriptor that is printed on the check.
+   * The descriptor that will be printed on the memo field on the check.
    */
   message: string;
+
+  /**
+   * The descriptor that will be printed on the letter included with the check.
+   */
+  note: string | null;
 
   /**
    * The name that will be printed on the check.
@@ -314,7 +319,7 @@ export interface CheckTransferCreateParams {
   amount: number;
 
   /**
-   * The descriptor that will be printed on the check.
+   * The descriptor that will be printed on the memo field on the check.
    */
   message: string;
 
@@ -327,6 +332,11 @@ export interface CheckTransferCreateParams {
    * The second line of the address of the check's destination.
    */
   address_line2?: string;
+
+  /**
+   * The descriptor that will be printed on the letter included with the check.
+   */
+  note?: string;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.

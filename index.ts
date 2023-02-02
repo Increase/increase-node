@@ -256,6 +256,8 @@ export namespace Increase {
   export import AccountStatement = API.AccountStatement;
   export import AccountStatementsPage = API.AccountStatementsPage;
   export import AccountStatementListParams = API.AccountStatementListParams;
+
+  export import PointOfServiceEntryMode = API.PointOfServiceEntryMode;
 }
 
 exports = module.exports = Increase;

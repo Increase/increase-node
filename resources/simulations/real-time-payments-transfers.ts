@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as Shared from '~/resources/shared';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -504,7 +505,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * The identifier of the Transaction that was created to return the disputed funds
          * to your account.
          */
-        transaction_id: string;
+        transaction_id: string | null;
       }
 
       export interface CardRefund {
@@ -1470,20 +1471,14 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         merchant_state: string | null;
 
         /**
-         * The method used to enter the cardholder's primary account number and card
-         * expiration date
+         * The payment network used to process this card authorization
          */
-        point_of_service_entry_mode:
-          | 'manual'
-          | 'magnetic_stripe_no_cvv'
-          | 'optical_code'
-          | 'integrated_circuit_card'
-          | 'contactless'
-          | 'credential_on_file'
-          | 'magnetic_stripe'
-          | 'contactless_magnetic_stripe'
-          | 'integrated_circuit_card_no_cvv'
-          | null;
+        network: 'visa';
+
+        /**
+         * Fields specific to the `network`
+         */
+        network_details: CardDecline.NetworkDetails;
 
         /**
          * The identifier of the Real-Time Decision sent to approve or decline this
@@ -1505,6 +1500,25 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'webhook_declined'
           | 'webhook_timed_out'
           | 'declined_by_stand_in_processing';
+      }
+
+      export namespace CardDecline {
+        export interface NetworkDetails {
+          /**
+           * Fields specific to the `visa` network
+           */
+          visa: NetworkDetails.Visa;
+        }
+
+        export namespace NetworkDetails {
+          export interface Visa {
+            /**
+             * The method used to enter the cardholder's primary account number and card
+             * expiration date
+             */
+            point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+          }
+        }
       }
 
       export interface CheckDecline {
