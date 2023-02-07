@@ -2,8 +2,8 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
-import * as Shared from '~/resources/shared';
 import * as Transactions from '~/resources/transactions';
+import * as Shared from '~/resources/shared';
 
 export class Cards extends APIResource {
   /**

@@ -2,8 +2,8 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
-import * as Shared from '~/resources/shared';
 import * as ACHTransfers_ from '~/resources/ach-transfers';
+import * as Shared from '~/resources/shared';
 
 export class ACHTransfers extends APIResource {
   /**

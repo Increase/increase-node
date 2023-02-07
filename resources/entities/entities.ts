@@ -3,8 +3,8 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
-import { SupplementalDocuments } from './supplemental-documents';
 import { Page, PageParams } from '~/pagination';
+import { SupplementalDocuments } from './supplemental-documents';
 
 export class Entities extends APIResource {
   supplementalDocuments: SupplementalDocuments = new SupplementalDocuments(this.client);

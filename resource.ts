@@ -1,3 +1,5 @@
+// File generated from our OpenAPI spec by Stainless.
+
 import type { Increase } from './index';
 
 export class APIResource {
