@@ -18,4 +18,5 @@ export {
   InboundRealTimePaymentsTransferSimulationResult,
   RealTimePaymentsTransferCreateInboundParams,
 } from './real-time-payments-transfers';
+export { InboundWireDrawdownRequestCreateParams } from './inbound-wire-drawdown-requests';
 export { WireTransferSimulation, WireTransferCreateInboundParams } from './wire-transfers';

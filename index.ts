@@ -67,6 +67,7 @@ export class Increase extends Core.APIClient {
   wireTransfers: API.WireTransfers = new API.WireTransfers(this);
   checkTransfers: API.CheckTransfers = new API.CheckTransfers(this);
   entities: API.Entities = new API.Entities(this);
+  inboundWireDrawdownRequests: API.InboundWireDrawdownRequests = new API.InboundWireDrawdownRequests(this);
   wireDrawdownRequests: API.WireDrawdownRequests = new API.WireDrawdownRequests(this);
   events: API.Events = new API.Events(this);
   eventSubscriptions: API.EventSubscriptions = new API.EventSubscriptions(this);
@@ -218,6 +219,10 @@ export namespace Increase {
   export import EntitiesPage = API.EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
+
+  export import InboundWireDrawdownRequest = API.InboundWireDrawdownRequest;
+  export import InboundWireDrawdownRequestsPage = API.InboundWireDrawdownRequestsPage;
+  export import InboundWireDrawdownRequestListParams = API.InboundWireDrawdownRequestListParams;
 
   export import WireDrawdownRequest = API.WireDrawdownRequest;
   export import WireDrawdownRequestsPage = API.WireDrawdownRequestsPage;

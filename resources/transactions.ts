@@ -198,6 +198,7 @@ export namespace Transaction {
       | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
+      | 'internal_general_ledger_transaction'
       | 'internal_source'
       | 'card_route_refund'
       | 'card_route_settlement'
@@ -585,7 +586,7 @@ export namespace Transaction {
 
       /**
        * An additional line of metadata printed on the check. This typically includes the
-       * check number.
+       * check number for business checks.
        */
       auxiliary_on_us: string | null;
 
@@ -604,6 +605,12 @@ export namespace Transaction {
        * The routing number printed on the check.
        */
       routing_number: string;
+
+      /**
+       * The check serial number, if present, for consumer checks. For business checks,
+       * the serial number is usually in the `auxiliary_on_us` field.
+       */
+      serial_number: string | null;
     }
 
     export interface CheckDepositReturn {
@@ -1138,6 +1145,7 @@ export namespace Transaction {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       reason:
+        | 'bank_migration'
         | 'cashback'
         | 'empyreal_adjustment'
         | 'error'
@@ -1330,6 +1338,7 @@ export namespace TransactionListParams {
       | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
+      | 'internal_general_ledger_transaction'
       | 'internal_source'
       | 'card_route_refund'
       | 'card_route_settlement'

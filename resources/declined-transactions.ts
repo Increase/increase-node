@@ -293,6 +293,22 @@ export namespace DeclinedTransaction {
       export namespace NetworkDetails {
         export interface Visa {
           /**
+           * For electronic commerce transactions, this identifies the level of security used
+           * in obtaining the customer's payment credential. For mail or telephone order
+           * transactions, identifies the type of mail or telephone order.
+           */
+          electronic_commerce_indicator:
+            | 'mail_phone_order'
+            | 'recurring'
+            | 'installment'
+            | 'unknown_mail_phone_order'
+            | 'secure_electronic_commerce'
+            | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+            | 'non_authenticated_security_transaction'
+            | 'non_secure_transaction'
+            | null;
+
+          /**
            * The method used to enter the cardholder's primary account number and card
            * expiration date
            */

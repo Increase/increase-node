@@ -245,6 +245,17 @@ Methods:
 
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entity</code>
 
+# InboundWireDrawdownRequests
+
+Models:
+
+- <code><a href="./resources/inbound-wire-drawdown-requests.ts">InboundWireDrawdownRequest</a></code>
+
+Methods:
+
+- <code title="get /inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}">client.inboundWireDrawdownRequests.<a href="./resources/inbound-wire-drawdown-requests.ts">retrieve</a>(inboundWireDrawdownRequestId) -> InboundWireDrawdownRequest</code>
+- <code title="get /inbound_wire_drawdown_requests">client.inboundWireDrawdownRequests.<a href="./resources/inbound-wire-drawdown-requests.ts">list</a>({ ...params }) -> InboundWireDrawdownRequestsPage</code>
+
 # WireDrawdownRequests
 
 Models:
@@ -414,6 +425,12 @@ Methods:
 
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">reject</a>(checkDepositId) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">submit</a>(checkDepositId) -> CheckDeposit</code>
+
+## InboundWireDrawdownRequests
+
+Methods:
+
+- <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inboundWireDrawdownRequests.<a href="./resources/simulations/inbound-wire-drawdown-requests.ts">create</a>({ ...params }) -> InboundWireDrawdownRequest</code>
 
 ## WireTransfers
 

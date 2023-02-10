@@ -118,7 +118,7 @@ export interface Card {
   /**
    * This indicates if payments can be made with the card.
    */
-  status: 'active' | 'disabled' | 'canceled' | null;
+  status: 'active' | 'disabled' | 'canceled';
 
   /**
    * A constant representing the object's type. For this resource it will always be

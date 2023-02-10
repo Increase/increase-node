@@ -114,6 +114,12 @@ export {
 } from './external-accounts';
 export { File, FileCreateParams, FileListParams, FilesPage, Files } from './files';
 export { Group, Groups } from './groups';
+export {
+  InboundWireDrawdownRequest,
+  InboundWireDrawdownRequestListParams,
+  InboundWireDrawdownRequestsPage,
+  InboundWireDrawdownRequests,
+} from './inbound-wire-drawdown-requests';
 export { Limit, LimitCreateParams, LimitUpdateParams, LimitListParams, LimitsPage, Limits } from './limits';
 export {
   OauthConnection,

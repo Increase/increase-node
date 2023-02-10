@@ -238,6 +238,7 @@ export namespace ACHTransferSimulation {
         | 'inbound_wire_drawdown_payment'
         | 'inbound_wire_reversal'
         | 'inbound_wire_transfer'
+        | 'internal_general_ledger_transaction'
         | 'internal_source'
         | 'card_route_refund'
         | 'card_route_settlement'
@@ -625,7 +626,7 @@ export namespace ACHTransferSimulation {
 
         /**
          * An additional line of metadata printed on the check. This typically includes the
-         * check number.
+         * check number for business checks.
          */
         auxiliary_on_us: string | null;
 
@@ -644,6 +645,12 @@ export namespace ACHTransferSimulation {
          * The routing number printed on the check.
          */
         routing_number: string;
+
+        /**
+         * The check serial number, if present, for consumer checks. For business checks,
+         * the serial number is usually in the `auxiliary_on_us` field.
+         */
+        serial_number: string | null;
       }
 
       export interface CheckDepositReturn {
@@ -1178,6 +1185,7 @@ export namespace ACHTransferSimulation {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         reason:
+          | 'bank_migration'
           | 'cashback'
           | 'empyreal_adjustment'
           | 'error'
@@ -1544,6 +1552,22 @@ export namespace ACHTransferSimulation {
 
         export namespace NetworkDetails {
           export interface Visa {
+            /**
+             * For electronic commerce transactions, this identifies the level of security used
+             * in obtaining the customer's payment credential. For mail or telephone order
+             * transactions, identifies the type of mail or telephone order.
+             */
+            electronic_commerce_indicator:
+              | 'mail_phone_order'
+              | 'recurring'
+              | 'installment'
+              | 'unknown_mail_phone_order'
+              | 'secure_electronic_commerce'
+              | 'non_authenticated_security_transaction_at_3ds_capable_merchant'
+              | 'non_authenticated_security_transaction'
+              | 'non_secure_transaction'
+              | null;
+
             /**
              * The method used to enter the cardholder's primary account number and card
              * expiration date
