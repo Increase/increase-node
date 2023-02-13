@@ -37,7 +37,10 @@ describe('resource external_accounts', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.externalAccounts.update('string', { description: 'New description' });
+    const response = await increase.externalAccounts.update('string', {
+      description: 'New description',
+      status: 'active',
+    });
   });
 
   test('list: only required params', async () => {
@@ -45,7 +48,11 @@ describe('resource external_accounts', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await increase.externalAccounts.list({ cursor: 'string', limit: 0 });
+    const response = await increase.externalAccounts.list({
+      cursor: 'string',
+      limit: 0,
+      status: { in: ['active', 'active', 'active'] },
+    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -58,7 +65,10 @@ describe('resource external_accounts', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.externalAccounts.list({ cursor: 'string', limit: 0 }, { path: '/_stainless_unknown_path' }),
+      increase.externalAccounts.list(
+        { cursor: 'string', limit: 0, status: { in: ['active', 'active', 'active'] } },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

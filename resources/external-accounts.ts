@@ -96,6 +96,11 @@ export interface ExternalAccount {
   routing_number: string;
 
   /**
+   * The External Account's status.
+   */
+  status: 'active' | 'archived';
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `external_account`.
    */
@@ -135,6 +140,23 @@ export interface ExternalAccountUpdateParams {
    * The description you choose to give the external account.
    */
   description?: string;
+
+  /**
+   * The status of the External Account.
+   */
+  status?: 'active' | 'archived';
 }
 
-export interface ExternalAccountListParams extends PageParams {}
+export interface ExternalAccountListParams extends PageParams {
+  status?: ExternalAccountListParams.Status;
+}
+
+export namespace ExternalAccountListParams {
+  export interface Status {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'active' | 'archived'>;
+  }
+}

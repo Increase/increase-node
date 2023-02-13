@@ -778,8 +778,8 @@ export namespace WireTransferSimulation {
 
       export interface InboundACHTransfer {
         /**
-         * The declined amount in the minor unit of the destination account currency. For
-         * dollars, for example, this is cents.
+         * The amount in the minor unit of the destination account currency. For dollars,
+         * for example, this is cents.
          */
         amount: number;
 
@@ -802,8 +802,8 @@ export namespace WireTransferSimulation {
 
       export interface InboundCheck {
         /**
-         * The declined amount in the minor unit of the destination account currency. For
-         * dollars, for example, this is cents.
+         * The amount in the minor unit of the destination account currency. For dollars,
+         * for example, this is cents.
          */
         amount: number;
 
@@ -822,8 +822,8 @@ export namespace WireTransferSimulation {
 
       export interface InboundInternationalACHTransfer {
         /**
-         * The declined amount in the minor unit of the destination account currency. For
-         * dollars, for example, this is cents.
+         * The amount in the minor unit of the destination account currency. For dollars,
+         * for example, this is cents.
          */
         amount: number;
 

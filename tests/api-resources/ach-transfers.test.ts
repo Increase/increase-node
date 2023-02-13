@@ -22,7 +22,7 @@ describe('resource ach_transfers', () => {
       company_discretionary_data: 'x',
       company_entry_description: 'x',
       company_name: 'x',
-      effective_date: '2019-12-27T18:11:19.117Z',
+      effective_date: '2019-12-27',
       external_account_id: 'string',
       funding: 'checking',
       individual_id: 'x',

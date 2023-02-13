@@ -96,7 +96,7 @@ export interface InboundWireDrawdownRequest {
   /**
    * A message from the drawdown request's originator.
    */
-  message_to_recipient: string;
+  message_to_recipient: string | null;
 
   /**
    * The drawdown request's originator's account number.

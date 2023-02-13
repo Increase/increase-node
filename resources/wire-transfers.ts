@@ -152,7 +152,7 @@ export interface WireTransfer {
   /**
    * The message that will show on the recipient's bank statement.
    */
-  message_to_recipient: string;
+  message_to_recipient: string | null;
 
   /**
    * The transfer's network.
