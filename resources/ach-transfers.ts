@@ -40,14 +40,14 @@ export class ACHTransfers extends APIResource {
   }
 
   /**
-   * Approve an ACH Transfer
+   * Approves an ACH Transfer in a pending_approval state.
    */
   approve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
     return this.post(`/ach_transfers/${achTransferId}/approve`, options);
   }
 
   /**
-   * Cancel a pending ACH Transfer
+   * Cancels an ACH Transfer in a pending_approval state.
    */
   cancel(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
     return this.post(`/ach_transfers/${achTransferId}/cancel`, options);
