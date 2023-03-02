@@ -173,6 +173,18 @@ Methods:
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.achTransfers.<a href="./resources/ach-transfers.ts">approve</a>(achTransferId) -> ACHTransfer</code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.achTransfers.<a href="./resources/ach-transfers.ts">cancel</a>(achTransferId) -> ACHTransfer</code>
 
+# InboundACHTransferReturns
+
+Models:
+
+- <code><a href="./resources/inbound-ach-transfer-returns.ts">InboundACHTransferReturn</a></code>
+
+Methods:
+
+- <code title="post /inbound_ach_transfer_returns">client.inboundACHTransferReturns.<a href="./resources/inbound-ach-transfer-returns.ts">create</a>({ ...params }) -> InboundACHTransferReturn</code>
+- <code title="get /inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}">client.inboundACHTransferReturns.<a href="./resources/inbound-ach-transfer-returns.ts">retrieve</a>(inboundACHTransferReturnId) -> InboundACHTransferReturn</code>
+- <code title="get /inbound_ach_transfer_returns">client.inboundACHTransferReturns.<a href="./resources/inbound-ach-transfer-returns.ts">list</a>({ ...params }) -> InboundACHTransferReturnsPage</code>
+
 # ACHPrenotifications
 
 Models:
@@ -424,6 +436,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">reject</a>(checkDepositId) -> CheckDeposit</code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">return</a>(checkDepositId) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">submit</a>(checkDepositId) -> CheckDeposit</code>
 
 ## InboundWireDrawdownRequests

@@ -62,6 +62,7 @@ export class Increase extends Core.APIClient {
   limits: API.Limits = new API.Limits(this);
   accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
   achTransfers: API.ACHTransfers = new API.ACHTransfers(this);
+  inboundACHTransferReturns: API.InboundACHTransferReturns = new API.InboundACHTransferReturns(this);
   achPrenotifications: API.ACHPrenotifications = new API.ACHPrenotifications(this);
   documents: API.Documents = new API.Documents(this);
   wireTransfers: API.WireTransfers = new API.WireTransfers(this);
@@ -195,6 +196,11 @@ export namespace Increase {
   export import ACHTransfersPage = API.ACHTransfersPage;
   export import ACHTransferCreateParams = API.ACHTransferCreateParams;
   export import ACHTransferListParams = API.ACHTransferListParams;
+
+  export import InboundACHTransferReturn = API.InboundACHTransferReturn;
+  export import InboundACHTransferReturnsPage = API.InboundACHTransferReturnsPage;
+  export import InboundACHTransferReturnCreateParams = API.InboundACHTransferReturnCreateParams;
+  export import InboundACHTransferReturnListParams = API.InboundACHTransferReturnListParams;
 
   export import ACHPrenotification = API.ACHPrenotification;
   export import ACHPrenotificationsPage = API.ACHPrenotificationsPage;

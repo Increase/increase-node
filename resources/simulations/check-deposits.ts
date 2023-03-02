@@ -18,6 +18,17 @@ export class CheckDeposits extends APIResource {
   }
 
   /**
+   * Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
+   * must first have a `status` of `submitted`.
+   */
+  return(
+    checkDepositId: string,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<CheckDeposits_.CheckDeposit>> {
+    return this.post(`/simulations/check_deposits/${checkDepositId}/return`, options);
+  }
+
+  /**
    * Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
    * Reserve. This Check Deposit must first have a `status` of `pending`.
    */

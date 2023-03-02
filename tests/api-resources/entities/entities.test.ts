@@ -29,7 +29,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -46,7 +46,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -63,7 +63,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -81,7 +81,7 @@ describe('resource entities', () => {
         confirmed_no_us_tax_id: true,
         identification: {
           method: 'social_security_number',
-          number: 'x',
+          number: 'xxxx',
           passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
           drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
           other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -97,7 +97,7 @@ describe('resource entities', () => {
             confirmed_no_us_tax_id: true,
             identification: {
               method: 'social_security_number',
-              number: 'x',
+              number: 'xxxx',
               passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
               drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
               other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -110,7 +110,7 @@ describe('resource entities', () => {
             confirmed_no_us_tax_id: true,
             identification: {
               method: 'social_security_number',
-              number: 'x',
+              number: 'xxxx',
               passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
               drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
               other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -123,7 +123,7 @@ describe('resource entities', () => {
             confirmed_no_us_tax_id: true,
             identification: {
               method: 'social_security_number',
-              number: 'x',
+              number: 'xxxx',
               passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
               drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
               other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -148,7 +148,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -164,7 +164,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -180,7 +180,7 @@ describe('resource entities', () => {
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'x',
+                number: 'xxxx',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
                 other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
@@ -195,7 +195,7 @@ describe('resource entities', () => {
           confirmed_no_us_tax_id: true,
           identification: {
             method: 'social_security_number',
-            number: 'x',
+            number: 'xxxx',
             passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
             drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
             other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },

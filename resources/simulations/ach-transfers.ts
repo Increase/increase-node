@@ -231,6 +231,7 @@ export namespace ACHTransferSimulation {
         | 'dispute_resolution'
         | 'empyreal_cash_deposit'
         | 'inbound_ach_transfer'
+        | 'inbound_ach_transfer_return_intention'
         | 'inbound_check'
         | 'inbound_international_ach_transfer'
         | 'inbound_real_time_payments_transfer_confirmation'
@@ -238,6 +239,7 @@ export namespace ACHTransferSimulation {
         | 'inbound_wire_drawdown_payment'
         | 'inbound_wire_reversal'
         | 'inbound_wire_transfer'
+        | 'interest_payment'
         | 'internal_general_ledger_transaction'
         | 'internal_source'
         | 'card_route_refund'
@@ -349,6 +351,12 @@ export namespace ACHTransferSimulation {
        * if and only if `category` is equal to `inbound_wire_transfer`.
        */
       inbound_wire_transfer: Source.InboundWireTransfer | null;
+
+      /**
+       * A Interest Payment object. This field will be present in the JSON response if
+       * and only if `category` is equal to `interest_payment`.
+       */
+      interest_payment: Source.InterestPayment | null;
 
       /**
        * A Internal Source object. This field will be present in the JSON response if and
@@ -1169,6 +1177,35 @@ export namespace ACHTransferSimulation {
         originator_to_beneficiary_information_line3: string | null;
 
         originator_to_beneficiary_information_line4: string | null;
+      }
+
+      export interface InterestPayment {
+        /**
+         * The account on which the interest was accrued.
+         */
+        accrued_on_account_id: string | null;
+
+        /**
+         * The amount in the minor unit of the transaction's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+         * currency.
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The end of the period for which this transaction paid interest.
+         */
+        period_end: string;
+
+        /**
+         * The start of the period for which this transaction paid interest.
+         */
+        period_start: string;
       }
 
       export interface InternalSource {

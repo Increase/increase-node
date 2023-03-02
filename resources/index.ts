@@ -115,6 +115,13 @@ export {
 export { File, FileCreateParams, FileListParams, FilesPage, Files } from './files';
 export { Group, Groups } from './groups';
 export {
+  InboundACHTransferReturn,
+  InboundACHTransferReturnCreateParams,
+  InboundACHTransferReturnListParams,
+  InboundACHTransferReturnsPage,
+  InboundACHTransferReturns,
+} from './inbound-ach-transfer-returns';
+export {
   InboundWireDrawdownRequest,
   InboundWireDrawdownRequestListParams,
   InboundWireDrawdownRequestsPage,
