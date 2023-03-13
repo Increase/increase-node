@@ -12,22 +12,27 @@ describe('resource account_numbers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.accountNumbers.retrieve('string');
+    const response = await increase.accountNumbers.retrieve('account_number_v18nkfqm6afpsrvy82b2');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountNumbers.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.accountNumbers.retrieve('account_number_v18nkfqm6afpsrvy82b2', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const response = await increase.accountNumbers.update('string', {});
+    const response = await increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {});
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.accountNumbers.update('string', { name: 'x', status: 'disabled' });
+    const response = await increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {
+      name: 'x',
+      status: 'disabled',
+    });
   });
 
   test('list: only required params', async () => {

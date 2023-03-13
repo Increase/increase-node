@@ -25,26 +25,28 @@ describe('resource ach_transfers', () => {
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('return: only required params', async () => {
-    const response = await increase.simulations.achTransfers.return('string', {});
+    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('return: required and optional params', async () => {
-    const response = await increase.simulations.achTransfers.return('string', {
+    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {
       reason: 'insufficient_fund',
     });
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('submit', async () => {
-    const response = await increase.simulations.achTransfers.submit('string');
+    const response = await increase.simulations.achTransfers.submit('ach_transfer_uoxatyh3lt5evrsdvo7q');
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('submit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.simulations.achTransfers.submit('string', { path: '/_stainless_unknown_path' }),
+      increase.simulations.achTransfers.submit('ach_transfer_uoxatyh3lt5evrsdvo7q', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

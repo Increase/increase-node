@@ -5,13 +5,15 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource account_statements', () => {
   test('retrieve', async () => {
-    const response = await increase.accountStatements.retrieve('string');
+    const response = await increase.accountStatements.retrieve('account_statement_lkc03a4skm2k7f38vj15');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountStatements.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.accountStatements.retrieve('account_statement_lkc03a4skm2k7f38vj15', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

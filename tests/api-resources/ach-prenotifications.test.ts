@@ -29,13 +29,15 @@ describe('resource ach_prenotifications', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.achPrenotifications.retrieve('string');
+    const response = await increase.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achPrenotifications.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

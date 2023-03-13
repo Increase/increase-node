@@ -5,13 +5,17 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource inbound_wire_drawdown_requests', () => {
   test('retrieve', async () => {
-    const response = await increase.inboundWireDrawdownRequests.retrieve('string');
+    const response = await increase.inboundWireDrawdownRequests.retrieve(
+      'inbound_wire_drawdown_request_u5a92ikqhz1ytphn799e',
+    );
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.inboundWireDrawdownRequests.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.inboundWireDrawdownRequests.retrieve('inbound_wire_drawdown_request_u5a92ikqhz1ytphn799e', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

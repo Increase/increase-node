@@ -35,13 +35,15 @@ describe('resource ach_transfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.achTransfers.retrieve('string');
+    const response = await increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
@@ -93,24 +95,26 @@ describe('resource ach_transfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.achTransfers.approve('string');
+    const response = await increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q');
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+      increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('cancel', async () => {
-    const response = await increase.achTransfers.cancel('string');
+    const response = await increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
+      increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

@@ -18,22 +18,22 @@ describe('resource cards', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.cards.retrieve('string');
+    const response = await increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.cards.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const response = await increase.cards.update('string', {});
+    const response = await increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.cards.update('string', {
+    const response = await increase.cards.update('card_oubs0hwk5rn6knuecxg2', {
       description: 'New description',
       status: 'active',
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
@@ -87,13 +87,15 @@ describe('resource cards', () => {
   });
 
   test('retrieve_sensitive_details', async () => {
-    const response = await increase.cards.retrieveSensitiveDetails('string');
+    const response = await increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2');
   });
 
   test('retrieve_sensitive_details: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cards.retrieveSensitiveDetails('string', { path: '/_stainless_unknown_path' }),
+      increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

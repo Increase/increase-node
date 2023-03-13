@@ -32,13 +32,17 @@ describe('resource wire_drawdown_requests', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.wireDrawdownRequests.retrieve('string');
+    const response = await increase.wireDrawdownRequests.retrieve(
+      'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
+    );
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireDrawdownRequests.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.wireDrawdownRequests.retrieve('wire_drawdown_request_q6lmocus3glo0lr2bfv3', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

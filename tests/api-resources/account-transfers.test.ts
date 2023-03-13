@@ -24,13 +24,15 @@ describe('resource account_transfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.accountTransfers.retrieve('string');
+    const response = await increase.accountTransfers.retrieve('account_transfer_7k9qe1ysdgqztnt63l7n');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountTransfers.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.accountTransfers.retrieve('account_transfer_7k9qe1ysdgqztnt63l7n', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
@@ -80,24 +82,28 @@ describe('resource account_transfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.accountTransfers.approve('string');
+    const response = await increase.accountTransfers.approve('account_transfer_7k9qe1ysdgqztnt63l7n');
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+      increase.accountTransfers.approve('account_transfer_7k9qe1ysdgqztnt63l7n', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('cancel', async () => {
-    const response = await increase.accountTransfers.cancel('string');
+    const response = await increase.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n');
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accountTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
+      increase.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

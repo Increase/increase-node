@@ -6,38 +6,44 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource check_deposits', () => {
   // Prism incorrectly returns an invalid JSON error
   test.skip('reject', async () => {
-    const response = await increase.simulations.checkDeposits.reject('string');
+    const response = await increase.simulations.checkDeposits.reject('check_deposit_f06n9gpg7sxn8t19lfc1');
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('reject: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.simulations.checkDeposits.reject('string', { path: '/_stainless_unknown_path' }),
+      increase.simulations.checkDeposits.reject('check_deposit_f06n9gpg7sxn8t19lfc1', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('return', async () => {
-    const response = await increase.simulations.checkDeposits.return('string');
+    const response = await increase.simulations.checkDeposits.return('check_deposit_f06n9gpg7sxn8t19lfc1');
   });
 
   test('return: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.simulations.checkDeposits.return('string', { path: '/_stainless_unknown_path' }),
+      increase.simulations.checkDeposits.return('check_deposit_f06n9gpg7sxn8t19lfc1', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('submit', async () => {
-    const response = await increase.simulations.checkDeposits.submit('string');
+    const response = await increase.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1');
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('submit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.simulations.checkDeposits.submit('string', { path: '/_stainless_unknown_path' }),
+      increase.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

@@ -12,13 +12,15 @@ describe('resource card_disputes', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.cardDisputes.retrieve('string');
+    const response = await increase.cardDisputes.retrieve('card_dispute_h9sc95nbl1cgltpp7men');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cardDisputes.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.cardDisputes.retrieve('card_dispute_h9sc95nbl1cgltpp7men', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

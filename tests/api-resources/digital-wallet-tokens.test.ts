@@ -5,13 +5,15 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource digital_wallet_tokens', () => {
   test('retrieve', async () => {
-    const response = await increase.digitalWalletTokens.retrieve('string');
+    const response = await increase.digitalWalletTokens.retrieve('digital_wallet_token_izi62go3h51p369jrie0');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.digitalWalletTokens.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.digitalWalletTokens.retrieve('digital_wallet_token_izi62go3h51p369jrie0', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

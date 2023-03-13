@@ -30,13 +30,15 @@ describe('resource wire_transfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.wireTransfers.retrieve('string');
+    const response = await increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
@@ -88,50 +90,58 @@ describe('resource wire_transfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.wireTransfers.approve('string');
+    const response = await increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u');
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.approve('string', { path: '/_stainless_unknown_path' }),
+      increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('cancel', async () => {
-    const response = await increase.wireTransfers.cancel('string');
+    const response = await increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u');
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.cancel('string', { path: '/_stainless_unknown_path' }),
+      increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   // Prism tests are broken
   test.skip('reverse', async () => {
-    const response = await increase.wireTransfers.reverse('string');
+    const response = await increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u');
   });
 
   // Prism tests are broken
   test.skip('reverse: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.reverse('string', { path: '/_stainless_unknown_path' }),
+      increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   // Prism tests are broken
   test.skip('submit', async () => {
-    const response = await increase.wireTransfers.submit('string');
+    const response = await increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u');
   });
 
   // Prism tests are broken
   test.skip('submit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.submit('string', { path: '/_stainless_unknown_path' }),
+      increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

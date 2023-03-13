@@ -5,11 +5,13 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource card_disputes', () => {
   test('action: only required params', async () => {
-    const response = await increase.simulations.cardDisputes.action('string', { status: 'rejected' });
+    const response = await increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
+      status: 'rejected',
+    });
   });
 
   test('action: required and optional params', async () => {
-    const response = await increase.simulations.cardDisputes.action('string', {
+    const response = await increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
       status: 'rejected',
       explanation: 'This was a valid recurring transaction',
     });

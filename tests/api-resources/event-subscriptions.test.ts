@@ -17,22 +17,32 @@ describe('resource event_subscriptions', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.eventSubscriptions.retrieve('string');
+    const response = await increase.eventSubscriptions.retrieve(
+      'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
+    );
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.eventSubscriptions.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.eventSubscriptions.retrieve('event_subscription_001dzz0r20rcdxgb013zqb8m04g', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const response = await increase.eventSubscriptions.update('string', {});
+    const response = await increase.eventSubscriptions.update(
+      'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
+      {},
+    );
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.eventSubscriptions.update('string', { status: 'active' });
+    const response = await increase.eventSubscriptions.update(
+      'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
+      { status: 'active' },
+    );
   });
 
   test('list: only required params', async () => {

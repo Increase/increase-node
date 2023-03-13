@@ -12,13 +12,17 @@ describe('resource inbound_ach_transfer_returns', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.inboundACHTransferReturns.retrieve('string');
+    const response = await increase.inboundACHTransferReturns.retrieve(
+      'inbound_ach_transfer_return_fhcxk5huskwhmt7iz0gk',
+    );
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.inboundACHTransferReturns.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.inboundACHTransferReturns.retrieve('inbound_ach_transfer_return_fhcxk5huskwhmt7iz0gk', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

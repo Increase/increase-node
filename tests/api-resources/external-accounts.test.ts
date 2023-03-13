@@ -22,22 +22,24 @@ describe('resource external_accounts', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.externalAccounts.retrieve('string');
+    const response = await increase.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.externalAccounts.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const response = await increase.externalAccounts.update('string', {});
+    const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {});
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.externalAccounts.update('string', {
+    const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {
       description: 'New description',
       status: 'active',
     });

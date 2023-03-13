@@ -17,22 +17,24 @@ describe('resource accounts', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.accounts.retrieve('string');
+    const response = await increase.accounts.retrieve('account_in71c4amph0vgo2qllky');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.accounts.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.accounts.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update: only required params', async () => {
-    const response = await increase.accounts.update('string', {});
+    const response = await increase.accounts.update('account_in71c4amph0vgo2qllky', {});
   });
 
   test('update: required and optional params', async () => {
-    const response = await increase.accounts.update('string', { name: 'My renamed account' });
+    const response = await increase.accounts.update('account_in71c4amph0vgo2qllky', {
+      name: 'My renamed account',
+    });
   });
 
   test('list: only required params', async () => {
@@ -67,14 +69,14 @@ describe('resource accounts', () => {
 
   // Prism tests are broken
   test.skip('close', async () => {
-    const response = await increase.accounts.close('string');
+    const response = await increase.accounts.close('account_in71c4amph0vgo2qllky');
   });
 
   // Prism tests are broken
   test.skip('close: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.accounts.close('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.accounts.close('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

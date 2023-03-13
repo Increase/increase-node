@@ -209,14 +209,14 @@ describe('resource entities', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.entities.retrieve('string');
+    const response = await increase.entities.retrieve('entity_n8y8tnk2p9339ti393yi');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.entities.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.entities.retrieve('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list: only required params', async () => {

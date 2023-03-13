@@ -8,12 +8,8 @@ describe('resource card_profiles', () => {
     const response = await increase.cardProfiles.create({
       description: 'My Card Profile',
       digital_wallets: {
-        text_color: { red: 26, green: 43, blue: 59 },
         issuer_name: 'MyBank',
         card_description: 'MyBank Signature Card',
-        contact_website: 'https://example.com',
-        contact_email: 'user@example.com',
-        contact_phone: '+18885551212',
         background_image_file_id: 'file_1ai913suu1zfn1pdetru',
         app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       },
@@ -21,13 +17,15 @@ describe('resource card_profiles', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.cardProfiles.retrieve('string');
+    const response = await increase.cardProfiles.retrieve('card_profile_cox5y73lob2eqly18piy');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cardProfiles.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.cardProfiles.retrieve('card_profile_cox5y73lob2eqly18piy', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

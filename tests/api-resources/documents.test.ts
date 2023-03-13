@@ -5,14 +5,14 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource documents', () => {
   test('retrieve', async () => {
-    const response = await increase.documents.retrieve('string');
+    const response = await increase.documents.retrieve('document_qjtqc6s4c14ve2q89izm');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.documents.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.documents.retrieve('document_qjtqc6s4c14ve2q89izm', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list: only required params', async () => {

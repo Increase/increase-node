@@ -5,13 +5,15 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource oauth_connections', () => {
   test('retrieve', async () => {
-    const response = await increase.oauthConnections.retrieve('string');
+    const response = await increase.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.oauthConnections.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

@@ -15,13 +15,15 @@ describe('resource check_deposits', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.checkDeposits.retrieve('string');
+    const response = await increase.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.checkDeposits.retrieve('string', { path: '/_stainless_unknown_path' }),
+      increase.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 

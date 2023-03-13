@@ -24,14 +24,14 @@ describe('resource files', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.files.retrieve('string');
+    const response = await increase.files.retrieve('file_makxrc67oh9l6sg7w9yc');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.files.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.files.retrieve('file_makxrc67oh9l6sg7w9yc', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list: only required params', async () => {

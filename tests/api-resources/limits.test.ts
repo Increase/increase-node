@@ -22,18 +22,18 @@ describe('resource limits', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.limits.retrieve('string');
+    const response = await increase.limits.retrieve('limit_fku42k0qtc8ulsuas38q');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.limits.retrieve('string', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
+    await expect(
+      increase.limits.retrieve('limit_fku42k0qtc8ulsuas38q', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const response = await increase.limits.update('string', { status: 'inactive' });
+    const response = await increase.limits.update('limit_fku42k0qtc8ulsuas38q', { status: 'inactive' });
   });
 
   test('list: only required params', async () => {
