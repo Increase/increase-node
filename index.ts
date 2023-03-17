@@ -46,6 +46,7 @@ export class Increase extends Core.APIClient {
       httpAgent: options.httpAgent,
     });
     this.apiKey = options.apiKey;
+    this.idempotencyHeader = 'Idempotency-Key';
   }
 
   accounts: API.Accounts = new API.Accounts(this);

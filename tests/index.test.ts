@@ -45,3 +45,10 @@ describe('instantiate client', () => {
     }).toThrow();
   });
 });
+
+describe('idempotency', () => {
+  test('key can be set per-request', async () => {
+    const client = new Increase({ apiKey: 'my api key', baseURL: 'http://127.0.0.1:4010' });
+    await client.accounts.create({ name: 'New Account!' }, { idempotencyKey: 'my-idempotency-key' });
+  });
+});
