@@ -66,7 +66,7 @@ Request parameters that correspond to file uploads can be passed as either a `Fo
 We provide a `fileFromPath` helper function to easily create `FormData.File` instances from a given class.
 
 ```ts
-import increase, { fileFromPath } from 'increase';
+import Increase, { fileFromPath } from 'increase';
 
 const increase = new Increase();
 
