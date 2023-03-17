@@ -119,6 +119,8 @@ export const {
   InternalServerError,
 } = Increase;
 
+export import fileFromPath = FileFromPath.fileFromPath;
+
 export namespace Increase {
   // Helper functions
   export import fileFromPath = FileFromPath.fileFromPath;
