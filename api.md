@@ -414,6 +414,7 @@ Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfer</code>
+- <code title="post /simulations/check_transfers/{check_transfer_id}/return">client.simulations.checkTransfers.<a href="./resources/simulations/check-transfers.ts">return</a>(checkTransferId, { ...params }) -> CheckTransfer</code>
 
 ## Documents
 

@@ -279,7 +279,8 @@ export namespace DeclinedTransaction {
         | 'breaches_limit'
         | 'webhook_declined'
         | 'webhook_timed_out'
-        | 'declined_by_stand_in_processing';
+        | 'declined_by_stand_in_processing'
+        | 'invalid_physical_card';
     }
 
     export namespace CardDecline {

@@ -27,4 +27,23 @@ export class CheckTransfers extends APIResource {
   ): Promise<Core.APIResponse<CheckTransfers_.CheckTransfer>> {
     return this.post(`/simulations/check_transfers/${checkTransferId}/mail`, options);
   }
+
+  /**
+   * Simulates a [Check Transfer](#check-transfers) being returned via USPS to
+   * Increase. This transfer must first have a `status` of `mailed`.
+   */
+  return(
+    checkTransferId: string,
+    body: CheckTransferReturnParams,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<CheckTransfers_.CheckTransfer>> {
+    return this.post(`/simulations/check_transfers/${checkTransferId}/return`, { body, ...options });
+  }
+}
+
+export interface CheckTransferReturnParams {
+  /**
+   * The reason why the Check Transfer was returned to Increase.
+   */
+  reason: 'mail_delivery_failure' | 'refused_by_recipient';
 }

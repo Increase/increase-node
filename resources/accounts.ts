@@ -157,6 +157,11 @@ export interface AccountCreateParams {
    * with its activity. Its relationship to your group must be `informational`.
    */
   informational_entity_id?: string;
+
+  /**
+   * The identifier for the Program that this Account falls under.
+   */
+  program_id?: string;
 }
 
 export interface AccountUpdateParams {
