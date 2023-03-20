@@ -96,7 +96,8 @@ export interface File {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
-    | 'entity_supplemental_document';
+    | 'entity_supplemental_document'
+    | 'export';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -183,6 +184,7 @@ export namespace FileListParams {
       | 'digital_wallet_artwork'
       | 'digital_wallet_app_icon'
       | 'entity_supplemental_document'
+      | 'export'
     >;
   }
 }

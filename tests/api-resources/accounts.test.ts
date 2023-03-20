@@ -11,6 +11,7 @@ describe('resource accounts', () => {
   test('create: required and optional params', async () => {
     const response = await increase.accounts.create({
       entity_id: 'string',
+      program_id: 'string',
       informational_entity_id: 'string',
       name: 'New Account!',
     });

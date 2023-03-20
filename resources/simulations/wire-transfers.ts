@@ -718,6 +718,11 @@ export namespace WireTransferSimulation {
         file_id: string | null;
 
         /**
+         * The reason why the check was returned.
+         */
+        reason: 'mail_delivery_failure' | 'refused_by_recipient';
+
+        /**
          * The identifier of the returned Check Transfer.
          */
         transfer_id: string;

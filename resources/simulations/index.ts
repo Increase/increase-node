@@ -9,6 +9,7 @@ export { AccountStatementCreateParams } from './account-statements';
 export { CardAuthorizationSimulation, CardAuthorizeParams, CardSettlementParams } from './cards';
 export { CardDisputeActionParams } from './card-disputes';
 export { CardRefundCreateParams } from './card-refunds';
+export { CheckTransferReturnParams } from './check-transfers';
 export {
   DigitalWalletTokenRequestCreateResponse,
   DigitalWalletTokenRequestCreateParams,

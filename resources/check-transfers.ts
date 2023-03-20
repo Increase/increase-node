@@ -155,6 +155,13 @@ export interface CheckTransfer {
   return_address: CheckTransfer.ReturnAddress | null;
 
   /**
+   * After a check transfer is returned, this will contain supplemental details. A
+   * check transfer is returned when the receiver mails a never deposited check back
+   * to the bank printed on the check.
+   */
+  return_details: CheckTransfer.ReturnDetails | null;
+
+  /**
    * The lifecycle status of the transfer.
    */
   status:
@@ -284,6 +291,23 @@ export namespace CheckTransfer {
      * `check_transfer_deposit`.
      */
     type: 'check_transfer_deposit';
+  }
+
+  export interface ReturnDetails {
+    /**
+     * If available, a document with additional information about the return.
+     */
+    file_id: string | null;
+
+    /**
+     * The reason why the check was returned.
+     */
+    reason: 'mail_delivery_failure' | 'refused_by_recipient';
+
+    /**
+     * The identifier of the returned Check Transfer.
+     */
+    transfer_id: string;
   }
 }
 
