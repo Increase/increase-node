@@ -82,7 +82,7 @@ export interface Transaction {
   /**
    * The type of the route this Transaction came through.
    */
-  route_type: string | null;
+  route_type: 'account_number' | 'card' | null;
 
   /**
    * This is an object giving more details on the network-level event that caused the

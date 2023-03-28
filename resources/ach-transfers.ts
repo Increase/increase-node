@@ -128,6 +128,12 @@ export interface ACHTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
+   * The transfer effective date in
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
+  effective_date: string | null;
+
+  /**
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
