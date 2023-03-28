@@ -122,7 +122,7 @@ export namespace ACHTransferSimulation {
     /**
      * The type of the route this Transaction came through.
      */
-    route_type: string | null;
+    route_type: 'account_number' | 'card' | null;
 
     /**
      * This is an object giving more details on the network-level event that caused the
@@ -1390,7 +1390,7 @@ export namespace ACHTransferSimulation {
     /**
      * The type of the route this Declined Transaction came through.
      */
-    route_type: string | null;
+    route_type: 'account_number' | 'card' | null;
 
     /**
      * This is an object giving more details on the network-level event that caused the
@@ -1643,7 +1643,8 @@ export namespace ACHTransferSimulation {
           | 'unable_to_process'
           | 'refer_to_image'
           | 'stop_payment_requested'
-          | 'returned';
+          | 'returned'
+          | 'duplicate_presentment';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {
