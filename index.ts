@@ -6,6 +6,7 @@ import * as Pagination from './pagination';
 import * as API from './resources';
 import type { Agent } from 'http';
 import * as FileFromPath from 'formdata-node/file-from-path';
+import * as Errors from '~/error';
 
 const environments = {
   production: 'https://api.increase.com',
@@ -85,6 +86,77 @@ export class Increase extends Core.APIClient {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
+  protected override makeStatusError(
+    status: number | undefined,
+    error: Object | undefined,
+    message: string | undefined,
+    headers: Core.Headers | undefined,
+  ) {
+    const type = (error as Record<string, any>)?.['type'];
+
+    if (type === 'invalid_parameters_error') {
+      return new Errors.InvalidParametersError(status, error, message, headers);
+    }
+
+    if (type === 'malformed_request_error') {
+      return new Errors.MalformedRequestError(status, error, message, headers);
+    }
+
+    if (type === 'invalid_api_key_error') {
+      return new Errors.InvalidAPIKeyError(status, error, message, headers);
+    }
+
+    if (type === 'environment_mismatch_error') {
+      return new Errors.EnvironmentMismatchError(status, error, message, headers);
+    }
+
+    if (type === 'insufficient_permissions_error') {
+      return new Errors.InsufficientPermissionsError(status, error, message, headers);
+    }
+
+    if (type === 'private_feature_error') {
+      return new Errors.PrivateFeatureError(status, error, message, headers);
+    }
+
+    if (type === 'api_method_not_found_error') {
+      return new Errors.APIMethodNotFoundError(status, error, message, headers);
+    }
+
+    if (type === 'object_not_found_error') {
+      return new Errors.ObjectNotFoundError(status, error, message, headers);
+    }
+
+    if (type === 'idempotency_conflict_error') {
+      return new Errors.IdempotencyConflictError(status, error, message, headers);
+    }
+
+    if (type === 'invalid_operation_error') {
+      return new Errors.InvalidOperationError(status, error, message, headers);
+    }
+
+    if (type === 'idempotency_unprocessable_error') {
+      return new Errors.IdempotencyUnprocessableError(status, error, message, headers);
+    }
+
+    if (type === 'rate_limited_error') {
+      return new Errors.RateLimitedError(status, error, message, headers);
+    }
+
+    if (type === 'internal_server_error') {
+      return new Errors.InternalServerError(status, error, message, headers);
+    }
+    if (status === 500) {
+      return new Errors.InternalServerError(
+        status,
+        { type: 'internal_server_error', title: '', detail: null, status: 500 },
+        message,
+        headers,
+      );
+    }
+
+    return super.makeStatusError(status, error, message, headers);
+  }
+
   protected override qsOptions(): qs.IStringifyOptions {
     return { allowDots: true, arrayFormat: 'comma' };
   }
@@ -101,7 +173,20 @@ export class Increase extends Core.APIClient {
   static ConflictError = Core.ConflictError;
   static UnprocessableEntityError = Core.UnprocessableEntityError;
   static RateLimitError = Core.RateLimitError;
-  static InternalServerError = Core.InternalServerError;
+
+  static RateLimitedError = Errors.RateLimitedError;
+  static InvalidAPIKeyError = Errors.InvalidAPIKeyError;
+  static InternalServerError = Errors.InternalServerError;
+  static ObjectNotFoundError = Errors.ObjectNotFoundError;
+  static PrivateFeatureError = Errors.PrivateFeatureError;
+  static InvalidOperationError = Errors.InvalidOperationError;
+  static MalformedRequestError = Errors.MalformedRequestError;
+  static APIMethodNotFoundError = Errors.APIMethodNotFoundError;
+  static InvalidParametersError = Errors.InvalidParametersError;
+  static EnvironmentMismatchError = Errors.EnvironmentMismatchError;
+  static IdempotencyConflictError = Errors.IdempotencyConflictError;
+  static InsufficientPermissionsError = Errors.InsufficientPermissionsError;
+  static IdempotencyUnprocessableError = Errors.IdempotencyUnprocessableError;
 }
 
 export const {
@@ -117,8 +202,23 @@ export const {
   ConflictError,
   UnprocessableEntityError,
   RateLimitError,
-  InternalServerError,
 } = Increase;
+
+export const {
+  RateLimitedError,
+  InvalidAPIKeyError,
+  InternalServerError,
+  ObjectNotFoundError,
+  PrivateFeatureError,
+  InvalidOperationError,
+  MalformedRequestError,
+  APIMethodNotFoundError,
+  InvalidParametersError,
+  EnvironmentMismatchError,
+  IdempotencyConflictError,
+  InsufficientPermissionsError,
+  IdempotencyUnprocessableError,
+} = Errors;
 
 export import fileFromPath = FileFromPath.fileFromPath;
 
