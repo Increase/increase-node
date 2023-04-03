@@ -5,29 +5,34 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource cards', () => {
   test('authorize: only required params', async () => {
-    const response = await increase.simulations.cards.authorize({ amount: 1000 });
+    const response = await increase.simulations.cards.authorize({
+      amount: 1,
+      card_id: 'string',
+      digital_wallet_token_id: 'string',
+    });
   });
 
   test('authorize: required and optional params', async () => {
     const response = await increase.simulations.cards.authorize({
-      amount: 1000,
-      card_id: 'card_oubs0hwk5rn6knuecxg2',
+      amount: 1,
+      card_id: 'string',
       digital_wallet_token_id: 'string',
     });
   });
 
   test('settlement: only required params', async () => {
     const response = await increase.simulations.cards.settlement({
-      card_id: 'card_oubs0hwk5rn6knuecxg2',
-      pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
+      amount: 1,
+      card_id: 'string',
+      pending_transaction_id: 'string',
     });
   });
 
   test('settlement: required and optional params', async () => {
     const response = await increase.simulations.cards.settlement({
-      card_id: 'card_oubs0hwk5rn6knuecxg2',
-      pending_transaction_id: 'pending_transaction_k1sfetcau2qbvjbzgju4',
       amount: 1,
+      card_id: 'string',
+      pending_transaction_id: 'string',
     });
   });
 });

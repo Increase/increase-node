@@ -25,7 +25,6 @@ export class Transactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/transactions', TransactionsPage, { query, ...options });
   }
 }
@@ -1312,9 +1311,74 @@ export interface TransactionListParams extends PageParams {
    */
   account_id?: string;
 
-  category?: TransactionListParams.Category;
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'category.in'?: Array<
+    | 'account_transfer_intention'
+    | 'ach_check_conversion_return'
+    | 'ach_check_conversion'
+    | 'ach_transfer_intention'
+    | 'ach_transfer_rejection'
+    | 'ach_transfer_return'
+    | 'card_dispute_acceptance'
+    | 'card_refund'
+    | 'card_settlement'
+    | 'check_deposit_acceptance'
+    | 'check_deposit_return'
+    | 'check_transfer_intention'
+    | 'check_transfer_return'
+    | 'check_transfer_rejection'
+    | 'check_transfer_stop_payment_request'
+    | 'dispute_resolution'
+    | 'empyreal_cash_deposit'
+    | 'inbound_ach_transfer'
+    | 'inbound_ach_transfer_return_intention'
+    | 'inbound_check'
+    | 'inbound_international_ach_transfer'
+    | 'inbound_real_time_payments_transfer_confirmation'
+    | 'inbound_wire_drawdown_payment_reversal'
+    | 'inbound_wire_drawdown_payment'
+    | 'inbound_wire_reversal'
+    | 'inbound_wire_transfer'
+    | 'interest_payment'
+    | 'internal_general_ledger_transaction'
+    | 'internal_source'
+    | 'card_route_refund'
+    | 'card_route_settlement'
+    | 'real_time_payments_transfer_acknowledgement'
+    | 'sample_funds'
+    | 'wire_drawdown_payment_intention'
+    | 'wire_drawdown_payment_rejection'
+    | 'wire_transfer_intention'
+    | 'wire_transfer_rejection'
+    | 'other'
+  >;
 
-  created_at?: TransactionListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 
   /**
    * Filter Transactions for those belonging to the specified route.

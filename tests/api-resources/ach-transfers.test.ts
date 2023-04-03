@@ -6,18 +6,10 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource ach_transfers', () => {
   test('create: only required params', async () => {
     const response = await increase.achTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 100,
-      statement_descriptor: 'New ACH transfer',
-    });
-  });
-
-  test('create: required and optional params', async () => {
-    const response = await increase.achTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      account_number: '987654321',
+      account_id: 'string',
+      account_number: 'x',
       addendum: 'x',
-      amount: 100,
+      amount: 0,
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
       company_entry_description: 'x',
@@ -28,9 +20,31 @@ describe('resource ach_transfers', () => {
       individual_id: 'x',
       individual_name: 'x',
       require_approval: true,
-      routing_number: '101050001',
+      routing_number: 'xxxxxxxxx',
       standard_entry_class_code: 'corporate_credit_or_debit',
-      statement_descriptor: 'New ACH transfer',
+      statement_descriptor: 'x',
+    });
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.achTransfers.create({
+      account_id: 'string',
+      account_number: 'x',
+      addendum: 'x',
+      amount: 0,
+      company_descriptive_date: 'x',
+      company_discretionary_data: 'x',
+      company_entry_description: 'x',
+      company_name: 'x',
+      effective_date: '2019-12-27',
+      external_account_id: 'string',
+      funding: 'checking',
+      individual_id: 'x',
+      individual_name: 'x',
+      require_approval: true,
+      routing_number: 'xxxxxxxxx',
+      standard_entry_class_code: 'corporate_credit_or_debit',
+      statement_descriptor: 'x',
     });
   });
 
@@ -47,23 +61,8 @@ describe('resource ach_transfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.achTransfers.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.achTransfers.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      external_account_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -78,16 +77,14 @@ describe('resource ach_transfers', () => {
     await expect(
       increase.achTransfers.list(
         {
-          cursor: 'string',
-          limit: 0,
           account_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          cursor: 'string',
           external_account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
+          limit: 0,
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -342,4 +342,61 @@ export namespace RealTimeDecisionActionParams {
      */
     result: 'success' | 'failure';
   }
+
+  export interface CardAuthorization {
+    /**
+     * Whether the card authorization should be approved or declined.
+     */
+    decision: 'approve' | 'decline';
+  }
+
+  export interface DigitalWalletAuthentication {
+    /**
+     * Whether your application was able to deliver the one-time passcode.
+     */
+    result: 'success' | 'failure';
+  }
+
+  export interface DigitalWalletToken {
+    /**
+     * If your application approves the provisioning attempt, this contains metadata
+     * about the digital wallet token that will be generated.
+     */
+    approval?: DigitalWalletToken.Approval;
+
+    /**
+     * If your application declines the provisioning attempt, this contains details
+     * about the decline.
+     */
+    decline?: DigitalWalletToken.Decline;
+  }
+
+  export namespace DigitalWalletToken {
+    export interface Approval {
+      /**
+       * The identifier of the Card Profile to assign to the Digital Wallet token.
+       */
+      card_profile_id: string;
+
+      /**
+       * An email address that can be used to verify the cardholder via one-time
+       * passcode.
+       */
+      email?: string;
+
+      /**
+       * A phone number that can be used to verify the cardholder via one-time passcode
+       * over SMS.
+       */
+      phone?: string;
+    }
+
+    export interface Decline {
+      /**
+       * Why the tokenization attempt was declined. This is for logging purposes only and
+       * is not displayed to the end-user.
+       */
+      reason?: string;
+    }
+  }
 }

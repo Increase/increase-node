@@ -46,7 +46,6 @@ export class AccountNumbers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/account_numbers', AccountNumbersPage, { query, ...options });
   }
 }

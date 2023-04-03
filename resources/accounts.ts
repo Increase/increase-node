@@ -43,7 +43,6 @@ export class Accounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/accounts', AccountsPage, { query, ...options });
   }
 
@@ -143,11 +142,6 @@ export namespace Account {
 
 export interface AccountCreateParams {
   /**
-   * The name you choose for the Account.
-   */
-  name: string;
-
-  /**
    * The identifier for the Entity that will own the Account.
    */
   entity_id?: string;
@@ -157,6 +151,11 @@ export interface AccountCreateParams {
    * with its activity. Its relationship to your group must be `informational`.
    */
   informational_entity_id?: string;
+
+  /**
+   * The name you choose for the Account.
+   */
+  name: string;
 
   /**
    * The identifier for the Program that this Account falls under.

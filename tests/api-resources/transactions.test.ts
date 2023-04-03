@@ -15,26 +15,8 @@ describe('resource transactions', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.transactions.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.transactions.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      route_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-      category: {
-        in: ['account_transfer_intention', 'account_transfer_intention', 'account_transfer_intention'],
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -49,19 +31,19 @@ describe('resource transactions', () => {
     await expect(
       increase.transactions.list(
         {
+          account_id: 'string',
+          'category.in': [
+            'account_transfer_intention',
+            'account_transfer_intention',
+            'account_transfer_intention',
+          ],
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
           route_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          category: {
-            in: ['account_transfer_intention', 'account_transfer_intention', 'account_transfer_intention'],
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

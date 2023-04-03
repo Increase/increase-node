@@ -31,7 +31,6 @@ export class InboundWireDrawdownRequests extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/inbound_wire_drawdown_requests', InboundWireDrawdownRequestsPage, {
       query,
       ...options,

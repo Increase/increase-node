@@ -25,7 +25,6 @@ export class Documents extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/documents', DocumentsPage, { query, ...options });
   }
 }
@@ -72,9 +71,35 @@ export interface Document {
 }
 
 export interface DocumentListParams extends PageParams {
-  category?: DocumentListParams.Category;
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'category.in'?: Array<'form_1099_int'>;
 
-  created_at?: DocumentListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 
   /**
    * Filter Documents to ones belonging to the specified Entity.

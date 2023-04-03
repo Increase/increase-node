@@ -5,14 +5,18 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource event_subscriptions', () => {
   test('create: only required params', async () => {
-    const response = await increase.eventSubscriptions.create({ url: 'https://website.com/webhooks' });
+    const response = await increase.eventSubscriptions.create({
+      selected_event_category: 'account.created',
+      shared_secret: 'x',
+      url: 'string',
+    });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.eventSubscriptions.create({
-      url: 'https://website.com/webhooks',
-      shared_secret: 'x',
       selected_event_category: 'account.created',
+      shared_secret: 'x',
+      url: 'string',
     });
   });
 
@@ -31,26 +35,15 @@ describe('resource event_subscriptions', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('update: only required params', async () => {
-    const response = await increase.eventSubscriptions.update(
-      'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
-      {},
-    );
-  });
-
-  test('update: required and optional params', async () => {
+  test('update', async () => {
     const response = await increase.eventSubscriptions.update(
       'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
       { status: 'active' },
     );
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.eventSubscriptions.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.eventSubscriptions.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

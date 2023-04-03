@@ -4,13 +4,23 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource check_deposits', () => {
-  test('create', async () => {
+  test('create: only required params', async () => {
     const response = await increase.checkDeposits.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 1000,
-      currency: 'USD',
-      front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
-      back_image_file_id: 'file_26khfk98mzfz90a11oqx',
+      account_id: 'string',
+      amount: 0,
+      back_image_file_id: 'string',
+      currency: 'x',
+      front_image_file_id: 'string',
+    });
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.checkDeposits.create({
+      account_id: 'string',
+      amount: 0,
+      back_image_file_id: 'string',
+      currency: 'x',
+      front_image_file_id: 'string',
     });
   });
 
@@ -27,22 +37,8 @@ describe('resource check_deposits', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.checkDeposits.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.checkDeposits.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -57,15 +53,13 @@ describe('resource check_deposits', () => {
     await expect(
       increase.checkDeposits.list(
         {
+          account_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

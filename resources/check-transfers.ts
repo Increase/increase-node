@@ -35,7 +35,6 @@ export class CheckTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
   }
 
@@ -328,6 +327,11 @@ export interface CheckTransferCreateParams {
   address_line1: string;
 
   /**
+   * The second line of the address of the check's destination.
+   */
+  address_line2?: string;
+
+  /**
    * The state of the check's destination.
    */
   address_state: string;
@@ -348,19 +352,14 @@ export interface CheckTransferCreateParams {
   message: string;
 
   /**
-   * The name that will be printed on the check.
-   */
-  recipient_name: string;
-
-  /**
-   * The second line of the address of the check's destination.
-   */
-  address_line2?: string;
-
-  /**
    * The descriptor that will be printed on the letter included with the check.
    */
   note?: string;
+
+  /**
+   * The name that will be printed on the check.
+   */
+  recipient_name: string;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.
@@ -406,6 +405,38 @@ export namespace CheckTransferCreateParams {
      */
     line2?: string;
   }
+
+  export interface ReturnAddress {
+    /**
+     * The city of the return address.
+     */
+    city: string;
+
+    /**
+     * The first line of the return address.
+     */
+    line1: string;
+
+    /**
+     * The name of the return address.
+     */
+    name: string;
+
+    /**
+     * The US state of the return address.
+     */
+    state: string;
+
+    /**
+     * The postal code of the return address.
+     */
+    zip: string;
+
+    /**
+     * The second line of the return address.
+     */
+    line2?: string;
+  }
 }
 
 export interface CheckTransferListParams extends PageParams {
@@ -414,7 +445,29 @@ export interface CheckTransferListParams extends PageParams {
    */
   account_id?: string;
 
-  created_at?: CheckTransferListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 }
 
 export namespace CheckTransferListParams {

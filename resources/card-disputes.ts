@@ -35,7 +35,6 @@ export class CardDisputes extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/card_disputes', CardDisputesPage, { query, ...options });
   }
 }
@@ -145,9 +144,35 @@ export interface CardDisputeCreateParams {
 }
 
 export interface CardDisputeListParams extends PageParams {
-  created_at?: CardDisputeListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
 
-  status?: CardDisputeListParams.Status;
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
+
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'status.in'?: Array<'pending_reviewing' | 'accepted' | 'rejected'>;
 }
 
 export namespace CardDisputeListParams {

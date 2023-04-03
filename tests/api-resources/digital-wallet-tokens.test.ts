@@ -17,22 +17,8 @@ describe('resource digital_wallet_tokens', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.digitalWalletTokens.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.digitalWalletTokens.list({
-      cursor: 'string',
-      limit: 0,
-      card_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -47,15 +33,13 @@ describe('resource digital_wallet_tokens', () => {
     await expect(
       increase.digitalWalletTokens.list(
         {
+          card_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          card_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

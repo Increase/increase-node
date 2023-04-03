@@ -19,12 +19,8 @@ describe('resource inbound_wire_drawdown_requests', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.inboundWireDrawdownRequests.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.inboundWireDrawdownRequests.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

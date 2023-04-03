@@ -35,7 +35,6 @@ export class CardProfiles extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/card_profiles', CardProfilesPage, { query, ...options });
   }
 }
@@ -219,10 +218,75 @@ export namespace CardProfileCreateParams {
       red: number;
     }
   }
+
+  export interface DigitalWallets {
+    /**
+     * The identifier of the File containing the card's icon image.
+     */
+    app_icon_file_id: string;
+
+    /**
+     * The identifier of the File containing the card's front image.
+     */
+    background_image_file_id: string;
+
+    /**
+     * A user-facing description for the card itself.
+     */
+    card_description: string;
+
+    /**
+     * A user-facing description for whoever is issuing the card.
+     */
+    issuer_name: string;
+
+    /**
+     * An email address the user can contact to receive support for their card.
+     */
+    contact_email?: string;
+
+    /**
+     * A phone number the user can contact to receive support for their card.
+     */
+    contact_phone?: string;
+
+    /**
+     * A website the user can visit to view and receive support for their card.
+     */
+    contact_website?: string;
+
+    /**
+     * The Card's text color, specified as an RGB triple. The default is white.
+     */
+    text_color?: DigitalWallets.TextColor;
+  }
+
+  export namespace DigitalWallets {
+    export interface TextColor {
+      /**
+       * The value of the blue channel in the RGB color.
+       */
+      blue: number;
+
+      /**
+       * The value of the green channel in the RGB color.
+       */
+      green: number;
+
+      /**
+       * The value of the red channel in the RGB color.
+       */
+      red: number;
+    }
+  }
 }
 
 export interface CardProfileListParams extends PageParams {
-  status?: CardProfileListParams.Status;
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'status.in'?: Array<'pending' | 'rejected' | 'active' | 'archived'>;
 }
 
 export namespace CardProfileListParams {
