@@ -6,31 +6,35 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource check_transfers', () => {
   test('create: only required params', async () => {
     const response = await increase.checkTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      address_line1: '33 Liberty Street',
-      address_city: 'New York',
-      address_state: 'NY',
-      address_zip: '10045',
-      amount: 1000,
-      message: 'Check payment',
-      recipient_name: 'Ian Crease',
+      account_id: 'string',
+      address_city: 'x',
+      address_line1: 'x',
+      address_line2: 'x',
+      address_state: 'x',
+      address_zip: 'x',
+      amount: 1,
+      message: 'x',
+      note: 'x',
+      recipient_name: 'x',
+      require_approval: true,
+      return_address: { name: 'x', line1: 'x', city: 'x', state: 'x', zip: 'x' },
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.checkTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      address_line1: '33 Liberty Street',
+      account_id: 'string',
+      address_city: 'x',
+      address_line1: 'x',
       address_line2: 'x',
-      address_city: 'New York',
-      address_state: 'NY',
-      address_zip: '10045',
-      return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-      amount: 1000,
-      message: 'Check payment',
+      address_state: 'x',
+      address_zip: 'x',
+      amount: 1,
+      message: 'x',
       note: 'x',
-      recipient_name: 'Ian Crease',
+      recipient_name: 'x',
       require_approval: true,
+      return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
     });
   });
 
@@ -47,22 +51,8 @@ describe('resource check_transfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.checkTransfers.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.checkTransfers.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -77,15 +67,13 @@ describe('resource check_transfers', () => {
     await expect(
       increase.checkTransfers.list(
         {
+          account_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -32,7 +32,6 @@ export class PendingTransactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/pending_transactions', PendingTransactionsPage, { query, ...options });
   }
 }
@@ -477,7 +476,11 @@ export interface PendingTransactionListParams extends PageParams {
    */
   source_id?: string;
 
-  status?: PendingTransactionListParams.Status;
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'status.in'?: Array<'pending' | 'complete'>;
 }
 
 export namespace PendingTransactionListParams {

@@ -6,18 +6,19 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource external_accounts', () => {
   test('create: only required params', async () => {
     const response = await increase.externalAccounts.create({
-      routing_number: '101050001',
-      account_number: '987654321',
-      description: 'Landlord',
+      account_number: 'x',
+      description: 'x',
+      funding: 'checking',
+      routing_number: 'xxxxxxxxx',
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.externalAccounts.create({
-      routing_number: '101050001',
-      account_number: '987654321',
+      account_number: 'x',
+      description: 'x',
       funding: 'checking',
-      description: 'Landlord',
+      routing_number: 'xxxxxxxxx',
     });
   });
 
@@ -34,27 +35,15 @@ describe('resource external_accounts', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('update: only required params', async () => {
-    const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {});
-  });
-
-  test('update: required and optional params', async () => {
+  test('update', async () => {
     const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {
-      description: 'New description',
+      description: 'x',
       status: 'active',
     });
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.externalAccounts.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.externalAccounts.list({
-      cursor: 'string',
-      limit: 0,
-      status: { in: ['active', 'active', 'active'] },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -68,7 +57,7 @@ describe('resource external_accounts', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.externalAccounts.list(
-        { cursor: 'string', limit: 0, status: { in: ['active', 'active', 'active'] } },
+        { cursor: 'string', limit: 0, 'status.in': ['active', 'active', 'active'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

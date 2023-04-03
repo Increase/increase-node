@@ -41,7 +41,6 @@ export class ACHPrenotifications extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/ach_prenotifications', ACHPrenotificationsPage, { query, ...options });
   }
 }
@@ -148,12 +147,6 @@ export interface ACHPrenotificationCreateParams {
   account_number: string;
 
   /**
-   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-   * destination account.
-   */
-  routing_number: string;
-
-  /**
    * Additional information that will be sent to the recipient.
    */
   addendum?: string;
@@ -201,6 +194,12 @@ export interface ACHPrenotificationCreateParams {
   individual_name?: string;
 
   /**
+   * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+   * destination account.
+   */
+  routing_number: string;
+
+  /**
    * The Standard Entry Class (SEC) code to use for the ACH Prenotification.
    */
   standard_entry_class_code?:
@@ -210,7 +209,29 @@ export interface ACHPrenotificationCreateParams {
 }
 
 export interface ACHPrenotificationListParams extends PageParams {
-  created_at?: ACHPrenotificationListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 }
 
 export namespace ACHPrenotificationListParams {

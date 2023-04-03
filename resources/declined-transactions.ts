@@ -32,7 +32,6 @@ export class DeclinedTransactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/declined_transactions', DeclinedTransactionsPage, { query, ...options });
   }
 }
@@ -512,7 +511,29 @@ export interface DeclinedTransactionListParams extends PageParams {
    */
   account_id?: string;
 
-  created_at?: DeclinedTransactionListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 
   /**
    * Filter Declined Transactions to those belonging to the specified route.

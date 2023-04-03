@@ -4,14 +4,30 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource card_profiles', () => {
-  test('create', async () => {
+  test('create: only required params', async () => {
     const response = await increase.cardProfiles.create({
-      description: 'My Card Profile',
+      description: 'x',
       digital_wallets: {
-        issuer_name: 'MyBank',
-        card_description: 'MyBank Signature Card',
-        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+        issuer_name: 'x',
+        card_description: 'x',
+        background_image_file_id: 'string',
+        app_icon_file_id: 'string',
+      },
+    });
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.cardProfiles.create({
+      description: 'x',
+      digital_wallets: {
+        text_color: { red: 0, green: 0, blue: 0 },
+        issuer_name: 'x',
+        card_description: 'x',
+        contact_website: 'string',
+        contact_email: 'x',
+        contact_phone: 'x',
+        background_image_file_id: 'string',
+        app_icon_file_id: 'string',
       },
     });
   });
@@ -29,16 +45,8 @@ describe('resource card_profiles', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.cardProfiles.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.cardProfiles.list({
-      cursor: 'string',
-      limit: 0,
-      status: { in: ['pending', 'pending', 'pending'] },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -52,7 +60,7 @@ describe('resource card_profiles', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.cardProfiles.list(
-        { cursor: 'string', limit: 0, status: { in: ['pending', 'pending', 'pending'] } },
+        { cursor: 'string', limit: 0, 'status.in': ['pending', 'pending', 'pending'] },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

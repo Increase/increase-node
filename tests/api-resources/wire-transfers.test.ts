@@ -6,26 +6,33 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource wire_transfers', () => {
   test('create: only required params', async () => {
     const response = await increase.wireTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      amount: 100,
-      message_to_recipient: 'New account transfer',
-      beneficiary_name: 'Ian Crease',
+      account_id: 'string',
+      account_number: 'x',
+      amount: 1,
+      beneficiary_address_line1: 'x',
+      beneficiary_address_line2: 'x',
+      beneficiary_address_line3: 'x',
+      beneficiary_name: 'x',
+      external_account_id: 'string',
+      message_to_recipient: 'x',
+      require_approval: true,
+      routing_number: 'xxxxxxxxx',
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.wireTransfers.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      account_number: '987654321',
-      routing_number: '101050001',
+      account_id: 'string',
+      account_number: 'x',
+      amount: 1,
+      beneficiary_address_line1: 'x',
+      beneficiary_address_line2: 'x',
+      beneficiary_address_line3: 'x',
+      beneficiary_name: 'x',
       external_account_id: 'string',
-      amount: 100,
-      message_to_recipient: 'New account transfer',
-      beneficiary_name: 'Ian Crease',
-      beneficiary_address_line1: '33 Liberty Street',
-      beneficiary_address_line2: 'New York',
-      beneficiary_address_line3: 'NY 10045',
+      message_to_recipient: 'x',
       require_approval: true,
+      routing_number: 'xxxxxxxxx',
     });
   });
 
@@ -42,23 +49,8 @@ describe('resource wire_transfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.wireTransfers.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.wireTransfers.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      external_account_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -73,16 +65,14 @@ describe('resource wire_transfers', () => {
     await expect(
       increase.wireTransfers.list(
         {
-          cursor: 'string',
-          limit: 0,
           account_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          cursor: 'string',
           external_account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
+          limit: 0,
         },
         { path: '/_stainless_unknown_path' },
       ),

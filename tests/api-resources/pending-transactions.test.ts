@@ -17,19 +17,8 @@ describe('resource pending_transactions', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.pendingTransactions.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.pendingTransactions.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      route_id: 'string',
-      source_id: 'string',
-      status: { in: ['pending', 'pending', 'pending'] },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -44,12 +33,12 @@ describe('resource pending_transactions', () => {
     await expect(
       increase.pendingTransactions.list(
         {
+          account_id: 'string',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
           route_id: 'string',
           source_id: 'string',
-          status: { in: ['pending', 'pending', 'pending'] },
+          'status.in': ['pending', 'pending', 'pending'],
         },
         { path: '/_stainless_unknown_path' },
       ),

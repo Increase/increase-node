@@ -36,7 +36,6 @@ export class Files extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/files', FilesPage, { query, ...options });
   }
 }
@@ -108,6 +107,11 @@ export interface File {
 
 export interface FileCreateParams {
   /**
+   * The description you choose to give the File.
+   */
+  description?: string;
+
+  /**
    * The file contents. This should follow the specifications of
    * [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
    * transfers for the multipart/form-data protocol.
@@ -127,17 +131,51 @@ export interface FileCreateParams {
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
     | 'entity_supplemental_document';
-
-  /**
-   * The description you choose to give the File.
-   */
-  description?: string;
 }
 
 export interface FileListParams extends PageParams {
-  created_at?: FileListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
 
-  purpose?: FileListParams.Purpose;
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
+
+  /**
+   * Return results whose value is in the provided list. For GET requests, this
+   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   */
+  'purpose.in'?: Array<
+    | 'check_image_front'
+    | 'check_image_back'
+    | 'form_1099_int'
+    | 'form_ss_4'
+    | 'identity_document'
+    | 'increase_statement'
+    | 'other'
+    | 'trust_formation_document'
+    | 'digital_wallet_artwork'
+    | 'digital_wallet_app_icon'
+    | 'entity_supplemental_document'
+    | 'export'
+  >;
 }
 
 export namespace FileListParams {

@@ -22,12 +22,12 @@ export class CardDisputes extends APIResource {
 
 export interface CardDisputeActionParams {
   /**
-   * The status to move the dispute to.
-   */
-  status: 'accepted' | 'rejected';
-
-  /**
    * Why the dispute was rejected. Not required for accepting disputes.
    */
   explanation?: string;
+
+  /**
+   * The status to move the dispute to.
+   */
+  status: 'accepted' | 'rejected';
 }

@@ -5,14 +5,19 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource cards', () => {
   test('create: only required params', async () => {
-    const response = await increase.cards.create({ account_id: 'account_in71c4amph0vgo2qllky' });
+    const response = await increase.cards.create({
+      account_id: 'string',
+      billing_address: { line1: 'x', city: 'x', state: 'x', postal_code: 'x' },
+      description: 'x',
+      digital_wallet: {},
+    });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.cards.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      description: 'Card for Ian Crease',
+      account_id: 'string',
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
+      description: 'x',
       digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
     });
   });
@@ -28,35 +33,17 @@ describe('resource cards', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('update: only required params', async () => {
-    const response = await increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
-  });
-
-  test('update: required and optional params', async () => {
+  test('update', async () => {
     const response = await increase.cards.update('card_oubs0hwk5rn6knuecxg2', {
-      description: 'New description',
+      billing_address: { line1: 'x', city: 'x', state: 'x', postal_code: 'x' },
+      description: 'x',
+      digital_wallet: {},
       status: 'active',
-      billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-      digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
     });
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.cards.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.cards.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -71,15 +58,13 @@ describe('resource cards', () => {
     await expect(
       increase.cards.list(
         {
+          account_id: 'string',
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -4,10 +4,17 @@ import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource inbound_ach_transfer_returns', () => {
-  test('create', async () => {
+  test('create: only required params', async () => {
     const response = await increase.inboundACHTransferReturns.create({
-      transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
-      reason: 'payment_stopped',
+      reason: 'authorization_revoked_by_customer',
+      transaction_id: 'string',
+    });
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.inboundACHTransferReturns.create({
+      reason: 'authorization_revoked_by_customer',
+      transaction_id: 'string',
     });
   });
 
@@ -26,12 +33,8 @@ describe('resource inbound_ach_transfer_returns', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.inboundACHTransferReturns.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.inboundACHTransferReturns.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

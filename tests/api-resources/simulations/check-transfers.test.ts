@@ -32,7 +32,13 @@ describe('resource check_transfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('return', async () => {
+  test('return: only required params', async () => {
+    const response = await increase.simulations.checkTransfers.return('check_transfer_30b43acfu9vw8fyc4f5', {
+      reason: 'mail_delivery_failure',
+    });
+  });
+
+  test('return: required and optional params', async () => {
     const response = await increase.simulations.checkTransfers.return('check_transfer_30b43acfu9vw8fyc4f5', {
       reason: 'mail_delivery_failure',
     });

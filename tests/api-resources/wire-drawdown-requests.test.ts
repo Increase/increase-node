@@ -7,27 +7,30 @@ describe('resource wire_drawdown_requests', () => {
   // Prism tests are broken
   test.skip('create: only required params', async () => {
     const response = await increase.wireDrawdownRequests.create({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 10000,
-      message_to_recipient: 'Invoice 29582',
-      recipient_account_number: '987654321',
-      recipient_routing_number: '101050001',
-      recipient_name: 'Ian Crease',
+      account_number_id: 'string',
+      amount: 1,
+      message_to_recipient: 'x',
+      recipient_account_number: 'x',
+      recipient_address_line1: 'x',
+      recipient_address_line2: 'x',
+      recipient_address_line3: 'x',
+      recipient_name: 'x',
+      recipient_routing_number: 'x',
     });
   });
 
   // Prism tests are broken
   test.skip('create: required and optional params', async () => {
     const response = await increase.wireDrawdownRequests.create({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 10000,
-      message_to_recipient: 'Invoice 29582',
-      recipient_account_number: '987654321',
-      recipient_routing_number: '101050001',
-      recipient_name: 'Ian Crease',
-      recipient_address_line1: '33 Liberty Street',
-      recipient_address_line2: 'New York, NY, 10045',
+      account_number_id: 'string',
+      amount: 1,
+      message_to_recipient: 'x',
+      recipient_account_number: 'x',
+      recipient_address_line1: 'x',
+      recipient_address_line2: 'x',
       recipient_address_line3: 'x',
+      recipient_name: 'x',
+      recipient_routing_number: 'x',
     });
   });
 
@@ -46,12 +49,8 @@ describe('resource wire_drawdown_requests', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.wireDrawdownRequests.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.wireDrawdownRequests.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

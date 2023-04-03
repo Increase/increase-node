@@ -17,12 +17,8 @@ describe('resource oauth_connections', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.oauthConnections.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.oauthConnections.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

@@ -35,7 +35,6 @@ export class ACHTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/ach_transfers', ACHTransfersPage, { query, ...options });
   }
 
@@ -329,23 +328,6 @@ export interface ACHTransferCreateParams {
   account_id: string;
 
   /**
-   * The transfer amount in cents. A positive amount originates a credit transfer
-   * pushing funds to the receiving account. A negative amount originates a debit
-   * transfer pulling funds from the receiving account.
-   */
-  amount: number;
-
-  /**
-   * A description you choose to give the transfer. This will be saved with the
-   * transfer details, displayed in the dashboard, and returned by the API. If
-   * `individual_name` and `company_name` are not explicitly set by this API, the
-   * `statement_descriptor` will be sent in those fields to the receiving bank to
-   * help the customer recognize the transfer. You are highly encouraged to pass
-   * `individual_name` and `company_name` instead of relying on this fallback.
-   */
-  statement_descriptor: string;
-
-  /**
    * The account number for the destination account.
    */
   account_number?: string;
@@ -355,6 +337,13 @@ export interface ACHTransferCreateParams {
    * the transfer data sent to the receiving bank.
    */
   addendum?: string;
+
+  /**
+   * The transfer amount in cents. A positive amount originates a credit transfer
+   * pushing funds to the receiving account. A negative amount originates a debit
+   * transfer pulling funds from the receiving account.
+   */
+  amount: number;
 
   /**
    * The description of the date of the transfer, usually in the format `YYYYMMDD`.
@@ -426,6 +415,16 @@ export interface ACHTransferCreateParams {
     | 'corporate_credit_or_debit'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
+
+  /**
+   * A description you choose to give the transfer. This will be saved with the
+   * transfer details, displayed in the dashboard, and returned by the API. If
+   * `individual_name` and `company_name` are not explicitly set by this API, the
+   * `statement_descriptor` will be sent in those fields to the receiving bank to
+   * help the customer recognize the transfer. You are highly encouraged to pass
+   * `individual_name` and `company_name` instead of relying on this fallback.
+   */
+  statement_descriptor: string;
 }
 
 export interface ACHTransferListParams extends PageParams {
@@ -434,7 +433,29 @@ export interface ACHTransferListParams extends PageParams {
    */
   account_id?: string;
 
-  created_at?: ACHTransferListParams.CreatedAt;
+  /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
 
   /**
    * Filter ACH Transfers to those made to the specified External Account.

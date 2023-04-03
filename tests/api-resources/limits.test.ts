@@ -6,18 +6,19 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource limits', () => {
   test('create: only required params', async () => {
     const response = await increase.limits.create({
-      metric: 'volume',
-      model_id: 'account_in71c4amph0vgo2qllky',
-      value: 1234,
+      interval: 'transaction',
+      metric: 'count',
+      model_id: 'x',
+      value: 0,
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.limits.create({
-      metric: 'volume',
-      interval: 'month',
-      model_id: 'account_in71c4amph0vgo2qllky',
-      value: 1234,
+      interval: 'transaction',
+      metric: 'count',
+      model_id: 'x',
+      value: 0,
     });
   });
 
@@ -32,16 +33,16 @@ describe('resource limits', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('update', async () => {
+  test('update: only required params', async () => {
     const response = await increase.limits.update('limit_fku42k0qtc8ulsuas38q', { status: 'inactive' });
   });
 
-  test('list: only required params', async () => {
-    const response = await increase.limits.list();
+  test('update: required and optional params', async () => {
+    const response = await increase.limits.update('limit_fku42k0qtc8ulsuas38q', { status: 'inactive' });
   });
 
-  test('list: required and optional params', async () => {
-    const response = await increase.limits.list({ cursor: 'string', limit: 0, model_id: 'x', status: 'x' });
+  test('list', async () => {
+    const response = await increase.limits.list();
   });
 
   test('list: request options instead of params are passed correctly', async () => {

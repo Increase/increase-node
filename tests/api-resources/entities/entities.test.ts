@@ -6,20 +6,89 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource entities', () => {
   test('create: only required params', async () => {
     const response = await increase.entities.create({
+      corporation: {
+        name: 'x',
+        tax_identifier: 'x',
+        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+        beneficial_owners: [
+          {
+            individual: {
+              name: 'x',
+              date_of_birth: '2019-12-27',
+              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+              identification: { method: 'social_security_number', number: 'xxxx' },
+            },
+            prong: 'ownership',
+          },
+          {
+            individual: {
+              name: 'x',
+              date_of_birth: '2019-12-27',
+              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+              identification: { method: 'social_security_number', number: 'xxxx' },
+            },
+            prong: 'ownership',
+          },
+          {
+            individual: {
+              name: 'x',
+              date_of_birth: '2019-12-27',
+              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+              identification: { method: 'social_security_number', number: 'xxxx' },
+            },
+            prong: 'ownership',
+          },
+        ],
+      },
+      description: 'x',
+      joint: {
+        individuals: [
+          {
+            name: 'x',
+            date_of_birth: '2019-12-27',
+            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+            identification: { method: 'social_security_number', number: 'xxxx' },
+          },
+          {
+            name: 'x',
+            date_of_birth: '2019-12-27',
+            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+            identification: { method: 'social_security_number', number: 'xxxx' },
+          },
+          {
+            name: 'x',
+            date_of_birth: '2019-12-27',
+            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+            identification: { method: 'social_security_number', number: 'xxxx' },
+          },
+        ],
+      },
+      natural_person: {
+        name: 'x',
+        date_of_birth: '2019-12-27',
+        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+        identification: { method: 'social_security_number', number: 'xxxx' },
+      },
+      relationship: 'affiliated',
       structure: 'corporation',
-      relationship: 'informational',
+      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
+      trust: {
+        name: 'x',
+        category: 'revocable',
+        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+        trustees: [{ structure: 'individual' }, { structure: 'individual' }, { structure: 'individual' }],
+      },
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.entities.create({
-      structure: 'corporation',
       corporation: {
-        name: 'National Phonograph Company',
-        website: 'https://example.com',
-        tax_identifier: '602214076',
-        incorporation_state: 'NY',
-        address: { line1: '33 Liberty Street', line2: 'x', city: 'New York', state: 'NY', zip: '10045' },
+        name: 'x',
+        website: 'string',
+        tax_identifier: 'x',
+        incorporation_state: 'x',
+        address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
         beneficial_owners: [
           {
             individual: {
@@ -74,19 +143,7 @@ describe('resource entities', () => {
           },
         ],
       },
-      natural_person: {
-        name: 'x',
-        date_of_birth: '2019-12-27',
-        address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-        confirmed_no_us_tax_id: true,
-        identification: {
-          method: 'social_security_number',
-          number: 'xxxx',
-          passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
-          drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
-          other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
-        },
-      },
+      description: 'x',
       joint: {
         name: 'x',
         individuals: [
@@ -131,6 +188,22 @@ describe('resource entities', () => {
           },
         ],
       },
+      natural_person: {
+        name: 'x',
+        date_of_birth: '2019-12-27',
+        address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+        confirmed_no_us_tax_id: true,
+        identification: {
+          method: 'social_security_number',
+          number: 'xxxx',
+          passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
+          drivers_license: { file_id: 'string', expiration_date: '2019-12-27', state: 'x' },
+          other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
+        },
+      },
+      relationship: 'affiliated',
+      structure: 'corporation',
+      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
       trust: {
         name: 'x',
         category: 'revocable',
@@ -202,9 +275,6 @@ describe('resource entities', () => {
           },
         },
       },
-      description: 'x',
-      relationship: 'informational',
-      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
     });
   });
 
@@ -219,12 +289,8 @@ describe('resource entities', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.entities.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.entities.list({ cursor: 'string', limit: 0 });
   });
 
   test('list: request options instead of params are passed correctly', async () => {

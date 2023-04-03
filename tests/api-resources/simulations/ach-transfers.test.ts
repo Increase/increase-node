@@ -6,30 +6,30 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource ach_transfers', () => {
   test('create_inbound: only required params', async () => {
     const response = await increase.simulations.achTransfers.createInbound({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 1000,
+      account_number_id: 'string',
+      amount: 0,
+      company_descriptive_date: 'x',
+      company_discretionary_data: 'x',
+      company_entry_description: 'x',
+      company_id: 'x',
+      company_name: 'x',
     });
   });
 
   test('create_inbound: required and optional params', async () => {
     const response = await increase.simulations.achTransfers.createInbound({
-      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      amount: 1000,
+      account_number_id: 'string',
+      amount: 0,
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
       company_entry_description: 'x',
-      company_name: 'x',
       company_id: 'x',
+      company_name: 'x',
     });
   });
 
   // Prism incorrectly returns an invalid JSON error
-  test.skip('return: only required params', async () => {
-    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
-  });
-
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('return: required and optional params', async () => {
+  test.skip('return', async () => {
     const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {
       reason: 'insufficient_fund',
     });

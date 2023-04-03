@@ -963,6 +963,12 @@ export interface CardAuthorizeParams {
 
 export interface CardSettlementParams {
   /**
+   * The amount to be settled. This defaults to the amount of the Pending Transaction
+   * being settled.
+   */
+  amount?: number;
+
+  /**
    * The identifier of the Card to create a settlement on.
    */
   card_id: string;
@@ -972,10 +978,4 @@ export interface CardSettlementParams {
    * settle.
    */
   pending_transaction_id: string;
-
-  /**
-   * The amount to be settled. This defaults to the amount of the Pending Transaction
-   * being settled.
-   */
-  amount?: number;
 }

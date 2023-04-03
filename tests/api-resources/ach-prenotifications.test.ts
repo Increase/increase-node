@@ -6,14 +6,7 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 describe('resource ach_prenotifications', () => {
   test('create: only required params', async () => {
     const response = await increase.achPrenotifications.create({
-      account_number: '987654321',
-      routing_number: '101050001',
-    });
-  });
-
-  test('create: required and optional params', async () => {
-    const response = await increase.achPrenotifications.create({
-      account_number: '987654321',
+      account_number: 'x',
       addendum: 'x',
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
@@ -23,7 +16,24 @@ describe('resource ach_prenotifications', () => {
       effective_date: '2019-12-27',
       individual_id: 'x',
       individual_name: 'x',
-      routing_number: '101050001',
+      routing_number: 'xxxxxxxxx',
+      standard_entry_class_code: 'corporate_credit_or_debit',
+    });
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.achPrenotifications.create({
+      account_number: 'x',
+      addendum: 'x',
+      company_descriptive_date: 'x',
+      company_discretionary_data: 'x',
+      company_entry_description: 'x',
+      company_name: 'x',
+      credit_debit_indicator: 'credit',
+      effective_date: '2019-12-27',
+      individual_id: 'x',
+      individual_name: 'x',
+      routing_number: 'xxxxxxxxx',
       standard_entry_class_code: 'corporate_credit_or_debit',
     });
   });
@@ -41,21 +51,8 @@ describe('resource ach_prenotifications', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.achPrenotifications.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.achPrenotifications.list({
-      cursor: 'string',
-      limit: 0,
-      created_at: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -70,14 +67,12 @@ describe('resource ach_prenotifications', () => {
     await expect(
       increase.achPrenotifications.list(
         {
+          'created_at.after': '2019-12-27T18:11:19.117Z',
+          'created_at.before': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
+          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
           cursor: 'string',
           limit: 0,
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
         },
         { path: '/_stainless_unknown_path' },
       ),

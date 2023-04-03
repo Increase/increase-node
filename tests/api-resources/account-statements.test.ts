@@ -17,22 +17,8 @@ describe('resource account_statements', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('list: only required params', async () => {
+  test('list', async () => {
     const response = await increase.accountStatements.list();
-  });
-
-  test('list: required and optional params', async () => {
-    const response = await increase.accountStatements.list({
-      cursor: 'string',
-      limit: 0,
-      account_id: 'string',
-      statement_period_start: {
-        after: '2019-12-27T18:11:19.117Z',
-        before: '2019-12-27T18:11:19.117Z',
-        on_or_after: '2019-12-27T18:11:19.117Z',
-        on_or_before: '2019-12-27T18:11:19.117Z',
-      },
-    });
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -47,15 +33,13 @@ describe('resource account_statements', () => {
     await expect(
       increase.accountStatements.list(
         {
+          account_id: 'string',
           cursor: 'string',
           limit: 0,
-          account_id: 'string',
-          statement_period_start: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
+          'statement_period_start.after': '2019-12-27T18:11:19.117Z',
+          'statement_period_start.before': '2019-12-27T18:11:19.117Z',
+          'statement_period_start.on_or_after': '2019-12-27T18:11:19.117Z',
+          'statement_period_start.on_or_before': '2019-12-27T18:11:19.117Z',
         },
         { path: '/_stainless_unknown_path' },
       ),

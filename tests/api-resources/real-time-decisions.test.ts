@@ -17,18 +17,11 @@ describe('resource real_time_decisions', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('action: only required params', async () => {
-    const response = await increase.realTimeDecisions.action('real_time_decision_j76n2e810ezcg3zh5qtn', {});
-  });
-
-  test('action: required and optional params', async () => {
+  test('action', async () => {
     const response = await increase.realTimeDecisions.action('real_time_decision_j76n2e810ezcg3zh5qtn', {
       card_authorization: { decision: 'approve' },
-      digital_wallet_token: {
-        approval: { card_profile_id: 'string', phone: 'x', email: 'x' },
-        decline: { reason: 'x' },
-      },
       digital_wallet_authentication: { result: 'success' },
+      digital_wallet_token: {},
     });
   });
 });

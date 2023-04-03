@@ -31,7 +31,6 @@ export class OauthConnections extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/oauth_connections', OauthConnectionsPage, { query, ...options });
   }
 }

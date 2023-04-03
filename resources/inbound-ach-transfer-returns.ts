@@ -41,7 +41,6 @@ export class InboundACHTransferReturns extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-
     return this.getAPIList('/inbound_ach_transfer_returns', InboundACHTransferReturnsPage, {
       query,
       ...options,
