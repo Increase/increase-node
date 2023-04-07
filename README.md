@@ -155,7 +155,7 @@ Note that requests which time out will be [retried twice by default](#retries).
 ## Auto-pagination
 
 List methods in the Increase API are paginated.
-Use `for await … of` syntax to iterate through items across all pages.
+You can use `for await … of` syntax to iterate through items across all pages:
 
 ```ts
 async function fetchAllAccounts(params) {
@@ -165,6 +165,21 @@ async function fetchAllAccounts(params) {
     allAccounts.push(account);
   }
   return allAccounts;
+}
+```
+
+Alternatively, you can make request a single page at a time:
+
+```ts
+let page = await increase.accounts.list();
+for (const account of page.data) {
+  console.log(account);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = page.getNextPage();
+  // ...
 }
 ```
 
