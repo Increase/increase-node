@@ -3,37 +3,37 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 
-export class WireTransfers extends APIResource {
+export class InterestPayments extends APIResource {
   /**
-   * Simulates an inbound Wire Transfer to your account.
+   * Simulates an interest payment to your account. In production, this happens
+   * automatically on the first of each month.
    */
-  createInbound(
-    body: WireTransferCreateInboundParams,
+  create(
+    body: InterestPaymentCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<WireTransferSimulation>> {
-    return this.post('/simulations/inbound_wire_transfers', { body, ...options });
+  ): Promise<Core.APIResponse<InterestPaymentSimulationResult>> {
+    return this.post('/simulations/interest_payment', { body, ...options });
   }
 }
 
 /**
- * The results of an inbound Wire Transfer simulation.
+ * The results of an Interest Payment simulation.
  */
-export interface WireTransferSimulation {
+export interface InterestPaymentSimulationResult {
   /**
-   * If the Wire Transfer attempt succeeds, this will contain the resulting
-   * [Transaction](#transactions) object. The Transaction's `source` will be of
-   * `category: inbound_wire_transfer`.
+   * This will contain the resulting [Transaction](#transactions) object. The
+   * Transaction's `source` will be of `category: interest_payment`.
    */
-  transaction: WireTransferSimulation.Transaction;
+  transaction: InterestPaymentSimulationResult.Transaction;
 
   /**
    * A constant representing the object's type. For this resource it will always be
-   * `inbound_wire_transfer_simulation_result`.
+   * `interest_payment_simulation_result`.
    */
-  type: 'inbound_wire_transfer_simulation_result';
+  type: 'interest_payment_simulation_result';
 }
 
-export namespace WireTransferSimulation {
+export namespace InterestPaymentSimulationResult {
   export interface Transaction {
     /**
      * The identifier for the Account the Transaction belongs to.
@@ -1452,92 +1452,14 @@ export namespace WireTransferSimulation {
   }
 }
 
-export interface WireTransferCreateInboundParams {
+export interface InterestPaymentCreateParams {
   /**
-   * The identifier of the Account Number the inbound Wire Transfer is for.
+   * The identifier of the Account Number the Interest Payment is for.
    */
-  account_number_id: string;
+  account_id: string;
 
   /**
-   * The transfer amount in cents. Must be positive.
+   * The interest amount in cents. Must be positive.
    */
   amount: number;
-
-  /**
-   * The sending bank will set beneficiary_address_line1 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line1?: string;
-
-  /**
-   * The sending bank will set beneficiary_address_line2 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line2?: string;
-
-  /**
-   * The sending bank will set beneficiary_address_line3 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line3?: string;
-
-  /**
-   * The sending bank will set beneficiary_name in production. You can simulate any
-   * value here.
-   */
-  beneficiary_name?: string;
-
-  /**
-   * The sending bank will set beneficiary_reference in production. You can simulate
-   * any value here.
-   */
-  beneficiary_reference?: string;
-
-  /**
-   * The sending bank will set originator_address_line1 in production. You can
-   * simulate any value here.
-   */
-  originator_address_line1?: string;
-
-  /**
-   * The sending bank will set originator_address_line2 in production. You can
-   * simulate any value here.
-   */
-  originator_address_line2?: string;
-
-  /**
-   * The sending bank will set originator_address_line3 in production. You can
-   * simulate any value here.
-   */
-  originator_address_line3?: string;
-
-  /**
-   * The sending bank will set originator_name in production. You can simulate any
-   * value here.
-   */
-  originator_name?: string;
-
-  /**
-   * The sending bank will set originator_to_beneficiary_information_line1 in
-   * production. You can simulate any value here.
-   */
-  originator_to_beneficiary_information_line1?: string;
-
-  /**
-   * The sending bank will set originator_to_beneficiary_information_line2 in
-   * production. You can simulate any value here.
-   */
-  originator_to_beneficiary_information_line2?: string;
-
-  /**
-   * The sending bank will set originator_to_beneficiary_information_line3 in
-   * production. You can simulate any value here.
-   */
-  originator_to_beneficiary_information_line3?: string;
-
-  /**
-   * The sending bank will set originator_to_beneficiary_information_line4 in
-   * production. You can simulate any value here.
-   */
-  originator_to_beneficiary_information_line4?: string;
 }

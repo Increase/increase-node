@@ -77,6 +77,12 @@ export namespace CardAuthorizationSimulation {
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
+     * Transaction was completed.
+     */
+    completed_at: string | null;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
      * Transaction occured.
      */
     created_at: string;
@@ -194,6 +200,13 @@ export namespace CardAuthorizationSimulation {
       inbound_funds_hold: Source.InboundFundsHold | null;
 
       /**
+       * A Real Time Payments Transfer Instruction object. This field will be present in
+       * the JSON response if and only if `category` is equal to
+       * `real_time_payments_transfer_instruction`.
+       */
+      real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
+
+      /**
        * A Wire Drawdown Payment Instruction object. This field will be present in the
        * JSON response if and only if `category` is equal to
        * `wire_drawdown_payment_instruction`.
@@ -260,6 +273,11 @@ export namespace CardAuthorizationSimulation {
         digital_wallet_token_id: string | null;
 
         /**
+         * The Card Authorization identifier.
+         */
+        id: string;
+
+        /**
          * The merchant identifier (commonly abbreviated as MID) of the merchant the card
          * is transacting with.
          */
@@ -301,6 +319,12 @@ export namespace CardAuthorizationSimulation {
          * transaction.
          */
         real_time_decision_id: string | null;
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `card_authorization`.
+         */
+        type: 'card_authorization';
       }
 
       export namespace CardAuthorization {
@@ -402,6 +426,12 @@ export namespace CardAuthorizationSimulation {
         automatically_releases_at: string;
 
         /**
+         * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+         * was created.
+         */
+        created_at: string;
+
+        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
          * currency.
          */
@@ -411,6 +441,11 @@ export namespace CardAuthorizationSimulation {
          * The ID of the Transaction for which funds were held.
          */
         held_transaction_id: string | null;
+
+        /**
+         * The ID of the Pending Transaction representing the held funds.
+         */
+        pending_transaction_id: string | null;
 
         /**
          * When the hold was released (if it has been released).
@@ -447,6 +482,20 @@ export namespace CardAuthorizationSimulation {
         merchant_descriptor: string;
 
         merchant_state: string | null;
+      }
+
+      export interface RealTimePaymentsTransferInstruction {
+        /**
+         * The pending amount in the minor unit of the transaction's currency. For dollars,
+         * for example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The identifier of the Real Time Payments Transfer that led to this Pending
+         * Transaction.
+         */
+        transfer_id: string;
       }
 
       export interface WireDrawdownPaymentInstruction {
@@ -623,11 +672,12 @@ export namespace CardAuthorizationSimulation {
           | 'credit_entry_refused_by_receiver'
           | 'duplicate_return'
           | 'entity_not_active'
-          | 'transaction_not_allowed'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'misrouted_return'
           | 'no_ach_route'
-          | 'originator_request';
+          | 'originator_request'
+          | 'transaction_not_allowed';
 
         receiver_id_number: string | null;
 
@@ -717,7 +767,8 @@ export namespace CardAuthorizationSimulation {
           | 'webhook_declined'
           | 'webhook_timed_out'
           | 'declined_by_stand_in_processing'
-          | 'invalid_physical_card';
+          | 'invalid_physical_card'
+          | 'missing_original_authorization';
       }
 
       export namespace CardDecline {
@@ -779,7 +830,8 @@ export namespace CardAuthorizationSimulation {
           | 'refer_to_image'
           | 'stop_payment_requested'
           | 'returned'
-          | 'duplicate_presentment';
+          | 'duplicate_presentment'
+          | 'not_authorized';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {
@@ -959,6 +1011,14 @@ export interface CardAuthorizeParams {
    * The identifier of the Digital Wallet Token to be authorized.
    */
   digital_wallet_token_id?: string;
+
+  /**
+   * The identifier of the Event Subscription to use. If provided, will override the
+   * default real time event subscription. Because you can only create one real time
+   * decision event subscription, you can use this field to route events to any
+   * specified event subscription for testing purposes.
+   */
+  event_subscription_id?: string;
 }
 
 export interface CardSettlementParams {

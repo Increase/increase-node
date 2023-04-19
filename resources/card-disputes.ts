@@ -108,7 +108,7 @@ export namespace CardDispute {
      * The identifier of the Transaction that was created to return the disputed funds
      * to your account.
      */
-    transaction_id: string | null;
+    transaction_id: string;
   }
 
   export interface Rejection {
@@ -169,8 +169,9 @@ export interface CardDisputeListParams extends PageParams {
   'created_at.on_or_before'?: string;
 
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Card Disputes for those with the specified status or statuses. For GET
+   * requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
   'status.in'?: Array<'pending_reviewing' | 'accepted' | 'rejected'>;
 }
@@ -204,8 +205,9 @@ export namespace CardDisputeListParams {
 
   export interface Status {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Card Disputes for those with the specified status or statuses. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
     in?: Array<'pending_reviewing' | 'accepted' | 'rejected'>;
   }

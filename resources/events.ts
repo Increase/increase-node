@@ -64,6 +64,8 @@ export interface Event {
     | 'ach_transfer.updated'
     | 'card.created'
     | 'card.updated'
+    | 'card_payment.created'
+    | 'card_payment.updated'
     | 'card_dispute.created'
     | 'card_dispute.updated'
     | 'check_deposit.created'
@@ -124,8 +126,9 @@ export interface EventListParams extends PageParams {
   associated_object_id?: string;
 
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Events for those with the specified category or categories. For GET
+   * requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
   'category.in'?: Array<
     | 'account.created'
@@ -141,6 +144,8 @@ export interface EventListParams extends PageParams {
     | 'ach_transfer.updated'
     | 'card.created'
     | 'card.updated'
+    | 'card_payment.created'
+    | 'card_payment.updated'
     | 'card_dispute.created'
     | 'card_dispute.updated'
     | 'check_deposit.created'
@@ -232,8 +237,9 @@ export namespace EventListParams {
 
   export interface Category {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Events for those with the specified category or categories. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
     in?: Array<
       | 'account.created'
@@ -249,6 +255,8 @@ export namespace EventListParams {
       | 'ach_transfer.updated'
       | 'card.created'
       | 'card.updated'
+      | 'card_payment.created'
+      | 'card_payment.updated'
       | 'card_dispute.created'
       | 'card_dispute.updated'
       | 'check_deposit.created'

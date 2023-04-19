@@ -62,12 +62,6 @@ export class AccountsPage extends Page<Account> {}
  */
 export interface Account {
   /**
-   * The Account's balances in the minor unit of its currency. For dollars, for
-   * example, these values will represent cents.
-   */
-  balances: Account.Balances;
-
-  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
    * was created.
    */
@@ -124,22 +118,6 @@ export interface Account {
   type: 'account';
 }
 
-export namespace Account {
-  export interface Balances {
-    /**
-     * The Account's available balance, representing the current balance less any open
-     * Pending Transactions on the Account.
-     */
-    available_balance: number;
-
-    /**
-     * The Account's current balance, representing the sum of all posted Transactions
-     * on the Account.
-     */
-    current_balance: number;
-  }
-}
-
 export interface AccountCreateParams {
   /**
    * The identifier for the Entity that will own the Account.
@@ -172,6 +150,30 @@ export interface AccountUpdateParams {
 
 export interface AccountListParams extends PageParams {
   /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
+
+  /**
    * Filter Accounts for those belonging to the specified Entity.
    */
   entity_id?: string;
@@ -180,4 +182,32 @@ export interface AccountListParams extends PageParams {
    * Filter Accounts for those with the specified status.
    */
   status?: 'open' | 'closed';
+}
+
+export namespace AccountListParams {
+  export interface CreatedAt {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
+  }
 }

@@ -148,8 +148,9 @@ export interface ExternalAccountUpdateParams {
 
 export interface ExternalAccountListParams extends PageParams {
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter External Accounts for those with the specified status or statuses. For
+   * GET requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
   'status.in'?: Array<'active' | 'archived'>;
 }
@@ -157,8 +158,9 @@ export interface ExternalAccountListParams extends PageParams {
 export namespace ExternalAccountListParams {
   export interface Status {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter External Accounts for those with the specified status or statuses. For
+     * GET requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
     in?: Array<'active' | 'archived'>;
   }

@@ -3,25 +3,25 @@
 import Increase from '~/index';
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource documents', () => {
+describe('resource programs', () => {
   test('retrieve', async () => {
-    const response = await increase.documents.retrieve('document_qjtqc6s4c14ve2q89izm');
+    const response = await increase.programs.retrieve('program_i2v2os4mwza1oetokh9i');
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.documents.retrieve('document_qjtqc6s4c14ve2q89izm', { path: '/_stainless_unknown_path' }),
+      increase.programs.retrieve('program_i2v2os4mwza1oetokh9i', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const response = await increase.documents.list();
+    const response = await increase.programs.list();
   });
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.documents.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.programs.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -29,23 +29,7 @@ describe('resource documents', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.documents.list(
-        {
-          'category.in': [
-            'anti_money_laundering_policy',
-            'anti_money_laundering_policy',
-            'anti_money_laundering_policy',
-          ],
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
-          cursor: 'string',
-          entity_id: 'string',
-          limit: 0,
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
+      increase.programs.list({ cursor: 'string', limit: 0 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

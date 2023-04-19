@@ -2,9 +2,26 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as RealTimePaymentsTransfers_ from '~/resources/real-time-payments-transfers';
 import * as Shared from '~/resources/shared';
 
 export class RealTimePaymentsTransfers extends APIResource {
+  /**
+   * Simulates submission of a Real Time Payments transfer and handling the response
+   * from the destination financial institution. This transfer must first have a
+   * `status` of `pending_submission`.
+   */
+  complete(
+    realTimePaymentsTransferId: string,
+    body: RealTimePaymentsTransferCompleteParams,
+    options?: Core.RequestOptions,
+  ): Promise<Core.APIResponse<RealTimePaymentsTransfers_.RealTimePaymentsTransfer>> {
+    return this.post(`/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`, {
+      body,
+      ...options,
+    });
+  }
+
   /**
    * Simulates an inbound Real Time Payments transfer to your account. Real Time
    * Payments are a beta feature.
@@ -158,6 +175,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       card_refund: Source.CardRefund | null;
 
       /**
+       * A Card Revenue Payment object. This field will be present in the JSON response
+       * if and only if `category` is equal to `card_revenue_payment`.
+       */
+      card_revenue_payment: Source.CardRevenuePayment | null;
+
+      /**
        * A Deprecated Card Refund object. This field will be present in the JSON response
        * if and only if `category` is equal to `card_route_refund`.
        */
@@ -190,6 +213,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'card_dispute_acceptance'
         | 'card_refund'
         | 'card_settlement'
+        | 'card_revenue_payment'
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
         | 'check_transfer_intention'
@@ -198,6 +222,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'check_transfer_stop_payment_request'
         | 'dispute_resolution'
         | 'empyreal_cash_deposit'
+        | 'fee_payment'
         | 'inbound_ach_transfer'
         | 'inbound_ach_transfer_return_intention'
         | 'inbound_check'
@@ -270,6 +295,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       empyreal_cash_deposit: Source.EmpyrealCashDeposit | null;
 
       /**
+       * A Fee Payment object. This field will be present in the JSON response if and
+       * only if `category` is equal to `fee_payment`.
+       */
+      fee_payment: Source.FeePayment | null;
+
+      /**
        * A Inbound ACH Transfer object. This field will be present in the JSON response
        * if and only if `category` is equal to `inbound_ach_transfer`.
        */
@@ -331,6 +362,13 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * only if `category` is equal to `internal_source`.
        */
       internal_source: Source.InternalSource | null;
+
+      /**
+       * A Real Time Payments Transfer Acknowledgement object. This field will be present
+       * in the JSON response if and only if `category` is equal to
+       * `real_time_payments_transfer_acknowledgement`.
+       */
+      real_time_payments_transfer_acknowledgement: Source.RealTimePaymentsTransferAcknowledgement | null;
 
       /**
        * A Sample Funds object. This field will be present in the JSON response if and
@@ -514,7 +552,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * The identifier of the Transaction that was created to return the disputed funds
          * to your account.
          */
-        transaction_id: string | null;
+        transaction_id: string;
       }
 
       export interface CardRefund {
@@ -536,6 +574,36 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
+         * The Card Refund identifier.
+         */
+        id: string;
+
+        /**
+         * The 4-digit MCC describing the merchant's business.
+         */
+        merchant_category_code: string;
+
+        /**
+         * The city the merchant resides in.
+         */
+        merchant_city: string | null;
+
+        /**
+         * The country the merchant resides in.
+         */
+        merchant_country: string;
+
+        /**
+         * The name of the merchant.
+         */
+        merchant_name: string | null;
+
+        /**
+         * The state the merchant resides in.
+         */
+        merchant_state: string | null;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `card_refund`.
          */
@@ -550,19 +618,45 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         amount: number;
 
         /**
+         * The Card Authorization that was created prior to this Card Settlement, if on
+         * exists.
+         */
+        card_authorization: string | null;
+
+        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's settlement currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
+        /**
+         * The Card Settlement identifier.
+         */
+        id: string;
+
+        /**
+         * The 4-digit MCC describing the merchant's business.
+         */
         merchant_category_code: string;
 
+        /**
+         * The city the merchant resides in.
+         */
         merchant_city: string | null;
 
+        /**
+         * The country the merchant resides in.
+         */
         merchant_country: string;
 
+        /**
+         * The name of the merchant.
+         */
         merchant_name: string | null;
 
+        /**
+         * The state the merchant resides in.
+         */
         merchant_state: string | null;
 
         /**
@@ -586,6 +680,35 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * `card_settlement`.
          */
         type: 'card_settlement';
+      }
+
+      export interface CardRevenuePayment {
+        /**
+         * The amount in the minor unit of the transaction's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+         * currency.
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The end of the period for which this transaction paid interest.
+         */
+        period_end: string;
+
+        /**
+         * The start of the period for which this transaction paid interest.
+         */
+        period_start: string;
+
+        /**
+         * The account the card belonged to.
+         */
+        transacted_on_account_id: string | null;
       }
 
       export interface CheckDepositAcceptance {
@@ -797,6 +920,20 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         bag_id: string;
 
         deposit_date: string;
+      }
+
+      export interface FeePayment {
+        /**
+         * The amount in the minor unit of the transaction's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+         * currency.
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       export interface InboundACHTransfer {
@@ -1258,6 +1395,33 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         merchant_state: string | null;
       }
 
+      export interface RealTimePaymentsTransferAcknowledgement {
+        /**
+         * The transfer amount in USD cents.
+         */
+        amount: number;
+
+        /**
+         * The destination account number.
+         */
+        destination_account_number: string;
+
+        /**
+         * The American Bankers' Association (ABA) Routing Transit Number (RTN).
+         */
+        destination_routing_number: string;
+
+        /**
+         * Unstructured information that will show on the recipient's bank statement.
+         */
+        remittance_information: string;
+
+        /**
+         * The identifier of the Real Time Payments Transfer that led to this Transaction.
+         */
+        transfer_id: string;
+      }
+
       export interface SampleFunds {
         /**
          * Where the sample funds came from.
@@ -1456,11 +1620,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'credit_entry_refused_by_receiver'
           | 'duplicate_return'
           | 'entity_not_active'
-          | 'transaction_not_allowed'
           | 'group_locked'
           | 'insufficient_funds'
+          | 'misrouted_return'
           | 'no_ach_route'
-          | 'originator_request';
+          | 'originator_request'
+          | 'transaction_not_allowed';
 
         receiver_id_number: string | null;
 
@@ -1550,7 +1715,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'webhook_declined'
           | 'webhook_timed_out'
           | 'declined_by_stand_in_processing'
-          | 'invalid_physical_card';
+          | 'invalid_physical_card'
+          | 'missing_original_authorization';
       }
 
       export namespace CardDecline {
@@ -1612,7 +1778,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'refer_to_image'
           | 'stop_payment_requested'
           | 'returned'
-          | 'duplicate_presentment';
+          | 'duplicate_presentment'
+          | 'not_authorized';
       }
 
       export interface InboundRealTimePaymentsTransferDecline {
@@ -1774,6 +1941,71 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         merchant_state: string | null;
       }
     }
+  }
+}
+
+export interface RealTimePaymentsTransferCompleteParams {
+  /**
+   * If set, the simulation will reject the transfer.
+   */
+  rejection?: RealTimePaymentsTransferCompleteParams.Rejection;
+}
+
+export namespace RealTimePaymentsTransferCompleteParams {
+  export interface Rejection {
+    /**
+     * The reason code that the simulated rejection will have.
+     */
+    reject_reason_code:
+      | 'account_closed'
+      | 'account_blocked'
+      | 'invalid_creditor_account_type'
+      | 'invalid_creditor_account_number'
+      | 'invalid_creditor_financial_institution_identifier'
+      | 'end_customer_deceased'
+      | 'narrative'
+      | 'transaction_forbidden'
+      | 'transaction_type_not_supported'
+      | 'unexpected_amount'
+      | 'amount_exceeds_bank_limits'
+      | 'invalid_creditor_address'
+      | 'unknown_end_customer'
+      | 'invalid_debtor_address'
+      | 'timeout'
+      | 'unsupported_message_for_recipient'
+      | 'recipient_connection_not_available'
+      | 'real_time_payments_suspended'
+      | 'instructed_agent_signed_off'
+      | 'processing_error'
+      | 'other';
+  }
+
+  export interface Rejection {
+    /**
+     * The reason code that the simulated rejection will have.
+     */
+    reject_reason_code:
+      | 'account_closed'
+      | 'account_blocked'
+      | 'invalid_creditor_account_type'
+      | 'invalid_creditor_account_number'
+      | 'invalid_creditor_financial_institution_identifier'
+      | 'end_customer_deceased'
+      | 'narrative'
+      | 'transaction_forbidden'
+      | 'transaction_type_not_supported'
+      | 'unexpected_amount'
+      | 'amount_exceeds_bank_limits'
+      | 'invalid_creditor_address'
+      | 'unknown_end_customer'
+      | 'invalid_debtor_address'
+      | 'timeout'
+      | 'unsupported_message_for_recipient'
+      | 'recipient_connection_not_available'
+      | 'real_time_payments_suspended'
+      | 'instructed_agent_signed_off'
+      | 'processing_error'
+      | 'other';
   }
 }
 

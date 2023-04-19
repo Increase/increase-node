@@ -95,6 +95,7 @@ export interface File {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
+    | 'document_request'
     | 'entity_supplemental_document'
     | 'export';
 
@@ -130,6 +131,7 @@ export interface FileCreateParams {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
+    | 'document_request'
     | 'entity_supplemental_document';
 }
 
@@ -159,8 +161,8 @@ export interface FileListParams extends PageParams {
   'created_at.on_or_before'?: string;
 
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Files for those with the specified purpose or purposes. For GET requests,
+   * this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
    */
   'purpose.in'?: Array<
     | 'check_image_front'
@@ -173,6 +175,7 @@ export interface FileListParams extends PageParams {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
+    | 'document_request'
     | 'entity_supplemental_document'
     | 'export'
   >;
@@ -207,8 +210,8 @@ export namespace FileListParams {
 
   export interface Purpose {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Files for those with the specified purpose or purposes. For GET requests,
+     * this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
     in?: Array<
       | 'check_image_front'
@@ -221,6 +224,7 @@ export namespace FileListParams {
       | 'trust_formation_document'
       | 'digital_wallet_artwork'
       | 'digital_wallet_app_icon'
+      | 'document_request'
       | 'entity_supplemental_document'
       | 'export'
     >;

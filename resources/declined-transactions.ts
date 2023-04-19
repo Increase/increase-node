@@ -185,11 +185,12 @@ export namespace DeclinedTransaction {
         | 'credit_entry_refused_by_receiver'
         | 'duplicate_return'
         | 'entity_not_active'
-        | 'transaction_not_allowed'
         | 'group_locked'
         | 'insufficient_funds'
+        | 'misrouted_return'
         | 'no_ach_route'
-        | 'originator_request';
+        | 'originator_request'
+        | 'transaction_not_allowed';
 
       receiver_id_number: string | null;
 
@@ -279,7 +280,8 @@ export namespace DeclinedTransaction {
         | 'webhook_declined'
         | 'webhook_timed_out'
         | 'declined_by_stand_in_processing'
-        | 'invalid_physical_card';
+        | 'invalid_physical_card'
+        | 'missing_original_authorization';
     }
 
     export namespace CardDecline {
@@ -341,7 +343,8 @@ export namespace DeclinedTransaction {
         | 'refer_to_image'
         | 'stop_payment_requested'
         | 'returned'
-        | 'duplicate_presentment';
+        | 'duplicate_presentment'
+        | 'not_authorized';
     }
 
     export interface InboundRealTimePaymentsTransferDecline {

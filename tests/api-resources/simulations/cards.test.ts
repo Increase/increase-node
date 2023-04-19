@@ -9,6 +9,7 @@ describe('resource cards', () => {
       amount: 1,
       card_id: 'string',
       digital_wallet_token_id: 'string',
+      event_subscription_id: 'string',
     });
   });
 
@@ -17,6 +18,7 @@ describe('resource cards', () => {
       amount: 1,
       card_id: 'string',
       digital_wallet_token_id: 'string',
+      event_subscription_id: 'string',
     });
   });
 
