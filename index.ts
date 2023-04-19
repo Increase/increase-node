@@ -53,13 +53,17 @@ export class Increase extends Core.APIClient {
   accounts: API.Accounts = new API.Accounts(this);
   accountNumbers: API.AccountNumbers = new API.AccountNumbers(this);
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
+  realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
+  balanceLookups: API.BalanceLookups = new API.BalanceLookups(this);
   cards: API.Cards = new API.Cards(this);
   cardDisputes: API.CardDisputes = new API.CardDisputes(this);
   cardProfiles: API.CardProfiles = new API.CardProfiles(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
+  exports: API.Exports = new API.Exports(this);
   digitalWalletTokens: API.DigitalWalletTokens = new API.DigitalWalletTokens(this);
   transactions: API.Transactions = new API.Transactions(this);
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
+  programs: API.Programs = new API.Programs(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
   limits: API.Limits = new API.Limits(this);
   accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
@@ -245,6 +249,14 @@ export namespace Increase {
   export import RealTimeDecision = API.RealTimeDecision;
   export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams;
 
+  export import RealTimePaymentsTransfer = API.RealTimePaymentsTransfer;
+  export import RealTimePaymentsTransfersPage = API.RealTimePaymentsTransfersPage;
+  export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
+  export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
+
+  export import BalanceLookupLookupResponse = API.BalanceLookupLookupResponse;
+  export import BalanceLookupLookupParams = API.BalanceLookupLookupParams;
+
   export import Card = API.Card;
   export import CardDetails = API.CardDetails;
   export import CardsPage = API.CardsPage;
@@ -268,6 +280,11 @@ export namespace Increase {
   export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
   export import ExternalAccountListParams = API.ExternalAccountListParams;
 
+  export import Export = API.Export;
+  export import ExportsPage = API.ExportsPage;
+  export import ExportCreateParams = API.ExportCreateParams;
+  export import ExportListParams = API.ExportListParams;
+
   export import DigitalWalletToken = API.DigitalWalletToken;
   export import DigitalWalletTokensPage = API.DigitalWalletTokensPage;
   export import DigitalWalletTokenListParams = API.DigitalWalletTokenListParams;
@@ -279,6 +296,10 @@ export namespace Increase {
   export import PendingTransaction = API.PendingTransaction;
   export import PendingTransactionsPage = API.PendingTransactionsPage;
   export import PendingTransactionListParams = API.PendingTransactionListParams;
+
+  export import Program = API.Program;
+  export import ProgramsPage = API.ProgramsPage;
+  export import ProgramListParams = API.ProgramListParams;
 
   export import DeclinedTransaction = API.DeclinedTransaction;
   export import DeclinedTransactionsPage = API.DeclinedTransactionsPage;

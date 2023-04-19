@@ -195,11 +195,6 @@ export interface CheckTransfer {
   submitted_at: string | null;
 
   /**
-   * If the transfer was created from a template, this will be the template's ID.
-   */
-  template_id: string | null;
-
-  /**
    * The ID for the transaction caused by the transfer.
    */
   transaction_id: string | null;

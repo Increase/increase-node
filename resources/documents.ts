@@ -40,7 +40,45 @@ export interface Document {
   /**
    * The type of document.
    */
-  category: 'form_1099_int';
+  category:
+    | 'anti_money_laundering_policy'
+    | 'anti_money_laundering_procedures'
+    | 'audit_report'
+    | 'background_checks'
+    | 'business_continuity_plan'
+    | 'collections_policy'
+    | 'complaints_policy'
+    | 'complaint_report'
+    | 'compliance_report'
+    | 'compliance_management_system_policy'
+    | 'consumer_protection_policy'
+    | 'corporate_formation_document'
+    | 'credit_monitoring_report'
+    | 'customer_information_program_policy'
+    | 'employee_overview'
+    | 'end_user_terms_of_service'
+    | 'financial_statement'
+    | 'form_1099_int'
+    | 'fraud_prevention_policy'
+    | 'funds_flow_diagram'
+    | 'information_security_policy'
+    | 'insurance_policy'
+    | 'investor_presentation'
+    | 'loan_application_processing_policy'
+    | 'management_biography'
+    | 'marketing_and_advertising_policy'
+    | 'network_security_diagram'
+    | 'onboarding_questionnaire'
+    | 'penetration_test_report'
+    | 'program_risk_assessment'
+    | 'security_audit_report'
+    | 'servicing_policy'
+    | 'transaction_monitoring_report'
+    | 'underwriting_policy'
+    | 'vendor_list'
+    | 'vendor_management_policy'
+    | 'vendor_risk_management_report'
+    | 'volume_forecast';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
@@ -72,10 +110,50 @@ export interface Document {
 
 export interface DocumentListParams extends PageParams {
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Documents for those with the specified category or categories. For GET
+   * requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
-  'category.in'?: Array<'form_1099_int'>;
+  'category.in'?: Array<
+    | 'anti_money_laundering_policy'
+    | 'anti_money_laundering_procedures'
+    | 'audit_report'
+    | 'background_checks'
+    | 'business_continuity_plan'
+    | 'collections_policy'
+    | 'complaints_policy'
+    | 'complaint_report'
+    | 'compliance_report'
+    | 'compliance_management_system_policy'
+    | 'consumer_protection_policy'
+    | 'corporate_formation_document'
+    | 'credit_monitoring_report'
+    | 'customer_information_program_policy'
+    | 'employee_overview'
+    | 'end_user_terms_of_service'
+    | 'financial_statement'
+    | 'form_1099_int'
+    | 'fraud_prevention_policy'
+    | 'funds_flow_diagram'
+    | 'information_security_policy'
+    | 'insurance_policy'
+    | 'investor_presentation'
+    | 'loan_application_processing_policy'
+    | 'management_biography'
+    | 'marketing_and_advertising_policy'
+    | 'network_security_diagram'
+    | 'onboarding_questionnaire'
+    | 'penetration_test_report'
+    | 'program_risk_assessment'
+    | 'security_audit_report'
+    | 'servicing_policy'
+    | 'transaction_monitoring_report'
+    | 'underwriting_policy'
+    | 'vendor_list'
+    | 'vendor_management_policy'
+    | 'vendor_risk_management_report'
+    | 'volume_forecast'
+  >;
 
   /**
    * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -110,10 +188,50 @@ export interface DocumentListParams extends PageParams {
 export namespace DocumentListParams {
   export interface Category {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Documents for those with the specified category or categories. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
-    in?: Array<'form_1099_int'>;
+    in?: Array<
+      | 'anti_money_laundering_policy'
+      | 'anti_money_laundering_procedures'
+      | 'audit_report'
+      | 'background_checks'
+      | 'business_continuity_plan'
+      | 'collections_policy'
+      | 'complaints_policy'
+      | 'complaint_report'
+      | 'compliance_report'
+      | 'compliance_management_system_policy'
+      | 'consumer_protection_policy'
+      | 'corporate_formation_document'
+      | 'credit_monitoring_report'
+      | 'customer_information_program_policy'
+      | 'employee_overview'
+      | 'end_user_terms_of_service'
+      | 'financial_statement'
+      | 'form_1099_int'
+      | 'fraud_prevention_policy'
+      | 'funds_flow_diagram'
+      | 'information_security_policy'
+      | 'insurance_policy'
+      | 'investor_presentation'
+      | 'loan_application_processing_policy'
+      | 'management_biography'
+      | 'marketing_and_advertising_policy'
+      | 'network_security_diagram'
+      | 'onboarding_questionnaire'
+      | 'penetration_test_report'
+      | 'program_risk_assessment'
+      | 'security_audit_report'
+      | 'servicing_policy'
+      | 'transaction_monitoring_report'
+      | 'underwriting_policy'
+      | 'vendor_list'
+      | 'vendor_management_policy'
+      | 'vendor_risk_management_report'
+      | 'volume_forecast'
+    >;
   }
 
   export interface CreatedAt {

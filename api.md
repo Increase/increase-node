@@ -36,6 +36,28 @@ Methods:
 - <code title="get /real_time_decisions/{real_time_decision_id}">client.realTimeDecisions.<a href="./resources/real-time-decisions.ts">retrieve</a>(realTimeDecisionId) -> RealTimeDecision</code>
 - <code title="post /real_time_decisions/{real_time_decision_id}/action">client.realTimeDecisions.<a href="./resources/real-time-decisions.ts">action</a>(realTimeDecisionId, { ...params }) -> RealTimeDecision</code>
 
+# RealTimePaymentsTransfers
+
+Models:
+
+- <code><a href="./resources/real-time-payments-transfers.ts">RealTimePaymentsTransfer</a></code>
+
+Methods:
+
+- <code title="post /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./resources/real-time-payments-transfers.ts">create</a>({ ...params }) -> RealTimePaymentsTransfer</code>
+- <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.realTimePaymentsTransfers.<a href="./resources/real-time-payments-transfers.ts">retrieve</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
+- <code title="get /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./resources/real-time-payments-transfers.ts">list</a>({ ...params }) -> RealTimePaymentsTransfersPage</code>
+
+# BalanceLookups
+
+Models:
+
+- <code><a href="./resources/balance-lookups.ts">BalanceLookupLookupResponse</a></code>
+
+Methods:
+
+- <code title="post /balance_lookups">client.balanceLookups.<a href="./resources/balance-lookups.ts">lookup</a>({ ...params }) -> BalanceLookupLookupResponse</code>
+
 # Cards
 
 Models:
@@ -88,6 +110,18 @@ Methods:
 - <code title="patch /external_accounts/{external_account_id}">client.externalAccounts.<a href="./resources/external-accounts.ts">update</a>(externalAccountId, { ...params }) -> ExternalAccount</code>
 - <code title="get /external_accounts">client.externalAccounts.<a href="./resources/external-accounts.ts">list</a>({ ...params }) -> ExternalAccountsPage</code>
 
+# Exports
+
+Models:
+
+- <code><a href="./resources/exports.ts">Export</a></code>
+
+Methods:
+
+- <code title="post /exports">client.exports.<a href="./resources/exports.ts">create</a>({ ...params }) -> Export</code>
+- <code title="get /exports/{export_id}">client.exports.<a href="./resources/exports.ts">retrieve</a>(exportId) -> Export</code>
+- <code title="get /exports">client.exports.<a href="./resources/exports.ts">list</a>({ ...params }) -> ExportsPage</code>
+
 # DigitalWalletTokens
 
 Models:
@@ -120,6 +154,17 @@ Methods:
 
 - <code title="get /pending_transactions/{pending_transaction_id}">client.pendingTransactions.<a href="./resources/pending-transactions.ts">retrieve</a>(pendingTransactionId) -> PendingTransaction</code>
 - <code title="get /pending_transactions">client.pendingTransactions.<a href="./resources/pending-transactions.ts">list</a>({ ...params }) -> PendingTransactionsPage</code>
+
+# Programs
+
+Models:
+
+- <code><a href="./resources/programs.ts">Program</a></code>
+
+Methods:
+
+- <code title="get /programs/{program_id}">client.programs.<a href="./resources/programs.ts">retrieve</a>(programId) -> Program</code>
+- <code title="get /programs">client.programs.<a href="./resources/programs.ts">list</a>({ ...params }) -> ProgramsPage</code>
 
 # DeclinedTransactions
 
@@ -446,6 +491,16 @@ Methods:
 
 - <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inboundWireDrawdownRequests.<a href="./resources/simulations/inbound-wire-drawdown-requests.ts">create</a>({ ...params }) -> InboundWireDrawdownRequest</code>
 
+## InterestPayments
+
+Models:
+
+- <code><a href="./resources/simulations/interest-payments.ts">InterestPaymentSimulationResult</a></code>
+
+Methods:
+
+- <code title="post /simulations/interest_payment">client.simulations.interestPayments.<a href="./resources/simulations/interest-payments.ts">create</a>({ ...params }) -> InterestPaymentSimulationResult</code>
+
 ## WireTransfers
 
 Models:
@@ -475,4 +530,5 @@ Models:
 
 Methods:
 
+- <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfer</code>
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.realTimePaymentsTransfers.<a href="./resources/simulations/real-time-payments-transfers.ts">createInbound</a>({ ...params }) -> InboundRealTimePaymentsTransferSimulationResult</code>

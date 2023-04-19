@@ -44,6 +44,7 @@ export {
   AccountTransfersPage,
   AccountTransfers,
 } from './account-transfers';
+export { BalanceLookupLookupResponse, BalanceLookupLookupParams, BalanceLookups } from './balance-lookups';
 export {
   Card,
   CardDetails,
@@ -104,6 +105,7 @@ export {
   EventSubscriptionsPage,
   EventSubscriptions,
 } from './event-subscriptions';
+export { Export, ExportCreateParams, ExportListParams, ExportsPage, Exports } from './exports';
 export {
   ExternalAccount,
   ExternalAccountCreateParams,
@@ -140,7 +142,15 @@ export {
   PendingTransactionsPage,
   PendingTransactions,
 } from './pending-transactions';
+export { Program, ProgramListParams, ProgramsPage, Programs } from './programs';
 export { RealTimeDecision, RealTimeDecisionActionParams, RealTimeDecisions } from './real-time-decisions';
+export {
+  RealTimePaymentsTransfer,
+  RealTimePaymentsTransferCreateParams,
+  RealTimePaymentsTransferListParams,
+  RealTimePaymentsTransfersPage,
+  RealTimePaymentsTransfers,
+} from './real-time-payments-transfers';
 export {
   RoutingNumber,
   RoutingNumberListParams,

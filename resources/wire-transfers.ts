@@ -187,11 +187,6 @@ export interface WireTransfer {
   submission: WireTransfer.Submission | null;
 
   /**
-   * If the transfer was created from a template, this will be the template's ID.
-   */
-  template_id: string | null;
-
-  /**
    * The ID for the transaction funding the transfer.
    */
   transaction_id: string | null;
@@ -210,6 +205,12 @@ export namespace WireTransfer {
      * the transfer was approved.
      */
     approved_at: string;
+
+    /**
+     * If the Transfer was approved by a user in the dashboard, the email address of
+     * that user.
+     */
+    approved_by: string | null;
   }
 
   export interface Cancellation {
@@ -218,6 +219,12 @@ export namespace WireTransfer {
      * the Transfer was canceled.
      */
     canceled_at: string;
+
+    /**
+     * If the Transfer was canceled by a user in the dashboard, the email address of
+     * that user.
+     */
+    canceled_by: string | null;
   }
 
   export interface Reversal {

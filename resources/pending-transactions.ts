@@ -56,6 +56,12 @@ export interface PendingTransaction {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
+   * Transaction was completed.
+   */
+  completed_at: string | null;
+
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
    * Transaction occured.
    */
   created_at: string;
@@ -173,6 +179,13 @@ export namespace PendingTransaction {
     inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
+     * A Real Time Payments Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `real_time_payments_transfer_instruction`.
+     */
+    real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
+
+    /**
      * A Wire Drawdown Payment Instruction object. This field will be present in the
      * JSON response if and only if `category` is equal to
      * `wire_drawdown_payment_instruction`.
@@ -239,6 +252,11 @@ export namespace PendingTransaction {
       digital_wallet_token_id: string | null;
 
       /**
+       * The Card Authorization identifier.
+       */
+      id: string;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
@@ -280,6 +298,12 @@ export namespace PendingTransaction {
        * transaction.
        */
       real_time_decision_id: string | null;
+
+      /**
+       * A constant representing the object's type. For this resource it will always be
+       * `card_authorization`.
+       */
+      type: 'card_authorization';
     }
 
     export namespace CardAuthorization {
@@ -381,6 +405,12 @@ export namespace PendingTransaction {
       automatically_releases_at: string;
 
       /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+       * was created.
+       */
+      created_at: string;
+
+      /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
        * currency.
        */
@@ -390,6 +420,11 @@ export namespace PendingTransaction {
        * The ID of the Transaction for which funds were held.
        */
       held_transaction_id: string | null;
+
+      /**
+       * The ID of the Pending Transaction representing the held funds.
+       */
+      pending_transaction_id: string | null;
 
       /**
        * When the hold was released (if it has been released).
@@ -426,6 +461,20 @@ export namespace PendingTransaction {
       merchant_descriptor: string;
 
       merchant_state: string | null;
+    }
+
+    export interface RealTimePaymentsTransferInstruction {
+      /**
+       * The pending amount in the minor unit of the transaction's currency. For dollars,
+       * for example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Real Time Payments Transfer that led to this Pending
+       * Transaction.
+       */
+      transfer_id: string;
     }
 
     export interface WireDrawdownPaymentInstruction {
@@ -467,6 +516,30 @@ export interface PendingTransactionListParams extends PageParams {
   account_id?: string;
 
   /**
+   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.after'?: string;
+
+  /**
+   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+   * timestamp.
+   */
+  'created_at.before'?: string;
+
+  /**
+   * Return results on or after this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_after'?: string;
+
+  /**
+   * Return results on or before this
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+   */
+  'created_at.on_or_before'?: string;
+
+  /**
    * Filter pending transactions to those belonging to the specified Route.
    */
   route_id?: string;
@@ -477,8 +550,10 @@ export interface PendingTransactionListParams extends PageParams {
   source_id?: string;
 
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Pending Transactions for those with the specified status. By default only
+   * Pending Transactions in with status `pending` will be returned. For GET
+   * requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
   'status.in'?: Array<'pending' | 'complete'>;
 }
@@ -486,9 +561,37 @@ export interface PendingTransactionListParams extends PageParams {
 export namespace PendingTransactionListParams {
   export interface Status {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Pending Transactions for those with the specified status. By default only
+     * Pending Transactions in with status `pending` will be returned. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
     in?: Array<'pending' | 'complete'>;
+  }
+
+  export interface CreatedAt {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
   }
 }

@@ -283,8 +283,9 @@ export namespace CardProfileCreateParams {
 
 export interface CardProfileListParams extends PageParams {
   /**
-   * Return results whose value is in the provided list. For GET requests, this
-   * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+   * Filter Card Profiles for those with the specified status or statuses. For GET
+   * requests, this should be encoded as a comma-delimited string, such as
+   * `?in=one,two,three`.
    */
   'status.in'?: Array<'pending' | 'rejected' | 'active' | 'archived'>;
 }
@@ -292,8 +293,9 @@ export interface CardProfileListParams extends PageParams {
 export namespace CardProfileListParams {
   export interface Status {
     /**
-     * Return results whose value is in the provided list. For GET requests, this
-     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     * Filter Card Profiles for those with the specified status or statuses. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
      */
     in?: Array<'pending' | 'rejected' | 'active' | 'archived'>;
   }
