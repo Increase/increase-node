@@ -106,6 +106,18 @@ export interface CheckTransfer {
   amount: number;
 
   /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
+  approval: CheckTransfer.Approval | null;
+
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
+  cancellation: CheckTransfer.Cancellation | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
@@ -166,7 +178,6 @@ export interface CheckTransfer {
   status:
     | 'pending_approval'
     | 'pending_submission'
-    | 'submitting'
     | 'submitted'
     | 'pending_mailing'
     | 'mailed'
@@ -239,11 +250,44 @@ export namespace CheckTransfer {
     zip: string | null;
   }
 
+  export interface Approval {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was approved.
+     */
+    approved_at: string;
+
+    /**
+     * If the Transfer was approved by a user in the dashboard, the email address of
+     * that user.
+     */
+    approved_by: string | null;
+  }
+
+  export interface Cancellation {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Transfer was canceled.
+     */
+    canceled_at: string;
+
+    /**
+     * If the Transfer was canceled by a user in the dashboard, the email address of
+     * that user.
+     */
+    canceled_by: string | null;
+  }
+
   export interface Submission {
     /**
      * The identitying number of the check.
      */
     check_number: string;
+
+    /**
+     * When this check transfer was submitted to our check printer.
+     */
+    submitted_at: string;
   }
 
   export interface StopPaymentRequest {
@@ -276,6 +320,11 @@ export namespace CheckTransfer {
     back_image_file_id: string | null;
 
     /**
+     * When the check was deposited.
+     */
+    deposited_at: string;
+
+    /**
      * The ID for the File containing the image of the front of the check.
      */
     front_image_file_id: string | null;
@@ -297,6 +346,18 @@ export namespace CheckTransfer {
      * The reason why the check was returned.
      */
     reason: 'mail_delivery_failure' | 'refused_by_recipient';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the check was returned.
+     */
+    returned_at: string;
+
+    /**
+     * The identifier of the Transaction that was created to credit you for the
+     * returned check.
+     */
+    transaction_id: string | null;
 
     /**
      * The identifier of the returned Check Transfer.

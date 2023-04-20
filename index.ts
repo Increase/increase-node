@@ -52,6 +52,9 @@ export class Increase extends Core.APIClient {
 
   accounts: API.Accounts = new API.Accounts(this);
   accountNumbers: API.AccountNumbers = new API.AccountNumbers(this);
+  bookkeepingAccounts: API.BookkeepingAccounts = new API.BookkeepingAccounts(this);
+  bookkeepingEntrySets: API.BookkeepingEntrySets = new API.BookkeepingEntrySets(this);
+  bookkeepingEntries: API.BookkeepingEntries = new API.BookkeepingEntries(this);
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
   balanceLookups: API.BalanceLookups = new API.BalanceLookups(this);
@@ -245,6 +248,18 @@ export namespace Increase {
   export import AccountNumberCreateParams = API.AccountNumberCreateParams;
   export import AccountNumberUpdateParams = API.AccountNumberUpdateParams;
   export import AccountNumberListParams = API.AccountNumberListParams;
+
+  export import BookkeepingAccount = API.BookkeepingAccount;
+  export import BookkeepingAccountsPage = API.BookkeepingAccountsPage;
+  export import BookkeepingAccountCreateParams = API.BookkeepingAccountCreateParams;
+  export import BookkeepingAccountListParams = API.BookkeepingAccountListParams;
+
+  export import BookkeepingEntrySet = API.BookkeepingEntrySet;
+  export import BookkeepingEntrySetCreateParams = API.BookkeepingEntrySetCreateParams;
+
+  export import BookkeepingEntry = API.BookkeepingEntry;
+  export import BookkeepingEntriesPage = API.BookkeepingEntriesPage;
+  export import BookkeepingEntryListParams = API.BookkeepingEntryListParams;
 
   export import RealTimeDecision = API.RealTimeDecision;
   export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams;
