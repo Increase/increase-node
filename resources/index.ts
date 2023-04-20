@@ -46,6 +46,24 @@ export {
 } from './account-transfers';
 export { BalanceLookupLookupResponse, BalanceLookupLookupParams, BalanceLookups } from './balance-lookups';
 export {
+  BookkeepingAccount,
+  BookkeepingAccountCreateParams,
+  BookkeepingAccountListParams,
+  BookkeepingAccountsPage,
+  BookkeepingAccounts,
+} from './bookkeeping-accounts';
+export {
+  BookkeepingEntry,
+  BookkeepingEntryListParams,
+  BookkeepingEntriesPage,
+  BookkeepingEntries,
+} from './bookkeeping-entries';
+export {
+  BookkeepingEntrySet,
+  BookkeepingEntrySetCreateParams,
+  BookkeepingEntrySets,
+} from './bookkeeping-entry-sets';
+export {
   Card,
   CardDetails,
   CardCreateParams,

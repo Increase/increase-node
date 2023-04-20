@@ -32,9 +32,9 @@ describe('resource documents', () => {
       increase.documents.list(
         {
           'category.in': [
-            'anti_money_laundering_policy',
-            'anti_money_laundering_policy',
-            'anti_money_laundering_policy',
+            'account_opening_disclosures',
+            'account_opening_disclosures',
+            'account_opening_disclosures',
           ],
           'created_at.after': '2019-12-27T18:11:19.117Z',
           'created_at.before': '2019-12-27T18:11:19.117Z',

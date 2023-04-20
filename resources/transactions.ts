@@ -830,6 +830,18 @@ export namespace Transaction {
       reason: 'mail_delivery_failure' | 'refused_by_recipient';
 
       /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the check was returned.
+       */
+      returned_at: string;
+
+      /**
+       * The identifier of the Transaction that was created to credit you for the
+       * returned check.
+       */
+      transaction_id: string | null;
+
+      /**
        * The identifier of the returned Check Transfer.
        */
       transfer_id: string;
@@ -1167,6 +1179,12 @@ export namespace Transaction {
       amount: number;
 
       /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the reversal was created.
+       */
+      created_at: string;
+
+      /**
        * The description on the reversal message from Fedwire.
        */
       description: string;
@@ -1221,6 +1239,11 @@ export namespace Transaction {
        * institution.
        */
       receiver_financial_institution_information: string | null;
+
+      /**
+       * The ID for the Transaction associated with the transfer reversal.
+       */
+      transaction_id: string | null;
     }
 
     export interface InboundWireTransfer {

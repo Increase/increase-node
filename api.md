@@ -25,6 +25,37 @@ Methods:
 - <code title="patch /account_numbers/{account_number_id}">client.accountNumbers.<a href="./resources/account-numbers.ts">update</a>(accountNumberId, { ...params }) -> AccountNumber</code>
 - <code title="get /account_numbers">client.accountNumbers.<a href="./resources/account-numbers.ts">list</a>({ ...params }) -> AccountNumbersPage</code>
 
+# BookkeepingAccounts
+
+Models:
+
+- <code><a href="./resources/bookkeeping-accounts.ts">BookkeepingAccount</a></code>
+
+Methods:
+
+- <code title="post /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./resources/bookkeeping-accounts.ts">create</a>({ ...params }) -> BookkeepingAccount</code>
+- <code title="get /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./resources/bookkeeping-accounts.ts">list</a>({ ...params }) -> BookkeepingAccountsPage</code>
+
+# BookkeepingEntrySets
+
+Models:
+
+- <code><a href="./resources/bookkeeping-entry-sets.ts">BookkeepingEntrySet</a></code>
+
+Methods:
+
+- <code title="post /bookkeeping_entry_sets">client.bookkeepingEntrySets.<a href="./resources/bookkeeping-entry-sets.ts">create</a>({ ...params }) -> BookkeepingEntrySet</code>
+
+# BookkeepingEntries
+
+Models:
+
+- <code><a href="./resources/bookkeeping-entries.ts">BookkeepingEntry</a></code>
+
+Methods:
+
+- <code title="get /bookkeeping_entries">client.bookkeepingEntries.<a href="./resources/bookkeeping-entries.ts">list</a>({ ...params }) -> BookkeepingEntriesPage</code>
+
 # RealTimeDecisions
 
 Models:

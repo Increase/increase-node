@@ -66,6 +66,18 @@ export interface RealTimePaymentsTransfer {
   amount: number;
 
   /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
+  approval: RealTimePaymentsTransfer.Approval | null;
+
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
+  cancellation: RealTimePaymentsTransfer.Cancellation | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
@@ -150,7 +162,41 @@ export interface RealTimePaymentsTransfer {
 }
 
 export namespace RealTimePaymentsTransfer {
+  export interface Approval {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was approved.
+     */
+    approved_at: string;
+
+    /**
+     * If the Transfer was approved by a user in the dashboard, the email address of
+     * that user.
+     */
+    approved_by: string | null;
+  }
+
+  export interface Cancellation {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Transfer was canceled.
+     */
+    canceled_at: string;
+
+    /**
+     * If the Transfer was canceled by a user in the dashboard, the email address of
+     * that user.
+     */
+    canceled_by: string | null;
+  }
+
   export interface Submission {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was submitted to The Clearing House.
+     */
+    submitted_at: string | null;
+
     /**
      * The Real Time Payments network identification of the transfer.
      */
@@ -190,6 +236,12 @@ export namespace RealTimePaymentsTransfer {
       | 'instructed_agent_signed_off'
       | 'processing_error'
       | 'other';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was rejected.
+     */
+    rejected_at: string | null;
   }
 }
 

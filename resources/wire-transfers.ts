@@ -234,6 +234,12 @@ export namespace WireTransfer {
     amount: number;
 
     /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the reversal was created.
+     */
+    created_at: string;
+
+    /**
      * The description on the reversal message from Fedwire.
      */
     description: string;
@@ -288,6 +294,11 @@ export namespace WireTransfer {
      * institution.
      */
     receiver_financial_institution_information: string | null;
+
+    /**
+     * The ID for the Transaction associated with the transfer reversal.
+     */
+    transaction_id: string | null;
   }
 
   export interface Submission {
