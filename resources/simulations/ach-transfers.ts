@@ -637,6 +637,12 @@ export namespace ACHTransferSimulation {
         id: string;
 
         /**
+         * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+         * is transacting with.
+         */
+        merchant_acceptor_id: string | null;
+
+        /**
          * The 4-digit MCC describing the merchant's business.
          */
         merchant_category_code: string;
@@ -695,6 +701,12 @@ export namespace ACHTransferSimulation {
          * The Card Settlement identifier.
          */
         id: string;
+
+        /**
+         * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+         * is transacting with.
+         */
+        merchant_acceptor_id: string | null;
 
         /**
          * The 4-digit MCC describing the merchant's business.
@@ -1935,6 +1947,7 @@ export namespace ACHTransferSimulation {
           | 'insufficient_funds'
           | 'cvv2_mismatch'
           | 'transaction_not_allowed'
+          | 'breaches_internal_limit'
           | 'breaches_limit'
           | 'webhook_declined'
           | 'webhook_timed_out'
