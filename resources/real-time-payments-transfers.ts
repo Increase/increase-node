@@ -162,6 +162,10 @@ export interface RealTimePaymentsTransfer {
 }
 
 export namespace RealTimePaymentsTransfer {
+  /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
   export interface Approval {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -176,6 +180,10 @@ export namespace RealTimePaymentsTransfer {
     approved_by: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
   export interface Cancellation {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -190,6 +198,10 @@ export namespace RealTimePaymentsTransfer {
     canceled_by: string | null;
   }
 
+  /**
+   * After the transfer is submitted to Real Time Payments, this will contain
+   * supplemental details.
+   */
   export interface Submission {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -203,6 +215,10 @@ export namespace RealTimePaymentsTransfer {
     transaction_identification: string;
   }
 
+  /**
+   * If the transfer is rejected by Real Time Payments or the destination financial
+   * institution, this will contain supplemental details.
+   */
   export interface Rejection {
     /**
      * Additional information about the rejection provided by the recipient bank when

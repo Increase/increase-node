@@ -103,6 +103,9 @@ export interface InboundACHTransferReturn {
 }
 
 export namespace InboundACHTransferReturn {
+  /**
+   * After the return is submitted to FedACH, this will contain supplemental details.
+   */
   export interface Submission {
     /**
      * When the ACH transfer return was sent to FedACH.

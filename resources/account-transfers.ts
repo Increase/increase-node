@@ -149,6 +149,10 @@ export interface AccountTransfer {
 }
 
 export namespace AccountTransfer {
+  /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
   export interface Approval {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -163,6 +167,10 @@ export namespace AccountTransfer {
     approved_by: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
   export interface Cancellation {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

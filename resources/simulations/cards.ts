@@ -63,6 +63,11 @@ export interface CardAuthorizationSimulation {
 }
 
 export namespace CardAuthorizationSimulation {
+  /**
+   * If the authorization attempt succeeds, this will contain the resulting Pending
+   * Transaction object. The Pending Transaction's `source` will be of
+   * `category: card_authorization`.
+   */
   export interface PendingTransaction {
     /**
      * The identifier for the account this Pending Transaction belongs to.
@@ -138,6 +143,11 @@ export namespace CardAuthorizationSimulation {
   }
 
   export namespace PendingTransaction {
+    /**
+     * This is an object giving more details on the network-level event that caused the
+     * Pending Transaction. For example, for a card transaction this lists the
+     * merchant's industry and location.
+     */
     export interface Source {
       /**
        * A Account Transfer Instruction object. This field will be present in the JSON
@@ -221,6 +231,10 @@ export namespace CardAuthorizationSimulation {
     }
 
     export namespace Source {
+      /**
+       * A Account Transfer Instruction object. This field will be present in the JSON
+       * response if and only if `category` is equal to `account_transfer_instruction`.
+       */
       export interface AccountTransferInstruction {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -240,6 +254,10 @@ export namespace CardAuthorizationSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A ACH Transfer Instruction object. This field will be present in the JSON
+       * response if and only if `category` is equal to `ach_transfer_instruction`.
+       */
       export interface ACHTransferInstruction {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -253,6 +271,10 @@ export namespace CardAuthorizationSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Card Authorization object. This field will be present in the JSON response if
+       * and only if `category` is equal to `card_authorization`.
+       */
       export interface CardAuthorization {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -328,6 +350,9 @@ export namespace CardAuthorizationSimulation {
       }
 
       export namespace CardAuthorization {
+        /**
+         * Fields specific to the `network`
+         */
         export interface NetworkDetails {
           /**
            * Fields specific to the `visa` network
@@ -336,6 +361,9 @@ export namespace CardAuthorizationSimulation {
         }
 
         export namespace NetworkDetails {
+          /**
+           * Fields specific to the `visa` network
+           */
           export interface Visa {
             /**
              * For electronic commerce transactions, this identifies the level of security used
@@ -357,11 +385,15 @@ export namespace CardAuthorizationSimulation {
              * The method used to enter the cardholder's primary account number and card
              * expiration date
              */
-            point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+            point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
           }
         }
       }
 
+      /**
+       * A Check Deposit Instruction object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_deposit_instruction`.
+       */
       export interface CheckDepositInstruction {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -393,6 +425,10 @@ export namespace CardAuthorizationSimulation {
         front_image_file_id: string;
       }
 
+      /**
+       * A Check Transfer Instruction object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_transfer_instruction`.
+       */
       export interface CheckTransferInstruction {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -412,6 +448,10 @@ export namespace CardAuthorizationSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Inbound Funds Hold object. This field will be present in the JSON response if
+       * and only if `category` is equal to `inbound_funds_hold`.
+       */
       export interface InboundFundsHold {
         /**
          * The held amount in the minor unit of the account's currency. For dollars, for
@@ -458,6 +498,10 @@ export namespace CardAuthorizationSimulation {
         status: 'held' | 'complete';
       }
 
+      /**
+       * A Deprecated Card Authorization object. This field will be present in the JSON
+       * response if and only if `category` is equal to `card_route_authorization`.
+       */
       export interface CardRouteAuthorization {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -484,6 +528,11 @@ export namespace CardAuthorizationSimulation {
         merchant_state: string | null;
       }
 
+      /**
+       * A Real Time Payments Transfer Instruction object. This field will be present in
+       * the JSON response if and only if `category` is equal to
+       * `real_time_payments_transfer_instruction`.
+       */
       export interface RealTimePaymentsTransferInstruction {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -498,6 +547,11 @@ export namespace CardAuthorizationSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Wire Drawdown Payment Instruction object. This field will be present in the
+       * JSON response if and only if `category` is equal to
+       * `wire_drawdown_payment_instruction`.
+       */
       export interface WireDrawdownPaymentInstruction {
         account_number: string;
 
@@ -512,6 +566,10 @@ export namespace CardAuthorizationSimulation {
         routing_number: string;
       }
 
+      /**
+       * A Wire Transfer Instruction object. This field will be present in the JSON
+       * response if and only if `category` is equal to `wire_transfer_instruction`.
+       */
       export interface WireTransferInstruction {
         account_number: string;
 
@@ -530,6 +588,11 @@ export namespace CardAuthorizationSimulation {
     }
   }
 
+  /**
+   * If the authorization attempt fails, this will contain the resulting
+   * [Declined Transaction](#declined-transactions) object. The Declined
+   * Transaction's `source` will be of `category: card_decline`.
+   */
   export interface DeclinedTransaction {
     /**
      * The identifier for the Account the Declined Transaction belongs to.
@@ -593,6 +656,13 @@ export namespace CardAuthorizationSimulation {
   }
 
   export namespace DeclinedTransaction {
+    /**
+     * This is an object giving more details on the network-level event that caused the
+     * Declined Transaction. For example, for a card transaction this lists the
+     * merchant's industry and location. Note that for backwards compatibility reasons,
+     * additional undocumented keys may appear in this object. These should be treated
+     * as deprecated and will be removed in the future.
+     */
     export interface Source {
       /**
        * A ACH Decline object. This field will be present in the JSON response if and
@@ -647,6 +717,10 @@ export namespace CardAuthorizationSimulation {
     }
 
     export namespace Source {
+      /**
+       * A ACH Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `ach_decline`.
+       */
       export interface ACHDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -686,6 +760,10 @@ export namespace CardAuthorizationSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Card Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `card_decline`.
+       */
       export interface CardDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -772,6 +850,9 @@ export namespace CardAuthorizationSimulation {
       }
 
       export namespace CardDecline {
+        /**
+         * Fields specific to the `network`
+         */
         export interface NetworkDetails {
           /**
            * Fields specific to the `visa` network
@@ -780,6 +861,9 @@ export namespace CardAuthorizationSimulation {
         }
 
         export namespace NetworkDetails {
+          /**
+           * Fields specific to the `visa` network
+           */
           export interface Visa {
             /**
              * For electronic commerce transactions, this identifies the level of security used
@@ -801,11 +885,15 @@ export namespace CardAuthorizationSimulation {
              * The method used to enter the cardholder's primary account number and card
              * expiration date
              */
-            point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+            point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
           }
         }
       }
 
+      /**
+       * A Check Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `check_decline`.
+       */
       export interface CheckDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -834,6 +922,11 @@ export namespace CardAuthorizationSimulation {
           | 'not_authorized';
       }
 
+      /**
+       * A Inbound Real Time Payments Transfer Decline object. This field will be present
+       * in the JSON response if and only if `category` is equal to
+       * `inbound_real_time_payments_transfer_decline`.
+       */
       export interface InboundRealTimePaymentsTransferDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -889,6 +982,10 @@ export namespace CardAuthorizationSimulation {
         transaction_identification: string;
       }
 
+      /**
+       * A International ACH Decline object. This field will be present in the JSON
+       * response if and only if `category` is equal to `international_ach_decline`.
+       */
       export interface InternationalACHDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -967,6 +1064,10 @@ export namespace CardAuthorizationSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Deprecated Card Decline object. This field will be present in the JSON
+       * response if and only if `category` is equal to `card_route_decline`.
+       */
       export interface CardRouteDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For

@@ -127,6 +127,9 @@ export interface Card {
 }
 
 export namespace Card {
+  /**
+   * The Card's billing address.
+   */
   export interface BillingAddress {
     /**
      * The city of the billing address.
@@ -154,6 +157,11 @@ export namespace Card {
     state: string | null;
   }
 
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
   export interface DigitalWallet {
     /**
      * The card profile assigned to this digital card. Card profiles may also be
@@ -240,6 +248,9 @@ export interface CardCreateParams {
 }
 
 export namespace CardCreateParams {
+  /**
+   * The card's billing address.
+   */
   export interface BillingAddress {
     /**
      * The city of the billing address.
@@ -267,6 +278,13 @@ export namespace CardCreateParams {
     line2?: string;
   }
 
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. To add the card to a digital wallet, you may supply an email or phone
+   * number with this request. Otherwise, subscribe and then action a Real Time
+   * Decision with the category `digital_wallet_token_requested` or
+   * `digital_wallet_authentication_requested`.
+   */
   export interface DigitalWallet {
     /**
      * The card profile assigned to this digital card. Card profiles may also be
@@ -287,6 +305,9 @@ export namespace CardCreateParams {
     phone?: string;
   }
 
+  /**
+   * The card's billing address.
+   */
   export interface BillingAddress {
     /**
      * The city of the billing address.
@@ -314,6 +335,13 @@ export namespace CardCreateParams {
     line2?: string;
   }
 
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. To add the card to a digital wallet, you may supply an email or phone
+   * number with this request. Otherwise, subscribe and then action a Real Time
+   * Decision with the category `digital_wallet_token_requested` or
+   * `digital_wallet_authentication_requested`.
+   */
   export interface DigitalWallet {
     /**
      * The card profile assigned to this digital card. Card profiles may also be
@@ -360,6 +388,9 @@ export interface CardUpdateParams {
 }
 
 export namespace CardUpdateParams {
+  /**
+   * The card's updated billing address.
+   */
   export interface BillingAddress {
     /**
      * The city of the billing address.
@@ -387,6 +418,11 @@ export namespace CardUpdateParams {
     line2?: string;
   }
 
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
   export interface DigitalWallet {
     /**
      * The card profile assigned to this digital card. Card profiles may also be
@@ -407,6 +443,9 @@ export namespace CardUpdateParams {
     phone?: string;
   }
 
+  /**
+   * The card's updated billing address.
+   */
   export interface BillingAddress {
     /**
      * The city of the billing address.
@@ -434,6 +473,11 @@ export namespace CardUpdateParams {
     line2?: string;
   }
 
+  /**
+   * The contact information used in the two-factor steps for digital wallet card
+   * creation. At least one field must be present to complete the digital wallet
+   * steps.
+   */
   export interface DigitalWallet {
     /**
      * The card profile assigned to this digital card. Card profiles may also be

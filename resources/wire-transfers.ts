@@ -199,6 +199,10 @@ export interface WireTransfer {
 }
 
 export namespace WireTransfer {
+  /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
   export interface Approval {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -213,6 +217,10 @@ export namespace WireTransfer {
     approved_by: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
   export interface Cancellation {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -227,6 +235,9 @@ export namespace WireTransfer {
     canceled_by: string | null;
   }
 
+  /**
+   * If your transfer is reversed, this will contain details of the reversal.
+   */
   export interface Reversal {
     /**
      * The amount that was reversed.
@@ -301,6 +312,10 @@ export namespace WireTransfer {
     transaction_id: string | null;
   }
 
+  /**
+   * After the transfer is submitted to Fedwire, this will contain supplemental
+   * details.
+   */
   export interface Submission {
     /**
      * The accountability data for the submission.

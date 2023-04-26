@@ -126,6 +126,9 @@ export interface ACHPrenotification {
 }
 
 export namespace ACHPrenotification {
+  /**
+   * If your prenotification is returned, this will contain details of the return.
+   */
   export interface PrenotificationReturn {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
