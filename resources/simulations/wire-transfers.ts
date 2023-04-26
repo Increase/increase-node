@@ -595,6 +595,12 @@ export namespace WireTransferSimulation {
         id: string;
 
         /**
+         * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+         * is transacting with.
+         */
+        merchant_acceptor_id: string | null;
+
+        /**
          * The 4-digit MCC describing the merchant's business.
          */
         merchant_category_code: string;
@@ -653,6 +659,12 @@ export namespace WireTransferSimulation {
          * The Card Settlement identifier.
          */
         id: string;
+
+        /**
+         * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+         * is transacting with.
+         */
+        merchant_acceptor_id: string | null;
 
         /**
          * The 4-digit MCC describing the merchant's business.

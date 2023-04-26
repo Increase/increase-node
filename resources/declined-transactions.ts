@@ -291,6 +291,7 @@ export namespace DeclinedTransaction {
         | 'insufficient_funds'
         | 'cvv2_mismatch'
         | 'transaction_not_allowed'
+        | 'breaches_internal_limit'
         | 'breaches_limit'
         | 'webhook_declined'
         | 'webhook_timed_out'

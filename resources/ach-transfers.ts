@@ -167,7 +167,7 @@ export interface ACHTransfer {
    * If the receiving bank accepts the transfer but notifies that future transfers
    * should use different details, this will contain those details.
    */
-  notification_of_change: ACHTransfer.NotificationOfChange | null;
+  notifications_of_change: Array<ACHTransfer.NotificationsOfChange>;
 
   /**
    * If your transfer is returned, this will contain details of the return.
@@ -260,11 +260,7 @@ export namespace ACHTransfer {
     canceled_by: string | null;
   }
 
-  /**
-   * If the receiving bank accepts the transfer but notifies that future transfers
-   * should use different details, this will contain those details.
-   */
-  export interface NotificationOfChange {
+  export interface NotificationsOfChange {
     /**
      * The type of change that occurred.
      */
