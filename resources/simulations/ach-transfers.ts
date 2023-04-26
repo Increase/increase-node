@@ -76,6 +76,11 @@ export interface ACHTransferSimulation {
 }
 
 export namespace ACHTransferSimulation {
+  /**
+   * If the ACH Transfer attempt succeeds, this will contain the resulting
+   * [Transaction](#transactions) object. The Transaction's `source` will be of
+   * `category: inbound_ach_transfer`.
+   */
   export interface Transaction {
     /**
      * The identifier for the Account the Transaction belongs to.
@@ -140,6 +145,12 @@ export namespace ACHTransferSimulation {
   }
 
   export namespace Transaction {
+    /**
+     * This is an object giving more details on the network-level event that caused the
+     * Transaction. Note that for backwards compatibility reasons, additional
+     * undocumented keys may appear in this object. These should be treated as
+     * deprecated and will be removed in the future.
+     */
     export interface Source {
       /**
        * A Account Transfer Intention object. This field will be present in the JSON
@@ -419,6 +430,10 @@ export namespace ACHTransferSimulation {
     }
 
     export namespace Source {
+      /**
+       * A Account Transfer Intention object. This field will be present in the JSON
+       * response if and only if `category` is equal to `account_transfer_intention`.
+       */
       export interface AccountTransferIntention {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -453,6 +468,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A ACH Check Conversion Return object. This field will be present in the JSON
+       * response if and only if `category` is equal to `ach_check_conversion_return`.
+       */
       export interface ACHCheckConversionReturn {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -466,6 +485,10 @@ export namespace ACHTransferSimulation {
         return_reason_code: string;
       }
 
+      /**
+       * A ACH Check Conversion object. This field will be present in the JSON response
+       * if and only if `category` is equal to `ach_check_conversion`.
+       */
       export interface ACHCheckConversion {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -479,6 +502,10 @@ export namespace ACHTransferSimulation {
         file_id: string;
       }
 
+      /**
+       * A ACH Transfer Intention object. This field will be present in the JSON response
+       * if and only if `category` is equal to `ach_transfer_intention`.
+       */
       export interface ACHTransferIntention {
         account_number: string;
 
@@ -498,6 +525,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A ACH Transfer Rejection object. This field will be present in the JSON response
+       * if and only if `category` is equal to `ach_transfer_rejection`.
+       */
       export interface ACHTransferRejection {
         /**
          * The identifier of the ACH Transfer that led to this Transaction.
@@ -505,6 +536,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A ACH Transfer Return object. This field will be present in the JSON response if
+       * and only if `category` is equal to `ach_transfer_return`.
+       */
       export interface ACHTransferReturn {
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -551,6 +586,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Card Dispute Acceptance object. This field will be present in the JSON
+       * response if and only if `category` is equal to `card_dispute_acceptance`.
+       */
       export interface CardDisputeAcceptance {
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -570,6 +609,10 @@ export namespace ACHTransferSimulation {
         transaction_id: string;
       }
 
+      /**
+       * A Card Refund object. This field will be present in the JSON response if and
+       * only if `category` is equal to `card_refund`.
+       */
       export interface CardRefund {
         /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -625,6 +668,10 @@ export namespace ACHTransferSimulation {
         type: 'card_refund';
       }
 
+      /**
+       * A Card Settlement object. This field will be present in the JSON response if and
+       * only if `category` is equal to `card_settlement`.
+       */
       export interface CardSettlement {
         /**
          * The amount in the minor unit of the transaction's settlement currency. For
@@ -697,6 +744,10 @@ export namespace ACHTransferSimulation {
         type: 'card_settlement';
       }
 
+      /**
+       * A Card Revenue Payment object. This field will be present in the JSON response
+       * if and only if `category` is equal to `card_revenue_payment`.
+       */
       export interface CardRevenuePayment {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -726,6 +777,10 @@ export namespace ACHTransferSimulation {
         transacted_on_account_id: string | null;
       }
 
+      /**
+       * A Check Deposit Acceptance object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_deposit_acceptance`.
+       */
       export interface CheckDepositAcceptance {
         /**
          * The account number printed on the check.
@@ -767,6 +822,10 @@ export namespace ACHTransferSimulation {
         serial_number: string | null;
       }
 
+      /**
+       * A Check Deposit Return object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_deposit_return`.
+       */
       export interface CheckDepositReturn {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -811,6 +870,10 @@ export namespace ACHTransferSimulation {
         transaction_id: string;
       }
 
+      /**
+       * A Check Transfer Intention object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_transfer_intention`.
+       */
       export interface CheckTransferIntention {
         /**
          * The city of the check's destination.
@@ -859,6 +922,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Check Transfer Return object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_return`.
+       */
       export interface CheckTransferReturn {
         /**
          * If available, a document with additional information about the return.
@@ -888,6 +955,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Check Transfer Rejection object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_transfer_rejection`.
+       */
       export interface CheckTransferRejection {
         /**
          * The identifier of the Check Transfer that led to this Transaction.
@@ -895,6 +966,11 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Check Transfer Stop Payment Request object. This field will be present in the
+       * JSON response if and only if `category` is equal to
+       * `check_transfer_stop_payment_request`.
+       */
       export interface CheckTransferStopPaymentRequest {
         /**
          * The time the stop-payment was requested.
@@ -918,6 +994,10 @@ export namespace ACHTransferSimulation {
         type: 'check_transfer_stop_payment_request';
       }
 
+      /**
+       * A Dispute Resolution object. This field will be present in the JSON response if
+       * and only if `category` is equal to `dispute_resolution`.
+       */
       export interface DisputeResolution {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -937,6 +1017,10 @@ export namespace ACHTransferSimulation {
         disputed_transaction_id: string;
       }
 
+      /**
+       * A Empyreal Cash Deposit object. This field will be present in the JSON response
+       * if and only if `category` is equal to `empyreal_cash_deposit`.
+       */
       export interface EmpyrealCashDeposit {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -949,6 +1033,10 @@ export namespace ACHTransferSimulation {
         deposit_date: string;
       }
 
+      /**
+       * A Fee Payment object. This field will be present in the JSON response if and
+       * only if `category` is equal to `fee_payment`.
+       */
       export interface FeePayment {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -963,6 +1051,10 @@ export namespace ACHTransferSimulation {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
+      /**
+       * A Inbound ACH Transfer object. This field will be present in the JSON response
+       * if and only if `category` is equal to `inbound_ach_transfer`.
+       */
       export interface InboundACHTransfer {
         /**
          * The amount in the minor unit of the destination account currency. For dollars,
@@ -987,6 +1079,10 @@ export namespace ACHTransferSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Inbound Check object. This field will be present in the JSON response if and
+       * only if `category` is equal to `inbound_check`.
+       */
       export interface InboundCheck {
         /**
          * The amount in the minor unit of the destination account currency. For dollars,
@@ -1007,6 +1103,11 @@ export namespace ACHTransferSimulation {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
+      /**
+       * A Inbound International ACH Transfer object. This field will be present in the
+       * JSON response if and only if `category` is equal to
+       * `inbound_international_ach_transfer`.
+       */
       export interface InboundInternationalACHTransfer {
         /**
          * The amount in the minor unit of the destination account currency. For dollars,
@@ -1085,6 +1186,11 @@ export namespace ACHTransferSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Inbound Real Time Payments Transfer Confirmation object. This field will be
+       * present in the JSON response if and only if `category` is equal to
+       * `inbound_real_time_payments_transfer_confirmation`.
+       */
       export interface InboundRealTimePaymentsTransferConfirmation {
         /**
          * The amount in the minor unit of the transfer's currency. For dollars, for
@@ -1129,6 +1235,11 @@ export namespace ACHTransferSimulation {
         transaction_identification: string;
       }
 
+      /**
+       * A Inbound Wire Drawdown Payment Reversal object. This field will be present in
+       * the JSON response if and only if `category` is equal to
+       * `inbound_wire_drawdown_payment_reversal`.
+       */
       export interface InboundWireDrawdownPaymentReversal {
         /**
          * The amount that was reversed.
@@ -1181,6 +1292,10 @@ export namespace ACHTransferSimulation {
         previous_message_input_source: string;
       }
 
+      /**
+       * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
+       * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
+       */
       export interface InboundWireDrawdownPayment {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -1213,6 +1328,10 @@ export namespace ACHTransferSimulation {
         originator_to_beneficiary_information: string | null;
       }
 
+      /**
+       * A Inbound Wire Reversal object. This field will be present in the JSON response
+       * if and only if `category` is equal to `inbound_wire_reversal`.
+       */
       export interface InboundWireReversal {
         /**
          * The amount that was reversed.
@@ -1287,6 +1406,10 @@ export namespace ACHTransferSimulation {
         transaction_id: string | null;
       }
 
+      /**
+       * A Inbound Wire Transfer object. This field will be present in the JSON response
+       * if and only if `category` is equal to `inbound_wire_transfer`.
+       */
       export interface InboundWireTransfer {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -1327,6 +1450,10 @@ export namespace ACHTransferSimulation {
         originator_to_beneficiary_information_line4: string | null;
       }
 
+      /**
+       * A Interest Payment object. This field will be present in the JSON response if
+       * and only if `category` is equal to `interest_payment`.
+       */
       export interface InterestPayment {
         /**
          * The account on which the interest was accrued.
@@ -1356,6 +1483,10 @@ export namespace ACHTransferSimulation {
         period_start: string;
       }
 
+      /**
+       * A Internal Source object. This field will be present in the JSON response if and
+       * only if `category` is equal to `internal_source`.
+       */
       export interface InternalSource {
         /**
          * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -1381,6 +1512,10 @@ export namespace ACHTransferSimulation {
           | 'sample_funds_return';
       }
 
+      /**
+       * A Deprecated Card Refund object. This field will be present in the JSON response
+       * if and only if `category` is equal to `card_route_refund`.
+       */
       export interface CardRouteRefund {
         /**
          * The refunded amount in the minor unit of the refunded currency. For dollars, for
@@ -1407,6 +1542,10 @@ export namespace ACHTransferSimulation {
         merchant_state: string | null;
       }
 
+      /**
+       * A Deprecated Card Settlement object. This field will be present in the JSON
+       * response if and only if `category` is equal to `card_route_settlement`.
+       */
       export interface CardRouteSettlement {
         /**
          * The settled amount in the minor unit of the settlement currency. For dollars,
@@ -1433,6 +1572,11 @@ export namespace ACHTransferSimulation {
         merchant_state: string | null;
       }
 
+      /**
+       * A Real Time Payments Transfer Acknowledgement object. This field will be present
+       * in the JSON response if and only if `category` is equal to
+       * `real_time_payments_transfer_acknowledgement`.
+       */
       export interface RealTimePaymentsTransferAcknowledgement {
         /**
          * The transfer amount in USD cents.
@@ -1460,6 +1604,10 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Sample Funds object. This field will be present in the JSON response if and
+       * only if `category` is equal to `sample_funds`.
+       */
       export interface SampleFunds {
         /**
          * Where the sample funds came from.
@@ -1467,6 +1615,11 @@ export namespace ACHTransferSimulation {
         originator: string;
       }
 
+      /**
+       * A Wire Drawdown Payment Intention object. This field will be present in the JSON
+       * response if and only if `category` is equal to
+       * `wire_drawdown_payment_intention`.
+       */
       export interface WireDrawdownPaymentIntention {
         account_number: string;
 
@@ -1482,10 +1635,19 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Wire Drawdown Payment Rejection object. This field will be present in the JSON
+       * response if and only if `category` is equal to
+       * `wire_drawdown_payment_rejection`.
+       */
       export interface WireDrawdownPaymentRejection {
         transfer_id: string;
       }
 
+      /**
+       * A Wire Transfer Intention object. This field will be present in the JSON
+       * response if and only if `category` is equal to `wire_transfer_intention`.
+       */
       export interface WireTransferIntention {
         /**
          * The destination account number.
@@ -1510,12 +1672,21 @@ export namespace ACHTransferSimulation {
         transfer_id: string;
       }
 
+      /**
+       * A Wire Transfer Rejection object. This field will be present in the JSON
+       * response if and only if `category` is equal to `wire_transfer_rejection`.
+       */
       export interface WireTransferRejection {
         transfer_id: string;
       }
     }
   }
 
+  /**
+   * If the ACH Transfer attempt fails, this will contain the resulting
+   * [Declined Transaction](#declined-transactions) object. The Declined
+   * Transaction's `source` will be of `category: inbound_ach_transfer`.
+   */
   export interface DeclinedTransaction {
     /**
      * The identifier for the Account the Declined Transaction belongs to.
@@ -1579,6 +1750,13 @@ export namespace ACHTransferSimulation {
   }
 
   export namespace DeclinedTransaction {
+    /**
+     * This is an object giving more details on the network-level event that caused the
+     * Declined Transaction. For example, for a card transaction this lists the
+     * merchant's industry and location. Note that for backwards compatibility reasons,
+     * additional undocumented keys may appear in this object. These should be treated
+     * as deprecated and will be removed in the future.
+     */
     export interface Source {
       /**
        * A ACH Decline object. This field will be present in the JSON response if and
@@ -1633,6 +1811,10 @@ export namespace ACHTransferSimulation {
     }
 
     export namespace Source {
+      /**
+       * A ACH Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `ach_decline`.
+       */
       export interface ACHDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -1672,6 +1854,10 @@ export namespace ACHTransferSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Card Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `card_decline`.
+       */
       export interface CardDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -1758,6 +1944,9 @@ export namespace ACHTransferSimulation {
       }
 
       export namespace CardDecline {
+        /**
+         * Fields specific to the `network`
+         */
         export interface NetworkDetails {
           /**
            * Fields specific to the `visa` network
@@ -1766,6 +1955,9 @@ export namespace ACHTransferSimulation {
         }
 
         export namespace NetworkDetails {
+          /**
+           * Fields specific to the `visa` network
+           */
           export interface Visa {
             /**
              * For electronic commerce transactions, this identifies the level of security used
@@ -1787,11 +1979,15 @@ export namespace ACHTransferSimulation {
              * The method used to enter the cardholder's primary account number and card
              * expiration date
              */
-            point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+            point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
           }
         }
       }
 
+      /**
+       * A Check Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `check_decline`.
+       */
       export interface CheckDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -1820,6 +2016,11 @@ export namespace ACHTransferSimulation {
           | 'not_authorized';
       }
 
+      /**
+       * A Inbound Real Time Payments Transfer Decline object. This field will be present
+       * in the JSON response if and only if `category` is equal to
+       * `inbound_real_time_payments_transfer_decline`.
+       */
       export interface InboundRealTimePaymentsTransferDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -1875,6 +2076,10 @@ export namespace ACHTransferSimulation {
         transaction_identification: string;
       }
 
+      /**
+       * A International ACH Decline object. This field will be present in the JSON
+       * response if and only if `category` is equal to `international_ach_decline`.
+       */
       export interface InternationalACHDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For
@@ -1953,6 +2158,10 @@ export namespace ACHTransferSimulation {
         trace_number: string;
       }
 
+      /**
+       * A Deprecated Card Decline object. This field will be present in the JSON
+       * response if and only if `category` is equal to `card_route_decline`.
+       */
       export interface CardRouteDecline {
         /**
          * The declined amount in the minor unit of the destination account currency. For

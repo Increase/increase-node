@@ -2,6 +2,9 @@
 
 import { AbstractPage, APIResponse, APIClient, FinalRequestOptions, PageInfo } from './core';
 
+/**
+ * A list of Account objects
+ */
 export interface PageResponse<Item> {
   data: Array<Item>;
 

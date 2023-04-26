@@ -135,6 +135,10 @@ export interface WireDrawdownRequest {
 }
 
 export namespace WireDrawdownRequest {
+  /**
+   * After the drawdown request is submitted to Fedwire, this will contain
+   * supplemental details.
+   */
   export interface Submission {
     /**
      * The input message accountability data (IMAD) uniquely identifying the submission

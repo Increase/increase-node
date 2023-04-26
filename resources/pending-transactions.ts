@@ -117,6 +117,11 @@ export interface PendingTransaction {
 }
 
 export namespace PendingTransaction {
+  /**
+   * This is an object giving more details on the network-level event that caused the
+   * Pending Transaction. For example, for a card transaction this lists the
+   * merchant's industry and location.
+   */
   export interface Source {
     /**
      * A Account Transfer Instruction object. This field will be present in the JSON
@@ -200,6 +205,10 @@ export namespace PendingTransaction {
   }
 
   export namespace Source {
+    /**
+     * A Account Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_transfer_instruction`.
+     */
     export interface AccountTransferInstruction {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -219,6 +228,10 @@ export namespace PendingTransaction {
       transfer_id: string;
     }
 
+    /**
+     * A ACH Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_instruction`.
+     */
     export interface ACHTransferInstruction {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -232,6 +245,10 @@ export namespace PendingTransaction {
       transfer_id: string;
     }
 
+    /**
+     * A Card Authorization object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authorization`.
+     */
     export interface CardAuthorization {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -307,6 +324,9 @@ export namespace PendingTransaction {
     }
 
     export namespace CardAuthorization {
+      /**
+       * Fields specific to the `network`
+       */
       export interface NetworkDetails {
         /**
          * Fields specific to the `visa` network
@@ -315,6 +335,9 @@ export namespace PendingTransaction {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `visa` network
+         */
         export interface Visa {
           /**
            * For electronic commerce transactions, this identifies the level of security used
@@ -336,11 +359,15 @@ export namespace PendingTransaction {
            * The method used to enter the cardholder's primary account number and card
            * expiration date
            */
-          point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+          point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
         }
       }
     }
 
+    /**
+     * A Check Deposit Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `check_deposit_instruction`.
+     */
     export interface CheckDepositInstruction {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -372,6 +399,10 @@ export namespace PendingTransaction {
       front_image_file_id: string;
     }
 
+    /**
+     * A Check Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `check_transfer_instruction`.
+     */
     export interface CheckTransferInstruction {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -391,6 +422,10 @@ export namespace PendingTransaction {
       transfer_id: string;
     }
 
+    /**
+     * A Inbound Funds Hold object. This field will be present in the JSON response if
+     * and only if `category` is equal to `inbound_funds_hold`.
+     */
     export interface InboundFundsHold {
       /**
        * The held amount in the minor unit of the account's currency. For dollars, for
@@ -437,6 +472,10 @@ export namespace PendingTransaction {
       status: 'held' | 'complete';
     }
 
+    /**
+     * A Deprecated Card Authorization object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_route_authorization`.
+     */
     export interface CardRouteAuthorization {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -463,6 +502,11 @@ export namespace PendingTransaction {
       merchant_state: string | null;
     }
 
+    /**
+     * A Real Time Payments Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `real_time_payments_transfer_instruction`.
+     */
     export interface RealTimePaymentsTransferInstruction {
       /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -477,6 +521,11 @@ export namespace PendingTransaction {
       transfer_id: string;
     }
 
+    /**
+     * A Wire Drawdown Payment Instruction object. This field will be present in the
+     * JSON response if and only if `category` is equal to
+     * `wire_drawdown_payment_instruction`.
+     */
     export interface WireDrawdownPaymentInstruction {
       account_number: string;
 
@@ -491,6 +540,10 @@ export namespace PendingTransaction {
       routing_number: string;
     }
 
+    /**
+     * A Wire Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `wire_transfer_instruction`.
+     */
     export interface WireTransferInstruction {
       account_number: string;
 

@@ -87,6 +87,9 @@ export interface RealTimeDecision {
 }
 
 export namespace RealTimeDecision {
+  /**
+   * Fields related to a card authorization.
+   */
   export interface CardAuthorization {
     /**
      * The identifier of the Account the authorization will debit.
@@ -167,6 +170,9 @@ export namespace RealTimeDecision {
   }
 
   export namespace CardAuthorization {
+    /**
+     * Fields specific to the `network`
+     */
     export interface NetworkDetails {
       /**
        * Fields specific to the `visa` network
@@ -175,6 +181,9 @@ export namespace RealTimeDecision {
     }
 
     export namespace NetworkDetails {
+      /**
+       * Fields specific to the `visa` network
+       */
       export interface Visa {
         /**
          * For electronic commerce transactions, this identifies the level of security used
@@ -196,11 +205,14 @@ export namespace RealTimeDecision {
          * The method used to enter the cardholder's primary account number and card
          * expiration date
          */
-        point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+        point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
       }
     }
   }
 
+  /**
+   * Fields related to a digital wallet token provisioning attempt.
+   */
   export interface DigitalWalletToken {
     /**
      * The identifier of the Card that is being tokenized.
@@ -226,6 +238,9 @@ export namespace RealTimeDecision {
     digital_wallet: 'apple_pay' | 'google_pay';
   }
 
+  /**
+   * Fields related to a digital wallet authentication attempt.
+   */
   export interface DigitalWalletAuthentication {
     /**
      * The identifier of the Card that is being tokenized.
@@ -286,6 +301,10 @@ export interface RealTimeDecisionActionParams {
 }
 
 export namespace RealTimeDecisionActionParams {
+  /**
+   * If the Real-Time Decision relates to a card authorization attempt, this object
+   * contains your response to the authorization.
+   */
   export interface CardAuthorization {
     /**
      * Whether the card authorization should be approved or declined.
@@ -293,6 +312,10 @@ export namespace RealTimeDecisionActionParams {
     decision: 'approve' | 'decline';
   }
 
+  /**
+   * If the Real-Time Decision relates to a digital wallet token provisioning
+   * attempt, this object contains your response to the attempt.
+   */
   export interface DigitalWalletToken {
     /**
      * If your application approves the provisioning attempt, this contains metadata
@@ -308,6 +331,10 @@ export namespace RealTimeDecisionActionParams {
   }
 
   export namespace DigitalWalletToken {
+    /**
+     * If your application approves the provisioning attempt, this contains metadata
+     * about the digital wallet token that will be generated.
+     */
     export interface Approval {
       /**
        * The identifier of the Card Profile to assign to the Digital Wallet token.
@@ -327,6 +354,10 @@ export namespace RealTimeDecisionActionParams {
       phone?: string;
     }
 
+    /**
+     * If your application declines the provisioning attempt, this contains details
+     * about the decline.
+     */
     export interface Decline {
       /**
        * Why the tokenization attempt was declined. This is for logging purposes only and
@@ -336,6 +367,10 @@ export namespace RealTimeDecisionActionParams {
     }
   }
 
+  /**
+   * If the Real-Time Decision relates to a digital wallet authentication attempt,
+   * this object contains your response to the authentication.
+   */
   export interface DigitalWalletAuthentication {
     /**
      * Whether your application was able to deliver the one-time passcode.
@@ -343,6 +378,10 @@ export namespace RealTimeDecisionActionParams {
     result: 'success' | 'failure';
   }
 
+  /**
+   * If the Real-Time Decision relates to a card authorization attempt, this object
+   * contains your response to the authorization.
+   */
   export interface CardAuthorization {
     /**
      * Whether the card authorization should be approved or declined.
@@ -350,6 +389,10 @@ export namespace RealTimeDecisionActionParams {
     decision: 'approve' | 'decline';
   }
 
+  /**
+   * If the Real-Time Decision relates to a digital wallet authentication attempt,
+   * this object contains your response to the authentication.
+   */
   export interface DigitalWalletAuthentication {
     /**
      * Whether your application was able to deliver the one-time passcode.
@@ -357,6 +400,10 @@ export namespace RealTimeDecisionActionParams {
     result: 'success' | 'failure';
   }
 
+  /**
+   * If the Real-Time Decision relates to a digital wallet token provisioning
+   * attempt, this object contains your response to the attempt.
+   */
   export interface DigitalWalletToken {
     /**
      * If your application approves the provisioning attempt, this contains metadata
@@ -372,6 +419,10 @@ export namespace RealTimeDecisionActionParams {
   }
 
   export namespace DigitalWalletToken {
+    /**
+     * If your application approves the provisioning attempt, this contains metadata
+     * about the digital wallet token that will be generated.
+     */
     export interface Approval {
       /**
        * The identifier of the Card Profile to assign to the Digital Wallet token.
@@ -391,6 +442,10 @@ export namespace RealTimeDecisionActionParams {
       phone?: string;
     }
 
+    /**
+     * If your application declines the provisioning attempt, this contains details
+     * about the decline.
+     */
     export interface Decline {
       /**
        * Why the tokenization attempt was declined. This is for logging purposes only and

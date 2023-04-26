@@ -218,6 +218,9 @@ export interface CheckTransfer {
 }
 
 export namespace CheckTransfer {
+  /**
+   * The return address to be printed on the check.
+   */
   export interface ReturnAddress {
     /**
      * The city of the address.
@@ -250,6 +253,10 @@ export namespace CheckTransfer {
     zip: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
   export interface Approval {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -264,6 +271,10 @@ export namespace CheckTransfer {
     approved_by: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
   export interface Cancellation {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -278,6 +289,9 @@ export namespace CheckTransfer {
     canceled_by: string | null;
   }
 
+  /**
+   * After the transfer is submitted, this will contain supplemental details.
+   */
   export interface Submission {
     /**
      * The identitying number of the check.
@@ -290,6 +304,10 @@ export namespace CheckTransfer {
     submitted_at: string;
   }
 
+  /**
+   * After a stop-payment is requested on the check, this will contain supplemental
+   * details.
+   */
   export interface StopPaymentRequest {
     /**
      * The time the stop-payment was requested.
@@ -313,6 +331,9 @@ export namespace CheckTransfer {
     type: 'check_transfer_stop_payment_request';
   }
 
+  /**
+   * After a check transfer is deposited, this will contain supplemental details.
+   */
   export interface Deposit {
     /**
      * The ID for the File containing the image of the rear of the check.
@@ -336,6 +357,11 @@ export namespace CheckTransfer {
     type: 'check_transfer_deposit';
   }
 
+  /**
+   * After a check transfer is returned, this will contain supplemental details. A
+   * check transfer is returned when the receiver mails a never deposited check back
+   * to the bank printed on the check.
+   */
   export interface ReturnDetails {
     /**
      * If available, a document with additional information about the return.
@@ -430,6 +456,10 @@ export interface CheckTransferCreateParams {
 }
 
 export namespace CheckTransferCreateParams {
+  /**
+   * The return address to be printed on the check. If omitted this will default to
+   * the address of the Entity of the Account used to make the Check Transfer.
+   */
   export interface ReturnAddress {
     /**
      * The city of the return address.
@@ -462,6 +492,10 @@ export namespace CheckTransferCreateParams {
     line2?: string;
   }
 
+  /**
+   * The return address to be printed on the check. If omitted this will default to
+   * the address of the Entity of the Account used to make the Check Transfer.
+   */
   export interface ReturnAddress {
     /**
      * The city of the return address.

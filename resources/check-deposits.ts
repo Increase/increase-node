@@ -118,6 +118,10 @@ export interface CheckDeposit {
 }
 
 export namespace CheckDeposit {
+  /**
+   * If your deposit is successfully parsed and accepted by Increase, this will
+   * contain details of the parsed check.
+   */
   export interface DepositAcceptance {
     /**
      * The account number printed on the check.
@@ -159,6 +163,10 @@ export namespace CheckDeposit {
     serial_number: string | null;
   }
 
+  /**
+   * If your deposit is rejected by Increase, this will contain details as to why it
+   * was rejected.
+   */
   export interface DepositRejection {
     /**
      * The rejected amount in the minor unit of check's currency. For dollars, for
@@ -191,6 +199,10 @@ export namespace CheckDeposit {
     rejected_at: string;
   }
 
+  /**
+   * If your deposit is returned, this will contain details as to why it was
+   * returned.
+   */
   export interface DepositReturn {
     /**
      * The amount in the minor unit of the transaction's currency. For dollars, for

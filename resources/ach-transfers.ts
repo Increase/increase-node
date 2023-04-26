@@ -224,6 +224,10 @@ export interface ACHTransfer {
 }
 
 export namespace ACHTransfer {
+  /**
+   * If your account requires approvals for transfers and the transfer was approved,
+   * this will contain details of the approval.
+   */
   export interface Approval {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -238,6 +242,10 @@ export namespace ACHTransfer {
     approved_by: string | null;
   }
 
+  /**
+   * If your account requires approvals for transfers and the transfer was not
+   * approved, this will contain details of the cancellation.
+   */
   export interface Cancellation {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -252,6 +260,10 @@ export namespace ACHTransfer {
     canceled_by: string | null;
   }
 
+  /**
+   * If the receiving bank accepts the transfer but notifies that future transfers
+   * should use different details, this will contain those details.
+   */
   export interface NotificationOfChange {
     /**
      * The type of change that occurred.
@@ -270,6 +282,9 @@ export namespace ACHTransfer {
     created_at: string;
   }
 
+  /**
+   * If your transfer is returned, this will contain details of the return.
+   */
   export interface Return {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -316,6 +331,10 @@ export namespace ACHTransfer {
     transfer_id: string;
   }
 
+  /**
+   * After the transfer is submitted to FedACH, this will contain supplemental
+   * details.
+   */
   export interface Submission {
     /**
      * When the ACH transfer was sent to FedACH.

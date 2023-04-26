@@ -106,6 +106,13 @@ export interface DeclinedTransaction {
 }
 
 export namespace DeclinedTransaction {
+  /**
+   * This is an object giving more details on the network-level event that caused the
+   * Declined Transaction. For example, for a card transaction this lists the
+   * merchant's industry and location. Note that for backwards compatibility reasons,
+   * additional undocumented keys may appear in this object. These should be treated
+   * as deprecated and will be removed in the future.
+   */
   export interface Source {
     /**
      * A ACH Decline object. This field will be present in the JSON response if and
@@ -160,6 +167,10 @@ export namespace DeclinedTransaction {
   }
 
   export namespace Source {
+    /**
+     * A ACH Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `ach_decline`.
+     */
     export interface ACHDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -199,6 +210,10 @@ export namespace DeclinedTransaction {
       trace_number: string;
     }
 
+    /**
+     * A Card Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `card_decline`.
+     */
     export interface CardDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -285,6 +300,9 @@ export namespace DeclinedTransaction {
     }
 
     export namespace CardDecline {
+      /**
+       * Fields specific to the `network`
+       */
       export interface NetworkDetails {
         /**
          * Fields specific to the `visa` network
@@ -293,6 +311,9 @@ export namespace DeclinedTransaction {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `visa` network
+         */
         export interface Visa {
           /**
            * For electronic commerce transactions, this identifies the level of security used
@@ -314,11 +335,15 @@ export namespace DeclinedTransaction {
            * The method used to enter the cardholder's primary account number and card
            * expiration date
            */
-          point_of_service_entry_mode: Shared.PointOfServiceEntryMode;
+          point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
         }
       }
     }
 
+    /**
+     * A Check Decline object. This field will be present in the JSON response if and
+     * only if `category` is equal to `check_decline`.
+     */
     export interface CheckDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -347,6 +372,11 @@ export namespace DeclinedTransaction {
         | 'not_authorized';
     }
 
+    /**
+     * A Inbound Real Time Payments Transfer Decline object. This field will be present
+     * in the JSON response if and only if `category` is equal to
+     * `inbound_real_time_payments_transfer_decline`.
+     */
     export interface InboundRealTimePaymentsTransferDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -402,6 +432,10 @@ export namespace DeclinedTransaction {
       transaction_identification: string;
     }
 
+    /**
+     * A International ACH Decline object. This field will be present in the JSON
+     * response if and only if `category` is equal to `international_ach_decline`.
+     */
     export interface InternationalACHDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -480,6 +514,10 @@ export namespace DeclinedTransaction {
       trace_number: string;
     }
 
+    /**
+     * A Deprecated Card Decline object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_route_decline`.
+     */
     export interface CardRouteDecline {
       /**
        * The declined amount in the minor unit of the destination account currency. For

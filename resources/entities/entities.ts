@@ -101,6 +101,10 @@ export interface Entity {
 }
 
 export namespace Entity {
+  /**
+   * Details of the corporation entity. Will be present if `structure` is equal to
+   * `corporation`.
+   */
   export interface Corporation {
     /**
      * The corporation's address.
@@ -136,6 +140,9 @@ export namespace Entity {
   }
 
   export namespace Corporation {
+    /**
+     * The corporation's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -182,6 +189,9 @@ export namespace Entity {
     }
 
     export namespace BeneficialOwners {
+      /**
+       * Personal details for the beneficial owner.
+       */
       export interface Individual {
         /**
          * The person's address.
@@ -205,6 +215,9 @@ export namespace Entity {
       }
 
       export namespace Individual {
+        /**
+         * The person's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -233,6 +246,9 @@ export namespace Entity {
           zip: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -254,6 +270,10 @@ export namespace Entity {
     }
   }
 
+  /**
+   * Details of the natural person entity. Will be present if `structure` is equal to
+   * `natural_person`.
+   */
   export interface NaturalPerson {
     /**
      * The person's address.
@@ -277,6 +297,9 @@ export namespace Entity {
   }
 
   export namespace NaturalPerson {
+    /**
+     * The person's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -305,6 +328,9 @@ export namespace Entity {
       zip: string;
     }
 
+    /**
+     * A means of verifying the person's identity.
+     */
     export interface Identification {
       /**
        * A method that can be used to verify the individual's identity.
@@ -324,6 +350,9 @@ export namespace Entity {
     }
   }
 
+  /**
+   * Details of the joint entity. Will be present if `structure` is equal to `joint`.
+   */
   export interface Joint {
     /**
      * The two individuals that share control of the entity.
@@ -360,6 +389,9 @@ export namespace Entity {
     }
 
     export namespace Individuals {
+      /**
+       * The person's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -388,6 +420,9 @@ export namespace Entity {
         zip: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -408,6 +443,9 @@ export namespace Entity {
     }
   }
 
+  /**
+   * Details of the trust entity. Will be present if `structure` is equal to `trust`.
+   */
   export interface Trust {
     /**
      * The trust's address.
@@ -452,6 +490,9 @@ export namespace Entity {
   }
 
   export namespace Trust {
+    /**
+     * The trust's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -494,6 +535,10 @@ export namespace Entity {
     }
 
     export namespace Trustees {
+      /**
+       * The individual trustee of the trust. Will be present if the trustee's
+       * `structure` is equal to `individual`.
+       */
       export interface Individual {
         /**
          * The person's address.
@@ -517,6 +562,9 @@ export namespace Entity {
       }
 
       export namespace Individual {
+        /**
+         * The person's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -545,6 +593,9 @@ export namespace Entity {
           zip: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -565,6 +616,9 @@ export namespace Entity {
       }
     }
 
+    /**
+     * The grantor of the trust. Will be present if the `category` is `revocable`.
+     */
     export interface Grantor {
       /**
        * The person's address.
@@ -588,6 +642,9 @@ export namespace Entity {
     }
 
     export namespace Grantor {
+      /**
+       * The person's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -616,6 +673,9 @@ export namespace Entity {
         zip: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -693,6 +753,10 @@ export interface EntityCreateParams {
 }
 
 export namespace EntityCreateParams {
+  /**
+   * Details of the corporation entity to create. Required if `structure` is equal to
+   * `corporation`.
+   */
   export interface Corporation {
     /**
      * The corporation's address.
@@ -728,6 +792,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace Corporation {
+    /**
+     * The corporation's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -774,6 +841,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace BeneficialOwners {
+      /**
+       * Personal details for the beneficial owner.
+       */
       export interface Individual {
         /**
          * The individual's address.
@@ -805,6 +875,9 @@ export namespace EntityCreateParams {
       }
 
       export namespace Individual {
+        /**
+         * The individual's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -833,6 +906,9 @@ export namespace EntityCreateParams {
           line2?: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -870,6 +946,10 @@ export namespace EntityCreateParams {
         }
 
         export namespace Identification {
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
           export interface Passport {
             /**
              * The country that issued the passport.
@@ -887,6 +967,10 @@ export namespace EntityCreateParams {
             file_id: string;
           }
 
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
           export interface DriversLicense {
             /**
              * The driver's license's expiration date in YYYY-MM-DD format.
@@ -904,6 +988,10 @@ export namespace EntityCreateParams {
             state: string;
           }
 
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
@@ -931,6 +1019,12 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * Details of the natural person entity to create. Required if `structure` is equal
+   * to `natural_person`. Natural people entities should be submitted with
+   * `social_security_number` or `individual_taxpayer_identification_number`
+   * identification methods.
+   */
   export interface NaturalPerson {
     /**
      * The individual's address.
@@ -962,6 +1056,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace NaturalPerson {
+    /**
+     * The individual's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -990,6 +1087,9 @@ export namespace EntityCreateParams {
       line2?: string;
     }
 
+    /**
+     * A means of verifying the person's identity.
+     */
     export interface Identification {
       /**
        * A method that can be used to verify the individual's identity.
@@ -1027,6 +1127,10 @@ export namespace EntityCreateParams {
     }
 
     export namespace Identification {
+      /**
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
+       */
       export interface Passport {
         /**
          * The country that issued the passport.
@@ -1044,6 +1148,10 @@ export namespace EntityCreateParams {
         file_id: string;
       }
 
+      /**
+       * Information about the United States driver's license used for identification.
+       * Required if `method` is equal to `drivers_license`.
+       */
       export interface DriversLicense {
         /**
          * The driver's license's expiration date in YYYY-MM-DD format.
@@ -1061,6 +1169,10 @@ export namespace EntityCreateParams {
         state: string;
       }
 
+      /**
+       * Information about the identification document provided. Required if `method` is
+       * equal to `other`.
+       */
       export interface Other {
         /**
          * The two-character ISO 3166-1 code representing the country that issued the
@@ -1086,6 +1198,10 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * Details of the joint entity to create. Required if `structure` is equal to
+   * `joint`.
+   */
   export interface Joint {
     /**
      * The two individuals that share control of the entity.
@@ -1130,6 +1246,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace Individuals {
+      /**
+       * The individual's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -1158,6 +1277,9 @@ export namespace EntityCreateParams {
         line2?: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -1195,6 +1317,10 @@ export namespace EntityCreateParams {
       }
 
       export namespace Identification {
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
         export interface Passport {
           /**
            * The country that issued the passport.
@@ -1212,6 +1338,10 @@ export namespace EntityCreateParams {
           file_id: string;
         }
 
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
         export interface DriversLicense {
           /**
            * The driver's license's expiration date in YYYY-MM-DD format.
@@ -1229,6 +1359,10 @@ export namespace EntityCreateParams {
           state: string;
         }
 
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
@@ -1255,6 +1389,10 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * Details of the trust entity to create. Required if `structure` is equal to
+   * `trust`.
+   */
   export interface Trust {
     /**
      * The trust's address.
@@ -1302,6 +1440,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace Trust {
+    /**
+     * The trust's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -1344,6 +1485,10 @@ export namespace EntityCreateParams {
     }
 
     export namespace Trustees {
+      /**
+       * Details of the individual trustee. Required when the trustee `structure` is
+       * equal to `individual`.
+       */
       export interface Individual {
         /**
          * The individual's address.
@@ -1375,6 +1520,9 @@ export namespace EntityCreateParams {
       }
 
       export namespace Individual {
+        /**
+         * The individual's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -1403,6 +1551,9 @@ export namespace EntityCreateParams {
           line2?: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -1440,6 +1591,10 @@ export namespace EntityCreateParams {
         }
 
         export namespace Identification {
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
           export interface Passport {
             /**
              * The country that issued the passport.
@@ -1457,6 +1612,10 @@ export namespace EntityCreateParams {
             file_id: string;
           }
 
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
           export interface DriversLicense {
             /**
              * The driver's license's expiration date in YYYY-MM-DD format.
@@ -1474,6 +1633,10 @@ export namespace EntityCreateParams {
             state: string;
           }
 
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
@@ -1500,6 +1663,9 @@ export namespace EntityCreateParams {
       }
     }
 
+    /**
+     * The grantor of the trust. Required if `category` is equal to `revocable`.
+     */
     export interface Grantor {
       /**
        * The individual's address.
@@ -1531,6 +1697,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace Grantor {
+      /**
+       * The individual's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -1559,6 +1728,9 @@ export namespace EntityCreateParams {
         line2?: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -1596,6 +1768,10 @@ export namespace EntityCreateParams {
       }
 
       export namespace Identification {
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
         export interface Passport {
           /**
            * The country that issued the passport.
@@ -1613,6 +1789,10 @@ export namespace EntityCreateParams {
           file_id: string;
         }
 
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
         export interface DriversLicense {
           /**
            * The driver's license's expiration date in YYYY-MM-DD format.
@@ -1630,6 +1810,10 @@ export namespace EntityCreateParams {
           state: string;
         }
 
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
@@ -1663,6 +1847,10 @@ export namespace EntityCreateParams {
     file_id: string;
   }
 
+  /**
+   * Details of the corporation entity to create. Required if `structure` is equal to
+   * `corporation`.
+   */
   export interface Corporation {
     /**
      * The corporation's address.
@@ -1698,6 +1886,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace Corporation {
+    /**
+     * The corporation's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -1744,6 +1935,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace BeneficialOwners {
+      /**
+       * Personal details for the beneficial owner.
+       */
       export interface Individual {
         /**
          * The individual's address.
@@ -1775,6 +1969,9 @@ export namespace EntityCreateParams {
       }
 
       export namespace Individual {
+        /**
+         * The individual's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -1803,6 +2000,9 @@ export namespace EntityCreateParams {
           line2?: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -1840,6 +2040,10 @@ export namespace EntityCreateParams {
         }
 
         export namespace Identification {
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
           export interface Passport {
             /**
              * The country that issued the passport.
@@ -1857,6 +2061,10 @@ export namespace EntityCreateParams {
             file_id: string;
           }
 
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
           export interface DriversLicense {
             /**
              * The driver's license's expiration date in YYYY-MM-DD format.
@@ -1874,6 +2082,10 @@ export namespace EntityCreateParams {
             state: string;
           }
 
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
@@ -1901,6 +2113,10 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * Details of the joint entity to create. Required if `structure` is equal to
+   * `joint`.
+   */
   export interface Joint {
     /**
      * The two individuals that share control of the entity.
@@ -1945,6 +2161,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace Individuals {
+      /**
+       * The individual's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -1973,6 +2192,9 @@ export namespace EntityCreateParams {
         line2?: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -2010,6 +2232,10 @@ export namespace EntityCreateParams {
       }
 
       export namespace Identification {
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
         export interface Passport {
           /**
            * The country that issued the passport.
@@ -2027,6 +2253,10 @@ export namespace EntityCreateParams {
           file_id: string;
         }
 
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
         export interface DriversLicense {
           /**
            * The driver's license's expiration date in YYYY-MM-DD format.
@@ -2044,6 +2274,10 @@ export namespace EntityCreateParams {
           state: string;
         }
 
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
@@ -2070,6 +2304,12 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * Details of the natural person entity to create. Required if `structure` is equal
+   * to `natural_person`. Natural people entities should be submitted with
+   * `social_security_number` or `individual_taxpayer_identification_number`
+   * identification methods.
+   */
   export interface NaturalPerson {
     /**
      * The individual's address.
@@ -2101,6 +2341,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace NaturalPerson {
+    /**
+     * The individual's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -2129,6 +2372,9 @@ export namespace EntityCreateParams {
       line2?: string;
     }
 
+    /**
+     * A means of verifying the person's identity.
+     */
     export interface Identification {
       /**
        * A method that can be used to verify the individual's identity.
@@ -2166,6 +2412,10 @@ export namespace EntityCreateParams {
     }
 
     export namespace Identification {
+      /**
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
+       */
       export interface Passport {
         /**
          * The country that issued the passport.
@@ -2183,6 +2433,10 @@ export namespace EntityCreateParams {
         file_id: string;
       }
 
+      /**
+       * Information about the United States driver's license used for identification.
+       * Required if `method` is equal to `drivers_license`.
+       */
       export interface DriversLicense {
         /**
          * The driver's license's expiration date in YYYY-MM-DD format.
@@ -2200,6 +2454,10 @@ export namespace EntityCreateParams {
         state: string;
       }
 
+      /**
+       * Information about the identification document provided. Required if `method` is
+       * equal to `other`.
+       */
       export interface Other {
         /**
          * The two-character ISO 3166-1 code representing the country that issued the
@@ -2232,6 +2490,10 @@ export namespace EntityCreateParams {
     file_id: string;
   }
 
+  /**
+   * Details of the trust entity to create. Required if `structure` is equal to
+   * `trust`.
+   */
   export interface Trust {
     /**
      * The trust's address.
@@ -2279,6 +2541,9 @@ export namespace EntityCreateParams {
   }
 
   export namespace Trust {
+    /**
+     * The trust's address.
+     */
     export interface Address {
       /**
        * The city of the address.
@@ -2321,6 +2586,10 @@ export namespace EntityCreateParams {
     }
 
     export namespace Trustees {
+      /**
+       * Details of the individual trustee. Required when the trustee `structure` is
+       * equal to `individual`.
+       */
       export interface Individual {
         /**
          * The individual's address.
@@ -2352,6 +2621,9 @@ export namespace EntityCreateParams {
       }
 
       export namespace Individual {
+        /**
+         * The individual's address.
+         */
         export interface Address {
           /**
            * The city of the address.
@@ -2380,6 +2652,9 @@ export namespace EntityCreateParams {
           line2?: string;
         }
 
+        /**
+         * A means of verifying the person's identity.
+         */
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
@@ -2417,6 +2692,10 @@ export namespace EntityCreateParams {
         }
 
         export namespace Identification {
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
           export interface Passport {
             /**
              * The country that issued the passport.
@@ -2434,6 +2713,10 @@ export namespace EntityCreateParams {
             file_id: string;
           }
 
+          /**
+           * Information about the United States driver's license used for identification.
+           * Required if `method` is equal to `drivers_license`.
+           */
           export interface DriversLicense {
             /**
              * The driver's license's expiration date in YYYY-MM-DD format.
@@ -2451,6 +2734,10 @@ export namespace EntityCreateParams {
             state: string;
           }
 
+          /**
+           * Information about the identification document provided. Required if `method` is
+           * equal to `other`.
+           */
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
@@ -2477,6 +2764,9 @@ export namespace EntityCreateParams {
       }
     }
 
+    /**
+     * The grantor of the trust. Required if `category` is equal to `revocable`.
+     */
     export interface Grantor {
       /**
        * The individual's address.
@@ -2508,6 +2798,9 @@ export namespace EntityCreateParams {
     }
 
     export namespace Grantor {
+      /**
+       * The individual's address.
+       */
       export interface Address {
         /**
          * The city of the address.
@@ -2536,6 +2829,9 @@ export namespace EntityCreateParams {
         line2?: string;
       }
 
+      /**
+       * A means of verifying the person's identity.
+       */
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
@@ -2573,6 +2869,10 @@ export namespace EntityCreateParams {
       }
 
       export namespace Identification {
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
         export interface Passport {
           /**
            * The country that issued the passport.
@@ -2590,6 +2890,10 @@ export namespace EntityCreateParams {
           file_id: string;
         }
 
+        /**
+         * Information about the United States driver's license used for identification.
+         * Required if `method` is equal to `drivers_license`.
+         */
         export interface DriversLicense {
           /**
            * The driver's license's expiration date in YYYY-MM-DD format.
@@ -2607,6 +2911,10 @@ export namespace EntityCreateParams {
           state: string;
         }
 
+        /**
+         * Information about the identification document provided. Required if `method` is
+         * equal to `other`.
+         */
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the

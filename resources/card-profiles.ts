@@ -82,6 +82,10 @@ export interface CardProfile {
 }
 
 export namespace CardProfile {
+  /**
+   * How Cards should appear in digital wallets such as Apple Pay. Different wallets
+   * will use these values to render card artwork appropriately for their app.
+   */
   export interface DigitalWallets {
     /**
      * The identifier of the File containing the card's icon image.
@@ -125,6 +129,9 @@ export namespace CardProfile {
   }
 
   export namespace DigitalWallets {
+    /**
+     * The Card's text color, specified as an RGB triple.
+     */
     export interface TextColor {
       /**
        * The value of the blue channel in the RGB color.
@@ -158,6 +165,10 @@ export interface CardProfileCreateParams {
 }
 
 export namespace CardProfileCreateParams {
+  /**
+   * How Cards should appear in digital wallets such as Apple Pay. Different wallets
+   * will use these values to render card artwork appropriately for their app.
+   */
   export interface DigitalWallets {
     /**
      * The identifier of the File containing the card's icon image.
@@ -201,6 +212,9 @@ export namespace CardProfileCreateParams {
   }
 
   export namespace DigitalWallets {
+    /**
+     * The Card's text color, specified as an RGB triple. The default is white.
+     */
     export interface TextColor {
       /**
        * The value of the blue channel in the RGB color.
@@ -219,6 +233,10 @@ export namespace CardProfileCreateParams {
     }
   }
 
+  /**
+   * How Cards should appear in digital wallets such as Apple Pay. Different wallets
+   * will use these values to render card artwork appropriately for their app.
+   */
   export interface DigitalWallets {
     /**
      * The identifier of the File containing the card's icon image.
@@ -262,6 +280,9 @@ export namespace CardProfileCreateParams {
   }
 
   export namespace DigitalWallets {
+    /**
+     * The Card's text color, specified as an RGB triple. The default is white.
+     */
     export interface TextColor {
       /**
        * The value of the blue channel in the RGB color.

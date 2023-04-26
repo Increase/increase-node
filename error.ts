@@ -25,11 +25,11 @@ export class InvalidParametersError extends Core.BadRequestError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.detail = data?.['detail'];
-    this.errors = data?.['errors'];
-    this.status = data?.['status'];
-    this.title = data?.['title'];
     this.type = data?.['type'];
+    this.title = data?.['title'];
+    this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.errors = data?.['errors'];
   }
 }
 
@@ -51,10 +51,10 @@ export class MalformedRequestError extends Core.BadRequestError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -76,10 +76,10 @@ export class InvalidAPIKeyError extends Core.AuthenticationError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -101,10 +101,10 @@ export class EnvironmentMismatchError extends Core.PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -126,10 +126,10 @@ export class InsufficientPermissionsError extends Core.PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -151,10 +151,10 @@ export class PrivateFeatureError extends Core.PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -176,10 +176,10 @@ export class APIMethodNotFoundError extends Core.NotFoundError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -201,10 +201,10 @@ export class ObjectNotFoundError extends Core.NotFoundError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -226,10 +226,10 @@ export class IdempotencyConflictError extends Core.ConflictError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -251,10 +251,10 @@ export class InvalidOperationError extends Core.ConflictError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -276,10 +276,10 @@ export class IdempotencyUnprocessableError extends Core.UnprocessableEntityError
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
 
@@ -303,10 +303,10 @@ export class RateLimitedError extends Core.RateLimitError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
     this.retry_after = data?.['retry_after'];
   }
 }
@@ -329,9 +329,9 @@ export class InternalServerError extends Core.InternalServerError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
+    this.type = data?.['type'];
+    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
   }
 }
