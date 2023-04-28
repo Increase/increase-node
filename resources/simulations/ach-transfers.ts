@@ -621,11 +621,6 @@ export namespace ACHTransferSimulation {
         amount: number;
 
         /**
-         * The identifier for the Transaction this refunds, if any.
-         */
-        card_settlement_transaction_id: string | null;
-
-        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          */

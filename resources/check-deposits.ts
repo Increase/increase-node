@@ -190,6 +190,7 @@ export namespace CheckDeposit {
       | 'incorrect_amount'
       | 'incorrect_recipient'
       | 'not_eligible_for_mobile_deposit'
+      | 'missing_required_data_elements'
       | 'unknown';
 
     /**
