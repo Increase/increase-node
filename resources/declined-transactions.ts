@@ -418,6 +418,7 @@ export namespace DeclinedTransaction {
       reason:
         | 'account_number_canceled'
         | 'account_number_disabled'
+        | 'account_restricted'
         | 'group_locked'
         | 'entity_not_active'
         | 'real_time_payments_not_enabled';

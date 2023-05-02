@@ -1365,6 +1365,11 @@ export namespace Transaction {
        * The ID for the Transaction associated with the transfer reversal.
        */
       transaction_id: string | null;
+
+      /**
+       * The ID for the Wire Transfer that is being reversed.
+       */
+      wire_transfer_id: string;
     }
 
     /**

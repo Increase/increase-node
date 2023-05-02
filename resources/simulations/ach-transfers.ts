@@ -1411,6 +1411,11 @@ export namespace ACHTransferSimulation {
          * The ID for the Transaction associated with the transfer reversal.
          */
         transaction_id: string | null;
+
+        /**
+         * The ID for the Wire Transfer that is being reversed.
+         */
+        wire_transfer_id: string;
       }
 
       /**
@@ -2069,6 +2074,7 @@ export namespace ACHTransferSimulation {
         reason:
           | 'account_number_canceled'
           | 'account_number_disabled'
+          | 'account_restricted'
           | 'group_locked'
           | 'entity_not_active'
           | 'real_time_payments_not_enabled';
