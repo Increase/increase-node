@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource oauth_connections', () => {
+describe('resource oauthConnections', () => {
   test('retrieve', async () => {
     const response = await increase.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my');
   });

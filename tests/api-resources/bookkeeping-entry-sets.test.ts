@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource bookkeeping_entry_sets', () => {
+describe('resource bookkeepingEntrySets', () => {
   test('create: only required params', async () => {
     const response = await increase.bookkeepingEntrySets.create({
       date: '2019-12-27T18:11:19.117Z',

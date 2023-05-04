@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource inbound_ach_transfer_returns', () => {
+describe('resource inboundACHTransferReturns', () => {
   test('create: only required params', async () => {
     const response = await increase.inboundACHTransferReturns.create({
       reason: 'authorization_revoked_by_customer',

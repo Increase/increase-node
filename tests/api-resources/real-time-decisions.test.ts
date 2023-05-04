@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource real_time_decisions', () => {
+describe('resource realTimeDecisions', () => {
   test('retrieve', async () => {
     const response = await increase.realTimeDecisions.retrieve('real_time_decision_j76n2e810ezcg3zh5qtn');
   });
