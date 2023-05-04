@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource declined_transactions', () => {
+describe('resource declinedTransactions', () => {
   test('retrieve', async () => {
     const response = await increase.declinedTransactions.retrieve(
       'declined_transaction_17jbn0yyhvkt4v4ooym8',

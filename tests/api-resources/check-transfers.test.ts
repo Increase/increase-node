@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource check_transfers', () => {
+describe('resource checkTransfers', () => {
   test('create: only required params', async () => {
     const response = await increase.checkTransfers.create({
       account_id: 'string',
@@ -107,12 +108,12 @@ describe('resource check_transfers', () => {
   });
 
   // Prism doesn't accept no request body being sent but returns 415 if it is sent
-  test.skip('stop_payment', async () => {
+  test.skip('stopPayment', async () => {
     const response = await increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5');
   });
 
   // Prism doesn't accept no request body being sent but returns 415 if it is sent
-  test.skip('stop_payment: request options instead of params are passed correctly', async () => {
+  test.skip('stopPayment: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {

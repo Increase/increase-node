@@ -1,10 +1,11 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from '~/index';
+
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource ach_transfers', () => {
-  test('create_inbound: only required params', async () => {
+describe('resource achTransfers', () => {
+  test('createInbound: only required params', async () => {
     const response = await increase.simulations.achTransfers.createInbound({
       account_number_id: 'string',
       amount: 0,
@@ -16,7 +17,7 @@ describe('resource ach_transfers', () => {
     });
   });
 
-  test('create_inbound: required and optional params', async () => {
+  test('createInbound: required and optional params', async () => {
     const response = await increase.simulations.achTransfers.createInbound({
       account_number_id: 'string',
       amount: 0,
