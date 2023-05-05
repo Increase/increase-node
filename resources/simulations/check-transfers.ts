@@ -45,5 +45,5 @@ export interface CheckTransferReturnParams {
   /**
    * The reason why the Check Transfer was returned to Increase.
    */
-  reason: 'mail_delivery_failure' | 'refused_by_recipient';
+  reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
 }
