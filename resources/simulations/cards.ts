@@ -920,7 +920,8 @@ export namespace CardAuthorizationSimulation {
           | 'stop_payment_requested'
           | 'returned'
           | 'duplicate_presentment'
-          | 'not_authorized';
+          | 'not_authorized'
+          | 'altered_or_fictitious';
       }
 
       /**

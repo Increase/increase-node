@@ -927,7 +927,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         /**
          * The reason why the check was returned.
          */
-        reason: 'mail_delivery_failure' | 'refused_by_recipient';
+        reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -2012,7 +2012,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'stop_payment_requested'
           | 'returned'
           | 'duplicate_presentment'
-          | 'not_authorized';
+          | 'not_authorized'
+          | 'altered_or_fictitious';
       }
 
       /**
