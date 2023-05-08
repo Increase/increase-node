@@ -1802,6 +1802,7 @@ export namespace ACHTransferSimulation {
         | 'inbound_real_time_payments_transfer_decline'
         | 'international_ach_decline'
         | 'card_route_decline'
+        | 'wire_decline'
         | 'other';
 
       /**
@@ -1822,6 +1823,12 @@ export namespace ACHTransferSimulation {
        * response if and only if `category` is equal to `international_ach_decline`.
        */
       international_ach_decline: Source.InternationalACHDecline | null;
+
+      /**
+       * A Wire Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `wire_decline`.
+       */
+      wire_decline: Source.WireDecline | null;
     }
 
     export namespace Source {
@@ -2203,6 +2210,59 @@ export namespace ACHTransferSimulation {
         merchant_descriptor: string;
 
         merchant_state: string | null;
+      }
+
+      /**
+       * A Wire Decline object. This field will be present in the JSON response if and
+       * only if `category` is equal to `wire_decline`.
+       */
+      export interface WireDecline {
+        /**
+         * The declined amount in the minor unit of the destination account currency. For
+         * dollars, for example, this is cents.
+         */
+        amount: number;
+
+        beneficiary_address_line1: string | null;
+
+        beneficiary_address_line2: string | null;
+
+        beneficiary_address_line3: string | null;
+
+        beneficiary_name: string | null;
+
+        beneficiary_reference: string | null;
+
+        description: string;
+
+        input_message_accountability_data: string | null;
+
+        originator_address_line1: string | null;
+
+        originator_address_line2: string | null;
+
+        originator_address_line3: string | null;
+
+        originator_name: string | null;
+
+        originator_to_beneficiary_information_line1: string | null;
+
+        originator_to_beneficiary_information_line2: string | null;
+
+        originator_to_beneficiary_information_line3: string | null;
+
+        originator_to_beneficiary_information_line4: string | null;
+
+        /**
+         * Why the wire transfer was declined.
+         */
+        reason:
+          | 'account_number_canceled'
+          | 'account_number_disabled'
+          | 'entity_not_active'
+          | 'group_locked'
+          | 'no_account_number'
+          | 'transaction_not_allowed';
       }
     }
   }
