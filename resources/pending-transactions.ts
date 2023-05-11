@@ -311,6 +311,11 @@ export namespace PendingTransaction {
       network_details: CardAuthorization.NetworkDetails;
 
       /**
+       * The identifier of the Pending Transaction associated with this Transaction.
+       */
+      pending_transaction_id: string | null;
+
+      /**
        * The identifier of the Real-Time Decision sent to approve or decline this
        * transaction.
        */
