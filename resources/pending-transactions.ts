@@ -269,6 +269,12 @@ export namespace PendingTransaction {
       digital_wallet_token_id: string | null;
 
       /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
+       * will expire and the pending transaction will be released.
+       */
+      expires_at: string;
+
+      /**
        * The Card Authorization identifier.
        */
       id: string;
