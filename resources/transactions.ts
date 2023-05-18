@@ -1728,7 +1728,8 @@ export interface TransactionListParams extends PageParams {
   'created_at.on_or_before'?: string;
 
   /**
-   * Filter Transactions for those belonging to the specified route.
+   * Filter Transactions for those belonging to the specified route. This could be a
+   * Card ID or an Account Number ID.
    */
   route_id?: string;
 }

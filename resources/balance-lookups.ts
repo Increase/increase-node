@@ -16,8 +16,7 @@ export class BalanceLookups extends APIResource {
 }
 
 /**
- * Represents a request to lookup the balance of an Account at a given point in
- * time.
+ * Represents a request to lookup the balance of an Account.
  */
 export interface BalanceLookupLookupResponse {
   /**
