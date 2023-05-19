@@ -16,7 +16,8 @@ export class BalanceLookups extends APIResource {
 }
 
 /**
- * Represents a request to lookup the balance of an Account.
+ * Represents a request to lookup the balance of an Account at a given point in
+ * time.
  */
 export interface BalanceLookupLookupResponse {
   /**
@@ -48,4 +49,9 @@ export interface BalanceLookupLookupParams {
    * The Account to query the balance for.
    */
   account_id: string;
+
+  /**
+   * The moment to query the balance at. If not set, returns the current balances.
+   */
+  at_time?: string;
 }
