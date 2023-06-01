@@ -23,11 +23,14 @@ type Config = {
   timeout?: number;
   httpAgent?: Agent;
   maxRetries?: number;
+  defaultHeaders?: Core.Headers;
 };
 
 /** Instantiate the API Client. */
 export class Increase extends Core.APIClient {
   apiKey: string;
+
+  private _options: Config;
 
   constructor(config?: Config) {
     const options: Config = {
@@ -49,6 +52,7 @@ export class Increase extends Core.APIClient {
       maxRetries: options.maxRetries,
     });
     this.apiKey = options.apiKey;
+    this._options = options;
     this.idempotencyHeader = 'Idempotency-Key';
   }
 
@@ -90,6 +94,13 @@ export class Increase extends Core.APIClient {
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   simulations: API.Simulations = new API.Simulations(this);
+
+  protected override defaultHeaders(): Core.Headers {
+    return {
+      ...super.defaultHeaders(),
+      ...this._options.defaultHeaders,
+    };
+  }
 
   protected override authHeaders(): Core.Headers {
     return { Authorization: `Bearer ${this.apiKey}` };
