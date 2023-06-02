@@ -9,11 +9,7 @@ describe('resource realTimePaymentsTransfers', () => {
     const response = await increase.realTimePaymentsTransfers.create({
       amount: 1,
       creditor_name: 'x',
-      destination_account_number: 'x',
-      destination_routing_number: 'xxxxxxxxx',
-      external_account_id: 'string',
       remittance_information: 'x',
-      require_approval: true,
       source_account_number_id: 'string',
     });
   });
@@ -22,12 +18,12 @@ describe('resource realTimePaymentsTransfers', () => {
     const response = await increase.realTimePaymentsTransfers.create({
       amount: 1,
       creditor_name: 'x',
+      remittance_information: 'x',
+      source_account_number_id: 'string',
       destination_account_number: 'x',
       destination_routing_number: 'xxxxxxxxx',
       external_account_id: 'string',
-      remittance_information: 'x',
       require_approval: true,
-      source_account_number_id: 'string',
     });
   });
 
@@ -63,10 +59,12 @@ describe('resource realTimePaymentsTransfers', () => {
       increase.realTimePaymentsTransfers.list(
         {
           account_id: 'string',
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           external_account_id: 'string',
           limit: 0,

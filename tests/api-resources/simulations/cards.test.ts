@@ -6,12 +6,7 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource cards', () => {
   test('authorize: only required params', async () => {
-    const response = await increase.simulations.cards.authorize({
-      amount: 1,
-      card_id: 'string',
-      digital_wallet_token_id: 'string',
-      event_subscription_id: 'string',
-    });
+    const response = await increase.simulations.cards.authorize({ amount: 1 });
   });
 
   test('authorize: required and optional params', async () => {
@@ -25,7 +20,6 @@ describe('resource cards', () => {
 
   test('settlement: only required params', async () => {
     const response = await increase.simulations.cards.settlement({
-      amount: 1,
       card_id: 'string',
       pending_transaction_id: 'string',
     });
@@ -33,9 +27,9 @@ describe('resource cards', () => {
 
   test('settlement: required and optional params', async () => {
     const response = await increase.simulations.cards.settlement({
-      amount: 1,
       card_id: 'string',
       pending_transaction_id: 'string',
+      amount: 1,
     });
   });
 });

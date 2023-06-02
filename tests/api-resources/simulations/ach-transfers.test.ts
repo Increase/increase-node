@@ -9,11 +9,6 @@ describe('resource achTransfers', () => {
     const response = await increase.simulations.achTransfers.createInbound({
       account_number_id: 'string',
       amount: 0,
-      company_descriptive_date: 'x',
-      company_discretionary_data: 'x',
-      company_entry_description: 'x',
-      company_id: 'x',
-      company_name: 'x',
     });
   });
 
@@ -31,9 +26,7 @@ describe('resource achTransfers', () => {
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('return', async () => {
-    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-      reason: 'insufficient_fund',
-    });
+    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
   });
 
   // Prism incorrectly returns an invalid JSON error

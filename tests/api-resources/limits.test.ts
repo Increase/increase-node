@@ -6,20 +6,15 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource limits', () => {
   test('create: only required params', async () => {
-    const response = await increase.limits.create({
-      interval: 'transaction',
-      metric: 'count',
-      model_id: 'x',
-      value: 0,
-    });
+    const response = await increase.limits.create({ metric: 'count', model_id: 'x', value: 0 });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.limits.create({
-      interval: 'transaction',
       metric: 'count',
       model_id: 'x',
       value: 0,
+      interval: 'transaction',
     });
   });
 

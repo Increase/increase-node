@@ -6,18 +6,14 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource eventSubscriptions', () => {
   test('create: only required params', async () => {
-    const response = await increase.eventSubscriptions.create({
-      selected_event_category: 'account.created',
-      shared_secret: 'x',
-      url: 'string',
-    });
+    const response = await increase.eventSubscriptions.create({ url: 'string' });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.eventSubscriptions.create({
+      url: 'string',
       selected_event_category: 'account.created',
       shared_secret: 'x',
-      url: 'string',
     });
   });
 
@@ -39,7 +35,7 @@ describe('resource eventSubscriptions', () => {
   test('update', async () => {
     const response = await increase.eventSubscriptions.update(
       'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
-      { status: 'active' },
+      {},
     );
   });
 

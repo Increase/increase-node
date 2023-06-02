@@ -123,15 +123,15 @@ export interface ExternalAccountCreateParams {
   description: string;
 
   /**
-   * The type of the destination account. Defaults to `checking`.
-   */
-  funding?: 'checking' | 'savings' | 'other';
-
-  /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
    * destination account.
    */
   routing_number: string;
+
+  /**
+   * The type of the destination account. Defaults to `checking`.
+   */
+  funding?: 'checking' | 'savings' | 'other';
 }
 
 export interface ExternalAccountUpdateParams {
@@ -147,12 +147,7 @@ export interface ExternalAccountUpdateParams {
 }
 
 export interface ExternalAccountListParams extends PageParams {
-  /**
-   * Filter External Accounts for those with the specified status or statuses. For
-   * GET requests, this should be encoded as a comma-delimited string, such as
-   * `?in=one,two,three`.
-   */
-  'status.in'?: Array<'active' | 'archived'>;
+  status?: ExternalAccountListParams.Status;
 }
 
 export namespace ExternalAccountListParams {

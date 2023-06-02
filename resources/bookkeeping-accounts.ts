@@ -75,6 +75,11 @@ export interface BookkeepingAccount {
 
 export interface BookkeepingAccountCreateParams {
   /**
+   * The name you choose for the account.
+   */
+  name: string;
+
+  /**
    * The entity, if `compliance_category` is `commingled_cash`.
    */
   account_id?: string;
@@ -88,11 +93,6 @@ export interface BookkeepingAccountCreateParams {
    * The entity, if `compliance_category` is `customer_balance`.
    */
   entity_id?: string;
-
-  /**
-   * The name you choose for the account.
-   */
-  name: string;
 }
 
 export interface BookkeepingAccountListParams extends PageParams {}

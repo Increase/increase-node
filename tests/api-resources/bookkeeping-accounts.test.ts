@@ -6,20 +6,15 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource bookkeepingAccounts', () => {
   test('create: only required params', async () => {
-    const response = await increase.bookkeepingAccounts.create({
-      account_id: 'string',
-      compliance_category: 'commingled_cash',
-      entity_id: 'string',
-      name: 'x',
-    });
+    const response = await increase.bookkeepingAccounts.create({ name: 'x' });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.bookkeepingAccounts.create({
+      name: 'x',
       account_id: 'string',
       compliance_category: 'commingled_cash',
       entity_id: 'string',
-      name: 'x',
     });
   });
 

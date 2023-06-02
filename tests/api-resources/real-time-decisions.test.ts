@@ -19,10 +19,6 @@ describe('resource realTimeDecisions', () => {
   });
 
   test('action', async () => {
-    const response = await increase.realTimeDecisions.action('real_time_decision_j76n2e810ezcg3zh5qtn', {
-      card_authorization: { decision: 'approve' },
-      digital_wallet_authentication: { result: 'success' },
-      digital_wallet_token: {},
-    });
+    const response = await increase.realTimeDecisions.action('real_time_decision_j76n2e810ezcg3zh5qtn', {});
   });
 });

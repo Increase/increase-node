@@ -12,9 +12,6 @@ describe('resource wireDrawdownRequests', () => {
       amount: 1,
       message_to_recipient: 'x',
       recipient_account_number: 'x',
-      recipient_address_line1: 'x',
-      recipient_address_line2: 'x',
-      recipient_address_line3: 'x',
       recipient_name: 'x',
       recipient_routing_number: 'x',
     });
@@ -27,11 +24,11 @@ describe('resource wireDrawdownRequests', () => {
       amount: 1,
       message_to_recipient: 'x',
       recipient_account_number: 'x',
+      recipient_name: 'x',
+      recipient_routing_number: 'x',
       recipient_address_line1: 'x',
       recipient_address_line2: 'x',
       recipient_address_line3: 'x',
-      recipient_name: 'x',
-      recipient_routing_number: 'x',
     });
   });
 

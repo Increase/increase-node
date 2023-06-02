@@ -6,19 +6,14 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource accounts', () => {
   test('create: only required params', async () => {
-    const response = await increase.accounts.create({
-      entity_id: 'string',
-      informational_entity_id: 'string',
-      name: 'x',
-      program_id: 'string',
-    });
+    const response = await increase.accounts.create({ name: 'x' });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.accounts.create({
+      name: 'x',
       entity_id: 'string',
       informational_entity_id: 'string',
-      name: 'x',
       program_id: 'string',
     });
   });
@@ -35,7 +30,7 @@ describe('resource accounts', () => {
   });
 
   test('update', async () => {
-    const response = await increase.accounts.update('account_in71c4amph0vgo2qllky', { name: 'x' });
+    const response = await increase.accounts.update('account_in71c4amph0vgo2qllky', {});
   });
 
   test('list', async () => {
@@ -54,10 +49,12 @@ describe('resource accounts', () => {
     await expect(
       increase.accounts.list(
         {
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           entity_id: 'string',
           limit: 0,
