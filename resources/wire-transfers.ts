@@ -341,14 +341,24 @@ export interface WireTransferCreateParams {
   account_id: string;
 
   /**
-   * The account number for the destination account.
-   */
-  account_number?: string;
-
-  /**
    * The transfer amount in cents.
    */
   amount: number;
+
+  /**
+   * The beneficiary's name.
+   */
+  beneficiary_name: string;
+
+  /**
+   * The message that will show on the recipient's bank statement.
+   */
+  message_to_recipient: string;
+
+  /**
+   * The account number for the destination account.
+   */
+  account_number?: string;
 
   /**
    * The beneficiary's address line 1.
@@ -366,20 +376,10 @@ export interface WireTransferCreateParams {
   beneficiary_address_line3?: string;
 
   /**
-   * The beneficiary's name.
-   */
-  beneficiary_name: string;
-
-  /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
    * provided, `account_number` and `routing_number` must be absent.
    */
   external_account_id?: string;
-
-  /**
-   * The message that will show on the recipient's bank statement.
-   */
-  message_to_recipient: string;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.
@@ -399,29 +399,7 @@ export interface WireTransferListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.after'?: string;
-
-  /**
-   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.before'?: string;
-
-  /**
-   * Return results on or after this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_after'?: string;
-
-  /**
-   * Return results on or before this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_before'?: string;
+  created_at?: WireTransferListParams.CreatedAt;
 
   /**
    * Filter Wire Transfers to those made to the specified External Account.

@@ -78,9 +78,6 @@ describe('instantiate client', () => {
 describe('idempotency', () => {
   test('key can be set per-request', async () => {
     const client = new Increase({ apiKey: 'my api key', baseURL: 'http://127.0.0.1:4010' });
-    await client.accounts.create(
-      { entity_id: 'string', informational_entity_id: 'string', name: 'x', program_id: 'string' },
-      { idempotencyKey: 'my-idempotency-key' },
-    );
+    await client.accounts.create({ name: 'x' }, { idempotencyKey: 'my-idempotency-key' });
   });
 });

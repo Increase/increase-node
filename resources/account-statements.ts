@@ -99,29 +99,7 @@ export interface AccountStatementListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'statement_period_start.after'?: string;
-
-  /**
-   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'statement_period_start.before'?: string;
-
-  /**
-   * Return results on or after this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'statement_period_start.on_or_after'?: string;
-
-  /**
-   * Return results on or before this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'statement_period_start.on_or_before'?: string;
+  statement_period_start?: AccountStatementListParams.StatementPeriodStart;
 }
 
 export namespace AccountStatementListParams {

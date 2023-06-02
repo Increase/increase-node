@@ -158,6 +158,11 @@ export interface EventSubscription {
 
 export interface EventSubscriptionCreateParams {
   /**
+   * The URL you'd like us to send webhooks to.
+   */
+  url: string;
+
+  /**
    * If specified, this subscription will only receive webhooks for Events with the
    * specified `category`.
    */
@@ -218,11 +223,6 @@ export interface EventSubscriptionCreateParams {
    * string will be used as default.
    */
   shared_secret?: string;
-
-  /**
-   * The URL you'd like us to send webhooks to.
-   */
-  url: string;
 }
 
 export interface EventSubscriptionUpdateParams {

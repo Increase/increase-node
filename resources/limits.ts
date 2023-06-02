@@ -102,11 +102,6 @@ export interface Limit {
 
 export interface LimitCreateParams {
   /**
-   * The interval for the metric. Required if `metric` is `count` or `volume`.
-   */
-  interval?: 'transaction' | 'day' | 'week' | 'month' | 'year' | 'all_time';
-
-  /**
    * The metric for the limit.
    */
   metric: 'count' | 'volume';
@@ -121,6 +116,11 @@ export interface LimitCreateParams {
    * The value to test the limit against.
    */
   value: number;
+
+  /**
+   * The interval for the metric. Required if `metric` is `count` or `volume`.
+   */
+  interval?: 'transaction' | 'day' | 'week' | 'month' | 'year' | 'all_time';
 }
 
 export interface LimitUpdateParams {

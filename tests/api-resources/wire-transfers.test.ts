@@ -8,30 +8,23 @@ describe('resource wireTransfers', () => {
   test('create: only required params', async () => {
     const response = await increase.wireTransfers.create({
       account_id: 'string',
-      account_number: 'x',
       amount: 1,
-      beneficiary_address_line1: 'x',
-      beneficiary_address_line2: 'x',
-      beneficiary_address_line3: 'x',
       beneficiary_name: 'x',
-      external_account_id: 'string',
       message_to_recipient: 'x',
-      require_approval: true,
-      routing_number: 'xxxxxxxxx',
     });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.wireTransfers.create({
       account_id: 'string',
-      account_number: 'x',
       amount: 1,
+      beneficiary_name: 'x',
+      message_to_recipient: 'x',
+      account_number: 'x',
       beneficiary_address_line1: 'x',
       beneficiary_address_line2: 'x',
       beneficiary_address_line3: 'x',
-      beneficiary_name: 'x',
       external_account_id: 'string',
-      message_to_recipient: 'x',
       require_approval: true,
       routing_number: 'xxxxxxxxx',
     });
@@ -67,10 +60,12 @@ describe('resource wireTransfers', () => {
       increase.wireTransfers.list(
         {
           account_id: 'string',
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           external_account_id: 'string',
           limit: 0,

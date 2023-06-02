@@ -67,15 +67,15 @@ export namespace BookkeepingEntrySet {
 
 export interface BookkeepingEntrySetCreateParams {
   /**
+   * The bookkeeping entries.
+   */
+  entries: Array<BookkeepingEntrySetCreateParams.Entries>;
+
+  /**
    * The date of the transaction. If `transaction_id` is provided, this must match
    * the `created_at` field on that resource.
    */
   date?: string;
-
-  /**
-   * The bookkeeping entries.
-   */
-  entries: Array<BookkeepingEntrySetCreateParams.Entries>;
 
   /**
    * The identifier of the Transaction related to this entry set, if any.
@@ -84,20 +84,6 @@ export interface BookkeepingEntrySetCreateParams {
 }
 
 export namespace BookkeepingEntrySetCreateParams {
-  export interface Entries {
-    /**
-     * The identifier for the Bookkeeping Account impacted by this entry.
-     */
-    account_id: string;
-
-    /**
-     * The entry amount in the minor unit of the account currency. For dollars, for
-     * example, this is cents. Debit entries have positive amounts; credit entries have
-     * negative amounts.
-     */
-    amount: number;
-  }
-
   export interface Entries {
     /**
      * The identifier for the Bookkeeping Account impacted by this entry.

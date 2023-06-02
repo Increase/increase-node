@@ -27,10 +27,7 @@ describe('resource accountNumbers', () => {
   });
 
   test('update', async () => {
-    const response = await increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {
-      name: 'x',
-      status: 'active',
-    });
+    const response = await increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {});
   });
 
   test('list', async () => {
@@ -50,10 +47,12 @@ describe('resource accountNumbers', () => {
       increase.accountNumbers.list(
         {
           account_id: 'string',
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           limit: 0,
           status: 'active',

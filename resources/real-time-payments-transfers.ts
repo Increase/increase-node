@@ -274,6 +274,16 @@ export interface RealTimePaymentsTransferCreateParams {
   creditor_name: string;
 
   /**
+   * Unstructured information that will show on the recipient's bank statement.
+   */
+  remittance_information: string;
+
+  /**
+   * The identifier of the Account Number from which to send the transfer.
+   */
+  source_account_number_id: string;
+
+  /**
    * The destination account number.
    */
   destination_account_number?: string;
@@ -292,19 +302,9 @@ export interface RealTimePaymentsTransferCreateParams {
   external_account_id?: string;
 
   /**
-   * Unstructured information that will show on the recipient's bank statement.
-   */
-  remittance_information: string;
-
-  /**
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
-
-  /**
-   * The identifier of the Account Number from which to send the transfer.
-   */
-  source_account_number_id: string;
 }
 
 export interface RealTimePaymentsTransferListParams extends PageParams {
@@ -313,29 +313,7 @@ export interface RealTimePaymentsTransferListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.after'?: string;
-
-  /**
-   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.before'?: string;
-
-  /**
-   * Return results on or after this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_after'?: string;
-
-  /**
-   * Return results on or before this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_before'?: string;
+  created_at?: RealTimePaymentsTransferListParams.CreatedAt;
 
   /**
    * Filter Real Time Payments Transfers to those made to the specified External

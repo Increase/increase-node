@@ -29,26 +29,6 @@ export interface InboundWireDrawdownRequestCreateParams {
   beneficiary_account_number: string;
 
   /**
-   * Line 1 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line1?: string;
-
-  /**
-   * Line 2 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line2?: string;
-
-  /**
-   * Line 3 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line3?: string;
-
-  /**
-   * The drawdown request's beneficiary's name.
-   */
-  beneficiary_name?: string;
-
-  /**
    * The drawdown request's beneficiary's routing number.
    */
   beneficiary_routing_number: string;
@@ -70,6 +50,37 @@ export interface InboundWireDrawdownRequestCreateParams {
   originator_account_number: string;
 
   /**
+   * The drawdown request's originator's routing number.
+   */
+  originator_routing_number: string;
+
+  /**
+   * The Account Number to which the recipient of this request is being requested to
+   * send funds from.
+   */
+  recipient_account_number_id: string;
+
+  /**
+   * Line 1 of the drawdown request's beneficiary's address.
+   */
+  beneficiary_address_line1?: string;
+
+  /**
+   * Line 2 of the drawdown request's beneficiary's address.
+   */
+  beneficiary_address_line2?: string;
+
+  /**
+   * Line 3 of the drawdown request's beneficiary's address.
+   */
+  beneficiary_address_line3?: string;
+
+  /**
+   * The drawdown request's beneficiary's name.
+   */
+  beneficiary_name?: string;
+
+  /**
    * Line 1 of the drawdown request's originator's address.
    */
   originator_address_line1?: string;
@@ -88,11 +99,6 @@ export interface InboundWireDrawdownRequestCreateParams {
    * The drawdown request's originator's name.
    */
   originator_name?: string;
-
-  /**
-   * The drawdown request's originator's routing number.
-   */
-  originator_routing_number: string;
 
   /**
    * Line 1 of the information conveyed from the originator of the message to the
@@ -117,10 +123,4 @@ export interface InboundWireDrawdownRequestCreateParams {
    * beneficiary.
    */
   originator_to_beneficiary_information_line4?: string;
-
-  /**
-   * The Account Number to which the recipient of this request is being requested to
-   * send funds from.
-   */
-  recipient_account_number_id: string;
 }

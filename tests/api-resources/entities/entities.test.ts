@@ -6,84 +6,13 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource entities', () => {
   test('create: only required params', async () => {
-    const response = await increase.entities.create({
-      corporation: {
-        name: 'x',
-        tax_identifier: 'x',
-        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-        beneficial_owners: [
-          {
-            individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'xxxx' },
-            },
-            prong: 'ownership',
-          },
-          {
-            individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'xxxx' },
-            },
-            prong: 'ownership',
-          },
-          {
-            individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-              identification: { method: 'social_security_number', number: 'xxxx' },
-            },
-            prong: 'ownership',
-          },
-        ],
-      },
-      description: 'x',
-      joint: {
-        individuals: [
-          {
-            name: 'x',
-            date_of_birth: '2019-12-27',
-            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'xxxx' },
-          },
-          {
-            name: 'x',
-            date_of_birth: '2019-12-27',
-            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'xxxx' },
-          },
-          {
-            name: 'x',
-            date_of_birth: '2019-12-27',
-            address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-            identification: { method: 'social_security_number', number: 'xxxx' },
-          },
-        ],
-      },
-      natural_person: {
-        name: 'x',
-        date_of_birth: '2019-12-27',
-        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-        identification: { method: 'social_security_number', number: 'xxxx' },
-      },
-      relationship: 'affiliated',
-      structure: 'corporation',
-      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
-      trust: {
-        name: 'x',
-        category: 'revocable',
-        address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-        trustees: [{ structure: 'individual' }, { structure: 'individual' }, { structure: 'individual' }],
-      },
-    });
+    const response = await increase.entities.create({ relationship: 'affiliated', structure: 'corporation' });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.entities.create({
+      relationship: 'affiliated',
+      structure: 'corporation',
       corporation: {
         name: 'x',
         website: 'string',
@@ -202,8 +131,6 @@ describe('resource entities', () => {
           other: { country: 'x', description: 'x', expiration_date: '2019-12-27', file_id: 'string' },
         },
       },
-      relationship: 'affiliated',
-      structure: 'corporation',
       supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
       trust: {
         name: 'x',
@@ -306,10 +233,12 @@ describe('resource entities', () => {
     await expect(
       increase.entities.list(
         {
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           limit: 0,
         },
