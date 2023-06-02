@@ -579,29 +579,7 @@ export interface PendingTransactionListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.after'?: string;
-
-  /**
-   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.before'?: string;
-
-  /**
-   * Return results on or after this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_after'?: string;
-
-  /**
-   * Return results on or before this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_before'?: string;
+  created_at?: PendingTransactionListParams.CreatedAt;
 
   /**
    * Filter pending transactions to those belonging to the specified Route.
@@ -613,26 +591,10 @@ export interface PendingTransactionListParams extends PageParams {
    */
   source_id?: string;
 
-  /**
-   * Filter Pending Transactions for those with the specified status. By default only
-   * Pending Transactions in with status `pending` will be returned. For GET
-   * requests, this should be encoded as a comma-delimited string, such as
-   * `?in=one,two,three`.
-   */
-  'status.in'?: Array<'pending' | 'complete'>;
+  status?: PendingTransactionListParams.Status;
 }
 
 export namespace PendingTransactionListParams {
-  export interface Status {
-    /**
-     * Filter Pending Transactions for those with the specified status. By default only
-     * Pending Transactions in with status `pending` will be returned. For GET
-     * requests, this should be encoded as a comma-delimited string, such as
-     * `?in=one,two,three`.
-     */
-    in?: Array<'pending' | 'complete'>;
-  }
-
   export interface CreatedAt {
     /**
      * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -657,5 +619,15 @@ export namespace PendingTransactionListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Pending Transactions for those with the specified status. By default only
+     * Pending Transactions in with status `pending` will be returned. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<'pending' | 'complete'>;
   }
 }

@@ -32,15 +32,15 @@ describe('resource documents', () => {
     await expect(
       increase.documents.list(
         {
-          'category.in': [
-            'account_opening_disclosures',
-            'account_opening_disclosures',
-            'account_opening_disclosures',
-          ],
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          category: {
+            in: ['account_opening_disclosures', 'account_opening_disclosures', 'account_opening_disclosures'],
+          },
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           entity_id: 'string',
           limit: 0,

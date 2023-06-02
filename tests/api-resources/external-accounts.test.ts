@@ -9,7 +9,6 @@ describe('resource externalAccounts', () => {
     const response = await increase.externalAccounts.create({
       account_number: 'x',
       description: 'x',
-      funding: 'checking',
       routing_number: 'xxxxxxxxx',
     });
   });
@@ -18,8 +17,8 @@ describe('resource externalAccounts', () => {
     const response = await increase.externalAccounts.create({
       account_number: 'x',
       description: 'x',
-      funding: 'checking',
       routing_number: 'xxxxxxxxx',
+      funding: 'checking',
     });
   });
 
@@ -37,10 +36,7 @@ describe('resource externalAccounts', () => {
   });
 
   test('update', async () => {
-    const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {
-      description: 'x',
-      status: 'active',
-    });
+    const response = await increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {});
   });
 
   test('list', async () => {
@@ -58,7 +54,7 @@ describe('resource externalAccounts', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.externalAccounts.list(
-        { cursor: 'string', limit: 0, 'status.in': ['active', 'active', 'active'] },
+        { cursor: 'string', limit: 0, status: { in: ['active', 'active', 'active'] } },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

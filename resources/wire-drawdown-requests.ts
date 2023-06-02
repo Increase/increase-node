@@ -170,6 +170,16 @@ export interface WireDrawdownRequestCreateParams {
   recipient_account_number: string;
 
   /**
+   * The drawdown request's recipient's name.
+   */
+  recipient_name: string;
+
+  /**
+   * The drawdown request's recipient's routing number.
+   */
+  recipient_routing_number: string;
+
+  /**
    * Line 1 of the drawdown request's recipient's address.
    */
   recipient_address_line1?: string;
@@ -183,16 +193,6 @@ export interface WireDrawdownRequestCreateParams {
    * Line 3 of the drawdown request's recipient's address.
    */
   recipient_address_line3?: string;
-
-  /**
-   * The drawdown request's recipient's name.
-   */
-  recipient_name: string;
-
-  /**
-   * The drawdown request's recipient's routing number.
-   */
-  recipient_routing_number: string;
 }
 
 export interface WireDrawdownRequestListParams extends PageParams {}

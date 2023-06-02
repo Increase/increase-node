@@ -10,15 +10,11 @@ describe('resource checkTransfers', () => {
       account_id: 'string',
       address_city: 'x',
       address_line1: 'x',
-      address_line2: 'x',
       address_state: 'x',
       address_zip: 'x',
       amount: 1,
       message: 'x',
-      note: 'x',
       recipient_name: 'x',
-      require_approval: true,
-      return_address: { name: 'x', line1: 'x', city: 'x', state: 'x', zip: 'x' },
     });
   });
 
@@ -27,13 +23,13 @@ describe('resource checkTransfers', () => {
       account_id: 'string',
       address_city: 'x',
       address_line1: 'x',
-      address_line2: 'x',
       address_state: 'x',
       address_zip: 'x',
       amount: 1,
       message: 'x',
-      note: 'x',
       recipient_name: 'x',
+      address_line2: 'x',
+      note: 'x',
       require_approval: true,
       return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
     });
@@ -69,10 +65,12 @@ describe('resource checkTransfers', () => {
       increase.checkTransfers.list(
         {
           account_id: 'string',
-          'created_at.after': '2019-12-27T18:11:19.117Z',
-          'created_at.before': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_after': '2019-12-27T18:11:19.117Z',
-          'created_at.on_or_before': '2019-12-27T18:11:19.117Z',
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
           cursor: 'string',
           limit: 0,
         },

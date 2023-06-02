@@ -304,63 +304,6 @@ export namespace CardCreateParams {
      */
     phone?: string;
   }
-
-  /**
-   * The card's billing address.
-   */
-  export interface BillingAddress {
-    /**
-     * The city of the billing address.
-     */
-    city: string;
-
-    /**
-     * The first line of the billing address.
-     */
-    line1: string;
-
-    /**
-     * The postal code of the billing address.
-     */
-    postal_code: string;
-
-    /**
-     * The US state of the billing address.
-     */
-    state: string;
-
-    /**
-     * The second line of the billing address.
-     */
-    line2?: string;
-  }
-
-  /**
-   * The contact information used in the two-factor steps for digital wallet card
-   * creation. To add the card to a digital wallet, you may supply an email or phone
-   * number with this request. Otherwise, subscribe and then action a Real Time
-   * Decision with the category `digital_wallet_token_requested` or
-   * `digital_wallet_authentication_requested`.
-   */
-  export interface DigitalWallet {
-    /**
-     * The card profile assigned to this digital card. Card profiles may also be
-     * assigned at the program level.
-     */
-    card_profile_id?: string;
-
-    /**
-     * An email address that can be used to verify the cardholder via one-time passcode
-     * over email.
-     */
-    email?: string;
-
-    /**
-     * A phone number that can be used to verify the cardholder via one-time passcode
-     * over SMS.
-     */
-    phone?: string;
-  }
 }
 
 export interface CardUpdateParams {
@@ -442,61 +385,6 @@ export namespace CardUpdateParams {
      */
     phone?: string;
   }
-
-  /**
-   * The card's updated billing address.
-   */
-  export interface BillingAddress {
-    /**
-     * The city of the billing address.
-     */
-    city: string;
-
-    /**
-     * The first line of the billing address.
-     */
-    line1: string;
-
-    /**
-     * The postal code of the billing address.
-     */
-    postal_code: string;
-
-    /**
-     * The US state of the billing address.
-     */
-    state: string;
-
-    /**
-     * The second line of the billing address.
-     */
-    line2?: string;
-  }
-
-  /**
-   * The contact information used in the two-factor steps for digital wallet card
-   * creation. At least one field must be present to complete the digital wallet
-   * steps.
-   */
-  export interface DigitalWallet {
-    /**
-     * The card profile assigned to this digital card. Card profiles may also be
-     * assigned at the program level.
-     */
-    card_profile_id?: string;
-
-    /**
-     * An email address that can be used to verify the cardholder via one-time passcode
-     * over email.
-     */
-    email?: string;
-
-    /**
-     * A phone number that can be used to verify the cardholder via one-time passcode
-     * over SMS.
-     */
-    phone?: string;
-  }
 }
 
 export interface CardListParams extends PageParams {
@@ -505,29 +393,7 @@ export interface CardListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.after'?: string;
-
-  /**
-   * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-   * timestamp.
-   */
-  'created_at.before'?: string;
-
-  /**
-   * Return results on or after this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_after'?: string;
-
-  /**
-   * Return results on or before this
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-   */
-  'created_at.on_or_before'?: string;
+  created_at?: CardListParams.CreatedAt;
 }
 
 export namespace CardListParams {
