@@ -22,4 +22,5 @@ export {
 } from './real-time-payments-transfers';
 export { InboundWireDrawdownRequestCreateParams } from './inbound-wire-drawdown-requests';
 export { InterestPaymentSimulationResult, InterestPaymentCreateParams } from './interest-payments';
+export { ProgramCreateParams } from './programs';
 export { WireTransferSimulation, WireTransferCreateInboundParams } from './wire-transfers';

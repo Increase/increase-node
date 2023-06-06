@@ -10,6 +10,7 @@ import { CheckTransfers } from './check-transfers';
 import { Documents } from './documents';
 import { DigitalWalletTokenRequests } from './digital-wallet-token-requests';
 import { CheckDeposits } from './check-deposits';
+import { Programs } from './programs';
 import { InboundWireDrawdownRequests } from './inbound-wire-drawdown-requests';
 import { InterestPayments } from './interest-payments';
 import { WireTransfers } from './wire-transfers';
@@ -26,6 +27,7 @@ export class Simulations extends APIResource {
   documents: Documents = new Documents(this.client);
   digitalWalletTokenRequests: DigitalWalletTokenRequests = new DigitalWalletTokenRequests(this.client);
   checkDeposits: CheckDeposits = new CheckDeposits(this.client);
+  programs: Programs = new Programs(this.client);
   inboundWireDrawdownRequests: InboundWireDrawdownRequests = new InboundWireDrawdownRequests(this.client);
   interestPayments: InterestPayments = new InterestPayments(this.client);
   wireTransfers: WireTransfers = new WireTransfers(this.client);
