@@ -329,9 +329,14 @@ Methods:
 
 ## SupplementalDocuments
 
+Models:
+
+- <code><a href="./resources/entities/supplemental-documents.ts">SupplementalDocument</a></code>
+
 Methods:
 
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entity</code>
+- <code title="get /entity_supplemental_documents">client.entities.supplementalDocuments.<a href="./resources/entities/supplemental-documents.ts">list</a>({ ...params }) -> SupplementalDocumentsPage</code>
 
 # InboundWireDrawdownRequests
 
@@ -515,6 +520,12 @@ Methods:
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">reject</a>(checkDepositId) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">return</a>(checkDepositId) -> CheckDeposit</code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./resources/simulations/check-deposits.ts">submit</a>(checkDepositId) -> CheckDeposit</code>
+
+## Programs
+
+Methods:
+
+- <code title="post /simulations/programs">client.simulations.programs.<a href="./resources/simulations/programs.ts">create</a>({ ...params }) -> Program</code>
 
 ## InboundWireDrawdownRequests
 
