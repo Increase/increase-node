@@ -102,6 +102,13 @@ export interface Account {
   interest_accrued_at: string | null;
 
   /**
+   * The Interest Rate currently being earned on the account, as a string containing
+   * a decimal number. For example, a 1% interest rate would be represented as
+   * "0.01".
+   */
+  interest_rate: string;
+
+  /**
    * The name you choose for the Account.
    */
   name: string;
@@ -136,7 +143,8 @@ export interface AccountCreateParams {
   informational_entity_id?: string;
 
   /**
-   * The identifier for the Program that this Account falls under.
+   * The identifier for the Program that this Account falls under. Required if you
+   * operate more than one Program.
    */
   program_id?: string;
 }
@@ -155,6 +163,11 @@ export interface AccountListParams extends PageParams {
    * Filter Accounts for those belonging to the specified Entity.
    */
   entity_id?: string;
+
+  /**
+   * Filter Accounts for those belonging to the specified Entity as informational.
+   */
+  informational_entity_id?: string;
 
   /**
    * Filter Accounts for those with the specified status.

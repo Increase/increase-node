@@ -16,4 +16,16 @@ describe('resource supplementalDocuments', () => {
       file_id: 'string',
     });
   });
+
+  test('list: only required params', async () => {
+    const response = await increase.entities.supplementalDocuments.list({ entity_id: 'string' });
+  });
+
+  test('list: required and optional params', async () => {
+    const response = await increase.entities.supplementalDocuments.list({
+      entity_id: 'string',
+      cursor: 'string',
+      limit: 0,
+    });
+  });
 });

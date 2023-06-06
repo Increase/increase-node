@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Entities from '~/resources/entities';
+import { Page, PageParams } from '~/pagination';
 
 export class SupplementalDocuments extends APIResource {
   /**
@@ -15,6 +16,44 @@ export class SupplementalDocuments extends APIResource {
   ): Promise<Core.APIResponse<Entities.Entity>> {
     return this.post(`/entities/${entityId}/supplemental_documents`, { body, ...options });
   }
+
+  /**
+   * List Entity Supplemental Document Submissionss
+   */
+  list(
+    query: SupplementalDocumentListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<SupplementalDocumentsPage> {
+    return this.getAPIList('/entity_supplemental_documents', SupplementalDocumentsPage, {
+      query,
+      ...options,
+    });
+  }
+}
+
+export class SupplementalDocumentsPage extends Page<SupplementalDocument> {}
+
+/**
+ * Supplemental Documents are uploaded files connected to an Entity during
+ * onboarding.
+ */
+export interface SupplementalDocument {
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+   * Supplemental Document was created.
+   */
+  created_at: string;
+
+  /**
+   * The File containing the document.
+   */
+  file_id: string;
+
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `entity_supplemental_document`.
+   */
+  type: 'entity_supplemental_document';
 }
 
 export interface SupplementalDocumentCreateParams {
@@ -22,4 +61,11 @@ export interface SupplementalDocumentCreateParams {
    * The identifier of the File containing the document.
    */
   file_id: string;
+}
+
+export interface SupplementalDocumentListParams extends PageParams {
+  /**
+   * The identifier of the Entity to list supplemental documents for.
+   */
+  entity_id: string;
 }

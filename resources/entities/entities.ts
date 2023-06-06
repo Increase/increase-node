@@ -84,7 +84,9 @@ export interface Entity {
   structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
 
   /**
-   * Additional documentation associated with the entity.
+   * Additional documentation associated with the entity. This is limited to the
+   * first 10 documents for an entity. If an entity has more than 10 documents, use
+   * the GET /entity_supplemental_documents list endpoint to retrieve them.
    */
   supplemental_documents: Array<Entity.SupplementalDocuments>;
 
@@ -696,11 +698,27 @@ export namespace Entity {
     }
   }
 
+  /**
+   * Supplemental Documents are uploaded files connected to an Entity during
+   * onboarding.
+   */
   export interface SupplementalDocuments {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+     * Supplemental Document was created.
+     */
+    created_at: string;
+
     /**
      * The File containing the document.
      */
     file_id: string;
+
+    /**
+     * A constant representing the object's type. For this resource it will always be
+     * `entity_supplemental_document`.
+     */
+    type: 'entity_supplemental_document';
   }
 }
 
