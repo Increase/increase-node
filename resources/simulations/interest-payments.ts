@@ -538,7 +538,7 @@ export namespace InterestPaymentSimulationResult {
           | 'account_sold_to_another_dfi'
           | 'addenda_error'
           | 'beneficiary_or_account_holder_deceased'
-          | 'check_truncation_entry_return'
+          | 'customer_advised_not_within_authorization_terms'
           | 'corrected_return'
           | 'duplicate_entry'
           | 'duplicate_return'
