@@ -70,7 +70,7 @@ import Increase, { fileFromPath } from 'increase';
 
 const increase = new Increase();
 
-const file = await fileFromPath('/my/file.txt');
+const file = await fileFromPath('my/file.txt');
 await increase.files.create({ file: file, purpose: 'other' });
 ```
 
