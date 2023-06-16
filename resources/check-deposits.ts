@@ -233,7 +233,8 @@ export namespace CheckDeposit {
       | 'stop_payment'
       | 'unknown_reason'
       | 'unmatched_details'
-      | 'unreadable_image';
+      | 'unreadable_image'
+      | 'endorsement_irregular';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

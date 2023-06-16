@@ -142,12 +142,6 @@ export namespace PendingTransaction {
     card_authorization: Source.CardAuthorization | null;
 
     /**
-     * A Deprecated Card Authorization object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_route_authorization`.
-     */
-    card_route_authorization: Source.CardRouteAuthorization | null;
-
-    /**
      * The type of transaction that took place. We may add additional possible values
      * for this enum over time; your application should be able to handle such
      * additions gracefully.
@@ -159,9 +153,7 @@ export namespace PendingTransaction {
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
       | 'inbound_funds_hold'
-      | 'card_route_authorization'
       | 'real_time_payments_transfer_instruction'
-      | 'wire_drawdown_payment_instruction'
       | 'wire_transfer_instruction'
       | 'other';
 
@@ -189,13 +181,6 @@ export namespace PendingTransaction {
      * `real_time_payments_transfer_instruction`.
      */
     real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
-
-    /**
-     * A Wire Drawdown Payment Instruction object. This field will be present in the
-     * JSON response if and only if `category` is equal to
-     * `wire_drawdown_payment_instruction`.
-     */
-    wire_drawdown_payment_instruction: Source.WireDrawdownPaymentInstruction | null;
 
     /**
      * A Wire Transfer Instruction object. This field will be present in the JSON
@@ -484,36 +469,6 @@ export namespace PendingTransaction {
     }
 
     /**
-     * A Deprecated Card Authorization object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_route_authorization`.
-     */
-    export interface CardRouteAuthorization {
-      /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
-       */
-      amount: number;
-
-      /**
-       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-       * transaction's currency.
-       */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-      merchant_acceptor_id: string;
-
-      merchant_category_code: string;
-
-      merchant_city: string | null;
-
-      merchant_country: string;
-
-      merchant_descriptor: string;
-
-      merchant_state: string | null;
-    }
-
-    /**
      * A Real Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
@@ -530,25 +485,6 @@ export namespace PendingTransaction {
        * Transaction.
        */
       transfer_id: string;
-    }
-
-    /**
-     * A Wire Drawdown Payment Instruction object. This field will be present in the
-     * JSON response if and only if `category` is equal to
-     * `wire_drawdown_payment_instruction`.
-     */
-    export interface WireDrawdownPaymentInstruction {
-      account_number: string;
-
-      /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
-       */
-      amount: number;
-
-      message_to_recipient: string;
-
-      routing_number: string;
     }
 
     /**

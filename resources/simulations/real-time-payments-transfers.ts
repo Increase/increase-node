@@ -144,18 +144,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       account_transfer_intention: Source.AccountTransferIntention | null;
 
       /**
-       * A ACH Check Conversion object. This field will be present in the JSON response
-       * if and only if `category` is equal to `ach_check_conversion`.
-       */
-      ach_check_conversion: Source.ACHCheckConversion | null;
-
-      /**
-       * A ACH Check Conversion Return object. This field will be present in the JSON
-       * response if and only if `category` is equal to `ach_check_conversion_return`.
-       */
-      ach_check_conversion_return: Source.ACHCheckConversionReturn | null;
-
-      /**
        * A ACH Transfer Intention object. This field will be present in the JSON response
        * if and only if `category` is equal to `ach_transfer_intention`.
        */
@@ -192,18 +180,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       card_revenue_payment: Source.CardRevenuePayment | null;
 
       /**
-       * A Deprecated Card Refund object. This field will be present in the JSON response
-       * if and only if `category` is equal to `card_route_refund`.
-       */
-      card_route_refund: Source.CardRouteRefund | null;
-
-      /**
-       * A Deprecated Card Settlement object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_settlement`.
-       */
-      card_route_settlement: Source.CardRouteSettlement | null;
-
-      /**
        * A Card Settlement object. This field will be present in the JSON response if and
        * only if `category` is equal to `card_settlement`.
        */
@@ -216,8 +192,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        */
       category:
         | 'account_transfer_intention'
-        | 'ach_check_conversion_return'
-        | 'ach_check_conversion'
         | 'ach_transfer_intention'
         | 'ach_transfer_rejection'
         | 'ach_transfer_return'
@@ -231,8 +205,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'check_transfer_return'
         | 'check_transfer_rejection'
         | 'check_transfer_stop_payment_request'
-        | 'dispute_resolution'
-        | 'empyreal_cash_deposit'
         | 'fee_payment'
         | 'inbound_ach_transfer'
         | 'inbound_ach_transfer_return_intention'
@@ -244,14 +216,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'inbound_wire_reversal'
         | 'inbound_wire_transfer'
         | 'interest_payment'
-        | 'internal_general_ledger_transaction'
         | 'internal_source'
-        | 'card_route_refund'
-        | 'card_route_settlement'
         | 'real_time_payments_transfer_acknowledgement'
         | 'sample_funds'
-        | 'wire_drawdown_payment_intention'
-        | 'wire_drawdown_payment_rejection'
         | 'wire_transfer_intention'
         | 'wire_transfer_rejection'
         | 'other';
@@ -292,18 +259,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * `check_transfer_stop_payment_request`.
        */
       check_transfer_stop_payment_request: Source.CheckTransferStopPaymentRequest | null;
-
-      /**
-       * A Dispute Resolution object. This field will be present in the JSON response if
-       * and only if `category` is equal to `dispute_resolution`.
-       */
-      dispute_resolution: Source.DisputeResolution | null;
-
-      /**
-       * A Empyreal Cash Deposit object. This field will be present in the JSON response
-       * if and only if `category` is equal to `empyreal_cash_deposit`.
-       */
-      empyreal_cash_deposit: Source.EmpyrealCashDeposit | null;
 
       /**
        * A Fee Payment object. This field will be present in the JSON response if and
@@ -388,20 +343,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       sample_funds: Source.SampleFunds | null;
 
       /**
-       * A Wire Drawdown Payment Intention object. This field will be present in the JSON
-       * response if and only if `category` is equal to
-       * `wire_drawdown_payment_intention`.
-       */
-      wire_drawdown_payment_intention: Source.WireDrawdownPaymentIntention | null;
-
-      /**
-       * A Wire Drawdown Payment Rejection object. This field will be present in the JSON
-       * response if and only if `category` is equal to
-       * `wire_drawdown_payment_rejection`.
-       */
-      wire_drawdown_payment_rejection: Source.WireDrawdownPaymentRejection | null;
-
-      /**
        * A Wire Transfer Intention object. This field will be present in the JSON
        * response if and only if `category` is equal to `wire_transfer_intention`.
        */
@@ -451,40 +392,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * The identifier of the Account Transfer that led to this Pending Transaction.
          */
         transfer_id: string;
-      }
-
-      /**
-       * A ACH Check Conversion Return object. This field will be present in the JSON
-       * response if and only if `category` is equal to `ach_check_conversion_return`.
-       */
-      export interface ACHCheckConversionReturn {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * Why the transfer was returned.
-         */
-        return_reason_code: string;
-      }
-
-      /**
-       * A ACH Check Conversion object. This field will be present in the JSON response
-       * if and only if `category` is equal to `ach_check_conversion`.
-       */
-      export interface ACHCheckConversion {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The identifier of the File containing an image of the returned check.
-         */
-        file_id: string;
       }
 
       /**
@@ -900,7 +807,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'stop_payment'
           | 'unknown_reason'
           | 'unmatched_details'
-          | 'unreadable_image';
+          | 'unreadable_image'
+          | 'endorsement_irregular';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1037,45 +945,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * `check_transfer_stop_payment_request`.
          */
         type: 'check_transfer_stop_payment_request';
-      }
-
-      /**
-       * A Dispute Resolution object. This field will be present in the JSON response if
-       * and only if `category` is equal to `dispute_resolution`.
-       */
-      export interface DisputeResolution {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        /**
-         * The identifier of the Transaction that was disputed.
-         */
-        disputed_transaction_id: string;
-      }
-
-      /**
-       * A Empyreal Cash Deposit object. This field will be present in the JSON response
-       * if and only if `category` is equal to `empyreal_cash_deposit`.
-       */
-      export interface EmpyrealCashDeposit {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        bag_id: string;
-
-        deposit_date: string;
       }
 
       /**
@@ -1566,66 +1435,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       }
 
       /**
-       * A Deprecated Card Refund object. This field will be present in the JSON response
-       * if and only if `category` is equal to `card_route_refund`.
-       */
-      export interface CardRouteRefund {
-        /**
-         * The refunded amount in the minor unit of the refunded currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
-         * currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        merchant_acceptor_id: string;
-
-        merchant_category_code: string | null;
-
-        merchant_city: string | null;
-
-        merchant_country: string;
-
-        merchant_descriptor: string;
-
-        merchant_state: string | null;
-      }
-
-      /**
-       * A Deprecated Card Settlement object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_settlement`.
-       */
-      export interface CardRouteSettlement {
-        /**
-         * The settled amount in the minor unit of the settlement currency. For dollars,
-         * for example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
-         * currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        merchant_acceptor_id: string;
-
-        merchant_category_code: string | null;
-
-        merchant_city: string | null;
-
-        merchant_country: string | null;
-
-        merchant_descriptor: string;
-
-        merchant_state: string | null;
-      }
-
-      /**
        * A Real Time Payments Transfer Acknowledgement object. This field will be present
        * in the JSON response if and only if `category` is equal to
        * `real_time_payments_transfer_acknowledgement`.
@@ -1666,35 +1475,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * Where the sample funds came from.
          */
         originator: string;
-      }
-
-      /**
-       * A Wire Drawdown Payment Intention object. This field will be present in the JSON
-       * response if and only if `category` is equal to
-       * `wire_drawdown_payment_intention`.
-       */
-      export interface WireDrawdownPaymentIntention {
-        account_number: string;
-
-        /**
-         * The transfer amount in USD cents.
-         */
-        amount: number;
-
-        message_to_recipient: string;
-
-        routing_number: string;
-
-        transfer_id: string;
-      }
-
-      /**
-       * A Wire Drawdown Payment Rejection object. This field will be present in the JSON
-       * response if and only if `category` is equal to
-       * `wire_drawdown_payment_rejection`.
-       */
-      export interface WireDrawdownPaymentRejection {
-        transfer_id: string;
       }
 
       /**
@@ -1825,12 +1605,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       card_decline: Source.CardDecline | null;
 
       /**
-       * A Deprecated Card Decline object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_decline`.
-       */
-      card_route_decline: Source.CardRouteDecline | null;
-
-      /**
        * The type of decline that took place. We may add additional possible values for
        * this enum over time; your application should be able to handle such additions
        * gracefully.
@@ -1841,7 +1615,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'check_decline'
         | 'inbound_real_time_payments_transfer_decline'
         | 'international_ach_decline'
-        | 'card_route_decline'
         | 'wire_decline'
         | 'other';
 
@@ -2221,36 +1994,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         receiving_depository_financial_institution_name: string;
 
         trace_number: string;
-      }
-
-      /**
-       * A Deprecated Card Decline object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_decline`.
-       */
-      export interface CardRouteDecline {
-        /**
-         * The declined amount in the minor unit of the destination account currency. For
-         * dollars, for example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-         * account currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        merchant_acceptor_id: string;
-
-        merchant_category_code: string | null;
-
-        merchant_city: string | null;
-
-        merchant_country: string;
-
-        merchant_descriptor: string;
-
-        merchant_state: string | null;
       }
 
       /**

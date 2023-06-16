@@ -168,12 +168,6 @@ export namespace CardAuthorizationSimulation {
       card_authorization: Source.CardAuthorization | null;
 
       /**
-       * A Deprecated Card Authorization object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_authorization`.
-       */
-      card_route_authorization: Source.CardRouteAuthorization | null;
-
-      /**
        * The type of transaction that took place. We may add additional possible values
        * for this enum over time; your application should be able to handle such
        * additions gracefully.
@@ -185,9 +179,7 @@ export namespace CardAuthorizationSimulation {
         | 'check_deposit_instruction'
         | 'check_transfer_instruction'
         | 'inbound_funds_hold'
-        | 'card_route_authorization'
         | 'real_time_payments_transfer_instruction'
-        | 'wire_drawdown_payment_instruction'
         | 'wire_transfer_instruction'
         | 'other';
 
@@ -215,13 +207,6 @@ export namespace CardAuthorizationSimulation {
        * `real_time_payments_transfer_instruction`.
        */
       real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
-
-      /**
-       * A Wire Drawdown Payment Instruction object. This field will be present in the
-       * JSON response if and only if `category` is equal to
-       * `wire_drawdown_payment_instruction`.
-       */
-      wire_drawdown_payment_instruction: Source.WireDrawdownPaymentInstruction | null;
 
       /**
        * A Wire Transfer Instruction object. This field will be present in the JSON
@@ -510,36 +495,6 @@ export namespace CardAuthorizationSimulation {
       }
 
       /**
-       * A Deprecated Card Authorization object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_authorization`.
-       */
-      export interface CardRouteAuthorization {
-        /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        merchant_acceptor_id: string;
-
-        merchant_category_code: string;
-
-        merchant_city: string | null;
-
-        merchant_country: string;
-
-        merchant_descriptor: string;
-
-        merchant_state: string | null;
-      }
-
-      /**
        * A Real Time Payments Transfer Instruction object. This field will be present in
        * the JSON response if and only if `category` is equal to
        * `real_time_payments_transfer_instruction`.
@@ -556,25 +511,6 @@ export namespace CardAuthorizationSimulation {
          * Transaction.
          */
         transfer_id: string;
-      }
-
-      /**
-       * A Wire Drawdown Payment Instruction object. This field will be present in the
-       * JSON response if and only if `category` is equal to
-       * `wire_drawdown_payment_instruction`.
-       */
-      export interface WireDrawdownPaymentInstruction {
-        account_number: string;
-
-        /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
-         */
-        amount: number;
-
-        message_to_recipient: string;
-
-        routing_number: string;
       }
 
       /**
@@ -688,12 +624,6 @@ export namespace CardAuthorizationSimulation {
       card_decline: Source.CardDecline | null;
 
       /**
-       * A Deprecated Card Decline object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_decline`.
-       */
-      card_route_decline: Source.CardRouteDecline | null;
-
-      /**
        * The type of decline that took place. We may add additional possible values for
        * this enum over time; your application should be able to handle such additions
        * gracefully.
@@ -704,7 +634,6 @@ export namespace CardAuthorizationSimulation {
         | 'check_decline'
         | 'inbound_real_time_payments_transfer_decline'
         | 'international_ach_decline'
-        | 'card_route_decline'
         | 'wire_decline'
         | 'other';
 
@@ -1084,36 +1013,6 @@ export namespace CardAuthorizationSimulation {
         receiving_depository_financial_institution_name: string;
 
         trace_number: string;
-      }
-
-      /**
-       * A Deprecated Card Decline object. This field will be present in the JSON
-       * response if and only if `category` is equal to `card_route_decline`.
-       */
-      export interface CardRouteDecline {
-        /**
-         * The declined amount in the minor unit of the destination account currency. For
-         * dollars, for example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-         * account currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        merchant_acceptor_id: string;
-
-        merchant_category_code: string | null;
-
-        merchant_city: string | null;
-
-        merchant_country: string;
-
-        merchant_descriptor: string;
-
-        merchant_state: string | null;
       }
 
       /**
