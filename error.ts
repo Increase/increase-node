@@ -1,8 +1,176 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import * as Core from '~/core';
+import { castToError, Headers } from '~/core';
 
-export class InvalidParametersError extends Core.BadRequestError {
+export class APIError extends Error {
+  readonly status: number | undefined;
+  readonly headers: Headers | undefined;
+  readonly error: Object | undefined;
+
+  constructor(
+    status: number | undefined,
+    error: Object | undefined,
+    message: string | undefined,
+    headers: Headers | undefined,
+  ) {
+    super(message || (error as any)?.message || 'Unknown error occurred.');
+    this.status = status;
+    this.headers = headers;
+    this.error = error;
+  }
+
+  static generate(
+    status: number | undefined,
+    errorResponse: Object | undefined,
+    message: string | undefined,
+    headers: Headers | undefined,
+  ) {
+    if (!status) {
+      return new APIConnectionError({ cause: castToError(errorResponse) });
+    }
+
+    const error = errorResponse as Record<string, any>;
+
+    const type = error?.['type'];
+
+    if (type === 'invalid_parameters_error') {
+      return new InvalidParametersError(status, error, message, headers);
+    }
+
+    if (type === 'malformed_request_error') {
+      return new MalformedRequestError(status, error, message, headers);
+    }
+
+    if (type === 'invalid_api_key_error') {
+      return new InvalidAPIKeyError(status, error, message, headers);
+    }
+
+    if (type === 'environment_mismatch_error') {
+      return new EnvironmentMismatchError(status, error, message, headers);
+    }
+
+    if (type === 'insufficient_permissions_error') {
+      return new InsufficientPermissionsError(status, error, message, headers);
+    }
+
+    if (type === 'private_feature_error') {
+      return new PrivateFeatureError(status, error, message, headers);
+    }
+
+    if (type === 'api_method_not_found_error') {
+      return new APIMethodNotFoundError(status, error, message, headers);
+    }
+
+    if (type === 'object_not_found_error') {
+      return new ObjectNotFoundError(status, error, message, headers);
+    }
+
+    if (type === 'idempotency_conflict_error') {
+      return new IdempotencyConflictError(status, error, message, headers);
+    }
+
+    if (type === 'invalid_operation_error') {
+      return new InvalidOperationError(status, error, message, headers);
+    }
+
+    if (type === 'idempotency_unprocessable_error') {
+      return new IdempotencyUnprocessableError(status, error, message, headers);
+    }
+
+    if (type === 'rate_limited_error') {
+      return new RateLimitedError(status, error, message, headers);
+    }
+
+    if (type === 'internal_server_error') {
+      return new InternalServerError(status, error, message, headers);
+    }
+    if (status === 500) {
+      return new InternalServerError(
+        status,
+        { type: 'internal_server_error', title: '', detail: null, status: 500 },
+        message,
+        headers,
+      );
+    }
+
+    if (status === 400) {
+      return new BadRequestError(status, error, message, headers);
+    }
+
+    if (status === 401) {
+      return new AuthenticationError(status, error, message, headers);
+    }
+
+    if (status === 403) {
+      return new PermissionDeniedError(status, error, message, headers);
+    }
+
+    if (status === 404) {
+      return new NotFoundError(status, error, message, headers);
+    }
+
+    if (status === 409) {
+      return new ConflictError(status, error, message, headers);
+    }
+
+    if (status === 422) {
+      return new UnprocessableEntityError(status, error, message, headers);
+    }
+
+    if (status === 429) {
+      return new RateLimitError(status, error, message, headers);
+    }
+
+    return new APIError(status, error, message, headers);
+  }
+}
+
+export class APIConnectionError extends APIError {
+  override readonly status: undefined = undefined;
+
+  constructor({ message, cause }: { message?: string; cause?: Error | undefined }) {
+    super(undefined, undefined, message || 'Connection error.', undefined);
+    // in some environments the 'cause' property is already declared
+    // @ts-ignore
+    if (cause) this.cause = cause;
+  }
+}
+
+export class APIConnectionTimeoutError extends APIConnectionError {
+  constructor() {
+    super({ message: 'Request timed out.' });
+  }
+}
+
+export class BadRequestError extends APIError {
+  override readonly status: 400 = 400;
+}
+
+export class AuthenticationError extends APIError {
+  override readonly status: 401 = 401;
+}
+
+export class PermissionDeniedError extends APIError {
+  override readonly status: 403 = 403;
+}
+
+export class NotFoundError extends APIError {
+  override readonly status: 404 = 404;
+}
+
+export class ConflictError extends APIError {
+  override readonly status: 409 = 409;
+}
+
+export class UnprocessableEntityError extends APIError {
+  override readonly status: 422 = 422;
+}
+
+export class RateLimitError extends APIError {
+  override readonly status: 429 = 429;
+}
+
+export class InvalidParametersError extends BadRequestError {
   detail: string | null;
 
   /**
@@ -20,7 +188,7 @@ export class InvalidParametersError extends Core.BadRequestError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -33,7 +201,7 @@ export class InvalidParametersError extends Core.BadRequestError {
   }
 }
 
-export class MalformedRequestError extends Core.BadRequestError {
+export class MalformedRequestError extends BadRequestError {
   detail: string | null;
 
   override status: 400;
@@ -46,7 +214,7 @@ export class MalformedRequestError extends Core.BadRequestError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -58,7 +226,7 @@ export class MalformedRequestError extends Core.BadRequestError {
   }
 }
 
-export class InvalidAPIKeyError extends Core.AuthenticationError {
+export class InvalidAPIKeyError extends AuthenticationError {
   detail: string | null;
 
   override status: 401;
@@ -71,7 +239,7 @@ export class InvalidAPIKeyError extends Core.AuthenticationError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -83,7 +251,7 @@ export class InvalidAPIKeyError extends Core.AuthenticationError {
   }
 }
 
-export class EnvironmentMismatchError extends Core.PermissionDeniedError {
+export class EnvironmentMismatchError extends PermissionDeniedError {
   detail: string | null;
 
   override status: 403;
@@ -96,7 +264,7 @@ export class EnvironmentMismatchError extends Core.PermissionDeniedError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -108,7 +276,7 @@ export class EnvironmentMismatchError extends Core.PermissionDeniedError {
   }
 }
 
-export class InsufficientPermissionsError extends Core.PermissionDeniedError {
+export class InsufficientPermissionsError extends PermissionDeniedError {
   detail: string | null;
 
   override status: 403;
@@ -121,7 +289,7 @@ export class InsufficientPermissionsError extends Core.PermissionDeniedError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -133,7 +301,7 @@ export class InsufficientPermissionsError extends Core.PermissionDeniedError {
   }
 }
 
-export class PrivateFeatureError extends Core.PermissionDeniedError {
+export class PrivateFeatureError extends PermissionDeniedError {
   detail: string | null;
 
   override status: 403;
@@ -146,7 +314,7 @@ export class PrivateFeatureError extends Core.PermissionDeniedError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -158,7 +326,7 @@ export class PrivateFeatureError extends Core.PermissionDeniedError {
   }
 }
 
-export class APIMethodNotFoundError extends Core.NotFoundError {
+export class APIMethodNotFoundError extends NotFoundError {
   detail: string | null;
 
   override status: 404;
@@ -171,7 +339,7 @@ export class APIMethodNotFoundError extends Core.NotFoundError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -183,7 +351,7 @@ export class APIMethodNotFoundError extends Core.NotFoundError {
   }
 }
 
-export class ObjectNotFoundError extends Core.NotFoundError {
+export class ObjectNotFoundError extends NotFoundError {
   detail: string | null;
 
   override status: 404;
@@ -196,7 +364,7 @@ export class ObjectNotFoundError extends Core.NotFoundError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -208,7 +376,7 @@ export class ObjectNotFoundError extends Core.NotFoundError {
   }
 }
 
-export class IdempotencyConflictError extends Core.ConflictError {
+export class IdempotencyConflictError extends ConflictError {
   detail: string | null;
 
   override status: 409;
@@ -221,7 +389,7 @@ export class IdempotencyConflictError extends Core.ConflictError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -233,7 +401,7 @@ export class IdempotencyConflictError extends Core.ConflictError {
   }
 }
 
-export class InvalidOperationError extends Core.ConflictError {
+export class InvalidOperationError extends ConflictError {
   detail: string | null;
 
   override status: 409;
@@ -246,7 +414,7 @@ export class InvalidOperationError extends Core.ConflictError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -258,7 +426,7 @@ export class InvalidOperationError extends Core.ConflictError {
   }
 }
 
-export class IdempotencyUnprocessableError extends Core.UnprocessableEntityError {
+export class IdempotencyUnprocessableError extends UnprocessableEntityError {
   detail: string | null;
 
   override status: 422;
@@ -271,7 +439,7 @@ export class IdempotencyUnprocessableError extends Core.UnprocessableEntityError
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -283,7 +451,7 @@ export class IdempotencyUnprocessableError extends Core.UnprocessableEntityError
   }
 }
 
-export class RateLimitedError extends Core.RateLimitError {
+export class RateLimitedError extends RateLimitError {
   detail: string | null;
 
   override status: 429;
@@ -298,7 +466,7 @@ export class RateLimitedError extends Core.RateLimitError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
@@ -311,7 +479,7 @@ export class RateLimitedError extends Core.RateLimitError {
   }
 }
 
-export class InternalServerError extends Core.InternalServerError {
+export class InternalServerError extends APIError {
   detail: string | null;
 
   override status: 500;
@@ -324,7 +492,7 @@ export class InternalServerError extends Core.InternalServerError {
     status: number | undefined,
     error: Object | undefined,
     message: string | undefined,
-    headers: Core.Headers | undefined,
+    headers: Headers | undefined,
   ) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
