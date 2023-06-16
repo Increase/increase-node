@@ -127,12 +127,6 @@ export namespace DeclinedTransaction {
     card_decline: Source.CardDecline | null;
 
     /**
-     * A Deprecated Card Decline object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_route_decline`.
-     */
-    card_route_decline: Source.CardRouteDecline | null;
-
-    /**
      * The type of decline that took place. We may add additional possible values for
      * this enum over time; your application should be able to handle such additions
      * gracefully.
@@ -143,7 +137,6 @@ export namespace DeclinedTransaction {
       | 'check_decline'
       | 'inbound_real_time_payments_transfer_decline'
       | 'international_ach_decline'
-      | 'card_route_decline'
       | 'wire_decline'
       | 'other';
 
@@ -523,36 +516,6 @@ export namespace DeclinedTransaction {
       receiving_depository_financial_institution_name: string;
 
       trace_number: string;
-    }
-
-    /**
-     * A Deprecated Card Decline object. This field will be present in the JSON
-     * response if and only if `category` is equal to `card_route_decline`.
-     */
-    export interface CardRouteDecline {
-      /**
-       * The declined amount in the minor unit of the destination account currency. For
-       * dollars, for example, this is cents.
-       */
-      amount: number;
-
-      /**
-       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-       * account currency.
-       */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-      merchant_acceptor_id: string;
-
-      merchant_category_code: string | null;
-
-      merchant_city: string | null;
-
-      merchant_country: string;
-
-      merchant_descriptor: string;
-
-      merchant_state: string | null;
     }
 
     /**
