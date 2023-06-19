@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.4.0](https://github.com/Increase/increase-node/compare/v0.3.0...v0.4.0) (2023-06-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop official support for EOL Node versions (Node 12, 13, 14, 15) ([#18](https://github.com/Increase/increase-node/issues/18))
+* **api:** rename return reason enum member ([#12](https://github.com/Increase/increase-node/issues/12))
+* change nested query parameters to be objects ([#8](https://github.com/Increase/increase-node/issues/8))
+
+
+### Features
+* **client:** add support for specifying client-level default headers ([#5](https://github.com/Increase/increase-node/issues/5)) ([609c71a](https://github.com/Increase/increase-node/commit/609c71a7f657ec14fba3fa919d8b0dd4ff1ecb5d))
+* **api:** add new endpoints + properties + enums ([#9](https://github.com/Increase/increase-node/issues/9)) ([8fd90c4](https://github.com/Increase/increase-node/commit/8fd90c4b8a50ce9f5a23cc17ee71508df6e34eca))
+
+
+### Bug Fixes
+
+* **internal:** improve stream cancellation handling of abort controllers ([#17](https://github.com/Increase/increase-node/issues/17)) ([e8f15dd](https://github.com/Increase/increase-node/commit/e8f15dd5c2001dd6b3023266a2471c019ed96739))
+
+
+### Chores
+
+* **internal:** improve SSE decoding of lines ([#14](https://github.com/Increase/increase-node/issues/14)) ([74b9bdc](https://github.com/Increase/increase-node/commit/74b9bdcaa44639cd99865d8a2701a2232314f0fd))
+* **internal:** restructure core streaming implementation ([#7](https://github.com/Increase/increase-node/issues/7)) ([b97964b](https://github.com/Increase/increase-node/commit/b97964bd5e22ed7ce4ffdd8e4a8fe5005db40976))
+
+
+### Refactors
+
+* **api:** remove unused properties and enum members ([#16](https://github.com/Increase/increase-node/issues/16)) ([51c8ab5](https://github.com/Increase/increase-node/commit/51c8ab5e5415d722768af8c53c5c8453398545a6))
+* change nested query parameters to be objects ([#8](https://github.com/Increase/increase-node/issues/8)) ([fdcd3a4](https://github.com/Increase/increase-node/commit/fdcd3a47ff31cece47a646853086f9d9e024720c))
+* **api:** rename return reason enum member ([#12](https://github.com/Increase/increase-node/issues/12)) ([51ba5d4](https://github.com/Increase/increase-node/commit/51ba5d42e07dbde522cf7ff49863fc0935c350bb))
+* **docs:** cleanup api.md response types ([539848e](https://github.com/Increase/increase-node/commit/539848e9001e424f9492f60d82cfb861316cfcb2))
+* move error type definitions to error.ts ([#15](https://github.com/Increase/increase-node/issues/15)) ([e50a9a1](https://github.com/Increase/increase-node/commit/e50a9a1f43e107ae989306f73f210e6b88493d60))
+
+
+### Documentation
+
+* drop official support for EOL Node versions (Node 12, 13, 14, 15) ([#18](https://github.com/Increase/increase-node/issues/18)) ([f3be71b](https://github.com/Increase/increase-node/commit/f3be71b1191f72a6785f6be07dcf79b45b9640ac))
+* point to github repo instead of email contact ([#13](https://github.com/Increase/increase-node/issues/13)) ([72d7fef](https://github.com/Increase/increase-node/commit/72d7fef408e625906e2ec59c29b9a63ea5a9d64c))
+* slight improvement to file uploads example ([#10](https://github.com/Increase/increase-node/issues/10)) ([b134725](https://github.com/Increase/increase-node/commit/b1347253a900c1af41a66363bc225a2b09a9e4c3))
+
+
+### Build System
+
+* add `.github` folder to `.npmignore` ([#19](https://github.com/Increase/increase-node/issues/19)) ([a263289](https://github.com/Increase/increase-node/commit/a263289da32b5e0d708c5c21a92a6a58faf74abc))
+
 ## [0.3.0](https://github.com/Increase/increase-node/compare/increase-v0.2.0...increase-v0.3.0) (2023-05-31)
 
 
