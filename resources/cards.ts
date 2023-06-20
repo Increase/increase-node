@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Cards extends APIResource {
@@ -422,4 +423,13 @@ export namespace CardListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace Cards {
+  export import Card = API.Card;
+  export import CardDetails = API.CardDetails;
+  export import CardsPage = API.CardsPage;
+  export import CardCreateParams = API.CardCreateParams;
+  export import CardUpdateParams = API.CardUpdateParams;
+  export import CardListParams = API.CardListParams;
 }

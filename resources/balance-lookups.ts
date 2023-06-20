@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as API from './';
 
 export class BalanceLookups extends APIResource {
   /**
@@ -54,4 +55,9 @@ export interface BalanceLookupLookupParams {
    * The moment to query the balance at. If not set, returns the current balances.
    */
   at_time?: string;
+}
+
+export namespace BalanceLookups {
+  export import BalanceLookupLookupResponse = API.BalanceLookupLookupResponse;
+  export import BalanceLookupLookupParams = API.BalanceLookupLookupParams;
 }

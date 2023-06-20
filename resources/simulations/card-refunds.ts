@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Transactions from '~/resources/transactions';
+import * as API from './';
 
 export class CardRefunds extends APIResource {
   /**
@@ -23,4 +24,8 @@ export interface CardRefundCreateParams {
    * a category of card_settlement.
    */
   transaction_id: string;
+}
+
+export namespace CardRefunds {
+  export import CardRefundCreateParams = API.CardRefundCreateParams;
 }

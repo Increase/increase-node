@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class WireTransfers extends APIResource {
@@ -433,4 +434,11 @@ export namespace WireTransferListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace WireTransfers {
+  export import WireTransfer = API.WireTransfer;
+  export import WireTransfersPage = API.WireTransfersPage;
+  export import WireTransferCreateParams = API.WireTransferCreateParams;
+  export import WireTransferListParams = API.WireTransferListParams;
 }

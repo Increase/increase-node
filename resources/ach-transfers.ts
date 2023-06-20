@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class ACHTransfers extends APIResource {
@@ -543,4 +544,11 @@ export namespace ACHTransferListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace ACHTransfers {
+  export import ACHTransfer = API.ACHTransfer;
+  export import ACHTransfersPage = API.ACHTransfersPage;
+  export import ACHTransferCreateParams = API.ACHTransferCreateParams;
+  export import ACHTransferListParams = API.ACHTransferListParams;
 }

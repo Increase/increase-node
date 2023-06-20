@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class AccountStatements extends APIResource {
@@ -128,4 +129,10 @@ export namespace AccountStatementListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace AccountStatements {
+  export import AccountStatement = API.AccountStatement;
+  export import AccountStatementsPage = API.AccountStatementsPage;
+  export import AccountStatementListParams = API.AccountStatementListParams;
 }

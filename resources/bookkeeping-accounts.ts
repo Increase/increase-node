@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class BookkeepingAccounts extends APIResource {
@@ -96,3 +97,10 @@ export interface BookkeepingAccountCreateParams {
 }
 
 export interface BookkeepingAccountListParams extends PageParams {}
+
+export namespace BookkeepingAccounts {
+  export import BookkeepingAccount = API.BookkeepingAccount;
+  export import BookkeepingAccountsPage = API.BookkeepingAccountsPage;
+  export import BookkeepingAccountCreateParams = API.BookkeepingAccountCreateParams;
+  export import BookkeepingAccountListParams = API.BookkeepingAccountListParams;
+}

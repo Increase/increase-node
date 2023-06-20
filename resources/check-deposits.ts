@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class CheckDeposits extends APIResource {
@@ -313,4 +314,11 @@ export namespace CheckDepositListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace CheckDeposits {
+  export import CheckDeposit = API.CheckDeposit;
+  export import CheckDepositsPage = API.CheckDepositsPage;
+  export import CheckDepositCreateParams = API.CheckDepositCreateParams;
+  export import CheckDepositListParams = API.CheckDepositListParams;
 }

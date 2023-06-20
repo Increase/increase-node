@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class PendingTransactions extends APIResource {
@@ -566,4 +567,10 @@ export namespace PendingTransactionListParams {
      */
     in?: Array<'pending' | 'complete'>;
   }
+}
+
+export namespace PendingTransactions {
+  export import PendingTransaction = API.PendingTransaction;
+  export import PendingTransactionsPage = API.PendingTransactionsPage;
+  export import PendingTransactionListParams = API.PendingTransactionListParams;
 }

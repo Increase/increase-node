@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as CheckTransfers_ from '~/resources/check-transfers';
+import * as API from './';
 
 export class CheckTransfers extends APIResource {
   /**
@@ -46,4 +47,8 @@ export interface CheckTransferReturnParams {
    * The reason why the Check Transfer was returned to Increase.
    */
   reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
+}
+
+export namespace CheckTransfers {
+  export import CheckTransferReturnParams = API.CheckTransferReturnParams;
 }

@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Transactions from '~/resources/transactions';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 
 export class Cards extends APIResource {
   /**
@@ -1113,4 +1114,10 @@ export interface CardSettlementParams {
    * being settled.
    */
   amount?: number;
+}
+
+export namespace Cards {
+  export import CardAuthorizationSimulation = API.CardAuthorizationSimulation;
+  export import CardAuthorizeParams = API.CardAuthorizeParams;
+  export import CardSettlementParams = API.CardSettlementParams;
 }

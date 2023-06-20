@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as API from './';
 
 export class WireTransfers extends APIResource {
   /**
@@ -1577,4 +1578,9 @@ export interface WireTransferCreateInboundParams {
    * production. You can simulate any value here.
    */
   originator_to_beneficiary_information_line4?: string;
+}
+
+export namespace WireTransfers {
+  export import WireTransferSimulation = API.WireTransferSimulation;
+  export import WireTransferCreateInboundParams = API.WireTransferCreateInboundParams;
 }
