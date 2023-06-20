@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 
 export class RealTimeDecisions extends APIResource {
   /**
@@ -377,4 +378,9 @@ export namespace RealTimeDecisionActionParams {
       reason?: string;
     }
   }
+}
+
+export namespace RealTimeDecisions {
+  export import RealTimeDecision = API.RealTimeDecision;
+  export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams;
 }

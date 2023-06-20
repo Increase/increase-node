@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as API from './';
 
 export class BookkeepingEntrySets extends APIResource {
   /**
@@ -97,4 +98,9 @@ export namespace BookkeepingEntrySetCreateParams {
      */
     amount: number;
   }
+}
+
+export namespace BookkeepingEntrySets {
+  export import BookkeepingEntrySet = API.BookkeepingEntrySet;
+  export import BookkeepingEntrySetCreateParams = API.BookkeepingEntrySetCreateParams;
 }

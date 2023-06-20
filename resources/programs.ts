@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Programs extends APIResource {
@@ -68,3 +69,9 @@ export interface Program {
 }
 
 export interface ProgramListParams extends PageParams {}
+
+export namespace Programs {
+  export import Program = API.Program;
+  export import ProgramsPage = API.ProgramsPage;
+  export import ProgramListParams = API.ProgramListParams;
+}

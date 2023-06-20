@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class InboundACHTransferReturns extends APIResource {
@@ -142,3 +143,10 @@ export interface InboundACHTransferReturnCreateParams {
 }
 
 export interface InboundACHTransferReturnListParams extends PageParams {}
+
+export namespace InboundACHTransferReturns {
+  export import InboundACHTransferReturn = API.InboundACHTransferReturn;
+  export import InboundACHTransferReturnsPage = API.InboundACHTransferReturnsPage;
+  export import InboundACHTransferReturnCreateParams = API.InboundACHTransferReturnCreateParams;
+  export import InboundACHTransferReturnListParams = API.InboundACHTransferReturnListParams;
+}

@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class RealTimePaymentsTransfers extends APIResource {
@@ -348,4 +349,11 @@ export namespace RealTimePaymentsTransferListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace RealTimePaymentsTransfers {
+  export import RealTimePaymentsTransfer = API.RealTimePaymentsTransfer;
+  export import RealTimePaymentsTransfersPage = API.RealTimePaymentsTransfersPage;
+  export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
+  export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
 }

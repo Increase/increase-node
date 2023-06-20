@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class DigitalWalletTokens extends APIResource {
@@ -111,4 +112,10 @@ export namespace DigitalWalletTokenListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace DigitalWalletTokens {
+  export import DigitalWalletToken = API.DigitalWalletToken;
+  export import DigitalWalletTokensPage = API.DigitalWalletTokensPage;
+  export import DigitalWalletTokenListParams = API.DigitalWalletTokenListParams;
 }

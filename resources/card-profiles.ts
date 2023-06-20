@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class CardProfiles extends APIResource {
@@ -247,4 +248,11 @@ export namespace CardProfileListParams {
      */
     in?: Array<'pending' | 'rejected' | 'active' | 'archived'>;
   }
+}
+
+export namespace CardProfiles {
+  export import CardProfile = API.CardProfile;
+  export import CardProfilesPage = API.CardProfilesPage;
+  export import CardProfileCreateParams = API.CardProfileCreateParams;
+  export import CardProfileListParams = API.CardProfileListParams;
 }

@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Events extends APIResource {
@@ -216,4 +217,10 @@ export namespace EventListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace Events {
+  export import Event = API.Event;
+  export import EventsPage = API.EventsPage;
+  export import EventListParams = API.EventListParams;
 }

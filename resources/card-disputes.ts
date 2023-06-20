@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class CardDisputes extends APIResource {
@@ -192,4 +193,11 @@ export namespace CardDisputeListParams {
      */
     in?: Array<'pending_reviewing' | 'accepted' | 'rejected'>;
   }
+}
+
+export namespace CardDisputes {
+  export import CardDispute = API.CardDispute;
+  export import CardDisputesPage = API.CardDisputesPage;
+  export import CardDisputeCreateParams = API.CardDisputeCreateParams;
+  export import CardDisputeListParams = API.CardDisputeListParams;
 }

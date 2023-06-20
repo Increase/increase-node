@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as API from './';
 
 export class InterestPayments extends APIResource {
   /**
@@ -1498,4 +1499,9 @@ export interface InterestPaymentCreateParams {
    * The interest amount in cents. Must be positive.
    */
   amount: number;
+}
+
+export namespace InterestPayments {
+  export import InterestPaymentSimulationResult = API.InterestPaymentSimulationResult;
+  export import InterestPaymentCreateParams = API.InterestPaymentCreateParams;
 }

@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as AccountStatements_ from '~/resources/account-statements';
+import * as API from './';
 
 export class AccountStatements extends APIResource {
   /**
@@ -22,4 +23,8 @@ export interface AccountStatementCreateParams {
    * The identifier of the Account the statement is for.
    */
   account_id: string;
+}
+
+export namespace AccountStatements {
+  export import AccountStatementCreateParams = API.AccountStatementCreateParams;
 }

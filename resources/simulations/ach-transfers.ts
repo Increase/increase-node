@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as ACHTransfers_ from '~/resources/ach-transfers';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -2182,4 +2183,10 @@ export interface ACHTransferReturnParams {
     | 'trace_number_error'
     | 'untimely_dishonored_return'
     | 'untimely_return';
+}
+
+export namespace ACHTransfers {
+  export import ACHTransferSimulation = API.ACHTransferSimulation;
+  export import ACHTransferCreateInboundParams = API.ACHTransferCreateInboundParams;
+  export import ACHTransferReturnParams = API.ACHTransferReturnParams;
 }

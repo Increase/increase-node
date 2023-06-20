@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Entities from '~/resources/entities';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class SupplementalDocuments extends APIResource {
@@ -68,4 +69,11 @@ export interface SupplementalDocumentListParams extends PageParams {
    * The identifier of the Entity to list supplemental documents for.
    */
   entity_id: string;
+}
+
+export namespace SupplementalDocuments {
+  export import SupplementalDocument = API.SupplementalDocument;
+  export import SupplementalDocumentsPage = API.SupplementalDocumentsPage;
+  export import SupplementalDocumentCreateParams = API.SupplementalDocumentCreateParams;
+  export import SupplementalDocumentListParams = API.SupplementalDocumentListParams;
 }

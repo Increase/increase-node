@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class WireDrawdownRequests extends APIResource {
@@ -196,3 +197,10 @@ export interface WireDrawdownRequestCreateParams {
 }
 
 export interface WireDrawdownRequestListParams extends PageParams {}
+
+export namespace WireDrawdownRequests {
+  export import WireDrawdownRequest = API.WireDrawdownRequest;
+  export import WireDrawdownRequestsPage = API.WireDrawdownRequestsPage;
+  export import WireDrawdownRequestCreateParams = API.WireDrawdownRequestCreateParams;
+  export import WireDrawdownRequestListParams = API.WireDrawdownRequestListParams;
+}
