@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import type * as FormData from 'formdata-node';
 import { Page, PageParams } from '~/pagination';
 import { multipartFormRequestOptions } from '~/core';
@@ -189,4 +190,11 @@ export namespace FileListParams {
       | 'export'
     >;
   }
+}
+
+export namespace Files {
+  export import File = API.File;
+  export import FilesPage = API.FilesPage;
+  export import FileCreateParams = API.FileCreateParams;
+  export import FileListParams = API.FileListParams;
 }

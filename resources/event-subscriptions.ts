@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class EventSubscriptions extends APIResource {
@@ -233,3 +234,11 @@ export interface EventSubscriptionUpdateParams {
 }
 
 export interface EventSubscriptionListParams extends PageParams {}
+
+export namespace EventSubscriptions {
+  export import EventSubscription = API.EventSubscription;
+  export import EventSubscriptionsPage = API.EventSubscriptionsPage;
+  export import EventSubscriptionCreateParams = API.EventSubscriptionCreateParams;
+  export import EventSubscriptionUpdateParams = API.EventSubscriptionUpdateParams;
+  export import EventSubscriptionListParams = API.EventSubscriptionListParams;
+}

@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class DeclinedTransactions extends APIResource {
@@ -613,4 +614,10 @@ export namespace DeclinedTransactionListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace DeclinedTransactions {
+  export import DeclinedTransaction = API.DeclinedTransaction;
+  export import DeclinedTransactionsPage = API.DeclinedTransactionsPage;
+  export import DeclinedTransactionListParams = API.DeclinedTransactionListParams;
 }

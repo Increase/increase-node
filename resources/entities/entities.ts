@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
 import { SupplementalDocuments } from './supplemental-documents';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Entities extends APIResource {
@@ -1896,4 +1897,17 @@ export namespace EntityListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace Entities {
+  export import Entity = API.Entity;
+  export import EntitiesPage = API.EntitiesPage;
+  export import EntityCreateParams = API.EntityCreateParams;
+  export import EntityListParams = API.EntityListParams;
+
+  export import SupplementalDocuments = API.SupplementalDocuments;
+  export import SupplementalDocument = API.SupplementalDocument;
+  export import SupplementalDocumentsPage = API.SupplementalDocumentsPage;
+  export import SupplementalDocumentCreateParams = API.SupplementalDocumentCreateParams;
+  export import SupplementalDocumentListParams = API.SupplementalDocumentListParams;
 }

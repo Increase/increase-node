@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Documents_ from '~/resources/documents';
+import * as API from './';
 
 export class Documents extends APIResource {
   /**
@@ -21,4 +22,8 @@ export interface DocumentCreateParams {
    * The identifier of the Account the tax document is for.
    */
   account_id: string;
+}
+
+export namespace Documents {
+  export import DocumentCreateParams = API.DocumentCreateParams;
 }

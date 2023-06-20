@@ -2,6 +2,7 @@
 
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class RoutingNumbers extends APIResource {
@@ -59,4 +60,10 @@ export interface RoutingNumberListParams extends PageParams {
    * Filter financial institutions by routing number.
    */
   routing_number: string;
+}
+
+export namespace RoutingNumbers {
+  export import RoutingNumber = API.RoutingNumber;
+  export import RoutingNumbersPage = API.RoutingNumbersPage;
+  export import RoutingNumberListParams = API.RoutingNumberListParams;
 }

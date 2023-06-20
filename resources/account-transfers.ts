@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class AccountTransfers extends APIResource {
@@ -249,4 +250,11 @@ export namespace AccountTransferListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace AccountTransfers {
+  export import AccountTransfer = API.AccountTransfer;
+  export import AccountTransfersPage = API.AccountTransfersPage;
+  export import AccountTransferCreateParams = API.AccountTransferCreateParams;
+  export import AccountTransferListParams = API.AccountTransferListParams;
 }

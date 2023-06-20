@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as Programs_ from '~/resources/programs';
+import * as API from './';
 
 export class Programs extends APIResource {
   /**
@@ -23,4 +24,8 @@ export interface ProgramCreateParams {
    * The name of the program being added.
    */
   name: string;
+}
+
+export namespace Programs {
+  export import ProgramCreateParams = API.ProgramCreateParams;
 }

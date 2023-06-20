@@ -4,6 +4,7 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as RealTimePaymentsTransfers_ from '~/resources/real-time-payments-transfers';
 import * as Shared from '~/resources/shared';
+import * as API from './';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -2128,4 +2129,10 @@ export interface RealTimePaymentsTransferCreateInboundParams {
    * The identifier of a pending Request for Payment that this transfer will fulfill.
    */
   request_for_payment_id?: string;
+}
+
+export namespace RealTimePaymentsTransfers {
+  export import InboundRealTimePaymentsTransferSimulationResult = API.InboundRealTimePaymentsTransferSimulationResult;
+  export import RealTimePaymentsTransferCompleteParams = API.RealTimePaymentsTransferCompleteParams;
+  export import RealTimePaymentsTransferCreateInboundParams = API.RealTimePaymentsTransferCreateInboundParams;
 }

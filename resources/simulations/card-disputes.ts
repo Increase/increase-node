@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import * as CardDisputes_ from '~/resources/card-disputes';
+import * as API from './';
 
 export class CardDisputes extends APIResource {
   /**
@@ -30,4 +31,8 @@ export interface CardDisputeActionParams {
    * Why the dispute was rejected. Not required for accepting disputes.
    */
   explanation?: string;
+}
+
+export namespace CardDisputes {
+  export import CardDisputeActionParams = API.CardDisputeActionParams;
 }

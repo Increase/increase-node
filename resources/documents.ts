@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Documents extends APIResource {
@@ -215,4 +216,10 @@ export namespace DocumentListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace Documents {
+  export import Document = API.Document;
+  export import DocumentsPage = API.DocumentsPage;
+  export import DocumentListParams = API.DocumentListParams;
 }

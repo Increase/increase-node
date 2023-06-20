@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Limits extends APIResource {
@@ -140,4 +141,12 @@ export interface LimitListParams extends PageParams {
    * The status to retrieve limits for.
    */
   status?: string;
+}
+
+export namespace Limits {
+  export import Limit = API.Limit;
+  export import LimitsPage = API.LimitsPage;
+  export import LimitCreateParams = API.LimitCreateParams;
+  export import LimitUpdateParams = API.LimitUpdateParams;
+  export import LimitListParams = API.LimitListParams;
 }

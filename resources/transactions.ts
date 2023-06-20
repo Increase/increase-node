@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Transactions extends APIResource {
@@ -1567,4 +1568,10 @@ export namespace TransactionListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace Transactions {
+  export import Transaction = API.Transaction;
+  export import TransactionsPage = API.TransactionsPage;
+  export import TransactionListParams = API.TransactionListParams;
 }

@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class ExternalAccounts extends APIResource {
@@ -159,4 +160,12 @@ export namespace ExternalAccountListParams {
      */
     in?: Array<'active' | 'archived'>;
   }
+}
+
+export namespace ExternalAccounts {
+  export import ExternalAccount = API.ExternalAccount;
+  export import ExternalAccountsPage = API.ExternalAccountsPage;
+  export import ExternalAccountCreateParams = API.ExternalAccountCreateParams;
+  export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
+  export import ExternalAccountListParams = API.ExternalAccountListParams;
 }

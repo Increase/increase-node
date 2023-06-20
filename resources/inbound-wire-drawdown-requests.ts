@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class InboundWireDrawdownRequests extends APIResource {
@@ -165,3 +166,9 @@ export interface InboundWireDrawdownRequest {
 }
 
 export interface InboundWireDrawdownRequestListParams extends PageParams {}
+
+export namespace InboundWireDrawdownRequests {
+  export import InboundWireDrawdownRequest = API.InboundWireDrawdownRequest;
+  export import InboundWireDrawdownRequestsPage = API.InboundWireDrawdownRequestsPage;
+  export import InboundWireDrawdownRequestListParams = API.InboundWireDrawdownRequestListParams;
+}

@@ -16,6 +16,7 @@ import { InterestPayments } from './interest-payments';
 import { WireTransfers } from './wire-transfers';
 import { Cards } from './cards';
 import { RealTimePaymentsTransfers } from './real-time-payments-transfers';
+import * as API from './';
 
 export class Simulations extends APIResource {
   accountTransfers: AccountTransfers = new AccountTransfers(this.client);
@@ -33,4 +34,58 @@ export class Simulations extends APIResource {
   wireTransfers: WireTransfers = new WireTransfers(this.client);
   cards: Cards = new Cards(this.client);
   realTimePaymentsTransfers: RealTimePaymentsTransfers = new RealTimePaymentsTransfers(this.client);
+}
+
+export namespace Simulations {
+  export import AccountTransfers = API.AccountTransfers;
+
+  export import AccountStatements = API.AccountStatements;
+  export import AccountStatementCreateParams = API.AccountStatementCreateParams;
+
+  export import ACHTransfers = API.ACHTransfers;
+  export import ACHTransferSimulation = API.ACHTransferSimulation;
+  export import ACHTransferCreateInboundParams = API.ACHTransferCreateInboundParams;
+  export import ACHTransferReturnParams = API.ACHTransferReturnParams;
+
+  export import CardDisputes = API.CardDisputes;
+  export import CardDisputeActionParams = API.CardDisputeActionParams;
+
+  export import CardRefunds = API.CardRefunds;
+  export import CardRefundCreateParams = API.CardRefundCreateParams;
+
+  export import CheckTransfers = API.CheckTransfers;
+  export import CheckTransferReturnParams = API.CheckTransferReturnParams;
+
+  export import Documents = API.Documents;
+  export import DocumentCreateParams = API.DocumentCreateParams;
+
+  export import DigitalWalletTokenRequests = API.DigitalWalletTokenRequests;
+  export import DigitalWalletTokenRequestCreateResponse = API.DigitalWalletTokenRequestCreateResponse;
+  export import DigitalWalletTokenRequestCreateParams = API.DigitalWalletTokenRequestCreateParams;
+
+  export import CheckDeposits = API.CheckDeposits;
+
+  export import Programs = API.Programs;
+  export import ProgramCreateParams = API.ProgramCreateParams;
+
+  export import InboundWireDrawdownRequests = API.InboundWireDrawdownRequests;
+  export import InboundWireDrawdownRequestCreateParams = API.InboundWireDrawdownRequestCreateParams;
+
+  export import InterestPayments = API.InterestPayments;
+  export import InterestPaymentSimulationResult = API.InterestPaymentSimulationResult;
+  export import InterestPaymentCreateParams = API.InterestPaymentCreateParams;
+
+  export import WireTransfers = API.WireTransfers;
+  export import WireTransferSimulation = API.WireTransferSimulation;
+  export import WireTransferCreateInboundParams = API.WireTransferCreateInboundParams;
+
+  export import Cards = API.Cards;
+  export import CardAuthorizationSimulation = API.CardAuthorizationSimulation;
+  export import CardAuthorizeParams = API.CardAuthorizeParams;
+  export import CardSettlementParams = API.CardSettlementParams;
+
+  export import RealTimePaymentsTransfers = API.RealTimePaymentsTransfers;
+  export import InboundRealTimePaymentsTransferSimulationResult = API.InboundRealTimePaymentsTransferSimulationResult;
+  export import RealTimePaymentsTransferCompleteParams = API.RealTimePaymentsTransferCompleteParams;
+  export import RealTimePaymentsTransferCreateInboundParams = API.RealTimePaymentsTransferCreateInboundParams;
 }

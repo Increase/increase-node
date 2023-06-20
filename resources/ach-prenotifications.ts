@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class ACHPrenotifications extends APIResource {
@@ -241,4 +242,11 @@ export namespace ACHPrenotificationListParams {
      */
     on_or_before?: string;
   }
+}
+
+export namespace ACHPrenotifications {
+  export import ACHPrenotification = API.ACHPrenotification;
+  export import ACHPrenotificationsPage = API.ACHPrenotificationsPage;
+  export import ACHPrenotificationCreateParams = API.ACHPrenotificationCreateParams;
+  export import ACHPrenotificationListParams = API.ACHPrenotificationListParams;
 }

@@ -3,6 +3,7 @@
 import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
+import * as API from './';
 import { Page, PageParams } from '~/pagination';
 
 export class Exports extends APIResource {
@@ -202,3 +203,10 @@ export namespace ExportCreateParams {
 }
 
 export interface ExportListParams extends PageParams {}
+
+export namespace Exports {
+  export import Export = API.Export;
+  export import ExportsPage = API.ExportsPage;
+  export import ExportCreateParams = API.ExportCreateParams;
+  export import ExportListParams = API.ExportListParams;
+}
