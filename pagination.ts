@@ -29,7 +29,10 @@ export interface PageParams {
 
 export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item> {
   data: Array<Item>;
-  /** A pointer to a place in the list. */
+
+  /**
+   * A pointer to a place in the list.
+   */
   next_cursor: string | null;
 
   constructor(client: APIClient, response: APIResponse<PageResponse<Item>>, options: FinalRequestOptions) {

@@ -89,7 +89,7 @@ export interface Entity {
    * first 10 documents for an entity. If an entity has more than 10 documents, use
    * the GET /entity_supplemental_documents list endpoint to retrieve them.
    */
-  supplemental_documents: Array<Entity.SupplementalDocuments>;
+  supplemental_documents: Array<Entity.SupplementalDocument>;
 
   /**
    * Details of the trust entity. Will be present if `structure` is equal to `trust`.
@@ -118,7 +118,7 @@ export namespace Entity {
      * The identifying details of anyone controlling or owning 25% or more of the
      * corporation.
      */
-    beneficial_owners: Array<Corporation.BeneficialOwners>;
+    beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
      * The two-letter United States Postal Service (USPS) abbreviation for the
@@ -174,7 +174,7 @@ export namespace Entity {
       zip: string;
     }
 
-    export interface BeneficialOwners {
+    export interface BeneficialOwner {
       /**
        * This person's role or title within the entity.
        */
@@ -183,7 +183,7 @@ export namespace Entity {
       /**
        * Personal details for the beneficial owner.
        */
-      individual: BeneficialOwners.Individual;
+      individual: BeneficialOwner.Individual;
 
       /**
        * Why this person is considered a beneficial owner of the entity.
@@ -191,7 +191,7 @@ export namespace Entity {
       prong: 'ownership' | 'control';
     }
 
-    export namespace BeneficialOwners {
+    export namespace BeneficialOwner {
       /**
        * Personal details for the beneficial owner.
        */
@@ -360,7 +360,7 @@ export namespace Entity {
     /**
      * The two individuals that share control of the entity.
      */
-    individuals: Array<Joint.Individuals>;
+    individuals: Array<Joint.Individual>;
 
     /**
      * The entity's name.
@@ -369,11 +369,11 @@ export namespace Entity {
   }
 
   export namespace Joint {
-    export interface Individuals {
+    export interface Individual {
       /**
        * The person's address.
        */
-      address: Individuals.Address;
+      address: Individual.Address;
 
       /**
        * The person's date of birth in YYYY-MM-DD format.
@@ -383,7 +383,7 @@ export namespace Entity {
       /**
        * A means of verifying the person's identity.
        */
-      identification: Individuals.Identification;
+      identification: Individual.Identification;
 
       /**
        * The person's legal name.
@@ -391,7 +391,7 @@ export namespace Entity {
       name: string;
     }
 
-    export namespace Individuals {
+    export namespace Individual {
       /**
        * The person's address.
        */
@@ -489,7 +489,7 @@ export namespace Entity {
     /**
      * The trustees of the trust.
      */
-    trustees: Array<Trust.Trustees>;
+    trustees: Array<Trust.Trustee>;
   }
 
   export namespace Trust {
@@ -524,12 +524,12 @@ export namespace Entity {
       zip: string;
     }
 
-    export interface Trustees {
+    export interface Trustee {
       /**
        * The individual trustee of the trust. Will be present if the trustee's
        * `structure` is equal to `individual`.
        */
-      individual: Trustees.Individual | null;
+      individual: Trustee.Individual | null;
 
       /**
        * The structure of the trustee. Will always be equal to `individual`.
@@ -537,7 +537,7 @@ export namespace Entity {
       structure: 'individual';
     }
 
-    export namespace Trustees {
+    export namespace Trustee {
       /**
        * The individual trustee of the trust. Will be present if the trustee's
        * `structure` is equal to `individual`.
@@ -703,7 +703,7 @@ export namespace Entity {
    * Supplemental Documents are uploaded files connected to an Entity during
    * onboarding.
    */
-  export interface SupplementalDocuments {
+  export interface SupplementalDocument {
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
      * Supplemental Document was created.
@@ -762,7 +762,7 @@ export interface EntityCreateParams {
   /**
    * Additional documentation associated with the entity.
    */
-  supplemental_documents?: Array<EntityCreateParams.SupplementalDocuments>;
+  supplemental_documents?: Array<EntityCreateParams.SupplementalDocument>;
 
   /**
    * Details of the trust entity to create. Required if `structure` is equal to
@@ -786,7 +786,7 @@ export namespace EntityCreateParams {
      * The identifying details of anyone controlling or owning 25% or more of the
      * corporation.
      */
-    beneficial_owners: Array<Corporation.BeneficialOwners>;
+    beneficial_owners: Array<Corporation.BeneficialOwner>;
 
     /**
      * The legal name of the corporation.
@@ -842,11 +842,11 @@ export namespace EntityCreateParams {
       line2?: string;
     }
 
-    export interface BeneficialOwners {
+    export interface BeneficialOwner {
       /**
        * Personal details for the beneficial owner.
        */
-      individual: BeneficialOwners.Individual;
+      individual: BeneficialOwner.Individual;
 
       /**
        * Why this person is considered a beneficial owner of the entity.
@@ -859,7 +859,7 @@ export namespace EntityCreateParams {
       company_title?: string;
     }
 
-    export namespace BeneficialOwners {
+    export namespace BeneficialOwner {
       /**
        * Personal details for the beneficial owner.
        */
@@ -1046,7 +1046,7 @@ export namespace EntityCreateParams {
     /**
      * The two individuals that share control of the entity.
      */
-    individuals: Array<Joint.Individuals>;
+    individuals: Array<Joint.Individual>;
 
     /**
      * The name of the joint entity.
@@ -1055,11 +1055,11 @@ export namespace EntityCreateParams {
   }
 
   export namespace Joint {
-    export interface Individuals {
+    export interface Individual {
       /**
        * The individual's address.
        */
-      address: Individuals.Address;
+      address: Individual.Address;
 
       /**
        * The person's date of birth in YYYY-MM-DD format.
@@ -1069,7 +1069,7 @@ export namespace EntityCreateParams {
       /**
        * A means of verifying the person's identity.
        */
-      identification: Individuals.Identification;
+      identification: Individual.Identification;
 
       /**
        * The person's legal name.
@@ -1085,7 +1085,7 @@ export namespace EntityCreateParams {
       confirmed_no_us_tax_id?: boolean;
     }
 
-    export namespace Individuals {
+    export namespace Individual {
       /**
        * The individual's address.
        */
@@ -1408,7 +1408,7 @@ export namespace EntityCreateParams {
     }
   }
 
-  export interface SupplementalDocuments {
+  export interface SupplementalDocument {
     /**
      * The identifier of the File containing the document.
      */
@@ -1440,7 +1440,7 @@ export namespace EntityCreateParams {
     /**
      * The trustees of the trust.
      */
-    trustees: Array<Trust.Trustees>;
+    trustees: Array<Trust.Trustee>;
 
     /**
      * The identifier of the File containing the formation document of the trust.
@@ -1497,7 +1497,7 @@ export namespace EntityCreateParams {
       line2?: string;
     }
 
-    export interface Trustees {
+    export interface Trustee {
       /**
        * The structure of the trustee.
        */
@@ -1507,10 +1507,10 @@ export namespace EntityCreateParams {
        * Details of the individual trustee. Required when the trustee `structure` is
        * equal to `individual`.
        */
-      individual?: Trustees.Individual;
+      individual?: Trustee.Individual;
     }
 
-    export namespace Trustees {
+    export namespace Trustee {
       /**
        * Details of the individual trustee. Required when the trustee `structure` is
        * equal to `individual`.

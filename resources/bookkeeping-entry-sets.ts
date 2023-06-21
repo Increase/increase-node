@@ -28,7 +28,7 @@ export interface BookkeepingEntrySet {
   /**
    * The entries
    */
-  entries: Array<BookkeepingEntrySet.Entries>;
+  entries: Array<BookkeepingEntrySet.Entry>;
 
   /**
    * The entry set identifier.
@@ -48,7 +48,7 @@ export interface BookkeepingEntrySet {
 }
 
 export namespace BookkeepingEntrySet {
-  export interface Entries {
+  export interface Entry {
     /**
      * The bookkeeping account impacted by the entry.
      */
@@ -70,7 +70,7 @@ export interface BookkeepingEntrySetCreateParams {
   /**
    * The bookkeeping entries.
    */
-  entries: Array<BookkeepingEntrySetCreateParams.Entries>;
+  entries: Array<BookkeepingEntrySetCreateParams.Entry>;
 
   /**
    * The date of the transaction. If `transaction_id` is provided, this must match
@@ -85,7 +85,7 @@ export interface BookkeepingEntrySetCreateParams {
 }
 
 export namespace BookkeepingEntrySetCreateParams {
-  export interface Entries {
+  export interface Entry {
     /**
      * The identifier for the Bookkeeping Account impacted by this entry.
      */
