@@ -470,7 +470,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'returned_per_odfi_request'
           | 'limited_participation_dfi'
           | 'incorrectly_coded_outbound_international_payment'
-          | 'other'
           | 'account_sold_to_another_dfi'
           | 'addenda_error'
           | 'beneficiary_or_account_holder_deceased'
