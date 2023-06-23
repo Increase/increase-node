@@ -96,6 +96,8 @@ export interface File {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
+    | 'physical_card_artwork'
+    | 'physical_card_carrier'
     | 'document_request'
     | 'entity_supplemental_document'
     | 'export';
@@ -127,6 +129,8 @@ export interface FileCreateParams {
     | 'trust_formation_document'
     | 'digital_wallet_artwork'
     | 'digital_wallet_app_icon'
+    | 'physical_card_artwork'
+    | 'physical_card_carrier'
     | 'document_request'
     | 'entity_supplemental_document';
 
@@ -185,6 +189,8 @@ export namespace FileListParams {
       | 'trust_formation_document'
       | 'digital_wallet_artwork'
       | 'digital_wallet_app_icon'
+      | 'physical_card_artwork'
+      | 'physical_card_carrier'
       | 'document_request'
       | 'entity_supplemental_document'
       | 'export'

@@ -803,12 +803,12 @@ export namespace InterestPaymentSimulationResult {
         /**
          * The city of the check's destination.
          */
-        address_city: string;
+        address_city: string | null;
 
         /**
          * The street address of the check's destination.
          */
-        address_line1: string;
+        address_line1: string | null;
 
         /**
          * The second line of the address of the check's destination.
@@ -818,12 +818,12 @@ export namespace InterestPaymentSimulationResult {
         /**
          * The state of the check's destination.
          */
-        address_state: string;
+        address_state: string | null;
 
         /**
          * The postal code of the check's destination.
          */
-        address_zip: string;
+        address_zip: string | null;
 
         /**
          * The transfer amount in USD cents.
@@ -839,7 +839,7 @@ export namespace InterestPaymentSimulationResult {
         /**
          * The name that will be printed on the check.
          */
-        recipient_name: string;
+        recipient_name: string | null;
 
         /**
          * The identifier of the Check Transfer with which this is associated.

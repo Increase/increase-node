@@ -79,12 +79,12 @@ export interface CheckTransfer {
   /**
    * The city of the check's destination.
    */
-  address_city: string;
+  address_city: string | null;
 
   /**
    * The street address of the check's destination.
    */
-  address_line1: string;
+  address_line1: string | null;
 
   /**
    * The second line of the address of the check's destination.
@@ -94,12 +94,12 @@ export interface CheckTransfer {
   /**
    * The state of the check's destination.
    */
-  address_state: string;
+  address_state: string | null;
 
   /**
    * The postal code of the check's destination.
    */
-  address_zip: string;
+  address_zip: string | null;
 
   /**
    * The transfer amount in USD cents.
@@ -149,7 +149,7 @@ export interface CheckTransfer {
   /**
    * The descriptor that will be printed on the memo field on the check.
    */
-  message: string;
+  message: string | null;
 
   /**
    * The descriptor that will be printed on the letter included with the check.
@@ -159,7 +159,7 @@ export interface CheckTransfer {
   /**
    * The name that will be printed on the check.
    */
-  recipient_name: string;
+  recipient_name: string | null;
 
   /**
    * The return address to be printed on the check.
@@ -181,7 +181,6 @@ export interface CheckTransfer {
     | 'pending_submission'
     | 'submitted'
     | 'pending_mailing'
-    | 'stopped_and_pending_mailing'
     | 'mailed'
     | 'canceled'
     | 'deposited'
