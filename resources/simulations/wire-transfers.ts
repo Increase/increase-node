@@ -171,13 +171,14 @@ export namespace WireTransferSimulation {
         | 'ach_transfer_return'
         | 'card_dispute_acceptance'
         | 'card_refund'
-        | 'card_settlement'
         | 'card_revenue_payment'
+        | 'card_settlement'
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
+        | 'check_transfer_deposit'
         | 'check_transfer_intention'
-        | 'check_transfer_return'
         | 'check_transfer_rejection'
+        | 'check_transfer_return'
         | 'check_transfer_stop_payment_request'
         | 'fee_payment'
         | 'inbound_ach_transfer'
@@ -185,8 +186,8 @@ export namespace WireTransferSimulation {
         | 'inbound_check'
         | 'inbound_international_ach_transfer'
         | 'inbound_real_time_payments_transfer_confirmation'
-        | 'inbound_wire_drawdown_payment_reversal'
         | 'inbound_wire_drawdown_payment'
+        | 'inbound_wire_drawdown_payment_reversal'
         | 'inbound_wire_reversal'
         | 'inbound_wire_transfer'
         | 'interest_payment'
@@ -208,6 +209,12 @@ export namespace WireTransferSimulation {
        * if and only if `category` is equal to `check_deposit_return`.
        */
       check_deposit_return: Source.CheckDepositReturn | null;
+
+      /**
+       * A Check Transfer Deposit object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_deposit`.
+       */
+      check_transfer_deposit: Source.CheckTransferDeposit | null;
 
       /**
        * A Check Transfer Intention object. This field will be present in the JSON
@@ -588,6 +595,39 @@ export namespace WireTransferSimulation {
       }
 
       /**
+       * A Card Revenue Payment object. This field will be present in the JSON response
+       * if and only if `category` is equal to `card_revenue_payment`.
+       */
+      export interface CardRevenuePayment {
+        /**
+         * The amount in the minor unit of the transaction's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+         * currency.
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The end of the period for which this transaction paid interest.
+         */
+        period_end: string;
+
+        /**
+         * The start of the period for which this transaction paid interest.
+         */
+        period_start: string;
+
+        /**
+         * The account the card belonged to.
+         */
+        transacted_on_account_id: string | null;
+      }
+
+      /**
        * A Card Settlement object. This field will be present in the JSON response if and
        * only if `category` is equal to `card_settlement`.
        */
@@ -667,39 +707,6 @@ export namespace WireTransferSimulation {
          * `card_settlement`.
          */
         type: 'card_settlement';
-      }
-
-      /**
-       * A Card Revenue Payment object. This field will be present in the JSON response
-       * if and only if `category` is equal to `card_revenue_payment`.
-       */
-      export interface CardRevenuePayment {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-         * currency.
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        /**
-         * The end of the period for which this transaction paid interest.
-         */
-        period_end: string;
-
-        /**
-         * The start of the period for which this transaction paid interest.
-         */
-        period_start: string;
-
-        /**
-         * The account the card belonged to.
-         */
-        transacted_on_account_id: string | null;
       }
 
       /**
@@ -797,6 +804,35 @@ export namespace WireTransferSimulation {
       }
 
       /**
+       * A Check Transfer Deposit object. This field will be present in the JSON response
+       * if and only if `category` is equal to `check_transfer_deposit`.
+       */
+      export interface CheckTransferDeposit {
+        /**
+         * The identifier of the API File object containing an image of the back of the
+         * deposited check.
+         */
+        back_image_file_id: string | null;
+
+        /**
+         * When the check was deposited.
+         */
+        deposited_at: string;
+
+        /**
+         * The identifier of the API File object containing an image of the front of the
+         * deposited check.
+         */
+        front_image_file_id: string | null;
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `check_transfer_deposit`.
+         */
+        type: 'check_transfer_deposit';
+      }
+
+      /**
        * A Check Transfer Intention object. This field will be present in the JSON
        * response if and only if `category` is equal to `check_transfer_intention`.
        */
@@ -849,6 +885,17 @@ export namespace WireTransferSimulation {
       }
 
       /**
+       * A Check Transfer Rejection object. This field will be present in the JSON
+       * response if and only if `category` is equal to `check_transfer_rejection`.
+       */
+      export interface CheckTransferRejection {
+        /**
+         * The identifier of the Check Transfer that led to this Transaction.
+         */
+        transfer_id: string;
+      }
+
+      /**
        * A Check Transfer Return object. This field will be present in the JSON response
        * if and only if `category` is equal to `check_transfer_return`.
        */
@@ -877,17 +924,6 @@ export namespace WireTransferSimulation {
 
         /**
          * The identifier of the returned Check Transfer.
-         */
-        transfer_id: string;
-      }
-
-      /**
-       * A Check Transfer Rejection object. This field will be present in the JSON
-       * response if and only if `category` is equal to `check_transfer_rejection`.
-       */
-      export interface CheckTransferRejection {
-        /**
-         * The identifier of the Check Transfer that led to this Transaction.
          */
         transfer_id: string;
       }
@@ -1123,6 +1159,42 @@ export namespace WireTransferSimulation {
       }
 
       /**
+       * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
+       * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
+       */
+      export interface InboundWireDrawdownPayment {
+        /**
+         * The amount in the minor unit of the transaction's currency. For dollars, for
+         * example, this is cents.
+         */
+        amount: number;
+
+        beneficiary_address_line1: string | null;
+
+        beneficiary_address_line2: string | null;
+
+        beneficiary_address_line3: string | null;
+
+        beneficiary_name: string | null;
+
+        beneficiary_reference: string | null;
+
+        description: string;
+
+        input_message_accountability_data: string | null;
+
+        originator_address_line1: string | null;
+
+        originator_address_line2: string | null;
+
+        originator_address_line3: string | null;
+
+        originator_name: string | null;
+
+        originator_to_beneficiary_information: string | null;
+      }
+
+      /**
        * A Inbound Wire Drawdown Payment Reversal object. This field will be present in
        * the JSON response if and only if `category` is equal to
        * `inbound_wire_drawdown_payment_reversal`.
@@ -1177,42 +1249,6 @@ export namespace WireTransferSimulation {
          * The Fedwire input source identifier for the wire transfer that was reversed.
          */
         previous_message_input_source: string;
-      }
-
-      /**
-       * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
-       * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
-       */
-      export interface InboundWireDrawdownPayment {
-        /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
-         */
-        amount: number;
-
-        beneficiary_address_line1: string | null;
-
-        beneficiary_address_line2: string | null;
-
-        beneficiary_address_line3: string | null;
-
-        beneficiary_name: string | null;
-
-        beneficiary_reference: string | null;
-
-        description: string;
-
-        input_message_accountability_data: string | null;
-
-        originator_address_line1: string | null;
-
-        originator_address_line2: string | null;
-
-        originator_address_line3: string | null;
-
-        originator_name: string | null;
-
-        originator_to_beneficiary_information: string | null;
       }
 
       /**
