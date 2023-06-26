@@ -32,9 +32,7 @@ describe('resource documents', () => {
     await expect(
       increase.documents.list(
         {
-          category: {
-            in: ['account_opening_disclosures', 'account_opening_disclosures', 'account_opening_disclosures'],
-          },
+          category: { in: ['form_1099_int', 'form_1099_int', 'form_1099_int'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
