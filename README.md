@@ -61,17 +61,32 @@ Documentation for each method, request param, and response field are available i
 
 ## File Uploads
 
-Request parameters that correspond to file uploads can be passed as either a `FormData.Blob` or a `FormData.File` instance.
+Request parameters that correspond to file uploads can be passed in many different forms:
 
-We provide a `fileFromPath` helper function to easily create `FormData.File` instances from a given class.
+- `File` (or an object with the same structure)
+- a `fetch` `Response` (or an object with the same structure)
+- an `fs.ReadStream`
+- the return value of our `toFile` helper
 
 ```ts
-import Increase, { fileFromPath } from 'increase';
+import fs from 'fs';
+import fetch from 'node-fetch';
+import Increase, { toFile } from 'increase';
 
 const increase = new Increase();
 
-const file = await fileFromPath('my/file.txt');
-await increase.files.create({ file: file, purpose: 'other' });
+// If you have access to Node `fs` we recommend using `fs.createReadStream()`:
+await increase.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'other' });
+
+// Or if you have the web `File` API you can pass a `File` instance:
+await increase.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'other' });
+
+// You can also pass a `fetch` `Response`:
+await increase.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'other' });
+
+// Finally, if none of the above are convenient, you can use our `toFile` helper:
+await increase.files.create({ file: await toFile(Buffer.from('my bytes'), 'file.txt'), purpose: 'other' });
+await increase.files.create({ file: await toFile(new Uint8Array([0, 1, 2]), 'file.txt'), purpose: 'other' });
 ```
 
 ## Handling errors

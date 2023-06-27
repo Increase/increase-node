@@ -4,9 +4,8 @@ import * as Core from '~/core';
 import { APIResource } from '~/resource';
 import { isRequestOptions } from '~/core';
 import * as API from './';
-import type * as FormData from 'formdata-node';
+import { type Uploadable, multipartFormRequestOptions } from '~/core';
 import { Page, PageParams } from '~/pagination';
-import { multipartFormRequestOptions } from '~/core';
 
 export class Files extends APIResource {
   /**
@@ -14,8 +13,8 @@ export class Files extends APIResource {
    * `multipart/form-data`. The request should contain the file you would like to
    * upload, as well as the parameters for creating a file.
    */
-  create(body: FileCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
-    return this.post('/files', multipartFormRequestOptions({ body, ...options }));
+  async create(body: FileCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
+    return this.post('/files', await multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
@@ -115,7 +114,7 @@ export interface FileCreateParams {
    * [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
    * transfers for the multipart/form-data protocol.
    */
-  file: FormData.Blob | FormData.File;
+  file: Uploadable;
 
   /**
    * What the File will be used for in Increase's systems.
