@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import { fileFromPath } from 'formdata-node/file-from-path';
+import { toFile } from 'increase';
 import Increase from '~/index';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
@@ -9,7 +9,7 @@ describe('resource files', () => {
   // skipped: prism mock server is broken for file uploads
   test.skip('create: only required params', async () => {
     const response = await increase.files.create({
-      file: await fileFromPath('README.md'),
+      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
       purpose: 'check_image_front',
     });
   });
@@ -17,7 +17,7 @@ describe('resource files', () => {
   // skipped: prism mock server is broken for file uploads
   test.skip('create: required and optional params', async () => {
     const response = await increase.files.create({
-      file: await fileFromPath('README.md'),
+      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
       purpose: 'check_image_front',
       description: 'x',
     });
