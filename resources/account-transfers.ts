@@ -73,6 +73,11 @@ export class AccountTransfersPage extends Page<AccountTransfer> {}
  */
 export interface AccountTransfer {
   /**
+   * The account transfer's identifier.
+   */
+  id: string;
+
+  /**
    * The Account to which the transfer belongs.
    */
   account_id: string;
@@ -121,11 +126,6 @@ export interface AccountTransfer {
    * The ID for the transaction receiving the transfer.
    */
   destination_transaction_id: string | null;
-
-  /**
-   * The account transfer's identifier.
-   */
-  id: string;
 
   /**
    * The transfer's network.

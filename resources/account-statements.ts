@@ -45,6 +45,11 @@ export class AccountStatementsPage extends Page<AccountStatement> {}
  */
 export interface AccountStatement {
   /**
+   * The Account Statement identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the Account this Account Statement belongs to.
    */
   account_id: string;
@@ -64,11 +69,6 @@ export interface AccountStatement {
    * The identifier of the File containing a PDF of the statement.
    */
   file_id: string;
-
-  /**
-   * The Account Statement identifier.
-   */
-  id: string;
 
   /**
    * The Account's balance at the start of its statement period.

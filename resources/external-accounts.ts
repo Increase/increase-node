@@ -65,6 +65,11 @@ export class ExternalAccountsPage extends Page<ExternalAccount> {}
  */
 export interface ExternalAccount {
   /**
+   * The External Account's identifier.
+   */
+  id: string;
+
+  /**
    * The destination account number.
    */
   account_number: string;
@@ -84,11 +89,6 @@ export interface ExternalAccount {
    * The type of the account to which the transfer will be sent.
    */
   funding: 'checking' | 'savings' | 'other';
-
-  /**
-   * The External Account's identifier.
-   */
-  id: string;
 
   /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN).

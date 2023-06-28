@@ -21,6 +21,11 @@ export class BookkeepingEntrySets extends APIResource {
  */
 export interface BookkeepingEntrySet {
   /**
+   * The entry set identifier.
+   */
+  id: string;
+
+  /**
    * The timestamp of the entry set.
    */
   date: string;
@@ -29,11 +34,6 @@ export interface BookkeepingEntrySet {
    * The entries
    */
   entries: Array<BookkeepingEntrySet.Entry>;
-
-  /**
-   * The entry set identifier.
-   */
-  id: string;
 
   /**
    * The transaction identifier, if any.
@@ -50,6 +50,11 @@ export interface BookkeepingEntrySet {
 export namespace BookkeepingEntrySet {
   export interface Entry {
     /**
+     * The entry identifier.
+     */
+    id: string;
+
+    /**
      * The bookkeeping account impacted by the entry.
      */
     account_id: string;
@@ -58,11 +63,6 @@ export namespace BookkeepingEntrySet {
      * The amount of the entry in minor units.
      */
     amount: number;
-
-    /**
-     * The entry identifier.
-     */
-    id: string;
   }
 }
 

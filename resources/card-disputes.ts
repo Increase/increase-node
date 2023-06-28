@@ -48,6 +48,11 @@ export class CardDisputesPage extends Page<CardDispute> {}
  */
 export interface CardDispute {
   /**
+   * The Card Dispute identifier.
+   */
+  id: string;
+
+  /**
    * If the Card Dispute's status is `accepted`, this will contain details of the
    * successful dispute.
    */
@@ -68,11 +73,6 @@ export interface CardDispute {
    * Why you disputed the Transaction in question.
    */
   explanation: string;
-
-  /**
-   * The Card Dispute identifier.
-   */
-  id: string;
 
   /**
    * If the Card Dispute's status is `rejected`, this will contain details of the

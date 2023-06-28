@@ -72,6 +72,11 @@ export class CheckTransfersPage extends Page<CheckTransfer> {}
  */
 export interface CheckTransfer {
   /**
+   * The Check transfer's identifier.
+   */
+  id: string;
+
+  /**
    * The identifier of the Account from which funds will be transferred.
    */
   account_id: string;
@@ -134,11 +139,6 @@ export interface CheckTransfer {
    * After a check transfer is deposited, this will contain supplemental details.
    */
   deposit: CheckTransfer.Deposit | null;
-
-  /**
-   * The Check transfer's identifier.
-   */
-  id: string;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -220,41 +220,6 @@ export interface CheckTransfer {
 
 export namespace CheckTransfer {
   /**
-   * The return address to be printed on the check.
-   */
-  export interface ReturnAddress {
-    /**
-     * The city of the address.
-     */
-    city: string | null;
-
-    /**
-     * The first line of the address.
-     */
-    line1: string | null;
-
-    /**
-     * The second line of the address.
-     */
-    line2: string | null;
-
-    /**
-     * The name of the address.
-     */
-    name: string | null;
-
-    /**
-     * The US state of the address.
-     */
-    state: string | null;
-
-    /**
-     * The postal code of the address.
-     */
-    zip: string | null;
-  }
-
-  /**
    * If your account requires approvals for transfers and the transfer was approved,
    * this will contain details of the approval.
    */
@@ -291,48 +256,6 @@ export namespace CheckTransfer {
   }
 
   /**
-   * After the transfer is submitted, this will contain supplemental details.
-   */
-  export interface Submission {
-    /**
-     * The identitying number of the check.
-     */
-    check_number: string;
-
-    /**
-     * When this check transfer was submitted to our check printer.
-     */
-    submitted_at: string;
-  }
-
-  /**
-   * After a stop-payment is requested on the check, this will contain supplemental
-   * details.
-   */
-  export interface StopPaymentRequest {
-    /**
-     * The time the stop-payment was requested.
-     */
-    requested_at: string;
-
-    /**
-     * The transaction ID of the corresponding credit transaction.
-     */
-    transaction_id: string;
-
-    /**
-     * The ID of the check transfer that was stopped.
-     */
-    transfer_id: string;
-
-    /**
-     * A constant representing the object's type. For this resource it will always be
-     * `check_transfer_stop_payment_request`.
-     */
-    type: 'check_transfer_stop_payment_request';
-  }
-
-  /**
    * After a check transfer is deposited, this will contain supplemental details.
    */
   export interface Deposit {
@@ -358,6 +281,41 @@ export namespace CheckTransfer {
      * `check_transfer_deposit`.
      */
     type: 'check_transfer_deposit';
+  }
+
+  /**
+   * The return address to be printed on the check.
+   */
+  export interface ReturnAddress {
+    /**
+     * The city of the address.
+     */
+    city: string | null;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string | null;
+
+    /**
+     * The second line of the address.
+     */
+    line2: string | null;
+
+    /**
+     * The name of the address.
+     */
+    name: string | null;
+
+    /**
+     * The US state of the address.
+     */
+    state: string | null;
+
+    /**
+     * The postal code of the address.
+     */
+    zip: string | null;
   }
 
   /**
@@ -392,6 +350,48 @@ export namespace CheckTransfer {
      * The identifier of the returned Check Transfer.
      */
     transfer_id: string;
+  }
+
+  /**
+   * After a stop-payment is requested on the check, this will contain supplemental
+   * details.
+   */
+  export interface StopPaymentRequest {
+    /**
+     * The time the stop-payment was requested.
+     */
+    requested_at: string;
+
+    /**
+     * The transaction ID of the corresponding credit transaction.
+     */
+    transaction_id: string;
+
+    /**
+     * The ID of the check transfer that was stopped.
+     */
+    transfer_id: string;
+
+    /**
+     * A constant representing the object's type. For this resource it will always be
+     * `check_transfer_stop_payment_request`.
+     */
+    type: 'check_transfer_stop_payment_request';
+  }
+
+  /**
+   * After the transfer is submitted, this will contain supplemental details.
+   */
+  export interface Submission {
+    /**
+     * The identitying number of the check.
+     */
+    check_number: string;
+
+    /**
+     * When this check transfer was submitted to our check printer.
+     */
+    submitted_at: string;
   }
 }
 

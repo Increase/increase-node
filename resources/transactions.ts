@@ -38,6 +38,11 @@ export class TransactionsPage extends Page<Transaction> {}
  */
 export interface Transaction {
   /**
+   * The Transaction identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the Account the Transaction belongs to.
    */
   account_id: string;
@@ -67,11 +72,6 @@ export interface Transaction {
    * provides.
    */
   description: string;
-
-  /**
-   * The Transaction identifier.
-   */
-  id: string;
 
   /**
    * The identifier for the route this Transaction came through. Routes are things
@@ -536,6 +536,11 @@ export namespace Transaction {
      */
     export interface CardRefund {
       /**
+       * The Card Refund identifier.
+       */
+      id: string;
+
+      /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
        * for example, this is cents.
        */
@@ -546,11 +551,6 @@ export namespace Transaction {
        * transaction's currency.
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-      /**
-       * The Card Refund identifier.
-       */
-      id: string;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -629,6 +629,11 @@ export namespace Transaction {
      */
     export interface CardSettlement {
       /**
+       * The Card Settlement identifier.
+       */
+      id: string;
+
+      /**
        * The amount in the minor unit of the transaction's settlement currency. For
        * dollars, for example, this is cents.
        */
@@ -645,11 +650,6 @@ export namespace Transaction {
        * transaction's settlement currency.
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-      /**
-       * The Card Settlement identifier.
-       */
-      id: string;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card

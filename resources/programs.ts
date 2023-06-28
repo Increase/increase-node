@@ -40,15 +40,15 @@ export class ProgramsPage extends Page<Program> {}
  */
 export interface Program {
   /**
+   * The Program identifier.
+   */
+  id: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
    * was created.
    */
   created_at: string;
-
-  /**
-   * The Program identifier.
-   */
-  id: string;
 
   /**
    * The name of the Program.

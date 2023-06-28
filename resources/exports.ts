@@ -48,6 +48,11 @@ export class ExportsPage extends Page<Export> {}
  */
 export interface Export {
   /**
+   * The Export identifier.
+   */
+  id: string;
+
+  /**
    * The category of the Export. We may add additional possible values for this enum
    * over time; your application should be able to handle that gracefully.
    */
@@ -69,11 +74,6 @@ export interface Export {
    * Export's status transitions to `complete`.
    */
   file_id: string | null;
-
-  /**
-   * The Export identifier.
-   */
-  id: string;
 
   /**
    * The status of the Export.

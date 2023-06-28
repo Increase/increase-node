@@ -33,6 +33,11 @@ export class BookkeepingEntriesPage extends Page<BookkeepingEntry> {}
  */
 export interface BookkeepingEntry {
   /**
+   * The entry identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the Account the Entry belongs to.
    */
   account_id: string;
@@ -47,11 +52,6 @@ export interface BookkeepingEntry {
    * The identifier for the Account the Entry belongs to.
    */
   entry_set_id: string;
-
-  /**
-   * The entry identifier.
-   */
-  id: string;
 
   /**
    * A constant representing the object's type. For this resource it will always be
