@@ -1,6 +1,6 @@
 # Accounts
 
-Models:
+Types:
 
 - <code><a href="./resources/accounts.ts">Account</a></code>
 
@@ -14,7 +14,7 @@ Methods:
 
 # AccountNumbers
 
-Models:
+Types:
 
 - <code><a href="./resources/account-numbers.ts">AccountNumber</a></code>
 
@@ -27,7 +27,7 @@ Methods:
 
 # BookkeepingAccounts
 
-Models:
+Types:
 
 - <code><a href="./resources/bookkeeping-accounts.ts">BookkeepingAccount</a></code>
 
@@ -38,7 +38,7 @@ Methods:
 
 # BookkeepingEntrySets
 
-Models:
+Types:
 
 - <code><a href="./resources/bookkeeping-entry-sets.ts">BookkeepingEntrySet</a></code>
 
@@ -48,7 +48,7 @@ Methods:
 
 # BookkeepingEntries
 
-Models:
+Types:
 
 - <code><a href="./resources/bookkeeping-entries.ts">BookkeepingEntry</a></code>
 
@@ -58,7 +58,7 @@ Methods:
 
 # RealTimeDecisions
 
-Models:
+Types:
 
 - <code><a href="./resources/real-time-decisions.ts">RealTimeDecision</a></code>
 
@@ -69,7 +69,7 @@ Methods:
 
 # RealTimePaymentsTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/real-time-payments-transfers.ts">RealTimePaymentsTransfer</a></code>
 
@@ -81,7 +81,7 @@ Methods:
 
 # BalanceLookups
 
-Models:
+Types:
 
 - <code><a href="./resources/balance-lookups.ts">BalanceLookupLookupResponse</a></code>
 
@@ -91,7 +91,7 @@ Methods:
 
 # Cards
 
-Models:
+Types:
 
 - <code><a href="./resources/cards.ts">Card</a></code>
 - <code><a href="./resources/cards.ts">CardDetails</a></code>
@@ -106,7 +106,7 @@ Methods:
 
 # CardDisputes
 
-Models:
+Types:
 
 - <code><a href="./resources/card-disputes.ts">CardDispute</a></code>
 
@@ -118,7 +118,7 @@ Methods:
 
 # CardProfiles
 
-Models:
+Types:
 
 - <code><a href="./resources/card-profiles.ts">CardProfile</a></code>
 
@@ -130,7 +130,7 @@ Methods:
 
 # ExternalAccounts
 
-Models:
+Types:
 
 - <code><a href="./resources/external-accounts.ts">ExternalAccount</a></code>
 
@@ -143,7 +143,7 @@ Methods:
 
 # Exports
 
-Models:
+Types:
 
 - <code><a href="./resources/exports.ts">Export</a></code>
 
@@ -155,7 +155,7 @@ Methods:
 
 # DigitalWalletTokens
 
-Models:
+Types:
 
 - <code><a href="./resources/digital-wallet-tokens.ts">DigitalWalletToken</a></code>
 
@@ -166,7 +166,7 @@ Methods:
 
 # Transactions
 
-Models:
+Types:
 
 - <code><a href="./resources/transactions.ts">Transaction</a></code>
 
@@ -177,7 +177,7 @@ Methods:
 
 # PendingTransactions
 
-Models:
+Types:
 
 - <code><a href="./resources/pending-transactions.ts">PendingTransaction</a></code>
 
@@ -188,7 +188,7 @@ Methods:
 
 # Programs
 
-Models:
+Types:
 
 - <code><a href="./resources/programs.ts">Program</a></code>
 
@@ -199,7 +199,7 @@ Methods:
 
 # DeclinedTransactions
 
-Models:
+Types:
 
 - <code><a href="./resources/declined-transactions.ts">DeclinedTransaction</a></code>
 
@@ -210,7 +210,7 @@ Methods:
 
 # Limits
 
-Models:
+Types:
 
 - <code><a href="./resources/limits.ts">Limit</a></code>
 
@@ -223,7 +223,7 @@ Methods:
 
 # AccountTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/account-transfers.ts">AccountTransfer</a></code>
 
@@ -237,7 +237,7 @@ Methods:
 
 # ACHTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/ach-transfers.ts">ACHTransfer</a></code>
 
@@ -251,7 +251,7 @@ Methods:
 
 # InboundACHTransferReturns
 
-Models:
+Types:
 
 - <code><a href="./resources/inbound-ach-transfer-returns.ts">InboundACHTransferReturn</a></code>
 
@@ -263,7 +263,7 @@ Methods:
 
 # ACHPrenotifications
 
-Models:
+Types:
 
 - <code><a href="./resources/ach-prenotifications.ts">ACHPrenotification</a></code>
 
@@ -275,7 +275,7 @@ Methods:
 
 # Documents
 
-Models:
+Types:
 
 - <code><a href="./resources/documents.ts">Document</a></code>
 
@@ -286,7 +286,7 @@ Methods:
 
 # WireTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/wire-transfers.ts">WireTransfer</a></code>
 
@@ -302,7 +302,7 @@ Methods:
 
 # CheckTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/check-transfers.ts">CheckTransfer</a></code>
 
@@ -317,7 +317,7 @@ Methods:
 
 # Entities
 
-Models:
+Types:
 
 - <code><a href="./resources/entities/entities.ts">Entity</a></code>
 
@@ -329,7 +329,7 @@ Methods:
 
 ## SupplementalDocuments
 
-Models:
+Types:
 
 - <code><a href="./resources/entities/supplemental-documents.ts">SupplementalDocument</a></code>
 
@@ -340,7 +340,7 @@ Methods:
 
 # InboundWireDrawdownRequests
 
-Models:
+Types:
 
 - <code><a href="./resources/inbound-wire-drawdown-requests.ts">InboundWireDrawdownRequest</a></code>
 
@@ -351,7 +351,7 @@ Methods:
 
 # WireDrawdownRequests
 
-Models:
+Types:
 
 - <code><a href="./resources/wire-drawdown-requests.ts">WireDrawdownRequest</a></code>
 
@@ -363,7 +363,7 @@ Methods:
 
 # Events
 
-Models:
+Types:
 
 - <code><a href="./resources/events.ts">Event</a></code>
 
@@ -374,7 +374,7 @@ Methods:
 
 # EventSubscriptions
 
-Models:
+Types:
 
 - <code><a href="./resources/event-subscriptions.ts">EventSubscription</a></code>
 
@@ -387,7 +387,7 @@ Methods:
 
 # Files
 
-Models:
+Types:
 
 - <code><a href="./resources/files.ts">File</a></code>
 
@@ -399,7 +399,7 @@ Methods:
 
 # Groups
 
-Models:
+Types:
 
 - <code><a href="./resources/groups.ts">Group</a></code>
 
@@ -409,7 +409,7 @@ Methods:
 
 # OauthConnections
 
-Models:
+Types:
 
 - <code><a href="./resources/oauth-connections.ts">OauthConnection</a></code>
 
@@ -420,7 +420,7 @@ Methods:
 
 # CheckDeposits
 
-Models:
+Types:
 
 - <code><a href="./resources/check-deposits.ts">CheckDeposit</a></code>
 
@@ -432,7 +432,7 @@ Methods:
 
 # RoutingNumbers
 
-Models:
+Types:
 
 - <code><a href="./resources/routing-numbers.ts">RoutingNumber</a></code>
 
@@ -442,7 +442,7 @@ Methods:
 
 # AccountStatements
 
-Models:
+Types:
 
 - <code><a href="./resources/account-statements.ts">AccountStatement</a></code>
 
@@ -467,7 +467,7 @@ Methods:
 
 ## ACHTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/ach-transfers.ts">ACHTransferSimulation</a></code>
 
@@ -505,7 +505,7 @@ Methods:
 
 ## DigitalWalletTokenRequests
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/digital-wallet-token-requests.ts">DigitalWalletTokenRequestCreateResponse</a></code>
 
@@ -535,7 +535,7 @@ Methods:
 
 ## InterestPayments
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/interest-payments.ts">InterestPaymentSimulationResult</a></code>
 
@@ -545,7 +545,7 @@ Methods:
 
 ## WireTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/wire-transfers.ts">WireTransferSimulation</a></code>
 
@@ -555,7 +555,7 @@ Methods:
 
 ## Cards
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/cards.ts">CardAuthorizationSimulation</a></code>
 
@@ -566,7 +566,7 @@ Methods:
 
 ## RealTimePaymentsTransfers
 
-Models:
+Types:
 
 - <code><a href="./resources/simulations/real-time-payments-transfers.ts">InboundRealTimePaymentsTransferSimulationResult</a></code>
 
