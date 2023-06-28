@@ -87,7 +87,7 @@ export class APIError extends Error {
     if (status === 500) {
       return new InternalServerError(
         status,
-        { type: 'internal_server_error', title: '', detail: null, status: 500 },
+        { detail: null, status: 500, title: '', type: 'internal_server_error' },
         message,
         headers,
       );
@@ -193,11 +193,11 @@ export class InvalidParametersError extends BadRequestError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
-    this.status = data?.['status'];
     this.errors = data?.['errors'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -219,10 +219,10 @@ export class MalformedRequestError extends BadRequestError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -244,10 +244,10 @@ export class InvalidAPIKeyError extends AuthenticationError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -269,10 +269,10 @@ export class EnvironmentMismatchError extends PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -294,10 +294,10 @@ export class InsufficientPermissionsError extends PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -319,10 +319,10 @@ export class PrivateFeatureError extends PermissionDeniedError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -344,10 +344,10 @@ export class APIMethodNotFoundError extends NotFoundError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -369,10 +369,10 @@ export class ObjectNotFoundError extends NotFoundError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -394,10 +394,10 @@ export class IdempotencyConflictError extends ConflictError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -419,10 +419,10 @@ export class InvalidOperationError extends ConflictError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -444,10 +444,10 @@ export class IdempotencyUnprocessableError extends UnprocessableEntityError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }
 
@@ -471,10 +471,10 @@ export class RateLimitedError extends RateLimitError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
     this.retry_after = data?.['retry_after'];
   }
 }
@@ -497,9 +497,9 @@ export class InternalServerError extends APIError {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
-    this.type = data?.['type'];
-    this.title = data?.['title'];
     this.detail = data?.['detail'];
     this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
   }
 }

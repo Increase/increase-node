@@ -39,6 +39,11 @@ export class DocumentsPage extends Page<Document> {}
  */
 export interface Document {
   /**
+   * The Document identifier.
+   */
+  id: string;
+
+  /**
    * The type of document.
    */
   category: 'form_1099_int' | 'proof_of_authorization' | 'company_information';
@@ -58,11 +63,6 @@ export interface Document {
    * The identifier of the File containing the Document's contents.
    */
   file_id: string;
-
-  /**
-   * The Document identifier.
-   */
-  id: string;
 
   /**
    * A constant representing the object's type. For this resource it will always be

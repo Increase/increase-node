@@ -44,6 +44,11 @@ export class OauthConnectionsPage extends Page<OauthConnection> {}
  */
 export interface OauthConnection {
   /**
+   * The OAuth Connection's identifier.
+   */
+  id: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
    * Connection was created.
    */
@@ -53,11 +58,6 @@ export interface OauthConnection {
    * The identifier of the Group that has authorized your OAuth application.
    */
   group_id: string;
-
-  /**
-   * The OAuth Connection's identifier.
-   */
-  id: string;
 
   /**
    * Whether the connection is active.

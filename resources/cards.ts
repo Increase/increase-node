@@ -68,6 +68,11 @@ export class CardsPage extends Page<Card> {}
  */
 export interface Card {
   /**
+   * The card identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the account this card belongs to.
    */
   account_id: string;
@@ -104,11 +109,6 @@ export interface Card {
    * The year the card expires in YYYY format (e.g., 2025).
    */
   expiration_year: number;
-
-  /**
-   * The card identifier.
-   */
-  id: string;
 
   /**
    * The last 4 digits of the Card's Primary Account Number.

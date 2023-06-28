@@ -54,6 +54,11 @@ export class ACHPrenotificationsPage extends Page<ACHPrenotification> {}
  */
 export interface ACHPrenotification {
   /**
+   * The ACH Prenotification's identifier.
+   */
+  id: string;
+
+  /**
    * The destination account number.
    */
   account_number: string;
@@ -98,11 +103,6 @@ export interface ACHPrenotification {
    * The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
    */
   effective_date: string | null;
-
-  /**
-   * The ACH Prenotification's identifier.
-   */
-  id: string;
 
   /**
    * If your prenotification is returned, this will contain details of the return.

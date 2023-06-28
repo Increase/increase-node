@@ -36,6 +36,11 @@ export class RealTimeDecisions extends APIResource {
  */
 export interface RealTimeDecision {
   /**
+   * The Real-Time Decision identifier.
+   */
+  id: string;
+
+  /**
    * Fields related to a card authorization.
    */
   card_authorization: RealTimeDecision.CardAuthorization | null;
@@ -63,11 +68,6 @@ export interface RealTimeDecision {
    * Fields related to a digital wallet token provisioning attempt.
    */
   digital_wallet_token: RealTimeDecision.DigitalWalletToken | null;
-
-  /**
-   * The Real-Time Decision identifier.
-   */
-  id: string;
 
   /**
    * The status of the Real-Time Decision.
@@ -212,34 +212,6 @@ export namespace RealTimeDecision {
   }
 
   /**
-   * Fields related to a digital wallet token provisioning attempt.
-   */
-  export interface DigitalWalletToken {
-    /**
-     * The identifier of the Card that is being tokenized.
-     */
-    card_id: string;
-
-    /**
-     * The identifier of the Card Profile that was set via the real time decision. This
-     * will be null until the real time decision is responded to or if the real time
-     * decision did not set a card profile.
-     */
-    card_profile_id: string | null;
-
-    /**
-     * Whether or not the provisioning request was approved. This will be null until
-     * the real time decision is responded to.
-     */
-    decision: 'approve' | 'decline' | null;
-
-    /**
-     * The digital wallet app being used.
-     */
-    digital_wallet: 'apple_pay' | 'google_pay';
-  }
-
-  /**
    * Fields related to a digital wallet authentication attempt.
    */
   export interface DigitalWalletAuthentication {
@@ -278,6 +250,34 @@ export namespace RealTimeDecision {
      * Whether your application successfully delivered the one-time passcode.
      */
     result: 'success' | 'failure' | null;
+  }
+
+  /**
+   * Fields related to a digital wallet token provisioning attempt.
+   */
+  export interface DigitalWalletToken {
+    /**
+     * The identifier of the Card that is being tokenized.
+     */
+    card_id: string;
+
+    /**
+     * The identifier of the Card Profile that was set via the real time decision. This
+     * will be null until the real time decision is responded to or if the real time
+     * decision did not set a card profile.
+     */
+    card_profile_id: string | null;
+
+    /**
+     * Whether or not the provisioning request was approved. This will be null until
+     * the real time decision is responded to.
+     */
+    decision: 'approve' | 'decline' | null;
+
+    /**
+     * The digital wallet app being used.
+     */
+    digital_wallet: 'apple_pay' | 'google_pay';
   }
 }
 

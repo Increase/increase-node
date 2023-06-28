@@ -46,6 +46,11 @@ export class DeclinedTransactionsPage extends Page<DeclinedTransaction> {}
  */
 export interface DeclinedTransaction {
   /**
+   * The Declined Transaction identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the Account the Declined Transaction belongs to.
    */
   account_id: string;
@@ -73,11 +78,6 @@ export interface DeclinedTransaction {
    * This is the description the vendor provides.
    */
   description: string;
-
-  /**
-   * The Declined Transaction identifier.
-   */
-  id: string;
 
   /**
    * The identifier for the route this Declined Transaction came through. Routes are

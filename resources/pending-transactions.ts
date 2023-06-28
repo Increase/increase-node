@@ -45,6 +45,11 @@ export class PendingTransactionsPage extends Page<PendingTransaction> {}
  */
 export interface PendingTransaction {
   /**
+   * The Pending Transaction identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the account this Pending Transaction belongs to.
    */
   account_id: string;
@@ -80,11 +85,6 @@ export interface PendingTransaction {
    * the vendor provides.
    */
   description: string;
-
-  /**
-   * The Pending Transaction identifier.
-   */
-  id: string;
 
   /**
    * The identifier for the route this Pending Transaction came through. Routes are
@@ -237,6 +237,11 @@ export namespace PendingTransaction {
      */
     export interface CardAuthorization {
       /**
+       * The Card Authorization identifier.
+       */
+      id: string;
+
+      /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
        * for example, this is cents.
        */
@@ -259,11 +264,6 @@ export namespace PendingTransaction {
        * will expire and the pending transaction will be released.
        */
       expires_at: string;
-
-      /**
-       * The Card Authorization identifier.
-       */
-      id: string;
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card

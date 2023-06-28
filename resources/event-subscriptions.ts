@@ -69,14 +69,14 @@ export class EventSubscriptionsPage extends Page<EventSubscription> {}
  */
 export interface EventSubscription {
   /**
-   * The time the event subscription was created.
-   */
-  created_at: string;
-
-  /**
    * The event subscription identifier.
    */
   id: string;
+
+  /**
+   * The time the event subscription was created.
+   */
+  created_at: string;
 
   /**
    * If specified, this subscription will only receive webhooks for Events with the

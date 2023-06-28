@@ -38,6 +38,11 @@ export class EventsPage extends Page<Event> {}
  */
 export interface Event {
   /**
+   * The Event identifier.
+   */
+  id: string;
+
+  /**
    * The identifier of the object that generated this Event.
    */
   associated_object_id: string;
@@ -107,11 +112,6 @@ export interface Event {
    * The time the Event was created.
    */
   created_at: string;
-
-  /**
-   * The Event identifier.
-   */
-  id: string;
 
   /**
    * A constant representing the object's type. For this resource it will always be

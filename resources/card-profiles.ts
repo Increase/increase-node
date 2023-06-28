@@ -49,6 +49,11 @@ export class CardProfilesPage extends Page<CardProfile> {}
  */
 export interface CardProfile {
   /**
+   * The Card Profile identifier.
+   */
+  id: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Card Dispute was created.
    */
@@ -64,11 +69,6 @@ export interface CardProfile {
    * will use these values to render card artwork appropriately for their app.
    */
   digital_wallets: CardProfile.DigitalWallets;
-
-  /**
-   * The Card Profile identifier.
-   */
-  id: string;
 
   /**
    * The status of the Card Profile.

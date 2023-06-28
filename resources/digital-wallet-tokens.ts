@@ -45,6 +45,11 @@ export class DigitalWalletTokensPage extends Page<DigitalWalletToken> {}
  */
 export interface DigitalWalletToken {
   /**
+   * The Digital Wallet Token identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the Card this Digital Wallet Token belongs to.
    */
   card_id: string;
@@ -54,11 +59,6 @@ export interface DigitalWalletToken {
    * the Card was created.
    */
   created_at: string;
-
-  /**
-   * The Digital Wallet Token identifier.
-   */
-  id: string;
 
   /**
    * This indicates if payments can be made with the Digital Wallet Token.

@@ -20,6 +20,11 @@ export class Groups extends APIResource {
  */
 export interface Group {
   /**
+   * The Group identifier.
+   */
+  id: string;
+
+  /**
    * If the Group is allowed to create ACH debits.
    */
   ach_debit_status: 'disabled' | 'enabled';
@@ -34,11 +39,6 @@ export interface Group {
    * was created.
    */
   created_at: string;
-
-  /**
-   * The Group identifier.
-   */
-  id: string;
 
   /**
    * A constant representing the object's type. For this resource it will always be
