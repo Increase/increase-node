@@ -48,6 +48,11 @@ export class EntitiesPage extends Page<Entity> {}
  */
 export interface Entity {
   /**
+   * The entity's identifier.
+   */
+  id: string;
+
+  /**
    * Details of the corporation entity. Will be present if `structure` is equal to
    * `corporation`.
    */
@@ -57,11 +62,6 @@ export interface Entity {
    * The entity's description for display purposes.
    */
   description: string | null;
-
-  /**
-   * The entity's identifier.
-   */
-  id: string;
 
   /**
    * Details of the joint entity. Will be present if `structure` is equal to `joint`.
@@ -274,86 +274,6 @@ export namespace Entity {
   }
 
   /**
-   * Details of the natural person entity. Will be present if `structure` is equal to
-   * `natural_person`.
-   */
-  export interface NaturalPerson {
-    /**
-     * The person's address.
-     */
-    address: NaturalPerson.Address;
-
-    /**
-     * The person's date of birth in YYYY-MM-DD format.
-     */
-    date_of_birth: string;
-
-    /**
-     * A means of verifying the person's identity.
-     */
-    identification: NaturalPerson.Identification;
-
-    /**
-     * The person's legal name.
-     */
-    name: string;
-  }
-
-  export namespace NaturalPerson {
-    /**
-     * The person's address.
-     */
-    export interface Address {
-      /**
-       * The city of the address.
-       */
-      city: string;
-
-      /**
-       * The first line of the address.
-       */
-      line1: string;
-
-      /**
-       * The second line of the address.
-       */
-      line2: string | null;
-
-      /**
-       * The two-letter United States Postal Service (USPS) abbreviation for the state of
-       * the address.
-       */
-      state: string;
-
-      /**
-       * The ZIP code of the address.
-       */
-      zip: string;
-    }
-
-    /**
-     * A means of verifying the person's identity.
-     */
-    export interface Identification {
-      /**
-       * A method that can be used to verify the individual's identity.
-       */
-      method:
-        | 'social_security_number'
-        | 'individual_taxpayer_identification_number'
-        | 'passport'
-        | 'drivers_license'
-        | 'other';
-
-      /**
-       * The last 4 digits of the identification number that can be used to verify the
-       * individual's identity.
-       */
-      number_last4: string;
-    }
-  }
-
-  /**
    * Details of the joint entity. Will be present if `structure` is equal to `joint`.
    */
   export interface Joint {
@@ -447,6 +367,109 @@ export namespace Entity {
   }
 
   /**
+   * Details of the natural person entity. Will be present if `structure` is equal to
+   * `natural_person`.
+   */
+  export interface NaturalPerson {
+    /**
+     * The person's address.
+     */
+    address: NaturalPerson.Address;
+
+    /**
+     * The person's date of birth in YYYY-MM-DD format.
+     */
+    date_of_birth: string;
+
+    /**
+     * A means of verifying the person's identity.
+     */
+    identification: NaturalPerson.Identification;
+
+    /**
+     * The person's legal name.
+     */
+    name: string;
+  }
+
+  export namespace NaturalPerson {
+    /**
+     * The person's address.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address.
+       */
+      line1: string;
+
+      /**
+       * The second line of the address.
+       */
+      line2: string | null;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+    }
+
+    /**
+     * A means of verifying the person's identity.
+     */
+    export interface Identification {
+      /**
+       * A method that can be used to verify the individual's identity.
+       */
+      method:
+        | 'social_security_number'
+        | 'individual_taxpayer_identification_number'
+        | 'passport'
+        | 'drivers_license'
+        | 'other';
+
+      /**
+       * The last 4 digits of the identification number that can be used to verify the
+       * individual's identity.
+       */
+      number_last4: string;
+    }
+  }
+
+  /**
+   * Supplemental Documents are uploaded files connected to an Entity during
+   * onboarding.
+   */
+  export interface SupplementalDocument {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+     * Supplemental Document was created.
+     */
+    created_at: string;
+
+    /**
+     * The File containing the document.
+     */
+    file_id: string;
+
+    /**
+     * A constant representing the object's type. For this resource it will always be
+     * `entity_supplemental_document`.
+     */
+    type: 'entity_supplemental_document';
+  }
+
+  /**
    * Details of the trust entity. Will be present if `structure` is equal to `trust`.
    */
   export interface Trust {
@@ -522,6 +545,85 @@ export namespace Entity {
        * The ZIP code of the address.
        */
       zip: string;
+    }
+
+    /**
+     * The grantor of the trust. Will be present if the `category` is `revocable`.
+     */
+    export interface Grantor {
+      /**
+       * The person's address.
+       */
+      address: Grantor.Address;
+
+      /**
+       * The person's date of birth in YYYY-MM-DD format.
+       */
+      date_of_birth: string;
+
+      /**
+       * A means of verifying the person's identity.
+       */
+      identification: Grantor.Identification;
+
+      /**
+       * The person's legal name.
+       */
+      name: string;
+    }
+
+    export namespace Grantor {
+      /**
+       * The person's address.
+       */
+      export interface Address {
+        /**
+         * The city of the address.
+         */
+        city: string;
+
+        /**
+         * The first line of the address.
+         */
+        line1: string;
+
+        /**
+         * The second line of the address.
+         */
+        line2: string | null;
+
+        /**
+         * The two-letter United States Postal Service (USPS) abbreviation for the state of
+         * the address.
+         */
+        state: string;
+
+        /**
+         * The ZIP code of the address.
+         */
+        zip: string;
+      }
+
+      /**
+       * A means of verifying the person's identity.
+       */
+      export interface Identification {
+        /**
+         * A method that can be used to verify the individual's identity.
+         */
+        method:
+          | 'social_security_number'
+          | 'individual_taxpayer_identification_number'
+          | 'passport'
+          | 'drivers_license'
+          | 'other';
+
+        /**
+         * The last 4 digits of the identification number that can be used to verify the
+         * individual's identity.
+         */
+        number_last4: string;
+      }
     }
 
     export interface Trustee {
@@ -618,108 +720,6 @@ export namespace Entity {
         }
       }
     }
-
-    /**
-     * The grantor of the trust. Will be present if the `category` is `revocable`.
-     */
-    export interface Grantor {
-      /**
-       * The person's address.
-       */
-      address: Grantor.Address;
-
-      /**
-       * The person's date of birth in YYYY-MM-DD format.
-       */
-      date_of_birth: string;
-
-      /**
-       * A means of verifying the person's identity.
-       */
-      identification: Grantor.Identification;
-
-      /**
-       * The person's legal name.
-       */
-      name: string;
-    }
-
-    export namespace Grantor {
-      /**
-       * The person's address.
-       */
-      export interface Address {
-        /**
-         * The city of the address.
-         */
-        city: string;
-
-        /**
-         * The first line of the address.
-         */
-        line1: string;
-
-        /**
-         * The second line of the address.
-         */
-        line2: string | null;
-
-        /**
-         * The two-letter United States Postal Service (USPS) abbreviation for the state of
-         * the address.
-         */
-        state: string;
-
-        /**
-         * The ZIP code of the address.
-         */
-        zip: string;
-      }
-
-      /**
-       * A means of verifying the person's identity.
-       */
-      export interface Identification {
-        /**
-         * A method that can be used to verify the individual's identity.
-         */
-        method:
-          | 'social_security_number'
-          | 'individual_taxpayer_identification_number'
-          | 'passport'
-          | 'drivers_license'
-          | 'other';
-
-        /**
-         * The last 4 digits of the identification number that can be used to verify the
-         * individual's identity.
-         */
-        number_last4: string;
-      }
-    }
-  }
-
-  /**
-   * Supplemental Documents are uploaded files connected to an Entity during
-   * onboarding.
-   */
-  export interface SupplementalDocument {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-     * Supplemental Document was created.
-     */
-    created_at: string;
-
-    /**
-     * The File containing the document.
-     */
-    file_id: string;
-
-    /**
-     * A constant representing the object's type. For this resource it will always be
-     * `entity_supplemental_document`.
-     */
-    type: 'entity_supplemental_document';
   }
 }
 
@@ -966,27 +966,6 @@ export namespace EntityCreateParams {
 
         export namespace Identification {
           /**
-           * Information about the passport used for identification. Required if `method` is
-           * equal to `passport`.
-           */
-          export interface Passport {
-            /**
-             * The country that issued the passport.
-             */
-            country: string;
-
-            /**
-             * The passport's expiration date in YYYY-MM-DD format.
-             */
-            expiration_date: string;
-
-            /**
-             * The identifier of the File containing the passport.
-             */
-            file_id: string;
-          }
-
-          /**
            * Information about the United States driver's license used for identification.
            * Required if `method` is equal to `drivers_license`.
            */
@@ -1032,6 +1011,27 @@ export namespace EntityCreateParams {
              * The document's expiration date in YYYY-MM-DD format.
              */
             expiration_date?: string;
+          }
+
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
+          export interface Passport {
+            /**
+             * The country that issued the passport.
+             */
+            country: string;
+
+            /**
+             * The passport's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the passport.
+             */
+            file_id: string;
           }
         }
       }
@@ -1158,27 +1158,6 @@ export namespace EntityCreateParams {
 
       export namespace Identification {
         /**
-         * Information about the passport used for identification. Required if `method` is
-         * equal to `passport`.
-         */
-        export interface Passport {
-          /**
-           * The country that issued the passport.
-           */
-          country: string;
-
-          /**
-           * The passport's expiration date in YYYY-MM-DD format.
-           */
-          expiration_date: string;
-
-          /**
-           * The identifier of the File containing the passport.
-           */
-          file_id: string;
-        }
-
-        /**
          * Information about the United States driver's license used for identification.
          * Required if `method` is equal to `drivers_license`.
          */
@@ -1224,6 +1203,27 @@ export namespace EntityCreateParams {
            * The document's expiration date in YYYY-MM-DD format.
            */
           expiration_date?: string;
+        }
+
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
+        export interface Passport {
+          /**
+           * The country that issued the passport.
+           */
+          country: string;
+
+          /**
+           * The passport's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the passport.
+           */
+          file_id: string;
         }
       }
     }
@@ -1338,27 +1338,6 @@ export namespace EntityCreateParams {
 
     export namespace Identification {
       /**
-       * Information about the passport used for identification. Required if `method` is
-       * equal to `passport`.
-       */
-      export interface Passport {
-        /**
-         * The country that issued the passport.
-         */
-        country: string;
-
-        /**
-         * The passport's expiration date in YYYY-MM-DD format.
-         */
-        expiration_date: string;
-
-        /**
-         * The identifier of the File containing the passport.
-         */
-        file_id: string;
-      }
-
-      /**
        * Information about the United States driver's license used for identification.
        * Required if `method` is equal to `drivers_license`.
        */
@@ -1404,6 +1383,27 @@ export namespace EntityCreateParams {
          * The document's expiration date in YYYY-MM-DD format.
          */
         expiration_date?: string;
+      }
+
+      /**
+       * Information about the passport used for identification. Required if `method` is
+       * equal to `passport`.
+       */
+      export interface Passport {
+        /**
+         * The country that issued the passport.
+         */
+        country: string;
+
+        /**
+         * The passport's expiration date in YYYY-MM-DD format.
+         */
+        expiration_date: string;
+
+        /**
+         * The identifier of the File containing the passport.
+         */
+        file_id: string;
       }
     }
   }
@@ -1618,27 +1618,6 @@ export namespace EntityCreateParams {
 
         export namespace Identification {
           /**
-           * Information about the passport used for identification. Required if `method` is
-           * equal to `passport`.
-           */
-          export interface Passport {
-            /**
-             * The country that issued the passport.
-             */
-            country: string;
-
-            /**
-             * The passport's expiration date in YYYY-MM-DD format.
-             */
-            expiration_date: string;
-
-            /**
-             * The identifier of the File containing the passport.
-             */
-            file_id: string;
-          }
-
-          /**
            * Information about the United States driver's license used for identification.
            * Required if `method` is equal to `drivers_license`.
            */
@@ -1684,6 +1663,27 @@ export namespace EntityCreateParams {
              * The document's expiration date in YYYY-MM-DD format.
              */
             expiration_date?: string;
+          }
+
+          /**
+           * Information about the passport used for identification. Required if `method` is
+           * equal to `passport`.
+           */
+          export interface Passport {
+            /**
+             * The country that issued the passport.
+             */
+            country: string;
+
+            /**
+             * The passport's expiration date in YYYY-MM-DD format.
+             */
+            expiration_date: string;
+
+            /**
+             * The identifier of the File containing the passport.
+             */
+            file_id: string;
           }
         }
       }
@@ -1795,27 +1795,6 @@ export namespace EntityCreateParams {
 
       export namespace Identification {
         /**
-         * Information about the passport used for identification. Required if `method` is
-         * equal to `passport`.
-         */
-        export interface Passport {
-          /**
-           * The country that issued the passport.
-           */
-          country: string;
-
-          /**
-           * The passport's expiration date in YYYY-MM-DD format.
-           */
-          expiration_date: string;
-
-          /**
-           * The identifier of the File containing the passport.
-           */
-          file_id: string;
-        }
-
-        /**
          * Information about the United States driver's license used for identification.
          * Required if `method` is equal to `drivers_license`.
          */
@@ -1861,6 +1840,27 @@ export namespace EntityCreateParams {
            * The document's expiration date in YYYY-MM-DD format.
            */
           expiration_date?: string;
+        }
+
+        /**
+         * Information about the passport used for identification. Required if `method` is
+         * equal to `passport`.
+         */
+        export interface Passport {
+          /**
+           * The country that issued the passport.
+           */
+          country: string;
+
+          /**
+           * The passport's expiration date in YYYY-MM-DD format.
+           */
+          expiration_date: string;
+
+          /**
+           * The identifier of the File containing the passport.
+           */
+          file_id: string;
         }
       }
     }

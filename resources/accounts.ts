@@ -63,6 +63,11 @@ export class AccountsPage extends Page<Account> {}
  */
 export interface Account {
   /**
+   * The Account identifier.
+   */
+  id: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
    * was created.
    */
@@ -78,11 +83,6 @@ export interface Account {
    * The identifier for the Entity the Account belongs to.
    */
   entity_id: string | null;
-
-  /**
-   * The Account identifier.
-   */
-  id: string;
 
   /**
    * The identifier of an Entity that, while not owning the Account, is associated

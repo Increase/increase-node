@@ -62,6 +62,11 @@ export class AccountNumbersPage extends Page<AccountNumber> {}
  */
 export interface AccountNumber {
   /**
+   * The Account Number identifier.
+   */
+  id: string;
+
+  /**
    * The identifier for the account this Account Number belongs to.
    */
   account_id: string;
@@ -76,11 +81,6 @@ export interface AccountNumber {
    * Number was created.
    */
   created_at: string;
-
-  /**
-   * The Account Number identifier.
-   */
-  id: string;
 
   /**
    * The name you choose for the Account Number.

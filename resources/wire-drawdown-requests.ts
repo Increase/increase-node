@@ -55,6 +55,11 @@ export class WireDrawdownRequestsPage extends Page<WireDrawdownRequest> {}
  */
 export interface WireDrawdownRequest {
   /**
+   * The Wire drawdown request identifier.
+   */
+  id: string;
+
+  /**
    * The Account Number to which the recipient of this request is being requested to
    * send funds.
    */
@@ -76,11 +81,6 @@ export interface WireDrawdownRequest {
    * be the identifier of the corresponding Transaction.
    */
   fulfillment_transaction_id: string | null;
-
-  /**
-   * The Wire drawdown request identifier.
-   */
-  id: string;
 
   /**
    * The message the recipient will see as part of the drawdown request.

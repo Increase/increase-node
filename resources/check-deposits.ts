@@ -47,6 +47,11 @@ export class CheckDepositsPage extends Page<CheckDeposit> {}
  */
 export interface CheckDeposit {
   /**
+   * The deposit's identifier.
+   */
+  id: string;
+
+  /**
    * The Account the check was deposited into.
    */
   account_id: string;
@@ -95,11 +100,6 @@ export interface CheckDeposit {
    * The ID for the File containing the image of the front of the check.
    */
   front_image_file_id: string;
-
-  /**
-   * The deposit's identifier.
-   */
-  id: string;
 
   /**
    * The status of the Check Deposit.

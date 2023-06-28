@@ -42,6 +42,11 @@ export namespace WireTransferSimulation {
    */
   export interface Transaction {
     /**
+     * The Transaction identifier.
+     */
+    id: string;
+
+    /**
      * The identifier for the Account the Transaction belongs to.
      */
     account_id: string;
@@ -71,11 +76,6 @@ export namespace WireTransferSimulation {
      * provides.
      */
     description: string;
-
-    /**
-     * The Transaction identifier.
-     */
-    id: string;
 
     /**
      * The identifier for the route this Transaction came through. Routes are things
@@ -540,6 +540,11 @@ export namespace WireTransferSimulation {
        */
       export interface CardRefund {
         /**
+         * The Card Refund identifier.
+         */
+        id: string;
+
+        /**
          * The pending amount in the minor unit of the transaction's currency. For dollars,
          * for example, this is cents.
          */
@@ -550,11 +555,6 @@ export namespace WireTransferSimulation {
          * transaction's currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        /**
-         * The Card Refund identifier.
-         */
-        id: string;
 
         /**
          * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -633,6 +633,11 @@ export namespace WireTransferSimulation {
        */
       export interface CardSettlement {
         /**
+         * The Card Settlement identifier.
+         */
+        id: string;
+
+        /**
          * The amount in the minor unit of the transaction's settlement currency. For
          * dollars, for example, this is cents.
          */
@@ -649,11 +654,6 @@ export namespace WireTransferSimulation {
          * transaction's settlement currency.
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        /**
-         * The Card Settlement identifier.
-         */
-        id: string;
 
         /**
          * The merchant identifier (commonly abbreviated as MID) of the merchant the card

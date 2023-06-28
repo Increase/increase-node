@@ -43,6 +43,11 @@ export class BookkeepingAccountsPage extends Page<BookkeepingAccount> {}
  */
 export interface BookkeepingAccount {
   /**
+   * The account identifier.
+   */
+  id: string;
+
+  /**
    * The API Account associated with this bookkeeping account.
    */
   account_id: string | null;
@@ -56,11 +61,6 @@ export interface BookkeepingAccount {
    * The Entity associated with this bookkeeping account.
    */
   entity_id: string | null;
-
-  /**
-   * The account identifier.
-   */
-  id: string;
 
   /**
    * The name you choose for the account.

@@ -57,6 +57,11 @@ export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer
  */
 export interface RealTimePaymentsTransfer {
   /**
+   * The Real Time Payments Transfer's identifier.
+   */
+  id: string;
+
+  /**
    * The Account from which the transfer was sent.
    */
   account_id: string;
@@ -110,11 +115,6 @@ export interface RealTimePaymentsTransfer {
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
-
-  /**
-   * The Real Time Payments Transfer's identifier.
-   */
-  id: string;
 
   /**
    * If the transfer is rejected by Real Time Payments or the destination financial
@@ -200,23 +200,6 @@ export namespace RealTimePaymentsTransfer {
   }
 
   /**
-   * After the transfer is submitted to Real Time Payments, this will contain
-   * supplemental details.
-   */
-  export interface Submission {
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the transfer was submitted to The Clearing House.
-     */
-    submitted_at: string | null;
-
-    /**
-     * The Real Time Payments network identification of the transfer.
-     */
-    transaction_identification: string;
-  }
-
-  /**
    * If the transfer is rejected by Real Time Payments or the destination financial
    * institution, this will contain supplemental details.
    */
@@ -259,6 +242,23 @@ export namespace RealTimePaymentsTransfer {
      * the transfer was rejected.
      */
     rejected_at: string | null;
+  }
+
+  /**
+   * After the transfer is submitted to Real Time Payments, this will contain
+   * supplemental details.
+   */
+  export interface Submission {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was submitted to The Clearing House.
+     */
+    submitted_at: string | null;
+
+    /**
+     * The Real Time Payments network identification of the transfer.
+     */
+    transaction_identification: string;
   }
 }
 

@@ -48,6 +48,11 @@ export class InboundWireDrawdownRequestsPage extends Page<InboundWireDrawdownReq
  */
 export interface InboundWireDrawdownRequest {
   /**
+   * The Wire drawdown request identifier.
+   */
+  id: string;
+
+  /**
    * The amount being requested in cents.
    */
   amount: number;
@@ -87,11 +92,6 @@ export interface InboundWireDrawdownRequest {
    * requested. Will always be "USD".
    */
   currency: string;
-
-  /**
-   * The Wire drawdown request identifier.
-   */
-  id: string;
 
   /**
    * A message from the drawdown request's originator.

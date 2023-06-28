@@ -81,6 +81,11 @@ export class WireTransfersPage extends Page<WireTransfer> {}
  */
 export interface WireTransfer {
   /**
+   * The wire transfer's identifier.
+   */
+  id: string;
+
+  /**
    * The Account to which the transfer belongs.
    */
   account_id: string;
@@ -143,11 +148,6 @@ export interface WireTransfer {
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
-
-  /**
-   * The wire transfer's identifier.
-   */
-  id: string;
 
   /**
    * The message that will show on the recipient's bank statement.

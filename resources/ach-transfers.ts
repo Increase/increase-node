@@ -62,6 +62,11 @@ export class ACHTransfersPage extends Page<ACHTransfer> {}
  */
 export interface ACHTransfer {
   /**
+   * The ACH transfer's identifier.
+   */
+  id: string;
+
+  /**
    * The Account to which the transfer belongs.
    */
   account_id: string;
@@ -142,11 +147,6 @@ export interface ACHTransfer {
    * The type of the account to which the transfer will be sent.
    */
   funding: 'checking' | 'savings';
-
-  /**
-   * The ACH transfer's identifier.
-   */
-  id: string;
 
   /**
    * Your identifer for the transfer recipient.
