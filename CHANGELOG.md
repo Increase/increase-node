@@ -1,5 +1,46 @@
 # Changelog
 
+## [0.5.0](https://github.com/Increase/increase-node/compare/v0.4.0...v0.5.0) (2023-06-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** remove many enum members from document category ([#27](https://github.com/Increase/increase-node/issues/27))
+* **types:** singularize array item types ([#25](https://github.com/Increase/increase-node/issues/25))
+
+### Features
+
+* **api/types:** mark more check transfer intention properties as nullable ([#26](https://github.com/Increase/increase-node/issues/26)) ([324580e](https://github.com/Increase/increase-node/commit/324580e75db774e8ca3c6561e288c217915b7722))
+* support ESM and web platform runtimes; easier file uploads ([#28](https://github.com/Increase/increase-node/issues/28)) ([1d53a8d](https://github.com/Increase/increase-node/commit/1d53a8dd26cfa10c36a1813a9e8d5a78697439e4))
+* **types:** export nested types through the root client export ([#23](https://github.com/Increase/increase-node/issues/23)) ([c68b1ae](https://github.com/Increase/increase-node/commit/c68b1ae49b52828121c5042303d74dc10f2960fc))
+
+
+### Bug Fixes
+
+* **form-data:** strip out undefined properties ([#21](https://github.com/Increase/increase-node/issues/21)) ([dd73783](https://github.com/Increase/increase-node/commit/dd73783b3541ff86ac53e22f397d53a87872f925))
+
+
+### Refactors
+
+* **api:** remove `other` from reason enum ([#24](https://github.com/Increase/increase-node/issues/24)) ([5d7206a](https://github.com/Increase/increase-node/commit/5d7206a911039f9f2b8c8f40db589777afbad113))
+* **api:** remove many enum members from document category ([#27](https://github.com/Increase/increase-node/issues/27)) ([ddcd780](https://github.com/Increase/increase-node/commit/ddcd7807953bc64a4e9f055bb9cd1a671554eaa5))
+* **types:** singularize array item types ([#25](https://github.com/Increase/increase-node/issues/25)) ([bb00a48](https://github.com/Increase/increase-node/commit/bb00a48c7c6aee72593c9e79decc9a4127873587))
+
+
+### Styles
+
+* minor reordering of types and properties ([#29](https://github.com/Increase/increase-node/issues/29)) ([0e6dbc5](https://github.com/Increase/increase-node/commit/0e6dbc537b6a5ff9464de3f3ce2c164f00b79680))
+
+
+### Chores
+
+* speed up build script slightly ([#30](https://github.com/Increase/increase-node/issues/30)) ([b8ad73c](https://github.com/Increase/increase-node/commit/b8ad73c54aacb5a582826a4d8cfb594f3e1450ee))
+
+
+### Documentation
+
+* rearrange sections in api.md ([#31](https://github.com/Increase/increase-node/issues/31)) ([a8859f4](https://github.com/Increase/increase-node/commit/a8859f4fcca63820dc3568f7fd9c5a8c5b79c445))
+
 ## [0.4.0](https://github.com/Increase/increase-node/compare/v0.3.0...v0.4.0) (2023-06-19)
 
 
