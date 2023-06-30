@@ -1,16 +1,17 @@
 {
-  "exclude": ["dist", "ecosystem-tests"],
+  "include": ["src", "tests", "examples"],
   "compilerOptions": {
     "target": "es2019",
     "lib": ["es2020"],
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "baseUrl": "./",
     "paths": {
-      "~/*": ["*"],
-      "increase/_shims/*": ["_shims/*.node"],
+      "increase/_shims/*": ["src/_shims/*.node"],
+      "increase": ["src/index.ts"],
+      "increase/*": ["src/*"],
       "digest-fetch": ["./typings/digest-fetch"]
     },
 

@@ -1,6 +1,5 @@
 import fs from 'fs';
-import { toFile } from '~/uploads';
-import { ResponseLike } from 'increase/_shims/uploadable';
+import { toFile, type ResponseLike } from 'increase/uploads';
 import { File } from 'increase/_shims/formdata';
 
 class MyClass {
