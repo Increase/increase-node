@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import { Headers } from '~/core';
-import Increase from '../index';
+import { Headers } from 'increase/core';
+import Increase from 'increase';
 
 describe('instantiate client', () => {
   const env = process.env;

@@ -3,8 +3,9 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: {
-    '^~/(.*)$': '<rootDir>/$1',
-    '^increase/_shims/(.*)$': '<rootDir>/_shims/$1.node',
+    '^increase$': '<rootDir>/src/index.ts',
+    '^increase/_shims/(.*)$': '<rootDir>/src/_shims/$1.node',
+    '^increase/(.*)$': '<rootDir>/src/$1',
   },
-  modulePathIgnorePatterns: ['<rootDir>/ecosystem-tests/'],
+  modulePathIgnorePatterns: ['<rootDir>/ecosystem-tests/', '<rootDir>/dist/'],
 };
