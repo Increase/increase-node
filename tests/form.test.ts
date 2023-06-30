@@ -1,4 +1,4 @@
-import { multipartFormRequestOptions, createForm } from '../core';
+import { multipartFormRequestOptions, createForm } from 'increase/core';
 import { Blob } from 'increase/_shims/formdata';
 import { toFile } from 'increase';
 

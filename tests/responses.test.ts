@@ -1,4 +1,4 @@
-import { createResponseHeaders } from '../core';
+import { createResponseHeaders } from 'increase/core';
 import { Headers } from 'increase/_shims/fetch';
 
 describe('response parsing', () => {
