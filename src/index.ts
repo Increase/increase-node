@@ -24,6 +24,7 @@ type Config = {
   httpAgent?: Agent;
   maxRetries?: number;
   defaultHeaders?: Core.Headers;
+  defaultQuery?: Core.DefaultQuery;
 };
 
 /** Instantiate the API Client. */
@@ -94,6 +95,10 @@ export class Increase extends Core.APIClient {
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   simulations: API.Simulations = new API.Simulations(this);
+
+  protected override defaultQuery(): Core.DefaultQuery | undefined {
+    return this._options.defaultQuery;
+  }
 
   protected override defaultHeaders(): Core.Headers {
     return {
