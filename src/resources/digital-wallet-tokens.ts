@@ -37,6 +37,8 @@ export class DigitalWalletTokens extends APIResource {
 }
 
 export class DigitalWalletTokensPage extends Page<DigitalWalletToken> {}
+// alias so we can export it in the namespace
+type _DigitalWalletTokensPage = DigitalWalletTokensPage;
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -116,6 +118,6 @@ export namespace DigitalWalletTokenListParams {
 
 export namespace DigitalWalletTokens {
   export import DigitalWalletToken = API.DigitalWalletToken;
-  export import DigitalWalletTokensPage = API.DigitalWalletTokensPage;
+  export type DigitalWalletTokensPage = _DigitalWalletTokensPage;
   export import DigitalWalletTokenListParams = API.DigitalWalletTokenListParams;
 }

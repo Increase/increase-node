@@ -74,6 +74,8 @@ export class WireTransfers extends APIResource {
 }
 
 export class WireTransfersPage extends Page<WireTransfer> {}
+// alias so we can export it in the namespace
+type _WireTransfersPage = WireTransfersPage;
 
 /**
  * Wire transfers move funds between your Increase account and any other account
@@ -438,7 +440,7 @@ export namespace WireTransferListParams {
 
 export namespace WireTransfers {
   export import WireTransfer = API.WireTransfer;
-  export import WireTransfersPage = API.WireTransfersPage;
+  export type WireTransfersPage = _WireTransfersPage;
   export import WireTransferCreateParams = API.WireTransferCreateParams;
   export import WireTransferListParams = API.WireTransferListParams;
 }

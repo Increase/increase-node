@@ -52,6 +52,8 @@ export class AccountNumbers extends APIResource {
 }
 
 export class AccountNumbersPage extends Page<AccountNumber> {}
+// alias so we can export it in the namespace
+type _AccountNumbersPage = AccountNumbersPage;
 
 /**
  * Each account can have multiple account and routing numbers. We recommend that
@@ -172,7 +174,7 @@ export namespace AccountNumberListParams {
 
 export namespace AccountNumbers {
   export import AccountNumber = API.AccountNumber;
-  export import AccountNumbersPage = API.AccountNumbersPage;
+  export type AccountNumbersPage = _AccountNumbersPage;
   export import AccountNumberCreateParams = API.AccountNumberCreateParams;
   export import AccountNumberUpdateParams = API.AccountNumberUpdateParams;
   export import AccountNumberListParams = API.AccountNumberListParams;

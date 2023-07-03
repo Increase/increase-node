@@ -58,6 +58,8 @@ export class EventSubscriptions extends APIResource {
 }
 
 export class EventSubscriptionsPage extends Page<EventSubscription> {}
+// alias so we can export it in the namespace
+type _EventSubscriptionsPage = EventSubscriptionsPage;
 
 /**
  * Webhooks are event notifications we send to you by HTTPS POST requests. Event
@@ -237,7 +239,7 @@ export interface EventSubscriptionListParams extends PageParams {}
 
 export namespace EventSubscriptions {
   export import EventSubscription = API.EventSubscription;
-  export import EventSubscriptionsPage = API.EventSubscriptionsPage;
+  export type EventSubscriptionsPage = _EventSubscriptionsPage;
   export import EventSubscriptionCreateParams = API.EventSubscriptionCreateParams;
   export import EventSubscriptionUpdateParams = API.EventSubscriptionUpdateParams;
   export import EventSubscriptionListParams = API.EventSubscriptionListParams;

@@ -40,6 +40,8 @@ export class InboundWireDrawdownRequests extends APIResource {
 }
 
 export class InboundWireDrawdownRequestsPage extends Page<InboundWireDrawdownRequest> {}
+// alias so we can export it in the namespace
+type _InboundWireDrawdownRequestsPage = InboundWireDrawdownRequestsPage;
 
 /**
  * Inbound wire drawdown requests are requests from someone else to send them a
@@ -169,6 +171,6 @@ export interface InboundWireDrawdownRequestListParams extends PageParams {}
 
 export namespace InboundWireDrawdownRequests {
   export import InboundWireDrawdownRequest = API.InboundWireDrawdownRequest;
-  export import InboundWireDrawdownRequestsPage = API.InboundWireDrawdownRequestsPage;
+  export type InboundWireDrawdownRequestsPage = _InboundWireDrawdownRequestsPage;
   export import InboundWireDrawdownRequestListParams = API.InboundWireDrawdownRequestListParams;
 }

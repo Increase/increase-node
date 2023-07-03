@@ -18,6 +18,8 @@ export class RoutingNumbers extends APIResource {
 }
 
 export class RoutingNumbersPage extends Page<RoutingNumber> {}
+// alias so we can export it in the namespace
+type _RoutingNumbersPage = RoutingNumbersPage;
 
 /**
  * Routing numbers are used to identify your bank in a financial transaction.
@@ -64,6 +66,6 @@ export interface RoutingNumberListParams extends PageParams {
 
 export namespace RoutingNumbers {
   export import RoutingNumber = API.RoutingNumber;
-  export import RoutingNumbersPage = API.RoutingNumbersPage;
+  export type RoutingNumbersPage = _RoutingNumbersPage;
   export import RoutingNumberListParams = API.RoutingNumberListParams;
 }
