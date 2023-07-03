@@ -58,6 +58,8 @@ export class ExternalAccounts extends APIResource {
 }
 
 export class ExternalAccountsPage extends Page<ExternalAccount> {}
+// alias so we can export it in the namespace
+type _ExternalAccountsPage = ExternalAccountsPage;
 
 /**
  * External Accounts represent accounts at financial institutions other than
@@ -164,7 +166,7 @@ export namespace ExternalAccountListParams {
 
 export namespace ExternalAccounts {
   export import ExternalAccount = API.ExternalAccount;
-  export import ExternalAccountsPage = API.ExternalAccountsPage;
+  export type ExternalAccountsPage = _ExternalAccountsPage;
   export import ExternalAccountCreateParams = API.ExternalAccountCreateParams;
   export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
   export import ExternalAccountListParams = API.ExternalAccountListParams;

@@ -41,6 +41,8 @@ export class Entities extends APIResource {
 }
 
 export class EntitiesPage extends Page<Entity> {}
+// alias so we can export it in the namespace
+type _EntitiesPage = EntitiesPage;
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
@@ -1901,7 +1903,7 @@ export namespace EntityListParams {
 
 export namespace Entities {
   export import Entity = API.Entity;
-  export import EntitiesPage = API.EntitiesPage;
+  export type EntitiesPage = _EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
 

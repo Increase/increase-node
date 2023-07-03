@@ -31,6 +31,8 @@ export class Programs extends APIResource {
 }
 
 export class ProgramsPage extends Page<Program> {}
+// alias so we can export it in the namespace
+type _ProgramsPage = ProgramsPage;
 
 /**
  * Programs determine the compliance and commercial terms of Accounts. By default,
@@ -72,6 +74,6 @@ export interface ProgramListParams extends PageParams {}
 
 export namespace Programs {
   export import Program = API.Program;
-  export import ProgramsPage = API.ProgramsPage;
+  export type ProgramsPage = _ProgramsPage;
   export import ProgramListParams = API.ProgramListParams;
 }

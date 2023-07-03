@@ -38,6 +38,8 @@ export class PendingTransactions extends APIResource {
 }
 
 export class PendingTransactionsPage extends Page<PendingTransaction> {}
+// alias so we can export it in the namespace
+type _PendingTransactionsPage = PendingTransactionsPage;
 
 /**
  * Pending Transactions are potential future additions and removals of money from
@@ -571,6 +573,6 @@ export namespace PendingTransactionListParams {
 
 export namespace PendingTransactions {
   export import PendingTransaction = API.PendingTransaction;
-  export import PendingTransactionsPage = API.PendingTransactionsPage;
+  export type PendingTransactionsPage = _PendingTransactionsPage;
   export import PendingTransactionListParams = API.PendingTransactionListParams;
 }

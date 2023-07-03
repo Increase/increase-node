@@ -37,6 +37,8 @@ export class AccountStatements extends APIResource {
 }
 
 export class AccountStatementsPage extends Page<AccountStatement> {}
+// alias so we can export it in the namespace
+type _AccountStatementsPage = AccountStatementsPage;
 
 /**
  * Account Statements are generated monthly for every active Account. You can
@@ -133,6 +135,6 @@ export namespace AccountStatementListParams {
 
 export namespace AccountStatements {
   export import AccountStatement = API.AccountStatement;
-  export import AccountStatementsPage = API.AccountStatementsPage;
+  export type AccountStatementsPage = _AccountStatementsPage;
   export import AccountStatementListParams = API.AccountStatementListParams;
 }

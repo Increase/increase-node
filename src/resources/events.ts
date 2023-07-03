@@ -31,6 +31,8 @@ export class Events extends APIResource {
 }
 
 export class EventsPage extends Page<Event> {}
+// alias so we can export it in the namespace
+type _EventsPage = EventsPage;
 
 /**
  * Events are records of things that happened to objects in the API. They also
@@ -221,6 +223,6 @@ export namespace EventListParams {
 
 export namespace Events {
   export import Event = API.Event;
-  export import EventsPage = API.EventsPage;
+  export type EventsPage = _EventsPage;
   export import EventListParams = API.EventListParams;
 }

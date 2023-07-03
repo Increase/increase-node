@@ -56,6 +56,8 @@ export class Accounts extends APIResource {
 }
 
 export class AccountsPage extends Page<Account> {}
+// alias so we can export it in the namespace
+type _AccountsPage = AccountsPage;
 
 /**
  * Accounts are your bank accounts with Increase. They store money, receive
@@ -206,7 +208,7 @@ export namespace AccountListParams {
 
 export namespace Accounts {
   export import Account = API.Account;
-  export import AccountsPage = API.AccountsPage;
+  export type AccountsPage = _AccountsPage;
   export import AccountCreateParams = API.AccountCreateParams;
   export import AccountUpdateParams = API.AccountUpdateParams;
   export import AccountListParams = API.AccountListParams;

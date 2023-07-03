@@ -67,6 +67,8 @@ export class AccountTransfers extends APIResource {
 }
 
 export class AccountTransfersPage extends Page<AccountTransfer> {}
+// alias so we can export it in the namespace
+type _AccountTransfersPage = AccountTransfersPage;
 
 /**
  * Account transfers move funds between your own accounts at Increase.
@@ -254,7 +256,7 @@ export namespace AccountTransferListParams {
 
 export namespace AccountTransfers {
   export import AccountTransfer = API.AccountTransfer;
-  export import AccountTransfersPage = API.AccountTransfersPage;
+  export type AccountTransfersPage = _AccountTransfersPage;
   export import AccountTransferCreateParams = API.AccountTransferCreateParams;
   export import AccountTransferListParams = API.AccountTransferListParams;
 }

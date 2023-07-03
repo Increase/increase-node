@@ -41,6 +41,8 @@ export class CheckDeposits extends APIResource {
 }
 
 export class CheckDepositsPage extends Page<CheckDeposit> {}
+// alias so we can export it in the namespace
+type _CheckDepositsPage = CheckDepositsPage;
 
 /**
  * Check Deposits allow you to deposit images of paper checks into your account.
@@ -318,7 +320,7 @@ export namespace CheckDepositListParams {
 
 export namespace CheckDeposits {
   export import CheckDeposit = API.CheckDeposit;
-  export import CheckDepositsPage = API.CheckDepositsPage;
+  export type CheckDepositsPage = _CheckDepositsPage;
   export import CheckDepositCreateParams = API.CheckDepositCreateParams;
   export import CheckDepositListParams = API.CheckDepositListParams;
 }

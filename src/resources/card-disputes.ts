@@ -41,6 +41,8 @@ export class CardDisputes extends APIResource {
 }
 
 export class CardDisputesPage extends Page<CardDispute> {}
+// alias so we can export it in the namespace
+type _CardDisputesPage = CardDisputesPage;
 
 /**
  * If unauthorized activity occurs on a card, you can create a Card Dispute and
@@ -197,7 +199,7 @@ export namespace CardDisputeListParams {
 
 export namespace CardDisputes {
   export import CardDispute = API.CardDispute;
-  export import CardDisputesPage = API.CardDisputesPage;
+  export type CardDisputesPage = _CardDisputesPage;
   export import CardDisputeCreateParams = API.CardDisputeCreateParams;
   export import CardDisputeListParams = API.CardDisputeListParams;
 }

@@ -65,6 +65,8 @@ export class CheckTransfers extends APIResource {
 }
 
 export class CheckTransfersPage extends Page<CheckTransfer> {}
+// alias so we can export it in the namespace
+type _CheckTransfersPage = CheckTransfersPage;
 
 /**
  * Check Transfers move funds from your Increase account by mailing a physical
@@ -535,7 +537,7 @@ export namespace CheckTransferListParams {
 
 export namespace CheckTransfers {
   export import CheckTransfer = API.CheckTransfer;
-  export import CheckTransfersPage = API.CheckTransfersPage;
+  export type CheckTransfersPage = _CheckTransfersPage;
   export import CheckTransferCreateParams = API.CheckTransferCreateParams;
   export import CheckTransferListParams = API.CheckTransferListParams;
 }
