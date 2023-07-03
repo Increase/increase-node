@@ -49,6 +49,8 @@ export class Limits extends APIResource {
 }
 
 export class LimitsPage extends Page<Limit> {}
+// alias so we can export it in the namespace
+type _LimitsPage = LimitsPage;
 
 /**
  * You can set limits at the Account, Account Number, or Card level. Limits applied
@@ -145,7 +147,7 @@ export interface LimitListParams extends PageParams {
 
 export namespace Limits {
   export import Limit = API.Limit;
-  export import LimitsPage = API.LimitsPage;
+  export type LimitsPage = _LimitsPage;
   export import LimitCreateParams = API.LimitCreateParams;
   export import LimitUpdateParams = API.LimitUpdateParams;
   export import LimitListParams = API.LimitListParams;

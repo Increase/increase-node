@@ -41,6 +41,8 @@ export class Files extends APIResource {
 }
 
 export class FilesPage extends Page<File> {}
+// alias so we can export it in the namespace
+type _FilesPage = FilesPage;
 
 /**
  * Files are objects that represent a file hosted on Increase's servers. The file
@@ -199,7 +201,7 @@ export namespace FileListParams {
 
 export namespace Files {
   export import File = API.File;
-  export import FilesPage = API.FilesPage;
+  export type FilesPage = _FilesPage;
   export import FileCreateParams = API.FileCreateParams;
   export import FileListParams = API.FileListParams;
 }

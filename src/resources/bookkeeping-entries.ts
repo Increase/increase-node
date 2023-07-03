@@ -27,6 +27,8 @@ export class BookkeepingEntries extends APIResource {
 }
 
 export class BookkeepingEntriesPage extends Page<BookkeepingEntry> {}
+// alias so we can export it in the namespace
+type _BookkeepingEntriesPage = BookkeepingEntriesPage;
 
 /**
  * Entries are T-account entries recording debits and credits.
@@ -64,6 +66,6 @@ export interface BookkeepingEntryListParams extends PageParams {}
 
 export namespace BookkeepingEntries {
   export import BookkeepingEntry = API.BookkeepingEntry;
-  export import BookkeepingEntriesPage = API.BookkeepingEntriesPage;
+  export type BookkeepingEntriesPage = _BookkeepingEntriesPage;
   export import BookkeepingEntryListParams = API.BookkeepingEntryListParams;
 }

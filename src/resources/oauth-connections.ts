@@ -37,6 +37,8 @@ export class OauthConnections extends APIResource {
 }
 
 export class OauthConnectionsPage extends Page<OauthConnection> {}
+// alias so we can export it in the namespace
+type _OauthConnectionsPage = OauthConnectionsPage;
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
@@ -75,6 +77,6 @@ export interface OauthConnectionListParams extends PageParams {}
 
 export namespace OauthConnections {
   export import OauthConnection = API.OauthConnection;
-  export import OauthConnectionsPage = API.OauthConnectionsPage;
+  export type OauthConnectionsPage = _OauthConnectionsPage;
   export import OauthConnectionListParams = API.OauthConnectionListParams;
 }

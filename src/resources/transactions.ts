@@ -31,6 +31,8 @@ export class Transactions extends APIResource {
 }
 
 export class TransactionsPage extends Page<Transaction> {}
+// alias so we can export it in the namespace
+type _TransactionsPage = TransactionsPage;
 
 /**
  * Transactions are the immutable additions and removals of money from your bank
@@ -1608,6 +1610,6 @@ export namespace TransactionListParams {
 
 export namespace Transactions {
   export import Transaction = API.Transaction;
-  export import TransactionsPage = API.TransactionsPage;
+  export type TransactionsPage = _TransactionsPage;
   export import TransactionListParams = API.TransactionListParams;
 }

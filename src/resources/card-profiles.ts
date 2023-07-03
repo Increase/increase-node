@@ -41,6 +41,8 @@ export class CardProfiles extends APIResource {
 }
 
 export class CardProfilesPage extends Page<CardProfile> {}
+// alias so we can export it in the namespace
+type _CardProfilesPage = CardProfilesPage;
 
 /**
  * This contains artwork and metadata relating to a Card's appearance in digital
@@ -252,7 +254,7 @@ export namespace CardProfileListParams {
 
 export namespace CardProfiles {
   export import CardProfile = API.CardProfile;
-  export import CardProfilesPage = API.CardProfilesPage;
+  export type CardProfilesPage = _CardProfilesPage;
   export import CardProfileCreateParams = API.CardProfileCreateParams;
   export import CardProfileListParams = API.CardProfileListParams;
 }

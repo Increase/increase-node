@@ -59,6 +59,8 @@ export class Cards extends APIResource {
 }
 
 export class CardsPage extends Page<Card> {}
+// alias so we can export it in the namespace
+type _CardsPage = CardsPage;
 
 /**
  * Cards are commercial credit cards. They'll immediately work for online purchases
@@ -428,7 +430,7 @@ export namespace CardListParams {
 export namespace Cards {
   export import Card = API.Card;
   export import CardDetails = API.CardDetails;
-  export import CardsPage = API.CardsPage;
+  export type CardsPage = _CardsPage;
   export import CardCreateParams = API.CardCreateParams;
   export import CardUpdateParams = API.CardUpdateParams;
   export import CardListParams = API.CardListParams;

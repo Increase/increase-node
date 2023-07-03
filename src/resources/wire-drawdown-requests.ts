@@ -47,6 +47,8 @@ export class WireDrawdownRequests extends APIResource {
 }
 
 export class WireDrawdownRequestsPage extends Page<WireDrawdownRequest> {}
+// alias so we can export it in the namespace
+type _WireDrawdownRequestsPage = WireDrawdownRequestsPage;
 
 /**
  * Wire drawdown requests enable you to request that someone else send you a wire.
@@ -200,7 +202,7 @@ export interface WireDrawdownRequestListParams extends PageParams {}
 
 export namespace WireDrawdownRequests {
   export import WireDrawdownRequest = API.WireDrawdownRequest;
-  export import WireDrawdownRequestsPage = API.WireDrawdownRequestsPage;
+  export type WireDrawdownRequestsPage = _WireDrawdownRequestsPage;
   export import WireDrawdownRequestCreateParams = API.WireDrawdownRequestCreateParams;
   export import WireDrawdownRequestListParams = API.WireDrawdownRequestListParams;
 }

@@ -50,6 +50,8 @@ export class RealTimePaymentsTransfers extends APIResource {
 }
 
 export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer> {}
+// alias so we can export it in the namespace
+type _RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
 
 /**
  * Real Time Payments transfers move funds, within seconds, between your Increase
@@ -353,7 +355,7 @@ export namespace RealTimePaymentsTransferListParams {
 
 export namespace RealTimePaymentsTransfers {
   export import RealTimePaymentsTransfer = API.RealTimePaymentsTransfer;
-  export import RealTimePaymentsTransfersPage = API.RealTimePaymentsTransfersPage;
+  export type RealTimePaymentsTransfersPage = _RealTimePaymentsTransfersPage;
   export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
   export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
 }

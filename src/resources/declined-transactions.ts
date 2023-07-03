@@ -38,6 +38,8 @@ export class DeclinedTransactions extends APIResource {
 }
 
 export class DeclinedTransactionsPage extends Page<DeclinedTransaction> {}
+// alias so we can export it in the namespace
+type _DeclinedTransactionsPage = DeclinedTransactionsPage;
 
 /**
  * Declined Transactions are refused additions and removals of money from your bank
@@ -618,6 +620,6 @@ export namespace DeclinedTransactionListParams {
 
 export namespace DeclinedTransactions {
   export import DeclinedTransaction = API.DeclinedTransaction;
-  export import DeclinedTransactionsPage = API.DeclinedTransactionsPage;
+  export type DeclinedTransactionsPage = _DeclinedTransactionsPage;
   export import DeclinedTransactionListParams = API.DeclinedTransactionListParams;
 }

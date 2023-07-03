@@ -33,6 +33,8 @@ export class SupplementalDocuments extends APIResource {
 }
 
 export class SupplementalDocumentsPage extends Page<SupplementalDocument> {}
+// alias so we can export it in the namespace
+type _SupplementalDocumentsPage = SupplementalDocumentsPage;
 
 /**
  * Supplemental Documents are uploaded files connected to an Entity during
@@ -73,7 +75,7 @@ export interface SupplementalDocumentListParams extends PageParams {
 
 export namespace SupplementalDocuments {
   export import SupplementalDocument = API.SupplementalDocument;
-  export import SupplementalDocumentsPage = API.SupplementalDocumentsPage;
+  export type SupplementalDocumentsPage = _SupplementalDocumentsPage;
   export import SupplementalDocumentCreateParams = API.SupplementalDocumentCreateParams;
   export import SupplementalDocumentListParams = API.SupplementalDocumentListParams;
 }

@@ -50,6 +50,8 @@ export class InboundACHTransferReturns extends APIResource {
 }
 
 export class InboundACHTransferReturnsPage extends Page<InboundACHTransferReturn> {}
+// alias so we can export it in the namespace
+type _InboundACHTransferReturnsPage = InboundACHTransferReturnsPage;
 
 /**
  * If unauthorized activity occurs via ACH, you can create an Inbound ACH Transfer
@@ -146,7 +148,7 @@ export interface InboundACHTransferReturnListParams extends PageParams {}
 
 export namespace InboundACHTransferReturns {
   export import InboundACHTransferReturn = API.InboundACHTransferReturn;
-  export import InboundACHTransferReturnsPage = API.InboundACHTransferReturnsPage;
+  export type InboundACHTransferReturnsPage = _InboundACHTransferReturnsPage;
   export import InboundACHTransferReturnCreateParams = API.InboundACHTransferReturnCreateParams;
   export import InboundACHTransferReturnListParams = API.InboundACHTransferReturnListParams;
 }
