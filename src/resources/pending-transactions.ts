@@ -78,6 +78,13 @@ export interface PendingTransaction {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
    * Transaction's currency. This will match the currency on the Pending
    * Transcation's Account.
+   *
+   * - `CAD` - Canadian Dollar (CAD)
+   * - `CHF` - Swiss Franc (CHF)
+   * - `EUR` - Euro (EUR)
+   * - `GBP` - British Pound (GBP)
+   * - `JPY` - Japanese Yen (JPY)
+   * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -96,6 +103,9 @@ export interface PendingTransaction {
 
   /**
    * The type of the route this Pending Transaction came through.
+   *
+   * - `account_number` - An Account Number.
+   * - `card` - A Card.
    */
   route_type: 'account_number' | 'card' | null;
 
@@ -109,6 +119,11 @@ export interface PendingTransaction {
   /**
    * Whether the Pending Transaction has been confirmed and has an associated
    * Transaction.
+   *
+   * - `pending` - The Pending Transaction is still awaiting confirmation.
+   * - `complete` - The Pending Transaction is confirmed. An associated Transaction
+   *   exists for this object. The Pending Transaction will no longer count against
+   *   your balance and can generally be hidden from UIs, etc.
    */
   status: 'pending' | 'complete';
 
@@ -148,6 +163,31 @@ export namespace PendingTransaction {
      * The type of transaction that took place. We may add additional possible values
      * for this enum over time; your application should be able to handle such
      * additions gracefully.
+     *
+     * - `account_transfer_instruction` - The Pending Transaction was created by a
+     *   Account Transfer Instruction object. Details will be under the
+     *   `account_transfer_instruction` object.
+     * - `ach_transfer_instruction` - The Pending Transaction was created by a ACH
+     *   Transfer Instruction object. Details will be under the
+     *   `ach_transfer_instruction` object.
+     * - `card_authorization` - The Pending Transaction was created by a Card
+     *   Authorization object. Details will be under the `card_authorization` object.
+     * - `check_deposit_instruction` - The Pending Transaction was created by a Check
+     *   Deposit Instruction object. Details will be under the
+     *   `check_deposit_instruction` object.
+     * - `check_transfer_instruction` - The Pending Transaction was created by a Check
+     *   Transfer Instruction object. Details will be under the
+     *   `check_transfer_instruction` object.
+     * - `inbound_funds_hold` - The Pending Transaction was created by a Inbound Funds
+     *   Hold object. Details will be under the `inbound_funds_hold` object.
+     * - `real_time_payments_transfer_instruction` - The Pending Transaction was
+     *   created by a Real Time Payments Transfer Instruction object. Details will be
+     *   under the `real_time_payments_transfer_instruction` object.
+     * - `wire_transfer_instruction` - The Pending Transaction was created by a Wire
+     *   Transfer Instruction object. Details will be under the
+     *   `wire_transfer_instruction` object.
+     * - `other` - The Pending Transaction was made for an undocumented or deprecated
+     *   reason.
      */
     category:
       | 'account_transfer_instruction'
@@ -207,6 +247,13 @@ export namespace PendingTransaction {
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -252,6 +299,13 @@ export namespace PendingTransaction {
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -296,6 +350,8 @@ export namespace PendingTransaction {
 
       /**
        * The payment network used to process this card authorization
+       *
+       * - `visa` - Visa
        */
       network: 'visa';
 
@@ -342,6 +398,36 @@ export namespace PendingTransaction {
            * For electronic commerce transactions, this identifies the level of security used
            * in obtaining the customer's payment credential. For mail or telephone order
            * transactions, identifies the type of mail or telephone order.
+           *
+           * - `mail_phone_order` - Single transaction of a mail/phone order: Use to indicate
+           *   that the transaction is a mail/phone order purchase, not a recurring
+           *   transaction or installment payment. For domestic transactions in the US
+           *   region, this value may also indicate one bill payment transaction in the
+           *   card-present or card-absent environments.
+           * - `recurring` - Recurring transaction: Payment indicator used to indicate a
+           *   recurring transaction that originates from an acquirer in the US region.
+           * - `installment` - Installment payment: Payment indicator used to indicate one
+           *   purchase of goods or services that is billed to the account in multiple
+           *   charges over a period of time agreed upon by the cardholder and merchant from
+           *   transactions that originate from an acquirer in the US region.
+           * - `unknown_mail_phone_order` - Unknown classification: other mail order: Use to
+           *   indicate that the type of mail/telephone order is unknown.
+           * - `secure_electronic_commerce` - Secure electronic commerce transaction: Use to
+           *   indicate that the electronic commerce transaction has been authenticated using
+           *   e.g., 3-D Secure
+           * - `non_authenticated_security_transaction_at_3ds_capable_merchant` -
+           *   Non-authenticated security transaction at a 3-D Secure-capable merchant, and
+           *   merchant attempted to authenticate the cardholder using 3-D Secure: Use to
+           *   identify an electronic commerce transaction where the merchant attempted to
+           *   authenticate the cardholder using 3-D Secure, but was unable to complete the
+           *   authentication because the issuer or cardholder does not participate in the
+           *   3-D Secure program.
+           * - `non_authenticated_security_transaction` - Non-authenticated security
+           *   transaction: Use to identify an electronic commerce transaction that uses data
+           *   encryption for security however , cardholder authentication is not performed
+           *   using 3-D Secure.
+           * - `non_secure_transaction` - Non-secure transaction: Use to identify an
+           *   electronic commerce transaction that has no data protection.
            */
           electronic_commerce_indicator:
             | 'mail_phone_order'
@@ -388,6 +474,13 @@ export namespace PendingTransaction {
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -412,6 +505,13 @@ export namespace PendingTransaction {
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
        * currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -447,6 +547,13 @@ export namespace PendingTransaction {
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
        * currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -467,6 +574,9 @@ export namespace PendingTransaction {
 
       /**
        * The status of the hold.
+       *
+       * - `held` - Funds are still being held.
+       * - `complete` - Funds have been released.
        */
       status: 'held' | 'complete';
     }

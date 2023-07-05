@@ -27,6 +27,9 @@ type _RoutingNumbersPage = RoutingNumbersPage;
 export interface RoutingNumber {
   /**
    * This routing number's support for ACH Transfers.
+   *
+   * - `supported` - The routing number can receive this transfer type.
+   * - `not_supported` - The routing number cannot receive this transfer type.
    */
   ach_transfers: 'supported' | 'not_supported';
 
@@ -37,6 +40,9 @@ export interface RoutingNumber {
 
   /**
    * This routing number's support for Real Time Payments Transfers.
+   *
+   * - `supported` - The routing number can receive this transfer type.
+   * - `not_supported` - The routing number cannot receive this transfer type.
    */
   real_time_payments_transfers: 'supported' | 'not_supported';
 
@@ -53,6 +59,9 @@ export interface RoutingNumber {
 
   /**
    * This routing number's support for Wire Transfers.
+   *
+   * - `supported` - The routing number can receive this transfer type.
+   * - `not_supported` - The routing number cannot receive this transfer type.
    */
   wire_transfers: 'supported' | 'not_supported';
 }

@@ -78,11 +78,21 @@ export interface Entity {
 
   /**
    * The relationship between your group and the entity.
+   *
+   * - `affiliated` - The entity is controlled by your group.
+   * - `informational` - The entity is for informational purposes only.
+   * - `unaffiliated` - The entity is not controlled by your group, but can still
+   *   directly open accounts.
    */
   relationship: 'affiliated' | 'informational' | 'unaffiliated';
 
   /**
    * The entity's legal structure.
+   *
+   * - `corporation` - A corporation.
+   * - `natural_person` - An individual person.
+   * - `joint` - Multiple individual people.
+   * - `trust` - A trust.
    */
   structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
 
@@ -189,6 +199,11 @@ export namespace Entity {
 
       /**
        * Why this person is considered a beneficial owner of the entity.
+       *
+       * - `ownership` - A person with 25% or greater direct or indirect ownership of the
+       *   entity.
+       * - `control` - A person who manages, directs, or has significant control of the
+       *   entity.
        */
       prong: 'ownership' | 'control';
     }
@@ -257,6 +272,13 @@ export namespace Entity {
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
+           *
+           * - `social_security_number` - A social security number.
+           * - `individual_taxpayer_identification_number` - An individual taxpayer
+           *   identification number (ITIN).
+           * - `passport` - A passport number.
+           * - `drivers_license` - A driver's license number.
+           * - `other` - Another identifying document.
            */
           method:
             | 'social_security_number'
@@ -351,6 +373,13 @@ export namespace Entity {
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         * - `passport` - A passport number.
+         * - `drivers_license` - A driver's license number.
+         * - `other` - Another identifying document.
          */
         method:
           | 'social_security_number'
@@ -432,6 +461,13 @@ export namespace Entity {
     export interface Identification {
       /**
        * A method that can be used to verify the individual's identity.
+       *
+       * - `social_security_number` - A social security number.
+       * - `individual_taxpayer_identification_number` - An individual taxpayer
+       *   identification number (ITIN).
+       * - `passport` - A passport number.
+       * - `drivers_license` - A driver's license number.
+       * - `other` - Another identifying document.
        */
       method:
         | 'social_security_number'
@@ -482,6 +518,9 @@ export namespace Entity {
 
     /**
      * Whether the trust is `revocable` or `irrevocable`.
+     *
+     * - `revocable` - The trust is revocable by the grantor.
+     * - `irrevocable` - The trust cannot be revoked.
      */
     category: 'revocable' | 'irrevocable';
 
@@ -612,6 +651,13 @@ export namespace Entity {
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         * - `passport` - A passport number.
+         * - `drivers_license` - A driver's license number.
+         * - `other` - Another identifying document.
          */
         method:
           | 'social_security_number'
@@ -637,6 +683,8 @@ export namespace Entity {
 
       /**
        * The structure of the trustee. Will always be equal to `individual`.
+       *
+       * - `individual` - The trustee is an individual.
        */
       structure: 'individual';
     }
@@ -706,6 +754,13 @@ export namespace Entity {
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
+           *
+           * - `social_security_number` - A social security number.
+           * - `individual_taxpayer_identification_number` - An individual taxpayer
+           *   identification number (ITIN).
+           * - `passport` - A passport number.
+           * - `drivers_license` - A driver's license number.
+           * - `other` - Another identifying document.
            */
           method:
             | 'social_security_number'
@@ -728,11 +783,21 @@ export namespace Entity {
 export interface EntityCreateParams {
   /**
    * The relationship between your group and the entity.
+   *
+   * - `affiliated` - The entity is controlled by your group.
+   * - `informational` - The entity is for informational purposes only.
+   * - `unaffiliated` - The entity is not controlled by your group, but can still
+   *   directly open accounts.
    */
   relationship: 'affiliated' | 'informational' | 'unaffiliated';
 
   /**
    * The type of Entity to create.
+   *
+   * - `corporation` - A corporation.
+   * - `natural_person` - An individual person.
+   * - `joint` - Multiple individual people.
+   * - `trust` - A trust.
    */
   structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
 
@@ -852,6 +917,11 @@ export namespace EntityCreateParams {
 
       /**
        * Why this person is considered a beneficial owner of the entity.
+       *
+       * - `ownership` - A person with 25% or greater direct or indirect ownership of the
+       *   entity.
+       * - `control` - A person who manages, directs, or has significant control of the
+       *   entity.
        */
       prong: 'ownership' | 'control';
 
@@ -933,6 +1003,13 @@ export namespace EntityCreateParams {
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
+           *
+           * - `social_security_number` - A social security number.
+           * - `individual_taxpayer_identification_number` - An individual taxpayer
+           *   identification number (ITIN).
+           * - `passport` - A passport number.
+           * - `drivers_license` - A driver's license number.
+           * - `other` - Another identifying document.
            */
           method:
             | 'social_security_number'
@@ -1125,6 +1202,13 @@ export namespace EntityCreateParams {
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         * - `passport` - A passport number.
+         * - `drivers_license` - A driver's license number.
+         * - `other` - Another identifying document.
          */
         method:
           | 'social_security_number'
@@ -1305,6 +1389,13 @@ export namespace EntityCreateParams {
     export interface Identification {
       /**
        * A method that can be used to verify the individual's identity.
+       *
+       * - `social_security_number` - A social security number.
+       * - `individual_taxpayer_identification_number` - An individual taxpayer
+       *   identification number (ITIN).
+       * - `passport` - A passport number.
+       * - `drivers_license` - A driver's license number.
+       * - `other` - Another identifying document.
        */
       method:
         | 'social_security_number'
@@ -1431,6 +1522,9 @@ export namespace EntityCreateParams {
      * Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
      * their own Employer Identification Number. Revocable trusts require information
      * about the individual `grantor` who created the trust.
+     *
+     * - `revocable` - The trust is revocable by the grantor.
+     * - `irrevocable` - The trust cannot be revoked.
      */
     category: 'revocable' | 'irrevocable';
 
@@ -1502,6 +1596,8 @@ export namespace EntityCreateParams {
     export interface Trustee {
       /**
        * The structure of the trustee.
+       *
+       * - `individual` - The trustee is an individual.
        */
       structure: 'individual';
 
@@ -1585,6 +1681,13 @@ export namespace EntityCreateParams {
         export interface Identification {
           /**
            * A method that can be used to verify the individual's identity.
+           *
+           * - `social_security_number` - A social security number.
+           * - `individual_taxpayer_identification_number` - An individual taxpayer
+           *   identification number (ITIN).
+           * - `passport` - A passport number.
+           * - `drivers_license` - A driver's license number.
+           * - `other` - Another identifying document.
            */
           method:
             | 'social_security_number'
@@ -1762,6 +1865,13 @@ export namespace EntityCreateParams {
       export interface Identification {
         /**
          * A method that can be used to verify the individual's identity.
+         *
+         * - `social_security_number` - A social security number.
+         * - `individual_taxpayer_identification_number` - An individual taxpayer
+         *   identification number (ITIN).
+         * - `passport` - A passport number.
+         * - `drivers_license` - A driver's license number.
+         * - `other` - Another identifying document.
          */
         method:
           | 'social_security_number'

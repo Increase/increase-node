@@ -47,6 +47,12 @@ export interface RealTimeDecision {
 
   /**
    * The category of the Real-Time Decision.
+   *
+   * - `card_authorization_requested` - A card is being authorized.
+   * - `digital_wallet_token_requested` - A card is being loaded into a digital
+   *   wallet.
+   * - `digital_wallet_authentication_requested` - A card is being loaded into a
+   *   digital wallet and requires cardholder authentication.
    */
   category:
     | 'card_authorization_requested'
@@ -71,6 +77,10 @@ export interface RealTimeDecision {
 
   /**
    * The status of the Real-Time Decision.
+   *
+   * - `pending` - The decision is pending action via real-time webhook.
+   * - `responded` - Your webhook actioned the real-time decision.
+   * - `timed_out` - Your webhook failed to respond to the authorization in time.
    */
   status: 'pending' | 'responded' | 'timed_out';
 
@@ -104,6 +114,9 @@ export namespace RealTimeDecision {
 
     /**
      * Whether or not the authorization was approved.
+     *
+     * - `approve` - Approve the authorization.
+     * - `decline` - Decline the authorization.
      */
     decision: 'approve' | 'decline' | null;
 
@@ -136,6 +149,8 @@ export namespace RealTimeDecision {
 
     /**
      * The payment network used to process this card authorization
+     *
+     * - `visa` - Visa
      */
     network: 'visa';
 
@@ -190,6 +205,36 @@ export namespace RealTimeDecision {
          * For electronic commerce transactions, this identifies the level of security used
          * in obtaining the customer's payment credential. For mail or telephone order
          * transactions, identifies the type of mail or telephone order.
+         *
+         * - `mail_phone_order` - Single transaction of a mail/phone order: Use to indicate
+         *   that the transaction is a mail/phone order purchase, not a recurring
+         *   transaction or installment payment. For domestic transactions in the US
+         *   region, this value may also indicate one bill payment transaction in the
+         *   card-present or card-absent environments.
+         * - `recurring` - Recurring transaction: Payment indicator used to indicate a
+         *   recurring transaction that originates from an acquirer in the US region.
+         * - `installment` - Installment payment: Payment indicator used to indicate one
+         *   purchase of goods or services that is billed to the account in multiple
+         *   charges over a period of time agreed upon by the cardholder and merchant from
+         *   transactions that originate from an acquirer in the US region.
+         * - `unknown_mail_phone_order` - Unknown classification: other mail order: Use to
+         *   indicate that the type of mail/telephone order is unknown.
+         * - `secure_electronic_commerce` - Secure electronic commerce transaction: Use to
+         *   indicate that the electronic commerce transaction has been authenticated using
+         *   e.g., 3-D Secure
+         * - `non_authenticated_security_transaction_at_3ds_capable_merchant` -
+         *   Non-authenticated security transaction at a 3-D Secure-capable merchant, and
+         *   merchant attempted to authenticate the cardholder using 3-D Secure: Use to
+         *   identify an electronic commerce transaction where the merchant attempted to
+         *   authenticate the cardholder using 3-D Secure, but was unable to complete the
+         *   authentication because the issuer or cardholder does not participate in the
+         *   3-D Secure program.
+         * - `non_authenticated_security_transaction` - Non-authenticated security
+         *   transaction: Use to identify an electronic commerce transaction that uses data
+         *   encryption for security however , cardholder authentication is not performed
+         *   using 3-D Secure.
+         * - `non_secure_transaction` - Non-secure transaction: Use to identify an
+         *   electronic commerce transaction that has no data protection.
          */
         electronic_commerce_indicator:
           | 'mail_phone_order'
@@ -222,11 +267,17 @@ export namespace RealTimeDecision {
 
     /**
      * The channel to send the card user their one-time passcode.
+     *
+     * - `sms` - Send one-time passcodes over SMS.
+     * - `email` - Send one-time passcodes over email.
      */
     channel: 'sms' | 'email';
 
     /**
      * The digital wallet app being used.
+     *
+     * - `apple_pay` - Apple Pay
+     * - `google_pay` - Google Pay
      */
     digital_wallet: 'apple_pay' | 'google_pay';
 
@@ -248,6 +299,11 @@ export namespace RealTimeDecision {
 
     /**
      * Whether your application successfully delivered the one-time passcode.
+     *
+     * - `success` - Your application successfully delivered the one-time passcode to
+     *   the cardholder.
+     * - `failure` - Your application failed to deliver the one-time passcode to the
+     *   cardholder.
      */
     result: 'success' | 'failure' | null;
   }
@@ -271,11 +327,17 @@ export namespace RealTimeDecision {
     /**
      * Whether or not the provisioning request was approved. This will be null until
      * the real time decision is responded to.
+     *
+     * - `approve` - Approve the provisioning request.
+     * - `decline` - Decline the provisioning request.
      */
     decision: 'approve' | 'decline' | null;
 
     /**
      * The digital wallet app being used.
+     *
+     * - `apple_pay` - Apple Pay
+     * - `google_pay` - Google Pay
      */
     digital_wallet: 'apple_pay' | 'google_pay';
   }
@@ -309,6 +371,9 @@ export namespace RealTimeDecisionActionParams {
   export interface CardAuthorization {
     /**
      * Whether the card authorization should be approved or declined.
+     *
+     * - `approve` - Approve the authorization.
+     * - `decline` - Decline the authorization.
      */
     decision: 'approve' | 'decline';
   }
@@ -320,6 +385,11 @@ export namespace RealTimeDecisionActionParams {
   export interface DigitalWalletAuthentication {
     /**
      * Whether your application was able to deliver the one-time passcode.
+     *
+     * - `success` - Your application successfully delivered the one-time passcode to
+     *   the cardholder.
+     * - `failure` - Your application failed to deliver the one-time passcode to the
+     *   cardholder.
      */
     result: 'success' | 'failure';
   }

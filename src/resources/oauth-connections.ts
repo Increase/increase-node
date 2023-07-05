@@ -63,6 +63,9 @@ export interface OauthConnection {
 
   /**
    * Whether the connection is active.
+   *
+   * - `active` - The OAuth connection is active.
+   * - `inactive` - The OAuth connection is permanently deactivated.
    */
   status: 'active' | 'inactive';
 

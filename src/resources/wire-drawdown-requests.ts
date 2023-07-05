@@ -121,6 +121,13 @@ export interface WireDrawdownRequest {
 
   /**
    * The lifecycle status of the drawdown request.
+   *
+   * - `pending_submission` - The drawdown request is queued to be submitted to
+   *   Fedwire.
+   * - `pending_response` - The drawdown request has been sent and the recipient
+   *   should respond in some way.
+   * - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+   * - `refused` - The drawdown request has been refused by the recipient.
    */
   status: 'pending_submission' | 'pending_response' | 'fulfilled' | 'refused';
 

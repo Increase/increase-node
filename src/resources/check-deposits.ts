@@ -77,6 +77,13 @@ export interface CheckDeposit {
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+   *
+   * - `CAD` - Canadian Dollar (CAD)
+   * - `CHF` - Swiss Franc (CHF)
+   * - `EUR` - Euro (EUR)
+   * - `GBP` - British Pound (GBP)
+   * - `JPY` - Japanese Yen (JPY)
+   * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -105,6 +112,11 @@ export interface CheckDeposit {
 
   /**
    * The status of the Check Deposit.
+   *
+   * - `pending` - The Check Deposit is pending review.
+   * - `submitted` - The Check Deposit has been deposited.
+   * - `rejected` - The Check Deposit has been rejected.
+   * - `returned` - The Check Deposit has been returned.
    */
   status: 'pending' | 'submitted' | 'rejected' | 'returned';
 
@@ -151,6 +163,13 @@ export namespace CheckDeposit {
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
+     *
+     * - `CAD` - Canadian Dollar (CAD)
+     * - `CHF` - Swiss Franc (CHF)
+     * - `EUR` - Euro (EUR)
+     * - `GBP` - British Pound (GBP)
+     * - `JPY` - Japanese Yen (JPY)
+     * - `USD` - US Dollar (USD)
      */
     currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -180,11 +199,30 @@ export namespace CheckDeposit {
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
      * currency.
+     *
+     * - `CAD` - Canadian Dollar (CAD)
+     * - `CHF` - Swiss Franc (CHF)
+     * - `EUR` - Euro (EUR)
+     * - `GBP` - British Pound (GBP)
+     * - `JPY` - Japanese Yen (JPY)
+     * - `USD` - US Dollar (USD)
      */
     currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
      * Why the check deposit was rejected.
+     *
+     * - `incomplete_image` - The check's image is incomplete.
+     * - `duplicate` - This is a duplicate check submission.
+     * - `poor_image_quality` - This check has poor image quality.
+     * - `incorrect_amount` - The check was deposited with the incorrect amount.
+     * - `incorrect_recipient` - The check is made out to someone other than the
+     *   account holder.
+     * - `not_eligible_for_mobile_deposit` - This check was not eligible for mobile
+     *   deposit.
+     * - `missing_required_data_elements` - This check is missing at least one required
+     *   field
+     * - `unknown` - The check was rejected for an unknown reason.
      */
     reason:
       | 'incomplete_image'
@@ -222,9 +260,30 @@ export namespace CheckDeposit {
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
+     *
+     * - `CAD` - Canadian Dollar (CAD)
+     * - `CHF` - Swiss Franc (CHF)
+     * - `EUR` - Euro (EUR)
+     * - `GBP` - British Pound (GBP)
+     * - `JPY` - Japanese Yen (JPY)
+     * - `USD` - US Dollar (USD)
      */
     currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
+    /**
+     * - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
+     * - `closed_account` - The account is closed.
+     * - `duplicate_submission` - The check has already been deposited.
+     * - `insufficient_funds` - Insufficient funds
+     * - `no_account` - No account was found matching the check details.
+     * - `not_authorized` - The check was not authorized.
+     * - `stale_dated` - The check is too old.
+     * - `stop_payment` - The payment has been stopped by the account holder.
+     * - `unknown_reason` - The reason for the return is unknown.
+     * - `unmatched_details` - The image doesn't match the details submitted.
+     * - `unreadable_image` - The image could not be read.
+     * - `endorsement_irregular` - The check endorsement was irregular.
+     */
     return_reason:
       | 'ach_conversion_not_supported'
       | 'closed_account'

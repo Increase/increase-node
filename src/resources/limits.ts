@@ -68,11 +68,24 @@ export interface Limit {
   /**
    * The interval for the metric. This is required if `metric` is `count` or
    * `volume`.
+   *
+   * - `transaction` - Enforce the Limit per-transaction.
+   * - `day` - Enforce the Limit based on the trailing 24 hour period.
+   * - `week` - Enforce the Limit based on the trailing seven days.
+   * - `month` - Enforce the Limit based on the trailing month, going back to the
+   *   current day in the previous month, or as close as possible given month length
+   *   differences.
+   * - `year` - Enforce the Limit based on the trailing 365 days.
+   * - `all_time` - Enforce the Limit for all time.
    */
   interval: 'transaction' | 'day' | 'week' | 'month' | 'year' | 'all_time' | null;
 
   /**
    * The metric for the Limit.
+   *
+   * - `count` - The maximum number of debits allowed.
+   * - `volume` - The maximum volume of debits allowed in the minor unit of the
+   *   model's currency.
    */
   metric: 'count' | 'volume';
 
@@ -83,11 +96,18 @@ export interface Limit {
 
   /**
    * The type of the model you wish to associate the Limit with.
+   *
+   * - `account` - Enforce the Limit for the entire account.
+   * - `account_number` - Enforce the Limit for this specific route.
+   * - `card` - Enforce the Limit for this specific card.
    */
   model_type: 'account' | 'account_number' | 'card';
 
   /**
    * The current status of the Limit.
+   *
+   * - `active` - The Limit is active.
+   * - `inactive` - The Limit is temporarily disabled.
    */
   status: 'active' | 'inactive';
 
@@ -106,6 +126,10 @@ export interface Limit {
 export interface LimitCreateParams {
   /**
    * The metric for the limit.
+   *
+   * - `count` - The maximum number of debits allowed.
+   * - `volume` - The maximum volume of debits allowed in the minor unit of the
+   *   model's currency.
    */
   metric: 'count' | 'volume';
 
@@ -122,6 +146,15 @@ export interface LimitCreateParams {
 
   /**
    * The interval for the metric. Required if `metric` is `count` or `volume`.
+   *
+   * - `transaction` - Enforce the limit per-transaction.
+   * - `day` - Enforce the limit based on the previous 24 hour period.
+   * - `week` - Enforce the limit based on the previous seven days.
+   * - `month` - Enforce the limit based on the previous month, going back to the
+   *   current day in the previous month, or as close as possible given month length
+   *   differences.
+   * - `year` - Enforce the limit based on the previous year.
+   * - `all_time` - Enforce the limit for all time.
    */
   interval?: 'transaction' | 'day' | 'week' | 'month' | 'year' | 'all_time';
 }
@@ -129,6 +162,9 @@ export interface LimitCreateParams {
 export interface LimitUpdateParams {
   /**
    * The status to update the limit with.
+   *
+   * - `inactive` - Disable the limit temporarily.
+   * - `active` - Activate the limit.
    */
   status: 'inactive' | 'active';
 }

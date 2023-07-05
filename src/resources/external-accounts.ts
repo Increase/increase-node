@@ -89,6 +89,10 @@ export interface ExternalAccount {
 
   /**
    * The type of the account to which the transfer will be sent.
+   *
+   * - `checking` - A checking account.
+   * - `savings` - A savings account.
+   * - `other` - A different type of account.
    */
   funding: 'checking' | 'savings' | 'other';
 
@@ -99,6 +103,10 @@ export interface ExternalAccount {
 
   /**
    * The External Account's status.
+   *
+   * - `active` - The External Acccount is active.
+   * - `archived` - The External Account is archived and won't appear in the
+   *   dashboard.
    */
   status: 'active' | 'archived';
 
@@ -110,6 +118,10 @@ export interface ExternalAccount {
 
   /**
    * If you have verified ownership of the External Account.
+   *
+   * - `unverified` - The External Account has not been verified.
+   * - `pending` - The External Account is in the process of being verified.
+   * - `verified` - The External Account is verified.
    */
   verification_status: 'unverified' | 'pending' | 'verified';
 }
@@ -133,6 +145,10 @@ export interface ExternalAccountCreateParams {
 
   /**
    * The type of the destination account. Defaults to `checking`.
+   *
+   * - `checking` - A checking account.
+   * - `savings` - A savings account.
+   * - `other` - A different type of account.
    */
   funding?: 'checking' | 'savings' | 'other';
 }
@@ -145,6 +161,10 @@ export interface ExternalAccountUpdateParams {
 
   /**
    * The status of the External Account.
+   *
+   * - `active` - The External Acccount is active.
+   * - `archived` - The External Account is archived and won't appear in the
+   *   dashboard.
    */
   status?: 'active' | 'archived';
 }
