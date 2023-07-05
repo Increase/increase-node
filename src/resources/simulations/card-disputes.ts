@@ -24,6 +24,10 @@ export class CardDisputes extends APIResource {
 export interface CardDisputeActionParams {
   /**
    * The status to move the dispute to.
+   *
+   * - `accepted` - The Card Dispute has been accepted and your funds have been
+   *   returned.
+   * - `rejected` - The Card Dispute has been rejected.
    */
   status: 'accepted' | 'rejected';
 

@@ -72,6 +72,24 @@ export interface InboundACHTransferReturn {
   /**
    * The reason why this transfer will be returned. This is sent to the initiating
    * bank.
+   *
+   * - `authorization_revoked_by_customer` - The customer no longer authorizes this
+   *   transaction. The Nacha return code is R07.
+   * - `payment_stopped` - The customer asked for the payment to be stopped. This
+   *   reason is only allowed for debits. The Nacha return code is R08.
+   * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+   *   customer advises that the debit was unauthorized. The Nacha return code is
+   *   R10.
+   * - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+   *   payee is deceased. The Nacha return code is R14.
+   * - `beneficiary_or_account_holder_deceased` - The account holder is deceased. The
+   *   Nacha return code is R15.
+   * - `credit_entry_refused_by_receiver` - The customer refused a credit entry. This
+   *   reason is only allowed for credits. The Nacha return code is R23.
+   * - `duplicate_entry` - The account holder identified this transaction as a
+   *   duplicate. The Nacha return code is R24.
+   * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+   *   authorizes this transaction. The Nacha return code is R29.
    */
   reason:
     | 'authorization_revoked_by_customer'
@@ -85,6 +103,10 @@ export interface InboundACHTransferReturn {
 
   /**
    * The lifecycle status of the transfer.
+   *
+   * - `pending_submitting` - The transfer return is pending submission to the
+   *   Federal Reserve.
+   * - `submitted` - The transfer has been submitted to the Federal Reserve.
    */
   status: 'pending_submitting' | 'submitted';
 
@@ -126,6 +148,24 @@ export interface InboundACHTransferReturnCreateParams {
   /**
    * The reason why this transfer will be returned. The most usual return codes are
    * `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+   *
+   * - `authorization_revoked_by_customer` - The customer no longer authorizes this
+   *   transaction. The Nacha return code is R07.
+   * - `payment_stopped` - The customer asked for the payment to be stopped. This
+   *   reason is only allowed for debits. The Nacha return code is R08.
+   * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+   *   customer advises that the debit was unauthorized. The Nacha return code is
+   *   R10.
+   * - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+   *   payee is deceased. The Nacha return code is R14.
+   * - `beneficiary_or_account_holder_deceased` - The account holder is deceased. The
+   *   Nacha return code is R15.
+   * - `credit_entry_refused_by_receiver` - The customer refused a credit entry. This
+   *   reason is only allowed for credits. The Nacha return code is R23.
+   * - `duplicate_entry` - The account holder identified this transaction as a
+   *   duplicate. The Nacha return code is R24.
+   * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+   *   authorizes this transaction. The Nacha return code is R29.
    */
   reason:
     | 'authorization_revoked_by_customer'

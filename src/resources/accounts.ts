@@ -78,6 +78,13 @@ export interface Account {
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
    * currency.
+   *
+   * - `CAD` - Canadian Dollar (CAD)
+   * - `CHF` - Swiss Franc (CHF)
+   * - `EUR` - Euro (EUR)
+   * - `GBP` - British Pound (GBP)
+   * - `JPY` - Japanese Yen (JPY)
+   * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -118,6 +125,9 @@ export interface Account {
 
   /**
    * The status of the Account.
+   *
+   * - `open` - Open Accounts that are ready to use.
+   * - `closed` - Closed Accounts on which no new activity can occur.
    */
   status: 'open' | 'closed';
 
@@ -174,6 +184,9 @@ export interface AccountListParams extends PageParams {
 
   /**
    * Filter Accounts for those with the specified status.
+   *
+   * - `open` - Open Accounts that are ready to use.
+   * - `closed` - Closed Accounts on which no new activity can occur.
    */
   status?: 'open' | 'closed';
 }

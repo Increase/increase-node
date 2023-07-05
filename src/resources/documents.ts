@@ -47,6 +47,12 @@ export interface Document {
 
   /**
    * The type of document.
+   *
+   * - `form_1099_int` - Internal Revenue Service Form 1099-INT.
+   * - `proof_of_authorization` - A document submitted in response to a proof of
+   *   authorization request for an ACH transfer.
+   * - `company_information` - Company information, such a policies or procedures,
+   *   typically submitted during our due diligence process.
    */
   category: 'form_1099_int' | 'proof_of_authorization' | 'company_information';
 

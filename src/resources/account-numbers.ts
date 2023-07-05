@@ -96,6 +96,10 @@ export interface AccountNumber {
 
   /**
    * This indicates if payments can be made to the Account Number.
+   *
+   * - `active` - The account number is active.
+   * - `disabled` - The account number is temporarily disabled.
+   * - `canceled` - The account number is permanently disabled.
    */
   status: 'active' | 'disabled' | 'canceled';
 
@@ -126,6 +130,10 @@ export interface AccountNumberUpdateParams {
 
   /**
    * This indicates if transfers can be made to the Account Number.
+   *
+   * - `active` - The account number is active.
+   * - `disabled` - The account number is temporarily disabled.
+   * - `canceled` - The account number is permanently disabled.
    */
   status?: 'active' | 'disabled' | 'canceled';
 }
@@ -140,6 +148,10 @@ export interface AccountNumberListParams extends PageParams {
 
   /**
    * The status to retrieve Account Numbers for.
+   *
+   * - `active` - The account number is active.
+   * - `disabled` - The account number is temporarily disabled.
+   * - `canceled` - The account number is permanently disabled.
    */
   status?: 'active' | 'disabled' | 'canceled';
 }

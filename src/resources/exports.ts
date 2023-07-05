@@ -57,6 +57,10 @@ export interface Export {
   /**
    * The category of the Export. We may add additional possible values for this enum
    * over time; your application should be able to handle that gracefully.
+   *
+   * - `transaction_csv` - Export a CSV of all transactions for a given time range.
+   * - `balance_csv` - Export a CSV of account balances for the dates in a given
+   *   range.
    */
   category: 'transaction_csv' | 'balance_csv';
 
@@ -79,6 +83,9 @@ export interface Export {
 
   /**
    * The status of the Export.
+   *
+   * - `pending` - Increase is generating the export.
+   * - `complete` - The export has been successfully generated.
    */
   status: 'pending' | 'complete';
 
@@ -92,6 +99,10 @@ export interface Export {
 export interface ExportCreateParams {
   /**
    * The type of Export to create.
+   *
+   * - `transaction_csv` - Export a CSV of all transactions for a given time range.
+   * - `balance_csv` - Export a CSV of account balances for the dates in a given
+   *   range.
    */
   category: 'transaction_csv' | 'balance_csv';
 

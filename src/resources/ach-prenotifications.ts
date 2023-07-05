@@ -98,6 +98,9 @@ export interface ACHPrenotification {
 
   /**
    * If the notification is for a future credit or debit.
+   *
+   * - `credit` - The Prenotification is for an anticipated credit.
+   * - `debit` - The Prenotification is for an anticipated debit.
    */
   credit_debit_indicator: 'credit' | 'debit' | null;
 
@@ -118,6 +121,11 @@ export interface ACHPrenotification {
 
   /**
    * The lifecycle status of the ACH Prenotification.
+   *
+   * - `pending_submitting` - The Prenotification is pending submission.
+   * - `requires_attention` - The Prenotification requires attention.
+   * - `returned` - The Prenotification has been returned.
+   * - `submitted` - The Prentification is complete.
    */
   status: 'pending_submitting' | 'requires_attention' | 'returned' | 'submitted';
 
@@ -185,6 +193,9 @@ export interface ACHPrenotificationCreateParams {
 
   /**
    * Whether the Prenotification is for a future debit or credit.
+   *
+   * - `credit` - The Prenotification is for an anticipated credit.
+   * - `debit` - The Prenotification is for an anticipated debit.
    */
   credit_debit_indicator?: 'credit' | 'debit';
 
@@ -207,6 +218,10 @@ export interface ACHPrenotificationCreateParams {
 
   /**
    * The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+   *
+   * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+   * - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+   * - `internet_initiated` - Internet Initiated (WEB).
    */
   standard_entry_class_code?:
     | 'corporate_credit_or_debit'

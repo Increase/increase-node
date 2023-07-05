@@ -56,6 +56,9 @@ export interface BookkeepingAccount {
 
   /**
    * The compliance category of the account.
+   *
+   * - `commingled_cash` - A cash in an commingled Increase Account.
+   * - `customer_balance` - A customer balance.
    */
   compliance_category: 'commingled_cash' | 'customer_balance' | null;
 
@@ -89,6 +92,9 @@ export interface BookkeepingAccountCreateParams {
 
   /**
    * The account compliance category.
+   *
+   * - `commingled_cash` - A cash in an commingled Increase Account.
+   * - `customer_balance` - A customer balance.
    */
   compliance_category?: 'commingled_cash' | 'customer_balance';
 
