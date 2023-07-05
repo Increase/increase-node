@@ -143,6 +143,13 @@ export interface WireTransfer {
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For wire transfers this is always equal to `usd`.
+   *
+   * - `CAD` - Canadian Dollar (CAD)
+   * - `CHF` - Swiss Franc (CHF)
+   * - `EUR` - Euro (EUR)
+   * - `GBP` - British Pound (GBP)
+   * - `JPY` - Japanese Yen (JPY)
+   * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -173,6 +180,15 @@ export interface WireTransfer {
 
   /**
    * The lifecycle status of the transfer.
+   *
+   * - `canceled` - The transfer has been canceled.
+   * - `requires_attention` - The transfer requires attention from an Increase
+   *   operator.
+   * - `pending_approval` - The transfer is pending approval.
+   * - `rejected` - The transfer has been rejected.
+   * - `reversed` - The transfer has been reversed.
+   * - `complete` - The transfer is complete.
+   * - `pending_creating` - The transfer is pending creation.
    */
   status:
     | 'canceled'

@@ -84,6 +84,11 @@ export interface CardDispute {
 
   /**
    * The results of the Dispute investigation.
+   *
+   * - `pending_reviewing` - The Card Dispute is pending review.
+   * - `accepted` - The Card Dispute has been accepted and your funds have been
+   *   returned.
+   * - `rejected` - The Card Dispute has been rejected.
    */
   status: 'pending_reviewing' | 'accepted' | 'rejected';
 

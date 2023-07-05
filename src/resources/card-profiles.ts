@@ -74,6 +74,12 @@ export interface CardProfile {
 
   /**
    * The status of the Card Profile.
+   *
+   * - `pending` - The Card Profile is awaiting review from Increase and/or
+   *   processing by card networks.
+   * - `rejected` - There is an issue with the Card Profile preventing it from use.
+   * - `active` - The Card Profile can be assigned to Cards.
+   * - `archived` - The Card Profile is no longer in use.
    */
   status: 'pending' | 'rejected' | 'active' | 'archived';
 

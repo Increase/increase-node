@@ -64,11 +64,20 @@ export interface DigitalWalletToken {
 
   /**
    * This indicates if payments can be made with the Digital Wallet Token.
+   *
+   * - `active` - The digital wallet token is active.
+   * - `inactive` - The digital wallet token has been created but not successfully
+   *   activated via two-factor authentication yet.
+   * - `suspended` - The digital wallet token has been temporarily paused.
+   * - `deactivated` - The digital wallet token has been permanently cancelled.
    */
   status: 'active' | 'inactive' | 'suspended' | 'deactivated';
 
   /**
    * The digital wallet app being used.
+   *
+   * - `apple_pay` - Apple Pay
+   * - `google_pay` - Google Pay
    */
   token_requestor: 'apple_pay' | 'google_pay';
 

@@ -134,6 +134,13 @@ export interface CheckTransfer {
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
    * currency.
+   *
+   * - `CAD` - Canadian Dollar (CAD)
+   * - `CHF` - Swiss Franc (CHF)
+   * - `EUR` - Euro (EUR)
+   * - `GBP` - British Pound (GBP)
+   * - `JPY` - Japanese Yen (JPY)
+   * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
@@ -177,6 +184,19 @@ export interface CheckTransfer {
 
   /**
    * The lifecycle status of the transfer.
+   *
+   * - `pending_approval` - The transfer is awaiting approval.
+   * - `pending_submission` - The transfer is pending submission.
+   * - `submitted` - The transfer is complete.
+   * - `pending_mailing` - The check is queued for mailing.
+   * - `mailed` - The check has been mailed.
+   * - `canceled` - The transfer has been canceled.
+   * - `deposited` - The check has been deposited.
+   * - `stopped` - A stop-payment was requested for this check.
+   * - `returned` - The transfer has been returned.
+   * - `rejected` - The transfer has been rejected.
+   * - `requires_attention` - The transfer requires attention from an Increase
+   *   operator.
    */
   status:
     | 'pending_approval'
@@ -333,6 +353,13 @@ export namespace CheckTransfer {
 
     /**
      * The reason why the check was returned.
+     *
+     * - `mail_delivery_failure` - Mail delivery failed and the check was returned to
+     *   sender.
+     * - `refused_by_recipient` - The check arrived and the recipient refused to
+     *   deposit it.
+     * - `returned_not_authorized` - The check was fraudulently deposited and the
+     *   transfer was returned to the Bank of First Deposit.
      */
     reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
 

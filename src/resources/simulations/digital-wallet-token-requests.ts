@@ -24,6 +24,13 @@ export interface DigitalWalletTokenRequestCreateResponse {
   /**
    * If the simulated tokenization attempt was declined, this field contains details
    * as to why.
+   *
+   * - `card_not_active` - The card is not active.
+   * - `no_verification_method` - The card does not have a two-factor authentication
+   *   method.
+   * - `webhook_timed_out` - Your webhook timed out when evaluating the token
+   *   provisioning attempt.
+   * - `webhook_declined` - Your webhook declined the token provisioning attempt.
    */
   decline_reason:
     | 'card_not_active'

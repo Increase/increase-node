@@ -119,6 +119,10 @@ export interface Card {
 
   /**
    * This indicates if payments can be made with the card.
+   *
+   * - `active` - The card is active.
+   * - `disabled` - The card is temporarily disabled.
+   * - `canceled` - The card is temporarily canceled.
    */
   status: 'active' | 'disabled' | 'canceled';
 
@@ -329,6 +333,10 @@ export interface CardUpdateParams {
 
   /**
    * The status to update the Card with.
+   *
+   * - `active` - The card is active.
+   * - `disabled` - The card is temporarily disabled.
+   * - `canceled` - The card is temporarily canceled.
    */
   status?: 'active' | 'disabled' | 'canceled';
 }
