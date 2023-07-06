@@ -374,6 +374,7 @@ export namespace Increase {
   export import CheckTransfersPage = API.CheckTransfersPage;
   export import CheckTransferCreateParams = API.CheckTransferCreateParams;
   export import CheckTransferListParams = API.CheckTransferListParams;
+  export import CheckTransferStopPaymentParams = API.CheckTransferStopPaymentParams;
 
   export import Entities = API.Entities;
   export import Entity = API.Entity;

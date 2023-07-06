@@ -58,9 +58,10 @@ export class CheckTransfers extends APIResource {
    */
   stopPayment(
     checkTransferId: string,
+    body: CheckTransferStopPaymentParams,
     options?: Core.RequestOptions,
   ): Promise<Core.APIResponse<CheckTransfer>> {
-    return this.post(`/check_transfers/${checkTransferId}/stop_payment`, options);
+    return this.post(`/check_transfers/${checkTransferId}/stop_payment`, { body, ...options });
   }
 }
 
@@ -82,6 +83,11 @@ export interface CheckTransfer {
    * The identifier of the Account from which funds will be transferred.
    */
   account_id: string;
+
+  /**
+   * The account number printed on the check.
+   */
+  account_number: string;
 
   /**
    * The city of the check's destination.
@@ -126,6 +132,11 @@ export interface CheckTransfer {
   cancellation: CheckTransfer.Cancellation | null;
 
   /**
+   * The check number printed on the check.
+   */
+  check_number: string;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
@@ -166,6 +177,11 @@ export interface CheckTransfer {
   note: string | null;
 
   /**
+   * The identifier of the Pending Transaction associated with the check's creation.
+   */
+  pending_transaction_id: string | null;
+
+  /**
    * The name that will be printed on the check.
    */
   recipient_name: string | null;
@@ -176,11 +192,15 @@ export interface CheckTransfer {
   return_address: CheckTransfer.ReturnAddress | null;
 
   /**
-   * After a check transfer is returned, this will contain supplemental details. A
-   * check transfer is returned when the receiver mails a never deposited check back
-   * to the bank printed on the check.
+   * The routing number printed on the check.
    */
-  return_details: CheckTransfer.ReturnDetails | null;
+  routing_number: string;
+
+  /**
+   * The identifier of the Account Number from which to send the transfer and print
+   * on the check.
+   */
+  source_account_number_id: string | null;
 
   /**
    * The lifecycle status of the transfer.
@@ -193,7 +213,6 @@ export interface CheckTransfer {
    * - `canceled` - The transfer has been canceled.
    * - `deposited` - The check has been deposited.
    * - `stopped` - A stop-payment was requested for this check.
-   * - `returned` - The transfer has been returned.
    * - `rejected` - The transfer has been rejected.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
@@ -207,7 +226,6 @@ export interface CheckTransfer {
     | 'canceled'
     | 'deposited'
     | 'stopped'
-    | 'returned'
     | 'rejected'
     | 'requires_attention';
 
@@ -221,17 +239,6 @@ export interface CheckTransfer {
    * After the transfer is submitted, this will contain supplemental details.
    */
   submission: CheckTransfer.Submission | null;
-
-  /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-   * the check was submitted.
-   */
-  submitted_at: string | null;
-
-  /**
-   * The ID for the transaction caused by the transfer.
-   */
-  transaction_id: string | null;
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -299,6 +306,11 @@ export namespace CheckTransfer {
     front_image_file_id: string | null;
 
     /**
+     * The identifier of the Transaction object created when the check was deposited.
+     */
+    transaction_id: string | null;
+
+    /**
      * A constant representing the object's type. For this resource it will always be
      * `check_transfer_deposit`.
      */
@@ -341,60 +353,22 @@ export namespace CheckTransfer {
   }
 
   /**
-   * After a check transfer is returned, this will contain supplemental details. A
-   * check transfer is returned when the receiver mails a never deposited check back
-   * to the bank printed on the check.
-   */
-  export interface ReturnDetails {
-    /**
-     * If available, a document with additional information about the return.
-     */
-    file_id: string | null;
-
-    /**
-     * The reason why the check was returned.
-     *
-     * - `mail_delivery_failure` - Mail delivery failed and the check was returned to
-     *   sender.
-     * - `refused_by_recipient` - The check arrived and the recipient refused to
-     *   deposit it.
-     * - `returned_not_authorized` - The check was fraudulently deposited and the
-     *   transfer was returned to the Bank of First Deposit.
-     */
-    reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
-
-    /**
-     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-     * the check was returned.
-     */
-    returned_at: string;
-
-    /**
-     * The identifier of the Transaction that was created to credit you for the
-     * returned check.
-     */
-    transaction_id: string | null;
-
-    /**
-     * The identifier of the returned Check Transfer.
-     */
-    transfer_id: string;
-  }
-
-  /**
    * After a stop-payment is requested on the check, this will contain supplemental
    * details.
    */
   export interface StopPaymentRequest {
     /**
+     * The reason why this transfer was stopped.
+     *
+     * - `mail_delivery_failed` - The check could not be delivered.
+     * - `unknown` - The check was stopped for another reason.
+     */
+    reason: 'mail_delivery_failed' | 'unknown';
+
+    /**
      * The time the stop-payment was requested.
      */
     requested_at: string;
-
-    /**
-     * The transaction ID of the corresponding credit transaction.
-     */
-    transaction_id: string;
 
     /**
      * The ID of the check transfer that was stopped.
@@ -412,11 +386,6 @@ export namespace CheckTransfer {
    * After the transfer is submitted, this will contain supplemental details.
    */
   export interface Submission {
-    /**
-     * The identitying number of the check.
-     */
-    check_number: string;
-
     /**
      * When this check transfer was submitted to our check printer.
      */
@@ -485,6 +454,12 @@ export interface CheckTransferCreateParams {
    * the address of the Entity of the Account used to make the Check Transfer.
    */
   return_address?: CheckTransferCreateParams.ReturnAddress;
+
+  /**
+   * The identifier of the Account Number from which to send the transfer and print
+   * on the check.
+   */
+  source_account_number_id?: string;
 }
 
 export namespace CheckTransferCreateParams {
@@ -562,9 +537,20 @@ export namespace CheckTransferListParams {
   }
 }
 
+export interface CheckTransferStopPaymentParams {
+  /**
+   * The reason why this transfer should be stopped.
+   *
+   * - `mail_delivery_failed` - The check could not be delivered.
+   * - `unknown` - The check was stopped for another reason.
+   */
+  reason?: 'mail_delivery_failed' | 'unknown';
+}
+
 export namespace CheckTransfers {
   export import CheckTransfer = API.CheckTransfer;
   export type CheckTransfersPage = _CheckTransfersPage;
   export import CheckTransferCreateParams = API.CheckTransferCreateParams;
   export import CheckTransferListParams = API.CheckTransferListParams;
+  export import CheckTransferStopPaymentParams = API.CheckTransferStopPaymentParams;
 }

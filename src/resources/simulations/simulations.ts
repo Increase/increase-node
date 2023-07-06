@@ -5,6 +5,7 @@ import { AccountTransfers } from './account-transfers';
 import { AccountStatements } from './account-statements';
 import { ACHTransfers } from './ach-transfers';
 import { CardDisputes } from './card-disputes';
+import { CardProfiles } from './card-profiles';
 import { CardRefunds } from './card-refunds';
 import { CheckTransfers } from './check-transfers';
 import { Documents } from './documents';
@@ -23,6 +24,7 @@ export class Simulations extends APIResource {
   accountStatements: AccountStatements = new AccountStatements(this.client);
   achTransfers: ACHTransfers = new ACHTransfers(this.client);
   cardDisputes: CardDisputes = new CardDisputes(this.client);
+  cardProfiles: CardProfiles = new CardProfiles(this.client);
   cardRefunds: CardRefunds = new CardRefunds(this.client);
   checkTransfers: CheckTransfers = new CheckTransfers(this.client);
   documents: Documents = new Documents(this.client);
@@ -50,11 +52,12 @@ export namespace Simulations {
   export import CardDisputes = API.CardDisputes;
   export import CardDisputeActionParams = API.CardDisputeActionParams;
 
+  export import CardProfiles = API.CardProfiles;
+
   export import CardRefunds = API.CardRefunds;
   export import CardRefundCreateParams = API.CardRefundCreateParams;
 
   export import CheckTransfers = API.CheckTransfers;
-  export import CheckTransferReturnParams = API.CheckTransferReturnParams;
 
   export import Documents = API.Documents;
   export import DocumentCreateParams = API.DocumentCreateParams;

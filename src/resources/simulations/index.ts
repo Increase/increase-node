@@ -10,9 +10,10 @@ export { AccountStatementCreateParams, AccountStatements } from './account-state
 export { AccountTransfers } from './account-transfers';
 export { CardAuthorizationSimulation, CardAuthorizeParams, CardSettlementParams, Cards } from './cards';
 export { CardDisputeActionParams, CardDisputes } from './card-disputes';
+export { CardProfiles } from './card-profiles';
 export { CardRefundCreateParams, CardRefunds } from './card-refunds';
 export { CheckDeposits } from './check-deposits';
-export { CheckTransferReturnParams, CheckTransfers } from './check-transfers';
+export { CheckTransfers } from './check-transfers';
 export {
   DigitalWalletTokenRequestCreateResponse,
   DigitalWalletTokenRequestCreateParams,

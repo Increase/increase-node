@@ -32,6 +32,7 @@ describe('resource checkTransfers', () => {
       note: 'x',
       require_approval: true,
       return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+      source_account_number_id: 'string',
     });
   });
 
@@ -107,16 +108,6 @@ describe('resource checkTransfers', () => {
 
   // Prism doesn't accept no request body being sent but returns 415 if it is sent
   test.skip('stopPayment', async () => {
-    const response = await increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5');
-  });
-
-  // Prism doesn't accept no request body being sent but returns 415 if it is sent
-  test.skip('stopPayment: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
+    const response = await increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {});
   });
 });
