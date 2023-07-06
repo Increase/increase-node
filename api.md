@@ -335,7 +335,7 @@ Types:
 
 Methods:
 
-- <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entity</code>
+- <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entities.Entity</code>
 - <code title="get /entity_supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">list</a>({ ...params }) -> SupplementalDocumentsPage</code>
 
 # InboundWireDrawdownRequests
@@ -457,13 +457,13 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./src/resources/simulations/account-transfers.ts">complete</a>(accountTransferId) -> AccountTransfer</code>
+- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./src/resources/simulations/account-transfers.ts">complete</a>(accountTransferId) -> AccountTransfers.AccountTransfer</code>
 
 ## AccountStatements
 
 Methods:
 
-- <code title="post /simulations/account_statements">client.simulations.accountStatements.<a href="./src/resources/simulations/account-statements.ts">create</a>({ ...params }) -> AccountStatement</code>
+- <code title="post /simulations/account_statements">client.simulations.accountStatements.<a href="./src/resources/simulations/account-statements.ts">create</a>({ ...params }) -> AccountStatements.AccountStatement</code>
 
 ## ACHTransfers
 
@@ -474,39 +474,39 @@ Types:
 Methods:
 
 - <code title="post /simulations/inbound_ach_transfers">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">createInbound</a>({ ...params }) -> ACHTransferSimulation</code>
-- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfer</code>
-- <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfer</code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfers.ACHTransfer</code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfers.ACHTransfer</code>
 
 ## CardDisputes
 
 Methods:
 
-- <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./src/resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDispute</code>
+- <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./src/resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDisputes.CardDispute</code>
 
 ## CardProfiles
 
 Methods:
 
-- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.cardProfiles.<a href="./src/resources/simulations/card-profiles.ts">approve</a>(cardProfileId) -> CardProfile</code>
+- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.cardProfiles.<a href="./src/resources/simulations/card-profiles.ts">approve</a>(cardProfileId) -> CardProfiles.CardProfile</code>
 
 ## CardRefunds
 
 Methods:
 
-- <code title="post /simulations/card_refunds">client.simulations.cardRefunds.<a href="./src/resources/simulations/card-refunds.ts">create</a>({ ...params }) -> Transaction</code>
+- <code title="post /simulations/card_refunds">client.simulations.cardRefunds.<a href="./src/resources/simulations/card-refunds.ts">create</a>({ ...params }) -> Transactions.Transaction</code>
 
 ## CheckTransfers
 
 Methods:
 
-- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfer</code>
-- <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfer</code>
+- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfers.CheckTransfer</code>
+- <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfers.CheckTransfer</code>
 
 ## Documents
 
 Methods:
 
-- <code title="post /simulations/documents">client.simulations.documents.<a href="./src/resources/simulations/documents.ts">create</a>({ ...params }) -> Document</code>
+- <code title="post /simulations/documents">client.simulations.documents.<a href="./src/resources/simulations/documents.ts">create</a>({ ...params }) -> Documents.Document</code>
 
 ## DigitalWalletTokenRequests
 
@@ -522,21 +522,21 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">reject</a>(checkDepositId) -> CheckDeposit</code>
-- <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">return</a>(checkDepositId) -> CheckDeposit</code>
-- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">submit</a>(checkDepositId) -> CheckDeposit</code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">reject</a>(checkDepositId) -> CheckDeposits.CheckDeposit</code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">return</a>(checkDepositId) -> CheckDeposits.CheckDeposit</code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.checkDeposits.<a href="./src/resources/simulations/check-deposits.ts">submit</a>(checkDepositId) -> CheckDeposits.CheckDeposit</code>
 
 ## Programs
 
 Methods:
 
-- <code title="post /simulations/programs">client.simulations.programs.<a href="./src/resources/simulations/programs.ts">create</a>({ ...params }) -> Program</code>
+- <code title="post /simulations/programs">client.simulations.programs.<a href="./src/resources/simulations/programs.ts">create</a>({ ...params }) -> Programs.Program</code>
 
 ## InboundWireDrawdownRequests
 
 Methods:
 
-- <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inboundWireDrawdownRequests.<a href="./src/resources/simulations/inbound-wire-drawdown-requests.ts">create</a>({ ...params }) -> InboundWireDrawdownRequest</code>
+- <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inboundWireDrawdownRequests.<a href="./src/resources/simulations/inbound-wire-drawdown-requests.ts">create</a>({ ...params }) -> InboundWireDrawdownRequests.InboundWireDrawdownRequest</code>
 
 ## InterestPayments
 
@@ -567,7 +567,7 @@ Types:
 Methods:
 
 - <code title="post /simulations/card_authorizations">client.simulations.cards.<a href="./src/resources/simulations/cards.ts">authorize</a>({ ...params }) -> CardAuthorizationSimulation</code>
-- <code title="post /simulations/card_settlements">client.simulations.cards.<a href="./src/resources/simulations/cards.ts">settlement</a>({ ...params }) -> Transaction</code>
+- <code title="post /simulations/card_settlements">client.simulations.cards.<a href="./src/resources/simulations/cards.ts">settlement</a>({ ...params }) -> Transactions.Transaction</code>
 
 ## RealTimePaymentsTransfers
 
@@ -577,5 +577,5 @@ Types:
 
 Methods:
 
-- <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfer</code>
+- <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfers.RealTimePaymentsTransfer</code>
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">createInbound</a>({ ...params }) -> InboundRealTimePaymentsTransferSimulationResult</code>
