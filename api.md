@@ -313,7 +313,7 @@ Methods:
 - <code title="get /check_transfers">client.checkTransfers.<a href="./src/resources/check-transfers.ts">list</a>({ ...params }) -> CheckTransfersPage</code>
 - <code title="post /check_transfers/{check_transfer_id}/approve">client.checkTransfers.<a href="./src/resources/check-transfers.ts">approve</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /check_transfers/{check_transfer_id}/cancel">client.checkTransfers.<a href="./src/resources/check-transfers.ts">cancel</a>(checkTransferId) -> CheckTransfer</code>
-- <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.checkTransfers.<a href="./src/resources/check-transfers.ts">stopPayment</a>(checkTransferId) -> CheckTransfer</code>
+- <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.checkTransfers.<a href="./src/resources/check-transfers.ts">stopPayment</a>(checkTransferId, { ...params }) -> CheckTransfer</code>
 
 # Entities
 
@@ -483,6 +483,12 @@ Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./src/resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDispute</code>
 
+## CardProfiles
+
+Methods:
+
+- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.cardProfiles.<a href="./src/resources/simulations/card-profiles.ts">approve</a>(cardProfileId) -> CardProfile</code>
+
 ## CardRefunds
 
 Methods:
@@ -495,7 +501,6 @@ Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfer</code>
-- <code title="post /simulations/check_transfers/{check_transfer_id}/return">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">return</a>(checkTransferId, { ...params }) -> CheckTransfer</code>
 
 ## Documents
 

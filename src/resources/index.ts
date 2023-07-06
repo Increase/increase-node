@@ -97,6 +97,7 @@ export {
   CheckTransfer,
   CheckTransferCreateParams,
   CheckTransferListParams,
+  CheckTransferStopPaymentParams,
   CheckTransfersPage,
   CheckTransfers,
 } from './check-transfers';

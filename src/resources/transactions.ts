@@ -76,9 +76,9 @@ export interface Transaction {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
-   * For a Transaction related to a transfer, this is the description you provide.
-   * For a Transaction related to a payment, this is the description the vendor
-   * provides.
+   * An informational message describing this transaction. Use the fields in `source`
+   * to get more detailed information. This field appears as the line-item on the
+   * statement.
    */
   description: string;
 
@@ -200,8 +200,6 @@ export namespace Transaction {
      *   Intention object. Details will be under the `check_transfer_intention` object.
      * - `check_transfer_rejection` - The Transaction was created by a Check Transfer
      *   Rejection object. Details will be under the `check_transfer_rejection` object.
-     * - `check_transfer_return` - The Transaction was created by a Check Transfer
-     *   Return object. Details will be under the `check_transfer_return` object.
      * - `check_transfer_stop_payment_request` - The Transaction was created by a Check
      *   Transfer Stop Payment Request object. Details will be under the
      *   `check_transfer_stop_payment_request` object.
@@ -259,7 +257,6 @@ export namespace Transaction {
       | 'check_transfer_deposit'
       | 'check_transfer_intention'
       | 'check_transfer_rejection'
-      | 'check_transfer_return'
       | 'check_transfer_stop_payment_request'
       | 'fee_payment'
       | 'inbound_ach_transfer'
@@ -308,12 +305,6 @@ export namespace Transaction {
      * response if and only if `category` is equal to `check_transfer_rejection`.
      */
     check_transfer_rejection: Source.CheckTransferRejection | null;
-
-    /**
-     * A Check Transfer Return object. This field will be present in the JSON response
-     * if and only if `category` is equal to `check_transfer_return`.
-     */
-    check_transfer_return: Source.CheckTransferReturn | null;
 
     /**
      * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -828,6 +819,11 @@ export namespace Transaction {
       merchant_state: string | null;
 
       /**
+       * The identifier of the Transaction associated with this Transaction.
+       */
+      transaction_id: string;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_refund`.
        */
@@ -955,6 +951,11 @@ export namespace Transaction {
        * transaction's presentment currency.
        */
       presentment_currency: string;
+
+      /**
+       * The identifier of the Transaction associated with this Transaction.
+       */
+      transaction_id: string;
 
       /**
        * A constant representing the object's type. For this resource it will always be
@@ -1108,6 +1109,11 @@ export namespace Transaction {
       front_image_file_id: string | null;
 
       /**
+       * The identifier of the Transaction object created when the check was deposited.
+       */
+      transaction_id: string | null;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `check_transfer_deposit`.
        */
@@ -1185,60 +1191,23 @@ export namespace Transaction {
     }
 
     /**
-     * A Check Transfer Return object. This field will be present in the JSON response
-     * if and only if `category` is equal to `check_transfer_return`.
-     */
-    export interface CheckTransferReturn {
-      /**
-       * If available, a document with additional information about the return.
-       */
-      file_id: string | null;
-
-      /**
-       * The reason why the check was returned.
-       *
-       * - `mail_delivery_failure` - Mail delivery failed and the check was returned to
-       *   sender.
-       * - `refused_by_recipient` - The check arrived and the recipient refused to
-       *   deposit it.
-       * - `returned_not_authorized` - The check was fraudulently deposited and the
-       *   transfer was returned to the Bank of First Deposit.
-       */
-      reason: 'mail_delivery_failure' | 'refused_by_recipient' | 'returned_not_authorized';
-
-      /**
-       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-       * the check was returned.
-       */
-      returned_at: string;
-
-      /**
-       * The identifier of the Transaction that was created to credit you for the
-       * returned check.
-       */
-      transaction_id: string | null;
-
-      /**
-       * The identifier of the returned Check Transfer.
-       */
-      transfer_id: string;
-    }
-
-    /**
      * A Check Transfer Stop Payment Request object. This field will be present in the
      * JSON response if and only if `category` is equal to
      * `check_transfer_stop_payment_request`.
      */
     export interface CheckTransferStopPaymentRequest {
       /**
+       * The reason why this transfer was stopped.
+       *
+       * - `mail_delivery_failed` - The check could not be delivered.
+       * - `unknown` - The check was stopped for another reason.
+       */
+      reason: 'mail_delivery_failed' | 'unknown';
+
+      /**
        * The time the stop-payment was requested.
        */
       requested_at: string;
-
-      /**
-       * The transaction ID of the corresponding credit transaction.
-       */
-      transaction_id: string;
 
       /**
        * The ID of the check transfer that was stopped.
@@ -1906,7 +1875,6 @@ export namespace TransactionListParams {
       | 'check_transfer_deposit'
       | 'check_transfer_intention'
       | 'check_transfer_rejection'
-      | 'check_transfer_return'
       | 'check_transfer_stop_payment_request'
       | 'fee_payment'
       | 'inbound_ach_transfer'
