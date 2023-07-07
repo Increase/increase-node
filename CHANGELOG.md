@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.6.0](https://github.com/Increase/increase-node/compare/v0.5.0...v0.6.0) (2023-07-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** add card profiles simulation method ([#42](https://github.com/Increase/increase-node/issues/42))
+* import issue with ESM ([#37](https://github.com/Increase/increase-node/issues/37))
+
+### Features
+
+* **api:** add card profiles simulation method ([#42](https://github.com/Increase/increase-node/issues/42)) ([a756866](https://github.com/Increase/increase-node/commit/a756866b4e3200ba8bef94149e99bf050b83cfcd))
+* **client:** add support for `defaultQuery` option ([#35](https://github.com/Increase/increase-node/issues/35)) ([eae9716](https://github.com/Increase/increase-node/commit/eae971676c567cb7c1ddba31aae0155e778179d2))
+
+
+### Bug Fixes
+
+* import issue with ESM ([#37](https://github.com/Increase/increase-node/issues/37)) ([c321dd8](https://github.com/Increase/increase-node/commit/c321dd8593b9c33eb0a3422474cfd66339da2741))
+
+
+### Refactors
+
+* mark `.responseHeaders` and `.response` as deprecated ([#41](https://github.com/Increase/increase-node/issues/41)) ([54ca3fa](https://github.com/Increase/increase-node/commit/54ca3faf33ade035d6c2be8d6931286b2ca4a0b6))
+* move to src directory, improve ecosystem compatibility ([#33](https://github.com/Increase/increase-node/issues/33)) ([7961453](https://github.com/Increase/increase-node/commit/7961453587e1df95b0739f481a10cb5773173046))
+
+
+### Chores
+
+* **internal:** fix tsc usage ([#40](https://github.com/Increase/increase-node/issues/40)) ([5411f7e](https://github.com/Increase/increase-node/commit/5411f7ea3f4f21900f12fdd6ccf44989c7214493))
+* set `noEmit: true` in `tsconfig.json`, since it's for typechecking only ([#43](https://github.com/Increase/increase-node/issues/43)) ([2d40060](https://github.com/Increase/increase-node/commit/2d40060684c161d8eb61fc7230d6887859a856be))
+
+
+### Documentation
+
+* **api.md:** add context to types exported in a different resource ([#44](https://github.com/Increase/increase-node/issues/44)) ([7204785](https://github.com/Increase/increase-node/commit/72047859b486cc374a8d49781ce342090c79f264))
+* **api.md:** fix links not referencing `src` directory ([#36](https://github.com/Increase/increase-node/issues/36)) ([35cccbe](https://github.com/Increase/increase-node/commit/35cccbe76b89d7e8debda7d96e8209623a856f55))
+* **client:** improve documentation for client options ([#38](https://github.com/Increase/increase-node/issues/38)) ([2133c8e](https://github.com/Increase/increase-node/commit/2133c8ee1777d4af86d0abf57631a5194e3673f2))
+* **types:** add documentation for enum members ([#39](https://github.com/Increase/increase-node/issues/39)) ([aeca9c3](https://github.com/Increase/increase-node/commit/aeca9c370994cf9634d0bcab9513e47ecdb25776))
+
 ## [0.5.0](https://github.com/Increase/increase-node/compare/v0.4.0...v0.5.0) (2023-06-29)
 
 
