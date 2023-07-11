@@ -34,7 +34,8 @@ async function main() {
 
   console.log(account.id);
 }
-main().catch(console.error);
+
+main();
 ```
 
 ### Usage with TypeScript
@@ -54,7 +55,8 @@ async function main() {
   const params: Increase.AccountCreateParams = { name: 'My First Increase Account' };
   const account: Increase.Account = await increase.accounts.create(params);
 }
-main().catch(console.error);
+
+main();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -106,10 +108,13 @@ async function main() {
       console.log(err.error?.detail); // Looks like "naem" may have been a typo?
       console.log(err.error?.status); // 400
       console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
     }
   });
 }
-main().catch(console.error);
+
+main();
 ```
 
 Error codes are as followed:
@@ -141,7 +146,7 @@ const increase = new Increase({
 });
 
 // Or, configure per-request:
-increase.accounts.create({ name: 'Jack' }, {
+await increase.accounts.create({ name: 'Jack' }, {
   maxRetries: 5,
 });
 ```
@@ -158,7 +163,7 @@ const increase = new Increase({
 });
 
 // Override per-request:
-increase.accounts.list({ status: 'open' }, {
+await increase.accounts.list({ status: 'open' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -215,7 +220,7 @@ const increase = new Increase({
 });
 
 // Override per-request:
-increase.accounts.list({ status: 'open' }, {
+await increase.accounts.list({ status: 'open' }, {
   baseURL: 'http://localhost:8080/test-api',
   httpAgent: new http.Agent({ keepAlive: false }),
 })
