@@ -28,9 +28,7 @@ const increase = new Increase({
 });
 
 async function main() {
-  const account = await increase.accounts.create({
-    name: 'My First Increase Account',
-  });
+  const account = await increase.accounts.create({ name: 'My First Increase Account' });
 
   console.log(account.id);
 }
@@ -99,7 +97,7 @@ a subclass of `APIError` will be thrown:
 
 ```ts
 async function main() {
-  const account = await increase.accounts.create({ naem: 'Oops' }).catch((err) => {
+  const account = await increase.accounts.create({ name: 'x' }).catch((err) => {
     if (err instanceof Increase.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
