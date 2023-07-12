@@ -21,6 +21,7 @@ describe('resource accountTransfers', () => {
       description: 'x',
       destination_account_id: 'string',
       require_approval: true,
+      unique_identifier: 'x',
     });
   });
 
@@ -62,6 +63,7 @@ describe('resource accountTransfers', () => {
           },
           cursor: 'string',
           limit: 0,
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

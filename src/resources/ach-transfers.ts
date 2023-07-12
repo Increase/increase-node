@@ -249,6 +249,11 @@ export interface ACHTransfer {
    * `ach_transfer`.
    */
   type: 'ach_transfer';
+
+  /**
+   * The unique identifier you chose for this transfer.
+   */
+  unique_identifier: string | null;
 }
 
 export namespace ACHTransfer {
@@ -291,8 +296,35 @@ export namespace ACHTransfer {
   export interface NotificationsOfChange {
     /**
      * The type of change that occurred.
+     *
+     * - `incorrect_account_number` - The account number was incorrect.
+     * - `incorrect_routing_number` - The routing number was incorrect.
+     * - `incorrect_routing_number_and_account_number` - Both the routing number and
+     *   the account number were incorrect.
+     * - `incorrect_transaction_code` - The transaction code was incorrect.
+     * - `incorrect_account_number_and_transaction_code` - The account number and the
+     *   transaction code were incorrect.
+     * - `incorrect_routing_number_account_number_and_transaction_code` - The routing
+     *   number, account number, and transaction code were incorrect.
+     * - `incorrect_receiving_depository_financial_institution_identification` - The
+     *   receiving depository financial institution identification was incorrect.
+     * - `incorrect_individual_identification_number` - The individual identification
+     *   number was incorrect.
+     * - `addenda_format_error` - The addenda had an incorrect format.
+     * - `incorrect_standard_entry_class_code_for_outbound_international_payment` - The
+     *   standard entry class code was incorrect for an outbound international payment.
      */
-    change_code: string;
+    change_code:
+      | 'incorrect_account_number'
+      | 'incorrect_routing_number'
+      | 'incorrect_routing_number_and_account_number'
+      | 'incorrect_transaction_code'
+      | 'incorrect_account_number_and_transaction_code'
+      | 'incorrect_routing_number_account_number_and_transaction_code'
+      | 'incorrect_receiving_depository_financial_institution_identification'
+      | 'incorrect_individual_identification_number'
+      | 'addenda_format_error'
+      | 'incorrect_standard_entry_class_code_for_outbound_international_payment';
 
     /**
      * The corrected data.
@@ -680,6 +712,13 @@ export interface ACHTransferCreateParams {
     | 'corporate_credit_or_debit'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
+
+  /**
+   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * another transfer will result in an error. You can query for the transfer
+   * associated with this identifier using the List endpoint.
+   */
+  unique_identifier?: string;
 }
 
 export interface ACHTransferListParams extends PageParams {
@@ -694,6 +733,11 @@ export interface ACHTransferListParams extends PageParams {
    * Filter ACH Transfers to those made to the specified External Account.
    */
   external_account_id?: string;
+
+  /**
+   * Filter ACH Transfers to the one with the specified unique identifier.
+   */
+  unique_identifier?: string;
 }
 
 export namespace ACHTransferListParams {

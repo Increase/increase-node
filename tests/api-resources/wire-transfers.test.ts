@@ -27,6 +27,7 @@ describe('resource wireTransfers', () => {
       external_account_id: 'string',
       require_approval: true,
       routing_number: 'xxxxxxxxx',
+      unique_identifier: 'x',
     });
   });
 
@@ -69,6 +70,7 @@ describe('resource wireTransfers', () => {
           cursor: 'string',
           external_account_id: 'string',
           limit: 0,
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -1277,6 +1277,12 @@ export namespace CardAuthorizationSimulation {
          * - `complete` - Funds have been released.
          */
         status: 'held' | 'complete';
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `inbound_funds_hold`.
+         */
+        type: 'inbound_funds_hold';
       }
 
       /**

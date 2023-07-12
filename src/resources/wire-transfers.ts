@@ -215,6 +215,11 @@ export interface WireTransfer {
    * `wire_transfer`.
    */
   type: 'wire_transfer';
+
+  /**
+   * The unique identifier you chose for this transfer.
+   */
+  unique_identifier: string | null;
 }
 
 export namespace WireTransfer {
@@ -410,6 +415,13 @@ export interface WireTransferCreateParams {
    * destination account.
    */
   routing_number?: string;
+
+  /**
+   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * another transfer will result in an error. You can query for the transfer
+   * associated with this identifier using the List endpoint.
+   */
+  unique_identifier?: string;
 }
 
 export interface WireTransferListParams extends PageParams {
@@ -424,6 +436,11 @@ export interface WireTransferListParams extends PageParams {
    * Filter Wire Transfers to those made to the specified External Account.
    */
   external_account_id?: string;
+
+  /**
+   * Filter Wire Transfers to the one with the specified unique identifier.
+   */
+  unique_identifier?: string;
 }
 
 export namespace WireTransferListParams {

@@ -196,6 +196,7 @@ export class Increase extends Core.APIClient {
   static IdempotencyConflictError = Errors.IdempotencyConflictError;
   static InsufficientPermissionsError = Errors.InsufficientPermissionsError;
   static IdempotencyUnprocessableError = Errors.IdempotencyUnprocessableError;
+  static UniqueIdentifierAlreadyExistsError = Errors.UniqueIdentifierAlreadyExistsError;
 }
 
 export const {
@@ -223,6 +224,7 @@ export const {
   IdempotencyConflictError,
   InsufficientPermissionsError,
   IdempotencyUnprocessableError,
+  UniqueIdentifierAlreadyExistsError,
 } = Errors;
 
 export import toFile = Uploads.toFile;

@@ -160,6 +160,11 @@ export interface AccountTransfer {
    * `account_transfer`.
    */
   type: 'account_transfer';
+
+  /**
+   * The unique identifier you chose for this transfer.
+   */
+  unique_identifier: string | null;
 }
 
 export namespace AccountTransfer {
@@ -226,6 +231,13 @@ export interface AccountTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
+
+  /**
+   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * another transfer will result in an error. You can query for the transfer
+   * associated with this identifier using the List endpoint.
+   */
+  unique_identifier?: string;
 }
 
 export interface AccountTransferListParams extends PageParams {
@@ -235,6 +247,11 @@ export interface AccountTransferListParams extends PageParams {
   account_id?: string;
 
   created_at?: AccountTransferListParams.CreatedAt;
+
+  /**
+   * Filter Account Transfers to the one with the specified unique identifier.
+   */
+  unique_identifier?: string;
 }
 
 export namespace AccountTransferListParams {
