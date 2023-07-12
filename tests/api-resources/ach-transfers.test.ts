@@ -32,6 +32,7 @@ describe('resource achTransfers', () => {
       require_approval: true,
       routing_number: 'xxxxxxxxx',
       standard_entry_class_code: 'corporate_credit_or_debit',
+      unique_identifier: 'x',
     });
   });
 
@@ -74,6 +75,7 @@ describe('resource achTransfers', () => {
           cursor: 'string',
           external_account_id: 'string',
           limit: 0,
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

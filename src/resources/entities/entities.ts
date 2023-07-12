@@ -1055,7 +1055,7 @@ export namespace EntityCreateParams {
             expiration_date: string;
 
             /**
-             * The identifier of the File containing the driver's license.
+             * The identifier of the File containing the front of the driver's license.
              */
             file_id: string;
 
@@ -1063,6 +1063,11 @@ export namespace EntityCreateParams {
              * The state that issued the provided driver's license.
              */
             state: string;
+
+            /**
+             * The identifier of the File containing the back of the driver's license.
+             */
+            back_file_id?: string;
           }
 
           /**
@@ -1082,9 +1087,15 @@ export namespace EntityCreateParams {
             description: string;
 
             /**
-             * The identifier of the File containing the document.
+             * The identifier of the File containing the front of the document.
              */
             file_id: string;
+
+            /**
+             * The identifier of the File containing the back of the document. Not every
+             * document has a reverse side.
+             */
+            back_file_id?: string;
 
             /**
              * The document's expiration date in YYYY-MM-DD format.
@@ -1254,7 +1265,7 @@ export namespace EntityCreateParams {
           expiration_date: string;
 
           /**
-           * The identifier of the File containing the driver's license.
+           * The identifier of the File containing the front of the driver's license.
            */
           file_id: string;
 
@@ -1262,6 +1273,11 @@ export namespace EntityCreateParams {
            * The state that issued the provided driver's license.
            */
           state: string;
+
+          /**
+           * The identifier of the File containing the back of the driver's license.
+           */
+          back_file_id?: string;
         }
 
         /**
@@ -1281,9 +1297,15 @@ export namespace EntityCreateParams {
           description: string;
 
           /**
-           * The identifier of the File containing the document.
+           * The identifier of the File containing the front of the document.
            */
           file_id: string;
+
+          /**
+           * The identifier of the File containing the back of the document. Not every
+           * document has a reverse side.
+           */
+          back_file_id?: string;
 
           /**
            * The document's expiration date in YYYY-MM-DD format.
@@ -1441,7 +1463,7 @@ export namespace EntityCreateParams {
         expiration_date: string;
 
         /**
-         * The identifier of the File containing the driver's license.
+         * The identifier of the File containing the front of the driver's license.
          */
         file_id: string;
 
@@ -1449,6 +1471,11 @@ export namespace EntityCreateParams {
          * The state that issued the provided driver's license.
          */
         state: string;
+
+        /**
+         * The identifier of the File containing the back of the driver's license.
+         */
+        back_file_id?: string;
       }
 
       /**
@@ -1468,9 +1495,15 @@ export namespace EntityCreateParams {
         description: string;
 
         /**
-         * The identifier of the File containing the document.
+         * The identifier of the File containing the front of the document.
          */
         file_id: string;
+
+        /**
+         * The identifier of the File containing the back of the document. Not every
+         * document has a reverse side.
+         */
+        back_file_id?: string;
 
         /**
          * The document's expiration date in YYYY-MM-DD format.
@@ -1733,7 +1766,7 @@ export namespace EntityCreateParams {
             expiration_date: string;
 
             /**
-             * The identifier of the File containing the driver's license.
+             * The identifier of the File containing the front of the driver's license.
              */
             file_id: string;
 
@@ -1741,6 +1774,11 @@ export namespace EntityCreateParams {
              * The state that issued the provided driver's license.
              */
             state: string;
+
+            /**
+             * The identifier of the File containing the back of the driver's license.
+             */
+            back_file_id?: string;
           }
 
           /**
@@ -1760,9 +1798,15 @@ export namespace EntityCreateParams {
             description: string;
 
             /**
-             * The identifier of the File containing the document.
+             * The identifier of the File containing the front of the document.
              */
             file_id: string;
+
+            /**
+             * The identifier of the File containing the back of the document. Not every
+             * document has a reverse side.
+             */
+            back_file_id?: string;
 
             /**
              * The document's expiration date in YYYY-MM-DD format.
@@ -1917,7 +1961,7 @@ export namespace EntityCreateParams {
           expiration_date: string;
 
           /**
-           * The identifier of the File containing the driver's license.
+           * The identifier of the File containing the front of the driver's license.
            */
           file_id: string;
 
@@ -1925,6 +1969,11 @@ export namespace EntityCreateParams {
            * The state that issued the provided driver's license.
            */
           state: string;
+
+          /**
+           * The identifier of the File containing the back of the driver's license.
+           */
+          back_file_id?: string;
         }
 
         /**
@@ -1944,9 +1993,15 @@ export namespace EntityCreateParams {
           description: string;
 
           /**
-           * The identifier of the File containing the document.
+           * The identifier of the File containing the front of the document.
            */
           file_id: string;
+
+          /**
+           * The identifier of the File containing the back of the document. Not every
+           * document has a reverse side.
+           */
+          back_file_id?: string;
 
           /**
            * The document's expiration date in YYYY-MM-DD format.

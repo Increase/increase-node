@@ -73,6 +73,11 @@ export interface CardProfile {
   digital_wallets: CardProfile.DigitalWallets;
 
   /**
+   * How physical cards should be designed and shipped.
+   */
+  physical_cards: CardProfile.PhysicalCards | null;
+
+  /**
    * The status of the Card Profile.
    *
    * - `pending` - The Card Profile is awaiting review from Increase and/or
@@ -158,6 +163,31 @@ export namespace CardProfile {
       red: number;
     }
   }
+
+  /**
+   * How physical cards should be designed and shipped.
+   */
+  export interface PhysicalCards {
+    /**
+     * The identifier of the File containing the physical card's back image.
+     */
+    back_image_file_id: string;
+
+    /**
+     * The identifier of the File containing the physical card's carrier image.
+     */
+    carrier_image_file_id: string;
+
+    /**
+     * A phone number the user can contact to receive support for their card.
+     */
+    contact_phone: string;
+
+    /**
+     * The identifier of the File containing the physical card's front image.
+     */
+    front_image_file_id: string;
+  }
 }
 
 export interface CardProfileCreateParams {
@@ -171,6 +201,11 @@ export interface CardProfileCreateParams {
    * will use these values to render card artwork appropriately for their app.
    */
   digital_wallets: CardProfileCreateParams.DigitalWallets;
+
+  /**
+   * How physical cards should be designed and shipped.
+   */
+  physical_cards?: CardProfileCreateParams.PhysicalCards;
 }
 
 export namespace CardProfileCreateParams {
@@ -240,6 +275,26 @@ export namespace CardProfileCreateParams {
        */
       red: number;
     }
+  }
+
+  /**
+   * How physical cards should be designed and shipped.
+   */
+  export interface PhysicalCards {
+    /**
+     * The identifier of the File containing the physical card's carrier image.
+     */
+    carrier_image_file_id: string;
+
+    /**
+     * A phone number the user can contact to receive support for their card.
+     */
+    contact_phone: string;
+
+    /**
+     * The identifier of the File containing the physical card's front image.
+     */
+    front_image_file_id: string;
   }
 }
 

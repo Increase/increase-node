@@ -73,8 +73,8 @@ export interface BookkeepingEntrySetCreateParams {
   entries: Array<BookkeepingEntrySetCreateParams.Entry>;
 
   /**
-   * The date of the transaction. If `transaction_id` is provided, this must match
-   * the `created_at` field on that resource.
+   * The date of the transaction. Optional if `transaction_id` is provided, in which
+   * case we use the `date` of that transaction. Required otherwise.
    */
   date?: string;
 
