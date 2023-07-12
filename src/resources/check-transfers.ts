@@ -245,6 +245,11 @@ export interface CheckTransfer {
    * `check_transfer`.
    */
   type: 'check_transfer';
+
+  /**
+   * The unique identifier you chose for this transfer.
+   */
+  unique_identifier: string | null;
 }
 
 export namespace CheckTransfer {
@@ -460,6 +465,13 @@ export interface CheckTransferCreateParams {
    * on the check.
    */
   source_account_number_id?: string;
+
+  /**
+   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * another transfer will result in an error. You can query for the transfer
+   * associated with this identifier using the List endpoint.
+   */
+  unique_identifier?: string;
 }
 
 export namespace CheckTransferCreateParams {
@@ -507,6 +519,11 @@ export interface CheckTransferListParams extends PageParams {
   account_id?: string;
 
   created_at?: CheckTransferListParams.CreatedAt;
+
+  /**
+   * Filter Check Transfers to the one with the specified unique identifier.
+   */
+  unique_identifier?: string;
 }
 
 export namespace CheckTransferListParams {

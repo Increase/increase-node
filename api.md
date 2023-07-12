@@ -538,6 +538,16 @@ Methods:
 
 - <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inboundWireDrawdownRequests.<a href="./src/resources/simulations/inbound-wire-drawdown-requests.ts">create</a>({ ...params }) -> InboundWireDrawdownRequests.InboundWireDrawdownRequest</code>
 
+## InboundFundsHolds
+
+Types:
+
+- <code><a href="./src/resources/simulations/inbound-funds-holds.ts">InboundFundsHoldReleaseResponse</a></code>
+
+Methods:
+
+- <code title="post /simulations/inbound_funds_holds/{inbound_funds_hold_id}/release">client.simulations.inboundFundsHolds.<a href="./src/resources/simulations/inbound-funds-holds.ts">release</a>(inboundFundsHoldId) -> InboundFundsHoldReleaseResponse</code>
+
 ## InterestPayments
 
 Types:

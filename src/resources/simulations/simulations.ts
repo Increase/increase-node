@@ -13,6 +13,7 @@ import { DigitalWalletTokenRequests } from './digital-wallet-token-requests';
 import { CheckDeposits } from './check-deposits';
 import { Programs } from './programs';
 import { InboundWireDrawdownRequests } from './inbound-wire-drawdown-requests';
+import { InboundFundsHolds } from './inbound-funds-holds';
 import { InterestPayments } from './interest-payments';
 import { WireTransfers } from './wire-transfers';
 import { Cards } from './cards';
@@ -32,6 +33,7 @@ export class Simulations extends APIResource {
   checkDeposits: CheckDeposits = new CheckDeposits(this.client);
   programs: Programs = new Programs(this.client);
   inboundWireDrawdownRequests: InboundWireDrawdownRequests = new InboundWireDrawdownRequests(this.client);
+  inboundFundsHolds: InboundFundsHolds = new InboundFundsHolds(this.client);
   interestPayments: InterestPayments = new InterestPayments(this.client);
   wireTransfers: WireTransfers = new WireTransfers(this.client);
   cards: Cards = new Cards(this.client);
@@ -73,6 +75,9 @@ export namespace Simulations {
 
   export import InboundWireDrawdownRequests = API.InboundWireDrawdownRequests;
   export import InboundWireDrawdownRequestCreateParams = API.InboundWireDrawdownRequestCreateParams;
+
+  export import InboundFundsHolds = API.InboundFundsHolds;
+  export import InboundFundsHoldReleaseResponse = API.InboundFundsHoldReleaseResponse;
 
   export import InterestPayments = API.InterestPayments;
   export import InterestPaymentSimulationResult = API.InterestPaymentSimulationResult;

@@ -33,6 +33,7 @@ describe('resource checkTransfers', () => {
       require_approval: true,
       return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
       source_account_number_id: 'string',
+      unique_identifier: 'x',
     });
   });
 
@@ -74,6 +75,7 @@ describe('resource checkTransfers', () => {
           },
           cursor: 'string',
           limit: 0,
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

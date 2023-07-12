@@ -30,6 +30,7 @@ describe('resource cardProfiles', () => {
         background_image_file_id: 'string',
         app_icon_file_id: 'string',
       },
+      physical_cards: { contact_phone: 'x', front_image_file_id: 'string', carrier_image_file_id: 'string' },
     });
   });
 

@@ -73,6 +73,10 @@ export class APIError extends Error {
       return new InvalidOperationError(status, error, message, headers);
     }
 
+    if (type === 'unique_identifier_already_exists_error') {
+      return new UniqueIdentifierAlreadyExistsError(status, error, message, headers);
+    }
+
     if (type === 'idempotency_unprocessable_error') {
       return new IdempotencyUnprocessableError(status, error, message, headers);
     }
@@ -428,6 +432,34 @@ export class InvalidOperationError extends ConflictError {
     super(status, error, data?.['title'] || message, headers);
 
     this.detail = data?.['detail'];
+    this.status = data?.['status'];
+    this.title = data?.['title'];
+    this.type = data?.['type'];
+  }
+}
+
+export class UniqueIdentifierAlreadyExistsError extends ConflictError {
+  detail: string | null;
+
+  resource_id: string;
+
+  override status: 409;
+
+  title: string;
+
+  type: 'unique_identifier_already_exists_error';
+
+  constructor(
+    status: number | undefined,
+    error: Object | undefined,
+    message: string | undefined,
+    headers: Headers | undefined,
+  ) {
+    const data = error as Record<string, any>;
+    super(status, error, data?.['title'] || message, headers);
+
+    this.detail = data?.['detail'];
+    this.resource_id = data?.['resource_id'];
     this.status = data?.['status'];
     this.title = data?.['title'];
     this.type = data?.['type'];

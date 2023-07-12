@@ -20,6 +20,7 @@ export {
   DigitalWalletTokenRequests,
 } from './digital-wallet-token-requests';
 export { DocumentCreateParams, Documents } from './documents';
+export { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 export {
   InboundRealTimePaymentsTransferSimulationResult,
   RealTimePaymentsTransferCompleteParams,

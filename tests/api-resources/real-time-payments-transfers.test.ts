@@ -24,6 +24,7 @@ describe('resource realTimePaymentsTransfers', () => {
       destination_routing_number: 'xxxxxxxxx',
       external_account_id: 'string',
       require_approval: true,
+      unique_identifier: 'x',
     });
   });
 
@@ -68,6 +69,7 @@ describe('resource realTimePaymentsTransfers', () => {
           cursor: 'string',
           external_account_id: 'string',
           limit: 0,
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),
