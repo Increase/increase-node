@@ -160,6 +160,12 @@ export namespace RealTimeDecision {
     network_details: CardAuthorization.NetworkDetails;
 
     /**
+     * If the authorization was made in-person with a physical card, the Physical Card
+     * that was used.
+     */
+    physical_card_id: string | null;
+
+    /**
      * The amount of the attempted authorization in the currency the card user sees at
      * the time of purchase, in the minor unit of that currency. For dollars, for
      * example, this is cents.

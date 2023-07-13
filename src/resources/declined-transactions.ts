@@ -329,6 +329,12 @@ export namespace DeclinedTransaction {
       network_details: CardDecline.NetworkDetails;
 
       /**
+       * If the authorization was made in-person with a physical card, the Physical Card
+       * that was used.
+       */
+      physical_card_id: string | null;
+
+      /**
        * The identifier of the Real-Time Decision sent to approve or decline this
        * transaction.
        */

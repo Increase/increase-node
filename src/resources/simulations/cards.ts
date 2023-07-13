@@ -352,6 +352,12 @@ export namespace CardAuthorizationSimulation {
         network_details: CardDecline.NetworkDetails;
 
         /**
+         * If the authorization was made in-person with a physical card, the Physical Card
+         * that was used.
+         */
+        physical_card_id: string | null;
+
+        /**
          * The identifier of the Real-Time Decision sent to approve or decline this
          * transaction.
          */
@@ -1064,6 +1070,12 @@ export namespace CardAuthorizationSimulation {
         pending_transaction_id: string | null;
 
         /**
+         * If the authorization was made in-person with a physical card, the Physical Card
+         * that was used.
+         */
+        physical_card_id: string | null;
+
+        /**
          * The identifier of the Real-Time Decision sent to approve or decline this
          * transaction.
          */
@@ -1350,6 +1362,11 @@ export interface CardAuthorizeParams {
    * specified event subscription for testing purposes.
    */
   event_subscription_id?: string;
+
+  /**
+   * The identifier of the Physical Card to be authorized.
+   */
+  physical_card_id?: string;
 }
 
 export interface CardSettlementParams {
