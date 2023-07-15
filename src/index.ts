@@ -172,6 +172,8 @@ export class Increase extends Core.APIClient {
     return { allowDots: true, arrayFormat: 'comma' };
   }
 
+  static Increase = this;
+
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
