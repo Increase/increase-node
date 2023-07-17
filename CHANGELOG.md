@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.7.1](https://github.com/Increase/increase-node/compare/v0.7.0...v0.7.1) (2023-07-17)
+
+
+### Features
+
+* **api:** add physical_card_id ([#67](https://github.com/Increase/increase-node/issues/67)) ([b1f92d3](https://github.com/Increase/increase-node/commit/b1f92d350b44e51a33a7053666ec1396996008c4))
+
+
+### Bug Fixes
+
+* fix errors with "named" client export in CJS ([#70](https://github.com/Increase/increase-node/issues/70)) ([2000849](https://github.com/Increase/increase-node/commit/200084971efad026e0ae309356a2367fed1adc73))
+
+
+### Documentation
+
+* **readme:** improvements to formatting code snippets ([#64](https://github.com/Increase/increase-node/issues/64)) ([f7b65e9](https://github.com/Increase/increase-node/commit/f7b65e9ffa990f686c5699bc1fef0ca5b6c7fbe6))
+
+
+### Chores
+
+* **internal:** add helper function for b64 ([#68](https://github.com/Increase/increase-node/issues/68)) ([9ac500a](https://github.com/Increase/increase-node/commit/9ac500a1e7086e6eb2ef379d4d1cf7c7ae201c46))
+* **internal:** let `toFile` helper accept promises to objects with name/type properties ([#69](https://github.com/Increase/increase-node/issues/69)) ([b167997](https://github.com/Increase/increase-node/commit/b16799783a94103de0bd64508975a01bfcc12f25))
+* **internal:** remove unused streaming implementation ([#66](https://github.com/Increase/increase-node/issues/66)) ([264a739](https://github.com/Increase/increase-node/commit/264a739869652468ede2a9e6b7b42d616986b8aa))
+
 ## [0.7.0](https://github.com/Increase/increase-node/compare/v0.6.0...v0.7.0) (2023-07-12)
 
 
