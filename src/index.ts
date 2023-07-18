@@ -13,7 +13,7 @@ const environments = {
   sandbox: 'https://sandbox.increase.com',
 };
 
-type Config = {
+export interface ClientOptions {
   /**
    * Defaults to process.env["INCREASE_API_KEY"].
    */
@@ -81,19 +81,19 @@ type Config = {
    * param to `undefined` in request options.
    */
   defaultQuery?: Core.DefaultQuery;
-};
+}
 
 /** Instantiate the API Client. */
 export class Increase extends Core.APIClient {
   apiKey: string;
 
-  private _options: Config;
+  private _options: ClientOptions;
 
-  constructor(config?: Config) {
-    const options: Config = {
+  constructor(opts?: ClientOptions) {
+    const options: ClientOptions = {
       apiKey: typeof process === 'undefined' ? '' : process.env['INCREASE_API_KEY'] || '',
       environment: 'production',
-      ...config,
+      ...opts,
     };
 
     if (!options.apiKey && options.apiKey !== null) {
