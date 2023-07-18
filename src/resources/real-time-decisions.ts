@@ -148,13 +148,6 @@ export namespace RealTimeDecision {
     merchant_descriptor: string;
 
     /**
-     * The payment network used to process this card authorization
-     *
-     * - `visa` - Visa
-     */
-    network: 'visa';
-
-    /**
      * Fields specific to the `network`
      */
     network_details: CardAuthorization.NetworkDetails;
@@ -179,6 +172,11 @@ export namespace RealTimeDecision {
     presentment_currency: string;
 
     /**
+     * Fields specific to the type of request, such as an incremental authorization.
+     */
+    request_details: CardAuthorization.RequestDetails;
+
+    /**
      * The amount of the attempted authorization in the currency it will be settled in.
      * This currency is the same as that of the Account the card belongs to.
      */
@@ -197,9 +195,16 @@ export namespace RealTimeDecision {
      */
     export interface NetworkDetails {
       /**
+       * The payment network used to process this card authorization
+       *
+       * - `visa` - Visa
+       */
+      category: 'visa';
+
+      /**
        * Fields specific to the `visa` network
        */
-      visa: NetworkDetails.Visa;
+      visa: NetworkDetails.Visa | null;
     }
 
     export namespace NetworkDetails {
@@ -258,6 +263,49 @@ export namespace RealTimeDecision {
          * expiration date
          */
         point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
+      }
+    }
+
+    /**
+     * Fields specific to the type of request, such as an incremental authorization.
+     */
+    export interface RequestDetails {
+      /**
+       * The type of this request (e.g., an initial authorization or an incremental
+       * authorization.)
+       *
+       * - `initial_authorization` - A regular, standalone authorization.
+       * - `incremental_authorization` - An incremental request to increase the amount of
+       *   an existing authorization.
+       */
+      category: 'initial_authorization' | 'incremental_authorization';
+
+      /**
+       * Fields specific to the categorty `incremental_authorization`.
+       */
+      incremental_authorization: RequestDetails.IncrementalAuthorization | null;
+
+      /**
+       * Fields specific to the category `initial_authorization`.
+       */
+      initial_authorization: unknown | null;
+    }
+
+    export namespace RequestDetails {
+      /**
+       * Fields specific to the categorty `incremental_authorization`.
+       */
+      export interface IncrementalAuthorization {
+        /**
+         * The card payment for this authorization and increment.
+         */
+        card_payment_id: string;
+
+        /**
+         * The identifier of the card authorization this request is attempting to
+         * increment.
+         */
+        original_card_authorization_id: string;
       }
     }
   }

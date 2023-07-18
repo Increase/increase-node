@@ -353,13 +353,6 @@ export namespace ACHTransferSimulation {
         merchant_state: string | null;
 
         /**
-         * The payment network used to process this card authorization
-         *
-         * - `visa` - Visa
-         */
-        network: 'visa';
-
-        /**
          * Fields specific to the `network`
          */
         network_details: CardDecline.NetworkDetails;
@@ -421,9 +414,16 @@ export namespace ACHTransferSimulation {
          */
         export interface NetworkDetails {
           /**
+           * The payment network used to process this card authorization
+           *
+           * - `visa` - Visa
+           */
+          category: 'visa';
+
+          /**
            * Fields specific to the `visa` network
            */
-          visa: NetworkDetails.Visa;
+          visa: NetworkDetails.Visa | null;
         }
 
         export namespace NetworkDetails {

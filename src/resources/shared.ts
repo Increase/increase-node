@@ -4,6 +4,7 @@
  * The method used to enter the cardholder's primary account number and card
  * expiration date
  *
+ * - `unknown` - Unknown
  * - `manual` - Manual key entry
  * - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
  *   value
@@ -18,6 +19,7 @@
  *   verification value
  */
 export type PointOfServiceEntryMode =
+  | 'unknown'
   | 'manual'
   | 'magnetic_stripe_no_cvv'
   | 'optical_code'

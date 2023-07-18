@@ -90,31 +90,6 @@ export interface CheckTransfer {
   account_number: string;
 
   /**
-   * The city of the check's destination.
-   */
-  address_city: string | null;
-
-  /**
-   * The street address of the check's destination.
-   */
-  address_line1: string | null;
-
-  /**
-   * The second line of the address of the check's destination.
-   */
-  address_line2: string | null;
-
-  /**
-   * The state of the check's destination.
-   */
-  address_state: string | null;
-
-  /**
-   * The postal code of the check's destination.
-   */
-  address_zip: string | null;
-
-  /**
    * The transfer amount in USD cents.
    */
   amount: number;
@@ -161,20 +136,20 @@ export interface CheckTransfer {
   deposit: CheckTransfer.Deposit | null;
 
   /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-   * the check was mailed.
+   * Whether Increase will print and mail the check or if you will do it yourself.
+   *
+   * - `physical_check` - Increase will print and mail a physical check.
+   * - `third_party` - Increase will not print a check; you are responsible for
+   *   printing and mailing a check with the provided account number, routing number,
+   *   check number, and amount.
    */
-  mailed_at: string | null;
+  fulfillment_method: 'physical_check' | 'third_party';
 
   /**
-   * The descriptor that will be printed on the memo field on the check.
+   * If the check has been mailed by Increase, this will contain details of the
+   * shipment.
    */
-  message: string | null;
-
-  /**
-   * The descriptor that will be printed on the letter included with the check.
-   */
-  note: string | null;
+  mailing: CheckTransfer.Mailing | null;
 
   /**
    * The identifier of the Pending Transaction associated with the check's creation.
@@ -182,14 +157,10 @@ export interface CheckTransfer {
   pending_transaction_id: string | null;
 
   /**
-   * The name that will be printed on the check.
+   * Details relating to the physical check that Increase will print and mail. Will
+   * be present if and only if `fulfillment_method` is equal to `physical_check`.
    */
-  recipient_name: string | null;
-
-  /**
-   * The return address to be printed on the check.
-   */
-  return_address: CheckTransfer.ReturnAddress | null;
+  physical_check: CheckTransfer.PhysicalCheck | null;
 
   /**
    * The routing number printed on the check.
@@ -323,38 +294,118 @@ export namespace CheckTransfer {
   }
 
   /**
-   * The return address to be printed on the check.
+   * If the check has been mailed by Increase, this will contain details of the
+   * shipment.
    */
-  export interface ReturnAddress {
+  export interface Mailing {
     /**
-     * The city of the address.
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the check was mailed.
      */
-    city: string | null;
+    mailed_at: string;
+  }
+
+  /**
+   * Details relating to the physical check that Increase will print and mail. Will
+   * be present if and only if `fulfillment_method` is equal to `physical_check`.
+   */
+  export interface PhysicalCheck {
+    /**
+     * Details for where Increase will mail the check.
+     */
+    mailing_address: PhysicalCheck.MailingAddress;
 
     /**
-     * The first line of the address.
+     * The descriptor that will be printed on the memo field on the check.
      */
-    line1: string | null;
+    memo: string | null;
 
     /**
-     * The second line of the address.
+     * The descriptor that will be printed on the letter included with the check.
      */
-    line2: string | null;
+    note: string | null;
 
     /**
-     * The name of the address.
+     * The name that will be printed on the check.
      */
-    name: string | null;
+    recipient_name: string | null;
 
     /**
-     * The US state of the address.
+     * The return address to be printed on the check.
      */
-    state: string | null;
+    return_address: PhysicalCheck.ReturnAddress | null;
+  }
+
+  export namespace PhysicalCheck {
+    /**
+     * Details for where Increase will mail the check.
+     */
+    export interface MailingAddress {
+      /**
+       * The city of the check's destination.
+       */
+      city: string | null;
+
+      /**
+       * The street address of the check's destination.
+       */
+      line1: string | null;
+
+      /**
+       * The second line of the address of the check's destination.
+       */
+      line2: string | null;
+
+      /**
+       * The name component of the check's mailing address.
+       */
+      name: string | null;
+
+      /**
+       * The postal code of the check's destination.
+       */
+      postal_code: string | null;
+
+      /**
+       * The state of the check's destination.
+       */
+      state: string | null;
+    }
 
     /**
-     * The postal code of the address.
+     * The return address to be printed on the check.
      */
-    zip: string | null;
+    export interface ReturnAddress {
+      /**
+       * The city of the check's destination.
+       */
+      city: string | null;
+
+      /**
+       * The street address of the check's destination.
+       */
+      line1: string | null;
+
+      /**
+       * The second line of the address of the check's destination.
+       */
+      line2: string | null;
+
+      /**
+       * The name component of the check's return address.
+       */
+      name: string | null;
+
+      /**
+       * The postal code of the check's destination.
+       */
+      postal_code: string | null;
+
+      /**
+       * The state of the check's destination.
+       */
+      state: string | null;
+    }
   }
 
   /**
@@ -405,60 +456,31 @@ export interface CheckTransferCreateParams {
   account_id: string;
 
   /**
-   * The city of the check's destination.
-   */
-  address_city: string;
-
-  /**
-   * The street address of the check's destination.
-   */
-  address_line1: string;
-
-  /**
-   * The state of the check's destination.
-   */
-  address_state: string;
-
-  /**
-   * The postal code of the check's destination.
-   */
-  address_zip: string;
-
-  /**
    * The transfer amount in cents.
    */
   amount: number;
 
   /**
-   * The descriptor that will be printed on the memo field on the check.
+   * Whether Increase will print and mail the check or if you will do it yourself.
+   *
+   * - `physical_check` - Increase will print and mail a physical check.
+   * - `third_party` - Increase will not print a check; you are responsible for
+   *   printing and mailing a check with the provided account number, routing number,
+   *   check number, and amount.
    */
-  message: string;
+  fulfillment_method?: 'physical_check' | 'third_party';
 
   /**
-   * The name that will be printed on the check.
+   * Details relating to the physical check that Increase will print and mail. This
+   * is required if `fulfillment_method` is equal to `physical_check`. It must not be
+   * included if any other `fulfillment_method` is provided.
    */
-  recipient_name: string;
-
-  /**
-   * The second line of the address of the check's destination.
-   */
-  address_line2?: string;
-
-  /**
-   * The descriptor that will be printed on the letter included with the check.
-   */
-  note?: string;
+  physical_check?: CheckTransferCreateParams.PhysicalCheck;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
-
-  /**
-   * The return address to be printed on the check. If omitted this will default to
-   * the address of the Entity of the Account used to make the Check Transfer.
-   */
-  return_address?: CheckTransferCreateParams.ReturnAddress;
 
   /**
    * The identifier of the Account Number from which to send the transfer and print
@@ -476,39 +498,110 @@ export interface CheckTransferCreateParams {
 
 export namespace CheckTransferCreateParams {
   /**
-   * The return address to be printed on the check. If omitted this will default to
-   * the address of the Entity of the Account used to make the Check Transfer.
+   * Details relating to the physical check that Increase will print and mail. This
+   * is required if `fulfillment_method` is equal to `physical_check`. It must not be
+   * included if any other `fulfillment_method` is provided.
    */
-  export interface ReturnAddress {
+  export interface PhysicalCheck {
     /**
-     * The city of the return address.
+     * Details for where Increase will mail the check.
      */
-    city: string;
+    mailing_address: PhysicalCheck.MailingAddress;
 
     /**
-     * The first line of the return address.
+     * The descriptor that will be printed on the memo field on the check.
      */
-    line1: string;
+    memo: string;
 
     /**
-     * The name of the return address.
+     * The name that will be printed on the check in the 'To:' field.
      */
-    name: string;
+    recipient_name: string;
 
     /**
-     * The US state of the return address.
+     * The descriptor that will be printed on the letter included with the check.
      */
-    state: string;
+    note?: string;
 
     /**
-     * The postal code of the return address.
+     * The return address to be printed on the check. If omitted this will default to
+     * the address of the Entity of the Account used to make the Check Transfer.
      */
-    zip: string;
+    return_address?: PhysicalCheck.ReturnAddress;
+  }
+
+  export namespace PhysicalCheck {
+    /**
+     * Details for where Increase will mail the check.
+     */
+    export interface MailingAddress {
+      /**
+       * The city component of the check's destination address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address component of the check's destination address.
+       */
+      line1: string;
+
+      /**
+       * The postal code component of the check's destination address.
+       */
+      postal_code: string;
+
+      /**
+       * The US state component of the check's destination address.
+       */
+      state: string;
+
+      /**
+       * The second line of the address component of the check's destination address.
+       */
+      line2?: string;
+
+      /**
+       * The name component of the check's destination address. Defaults to the provided
+       * `recipient_name` parameter.
+       */
+      name?: string;
+    }
 
     /**
-     * The second line of the return address.
+     * The return address to be printed on the check. If omitted this will default to
+     * the address of the Entity of the Account used to make the Check Transfer.
      */
-    line2?: string;
+    export interface ReturnAddress {
+      /**
+       * The city of the return address.
+       */
+      city: string;
+
+      /**
+       * The first line of the return address.
+       */
+      line1: string;
+
+      /**
+       * The name of the return address.
+       */
+      name: string;
+
+      /**
+       * The postal code of the return address.
+       */
+      postal_code: string;
+
+      /**
+       * The US state of the return address.
+       */
+      state: string;
+
+      /**
+       * The second line of the return address.
+       */
+      line2?: string;
+    }
   }
 }
 
