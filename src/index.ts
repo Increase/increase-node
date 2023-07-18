@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import * as qs from 'qs';
 import * as Core from './core';
 import * as Pagination from './pagination';
 import * as API from './resources/index';
 import * as Errors from './error';
 import type { Agent } from 'increase/_shims/agent';
 import * as Uploads from './uploads';
+import * as qs from 'qs';
 
 const environments = {
   production: 'https://api.increase.com',
@@ -168,8 +168,8 @@ export class Increase extends Core.APIClient {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  protected override qsOptions(): qs.IStringifyOptions {
-    return { allowDots: true, arrayFormat: 'comma' };
+  protected override stringifyQuery(query: Record<string, unknown>): string {
+    return qs.stringify(query, { allowDots: true, arrayFormat: 'comma' });
   }
 
   static Increase = this;
