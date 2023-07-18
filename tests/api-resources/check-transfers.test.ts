@@ -6,32 +6,22 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource checkTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.checkTransfers.create({
-      account_id: 'string',
-      address_city: 'x',
-      address_line1: 'x',
-      address_state: 'x',
-      address_zip: 'x',
-      amount: 1,
-      message: 'x',
-      recipient_name: 'x',
-    });
+    const response = await increase.checkTransfers.create({ account_id: 'string', amount: 1 });
   });
 
   test('create: required and optional params', async () => {
     const response = await increase.checkTransfers.create({
       account_id: 'string',
-      address_city: 'x',
-      address_line1: 'x',
-      address_state: 'x',
-      address_zip: 'x',
       amount: 1,
-      message: 'x',
-      recipient_name: 'x',
-      address_line2: 'x',
-      note: 'x',
+      fulfillment_method: 'physical_check',
+      physical_check: {
+        memo: 'x',
+        note: 'x',
+        recipient_name: 'x',
+        mailing_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
+        return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
+      },
       require_approval: true,
-      return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
       source_account_number_id: 'string',
       unique_identifier: 'x',
     });
