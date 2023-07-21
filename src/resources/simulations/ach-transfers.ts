@@ -264,6 +264,7 @@ export namespace ACHTransferSimulation {
          * - `group_locked` - Your account is inactive.
          * - `insufficient_funds` - Your account contains insufficient funds.
          * - `misrouted_return` - Other.
+         * - `return_of_erroneous_or_reversing_debit` - Other.
          * - `no_ach_route` - The account number that was debited does not exist.
          * - `originator_request` - Other.
          * - `transaction_not_allowed` - The transaction is not allowed per Increase's
@@ -279,6 +280,7 @@ export namespace ACHTransferSimulation {
           | 'group_locked'
           | 'insufficient_funds'
           | 'misrouted_return'
+          | 'return_of_erroneous_or_reversing_debit'
           | 'no_ach_route'
           | 'originator_request'
           | 'transaction_not_allowed';
@@ -1968,6 +1970,11 @@ export namespace ACHTransferSimulation {
          * - `USD` - US Dollar (USD)
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The start of this payment's fee period, usually the first day of a month.
+         */
+        fee_period_start: string;
       }
 
       /**
