@@ -1246,6 +1246,11 @@ export namespace WireTransferSimulation {
          * - `USD` - US Dollar (USD)
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The start of this payment's fee period, usually the first day of a month.
+         */
+        fee_period_start: string;
       }
 
       /**

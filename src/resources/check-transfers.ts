@@ -328,7 +328,7 @@ export namespace CheckTransfer {
     /**
      * The name that will be printed on the check.
      */
-    recipient_name: string | null;
+    recipient_name: string;
 
     /**
      * The return address to be printed on the check.
