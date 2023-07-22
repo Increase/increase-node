@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.8.0](https://github.com/Increase/increase-node/compare/v0.7.1...v0.8.0) (2023-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** reorganize `check_transfer` and `network fields; add `request_details`; add `unknown` ([#77](https://github.com/Increase/increase-node/issues/77))
+
+### Features
+
+* **api:** add fee_period_start and return_of_erroneous_or_reversing_debit ([#81](https://github.com/Increase/increase-node/issues/81)) ([0355030](https://github.com/Increase/increase-node/commit/035503048b9a8def682086e31e1d794a4fbd50d2))
+* **api:** reorganize `check_transfer` and `network fields; add `request_details`; add `unknown` ([#77](https://github.com/Increase/increase-node/issues/77)) ([477ba8c](https://github.com/Increase/increase-node/commit/477ba8c7853fe54bd83fdff6b2c280825a15670b))
+* **client:** export ClientOptions interface ([#76](https://github.com/Increase/increase-node/issues/76)) ([757d3e3](https://github.com/Increase/increase-node/commit/757d3e3edee0471d486f6fd9bd1f2dd3f0fa8f58))
+* **streaming:** make requests immediately throw an error if an aborted signal is passed in ([#80](https://github.com/Increase/increase-node/issues/80)) ([d9e16a4](https://github.com/Increase/increase-node/commit/d9e16a4804f6d7bf377ee58054d2914bebae08c6))
+
+
+### Bug Fixes
+
+* **client:** fix errors with file uploads in the browser ([#78](https://github.com/Increase/increase-node/issues/78)) ([7ebdd66](https://github.com/Increase/increase-node/commit/7ebdd66c0eaee44aae2ab6ea515f4819bbf31a4f))
+* fix error in environments without `TextEncoder` ([#72](https://github.com/Increase/increase-node/issues/72)) ([699c8e1](https://github.com/Increase/increase-node/commit/699c8e1d56d50feb4ef4f052de012da67efe2b52))
+* fix export map order ([#75](https://github.com/Increase/increase-node/issues/75)) ([5826191](https://github.com/Increase/increase-node/commit/582619146249a2c9a71fae31f2df97a261bda9da))
+
+
+### Chores
+
+* **internal:** restructure code to stringify query ([#74](https://github.com/Increase/increase-node/issues/74)) ([71586e2](https://github.com/Increase/increase-node/commit/71586e2ead82fb7f89be90a1dbd5d4132fcf3d8b))
+
+
+### Documentation
+
+* **api:** update `model_id` documentation ([#79](https://github.com/Increase/increase-node/issues/79)) ([aee0086](https://github.com/Increase/increase-node/commit/aee00861804949a4eb286bc97da1c3a407ae5df8))
+
 ## [0.7.1](https://github.com/Increase/increase-node/compare/v0.7.0...v0.7.1) (2023-07-17)
 
 
