@@ -89,7 +89,7 @@ export class Increase extends Core.APIClient {
 
   private _options: ClientOptions;
 
-  constructor(opts?: ClientOptions) {
+  constructor(opts: ClientOptions = {}) {
     const options: ClientOptions = {
       apiKey: typeof process === 'undefined' ? '' : process.env['INCREASE_API_KEY'] || '',
       environment: 'production',
