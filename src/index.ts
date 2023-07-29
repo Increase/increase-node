@@ -89,18 +89,18 @@ export class Increase extends Core.APIClient {
 
   private _options: ClientOptions;
 
-  constructor(opts: ClientOptions = {}) {
+  constructor({ apiKey = Core.readEnv('INCREASE_API_KEY'), ...opts }: ClientOptions = {}) {
+    if (apiKey === undefined) {
+      throw new Error(
+        'The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: undefined }).',
+      );
+    }
+
     const options: ClientOptions = {
-      apiKey: typeof process === 'undefined' ? '' : process.env['INCREASE_API_KEY'] || '',
+      apiKey,
       environment: 'production',
       ...opts,
     };
-
-    if (!options.apiKey && options.apiKey !== null) {
-      throw new Error(
-        "The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: 'my api key' }).",
-      );
-    }
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'production'],
@@ -109,9 +109,10 @@ export class Increase extends Core.APIClient {
       maxRetries: options.maxRetries,
       fetch: options.fetch,
     });
-    this.apiKey = options.apiKey;
     this._options = options;
     this.idempotencyHeader = 'Idempotency-Key';
+
+    this.apiKey = apiKey;
   }
 
   accounts: API.Accounts = new API.Accounts(this);
