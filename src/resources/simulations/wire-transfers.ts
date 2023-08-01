@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './';
+import * as API from './index';
 
 export class WireTransfers extends APIResource {
   /**

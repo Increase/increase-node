@@ -18,7 +18,7 @@ import { InterestPayments } from './interest-payments';
 import { WireTransfers } from './wire-transfers';
 import { Cards } from './cards';
 import { RealTimePaymentsTransfers } from './real-time-payments-transfers';
-import * as API from './';
+import * as API from './index';
 
 export class Simulations extends APIResource {
   accountTransfers: AccountTransfers = new AccountTransfers(this.client);
