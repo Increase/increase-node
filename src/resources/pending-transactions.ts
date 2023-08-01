@@ -4,7 +4,7 @@ import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
 import * as Shared from 'increase/resources/shared';
-import * as API from './';
+import * as API from './index';
 import { Page, PageParams } from 'increase/pagination';
 
 export class PendingTransactions extends APIResource {

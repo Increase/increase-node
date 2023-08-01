@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './';
+import * as API from './index';
 import { Page, PageParams } from 'increase/pagination';
 
 export class RoutingNumbers extends APIResource {

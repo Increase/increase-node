@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as InboundWireDrawdownRequests_ from 'increase/resources/inbound-wire-drawdown-requests';
-import * as API from './';
+import * as API from './index';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**

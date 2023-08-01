@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as AccountStatements_ from 'increase/resources/account-statements';
-import * as API from './';
+import * as API from './index';
 
 export class AccountStatements extends APIResource {
   /**

@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as Programs_ from 'increase/resources/programs';
-import * as API from './';
+import * as API from './index';
 
 export class Programs extends APIResource {
   /**
