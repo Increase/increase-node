@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as Documents_ from 'increase/resources/documents';
-import * as API from './';
+import * as API from './index';
 
 export class Documents extends APIResource {
   /**

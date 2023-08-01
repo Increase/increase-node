@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as Shared from 'increase/resources/shared';
-import * as API from './';
+import * as API from './index';
 
 export class RealTimeDecisions extends APIResource {
   /**

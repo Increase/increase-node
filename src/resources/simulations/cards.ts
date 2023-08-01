@@ -4,7 +4,7 @@ import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as Transactions from 'increase/resources/transactions';
 import * as Shared from 'increase/resources/shared';
-import * as API from './';
+import * as API from './index';
 
 export class Cards extends APIResource {
   /**

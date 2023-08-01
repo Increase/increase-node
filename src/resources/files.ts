@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './';
+import * as API from './index';
 import { type Uploadable, multipartFormRequestOptions } from 'increase/core';
 import { Page, PageParams } from 'increase/pagination';
 

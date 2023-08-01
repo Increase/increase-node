@@ -4,7 +4,7 @@ import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as RealTimePaymentsTransfers_ from 'increase/resources/real-time-payments-transfers';
 import * as Shared from 'increase/resources/shared';
-import * as API from './';
+import * as API from './index';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**

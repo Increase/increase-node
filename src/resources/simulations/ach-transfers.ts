@@ -4,7 +4,7 @@ import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as ACHTransfers_ from 'increase/resources/ach-transfers';
 import * as Shared from 'increase/resources/shared';
-import * as API from './';
+import * as API from './index';
 
 export class ACHTransfers extends APIResource {
   /**

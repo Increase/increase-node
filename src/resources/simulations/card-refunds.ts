@@ -3,7 +3,7 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as Transactions from 'increase/resources/transactions';
-import * as API from './';
+import * as API from './index';
 
 export class CardRefunds extends APIResource {
   /**
