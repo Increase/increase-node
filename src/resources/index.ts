@@ -87,6 +87,12 @@ export {
   CardProfiles,
 } from './card-profiles';
 export {
+  CardPurchaseSupplement,
+  CardPurchaseSupplementListParams,
+  CardPurchaseSupplementsPage,
+  CardPurchaseSupplements,
+} from './card-purchase-supplements';
+export {
   CheckDeposit,
   CheckDepositCreateParams,
   CheckDepositListParams,

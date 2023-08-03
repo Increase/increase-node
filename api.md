@@ -128,6 +128,17 @@ Methods:
 - <code title="get /card_profiles/{card_profile_id}">client.cardProfiles.<a href="./src/resources/card-profiles.ts">retrieve</a>(cardProfileId) -> CardProfile</code>
 - <code title="get /card_profiles">client.cardProfiles.<a href="./src/resources/card-profiles.ts">list</a>({ ...params }) -> CardProfilesPage</code>
 
+# CardPurchaseSupplements
+
+Types:
+
+- <code><a href="./src/resources/card-purchase-supplements.ts">CardPurchaseSupplement</a></code>
+
+Methods:
+
+- <code title="get /card_purchase_supplements/{card_purchase_supplement_id}">client.cardPurchaseSupplements.<a href="./src/resources/card-purchase-supplements.ts">retrieve</a>(cardPurchaseSupplementId) -> CardPurchaseSupplement</code>
+- <code title="get /card_purchase_supplements">client.cardPurchaseSupplements.<a href="./src/resources/card-purchase-supplements.ts">list</a>({ ...params }) -> CardPurchaseSupplementsPage</code>
+
 # ExternalAccounts
 
 Types:
@@ -326,6 +337,12 @@ Methods:
 - <code title="post /entities">client.entities.<a href="./src/resources/entities/entities.ts">create</a>({ ...params }) -> Entity</code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/resources/entities/entities.ts">retrieve</a>(entityId) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
+
+## BeneficialOwners
+
+Methods:
+
+- <code title="post /entities/{entity_id}/beneficial_owners">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">create</a>(entityId, { ...params }) -> Entities.Entity</code>
 
 ## SupplementalDocuments
 

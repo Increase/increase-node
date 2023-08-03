@@ -171,22 +171,36 @@ export namespace CardProfile {
     /**
      * The identifier of the File containing the physical card's back image.
      */
-    back_image_file_id: string;
+    back_image_file_id: string | null;
 
     /**
      * The identifier of the File containing the physical card's carrier image.
      */
-    carrier_image_file_id: string;
+    carrier_image_file_id: string | null;
 
     /**
      * A phone number the user can contact to receive support for their card.
      */
-    contact_phone: string;
+    contact_phone: string | null;
 
     /**
      * The identifier of the File containing the physical card's front image.
      */
-    front_image_file_id: string;
+    front_image_file_id: string | null;
+
+    /**
+     * The status of the Physical Card Profile.
+     *
+     * - `not_eligible` - The Card Profile is not eligible for physical cards.
+     * - `rejected` - There is an issue with the Physical Card Profile preventing it
+     *   from use.
+     * - `pending_reviewing` - The card profile is awaiting review by Increase.
+     * - `pending_submitting` - The card profile is awaiting submission to the
+     *   fulfillment provider.
+     * - `submitted` - The Physical Card Profile has been submitted to the fulfillment
+     *   provider.
+     */
+    status: 'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'submitted';
   }
 }
 

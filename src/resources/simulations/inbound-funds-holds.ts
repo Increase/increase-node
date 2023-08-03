@@ -23,6 +23,11 @@ export class InboundFundsHolds extends APIResource {
  */
 export interface InboundFundsHoldReleaseResponse {
   /**
+   * The Inbound Funds Hold identifier.
+   */
+  id: string;
+
+  /**
    * The held amount in the minor unit of the account's currency. For dollars, for
    * example, this is cents.
    */
