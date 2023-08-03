@@ -126,6 +126,7 @@ export class Increase extends Core.APIClient {
   cards: API.Cards = new API.Cards(this);
   cardDisputes: API.CardDisputes = new API.CardDisputes(this);
   cardProfiles: API.CardProfiles = new API.CardProfiles(this);
+  cardPurchaseSupplements: API.CardPurchaseSupplements = new API.CardPurchaseSupplements(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
   exports: API.Exports = new API.Exports(this);
   digitalWalletTokens: API.DigitalWalletTokens = new API.DigitalWalletTokens(this);
@@ -304,6 +305,11 @@ export namespace Increase {
   export import CardProfilesPage = API.CardProfilesPage;
   export import CardProfileCreateParams = API.CardProfileCreateParams;
   export import CardProfileListParams = API.CardProfileListParams;
+
+  export import CardPurchaseSupplements = API.CardPurchaseSupplements;
+  export import CardPurchaseSupplement = API.CardPurchaseSupplement;
+  export import CardPurchaseSupplementsPage = API.CardPurchaseSupplementsPage;
+  export import CardPurchaseSupplementListParams = API.CardPurchaseSupplementListParams;
 
   export import ExternalAccounts = API.ExternalAccounts;
   export import ExternalAccount = API.ExternalAccount;
