@@ -3,11 +3,13 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
+import { BeneficialOwners } from './beneficial-owners';
 import { SupplementalDocuments } from './supplemental-documents';
 import * as API from './index';
 import { Page, PageParams } from 'increase/pagination';
 
 export class Entities extends APIResource {
+  beneficialOwners: BeneficialOwners = new BeneficialOwners(this.client);
   supplementalDocuments: SupplementalDocuments = new SupplementalDocuments(this.client);
 
   /**
@@ -2071,6 +2073,9 @@ export namespace Entities {
   export type EntitiesPage = _EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
+
+  export import BeneficialOwners = API.BeneficialOwners;
+  export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
 
   export import SupplementalDocuments = API.SupplementalDocuments;
   export import SupplementalDocument = API.SupplementalDocument;

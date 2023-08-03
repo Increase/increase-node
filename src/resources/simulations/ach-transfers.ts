@@ -924,8 +924,6 @@ export namespace ACHTransferSimulation {
        *   Deposit object. Details will be under the `check_transfer_deposit` object.
        * - `check_transfer_intention` - The Transaction was created by a Check Transfer
        *   Intention object. Details will be under the `check_transfer_intention` object.
-       * - `check_transfer_rejection` - The Transaction was created by a Check Transfer
-       *   Rejection object. Details will be under the `check_transfer_rejection` object.
        * - `check_transfer_stop_payment_request` - The Transaction was created by a Check
        *   Transfer Stop Payment Request object. Details will be under the
        *   `check_transfer_stop_payment_request` object.
@@ -982,7 +980,6 @@ export namespace ACHTransferSimulation {
         | 'check_deposit_return'
         | 'check_transfer_deposit'
         | 'check_transfer_intention'
-        | 'check_transfer_rejection'
         | 'check_transfer_stop_payment_request'
         | 'fee_payment'
         | 'inbound_ach_transfer'
@@ -1025,12 +1022,6 @@ export namespace ACHTransferSimulation {
        * response if and only if `category` is equal to `check_transfer_intention`.
        */
       check_transfer_intention: Source.CheckTransferIntention | null;
-
-      /**
-       * A Check Transfer Rejection object. This field will be present in the JSON
-       * response if and only if `category` is equal to `check_transfer_rejection`.
-       */
-      check_transfer_rejection: Source.CheckTransferRejection | null;
 
       /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -1545,6 +1536,12 @@ export namespace ACHTransferSimulation {
         merchant_state: string | null;
 
         /**
+         * Additional details about the card purchase, such as tax and industry-specific
+         * fields.
+         */
+        purchase_details: CardRefund.PurchaseDetails | null;
+
+        /**
          * The identifier of the Transaction associated with this Transaction.
          */
         transaction_id: string;
@@ -1554,6 +1551,535 @@ export namespace ACHTransferSimulation {
          * `card_refund`.
          */
         type: 'card_refund';
+      }
+
+      export namespace CardRefund {
+        /**
+         * Additional details about the card purchase, such as tax and industry-specific
+         * fields.
+         */
+        export interface PurchaseDetails {
+          /**
+           * Fields specific to car rentals.
+           */
+          car_rental: PurchaseDetails.CarRental | null;
+
+          /**
+           * An identifier from the merchant for the customer or consumer.
+           */
+          customer_reference_identifier: string | null;
+
+          /**
+           * The state or provincial tax amount in minor units.
+           */
+          local_tax_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+           * assessed.
+           */
+          local_tax_currency: string | null;
+
+          /**
+           * Fields specific to lodging.
+           */
+          lodging: PurchaseDetails.Lodging | null;
+
+          /**
+           * The national tax amount in minor units.
+           */
+          national_tax_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+           * assessed.
+           */
+          national_tax_currency: string | null;
+
+          /**
+           * An identifier from the merchant for the purchase to the issuer and cardholder.
+           */
+          purchase_identifier: string | null;
+
+          /**
+           * The format of the purchase identifier.
+           *
+           * - `free_text` - Free text
+           * - `order_number` - Order number
+           * - `rental_agreement_number` - Rental agreement number
+           * - `hotel_folio_number` - Hotel folio number
+           * - `invoice_number` - Invoice number
+           */
+          purchase_identifier_format:
+            | 'free_text'
+            | 'order_number'
+            | 'rental_agreement_number'
+            | 'hotel_folio_number'
+            | 'invoice_number'
+            | null;
+
+          /**
+           * Fields specific to travel.
+           */
+          travel: PurchaseDetails.Travel | null;
+        }
+
+        export namespace PurchaseDetails {
+          /**
+           * Fields specific to car rentals.
+           */
+          export interface CarRental {
+            /**
+             * Code indicating the vehicle's class.
+             */
+            car_class_code: string | null;
+
+            /**
+             * Date the customer picked up the car or, in the case of a no-show or pre-pay
+             * transaction, the scheduled pick up date.
+             */
+            checkout_date: string | null;
+
+            /**
+             * Daily rate being charged for the vehicle.
+             */
+            daily_rental_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+             * rate.
+             */
+            daily_rental_rate_currency: string | null;
+
+            /**
+             * Number of days the vehicle was rented.
+             */
+            days_rented: number | null;
+
+            /**
+             * Additional charges (gas, late fee, etc.) being billed.
+             *
+             * - `no_extra_charge` - No extra charge
+             * - `gas` - Gas
+             * - `extra_mileage` - Extra mileage
+             * - `late_return` - Late return
+             * - `one_way_service_fee` - One way service fee
+             * - `parking_violation` - Parking violation
+             */
+            extra_charges:
+              | 'no_extra_charge'
+              | 'gas'
+              | 'extra_mileage'
+              | 'late_return'
+              | 'one_way_service_fee'
+              | 'parking_violation'
+              | null;
+
+            /**
+             * Fuel charges for the vehicle.
+             */
+            fuel_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+             * assessed.
+             */
+            fuel_charges_currency: string | null;
+
+            /**
+             * Any insurance being charged for the vehicle.
+             */
+            insurance_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+             * charges assessed.
+             */
+            insurance_charges_currency: string | null;
+
+            /**
+             * An indicator that the cardholder is being billed for a reserved vehicle that was
+             * not actually rented (that is, a "no-show" charge).
+             *
+             * - `not_applicable` - Not applicable
+             * - `no_show_for_specialized_vehicle` - No show for specialized vehicle
+             */
+            no_show_indicator: 'not_applicable' | 'no_show_for_specialized_vehicle' | null;
+
+            /**
+             * Charges for returning the vehicle at a different location than where it was
+             * picked up.
+             */
+            one_way_drop_off_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+             * drop-off charges assessed.
+             */
+            one_way_drop_off_charges_currency: string | null;
+
+            /**
+             * Name of the person renting the vehicle.
+             */
+            renter_name: string | null;
+
+            /**
+             * Weekly rate being charged for the vehicle.
+             */
+            weekly_rental_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+             * rental rate.
+             */
+            weekly_rental_rate_currency: string | null;
+          }
+
+          /**
+           * Fields specific to lodging.
+           */
+          export interface Lodging {
+            /**
+             * Date the customer checked in.
+             */
+            check_in_date: string | null;
+
+            /**
+             * Daily rate being charged for the room.
+             */
+            daily_room_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+             * rate.
+             */
+            daily_room_rate_currency: string | null;
+
+            /**
+             * Additional charges (phone, late check-out, etc.) being billed.
+             *
+             * - `no_extra_charge` - No extra charge
+             * - `restaurant` - Restaurant
+             * - `gift_shop` - Gift shop
+             * - `mini_bar` - Mini bar
+             * - `telephone` - Telephone
+             * - `other` - Other
+             * - `laundry` - Laundry
+             */
+            extra_charges:
+              | 'no_extra_charge'
+              | 'restaurant'
+              | 'gift_shop'
+              | 'mini_bar'
+              | 'telephone'
+              | 'other'
+              | 'laundry'
+              | null;
+
+            /**
+             * Folio cash advances for the room.
+             */
+            folio_cash_advances_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+             * advances.
+             */
+            folio_cash_advances_currency: string | null;
+
+            /**
+             * Food and beverage charges for the room.
+             */
+            food_beverage_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+             * beverage charges.
+             */
+            food_beverage_charges_currency: string | null;
+
+            /**
+             * Indicator that the cardholder is being billed for a reserved room that was not
+             * actually used.
+             *
+             * - `not_applicable` - Not applicable
+             * - `no_show` - No show
+             */
+            no_show_indicator: 'not_applicable' | 'no_show' | null;
+
+            /**
+             * Prepaid expenses being charged for the room.
+             */
+            prepaid_expenses_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+             * expenses.
+             */
+            prepaid_expenses_currency: string | null;
+
+            /**
+             * Number of nights the room was rented.
+             */
+            room_nights: number | null;
+
+            /**
+             * Total room tax being charged.
+             */
+            total_room_tax_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+             * tax.
+             */
+            total_room_tax_currency: string | null;
+
+            /**
+             * Total tax being charged for the room.
+             */
+            total_tax_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+             * assessed.
+             */
+            total_tax_currency: string | null;
+          }
+
+          /**
+           * Fields specific to travel.
+           */
+          export interface Travel {
+            /**
+             * Ancillary purchases in addition to the airfare.
+             */
+            ancillary: Travel.Ancillary | null;
+
+            /**
+             * Indicates the computerized reservation system used to book the ticket.
+             */
+            computerized_reservation_system: string | null;
+
+            /**
+             * Indicates the reason for a credit to the cardholder.
+             *
+             * - `no_credit` - No credit
+             * - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+             *   ancillary purchase cancellation
+             * - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+             *   Airline ticket and passenger transport ancillary purchase cancellation
+             * - `airline_ticket_cancellation` - Airline ticket cancellation
+             * - `other` - Other
+             * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
+             */
+            credit_reason_indicator:
+              | 'no_credit'
+              | 'passenger_transport_ancillary_purchase_cancellation'
+              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
+              | 'airline_ticket_cancellation'
+              | 'other'
+              | 'partial_refund_of_airline_ticket'
+              | null;
+
+            /**
+             * Date of departure.
+             */
+            departure_date: string | null;
+
+            /**
+             * Code for the originating city or airport.
+             */
+            origination_city_airport_code: string | null;
+
+            /**
+             * Name of the passenger.
+             */
+            passenger_name: string | null;
+
+            /**
+             * Indicates whether this ticket is non-refundable.
+             *
+             * - `no_restrictions` - No restrictions
+             * - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
+             */
+            restricted_ticket_indicator: 'no_restrictions' | 'restricted_non_refundable_ticket' | null;
+
+            /**
+             * Indicates why a ticket was changed.
+             *
+             * - `none` - None
+             * - `change_to_existing_ticket` - Change to existing ticket
+             * - `new_ticket` - New ticket
+             */
+            ticket_change_indicator: 'none' | 'change_to_existing_ticket' | 'new_ticket' | null;
+
+            /**
+             * Ticket number.
+             */
+            ticket_number: string | null;
+
+            /**
+             * Code for the travel agency if the ticket was issued by a travel agency.
+             */
+            travel_agency_code: string | null;
+
+            /**
+             * Name of the travel agency if the ticket was issued by a travel agency.
+             */
+            travel_agency_name: string | null;
+
+            /**
+             * Fields specific to each leg of the journey.
+             */
+            trip_legs: Array<Travel.TripLeg> | null;
+          }
+
+          export namespace Travel {
+            /**
+             * Ancillary purchases in addition to the airfare.
+             */
+            export interface Ancillary {
+              /**
+               * If this purchase has a connection or relationship to another purchase, such as a
+               * baggage fee for a passenger transport ticket, this field should contain the
+               * ticket document number for the other purchase.
+               */
+              connected_ticket_document_number: string | null;
+
+              /**
+               * Indicates the reason for a credit to the cardholder.
+               *
+               * - `no_credit` - No credit
+               * - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+               *   ancillary purchase cancellation
+               * - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+               *   Airline ticket and passenger transport ancillary purchase cancellation
+               * - `other` - Other
+               */
+              credit_reason_indicator:
+                | 'no_credit'
+                | 'passenger_transport_ancillary_purchase_cancellation'
+                | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
+                | 'other'
+                | null;
+
+              /**
+               * Name of the passenger or description of the ancillary purchase.
+               */
+              passenger_name_or_description: string | null;
+
+              /**
+               * Additional travel charges, such as baggage fees.
+               */
+              services: Array<Ancillary.Service>;
+
+              /**
+               * Ticket document number.
+               */
+              ticket_document_number: string | null;
+            }
+
+            export namespace Ancillary {
+              export interface Service {
+                /**
+                 * Category of the ancillary service.
+                 *
+                 * - `none` - None
+                 * - `bundled_service` - Bundled service
+                 * - `baggage_fee` - Baggage fee
+                 * - `change_fee` - Change fee
+                 * - `cargo` - Cargo
+                 * - `carbon_offset` - Carbon offset
+                 * - `frequent_flyer` - Frequent flyer
+                 * - `gift_card` - Gift card
+                 * - `ground_transport` - Ground transport
+                 * - `in_flight_entertainment` - In-flight entertainment
+                 * - `lounge` - Lounge
+                 * - `medical` - Medical
+                 * - `meal_beverage` - Meal beverage
+                 * - `other` - Other
+                 * - `passenger_assist_fee` - Passenger assist fee
+                 * - `pets` - Pets
+                 * - `seat_fees` - Seat fees
+                 * - `standby` - Standby
+                 * - `service_fee` - Service fee
+                 * - `store` - Store
+                 * - `travel_service` - Travel service
+                 * - `unaccompanied_travel` - Unaccompanied travel
+                 * - `upgrades` - Upgrades
+                 * - `wifi` - Wi-fi
+                 */
+                category:
+                  | 'none'
+                  | 'bundled_service'
+                  | 'baggage_fee'
+                  | 'change_fee'
+                  | 'cargo'
+                  | 'carbon_offset'
+                  | 'frequent_flyer'
+                  | 'gift_card'
+                  | 'ground_transport'
+                  | 'in_flight_entertainment'
+                  | 'lounge'
+                  | 'medical'
+                  | 'meal_beverage'
+                  | 'other'
+                  | 'passenger_assist_fee'
+                  | 'pets'
+                  | 'seat_fees'
+                  | 'standby'
+                  | 'service_fee'
+                  | 'store'
+                  | 'travel_service'
+                  | 'unaccompanied_travel'
+                  | 'upgrades'
+                  | 'wifi'
+                  | null;
+
+                /**
+                 * Sub-category of the ancillary service, free-form.
+                 */
+                sub_category: string | null;
+              }
+            }
+
+            export interface TripLeg {
+              /**
+               * Carrier code (e.g., United Airlines, Jet Blue, etc.).
+               */
+              carrier_code: string | null;
+
+              /**
+               * Code for the destination city or airport.
+               */
+              destination_city_airport_code: string | null;
+
+              /**
+               * Fare basis code.
+               */
+              fare_basis_code: string | null;
+
+              /**
+               * Flight number.
+               */
+              flight_number: string | null;
+
+              /**
+               * Service class (e.g., first class, business class, etc.).
+               */
+              service_class: string | null;
+
+              /**
+               * Indicates whether a stopover is allowed on this ticket.
+               *
+               * - `none` - None
+               * - `stop_over_allowed` - Stop over allowed
+               * - `stop_over_not_allowed` - Stop over not allowed
+               */
+              stop_over_code: 'none' | 'stop_over_allowed' | 'stop_over_not_allowed' | null;
+            }
+          }
+        }
       }
 
       /**
@@ -1679,6 +2205,12 @@ export namespace ACHTransferSimulation {
         presentment_currency: string;
 
         /**
+         * Additional details about the card purchase, such as tax and industry-specific
+         * fields.
+         */
+        purchase_details: CardSettlement.PurchaseDetails | null;
+
+        /**
          * The identifier of the Transaction associated with this Transaction.
          */
         transaction_id: string;
@@ -1688,6 +2220,535 @@ export namespace ACHTransferSimulation {
          * `card_settlement`.
          */
         type: 'card_settlement';
+      }
+
+      export namespace CardSettlement {
+        /**
+         * Additional details about the card purchase, such as tax and industry-specific
+         * fields.
+         */
+        export interface PurchaseDetails {
+          /**
+           * Fields specific to car rentals.
+           */
+          car_rental: PurchaseDetails.CarRental | null;
+
+          /**
+           * An identifier from the merchant for the customer or consumer.
+           */
+          customer_reference_identifier: string | null;
+
+          /**
+           * The state or provincial tax amount in minor units.
+           */
+          local_tax_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+           * assessed.
+           */
+          local_tax_currency: string | null;
+
+          /**
+           * Fields specific to lodging.
+           */
+          lodging: PurchaseDetails.Lodging | null;
+
+          /**
+           * The national tax amount in minor units.
+           */
+          national_tax_amount: number | null;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+           * assessed.
+           */
+          national_tax_currency: string | null;
+
+          /**
+           * An identifier from the merchant for the purchase to the issuer and cardholder.
+           */
+          purchase_identifier: string | null;
+
+          /**
+           * The format of the purchase identifier.
+           *
+           * - `free_text` - Free text
+           * - `order_number` - Order number
+           * - `rental_agreement_number` - Rental agreement number
+           * - `hotel_folio_number` - Hotel folio number
+           * - `invoice_number` - Invoice number
+           */
+          purchase_identifier_format:
+            | 'free_text'
+            | 'order_number'
+            | 'rental_agreement_number'
+            | 'hotel_folio_number'
+            | 'invoice_number'
+            | null;
+
+          /**
+           * Fields specific to travel.
+           */
+          travel: PurchaseDetails.Travel | null;
+        }
+
+        export namespace PurchaseDetails {
+          /**
+           * Fields specific to car rentals.
+           */
+          export interface CarRental {
+            /**
+             * Code indicating the vehicle's class.
+             */
+            car_class_code: string | null;
+
+            /**
+             * Date the customer picked up the car or, in the case of a no-show or pre-pay
+             * transaction, the scheduled pick up date.
+             */
+            checkout_date: string | null;
+
+            /**
+             * Daily rate being charged for the vehicle.
+             */
+            daily_rental_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+             * rate.
+             */
+            daily_rental_rate_currency: string | null;
+
+            /**
+             * Number of days the vehicle was rented.
+             */
+            days_rented: number | null;
+
+            /**
+             * Additional charges (gas, late fee, etc.) being billed.
+             *
+             * - `no_extra_charge` - No extra charge
+             * - `gas` - Gas
+             * - `extra_mileage` - Extra mileage
+             * - `late_return` - Late return
+             * - `one_way_service_fee` - One way service fee
+             * - `parking_violation` - Parking violation
+             */
+            extra_charges:
+              | 'no_extra_charge'
+              | 'gas'
+              | 'extra_mileage'
+              | 'late_return'
+              | 'one_way_service_fee'
+              | 'parking_violation'
+              | null;
+
+            /**
+             * Fuel charges for the vehicle.
+             */
+            fuel_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+             * assessed.
+             */
+            fuel_charges_currency: string | null;
+
+            /**
+             * Any insurance being charged for the vehicle.
+             */
+            insurance_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+             * charges assessed.
+             */
+            insurance_charges_currency: string | null;
+
+            /**
+             * An indicator that the cardholder is being billed for a reserved vehicle that was
+             * not actually rented (that is, a "no-show" charge).
+             *
+             * - `not_applicable` - Not applicable
+             * - `no_show_for_specialized_vehicle` - No show for specialized vehicle
+             */
+            no_show_indicator: 'not_applicable' | 'no_show_for_specialized_vehicle' | null;
+
+            /**
+             * Charges for returning the vehicle at a different location than where it was
+             * picked up.
+             */
+            one_way_drop_off_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+             * drop-off charges assessed.
+             */
+            one_way_drop_off_charges_currency: string | null;
+
+            /**
+             * Name of the person renting the vehicle.
+             */
+            renter_name: string | null;
+
+            /**
+             * Weekly rate being charged for the vehicle.
+             */
+            weekly_rental_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+             * rental rate.
+             */
+            weekly_rental_rate_currency: string | null;
+          }
+
+          /**
+           * Fields specific to lodging.
+           */
+          export interface Lodging {
+            /**
+             * Date the customer checked in.
+             */
+            check_in_date: string | null;
+
+            /**
+             * Daily rate being charged for the room.
+             */
+            daily_room_rate_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+             * rate.
+             */
+            daily_room_rate_currency: string | null;
+
+            /**
+             * Additional charges (phone, late check-out, etc.) being billed.
+             *
+             * - `no_extra_charge` - No extra charge
+             * - `restaurant` - Restaurant
+             * - `gift_shop` - Gift shop
+             * - `mini_bar` - Mini bar
+             * - `telephone` - Telephone
+             * - `other` - Other
+             * - `laundry` - Laundry
+             */
+            extra_charges:
+              | 'no_extra_charge'
+              | 'restaurant'
+              | 'gift_shop'
+              | 'mini_bar'
+              | 'telephone'
+              | 'other'
+              | 'laundry'
+              | null;
+
+            /**
+             * Folio cash advances for the room.
+             */
+            folio_cash_advances_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+             * advances.
+             */
+            folio_cash_advances_currency: string | null;
+
+            /**
+             * Food and beverage charges for the room.
+             */
+            food_beverage_charges_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+             * beverage charges.
+             */
+            food_beverage_charges_currency: string | null;
+
+            /**
+             * Indicator that the cardholder is being billed for a reserved room that was not
+             * actually used.
+             *
+             * - `not_applicable` - Not applicable
+             * - `no_show` - No show
+             */
+            no_show_indicator: 'not_applicable' | 'no_show' | null;
+
+            /**
+             * Prepaid expenses being charged for the room.
+             */
+            prepaid_expenses_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+             * expenses.
+             */
+            prepaid_expenses_currency: string | null;
+
+            /**
+             * Number of nights the room was rented.
+             */
+            room_nights: number | null;
+
+            /**
+             * Total room tax being charged.
+             */
+            total_room_tax_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+             * tax.
+             */
+            total_room_tax_currency: string | null;
+
+            /**
+             * Total tax being charged for the room.
+             */
+            total_tax_amount: number | null;
+
+            /**
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+             * assessed.
+             */
+            total_tax_currency: string | null;
+          }
+
+          /**
+           * Fields specific to travel.
+           */
+          export interface Travel {
+            /**
+             * Ancillary purchases in addition to the airfare.
+             */
+            ancillary: Travel.Ancillary | null;
+
+            /**
+             * Indicates the computerized reservation system used to book the ticket.
+             */
+            computerized_reservation_system: string | null;
+
+            /**
+             * Indicates the reason for a credit to the cardholder.
+             *
+             * - `no_credit` - No credit
+             * - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+             *   ancillary purchase cancellation
+             * - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+             *   Airline ticket and passenger transport ancillary purchase cancellation
+             * - `airline_ticket_cancellation` - Airline ticket cancellation
+             * - `other` - Other
+             * - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
+             */
+            credit_reason_indicator:
+              | 'no_credit'
+              | 'passenger_transport_ancillary_purchase_cancellation'
+              | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
+              | 'airline_ticket_cancellation'
+              | 'other'
+              | 'partial_refund_of_airline_ticket'
+              | null;
+
+            /**
+             * Date of departure.
+             */
+            departure_date: string | null;
+
+            /**
+             * Code for the originating city or airport.
+             */
+            origination_city_airport_code: string | null;
+
+            /**
+             * Name of the passenger.
+             */
+            passenger_name: string | null;
+
+            /**
+             * Indicates whether this ticket is non-refundable.
+             *
+             * - `no_restrictions` - No restrictions
+             * - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
+             */
+            restricted_ticket_indicator: 'no_restrictions' | 'restricted_non_refundable_ticket' | null;
+
+            /**
+             * Indicates why a ticket was changed.
+             *
+             * - `none` - None
+             * - `change_to_existing_ticket` - Change to existing ticket
+             * - `new_ticket` - New ticket
+             */
+            ticket_change_indicator: 'none' | 'change_to_existing_ticket' | 'new_ticket' | null;
+
+            /**
+             * Ticket number.
+             */
+            ticket_number: string | null;
+
+            /**
+             * Code for the travel agency if the ticket was issued by a travel agency.
+             */
+            travel_agency_code: string | null;
+
+            /**
+             * Name of the travel agency if the ticket was issued by a travel agency.
+             */
+            travel_agency_name: string | null;
+
+            /**
+             * Fields specific to each leg of the journey.
+             */
+            trip_legs: Array<Travel.TripLeg> | null;
+          }
+
+          export namespace Travel {
+            /**
+             * Ancillary purchases in addition to the airfare.
+             */
+            export interface Ancillary {
+              /**
+               * If this purchase has a connection or relationship to another purchase, such as a
+               * baggage fee for a passenger transport ticket, this field should contain the
+               * ticket document number for the other purchase.
+               */
+              connected_ticket_document_number: string | null;
+
+              /**
+               * Indicates the reason for a credit to the cardholder.
+               *
+               * - `no_credit` - No credit
+               * - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+               *   ancillary purchase cancellation
+               * - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+               *   Airline ticket and passenger transport ancillary purchase cancellation
+               * - `other` - Other
+               */
+              credit_reason_indicator:
+                | 'no_credit'
+                | 'passenger_transport_ancillary_purchase_cancellation'
+                | 'airline_ticket_and_passenger_transport_ancillary_purchase_cancellation'
+                | 'other'
+                | null;
+
+              /**
+               * Name of the passenger or description of the ancillary purchase.
+               */
+              passenger_name_or_description: string | null;
+
+              /**
+               * Additional travel charges, such as baggage fees.
+               */
+              services: Array<Ancillary.Service>;
+
+              /**
+               * Ticket document number.
+               */
+              ticket_document_number: string | null;
+            }
+
+            export namespace Ancillary {
+              export interface Service {
+                /**
+                 * Category of the ancillary service.
+                 *
+                 * - `none` - None
+                 * - `bundled_service` - Bundled service
+                 * - `baggage_fee` - Baggage fee
+                 * - `change_fee` - Change fee
+                 * - `cargo` - Cargo
+                 * - `carbon_offset` - Carbon offset
+                 * - `frequent_flyer` - Frequent flyer
+                 * - `gift_card` - Gift card
+                 * - `ground_transport` - Ground transport
+                 * - `in_flight_entertainment` - In-flight entertainment
+                 * - `lounge` - Lounge
+                 * - `medical` - Medical
+                 * - `meal_beverage` - Meal beverage
+                 * - `other` - Other
+                 * - `passenger_assist_fee` - Passenger assist fee
+                 * - `pets` - Pets
+                 * - `seat_fees` - Seat fees
+                 * - `standby` - Standby
+                 * - `service_fee` - Service fee
+                 * - `store` - Store
+                 * - `travel_service` - Travel service
+                 * - `unaccompanied_travel` - Unaccompanied travel
+                 * - `upgrades` - Upgrades
+                 * - `wifi` - Wi-fi
+                 */
+                category:
+                  | 'none'
+                  | 'bundled_service'
+                  | 'baggage_fee'
+                  | 'change_fee'
+                  | 'cargo'
+                  | 'carbon_offset'
+                  | 'frequent_flyer'
+                  | 'gift_card'
+                  | 'ground_transport'
+                  | 'in_flight_entertainment'
+                  | 'lounge'
+                  | 'medical'
+                  | 'meal_beverage'
+                  | 'other'
+                  | 'passenger_assist_fee'
+                  | 'pets'
+                  | 'seat_fees'
+                  | 'standby'
+                  | 'service_fee'
+                  | 'store'
+                  | 'travel_service'
+                  | 'unaccompanied_travel'
+                  | 'upgrades'
+                  | 'wifi'
+                  | null;
+
+                /**
+                 * Sub-category of the ancillary service, free-form.
+                 */
+                sub_category: string | null;
+              }
+            }
+
+            export interface TripLeg {
+              /**
+               * Carrier code (e.g., United Airlines, Jet Blue, etc.).
+               */
+              carrier_code: string | null;
+
+              /**
+               * Code for the destination city or airport.
+               */
+              destination_city_airport_code: string | null;
+
+              /**
+               * Fare basis code.
+               */
+              fare_basis_code: string | null;
+
+              /**
+               * Flight number.
+               */
+              flight_number: string | null;
+
+              /**
+               * Service class (e.g., first class, business class, etc.).
+               */
+              service_class: string | null;
+
+              /**
+               * Indicates whether a stopover is allowed on this ticket.
+               *
+               * - `none` - None
+               * - `stop_over_allowed` - Stop over allowed
+               * - `stop_over_not_allowed` - Stop over not allowed
+               */
+              stop_over_code: 'none' | 'stop_over_allowed' | 'stop_over_not_allowed' | null;
+            }
+          }
+        }
       }
 
       /**
@@ -1906,17 +2967,6 @@ export namespace ACHTransferSimulation {
       }
 
       /**
-       * A Check Transfer Rejection object. This field will be present in the JSON
-       * response if and only if `category` is equal to `check_transfer_rejection`.
-       */
-      export interface CheckTransferRejection {
-        /**
-         * The identifier of the Check Transfer that led to this Transaction.
-         */
-        transfer_id: string;
-      }
-
-      /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
        * JSON response if and only if `category` is equal to
        * `check_transfer_stop_payment_request`.
@@ -1926,9 +2976,11 @@ export namespace ACHTransferSimulation {
          * The reason why this transfer was stopped.
          *
          * - `mail_delivery_failed` - The check could not be delivered.
+         * - `rejected_by_increase` - The check was cancelled by an Increase operator who
+         *   will provide details out-of-band.
          * - `unknown` - The check was stopped for another reason.
          */
-        reason: 'mail_delivery_failed' | 'unknown';
+        reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'unknown';
 
         /**
          * The time the stop-payment was requested.
@@ -2463,6 +3515,7 @@ export namespace ACHTransferSimulation {
          * - `account_closure` - Account closure
          * - `bank_migration` - Bank migration
          * - `cashback` - Cashback
+         * - `check_adjustment` - Check adjustment
          * - `collection_receivable` - Collection receivable
          * - `empyreal_adjustment` - Empyreal adjustment
          * - `error` - Error
@@ -2477,6 +3530,7 @@ export namespace ACHTransferSimulation {
           | 'account_closure'
           | 'bank_migration'
           | 'cashback'
+          | 'check_adjustment'
           | 'collection_receivable'
           | 'empyreal_adjustment'
           | 'error'
