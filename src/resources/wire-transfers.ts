@@ -10,29 +10,29 @@ export class WireTransfers extends APIResource {
   /**
    * Create a Wire Transfer
    */
-  create(
-    body: WireTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<WireTransfer>> {
+  create(body: WireTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post('/wire_transfers', { body, ...options });
   }
 
   /**
    * Retrieve a Wire Transfer
    */
-  retrieve(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+  retrieve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.get(`/wire_transfers/${wireTransferId}`, options);
   }
 
   /**
    * List Wire Transfers
    */
-  list(query?: WireTransferListParams, options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage>;
+  list(
+    query?: WireTransferListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<WireTransfersPage, WireTransfer>;
+  list(options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage, WireTransfer>;
   list(
     query: WireTransferListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<WireTransfersPage> {
+  ): Core.PagePromise<WireTransfersPage, WireTransfer> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -42,14 +42,14 @@ export class WireTransfers extends APIResource {
   /**
    * Approve a Wire Transfer
    */
-  approve(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+  approve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post(`/wire_transfers/${wireTransferId}/approve`, options);
   }
 
   /**
    * Cancel a pending Wire Transfer
    */
-  cancel(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+  cancel(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post(`/wire_transfers/${wireTransferId}/cancel`, options);
   }
 
@@ -59,7 +59,7 @@ export class WireTransfers extends APIResource {
    * [Transaction](#transaction) to account for the returned funds. This Wire
    * Transfer must first have a `status` of `complete`.'
    */
-  reverse(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+  reverse(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
   }
 
@@ -68,7 +68,7 @@ export class WireTransfers extends APIResource {
    * Reserve. This transfer must first have a `status` of `pending_approval` or
    * `pending_creating`.
    */
-  submit(wireTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<WireTransfer>> {
+  submit(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
   }
 }

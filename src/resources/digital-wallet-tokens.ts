@@ -10,10 +10,7 @@ export class DigitalWalletTokens extends APIResource {
   /**
    * Retrieve a Digital Wallet Token
    */
-  retrieve(
-    digitalWalletTokenId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<DigitalWalletToken>> {
+  retrieve(digitalWalletTokenId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalWalletToken> {
     return this.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
   }
 
@@ -23,12 +20,12 @@ export class DigitalWalletTokens extends APIResource {
   list(
     query?: DigitalWalletTokenListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalWalletTokensPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DigitalWalletTokensPage>;
+  ): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken>;
+  list(options?: Core.RequestOptions): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken>;
   list(
     query: DigitalWalletTokenListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalWalletTokensPage> {
+  ): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

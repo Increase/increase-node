@@ -10,14 +10,14 @@ export class Accounts extends APIResource {
   /**
    * Create an Account
    */
-  create(body: AccountCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
+  create(body: AccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this.post('/accounts', { body, ...options });
   }
 
   /**
    * Retrieve an Account
    */
-  retrieve(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
+  retrieve(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this.get(`/accounts/${accountId}`, options);
   }
 
@@ -28,19 +28,19 @@ export class Accounts extends APIResource {
     accountId: string,
     body: AccountUpdateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Account>> {
+  ): Core.APIPromise<Account> {
     return this.patch(`/accounts/${accountId}`, { body, ...options });
   }
 
   /**
    * List Accounts
    */
-  list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage>;
+  list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
+  list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
   list(
     query: AccountListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountsPage> {
+  ): Core.PagePromise<AccountsPage, Account> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -50,7 +50,7 @@ export class Accounts extends APIResource {
   /**
    * Close an Account
    */
-  close(accountId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Account>> {
+  close(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this.post(`/accounts/${accountId}/close`, options);
   }
 }

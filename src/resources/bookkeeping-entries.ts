@@ -13,12 +13,12 @@ export class BookkeepingEntries extends APIResource {
   list(
     query?: BookkeepingEntryListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntriesPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingEntriesPage>;
+  ): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry>;
+  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry>;
   list(
     query: BookkeepingEntryListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntriesPage> {
+  ): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

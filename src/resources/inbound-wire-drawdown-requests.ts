@@ -13,7 +13,7 @@ export class InboundWireDrawdownRequests extends APIResource {
   retrieve(
     inboundWireDrawdownRequestId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<InboundWireDrawdownRequest>> {
+  ): Core.APIPromise<InboundWireDrawdownRequest> {
     return this.get(`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestId}`, options);
   }
 
@@ -23,12 +23,14 @@ export class InboundWireDrawdownRequests extends APIResource {
   list(
     query?: InboundWireDrawdownRequestListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireDrawdownRequestsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundWireDrawdownRequestsPage>;
+  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest>;
+  list(
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest>;
   list(
     query: InboundWireDrawdownRequestListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireDrawdownRequestsPage> {
+  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

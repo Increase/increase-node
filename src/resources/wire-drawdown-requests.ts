@@ -13,7 +13,7 @@ export class WireDrawdownRequests extends APIResource {
   create(
     body: WireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<WireDrawdownRequest>> {
+  ): Core.APIPromise<WireDrawdownRequest> {
     return this.post('/wire_drawdown_requests', { body, ...options });
   }
 
@@ -23,7 +23,7 @@ export class WireDrawdownRequests extends APIResource {
   retrieve(
     wireDrawdownRequestId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<WireDrawdownRequest>> {
+  ): Core.APIPromise<WireDrawdownRequest> {
     return this.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
   }
 
@@ -33,12 +33,12 @@ export class WireDrawdownRequests extends APIResource {
   list(
     query?: WireDrawdownRequestListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<WireDrawdownRequestsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<WireDrawdownRequestsPage>;
+  ): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest>;
+  list(options?: Core.RequestOptions): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest>;
   list(
     query: WireDrawdownRequestListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<WireDrawdownRequestsPage> {
+  ): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

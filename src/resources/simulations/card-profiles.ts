@@ -12,10 +12,7 @@ export class CardProfiles extends APIResource {
    * the webhooks Increase sends when the Card Profile is approved and updates the
    * status of the Card Profile.
    */
-  approve(
-    cardProfileId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardProfiles_.CardProfile>> {
+  approve(cardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<CardProfiles_.CardProfile> {
     return this.post(`/simulations/card_profiles/${cardProfileId}/approve`, options);
   }
 }

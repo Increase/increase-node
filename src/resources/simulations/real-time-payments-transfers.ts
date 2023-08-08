@@ -16,7 +16,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     realTimePaymentsTransferId: string,
     body: RealTimePaymentsTransferCompleteParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<RealTimePaymentsTransfers_.RealTimePaymentsTransfer>> {
+  ): Core.APIPromise<RealTimePaymentsTransfers_.RealTimePaymentsTransfer> {
     return this.post(`/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`, {
       body,
       ...options,
@@ -30,7 +30,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   createInbound(
     body: RealTimePaymentsTransferCreateInboundParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<InboundRealTimePaymentsTransferSimulationResult>> {
+  ): Core.APIPromise<InboundRealTimePaymentsTransferSimulationResult> {
     return this.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
 }

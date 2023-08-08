@@ -13,7 +13,7 @@ export class BookkeepingAccounts extends APIResource {
   create(
     body: BookkeepingAccountCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<BookkeepingAccount>> {
+  ): Core.APIPromise<BookkeepingAccount> {
     return this.post('/bookkeeping_accounts', { body, ...options });
   }
 
@@ -23,12 +23,12 @@ export class BookkeepingAccounts extends APIResource {
   list(
     query?: BookkeepingAccountListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingAccountsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingAccountsPage>;
+  ): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount>;
+  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount>;
   list(
     query: BookkeepingAccountListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingAccountsPage> {
+  ): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

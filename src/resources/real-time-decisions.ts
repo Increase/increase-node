@@ -9,10 +9,7 @@ export class RealTimeDecisions extends APIResource {
   /**
    * Retrieve a Real-Time Decision
    */
-  retrieve(
-    realTimeDecisionId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<RealTimeDecision>> {
+  retrieve(realTimeDecisionId: string, options?: Core.RequestOptions): Core.APIPromise<RealTimeDecision> {
     return this.get(`/real_time_decisions/${realTimeDecisionId}`, options);
   }
 
@@ -23,7 +20,7 @@ export class RealTimeDecisions extends APIResource {
     realTimeDecisionId: string,
     body: RealTimeDecisionActionParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<RealTimeDecision>> {
+  ): Core.APIPromise<RealTimeDecision> {
     return this.post(`/real_time_decisions/${realTimeDecisionId}/action`, { body, ...options });
   }
 }

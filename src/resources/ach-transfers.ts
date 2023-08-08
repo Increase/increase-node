@@ -10,29 +10,29 @@ export class ACHTransfers extends APIResource {
   /**
    * Create an ACH Transfer
    */
-  create(
-    body: ACHTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ACHTransfer>> {
+  create(body: ACHTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this.post('/ach_transfers', { body, ...options });
   }
 
   /**
    * Retrieve an ACH Transfer
    */
-  retrieve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+  retrieve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this.get(`/ach_transfers/${achTransferId}`, options);
   }
 
   /**
    * List ACH Transfers
    */
-  list(query?: ACHTransferListParams, options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage>;
+  list(
+    query?: ACHTransferListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ACHTransfersPage, ACHTransfer>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage, ACHTransfer>;
   list(
     query: ACHTransferListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHTransfersPage> {
+  ): Core.PagePromise<ACHTransfersPage, ACHTransfer> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -42,14 +42,14 @@ export class ACHTransfers extends APIResource {
   /**
    * Approves an ACH Transfer in a pending_approval state.
    */
-  approve(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+  approve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this.post(`/ach_transfers/${achTransferId}/approve`, options);
   }
 
   /**
    * Cancels an ACH Transfer in a pending_approval state.
    */
-  cancel(achTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<ACHTransfer>> {
+  cancel(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this.post(`/ach_transfers/${achTransferId}/cancel`, options);
   }
 }

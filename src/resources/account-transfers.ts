@@ -10,20 +10,14 @@ export class AccountTransfers extends APIResource {
   /**
    * Create an Account Transfer
    */
-  create(
-    body: AccountTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountTransfer>> {
+  create(body: AccountTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this.post('/account_transfers', { body, ...options });
   }
 
   /**
    * Retrieve an Account Transfer
    */
-  retrieve(
-    accountTransferId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountTransfer>> {
+  retrieve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this.get(`/account_transfers/${accountTransferId}`, options);
   }
 
@@ -33,12 +27,12 @@ export class AccountTransfers extends APIResource {
   list(
     query?: AccountTransferListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountTransfersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountTransfersPage>;
+  ): Core.PagePromise<AccountTransfersPage, AccountTransfer>;
+  list(options?: Core.RequestOptions): Core.PagePromise<AccountTransfersPage, AccountTransfer>;
   list(
     query: AccountTransferListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountTransfersPage> {
+  ): Core.PagePromise<AccountTransfersPage, AccountTransfer> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -48,20 +42,14 @@ export class AccountTransfers extends APIResource {
   /**
    * Approve an Account Transfer
    */
-  approve(
-    accountTransferId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountTransfer>> {
+  approve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this.post(`/account_transfers/${accountTransferId}/approve`, options);
   }
 
   /**
    * Cancel an Account Transfer
    */
-  cancel(
-    accountTransferId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountTransfer>> {
+  cancel(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this.post(`/account_transfers/${accountTransferId}/cancel`, options);
   }
 }

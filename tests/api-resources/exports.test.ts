@@ -1,12 +1,20 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource exports', () => {
   test('create: only required params', async () => {
-    const response = await increase.exports.create({ category: 'transaction_csv' });
+    const responsePromise = increase.exports.create({ category: 'transaction_csv' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -34,7 +42,14 @@ describe('resource exports', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.exports.retrieve('export_8s4m48qz3bclzje0zwh9');
+    const responsePromise = increase.exports.retrieve('export_8s4m48qz3bclzje0zwh9');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -45,7 +60,14 @@ describe('resource exports', () => {
   });
 
   test('list', async () => {
-    const response = await increase.exports.list();
+    const responsePromise = increase.exports.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

@@ -13,7 +13,7 @@ export class AccountStatements extends APIResource {
   create(
     body: AccountStatementCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountStatements_.AccountStatement>> {
+  ): Core.APIPromise<AccountStatements_.AccountStatement> {
     return this.post('/simulations/account_statements', { body, ...options });
   }
 }

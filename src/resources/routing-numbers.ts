@@ -12,7 +12,10 @@ export class RoutingNumbers extends APIResource {
    * identify a bank, this will always return 0 or 1 entry. In Sandbox, the only
    * valid routing number for this method is 110000000.
    */
-  list(query: RoutingNumberListParams, options?: Core.RequestOptions): Core.PagePromise<RoutingNumbersPage> {
+  list(
+    query: RoutingNumberListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<RoutingNumbersPage, RoutingNumber> {
     return this.getAPIList('/routing_numbers', RoutingNumbersPage, { query, ...options });
   }
 }

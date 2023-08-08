@@ -1,12 +1,22 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource digitalWalletTokens', () => {
   test('retrieve', async () => {
-    const response = await increase.digitalWalletTokens.retrieve('digital_wallet_token_izi62go3h51p369jrie0');
+    const responsePromise = increase.digitalWalletTokens.retrieve(
+      'digital_wallet_token_izi62go3h51p369jrie0',
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -19,7 +29,14 @@ describe('resource digitalWalletTokens', () => {
   });
 
   test('list', async () => {
-    const response = await increase.digitalWalletTokens.list();
+    const responsePromise = increase.digitalWalletTokens.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

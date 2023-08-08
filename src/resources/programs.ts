@@ -10,19 +10,19 @@ export class Programs extends APIResource {
   /**
    * Retrieve a Program
    */
-  retrieve(programId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Program>> {
+  retrieve(programId: string, options?: Core.RequestOptions): Core.APIPromise<Program> {
     return this.get(`/programs/${programId}`, options);
   }
 
   /**
    * List Programs
    */
-  list(query?: ProgramListParams, options?: Core.RequestOptions): Core.PagePromise<ProgramsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ProgramsPage>;
+  list(query?: ProgramListParams, options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;
   list(
     query: ProgramListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ProgramsPage> {
+  ): Core.PagePromise<ProgramsPage, Program> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

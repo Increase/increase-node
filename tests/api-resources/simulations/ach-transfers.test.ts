@@ -1,15 +1,23 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource achTransfers', () => {
   test('createInbound: only required params', async () => {
-    const response = await increase.simulations.achTransfers.createInbound({
+    const responsePromise = increase.simulations.achTransfers.createInbound({
       account_number_id: 'string',
       amount: 0,
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('createInbound: required and optional params', async () => {
@@ -26,12 +34,26 @@ describe('resource achTransfers', () => {
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('return', async () => {
-    const response = await increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
+    const responsePromise = increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism incorrectly returns an invalid JSON error
   test.skip('submit', async () => {
-    const response = await increase.simulations.achTransfers.submit('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = increase.simulations.achTransfers.submit('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism incorrectly returns an invalid JSON error

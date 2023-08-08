@@ -13,26 +13,26 @@ export class Files extends APIResource {
    * `multipart/form-data`. The request should contain the file you would like to
    * upload, as well as the parameters for creating a file.
    */
-  async create(body: FileCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
-    return this.post('/files', await multipartFormRequestOptions({ body, ...options }));
+  create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
+    return this.post('/files', multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
    * Retrieve a File
    */
-  retrieve(fileId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<File>> {
+  retrieve(fileId: string, options?: Core.RequestOptions): Core.APIPromise<File> {
     return this.get(`/files/${fileId}`, options);
   }
 
   /**
    * List Files
    */
-  list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<FilesPage>;
+  list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;
+  list(options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;
   list(
     query: FileListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<FilesPage> {
+  ): Core.PagePromise<FilesPage, File> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

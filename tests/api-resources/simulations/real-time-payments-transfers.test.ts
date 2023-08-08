@@ -1,22 +1,37 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource realTimePaymentsTransfers', () => {
   test('complete', async () => {
-    const response = await increase.simulations.realTimePaymentsTransfers.complete(
+    const responsePromise = increase.simulations.realTimePaymentsTransfers.complete(
       'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
       {},
     );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('createInbound: only required params', async () => {
-    const response = await increase.simulations.realTimePaymentsTransfers.createInbound({
+    const responsePromise = increase.simulations.realTimePaymentsTransfers.createInbound({
       account_number_id: 'string',
       amount: 1,
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('createInbound: required and optional params', async () => {
