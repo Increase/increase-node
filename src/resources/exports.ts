@@ -10,26 +10,26 @@ export class Exports extends APIResource {
   /**
    * Create an Export
    */
-  create(body: ExportCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Export>> {
+  create(body: ExportCreateParams, options?: Core.RequestOptions): Core.APIPromise<Export> {
     return this.post('/exports', { body, ...options });
   }
 
   /**
    * Retrieve an Export
    */
-  retrieve(exportId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Export>> {
+  retrieve(exportId: string, options?: Core.RequestOptions): Core.APIPromise<Export> {
     return this.get(`/exports/${exportId}`, options);
   }
 
   /**
    * List Exports
    */
-  list(query?: ExportListParams, options?: Core.RequestOptions): Core.PagePromise<ExportsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ExportsPage>;
+  list(query?: ExportListParams, options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;
   list(
     query: ExportListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ExportsPage> {
+  ): Core.PagePromise<ExportsPage, Export> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

@@ -10,19 +10,19 @@ export class Documents extends APIResource {
   /**
    * Retrieve a Document
    */
-  retrieve(documentId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Document>> {
+  retrieve(documentId: string, options?: Core.RequestOptions): Core.APIPromise<Document> {
     return this.get(`/documents/${documentId}`, options);
   }
 
   /**
    * List Documents
    */
-  list(query?: DocumentListParams, options?: Core.RequestOptions): Core.PagePromise<DocumentsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DocumentsPage>;
+  list(query?: DocumentListParams, options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;
+  list(options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;
   list(
     query: DocumentListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DocumentsPage> {
+  ): Core.PagePromise<DocumentsPage, Document> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

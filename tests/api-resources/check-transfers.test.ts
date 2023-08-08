@@ -1,12 +1,20 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource checkTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.checkTransfers.create({ account_id: 'string', amount: 1 });
+    const responsePromise = increase.checkTransfers.create({ account_id: 'string', amount: 1 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -28,7 +36,14 @@ describe('resource checkTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.checkTransfers.retrieve('check_transfer_30b43acfu9vw8fyc4f5');
+    const responsePromise = increase.checkTransfers.retrieve('check_transfer_30b43acfu9vw8fyc4f5');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -41,7 +56,14 @@ describe('resource checkTransfers', () => {
   });
 
   test('list', async () => {
-    const response = await increase.checkTransfers.list();
+    const responsePromise = increase.checkTransfers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -73,7 +95,14 @@ describe('resource checkTransfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.checkTransfers.approve('check_transfer_30b43acfu9vw8fyc4f5');
+    const responsePromise = increase.checkTransfers.approve('check_transfer_30b43acfu9vw8fyc4f5');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
@@ -86,7 +115,14 @@ describe('resource checkTransfers', () => {
   });
 
   test('cancel', async () => {
-    const response = await increase.checkTransfers.cancel('check_transfer_30b43acfu9vw8fyc4f5');
+    const responsePromise = increase.checkTransfers.cancel('check_transfer_30b43acfu9vw8fyc4f5');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
@@ -100,6 +136,13 @@ describe('resource checkTransfers', () => {
 
   // Prism doesn't accept no request body being sent but returns 415 if it is sent
   test.skip('stopPayment', async () => {
-    const response = await increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {});
+    const responsePromise = increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 });

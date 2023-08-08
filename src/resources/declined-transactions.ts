@@ -14,7 +14,7 @@ export class DeclinedTransactions extends APIResource {
   retrieve(
     declinedTransactionId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<DeclinedTransaction>> {
+  ): Core.APIPromise<DeclinedTransaction> {
     return this.get(`/declined_transactions/${declinedTransactionId}`, options);
   }
 
@@ -24,12 +24,12 @@ export class DeclinedTransactions extends APIResource {
   list(
     query?: DeclinedTransactionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DeclinedTransactionsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DeclinedTransactionsPage>;
+  ): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction>;
+  list(options?: Core.RequestOptions): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction>;
   list(
     query: DeclinedTransactionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<DeclinedTransactionsPage> {
+  ): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

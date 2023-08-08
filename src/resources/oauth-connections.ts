@@ -10,10 +10,7 @@ export class OauthConnections extends APIResource {
   /**
    * Retrieve an OAuth Connection
    */
-  retrieve(
-    oauthConnectionId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<OauthConnection>> {
+  retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OauthConnection> {
     return this.get(`/oauth_connections/${oauthConnectionId}`, options);
   }
 
@@ -23,12 +20,12 @@ export class OauthConnections extends APIResource {
   list(
     query?: OauthConnectionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OauthConnectionsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OauthConnectionsPage>;
+  ): Core.PagePromise<OauthConnectionsPage, OauthConnection>;
+  list(options?: Core.RequestOptions): Core.PagePromise<OauthConnectionsPage, OauthConnection>;
   list(
     query: OauthConnectionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OauthConnectionsPage> {
+  ): Core.PagePromise<OauthConnectionsPage, OauthConnection> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

@@ -19,7 +19,7 @@ export class Cards extends APIResource {
   authorize(
     body: CardAuthorizeParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardAuthorizationSimulation>> {
+  ): Core.APIPromise<CardAuthorizationSimulation> {
     return this.post('/simulations/card_authorizations', { body, ...options });
   }
 
@@ -33,7 +33,7 @@ export class Cards extends APIResource {
   settlement(
     body: CardSettlementParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Transactions.Transaction>> {
+  ): Core.APIPromise<Transactions.Transaction> {
     return this.post('/simulations/card_settlements', { body, ...options });
   }
 }

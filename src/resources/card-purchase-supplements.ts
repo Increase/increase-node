@@ -13,7 +13,7 @@ export class CardPurchaseSupplements extends APIResource {
   retrieve(
     cardPurchaseSupplementId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardPurchaseSupplement>> {
+  ): Core.APIPromise<CardPurchaseSupplement> {
     return this.get(`/card_purchase_supplements/${cardPurchaseSupplementId}`, options);
   }
 
@@ -23,12 +23,12 @@ export class CardPurchaseSupplements extends APIResource {
   list(
     query?: CardPurchaseSupplementListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPurchaseSupplementsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardPurchaseSupplementsPage>;
+  ): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement>;
   list(
     query: CardPurchaseSupplementListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPurchaseSupplementsPage> {
+  ): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

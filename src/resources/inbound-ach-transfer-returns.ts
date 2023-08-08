@@ -13,7 +13,7 @@ export class InboundACHTransferReturns extends APIResource {
   create(
     body: InboundACHTransferReturnCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<InboundACHTransferReturn>> {
+  ): Core.APIPromise<InboundACHTransferReturn> {
     return this.post('/inbound_ach_transfer_returns', { body, ...options });
   }
 
@@ -23,7 +23,7 @@ export class InboundACHTransferReturns extends APIResource {
   retrieve(
     inboundACHTransferReturnId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<InboundACHTransferReturn>> {
+  ): Core.APIPromise<InboundACHTransferReturn> {
     return this.get(`/inbound_ach_transfer_returns/${inboundACHTransferReturnId}`, options);
   }
 
@@ -33,12 +33,14 @@ export class InboundACHTransferReturns extends APIResource {
   list(
     query?: InboundACHTransferReturnListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundACHTransferReturnsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundACHTransferReturnsPage>;
+  ): Core.PagePromise<InboundACHTransferReturnsPage, InboundACHTransferReturn>;
+  list(
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<InboundACHTransferReturnsPage, InboundACHTransferReturn>;
   list(
     query: InboundACHTransferReturnListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundACHTransferReturnsPage> {
+  ): Core.PagePromise<InboundACHTransferReturnsPage, InboundACHTransferReturn> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

@@ -10,29 +10,29 @@ export class CheckTransfers extends APIResource {
   /**
    * Create a Check Transfer
    */
-  create(
-    body: CheckTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CheckTransfer>> {
+  create(body: CheckTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this.post('/check_transfers', { body, ...options });
   }
 
   /**
    * Retrieve a Check Transfer
    */
-  retrieve(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+  retrieve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this.get(`/check_transfers/${checkTransferId}`, options);
   }
 
   /**
    * List Check Transfers
    */
-  list(query?: CheckTransferListParams, options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage>;
+  list(
+    query?: CheckTransferListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<CheckTransfersPage, CheckTransfer>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage, CheckTransfer>;
   list(
     query: CheckTransferListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckTransfersPage> {
+  ): Core.PagePromise<CheckTransfersPage, CheckTransfer> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -42,14 +42,14 @@ export class CheckTransfers extends APIResource {
   /**
    * Approve a Check Transfer
    */
-  approve(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+  approve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this.post(`/check_transfers/${checkTransferId}/approve`, options);
   }
 
   /**
    * Cancel a pending Check Transfer
    */
-  cancel(checkTransferId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckTransfer>> {
+  cancel(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this.post(`/check_transfers/${checkTransferId}/cancel`, options);
   }
 
@@ -60,7 +60,7 @@ export class CheckTransfers extends APIResource {
     checkTransferId: string,
     body: CheckTransferStopPaymentParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CheckTransfer>> {
+  ): Core.APIPromise<CheckTransfer> {
     return this.post(`/check_transfers/${checkTransferId}/stop_payment`, { body, ...options });
   }
 }

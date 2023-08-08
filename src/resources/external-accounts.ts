@@ -10,20 +10,14 @@ export class ExternalAccounts extends APIResource {
   /**
    * Create an External Account
    */
-  create(
-    body: ExternalAccountCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ExternalAccount>> {
+  create(body: ExternalAccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
     return this.post('/external_accounts', { body, ...options });
   }
 
   /**
    * Retrieve an External Account
    */
-  retrieve(
-    externalAccountId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ExternalAccount>> {
+  retrieve(externalAccountId: string, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
     return this.get(`/external_accounts/${externalAccountId}`, options);
   }
 
@@ -34,7 +28,7 @@ export class ExternalAccounts extends APIResource {
     externalAccountId: string,
     body: ExternalAccountUpdateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ExternalAccount>> {
+  ): Core.APIPromise<ExternalAccount> {
     return this.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
   }
 
@@ -44,12 +38,12 @@ export class ExternalAccounts extends APIResource {
   list(
     query?: ExternalAccountListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ExternalAccountsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ExternalAccountsPage>;
+  ): Core.PagePromise<ExternalAccountsPage, ExternalAccount>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ExternalAccountsPage, ExternalAccount>;
   list(
     query: ExternalAccountListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ExternalAccountsPage> {
+  ): Core.PagePromise<ExternalAccountsPage, ExternalAccount> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

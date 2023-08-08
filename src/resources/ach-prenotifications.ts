@@ -13,17 +13,14 @@ export class ACHPrenotifications extends APIResource {
   create(
     body: ACHPrenotificationCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ACHPrenotification>> {
+  ): Core.APIPromise<ACHPrenotification> {
     return this.post('/ach_prenotifications', { body, ...options });
   }
 
   /**
    * Retrieve an ACH Prenotification
    */
-  retrieve(
-    achPrenotificationId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<ACHPrenotification>> {
+  retrieve(achPrenotificationId: string, options?: Core.RequestOptions): Core.APIPromise<ACHPrenotification> {
     return this.get(`/ach_prenotifications/${achPrenotificationId}`, options);
   }
 
@@ -33,12 +30,12 @@ export class ACHPrenotifications extends APIResource {
   list(
     query?: ACHPrenotificationListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHPrenotificationsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ACHPrenotificationsPage>;
+  ): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification>;
+  list(options?: Core.RequestOptions): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification>;
   list(
     query: ACHPrenotificationListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHPrenotificationsPage> {
+  ): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

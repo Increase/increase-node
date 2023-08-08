@@ -1,12 +1,20 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource accountNumbers', () => {
   test('create: only required params', async () => {
-    const response = await increase.accountNumbers.create({ account_id: 'string', name: 'x' });
+    const responsePromise = increase.accountNumbers.create({ account_id: 'string', name: 'x' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -14,7 +22,14 @@ describe('resource accountNumbers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.accountNumbers.retrieve('account_number_v18nkfqm6afpsrvy82b2');
+    const responsePromise = increase.accountNumbers.retrieve('account_number_v18nkfqm6afpsrvy82b2');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -27,11 +42,25 @@ describe('resource accountNumbers', () => {
   });
 
   test('update', async () => {
-    const response = await increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {});
+    const responsePromise = increase.accountNumbers.update('account_number_v18nkfqm6afpsrvy82b2', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list', async () => {
-    const response = await increase.accountNumbers.list();
+    const responsePromise = increase.accountNumbers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

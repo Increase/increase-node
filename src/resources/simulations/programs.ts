@@ -11,10 +11,7 @@ export class Programs extends APIResource {
    * program called Commercial Banking. Note that when your group operates more than
    * one program, `program_id` is a required field when creating accounts.
    */
-  create(
-    body: ProgramCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Programs_.Program>> {
+  create(body: ProgramCreateParams, options?: Core.RequestOptions): Core.APIPromise<Programs_.Program> {
     return this.post('/simulations/programs', { body, ...options });
   }
 }

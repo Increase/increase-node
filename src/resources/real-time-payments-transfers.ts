@@ -13,7 +13,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   create(
     body: RealTimePaymentsTransferCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<RealTimePaymentsTransfer>> {
+  ): Core.APIPromise<RealTimePaymentsTransfer> {
     return this.post('/real_time_payments_transfers', { body, ...options });
   }
 
@@ -23,7 +23,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   retrieve(
     realTimePaymentsTransferId: string,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<RealTimePaymentsTransfer>> {
+  ): Core.APIPromise<RealTimePaymentsTransfer> {
     return this.get(`/real_time_payments_transfers/${realTimePaymentsTransferId}`, options);
   }
 
@@ -33,12 +33,14 @@ export class RealTimePaymentsTransfers extends APIResource {
   list(
     query?: RealTimePaymentsTransferListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<RealTimePaymentsTransfersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<RealTimePaymentsTransfersPage>;
+  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer>;
+  list(
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer>;
   list(
     query: RealTimePaymentsTransferListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<RealTimePaymentsTransfersPage> {
+  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

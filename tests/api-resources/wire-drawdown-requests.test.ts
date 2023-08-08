@@ -1,13 +1,14 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource wireDrawdownRequests', () => {
   // Prism tests are broken
   test.skip('create: only required params', async () => {
-    const response = await increase.wireDrawdownRequests.create({
+    const responsePromise = increase.wireDrawdownRequests.create({
       account_number_id: 'string',
       amount: 1,
       message_to_recipient: 'x',
@@ -15,6 +16,13 @@ describe('resource wireDrawdownRequests', () => {
       recipient_name: 'x',
       recipient_routing_number: 'x',
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism tests are broken
@@ -33,9 +41,16 @@ describe('resource wireDrawdownRequests', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.wireDrawdownRequests.retrieve(
+    const responsePromise = increase.wireDrawdownRequests.retrieve(
       'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
     );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -48,7 +63,14 @@ describe('resource wireDrawdownRequests', () => {
   });
 
   test('list', async () => {
-    const response = await increase.wireDrawdownRequests.list();
+    const responsePromise = increase.wireDrawdownRequests.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

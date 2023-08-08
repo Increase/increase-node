@@ -10,37 +10,33 @@ export class Limits extends APIResource {
   /**
    * Create a Limit
    */
-  create(body: LimitCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
+  create(body: LimitCreateParams, options?: Core.RequestOptions): Core.APIPromise<Limit> {
     return this.post('/limits', { body, ...options });
   }
 
   /**
    * Retrieve a Limit
    */
-  retrieve(limitId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Limit>> {
+  retrieve(limitId: string, options?: Core.RequestOptions): Core.APIPromise<Limit> {
     return this.get(`/limits/${limitId}`, options);
   }
 
   /**
    * Update a Limit
    */
-  update(
-    limitId: string,
-    body: LimitUpdateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Limit>> {
+  update(limitId: string, body: LimitUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Limit> {
     return this.patch(`/limits/${limitId}`, { body, ...options });
   }
 
   /**
    * List Limits
    */
-  list(query?: LimitListParams, options?: Core.RequestOptions): Core.PagePromise<LimitsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<LimitsPage>;
+  list(query?: LimitListParams, options?: Core.RequestOptions): Core.PagePromise<LimitsPage, Limit>;
+  list(options?: Core.RequestOptions): Core.PagePromise<LimitsPage, Limit>;
   list(
     query: LimitListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<LimitsPage> {
+  ): Core.PagePromise<LimitsPage, Limit> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

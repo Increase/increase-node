@@ -10,29 +10,29 @@ export class CardProfiles extends APIResource {
   /**
    * Create a Card Profile
    */
-  create(
-    body: CardProfileCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardProfile>> {
+  create(body: CardProfileCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
     return this.post('/card_profiles', { body, ...options });
   }
 
   /**
    * Retrieve a Card Profile
    */
-  retrieve(cardProfileId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardProfile>> {
+  retrieve(cardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
     return this.get(`/card_profiles/${cardProfileId}`, options);
   }
 
   /**
    * List Card Profiles
    */
-  list(query?: CardProfileListParams, options?: Core.RequestOptions): Core.PagePromise<CardProfilesPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardProfilesPage>;
+  list(
+    query?: CardProfileListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<CardProfilesPage, CardProfile>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CardProfilesPage, CardProfile>;
   list(
     query: CardProfileListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CardProfilesPage> {
+  ): Core.PagePromise<CardProfilesPage, CardProfile> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

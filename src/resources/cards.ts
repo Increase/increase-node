@@ -10,37 +10,33 @@ export class Cards extends APIResource {
   /**
    * Create a Card
    */
-  create(body: CardCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
+  create(body: CardCreateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this.post('/cards', { body, ...options });
   }
 
   /**
    * Retrieve a Card
    */
-  retrieve(cardId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Card>> {
+  retrieve(cardId: string, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this.get(`/cards/${cardId}`, options);
   }
 
   /**
    * Update a Card
    */
-  update(
-    cardId: string,
-    body: CardUpdateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Card>> {
+  update(cardId: string, body: CardUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this.patch(`/cards/${cardId}`, { body, ...options });
   }
 
   /**
    * List Cards
    */
-  list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardsPage>;
+  list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
   list(
     query: CardListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CardsPage> {
+  ): Core.PagePromise<CardsPage, Card> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -50,10 +46,7 @@ export class Cards extends APIResource {
   /**
    * Retrieve sensitive details for a Card
    */
-  retrieveSensitiveDetails(
-    cardId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardDetails>> {
+  retrieveSensitiveDetails(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
     return this.get(`/cards/${cardId}/details`, options);
   }
 }

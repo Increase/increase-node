@@ -10,10 +10,7 @@ export class AccountStatements extends APIResource {
   /**
    * Retrieve an Account Statement
    */
-  retrieve(
-    accountStatementId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountStatement>> {
+  retrieve(accountStatementId: string, options?: Core.RequestOptions): Core.APIPromise<AccountStatement> {
     return this.get(`/account_statements/${accountStatementId}`, options);
   }
 
@@ -23,12 +20,12 @@ export class AccountStatements extends APIResource {
   list(
     query?: AccountStatementListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountStatementsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountStatementsPage>;
+  ): Core.PagePromise<AccountStatementsPage, AccountStatement>;
+  list(options?: Core.RequestOptions): Core.PagePromise<AccountStatementsPage, AccountStatement>;
   list(
     query: AccountStatementListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountStatementsPage> {
+  ): Core.PagePromise<AccountStatementsPage, AccountStatement> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

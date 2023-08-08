@@ -10,29 +10,29 @@ export class CardDisputes extends APIResource {
   /**
    * Create a Card Dispute
    */
-  create(
-    body: CardDisputeCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CardDispute>> {
+  create(body: CardDisputeCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
     return this.post('/card_disputes', { body, ...options });
   }
 
   /**
    * Retrieve a Card Dispute
    */
-  retrieve(cardDisputeId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CardDispute>> {
+  retrieve(cardDisputeId: string, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
     return this.get(`/card_disputes/${cardDisputeId}`, options);
   }
 
   /**
    * List Card Disputes
    */
-  list(query?: CardDisputeListParams, options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage>;
+  list(
+    query?: CardDisputeListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<CardDisputesPage, CardDispute>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage, CardDispute>;
   list(
     query: CardDisputeListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CardDisputesPage> {
+  ): Core.PagePromise<CardDisputesPage, CardDispute> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

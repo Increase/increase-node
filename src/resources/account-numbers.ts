@@ -10,17 +10,14 @@ export class AccountNumbers extends APIResource {
   /**
    * Create an Account Number
    */
-  create(
-    body: AccountNumberCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountNumber>> {
+  create(body: AccountNumberCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
     return this.post('/account_numbers', { body, ...options });
   }
 
   /**
    * Retrieve an Account Number
    */
-  retrieve(accountNumberId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<AccountNumber>> {
+  retrieve(accountNumberId: string, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
     return this.get(`/account_numbers/${accountNumberId}`, options);
   }
 
@@ -31,19 +28,22 @@ export class AccountNumbers extends APIResource {
     accountNumberId: string,
     body: AccountNumberUpdateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<AccountNumber>> {
+  ): Core.APIPromise<AccountNumber> {
     return this.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
   }
 
   /**
    * List Account Numbers
    */
-  list(query?: AccountNumberListParams, options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage>;
+  list(
+    query?: AccountNumberListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<AccountNumbersPage, AccountNumber>;
+  list(options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage, AccountNumber>;
   list(
     query: AccountNumberListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountNumbersPage> {
+  ): Core.PagePromise<AccountNumbersPage, AccountNumber> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

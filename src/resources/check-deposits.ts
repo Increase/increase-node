@@ -10,29 +10,29 @@ export class CheckDeposits extends APIResource {
   /**
    * Create a Check Deposit
    */
-  create(
-    body: CheckDepositCreateParams,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<CheckDeposit>> {
+  create(body: CheckDepositCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
     return this.post('/check_deposits', { body, ...options });
   }
 
   /**
    * Retrieve a Check Deposit
    */
-  retrieve(checkDepositId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<CheckDeposit>> {
+  retrieve(checkDepositId: string, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
     return this.get(`/check_deposits/${checkDepositId}`, options);
   }
 
   /**
    * List Check Deposits
    */
-  list(query?: CheckDepositListParams, options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage>;
+  list(
+    query?: CheckDepositListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<CheckDepositsPage, CheckDeposit>;
+  list(options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage, CheckDeposit>;
   list(
     query: CheckDepositListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckDepositsPage> {
+  ): Core.PagePromise<CheckDepositsPage, CheckDeposit> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
