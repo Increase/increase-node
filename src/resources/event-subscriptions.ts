@@ -13,17 +13,14 @@ export class EventSubscriptions extends APIResource {
   create(
     body: EventSubscriptionCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<EventSubscription>> {
+  ): Core.APIPromise<EventSubscription> {
     return this.post('/event_subscriptions', { body, ...options });
   }
 
   /**
    * Retrieve an Event Subscription
    */
-  retrieve(
-    eventSubscriptionId: string,
-    options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<EventSubscription>> {
+  retrieve(eventSubscriptionId: string, options?: Core.RequestOptions): Core.APIPromise<EventSubscription> {
     return this.get(`/event_subscriptions/${eventSubscriptionId}`, options);
   }
 
@@ -34,7 +31,7 @@ export class EventSubscriptions extends APIResource {
     eventSubscriptionId: string,
     body: EventSubscriptionUpdateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<EventSubscription>> {
+  ): Core.APIPromise<EventSubscription> {
     return this.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
   }
 
@@ -44,12 +41,12 @@ export class EventSubscriptions extends APIResource {
   list(
     query?: EventSubscriptionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<EventSubscriptionsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<EventSubscriptionsPage>;
+  ): Core.PagePromise<EventSubscriptionsPage, EventSubscription>;
+  list(options?: Core.RequestOptions): Core.PagePromise<EventSubscriptionsPage, EventSubscription>;
   list(
     query: EventSubscriptionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<EventSubscriptionsPage> {
+  ): Core.PagePromise<EventSubscriptionsPage, EventSubscription> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

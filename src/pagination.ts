@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless.
 
-import { AbstractPage, APIResponse, APIClient, FinalRequestOptions, PageInfo } from './core';
+import { AbstractPage, Response, APIClient, FinalRequestOptions, PageInfo } from './core';
 
 /**
  * A list of Account objects
@@ -35,11 +35,11 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
    */
   next_cursor: string | null;
 
-  constructor(client: APIClient, response: APIResponse<PageResponse<Item>>, options: FinalRequestOptions) {
-    super(client, response, options);
+  constructor(client: APIClient, response: Response, body: PageResponse<Item>, options: FinalRequestOptions) {
+    super(client, response, body, options);
 
-    this.data = response.data;
-    this.next_cursor = response.next_cursor;
+    this.data = body.data;
+    this.next_cursor = body.next_cursor;
   }
 
   getPaginatedItems(): Item[] {

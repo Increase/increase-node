@@ -13,7 +13,7 @@ export class InboundWireDrawdownRequests extends APIResource {
   create(
     body: InboundWireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<InboundWireDrawdownRequests_.InboundWireDrawdownRequest>> {
+  ): Core.APIPromise<InboundWireDrawdownRequests_.InboundWireDrawdownRequest> {
     return this.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
   }
 }

@@ -1,17 +1,25 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource accountTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.accountTransfers.create({
+    const responsePromise = increase.accountTransfers.create({
       account_id: 'string',
       amount: 1,
       description: 'x',
       destination_account_id: 'string',
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -26,7 +34,14 @@ describe('resource accountTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.accountTransfers.retrieve('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const responsePromise = increase.accountTransfers.retrieve('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -39,7 +54,14 @@ describe('resource accountTransfers', () => {
   });
 
   test('list', async () => {
-    const response = await increase.accountTransfers.list();
+    const responsePromise = increase.accountTransfers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -71,7 +93,14 @@ describe('resource accountTransfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.accountTransfers.approve('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const responsePromise = increase.accountTransfers.approve('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
@@ -84,7 +113,14 @@ describe('resource accountTransfers', () => {
   });
 
   test('cancel', async () => {
-    const response = await increase.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const responsePromise = increase.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {

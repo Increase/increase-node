@@ -1,12 +1,20 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource cards', () => {
   test('create: only required params', async () => {
-    const response = await increase.cards.create({ account_id: 'string' });
+    const responsePromise = increase.cards.create({ account_id: 'string' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -19,7 +27,14 @@ describe('resource cards', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
+    const responsePromise = increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -30,11 +45,25 @@ describe('resource cards', () => {
   });
 
   test('update', async () => {
-    const response = await increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
+    const responsePromise = increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list', async () => {
-    const response = await increase.cards.list();
+    const responsePromise = increase.cards.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -65,7 +94,14 @@ describe('resource cards', () => {
   });
 
   test('retrieveSensitiveDetails', async () => {
-    const response = await increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2');
+    const responsePromise = increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieveSensitiveDetails: request options instead of params are passed correctly', async () => {

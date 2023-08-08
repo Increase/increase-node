@@ -13,7 +13,7 @@ export class BeneficialOwners extends APIResource {
     entityId: string,
     body: BeneficialOwnerCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Entities.Entity>> {
+  ): Core.APIPromise<Entities.Entity> {
     return this.post(`/entities/${entityId}/beneficial_owners`, { body, ...options });
   }
 }

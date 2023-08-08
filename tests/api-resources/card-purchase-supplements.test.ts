@@ -1,14 +1,22 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource cardPurchaseSupplements', () => {
   test('retrieve', async () => {
-    const response = await increase.cardPurchaseSupplements.retrieve(
+    const responsePromise = increase.cardPurchaseSupplements.retrieve(
       'card_purchase_supplement_ijuc45iym4jchnh2sfk3',
     );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -21,7 +29,14 @@ describe('resource cardPurchaseSupplements', () => {
   });
 
   test('list', async () => {
-    const response = await increase.cardPurchaseSupplements.list();
+    const responsePromise = increase.cardPurchaseSupplements.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

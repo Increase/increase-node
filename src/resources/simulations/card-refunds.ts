@@ -13,7 +13,7 @@ export class CardRefunds extends APIResource {
   create(
     body: CardRefundCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<Transactions.Transaction>> {
+  ): Core.APIPromise<Transactions.Transaction> {
     return this.post('/simulations/card_refunds', { body, ...options });
   }
 }

@@ -1,17 +1,25 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource wireTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.wireTransfers.create({
+    const responsePromise = increase.wireTransfers.create({
       account_id: 'string',
       amount: 1,
       beneficiary_name: 'x',
       message_to_recipient: 'x',
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -32,7 +40,14 @@ describe('resource wireTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -45,7 +60,14 @@ describe('resource wireTransfers', () => {
   });
 
   test('list', async () => {
-    const response = await increase.wireTransfers.list();
+    const responsePromise = increase.wireTransfers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -78,7 +100,14 @@ describe('resource wireTransfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
@@ -91,7 +120,14 @@ describe('resource wireTransfers', () => {
   });
 
   test('cancel', async () => {
-    const response = await increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
@@ -105,7 +141,14 @@ describe('resource wireTransfers', () => {
 
   // Prism tests are broken
   test.skip('reverse', async () => {
-    const response = await increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism tests are broken
@@ -120,7 +163,14 @@ describe('resource wireTransfers', () => {
 
   // Prism tests are broken
   test.skip('submit', async () => {
-    const response = await increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   // Prism tests are broken

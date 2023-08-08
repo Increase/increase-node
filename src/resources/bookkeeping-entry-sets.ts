@@ -11,7 +11,7 @@ export class BookkeepingEntrySets extends APIResource {
   create(
     body: BookkeepingEntrySetCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<BookkeepingEntrySet>> {
+  ): Core.APIPromise<BookkeepingEntrySet> {
     return this.post('/bookkeeping_entry_sets', { body, ...options });
   }
 }

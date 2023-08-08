@@ -1,17 +1,25 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource realTimePaymentsTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.realTimePaymentsTransfers.create({
+    const responsePromise = increase.realTimePaymentsTransfers.create({
       amount: 1,
       creditor_name: 'x',
       remittance_information: 'x',
       source_account_number_id: 'string',
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -29,9 +37,16 @@ describe('resource realTimePaymentsTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.realTimePaymentsTransfers.retrieve(
+    const responsePromise = increase.realTimePaymentsTransfers.retrieve(
       'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
     );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -44,7 +59,14 @@ describe('resource realTimePaymentsTransfers', () => {
   });
 
   test('list', async () => {
-    const response = await increase.realTimePaymentsTransfers.list();
+    const responsePromise = increase.realTimePaymentsTransfers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {

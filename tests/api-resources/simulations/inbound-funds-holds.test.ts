@@ -1,14 +1,22 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource inboundFundsHolds', () => {
   test('release', async () => {
-    const response = await increase.simulations.inboundFundsHolds.release(
+    const responsePromise = increase.simulations.inboundFundsHolds.release(
       'inbound_funds_hold_9vuasmywdo7xb3zt4071',
     );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('release: request options instead of params are passed correctly', async () => {

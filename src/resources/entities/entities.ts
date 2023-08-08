@@ -15,26 +15,26 @@ export class Entities extends APIResource {
   /**
    * Create an Entity
    */
-  create(body: EntityCreateParams, options?: Core.RequestOptions): Promise<Core.APIResponse<Entity>> {
+  create(body: EntityCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this.post('/entities', { body, ...options });
   }
 
   /**
    * Retrieve an Entity
    */
-  retrieve(entityId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Entity>> {
+  retrieve(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this.get(`/entities/${entityId}`, options);
   }
 
   /**
    * List Entities
    */
-  list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<EntitiesPage>;
+  list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
+  list(options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
   list(
     query: EntityListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<EntitiesPage> {
+  ): Core.PagePromise<EntitiesPage, Entity> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

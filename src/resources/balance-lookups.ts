@@ -11,7 +11,7 @@ export class BalanceLookups extends APIResource {
   lookup(
     body: BalanceLookupLookupParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<BalanceLookupLookupResponse>> {
+  ): Core.APIPromise<BalanceLookupLookupResponse> {
     return this.post('/balance_lookups', { body, ...options });
   }
 }

@@ -12,7 +12,7 @@ export class DigitalWalletTokenRequests extends APIResource {
   create(
     body: DigitalWalletTokenRequestCreateParams,
     options?: Core.RequestOptions,
-  ): Promise<Core.APIResponse<DigitalWalletTokenRequestCreateResponse>> {
+  ): Core.APIPromise<DigitalWalletTokenRequestCreateResponse> {
     return this.post('/simulations/digital_wallet_token_requests', { body, ...options });
   }
 }

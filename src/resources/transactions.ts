@@ -10,19 +10,22 @@ export class Transactions extends APIResource {
   /**
    * Retrieve a Transaction
    */
-  retrieve(transactionId: string, options?: Core.RequestOptions): Promise<Core.APIResponse<Transaction>> {
+  retrieve(transactionId: string, options?: Core.RequestOptions): Core.APIPromise<Transaction> {
     return this.get(`/transactions/${transactionId}`, options);
   }
 
   /**
    * List Transactions
    */
-  list(query?: TransactionListParams, options?: Core.RequestOptions): Core.PagePromise<TransactionsPage>;
-  list(options?: Core.RequestOptions): Core.PagePromise<TransactionsPage>;
+  list(
+    query?: TransactionListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<TransactionsPage, Transaction>;
+  list(options?: Core.RequestOptions): Core.PagePromise<TransactionsPage, Transaction>;
   list(
     query: TransactionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<TransactionsPage> {
+  ): Core.PagePromise<TransactionsPage, Transaction> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

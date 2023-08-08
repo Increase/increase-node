@@ -1,16 +1,24 @@
 // File generated from our OpenAPI spec by Stainless.
 
 import Increase from 'increase';
+import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
 describe('resource achTransfers', () => {
   test('create: only required params', async () => {
-    const response = await increase.achTransfers.create({
+    const responsePromise = increase.achTransfers.create({
       account_id: 'string',
       amount: 0,
       statement_descriptor: 'x',
     });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('create: required and optional params', async () => {
@@ -37,7 +45,14 @@ describe('resource achTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const response = await increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('retrieve: request options instead of params are passed correctly', async () => {
@@ -50,7 +65,14 @@ describe('resource achTransfers', () => {
   });
 
   test('list', async () => {
-    const response = await increase.achTransfers.list();
+    const responsePromise = increase.achTransfers.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list: request options instead of params are passed correctly', async () => {
@@ -83,7 +105,14 @@ describe('resource achTransfers', () => {
   });
 
   test('approve', async () => {
-    const response = await increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('approve: request options instead of params are passed correctly', async () => {
@@ -96,7 +125,14 @@ describe('resource achTransfers', () => {
   });
 
   test('cancel', async () => {
-    const response = await increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('cancel: request options instead of params are passed correctly', async () => {
