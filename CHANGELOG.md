@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.8.1](https://github.com/Increase/increase-node/compare/v0.8.0...v0.8.1) (2023-08-08)
+
+
+### Features
+
+* **api:** updates ([#95](https://github.com/Increase/increase-node/issues/95)) ([ee5fd92](https://github.com/Increase/increase-node/commit/ee5fd92feacdcf53cd8e5ed63ece2152a47ebe88))
+* **client:** detect browser usage ([#97](https://github.com/Increase/increase-node/issues/97)) ([b2ec59b](https://github.com/Increase/increase-node/commit/b2ec59b2d0f251b6e07b773bea4032ba78e01ef0))
+* **streaming:** add `.toReadableStream()` method ([#99](https://github.com/Increase/increase-node/issues/99)) ([e79f368](https://github.com/Increase/increase-node/commit/e79f36881daa1f8e234dd7d7d9986e4634f11148))
+* **test:** unskip file uploads tests ([#90](https://github.com/Increase/increase-node/issues/90)) ([4a36612](https://github.com/Increase/increase-node/commit/4a36612e01b8592141e9d863e085e2b9c68d1d98))
+
+
+### Bug Fixes
+
+* fix undefined message in errors ([#83](https://github.com/Increase/increase-node/issues/83)) ([ec9aa0e](https://github.com/Increase/increase-node/commit/ec9aa0e83054cd839fff0716ac545033e470393e))
+
+
+### Refactors
+
+* create build for deno.land ([#89](https://github.com/Increase/increase-node/issues/89)) ([895fa10](https://github.com/Increase/increase-node/commit/895fa10e1f02ad909aeaf7cbebeceb0cadc665e1))
+* use destructuring arguments in client constructor and respect false values ([#87](https://github.com/Increase/increase-node/issues/87)) ([381b58f](https://github.com/Increase/increase-node/commit/381b58f36b3073e4ccac184a0795e0a21251c060))
+
+
+### Documentation
+
+* **readme:** remove beta status + document versioning policy ([#96](https://github.com/Increase/increase-node/issues/96)) ([dd0bdb9](https://github.com/Increase/increase-node/commit/dd0bdb919a05597f600b3485068410ea8ca5f2f1))
+
+
+### Chores
+
+* **internal:** allow the build script to be run without yarn installed ([#88](https://github.com/Increase/increase-node/issues/88)) ([cbdca9c](https://github.com/Increase/increase-node/commit/cbdca9c7743ba059e1b727d6140264dfa3987acc))
+* **internal:** change jest exclude patterns ([#103](https://github.com/Increase/increase-node/issues/103)) ([5bfd043](https://github.com/Increase/increase-node/commit/5bfd0434594ccfe7e896861ed7abc2d613972571))
+* **internal:** fix deno build ([#92](https://github.com/Increase/increase-node/issues/92)) ([e27c547](https://github.com/Increase/increase-node/commit/e27c54761219b02ba98687f0f7c5520e9ab2e4f4))
+* **internal:** fix deno build ([#94](https://github.com/Increase/increase-node/issues/94)) ([3c29918](https://github.com/Increase/increase-node/commit/3c2991833443dafeb3b0ef9300d6bb3659fbfc45))
+* **internal:** minor style update ([#86](https://github.com/Increase/increase-node/issues/86)) ([9361d68](https://github.com/Increase/increase-node/commit/9361d68ad5af41bf5a6ac7232fdc54e3033738c8))
+* **internal:** remove deno build ([#98](https://github.com/Increase/increase-node/issues/98)) ([3cc88f4](https://github.com/Increase/increase-node/commit/3cc88f41ef2bc07b380b6759d9e1f4451e86c15f))
+* **internal:** update eslint ([#101](https://github.com/Increase/increase-node/issues/101)) ([02c5b88](https://github.com/Increase/increase-node/commit/02c5b8843281e6dd5e36dcd11bd3495154d97a03))
+* **internal:** update helpers ([#85](https://github.com/Increase/increase-node/issues/85)) ([9849cdf](https://github.com/Increase/increase-node/commit/9849cdf61246694a7c806452d9d5377fa7b89535))
+* **internal:** update tsconfig-paths dep ([#102](https://github.com/Increase/increase-node/issues/102)) ([7c8d8f2](https://github.com/Increase/increase-node/commit/7c8d8f2a07127a656c7f8e6966bd61b2b2000042))
+* **internal:** update typescript ([#100](https://github.com/Increase/increase-node/issues/100)) ([aa35ddb](https://github.com/Increase/increase-node/commit/aa35ddb9504efbac0f805adf33a7184969caef50))
+
 ## [0.8.0](https://github.com/Increase/increase-node/compare/v0.7.1...v0.8.0) (2023-07-22)
 
 
