@@ -107,6 +107,12 @@ export interface ACHPrenotification {
   effective_date: string | null;
 
   /**
+   * If the receiving bank notifies that future transfers should use different
+   * details, this will contain those details.
+   */
+  notifications_of_change: Array<ACHPrenotification.NotificationsOfChange>;
+
+  /**
    * If your prenotification is returned, this will contain details of the return.
    */
   prenotification_return: ACHPrenotification.PrenotificationReturn | null;
@@ -134,6 +140,51 @@ export interface ACHPrenotification {
 }
 
 export namespace ACHPrenotification {
+  export interface NotificationsOfChange {
+    /**
+     * The type of change that occurred.
+     *
+     * - `incorrect_account_number` - The account number was incorrect.
+     * - `incorrect_routing_number` - The routing number was incorrect.
+     * - `incorrect_routing_number_and_account_number` - Both the routing number and
+     *   the account number were incorrect.
+     * - `incorrect_transaction_code` - The transaction code was incorrect.
+     * - `incorrect_account_number_and_transaction_code` - The account number and the
+     *   transaction code were incorrect.
+     * - `incorrect_routing_number_account_number_and_transaction_code` - The routing
+     *   number, account number, and transaction code were incorrect.
+     * - `incorrect_receiving_depository_financial_institution_identification` - The
+     *   receiving depository financial institution identification was incorrect.
+     * - `incorrect_individual_identification_number` - The individual identification
+     *   number was incorrect.
+     * - `addenda_format_error` - The addenda had an incorrect format.
+     * - `incorrect_standard_entry_class_code_for_outbound_international_payment` - The
+     *   standard entry class code was incorrect for an outbound international payment.
+     */
+    change_code:
+      | 'incorrect_account_number'
+      | 'incorrect_routing_number'
+      | 'incorrect_routing_number_and_account_number'
+      | 'incorrect_transaction_code'
+      | 'incorrect_account_number_and_transaction_code'
+      | 'incorrect_routing_number_account_number_and_transaction_code'
+      | 'incorrect_receiving_depository_financial_institution_identification'
+      | 'incorrect_individual_identification_number'
+      | 'addenda_format_error'
+      | 'incorrect_standard_entry_class_code_for_outbound_international_payment';
+
+    /**
+     * The corrected data.
+     */
+    corrected_data: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the notification occurred.
+     */
+    created_at: string;
+  }
+
   /**
    * If your prenotification is returned, this will contain details of the return.
    */

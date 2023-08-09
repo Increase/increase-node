@@ -57,7 +57,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prong: 'ownership',
+            prongs: ['ownership', 'ownership', 'ownership'],
           },
           {
             individual: {
@@ -85,7 +85,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prong: 'ownership',
+            prongs: ['ownership', 'ownership', 'ownership'],
           },
           {
             individual: {
@@ -113,7 +113,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prong: 'ownership',
+            prongs: ['ownership', 'ownership', 'ownership'],
           },
         ],
       },
@@ -390,6 +390,24 @@ describe('resource entities', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('archive', async () => {
+    const responsePromise = increase.entities.archive('entity_n8y8tnk2p9339ti393yi');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('archive: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.entities.archive('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

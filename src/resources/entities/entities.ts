@@ -40,6 +40,13 @@ export class Entities extends APIResource {
     }
     return this.getAPIList('/entities', EntitiesPage, { query, ...options });
   }
+
+  /**
+   * Archive an Entity
+   */
+  archive(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
+    return this.post(`/entities/${entityId}/archive`, options);
+  }
 }
 
 export class EntitiesPage extends Page<Entity> {}
@@ -918,14 +925,10 @@ export namespace EntityCreateParams {
       individual: BeneficialOwner.Individual;
 
       /**
-       * Why this person is considered a beneficial owner of the entity.
-       *
-       * - `ownership` - A person with 25% or greater direct or indirect ownership of the
-       *   entity.
-       * - `control` - A person who manages, directs, or has significant control of the
-       *   entity.
+       * Why this person is considered a beneficial owner of the entity. At least one
+       * option is required.
        */
-      prong: 'ownership' | 'control';
+      prongs: Array<'ownership' | 'control'>;
 
       /**
        * This person's role or title within the entity.
