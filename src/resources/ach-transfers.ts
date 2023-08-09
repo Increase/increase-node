@@ -590,6 +590,14 @@ export namespace ACHTransfer {
    */
   export interface Submission {
     /**
+     * When the funds transfer is expected to settle in the recipient's account.
+     * Credits may be available sooner, at the receiving banks discretion. The FedACH
+     * schedule is published
+     * [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+     */
+    expected_funds_settlement_at: string;
+
+    /**
      * When the ACH transfer was sent to FedACH.
      */
     submitted_at: string;
