@@ -299,6 +299,12 @@ export namespace CheckTransfer {
    */
   export interface Mailing {
     /**
+     * The ID of the file corresponding to an image of the check that was mailed, if
+     * available.
+     */
+    image_id: string | null;
+
+    /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
      * the check was mailed.
      */

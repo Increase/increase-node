@@ -38,6 +38,13 @@ export class CardProfiles extends APIResource {
     }
     return this.getAPIList('/card_profiles', CardProfilesPage, { query, ...options });
   }
+
+  /**
+   * Archive an Card Profile
+   */
+  archive(cardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
+    return this.post(`/card_profiles/${cardProfileId}/archive`, options);
+  }
 }
 
 export class CardProfilesPage extends Page<CardProfile> {}
@@ -71,6 +78,11 @@ export interface CardProfile {
    * will use these values to render card artwork appropriately for their app.
    */
   digital_wallets: CardProfile.DigitalWallets;
+
+  /**
+   * Whether this Card Profile is the default for all cards in its Increase group.
+   */
+  is_default: boolean;
 
   /**
    * How physical cards should be designed and shipped.

@@ -15,7 +15,7 @@ describe('resource beneficialOwners', () => {
           address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
           identification: { method: 'social_security_number', number: 'xxxx' },
         },
-        prong: 'ownership',
+        prongs: ['ownership', 'ownership', 'ownership'],
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -55,7 +55,7 @@ describe('resource beneficialOwners', () => {
           },
         },
         company_title: 'x',
-        prong: 'ownership',
+        prongs: ['ownership', 'ownership', 'ownership'],
       },
     });
   });

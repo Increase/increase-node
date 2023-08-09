@@ -89,4 +89,24 @@ describe('resource cardProfiles', () => {
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('archive', async () => {
+    const responsePromise = increase.cardProfiles.archive('card_profile_cox5y73lob2eqly18piy');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('archive: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.cardProfiles.archive('card_profile_cox5y73lob2eqly18piy', {
+        path: '/_stainless_unknown_path',
+      }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
 });

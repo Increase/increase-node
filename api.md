@@ -127,6 +127,7 @@ Methods:
 - <code title="post /card_profiles">client.cardProfiles.<a href="./src/resources/card-profiles.ts">create</a>({ ...params }) -> CardProfile</code>
 - <code title="get /card_profiles/{card_profile_id}">client.cardProfiles.<a href="./src/resources/card-profiles.ts">retrieve</a>(cardProfileId) -> CardProfile</code>
 - <code title="get /card_profiles">client.cardProfiles.<a href="./src/resources/card-profiles.ts">list</a>({ ...params }) -> CardProfilesPage</code>
+- <code title="post /card_profiles/{card_profile_id}/archive">client.cardProfiles.<a href="./src/resources/card-profiles.ts">archive</a>(cardProfileId) -> CardProfile</code>
 
 # CardPurchaseSupplements
 
@@ -337,6 +338,7 @@ Methods:
 - <code title="post /entities">client.entities.<a href="./src/resources/entities/entities.ts">create</a>({ ...params }) -> Entity</code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/resources/entities/entities.ts">retrieve</a>(entityId) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
+- <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities/entities.ts">archive</a>(entityId) -> Entity</code>
 
 ## BeneficialOwners
 
