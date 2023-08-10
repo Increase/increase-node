@@ -123,26 +123,26 @@ export namespace Transaction {
    */
   export interface Source {
     /**
-     * A Account Transfer Intention object. This field will be present in the JSON
+     * An Account Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `account_transfer_intention`.
      */
     account_transfer_intention: Source.AccountTransferIntention | null;
 
     /**
-     * A ACH Transfer Intention object. This field will be present in the JSON response
-     * if and only if `category` is equal to `ach_transfer_intention`.
+     * An ACH Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_intention`.
      */
     ach_transfer_intention: Source.ACHTransferIntention | null;
 
     /**
-     * A ACH Transfer Rejection object. This field will be present in the JSON response
-     * if and only if `category` is equal to `ach_transfer_rejection`.
+     * An ACH Transfer Rejection object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_rejection`.
      */
     ach_transfer_rejection: Source.ACHTransferRejection | null;
 
     /**
-     * A ACH Transfer Return object. This field will be present in the JSON response if
-     * and only if `category` is equal to `ach_transfer_return`.
+     * An ACH Transfer Return object. This field will be present in the JSON response
+     * if and only if `category` is equal to `ach_transfer_return`.
      */
     ach_transfer_return: Source.ACHTransferReturn | null;
 
@@ -171,77 +171,69 @@ export namespace Transaction {
     card_settlement: Source.CardSettlement | null;
 
     /**
-     * The type of transaction that took place. We may add additional possible values
-     * for this enum over time; your application should be able to handle such
-     * additions gracefully.
+     * The type of the resource. We may add additional possible values for this enum
+     * over time; your application should be able to handle such additions gracefully.
      *
-     * - `account_transfer_intention` - The Transaction was created by a Account
-     *   Transfer Intention object. Details will be under the
-     *   `account_transfer_intention` object.
-     * - `ach_transfer_intention` - The Transaction was created by a ACH Transfer
-     *   Intention object. Details will be under the `ach_transfer_intention` object.
-     * - `ach_transfer_rejection` - The Transaction was created by a ACH Transfer
-     *   Rejection object. Details will be under the `ach_transfer_rejection` object.
-     * - `ach_transfer_return` - The Transaction was created by a ACH Transfer Return
-     *   object. Details will be under the `ach_transfer_return` object.
-     * - `card_dispute_acceptance` - The Transaction was created by a Card Dispute
-     *   Acceptance object. Details will be under the `card_dispute_acceptance` object.
-     * - `card_refund` - The Transaction was created by a Card Refund object. Details
-     *   will be under the `card_refund` object.
-     * - `card_revenue_payment` - The Transaction was created by a Card Revenue Payment
-     *   object. Details will be under the `card_revenue_payment` object.
-     * - `card_settlement` - The Transaction was created by a Card Settlement object.
-     *   Details will be under the `card_settlement` object.
-     * - `check_deposit_acceptance` - The Transaction was created by a Check Deposit
-     *   Acceptance object. Details will be under the `check_deposit_acceptance`
+     * - `account_transfer_intention` - Account Transfer Intention: details will be
+     *   under the `account_transfer_intention` object.
+     * - `ach_transfer_intention` - ACH Transfer Intention: details will be under the
+     *   `ach_transfer_intention` object.
+     * - `ach_transfer_rejection` - ACH Transfer Rejection: details will be under the
+     *   `ach_transfer_rejection` object.
+     * - `ach_transfer_return` - ACH Transfer Return: details will be under the
+     *   `ach_transfer_return` object.
+     * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
+     *   `card_dispute_acceptance` object.
+     * - `card_refund` - Card Refund: details will be under the `card_refund` object.
+     * - `card_revenue_payment` - Card Revenue Payment: details will be under the
+     *   `card_revenue_payment` object.
+     * - `card_settlement` - Card Settlement: details will be under the
+     *   `card_settlement` object.
+     * - `check_deposit_acceptance` - Check Deposit Acceptance: details will be under
+     *   the `check_deposit_acceptance` object.
+     * - `check_deposit_return` - Check Deposit Return: details will be under the
+     *   `check_deposit_return` object.
+     * - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
+     *   `check_transfer_deposit` object.
+     * - `check_transfer_intention` - Check Transfer Intention: details will be under
+     *   the `check_transfer_intention` object.
+     * - `check_transfer_stop_payment_request` - Check Transfer Stop Payment Request:
+     *   details will be under the `check_transfer_stop_payment_request` object.
+     * - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
+     * - `inbound_ach_transfer` - Inbound ACH Transfer Intention: details will be under
+     *   the `inbound_ach_transfer` object.
+     * - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
+     *   Intention: details will be under the `inbound_ach_transfer_return_intention`
      *   object.
-     * - `check_deposit_return` - The Transaction was created by a Check Deposit Return
-     *   object. Details will be under the `check_deposit_return` object.
-     * - `check_transfer_deposit` - The Transaction was created by a Check Transfer
-     *   Deposit object. Details will be under the `check_transfer_deposit` object.
-     * - `check_transfer_intention` - The Transaction was created by a Check Transfer
-     *   Intention object. Details will be under the `check_transfer_intention` object.
-     * - `check_transfer_stop_payment_request` - The Transaction was created by a Check
-     *   Transfer Stop Payment Request object. Details will be under the
-     *   `check_transfer_stop_payment_request` object.
-     * - `fee_payment` - The Transaction was created by a Fee Payment object. Details
-     *   will be under the `fee_payment` object.
-     * - `inbound_ach_transfer` - The Transaction was created by a Inbound ACH Transfer
-     *   Intention object. Details will be under the `inbound_ach_transfer` object.
-     * - `inbound_ach_transfer_return_intention` - The Transaction was created by a
-     *   Inbound ACH Transfer Return Intention object. Details will be under the
-     *   `inbound_ach_transfer_return_intention` object.
-     * - `inbound_check` - The Transaction was created by a Inbound Check object.
-     *   Details will be under the `inbound_check` object.
-     * - `inbound_international_ach_transfer` - The Transaction was created by a
-     *   Inbound International ACH Transfer object. Details will be under the
-     *   `inbound_international_ach_transfer` object.
-     * - `inbound_real_time_payments_transfer_confirmation` - The Transaction was
-     *   created by a Inbound Real Time Payments Transfer Confirmation object. Details
-     *   will be under the `inbound_real_time_payments_transfer_confirmation` object.
-     * - `inbound_wire_drawdown_payment` - The Transaction was created by a Inbound
-     *   Wire Drawdown Payment object. Details will be under the
-     *   `inbound_wire_drawdown_payment` object.
-     * - `inbound_wire_drawdown_payment_reversal` - The Transaction was created by a
-     *   Inbound Wire Drawdown Payment Reversal object. Details will be under the
-     *   `inbound_wire_drawdown_payment_reversal` object.
-     * - `inbound_wire_reversal` - The Transaction was created by a Inbound Wire
-     *   Reversal object. Details will be under the `inbound_wire_reversal` object.
-     * - `inbound_wire_transfer` - The Transaction was created by a Inbound Wire
-     *   Transfer object. Details will be under the `inbound_wire_transfer` object.
-     * - `interest_payment` - The Transaction was created by a Interest Payment object.
-     *   Details will be under the `interest_payment` object.
-     * - `internal_source` - The Transaction was created by a Internal Source object.
-     *   Details will be under the `internal_source` object.
-     * - `real_time_payments_transfer_acknowledgement` - The Transaction was created by
-     *   a Real Time Payments Transfer Acknowledgement object. Details will be under
-     *   the `real_time_payments_transfer_acknowledgement` object.
-     * - `sample_funds` - The Transaction was created by a Sample Funds object. Details
-     *   will be under the `sample_funds` object.
-     * - `wire_transfer_intention` - The Transaction was created by a Wire Transfer
-     *   Intention object. Details will be under the `wire_transfer_intention` object.
-     * - `wire_transfer_rejection` - The Transaction was created by a Wire Transfer
-     *   Rejection object. Details will be under the `wire_transfer_rejection` object.
+     * - `inbound_check` - Inbound Check: details will be under the `inbound_check`
+     *   object.
+     * - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
+     *   details will be under the `inbound_international_ach_transfer` object.
+     * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real Time
+     *   Payments Transfer Confirmation: details will be under the
+     *   `inbound_real_time_payments_transfer_confirmation` object.
+     * - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
+     *   be under the `inbound_wire_drawdown_payment` object.
+     * - `inbound_wire_drawdown_payment_reversal` - Inbound Wire Drawdown Payment
+     *   Reversal: details will be under the `inbound_wire_drawdown_payment_reversal`
+     *   object.
+     * - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
+     *   `inbound_wire_reversal` object.
+     * - `inbound_wire_transfer` - Inbound Wire Transfer: details will be under the
+     *   `inbound_wire_transfer` object.
+     * - `interest_payment` - Interest Payment: details will be under the
+     *   `interest_payment` object.
+     * - `internal_source` - Internal Source: details will be under the
+     *   `internal_source` object.
+     * - `real_time_payments_transfer_acknowledgement` - Real Time Payments Transfer
+     *   Acknowledgement: details will be under the
+     *   `real_time_payments_transfer_acknowledgement` object.
+     * - `sample_funds` - Sample Funds: details will be under the `sample_funds`
+     *   object.
+     * - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
+     *   `wire_transfer_intention` object.
+     * - `wire_transfer_rejection` - Wire Transfer Rejection: details will be under the
+     *   `wire_transfer_rejection` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -314,65 +306,65 @@ export namespace Transaction {
     fee_payment: Source.FeePayment | null;
 
     /**
-     * A Inbound ACH Transfer Intention object. This field will be present in the JSON
+     * An Inbound ACH Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_ach_transfer`.
      */
     inbound_ach_transfer: Source.InboundACHTransfer | null;
 
     /**
-     * A Inbound Check object. This field will be present in the JSON response if and
+     * An Inbound Check object. This field will be present in the JSON response if and
      * only if `category` is equal to `inbound_check`.
      */
     inbound_check: Source.InboundCheck | null;
 
     /**
-     * A Inbound International ACH Transfer object. This field will be present in the
+     * An Inbound International ACH Transfer object. This field will be present in the
      * JSON response if and only if `category` is equal to
      * `inbound_international_ach_transfer`.
      */
     inbound_international_ach_transfer: Source.InboundInternationalACHTransfer | null;
 
     /**
-     * A Inbound Real Time Payments Transfer Confirmation object. This field will be
+     * An Inbound Real Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
      */
     inbound_real_time_payments_transfer_confirmation: Source.InboundRealTimePaymentsTransferConfirmation | null;
 
     /**
-     * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
+     * An Inbound Wire Drawdown Payment object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
      */
     inbound_wire_drawdown_payment: Source.InboundWireDrawdownPayment | null;
 
     /**
-     * A Inbound Wire Drawdown Payment Reversal object. This field will be present in
+     * An Inbound Wire Drawdown Payment Reversal object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `inbound_wire_drawdown_payment_reversal`.
      */
     inbound_wire_drawdown_payment_reversal: Source.InboundWireDrawdownPaymentReversal | null;
 
     /**
-     * A Inbound Wire Reversal object. This field will be present in the JSON response
+     * An Inbound Wire Reversal object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_reversal`.
      */
     inbound_wire_reversal: Source.InboundWireReversal | null;
 
     /**
-     * A Inbound Wire Transfer object. This field will be present in the JSON response
+     * An Inbound Wire Transfer object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_transfer`.
      */
     inbound_wire_transfer: Source.InboundWireTransfer | null;
 
     /**
-     * A Interest Payment object. This field will be present in the JSON response if
+     * An Interest Payment object. This field will be present in the JSON response if
      * and only if `category` is equal to `interest_payment`.
      */
     interest_payment: Source.InterestPayment | null;
 
     /**
-     * A Internal Source object. This field will be present in the JSON response if and
-     * only if `category` is equal to `internal_source`.
+     * An Internal Source object. This field will be present in the JSON response if
+     * and only if `category` is equal to `internal_source`.
      */
     internal_source: Source.InternalSource | null;
 
@@ -404,7 +396,7 @@ export namespace Transaction {
 
   export namespace Source {
     /**
-     * A Account Transfer Intention object. This field will be present in the JSON
+     * An Account Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `account_transfer_intention`.
      */
     export interface AccountTransferIntention {
@@ -449,8 +441,8 @@ export namespace Transaction {
     }
 
     /**
-     * A ACH Transfer Intention object. This field will be present in the JSON response
-     * if and only if `category` is equal to `ach_transfer_intention`.
+     * An ACH Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_intention`.
      */
     export interface ACHTransferIntention {
       account_number: string;
@@ -472,8 +464,8 @@ export namespace Transaction {
     }
 
     /**
-     * A ACH Transfer Rejection object. This field will be present in the JSON response
-     * if and only if `category` is equal to `ach_transfer_rejection`.
+     * An ACH Transfer Rejection object. This field will be present in the JSON
+     * response if and only if `category` is equal to `ach_transfer_rejection`.
      */
     export interface ACHTransferRejection {
       /**
@@ -483,8 +475,8 @@ export namespace Transaction {
     }
 
     /**
-     * A ACH Transfer Return object. This field will be present in the JSON response if
-     * and only if `category` is equal to `ach_transfer_return`.
+     * An ACH Transfer Return object. This field will be present in the JSON response
+     * if and only if `category` is equal to `ach_transfer_return`.
      */
     export interface ACHTransferReturn {
       /**
@@ -2307,7 +2299,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound ACH Transfer Intention object. This field will be present in the JSON
+     * An Inbound ACH Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_ach_transfer`.
      */
     export interface InboundACHTransfer {
@@ -2335,7 +2327,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Check object. This field will be present in the JSON response if and
+     * An Inbound Check object. This field will be present in the JSON response if and
      * only if `category` is equal to `inbound_check`.
      */
     export interface InboundCheck {
@@ -2366,7 +2358,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound International ACH Transfer object. This field will be present in the
+     * An Inbound International ACH Transfer object. This field will be present in the
      * JSON response if and only if `category` is equal to
      * `inbound_international_ach_transfer`.
      */
@@ -2449,7 +2441,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Real Time Payments Transfer Confirmation object. This field will be
+     * An Inbound Real Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
      */
@@ -2505,7 +2497,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Wire Drawdown Payment object. This field will be present in the JSON
+     * An Inbound Wire Drawdown Payment object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
      */
     export interface InboundWireDrawdownPayment {
@@ -2541,7 +2533,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Wire Drawdown Payment Reversal object. This field will be present in
+     * An Inbound Wire Drawdown Payment Reversal object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `inbound_wire_drawdown_payment_reversal`.
      */
@@ -2598,7 +2590,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Wire Reversal object. This field will be present in the JSON response
+     * An Inbound Wire Reversal object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_reversal`.
      */
     export interface InboundWireReversal {
@@ -2681,7 +2673,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Inbound Wire Transfer object. This field will be present in the JSON response
+     * An Inbound Wire Transfer object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_transfer`.
      */
     export interface InboundWireTransfer {
@@ -2725,7 +2717,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Interest Payment object. This field will be present in the JSON response if
+     * An Interest Payment object. This field will be present in the JSON response if
      * and only if `category` is equal to `interest_payment`.
      */
     export interface InterestPayment {
@@ -2765,8 +2757,8 @@ export namespace Transaction {
     }
 
     /**
-     * A Internal Source object. This field will be present in the JSON response if and
-     * only if `category` is equal to `internal_source`.
+     * An Internal Source object. This field will be present in the JSON response if
+     * and only if `category` is equal to `internal_source`.
      */
     export interface InternalSource {
       /**
