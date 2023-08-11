@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.9.0](https://github.com/Increase/increase-node/compare/v0.8.1...v0.9.0) (2023-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **client:** support accessing raw response + remove deprecated features ([#104](https://github.com/Increase/increase-node/issues/104))
+
+### Features
+
+* **api:** updates ([#106](https://github.com/Increase/increase-node/issues/106)) ([3ba4626](https://github.com/Increase/increase-node/commit/3ba46267c7f1f56f141b0ebaef9f92cf2d3bf3fd))
+* **client:** support accessing raw response + remove deprecated features ([#104](https://github.com/Increase/increase-node/issues/104)) ([b4f3164](https://github.com/Increase/increase-node/commit/b4f3164ed9a134dc95e1e0a62e86f414c7e9e3d1))
+
+
+### Documentation
+
+* **api:** change description of various fields ([#107](https://github.com/Increase/increase-node/issues/107)) ([54903db](https://github.com/Increase/increase-node/commit/54903db4061f080c7618e2d2348dcad4dc1c5db9))
+* **readme:** minor updates ([#108](https://github.com/Increase/increase-node/issues/108)) ([a5558bc](https://github.com/Increase/increase-node/commit/a5558bca6f934285a33344abc4b5383cca0a2a06))
+
+
+### Chores
+
+* **internal:** conditionally include bin during build output ([#109](https://github.com/Increase/increase-node/issues/109)) ([ae76bb5](https://github.com/Increase/increase-node/commit/ae76bb539f3fe3352005bb16a9025d03252624a8))
+
 ## [0.8.1](https://github.com/Increase/increase-node/compare/v0.8.0...v0.8.1) (2023-08-08)
 
 
