@@ -104,7 +104,7 @@ export class Increase extends Core.APIClient {
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'production'],
-      timeout: options.timeout,
+      timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
       fetch: options.fetch,
