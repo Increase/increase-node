@@ -92,7 +92,7 @@ export class Increase extends Core.APIClient {
   constructor({ apiKey = Core.readEnv('INCREASE_API_KEY'), ...opts }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Error(
-        'The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: undefined }).',
+        "The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: 'my apiKey' }).",
       );
     }
 
