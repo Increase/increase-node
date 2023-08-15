@@ -3,7 +3,7 @@
 import Increase from 'increase';
 import { APIUserAbortError } from 'increase';
 import { Headers } from 'increase/core';
-import { Response, fetch as defaultFetch } from 'increase/_shims/fetch';
+import { Response, fetch as defaultFetch, type RequestInit, type RequestInfo } from 'increase/_shims/fetch';
 
 describe('instantiate client', () => {
   const env = process.env;
@@ -194,4 +194,29 @@ describe('request building', () => {
       expect((req.headers as Record<string, string>)['Content-Length']).toEqual('22');
     });
   });
+});
+
+describe('retries', () => {
+  test('single retry', async () => {
+    let count = 0;
+    const testFetch = async (url: RequestInfo, { signal }: RequestInit = {}): Promise<Response> => {
+      if (!count++)
+        return new Promise((resolve, reject) =>
+          signal?.addEventListener('abort', () => reject(new Error('timed out'))),
+        );
+      return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
+    };
+
+    const client = new Increase({ apiKey: 'my api key', timeout: 2000, fetch: testFetch });
+
+    expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
+    expect(count).toEqual(2);
+    expect(
+      await client
+        .request({ path: '/foo', method: 'get' })
+        .asResponse()
+        .then((r) => r.text()),
+    ).toEqual(JSON.stringify({ a: 1 }));
+    expect(count).toEqual(3);
+  }, 10000);
 });
