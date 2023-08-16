@@ -209,10 +209,10 @@ export namespace CardProfile {
      * - `pending_reviewing` - The card profile is awaiting review by Increase.
      * - `pending_submitting` - The card profile is awaiting submission to the
      *   fulfillment provider.
-     * - `submitted` - The Physical Card Profile has been submitted to the fulfillment
-     *   provider.
+     * - `active` - The Physical Card Profile has been submitted to the fulfillment
+     *   provider and is ready to use.
      */
-    status: 'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'submitted';
+    status: 'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'active';
   }
 }
 
@@ -325,15 +325,26 @@ export namespace CardProfileCreateParams {
 }
 
 export interface CardProfileListParams extends PageParams {
+  physical_cards_status?: CardProfileListParams.PhysicalCardsStatus;
+
   status?: CardProfileListParams.Status;
 }
 
 export namespace CardProfileListParams {
+  export interface PhysicalCardsStatus {
+    /**
+     * Filter Card Profiles for those with the specified physical card status or
+     * statuses. For GET requests, this should be encoded as a comma-delimited string,
+     * such as `?in=one,two,three`.
+     */
+    in?: Array<'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'active'>;
+  }
+
   export interface Status {
     /**
-     * Filter Card Profiles for those with the specified status or statuses. For GET
-     * requests, this should be encoded as a comma-delimited string, such as
-     * `?in=one,two,three`.
+     * Filter Card Profiles for those with the specified digital wallet status or
+     * statuses. For GET requests, this should be encoded as a comma-delimited string,
+     * such as `?in=one,two,three`.
      */
     in?: Array<'pending' | 'rejected' | 'active' | 'archived'>;
   }
