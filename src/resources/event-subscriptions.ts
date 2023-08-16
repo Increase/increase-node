@@ -209,11 +209,6 @@ export interface EventSubscription {
     | null;
 
   /**
-   * The key that will be used to sign webhooks.
-   */
-  shared_secret: string;
-
-  /**
    * This indicates if we'll send notifications to this subscription.
    *
    * - `active` - The subscription is active and Events will be delivered normally.

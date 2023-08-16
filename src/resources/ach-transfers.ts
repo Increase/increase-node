@@ -79,6 +79,13 @@ export interface ACHTransfer {
   account_number: string;
 
   /**
+   * After the transfer is acknowledged by FedACH, this will contain supplemental
+   * details. The Federal Reserve sends an acknowledgement message for each file that
+   * Increase submits.
+   */
+  acknowledgement: ACHTransfer.Acknowledgement | null;
+
+  /**
    * Additional information that will be sent to the recipient.
    */
   addendum: string | null;
@@ -235,7 +242,10 @@ export interface ACHTransfer {
 
   /**
    * After the transfer is submitted to FedACH, this will contain supplemental
-   * details.
+   * details. Increase batches transfers and submits a file to the Federal Reserve
+   * roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+   * weekdays according to their (posted
+   * schedule)[https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html].
    */
   submission: ACHTransfer.Submission | null;
 
@@ -257,6 +267,19 @@ export interface ACHTransfer {
 }
 
 export namespace ACHTransfer {
+  /**
+   * After the transfer is acknowledged by FedACH, this will contain supplemental
+   * details. The Federal Reserve sends an acknowledgement message for each file that
+   * Increase submits.
+   */
+  export interface Acknowledgement {
+    /**
+     * When the Federal Reserve acknowledged the submitted file containing this
+     * transfer.
+     */
+    acknowledged_at: string;
+  }
+
   /**
    * If your account requires approvals for transfers and the transfer was approved,
    * this will contain details of the approval.
@@ -586,7 +609,10 @@ export namespace ACHTransfer {
 
   /**
    * After the transfer is submitted to FedACH, this will contain supplemental
-   * details.
+   * details. Increase batches transfers and submits a file to the Federal Reserve
+   * roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+   * weekdays according to their (posted
+   * schedule)[https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html].
    */
   export interface Submission {
     /**
