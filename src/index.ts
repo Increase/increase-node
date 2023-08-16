@@ -12,6 +12,7 @@ const environments = {
   production: 'https://api.increase.com',
   sandbox: 'https://sandbox.increase.com',
 };
+type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
@@ -26,7 +27,7 @@ export interface ClientOptions {
    * - `production` corresponds to `https://api.increase.com`
    * - `sandbox` corresponds to `https://sandbox.increase.com`
    */
-  environment?: keyof typeof environments;
+  environment?: Environment;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -83,12 +84,25 @@ export interface ClientOptions {
   defaultQuery?: Core.DefaultQuery;
 }
 
-/** Instantiate the API Client. */
+/** API Client for interfacing with the Increase API. */
 export class Increase extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
+  /**
+   * API Client for interfacing with the Increase API.
+   *
+   * @param {string} [opts.apiKey=process.env['INCREASE_API_KEY']] - The API Key to send to the API.
+   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
+   * @param {string} [opts.baseURL] - Override the default base URL for the API.
+   * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
+   * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
+   * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
+   * @param {number} [opts.maxRetries=2] - The maximum number of times the client will retry a request.
+   * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
+   * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
+   */
   constructor({ apiKey = Core.readEnv('INCREASE_API_KEY'), ...opts }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Error(
