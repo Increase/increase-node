@@ -84,7 +84,12 @@ describe('resource cardProfiles', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.cardProfiles.list(
-        { cursor: 'string', limit: 0, status: { in: ['pending', 'pending', 'pending'] } },
+        {
+          cursor: 'string',
+          limit: 0,
+          physical_cards_status: { in: ['not_eligible', 'not_eligible', 'not_eligible'] },
+          status: { in: ['pending', 'pending', 'pending'] },
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);
