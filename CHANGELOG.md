@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.9.1](https://github.com/Increase/increase-node/compare/v0.9.0...v0.9.1) (2023-08-16)
+
+
+### Features
+
+* allow a default timeout to be set for clients ([#111](https://github.com/Increase/increase-node/issues/111)) ([3c477d6](https://github.com/Increase/increase-node/commit/3c477d6df3b9b2eb27c493c5d9cb4f449be188dd))
+
+
+### Bug Fixes
+
+* **client:** fix TypeError when a request gets retried ([#116](https://github.com/Increase/increase-node/issues/116)) ([dbdc423](https://github.com/Increase/increase-node/commit/dbdc423a3b739b30b81115a253848672cdffa0ac))
+
+
+### Chores
+
+* assign default reviewers to release PRs ([#113](https://github.com/Increase/increase-node/issues/113)) ([3411dd3](https://github.com/Increase/increase-node/commit/3411dd38827118a537b1a7234dec8ed4679fe394))
+* **internal:** fix error happening in CloudFlare pages ([#114](https://github.com/Increase/increase-node/issues/114)) ([c191d46](https://github.com/Increase/increase-node/commit/c191d46464d2bd22cf2919a06f3f137cd96e7180))
+* **internal:** improve error message when option is missing ([#115](https://github.com/Increase/increase-node/issues/115)) ([6a24a7e](https://github.com/Increase/increase-node/commit/6a24a7e4a76b63143b6f1861db4889cbeb6674d2))
+
 ## [0.9.0](https://github.com/Increase/increase-node/compare/v0.8.1...v0.9.0) (2023-08-11)
 
 
