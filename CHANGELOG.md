@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.0](https://github.com/Increase/increase-node/compare/v0.9.1...v0.10.0) (2023-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** change `physical_cards.status` value, remove `event_subscription` field, add fields ([#120](https://github.com/Increase/increase-node/issues/120))
+
+### Features
+
+* **api:** change `physical_cards.status` value, remove `event_subscription` field, add fields ([#120](https://github.com/Increase/increase-node/issues/120)) ([8d390d1](https://github.com/Increase/increase-node/commit/8d390d149c59a524c52493908fd5e21c79155803))
+* **client:** improve compatibility with Bun ([#121](https://github.com/Increase/increase-node/issues/121)) ([f969ef3](https://github.com/Increase/increase-node/commit/f969ef3ac02fe73fe5a441eae701d59d4f535eda))
+* **docs:** add documentation to the client constructor ([#118](https://github.com/Increase/increase-node/issues/118)) ([874970c](https://github.com/Increase/increase-node/commit/874970c60dd4850442204d09f98fbc5fe49f5659))
+
 ## [0.9.1](https://github.com/Increase/increase-node/compare/v0.9.0...v0.9.1) (2023-08-16)
 
 
