@@ -253,6 +253,8 @@ export namespace Increase {
   export import toFile = Uploads.toFile;
   export import fileFromPath = Uploads.fileFromPath;
 
+  export import RequestOptions = Core.RequestOptions;
+
   export import Page = Pagination.Page;
   export import PageParams = Pagination.PageParams;
   export import PageResponse = Pagination.PageResponse;
