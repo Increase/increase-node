@@ -128,7 +128,7 @@ export interface ACHPrenotification {
    * - `pending_submitting` - The Prenotification is pending submission.
    * - `requires_attention` - The Prenotification requires attention.
    * - `returned` - The Prenotification has been returned.
-   * - `submitted` - The Prentification is complete.
+   * - `submitted` - The Prenotification is complete.
    */
   status: 'pending_submitting' | 'requires_attention' | 'returned' | 'submitted';
 
@@ -254,7 +254,7 @@ export interface ACHPrenotificationCreateParams {
   effective_date?: string;
 
   /**
-   * Your identifer for the transfer recipient.
+   * Your identifier for the transfer recipient.
    */
   individual_id?: string;
 

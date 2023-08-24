@@ -197,6 +197,11 @@ export namespace Entity {
 
     export interface BeneficialOwner {
       /**
+       * The identifier of this beneficial owner.
+       */
+      beneficial_owner_id: string;
+
+      /**
        * This person's role or title within the entity.
        */
       company_title: string | null;
@@ -854,7 +859,7 @@ export namespace EntityCreateParams {
    */
   export interface Corporation {
     /**
-     * The corporation's address.
+     * The corporation's physical address. Post Office Boxes are disallowed.
      */
     address: Corporation.Address;
 
@@ -888,7 +893,7 @@ export namespace EntityCreateParams {
 
   export namespace Corporation {
     /**
-     * The corporation's address.
+     * The corporation's physical address. Post Office Boxes are disallowed.
      */
     export interface Address {
       /**
@@ -942,7 +947,7 @@ export namespace EntityCreateParams {
        */
       export interface Individual {
         /**
-         * The individual's address.
+         * The individual's physical address. Post Office Boxes are disallowed.
          */
         address: Individual.Address;
 
@@ -972,7 +977,7 @@ export namespace EntityCreateParams {
 
       export namespace Individual {
         /**
-         * The individual's address.
+         * The individual's physical address. Post Office Boxes are disallowed.
          */
         export interface Address {
           /**
@@ -1152,7 +1157,7 @@ export namespace EntityCreateParams {
   export namespace Joint {
     export interface Individual {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       address: Individual.Address;
 
@@ -1182,7 +1187,7 @@ export namespace EntityCreateParams {
 
     export namespace Individual {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       export interface Address {
         /**
@@ -1350,7 +1355,7 @@ export namespace EntityCreateParams {
    */
   export interface NaturalPerson {
     /**
-     * The individual's address.
+     * The individual's physical address. Post Office Boxes are disallowed.
      */
     address: NaturalPerson.Address;
 
@@ -1380,7 +1385,7 @@ export namespace EntityCreateParams {
 
   export namespace NaturalPerson {
     /**
-     * The individual's address.
+     * The individual's physical address. Post Office Boxes are disallowed.
      */
     export interface Address {
       /**
@@ -1552,7 +1557,7 @@ export namespace EntityCreateParams {
    */
   export interface Trust {
     /**
-     * The trust's address.
+     * The trust's physical address. Post Office Boxes are disallowed.
      */
     address: Trust.Address;
 
@@ -1601,7 +1606,7 @@ export namespace EntityCreateParams {
 
   export namespace Trust {
     /**
-     * The trust's address.
+     * The trust's physical address. Post Office Boxes are disallowed.
      */
     export interface Address {
       /**
@@ -1653,7 +1658,7 @@ export namespace EntityCreateParams {
        */
       export interface Individual {
         /**
-         * The individual's address.
+         * The individual's physical address. Post Office Boxes are disallowed.
          */
         address: Individual.Address;
 
@@ -1683,7 +1688,7 @@ export namespace EntityCreateParams {
 
       export namespace Individual {
         /**
-         * The individual's address.
+         * The individual's physical address. Post Office Boxes are disallowed.
          */
         export interface Address {
           /**
@@ -1848,7 +1853,7 @@ export namespace EntityCreateParams {
      */
     export interface Grantor {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       address: Grantor.Address;
 
@@ -1878,7 +1883,7 @@ export namespace EntityCreateParams {
 
     export namespace Grantor {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       export interface Address {
         /**
@@ -2079,6 +2084,7 @@ export namespace Entities {
 
   export import BeneficialOwners = API.BeneficialOwners;
   export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
+  export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
 
   export import SupplementalDocuments = API.SupplementalDocuments;
   export import SupplementalDocument = API.SupplementalDocument;

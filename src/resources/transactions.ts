@@ -60,13 +60,13 @@ export interface Transaction {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-   * Transaction occured.
+   * Transaction occurred.
    */
   created_at: string;
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-   * Transaction's currency. This will match the currency on the Transcation's
+   * Transaction's currency. This will match the currency on the Transaction's
    * Account.
    *
    * - `CAD` - Canadian Dollar (CAD)
@@ -209,7 +209,7 @@ export namespace Transaction {
      *   object.
      * - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
      *   details will be under the `inbound_international_ach_transfer` object.
-     * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real Time
+     * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
      * - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
@@ -225,7 +225,7 @@ export namespace Transaction {
      *   `interest_payment` object.
      * - `internal_source` - Internal Source: details will be under the
      *   `internal_source` object.
-     * - `real_time_payments_transfer_acknowledgement` - Real Time Payments Transfer
+     * - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
      *   Acknowledgement: details will be under the
      *   `real_time_payments_transfer_acknowledgement` object.
      * - `sample_funds` - Sample Funds: details will be under the `sample_funds`
@@ -325,7 +325,7 @@ export namespace Transaction {
     inbound_international_ach_transfer: Source.InboundInternationalACHTransfer | null;
 
     /**
-     * An Inbound Real Time Payments Transfer Confirmation object. This field will be
+     * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
      */
@@ -369,7 +369,7 @@ export namespace Transaction {
     internal_source: Source.InternalSource | null;
 
     /**
-     * A Real Time Payments Transfer Acknowledgement object. This field will be present
+     * A Real-Time Payments Transfer Acknowledgement object. This field will be present
      * in the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_acknowledgement`.
      */
@@ -711,7 +711,7 @@ export namespace Transaction {
         | 'untimely_return';
 
       /**
-       * The identifier of the Tranasaction associated with this return.
+       * The identifier of the Transaction associated with this return.
        */
       transaction_id: string;
 
@@ -1062,7 +1062,7 @@ export namespace Transaction {
           food_beverage_charges_amount: number | null;
 
           /**
-           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
            * beverage charges.
            */
           food_beverage_charges_currency: string | null;
@@ -1731,7 +1731,7 @@ export namespace Transaction {
           food_beverage_charges_amount: number | null;
 
           /**
-           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
            * beverage charges.
            */
           food_beverage_charges_currency: string | null;
@@ -2245,7 +2245,7 @@ export namespace Transaction {
        * The reason why this transfer was stopped.
        *
        * - `mail_delivery_failed` - The check could not be delivered.
-       * - `rejected_by_increase` - The check was cancelled by an Increase operator who
+       * - `rejected_by_increase` - The check was canceled by an Increase operator who
        *   will provide details out-of-band.
        * - `unknown` - The check was stopped for another reason.
        */
@@ -2441,7 +2441,7 @@ export namespace Transaction {
     }
 
     /**
-     * An Inbound Real Time Payments Transfer Confirmation object. This field will be
+     * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
      */
@@ -2459,7 +2459,7 @@ export namespace Transaction {
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-       * currency. This will always be "USD" for a Real Time Payments transfer.
+       * currency. This will always be "USD" for a Real-Time Payments transfer.
        *
        * - `CAD` - Canadian Dollar (CAD)
        * - `CHF` - Swiss Franc (CHF)
@@ -2491,7 +2491,7 @@ export namespace Transaction {
       remittance_information: string | null;
 
       /**
-       * The Real Time Payments network identification of the transfer
+       * The Real-Time Payments network identification of the transfer
        */
       transaction_identification: string;
     }
@@ -2664,7 +2664,7 @@ export namespace Transaction {
       /**
        * The ID for the Transaction associated with the transfer reversal.
        */
-      transaction_id: string | null;
+      transaction_id: string;
 
       /**
        * The ID for the Wire Transfer that is being reversed.
@@ -2812,7 +2812,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Real Time Payments Transfer Acknowledgement object. This field will be present
+     * A Real-Time Payments Transfer Acknowledgement object. This field will be present
      * in the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_acknowledgement`.
      */
@@ -2838,7 +2838,7 @@ export namespace Transaction {
       remittance_information: string;
 
       /**
-       * The identifier of the Real Time Payments Transfer that led to this Transaction.
+       * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
     }

@@ -7,7 +7,7 @@ import * as API from './index';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
-   * Simulates the receival of an
+   * Simulates receiving an
    * [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
    */
   create(

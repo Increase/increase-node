@@ -3,7 +3,6 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import * as ACHTransfers_ from 'increase/resources/ach-transfers';
-import * as Shared from 'increase/resources/shared';
 import * as API from './index';
 
 export class ACHTransfers extends APIResource {
@@ -98,14 +97,14 @@ export namespace ACHTransferSimulation {
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-     * Transaction occured.
+     * Transaction occurred.
      */
     created_at: string;
 
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
      * Transaction's currency. This will match the currency on the Declined
-     * Transcation's Account.
+     * Transaction's Account.
      *
      * - `CAD` - Canadian Dollar (CAD)
      * - `CHF` - Swiss Franc (CHF)
@@ -181,7 +180,7 @@ export namespace ACHTransferSimulation {
        *   object.
        * - `check_decline` - Check Decline: details will be under the `check_decline`
        *   object.
-       * - `inbound_real_time_payments_transfer_decline` - Inbound Real Time Payments
+       * - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
        *   Transfer Decline: details will be under the
        *   `inbound_real_time_payments_transfer_decline` object.
        * - `international_ach_decline` - International ACH Decline: details will be under
@@ -207,7 +206,7 @@ export namespace ACHTransferSimulation {
       check_decline: Source.CheckDecline | null;
 
       /**
-       * An Inbound Real Time Payments Transfer Decline object. This field will be
+       * An Inbound Real-Time Payments Transfer Decline object. This field will be
        * present in the JSON response if and only if `category` is equal to
        * `inbound_real_time_payments_transfer_decline`.
        */
@@ -263,6 +262,7 @@ export namespace ACHTransferSimulation {
          * - `originator_request` - Other.
          * - `transaction_not_allowed` - The transaction is not allowed per Increase's
          *   terms.
+         * - `user_initiated` - The user initiated the decline.
          */
         reason:
           | 'ach_route_canceled'
@@ -277,7 +277,8 @@ export namespace ACHTransferSimulation {
           | 'return_of_erroneous_or_reversing_debit'
           | 'no_ach_route'
           | 'originator_request'
-          | 'transaction_not_allowed';
+          | 'transaction_not_allowed'
+          | 'user_initiated';
 
         receiver_id_number: string | null;
 
@@ -369,6 +370,7 @@ export namespace ACHTransferSimulation {
          * Why the transaction was declined.
          *
          * - `card_not_active` - The Card was not active.
+         * - `physical_card_not_active` - The Physical Card was not active.
          * - `entity_not_active` - The account's entity was not active.
          * - `group_locked` - The account was inactive.
          * - `insufficient_funds` - The Card's Account did not have a sufficient available
@@ -376,8 +378,6 @@ export namespace ACHTransferSimulation {
          * - `cvv2_mismatch` - The given CVV2 did not match the card's value.
          * - `transaction_not_allowed` - The attempted card transaction is not allowed per
          *   Increase's terms.
-         * - `breaches_internal_limit` - The transaction was blocked by an internal limit
-         *   for new Increase accounts.
          * - `breaches_limit` - The transaction was blocked by a Limit.
          * - `webhook_declined` - Your application declined the transaction via webhook.
          * - `webhook_timed_out` - Your application webhook did not respond without the
@@ -387,21 +387,24 @@ export namespace ACHTransferSimulation {
          *   authorization request cryptogram.
          * - `missing_original_authorization` - The original card authorization for this
          *   incremental authorization does not exist.
+         * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
+         *   reach out to support@increase.com for more information.
          */
         reason:
           | 'card_not_active'
+          | 'physical_card_not_active'
           | 'entity_not_active'
           | 'group_locked'
           | 'insufficient_funds'
           | 'cvv2_mismatch'
           | 'transaction_not_allowed'
-          | 'breaches_internal_limit'
           | 'breaches_limit'
           | 'webhook_declined'
           | 'webhook_timed_out'
           | 'declined_by_stand_in_processing'
           | 'invalid_physical_card'
-          | 'missing_original_authorization';
+          | 'missing_original_authorization'
+          | 'suspected_fraud';
       }
 
       export namespace CardDecline {
@@ -476,8 +479,33 @@ export namespace ACHTransferSimulation {
             /**
              * The method used to enter the cardholder's primary account number and card
              * expiration date
+             *
+             * - `unknown` - Unknown
+             * - `manual` - Manual key entry
+             * - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+             *   value
+             * - `optical_code` - Optical code
+             * - `integrated_circuit_card` - Contact chip card
+             * - `contactless` - Contactless read of chip card
+             * - `credential_on_file` - Transaction initiated using a credential that has
+             *   previously been stored on file
+             * - `magnetic_stripe` - Magnetic stripe read
+             * - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+             * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+             *   verification value
              */
-            point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
+            point_of_service_entry_mode:
+              | 'unknown'
+              | 'manual'
+              | 'magnetic_stripe_no_cvv'
+              | 'optical_code'
+              | 'integrated_circuit_card'
+              | 'contactless'
+              | 'credential_on_file'
+              | 'magnetic_stripe'
+              | 'contactless_magnetic_stripe'
+              | 'integrated_circuit_card_no_cvv'
+              | null;
           }
         }
       }
@@ -533,7 +561,7 @@ export namespace ACHTransferSimulation {
       }
 
       /**
-       * An Inbound Real Time Payments Transfer Decline object. This field will be
+       * An Inbound Real-Time Payments Transfer Decline object. This field will be
        * present in the JSON response if and only if `category` is equal to
        * `inbound_real_time_payments_transfer_decline`.
        */
@@ -551,7 +579,7 @@ export namespace ACHTransferSimulation {
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-         * transfer's currency. This will always be "USD" for a Real Time Payments
+         * transfer's currency. This will always be "USD" for a Real-Time Payments
          * transfer.
          *
          * - `CAD` - Canadian Dollar (CAD)
@@ -586,8 +614,8 @@ export namespace ACHTransferSimulation {
          * - `account_restricted` - Your account is restricted.
          * - `group_locked` - Your account is inactive.
          * - `entity_not_active` - The account's entity is not active.
-         * - `real_time_payments_not_enabled` - Your account is not enabled to receive Real
-         *   Time Payments transfers.
+         * - `real_time_payments_not_enabled` - Your account is not enabled to receive
+         *   Real-Time Payments transfers.
          */
         reason:
           | 'account_number_canceled'
@@ -603,7 +631,7 @@ export namespace ACHTransferSimulation {
         remittance_information: string | null;
 
         /**
-         * The Real Time Payments network identification of the declined transfer.
+         * The Real-Time Payments network identification of the declined transfer.
          */
         transaction_identification: string;
       }
@@ -777,13 +805,13 @@ export namespace ACHTransferSimulation {
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-     * Transaction occured.
+     * Transaction occurred.
      */
     created_at: string;
 
     /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-     * Transaction's currency. This will match the currency on the Transcation's
+     * Transaction's currency. This will match the currency on the Transaction's
      * Account.
      *
      * - `CAD` - Canadian Dollar (CAD)
@@ -926,7 +954,7 @@ export namespace ACHTransferSimulation {
        *   object.
        * - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
        *   details will be under the `inbound_international_ach_transfer` object.
-       * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real Time
+       * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
        *   Payments Transfer Confirmation: details will be under the
        *   `inbound_real_time_payments_transfer_confirmation` object.
        * - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
@@ -942,7 +970,7 @@ export namespace ACHTransferSimulation {
        *   `interest_payment` object.
        * - `internal_source` - Internal Source: details will be under the
        *   `internal_source` object.
-       * - `real_time_payments_transfer_acknowledgement` - Real Time Payments Transfer
+       * - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
        *   Acknowledgement: details will be under the
        *   `real_time_payments_transfer_acknowledgement` object.
        * - `sample_funds` - Sample Funds: details will be under the `sample_funds`
@@ -1042,7 +1070,7 @@ export namespace ACHTransferSimulation {
       inbound_international_ach_transfer: Source.InboundInternationalACHTransfer | null;
 
       /**
-       * An Inbound Real Time Payments Transfer Confirmation object. This field will be
+       * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
        * present in the JSON response if and only if `category` is equal to
        * `inbound_real_time_payments_transfer_confirmation`.
        */
@@ -1086,7 +1114,7 @@ export namespace ACHTransferSimulation {
       internal_source: Source.InternalSource | null;
 
       /**
-       * A Real Time Payments Transfer Acknowledgement object. This field will be present
+       * A Real-Time Payments Transfer Acknowledgement object. This field will be present
        * in the JSON response if and only if `category` is equal to
        * `real_time_payments_transfer_acknowledgement`.
        */
@@ -1428,7 +1456,7 @@ export namespace ACHTransferSimulation {
           | 'untimely_return';
 
         /**
-         * The identifier of the Tranasaction associated with this return.
+         * The identifier of the Transaction associated with this return.
          */
         transaction_id: string;
 
@@ -1779,7 +1807,7 @@ export namespace ACHTransferSimulation {
             food_beverage_charges_amount: number | null;
 
             /**
-             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
              * beverage charges.
              */
             food_beverage_charges_currency: string | null;
@@ -2448,7 +2476,7 @@ export namespace ACHTransferSimulation {
             food_beverage_charges_amount: number | null;
 
             /**
-             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+             * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
              * beverage charges.
              */
             food_beverage_charges_currency: string | null;
@@ -2962,7 +2990,7 @@ export namespace ACHTransferSimulation {
          * The reason why this transfer was stopped.
          *
          * - `mail_delivery_failed` - The check could not be delivered.
-         * - `rejected_by_increase` - The check was cancelled by an Increase operator who
+         * - `rejected_by_increase` - The check was canceled by an Increase operator who
          *   will provide details out-of-band.
          * - `unknown` - The check was stopped for another reason.
          */
@@ -3158,7 +3186,7 @@ export namespace ACHTransferSimulation {
       }
 
       /**
-       * An Inbound Real Time Payments Transfer Confirmation object. This field will be
+       * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
        * present in the JSON response if and only if `category` is equal to
        * `inbound_real_time_payments_transfer_confirmation`.
        */
@@ -3176,7 +3204,7 @@ export namespace ACHTransferSimulation {
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-         * currency. This will always be "USD" for a Real Time Payments transfer.
+         * currency. This will always be "USD" for a Real-Time Payments transfer.
          *
          * - `CAD` - Canadian Dollar (CAD)
          * - `CHF` - Swiss Franc (CHF)
@@ -3208,7 +3236,7 @@ export namespace ACHTransferSimulation {
         remittance_information: string | null;
 
         /**
-         * The Real Time Payments network identification of the transfer
+         * The Real-Time Payments network identification of the transfer
          */
         transaction_identification: string;
       }
@@ -3381,7 +3409,7 @@ export namespace ACHTransferSimulation {
         /**
          * The ID for the Transaction associated with the transfer reversal.
          */
-        transaction_id: string | null;
+        transaction_id: string;
 
         /**
          * The ID for the Wire Transfer that is being reversed.
@@ -3529,7 +3557,7 @@ export namespace ACHTransferSimulation {
       }
 
       /**
-       * A Real Time Payments Transfer Acknowledgement object. This field will be present
+       * A Real-Time Payments Transfer Acknowledgement object. This field will be present
        * in the JSON response if and only if `category` is equal to
        * `real_time_payments_transfer_acknowledgement`.
        */
@@ -3555,7 +3583,7 @@ export namespace ACHTransferSimulation {
         remittance_information: string;
 
         /**
-         * The identifier of the Real Time Payments Transfer that led to this Transaction.
+         * The identifier of the Real-Time Payments Transfer that led to this Transaction.
          */
         transfer_id: string;
       }
