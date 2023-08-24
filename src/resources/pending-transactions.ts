@@ -3,7 +3,6 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as Shared from 'increase/resources/shared';
 import * as API from './index';
 import { Page, PageParams } from 'increase/pagination';
 
@@ -67,14 +66,14 @@ export interface PendingTransaction {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-   * Transaction occured.
+   * Transaction occurred.
    */
   created_at: string;
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
    * Transaction's currency. This will match the currency on the Pending
-   * Transcation's Account.
+   * Transaction's Account.
    *
    * - `CAD` - Canadian Dollar (CAD)
    * - `CHF` - Swiss Franc (CHF)
@@ -172,7 +171,7 @@ export namespace PendingTransaction {
      *   under the `check_transfer_instruction` object.
      * - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
      *   `inbound_funds_hold` object.
-     * - `real_time_payments_transfer_instruction` - Real Time Payments Transfer
+     * - `real_time_payments_transfer_instruction` - Real-Time Payments Transfer
      *   Instruction: details will be under the
      *   `real_time_payments_transfer_instruction` object.
      * - `wire_transfer_instruction` - Wire Transfer Instruction: details will be under
@@ -210,7 +209,7 @@ export namespace PendingTransaction {
     inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
-     * A Real Time Payments Transfer Instruction object. This field will be present in
+     * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
      */
@@ -440,8 +439,33 @@ export namespace PendingTransaction {
           /**
            * The method used to enter the cardholder's primary account number and card
            * expiration date
+           *
+           * - `unknown` - Unknown
+           * - `manual` - Manual key entry
+           * - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+           *   value
+           * - `optical_code` - Optical code
+           * - `integrated_circuit_card` - Contact chip card
+           * - `contactless` - Contactless read of chip card
+           * - `credential_on_file` - Transaction initiated using a credential that has
+           *   previously been stored on file
+           * - `magnetic_stripe` - Magnetic stripe read
+           * - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+           * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+           *   verification value
            */
-          point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
+          point_of_service_entry_mode:
+            | 'unknown'
+            | 'manual'
+            | 'magnetic_stripe_no_cvv'
+            | 'optical_code'
+            | 'integrated_circuit_card'
+            | 'contactless'
+            | 'credential_on_file'
+            | 'magnetic_stripe'
+            | 'contactless_magnetic_stripe'
+            | 'integrated_circuit_card_no_cvv'
+            | null;
         }
       }
     }
@@ -590,7 +614,7 @@ export namespace PendingTransaction {
     }
 
     /**
-     * A Real Time Payments Transfer Instruction object. This field will be present in
+     * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
      */
@@ -602,7 +626,7 @@ export namespace PendingTransaction {
       amount: number;
 
       /**
-       * The identifier of the Real Time Payments Transfer that led to this Pending
+       * The identifier of the Real-Time Payments Transfer that led to this Pending
        * Transaction.
        */
       transfer_id: string;
@@ -636,6 +660,8 @@ export interface PendingTransactionListParams extends PageParams {
    */
   account_id?: string;
 
+  category?: PendingTransactionListParams.Category;
+
   created_at?: PendingTransactionListParams.CreatedAt;
 
   /**
@@ -652,6 +678,24 @@ export interface PendingTransactionListParams extends PageParams {
 }
 
 export namespace PendingTransactionListParams {
+  export interface Category {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'account_transfer_instruction'
+      | 'ach_transfer_instruction'
+      | 'card_authorization'
+      | 'check_deposit_instruction'
+      | 'check_transfer_instruction'
+      | 'inbound_funds_hold'
+      | 'real_time_payments_transfer_instruction'
+      | 'wire_transfer_instruction'
+      | 'other'
+    >;
+  }
+
   export interface CreatedAt {
     /**
      * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

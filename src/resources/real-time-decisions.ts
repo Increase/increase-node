@@ -2,7 +2,6 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Shared from 'increase/resources/shared';
 import * as API from './index';
 
 export class RealTimeDecisions extends APIResource {
@@ -258,8 +257,33 @@ export namespace RealTimeDecision {
         /**
          * The method used to enter the cardholder's primary account number and card
          * expiration date
+         *
+         * - `unknown` - Unknown
+         * - `manual` - Manual key entry
+         * - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+         *   value
+         * - `optical_code` - Optical code
+         * - `integrated_circuit_card` - Contact chip card
+         * - `contactless` - Contactless read of chip card
+         * - `credential_on_file` - Transaction initiated using a credential that has
+         *   previously been stored on file
+         * - `magnetic_stripe` - Magnetic stripe read
+         * - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+         * - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+         *   verification value
          */
-        point_of_service_entry_mode: Shared.PointOfServiceEntryMode | null;
+        point_of_service_entry_mode:
+          | 'unknown'
+          | 'manual'
+          | 'magnetic_stripe_no_cvv'
+          | 'optical_code'
+          | 'integrated_circuit_card'
+          | 'contactless'
+          | 'credential_on_file'
+          | 'magnetic_stripe'
+          | 'contactless_magnetic_stripe'
+          | 'integrated_circuit_card_no_cvv'
+          | null;
       }
     }
 
@@ -278,7 +302,7 @@ export namespace RealTimeDecision {
       category: 'initial_authorization' | 'incremental_authorization';
 
       /**
-       * Fields specific to the categorty `incremental_authorization`.
+       * Fields specific to the category `incremental_authorization`.
        */
       incremental_authorization: RequestDetails.IncrementalAuthorization | null;
 
@@ -290,7 +314,7 @@ export namespace RealTimeDecision {
 
     export namespace RequestDetails {
       /**
-       * Fields specific to the categorty `incremental_authorization`.
+       * Fields specific to the category `incremental_authorization`.
        */
       export interface IncrementalAuthorization {
         /**

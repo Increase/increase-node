@@ -169,6 +169,14 @@ export interface WireTransfer {
   network: 'wire';
 
   /**
+   * The ID for the pending transaction representing the transfer. A pending
+   * transaction is created when the transfer
+   * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+   * by someone else in your organization.
+   */
+  pending_transaction_id: string | null;
+
+  /**
    * If your transfer is reversed, this will contain details of the reversal.
    */
   reversal: WireTransfer.Reversal | null;
@@ -333,7 +341,7 @@ export namespace WireTransfer {
     /**
      * The ID for the Transaction associated with the transfer reversal.
      */
-    transaction_id: string | null;
+    transaction_id: string;
 
     /**
      * The ID for the Wire Transfer that is being reversed.
@@ -417,7 +425,7 @@ export interface WireTransferCreateParams {
   routing_number?: string;
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * A unique identifier you choose for the transfer. Reusing this identifier for
    * another transfer will result in an error. You can query for the transfer
    * associated with this identifier using the List endpoint.
    */

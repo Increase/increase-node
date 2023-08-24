@@ -5,9 +5,11 @@ import { Response } from 'node-fetch';
 
 const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.0.1:4010' });
 
-describe('resource pendingTransactions', () => {
+describe('resource inboundACHTransfers', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4');
+    const responsePromise = increase.inboundACHTransfers.retrieve(
+      'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,14 +22,14 @@ describe('resource pendingTransactions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4', {
+      increase.inboundACHTransfers.retrieve('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.pendingTransactions.list();
+    const responsePromise = increase.inboundACHTransfers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -39,7 +41,7 @@ describe('resource pendingTransactions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.pendingTransactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.inboundACHTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -47,30 +49,7 @@ describe('resource pendingTransactions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.pendingTransactions.list(
-        {
-          account_id: 'string',
-          category: {
-            in: [
-              'account_transfer_instruction',
-              'account_transfer_instruction',
-              'account_transfer_instruction',
-            ],
-          },
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          cursor: 'string',
-          limit: 0,
-          route_id: 'string',
-          source_id: 'string',
-          status: { in: ['pending', 'pending', 'pending'] },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
+      increase.inboundACHTransfers.list({ cursor: 'string', limit: 0 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

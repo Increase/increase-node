@@ -344,7 +344,8 @@ Methods:
 
 Methods:
 
-- <code title="post /entities/{entity_id}/beneficial_owners">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">create</a>(entityId, { ...params }) -> Entities.Entity</code>
+- <code title="post /entity_beneficial_owners">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">create</a>({ ...params }) -> Entities.Entity</code>
+- <code title="post /entity_beneficial_owners/archive">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">archive</a>({ ...params }) -> Entities.Entity</code>
 
 ## SupplementalDocuments
 
@@ -356,6 +357,17 @@ Methods:
 
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entities.Entity</code>
 - <code title="get /entity_supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">list</a>({ ...params }) -> SupplementalDocumentsPage</code>
+
+# InboundACHTransfers
+
+Types:
+
+- <code><a href="./src/resources/inbound-ach-transfers.ts">InboundACHTransfer</a></code>
+
+Methods:
+
+- <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">retrieve</a>(inboundACHTransferId) -> InboundACHTransfer</code>
+- <code title="get /inbound_ach_transfers">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">list</a>({ ...params }) -> InboundACHTransfersPage</code>
 
 # InboundWireDrawdownRequests
 
