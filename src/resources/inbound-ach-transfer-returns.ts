@@ -120,7 +120,7 @@ export interface InboundACHTransferReturn {
   /**
    * The ID for the transaction refunding the transfer.
    */
-  transaction_id: string | null;
+  transaction_id: string;
 
   /**
    * A constant representing the object's type. For this resource it will always be

@@ -130,6 +130,14 @@ export interface AccountTransfer {
   network: 'account';
 
   /**
+   * The ID for the pending transaction representing the transfer. A pending
+   * transaction is created when the transfer
+   * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+   * by someone else in your organization.
+   */
+  pending_transaction_id: string | null;
+
+  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_approval` - The transfer is pending approval.
@@ -221,7 +229,7 @@ export interface AccountTransferCreateParams {
   require_approval?: boolean;
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * A unique identifier you choose for the transfer. Reusing this identifier for
    * another transfer will result in an error. You can query for the transfer
    * associated with this identifier using the List endpoint.
    */

@@ -42,7 +42,7 @@ export interface RoutingNumber {
   name: string;
 
   /**
-   * This routing number's support for Real Time Payments Transfers.
+   * This routing number's support for Real-Time Payments Transfers.
    *
    * - `supported` - The routing number can receive this transfer type.
    * - `not_supported` - The routing number cannot receive this transfer type.

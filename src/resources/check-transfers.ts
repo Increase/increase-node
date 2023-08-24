@@ -152,7 +152,10 @@ export interface CheckTransfer {
   mailing: CheckTransfer.Mailing | null;
 
   /**
-   * The identifier of the Pending Transaction associated with the check's creation.
+   * The ID for the pending transaction representing the transfer. A pending
+   * transaction is created when the transfer
+   * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+   * by someone else in your organization.
    */
   pending_transaction_id: string | null;
 
@@ -423,7 +426,7 @@ export namespace CheckTransfer {
      * The reason why this transfer was stopped.
      *
      * - `mail_delivery_failed` - The check could not be delivered.
-     * - `rejected_by_increase` - The check was cancelled by an Increase operator who
+     * - `rejected_by_increase` - The check was canceled by an Increase operator who
      *   will provide details out-of-band.
      * - `unknown` - The check was stopped for another reason.
      */
@@ -497,7 +500,7 @@ export interface CheckTransferCreateParams {
   source_account_number_id?: string;
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * A unique identifier you choose for the transfer. Reusing this identifier for
    * another transfer will result in an error. You can query for the transfer
    * associated with this identifier using the List endpoint.
    */

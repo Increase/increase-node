@@ -66,7 +66,7 @@ export interface DigitalWalletToken {
    * - `inactive` - The digital wallet token has been created but not successfully
    *   activated via two-factor authentication yet.
    * - `suspended` - The digital wallet token has been temporarily paused.
-   * - `deactivated` - The digital wallet token has been permanently cancelled.
+   * - `deactivated` - The digital wallet token has been permanently canceled.
    */
   status: 'active' | 'inactive' | 'suspended' | 'deactivated';
 

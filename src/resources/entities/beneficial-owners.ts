@@ -9,12 +9,18 @@ export class BeneficialOwners extends APIResource {
   /**
    * Create a beneficial owner for a corporate Entity
    */
-  create(
-    entityId: string,
-    body: BeneficialOwnerCreateParams,
+  create(body: BeneficialOwnerCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entities.Entity> {
+    return this.post('/entity_beneficial_owners', { body, ...options });
+  }
+
+  /**
+   * Archive a beneficial owner belonging to a corporate Entity
+   */
+  archive(
+    body: BeneficialOwnerArchiveParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Entities.Entity> {
-    return this.post(`/entities/${entityId}/beneficial_owners`, { body, ...options });
+    return this.post('/entity_beneficial_owners/archive', { body, ...options });
   }
 }
 
@@ -24,6 +30,11 @@ export interface BeneficialOwnerCreateParams {
    * corporation.
    */
   beneficial_owner: BeneficialOwnerCreateParams.BeneficialOwner;
+
+  /**
+   * The identifier of the Entity to associate with the new Beneficial Owner.
+   */
+  entity_id: string;
 }
 
 export namespace BeneficialOwnerCreateParams {
@@ -55,7 +66,7 @@ export namespace BeneficialOwnerCreateParams {
      */
     export interface Individual {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       address: Individual.Address;
 
@@ -85,7 +96,7 @@ export namespace BeneficialOwnerCreateParams {
 
     export namespace Individual {
       /**
-       * The individual's address.
+       * The individual's physical address. Post Office Boxes are disallowed.
        */
       export interface Address {
         /**
@@ -246,6 +257,20 @@ export namespace BeneficialOwnerCreateParams {
   }
 }
 
+export interface BeneficialOwnerArchiveParams {
+  /**
+   * The identifying details of anyone controlling or owning 25% or more of the
+   * corporation.
+   */
+  beneficial_owner_id: string;
+
+  /**
+   * The identifier of the Entity to retrieve.
+   */
+  entity_id: string;
+}
+
 export namespace BeneficialOwners {
   export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
+  export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
 }

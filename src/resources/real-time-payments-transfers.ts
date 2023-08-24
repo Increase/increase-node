@@ -8,7 +8,7 @@ import { Page, PageParams } from 'increase/pagination';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
-   * Create a Real Time Payments Transfer
+   * Create a Real-Time Payments Transfer
    */
   create(
     body: RealTimePaymentsTransferCreateParams,
@@ -18,7 +18,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   }
 
   /**
-   * Retrieve a Real Time Payments Transfer
+   * Retrieve a Real-Time Payments Transfer
    */
   retrieve(
     realTimePaymentsTransferId: string,
@@ -28,7 +28,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   }
 
   /**
-   * List Real Time Payments Transfers
+   * List Real-Time Payments Transfers
    */
   list(
     query?: RealTimePaymentsTransferListParams,
@@ -56,12 +56,12 @@ export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer
 type _RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
 
 /**
- * Real Time Payments transfers move funds, within seconds, between your Increase
- * account and any other account on the Real Time Payments network.
+ * Real-Time Payments transfers move funds, within seconds, between your Increase
+ * account and any other account on the Real-Time Payments network.
  */
 export interface RealTimePaymentsTransfer {
   /**
-   * The Real Time Payments Transfer's identifier.
+   * The Real-Time Payments Transfer's identifier.
    */
   id: string;
 
@@ -100,7 +100,7 @@ export interface RealTimePaymentsTransfer {
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-   * currency. For real time payments transfers this is always equal to `USD`.
+   * currency. For real-time payments transfers this is always equal to `USD`.
    *
    * - `CAD` - Canadian Dollar (CAD)
    * - `CHF` - Swiss Franc (CHF)
@@ -128,7 +128,15 @@ export interface RealTimePaymentsTransfer {
   external_account_id: string | null;
 
   /**
-   * If the transfer is rejected by Real Time Payments or the destination financial
+   * The ID for the pending transaction representing the transfer. A pending
+   * transaction is created when the transfer
+   * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+   * by someone else in your organization.
+   */
+  pending_transaction_id: string | null;
+
+  /**
+   * If the transfer is rejected by Real-Time Payments or the destination financial
    * institution, this will contain supplemental details.
    */
   rejection: RealTimePaymentsTransfer.Rejection | null;
@@ -148,10 +156,10 @@ export interface RealTimePaymentsTransfer {
    *
    * - `pending_approval` - The transfer is pending approval.
    * - `canceled` - The transfer has been canceled.
-   * - `pending_submission` - The transfer is queued to be submitted to Real Time
+   * - `pending_submission` - The transfer is queued to be submitted to Real-Time
    *   Payments.
    * - `submitted` - The transfer has been submitted and is pending a response from
-   *   Real Time Payments.
+   *   Real-Time Payments.
    * - `complete` - The transfer has been sent successfully and is complete.
    * - `rejected` - The transfer was rejected by the network or the recipient's bank.
    * - `requires_attention` - The transfer requires attention from an Increase
@@ -167,7 +175,7 @@ export interface RealTimePaymentsTransfer {
     | 'requires_attention';
 
   /**
-   * After the transfer is submitted to Real Time Payments, this will contain
+   * After the transfer is submitted to Real-Time Payments, this will contain
    * supplemental details.
    */
   submission: RealTimePaymentsTransfer.Submission | null;
@@ -227,7 +235,7 @@ export namespace RealTimePaymentsTransfer {
   }
 
   /**
-   * If the transfer is rejected by Real Time Payments or the destination financial
+   * If the transfer is rejected by Real-Time Payments or the destination financial
    * institution, this will contain supplemental details.
    */
   export interface Rejection {
@@ -239,52 +247,52 @@ export namespace RealTimePaymentsTransfer {
 
     /**
      * The reason the transfer was rejected as provided by the recipient bank or the
-     * Real Time Payments network.
+     * Real-Time Payments network.
      *
-     * - `account_closed` - The destination account is closed. Corresponds to the Real
-     *   Time Payments reason code `AC04`.
+     * - `account_closed` - The destination account is closed. Corresponds to the
+     *   Real-Time Payments reason code `AC04`.
      * - `account_blocked` - The destination account is currently blocked from
-     *   receiving transactions. Corresponds to the Real Time Payments reason code
+     *   receiving transactions. Corresponds to the Real-Time Payments reason code
      *   `AC06`.
      * - `invalid_creditor_account_type` - The destination account is ineligible to
-     *   receive Real Time Payments transfers. Corresponds to the Real Time Payments
+     *   receive Real-Time Payments transfers. Corresponds to the Real-Time Payments
      *   reason code `AC14`.
      * - `invalid_creditor_account_number` - The destination account does not exist.
-     *   Corresponds to the Real Time Payments reason code `AC03`.
+     *   Corresponds to the Real-Time Payments reason code `AC03`.
      * - `invalid_creditor_financial_institution_identifier` - The destination routing
-     *   number is invalid. Corresponds to the Real Time Payments reason code `RC04`.
+     *   number is invalid. Corresponds to the Real-Time Payments reason code `RC04`.
      * - `end_customer_deceased` - The destination account holder is deceased.
-     *   Corresponds to the Real Time Payments reason code `MD07`.
+     *   Corresponds to the Real-Time Payments reason code `MD07`.
      * - `narrative` - The reason is provided as narrative information in the
      *   additional information field.
-     * - `transaction_forbidden` - Real Time Payments transfers are not allowed to the
-     *   destination account. Corresponds to the Real Time Payments reason code `AG01`.
-     * - `transaction_type_not_supported` - Real Time Payments transfers are not
-     *   enabled for the destination account. Corresponds to the Real Time Payments
+     * - `transaction_forbidden` - Real-Time Payments transfers are not allowed to the
+     *   destination account. Corresponds to the Real-Time Payments reason code `AG01`.
+     * - `transaction_type_not_supported` - Real-Time Payments transfers are not
+     *   enabled for the destination account. Corresponds to the Real-Time Payments
      *   reason code `AG03`.
      * - `unexpected_amount` - The amount of the transfer is different than expected by
-     *   the recipient. Corresponds to the Real Time Payments reason code `AM09`.
+     *   the recipient. Corresponds to the Real-Time Payments reason code `AM09`.
      * - `amount_exceeds_bank_limits` - The amount is higher than the recipient is
-     *   authorized to send or receive. Corresponds to the Real Time Payments reason
+     *   authorized to send or receive. Corresponds to the Real-Time Payments reason
      *   code `AM14`.
      * - `invalid_creditor_address` - The creditor's address is required, but missing
-     *   or invalid. Corresponds to the Real Time Payments reason code `BE04`.
+     *   or invalid. Corresponds to the Real-Time Payments reason code `BE04`.
      * - `unknown_end_customer` - The specified creditor is unknown. Corresponds to the
-     *   Real Time Payments reason code `BE06`.
+     *   Real-Time Payments reason code `BE06`.
      * - `invalid_debtor_address` - The debtor's address is required, but missing or
-     *   invalid. Corresponds to the Real Time Payments reason code `BE07`.
+     *   invalid. Corresponds to the Real-Time Payments reason code `BE07`.
      * - `timeout` - There was a timeout processing the transfer. Corresponds to the
-     *   Real Time Payments reason code `DS24`.
-     * - `unsupported_message_for_recipient` - Real Time Payments transfers are not
-     *   enabled for the destination account. Corresponds to the Real Time Payments
+     *   Real-Time Payments reason code `DS24`.
+     * - `unsupported_message_for_recipient` - Real-Time Payments transfers are not
+     *   enabled for the destination account. Corresponds to the Real-Time Payments
      *   reason code `NOAT`.
      * - `recipient_connection_not_available` - The destination financial institution
-     *   is currently not connected to Real Time Payments. Corresponds to the Real Time
+     *   is currently not connected to Real-Time Payments. Corresponds to the Real-Time
      *   Payments reason code `9912`.
-     * - `real_time_payments_suspended` - Real Time Payments is currently unavailable.
-     *   Corresponds to the Real Time Payments reason code `9948`.
+     * - `real_time_payments_suspended` - Real-Time Payments is currently unavailable.
+     *   Corresponds to the Real-Time Payments reason code `9948`.
      * - `instructed_agent_signed_off` - The destination financial institution is
-     *   currently signed off of Real Time Payments. Corresponds to the Real Time
+     *   currently signed off of Real-Time Payments. Corresponds to the Real-Time
      *   Payments reason code `9910`.
      * - `processing_error` - The transfer was rejected due to an internal Increase
      *   issue. We have been notified.
@@ -321,7 +329,7 @@ export namespace RealTimePaymentsTransfer {
   }
 
   /**
-   * After the transfer is submitted to Real Time Payments, this will contain
+   * After the transfer is submitted to Real-Time Payments, this will contain
    * supplemental details.
    */
   export interface Submission {
@@ -332,7 +340,7 @@ export namespace RealTimePaymentsTransfer {
     submitted_at: string | null;
 
     /**
-     * The Real Time Payments network identification of the transfer.
+     * The Real-Time Payments network identification of the transfer.
      */
     transaction_identification: string;
   }
@@ -340,7 +348,7 @@ export namespace RealTimePaymentsTransfer {
 
 export interface RealTimePaymentsTransferCreateParams {
   /**
-   * The transfer amount in USD cents. For Real Time Payments transfers, must be
+   * The transfer amount in USD cents. For Real-Time Payments transfers, must be
    * positive.
    */
   amount: number;
@@ -384,7 +392,7 @@ export interface RealTimePaymentsTransferCreateParams {
   require_approval?: boolean;
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * A unique identifier you choose for the transfer. Reusing this identifier for
    * another transfer will result in an error. You can query for the transfer
    * associated with this identifier using the List endpoint.
    */
@@ -393,14 +401,14 @@ export interface RealTimePaymentsTransferCreateParams {
 
 export interface RealTimePaymentsTransferListParams extends PageParams {
   /**
-   * Filter Real Time Payments Transfers to those belonging to the specified Account.
+   * Filter Real-Time Payments Transfers to those belonging to the specified Account.
    */
   account_id?: string;
 
   created_at?: RealTimePaymentsTransferListParams.CreatedAt;
 
   /**
-   * Filter Real Time Payments Transfers to those made to the specified External
+   * Filter Real-Time Payments Transfers to those made to the specified External
    * Account.
    */
   external_account_id?: string;

@@ -19,7 +19,7 @@ export class SupplementalDocuments extends APIResource {
   }
 
   /**
-   * List Entity Supplemental Document Submissionss
+   * List Entity Supplemental Document Submissions
    */
   list(
     query: SupplementalDocumentListParams,

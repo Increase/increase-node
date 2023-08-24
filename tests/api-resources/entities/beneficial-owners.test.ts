@@ -7,7 +7,7 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource beneficialOwners', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.entities.beneficialOwners.create('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = increase.entities.beneficialOwners.create({
       beneficial_owner: {
         individual: {
           name: 'x',
@@ -17,6 +17,7 @@ describe('resource beneficialOwners', () => {
         },
         prongs: ['ownership', 'ownership', 'ownership'],
       },
+      entity_id: 'string',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,7 +29,7 @@ describe('resource beneficialOwners', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.entities.beneficialOwners.create('entity_n8y8tnk2p9339ti393yi', {
+    const response = await increase.entities.beneficialOwners.create({
       beneficial_owner: {
         individual: {
           name: 'x',
@@ -57,6 +58,28 @@ describe('resource beneficialOwners', () => {
         company_title: 'x',
         prongs: ['ownership', 'ownership', 'ownership'],
       },
+      entity_id: 'string',
+    });
+  });
+
+  test('archive: only required params', async () => {
+    const responsePromise = increase.entities.beneficialOwners.archive({
+      beneficial_owner_id: 'string',
+      entity_id: 'string',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('archive: required and optional params', async () => {
+    const response = await increase.entities.beneficialOwners.archive({
+      beneficial_owner_id: 'string',
+      entity_id: 'string',
     });
   });
 });

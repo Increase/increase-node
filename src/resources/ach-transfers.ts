@@ -168,7 +168,7 @@ export interface ACHTransfer {
   funding: 'checking' | 'savings';
 
   /**
-   * Your identifer for the transfer recipient.
+   * Your identifier for the transfer recipient.
    */
   individual_id: string | null;
 
@@ -188,6 +188,14 @@ export interface ACHTransfer {
    * should use different details, this will contain those details.
    */
   notifications_of_change: Array<ACHTransfer.NotificationsOfChange>;
+
+  /**
+   * The ID for the pending transaction representing the transfer. A pending
+   * transaction is created when the transfer
+   * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+   * by someone else in your organization.
+   */
+  pending_transaction_id: string | null;
 
   /**
    * If your transfer is returned, this will contain details of the return.
@@ -597,7 +605,7 @@ export namespace ACHTransfer {
       | 'untimely_return';
 
     /**
-     * The identifier of the Tranasaction associated with this return.
+     * The identifier of the Transaction associated with this return.
      */
     transaction_id: string;
 
@@ -714,7 +722,7 @@ export interface ACHTransferCreateParams {
   funding?: 'checking' | 'savings';
 
   /**
-   * Your identifer for the transfer recipient.
+   * Your identifier for the transfer recipient.
    */
   individual_id?: string;
 
@@ -748,7 +756,7 @@ export interface ACHTransferCreateParams {
     | 'internet_initiated';
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifer for
+   * A unique identifier you choose for the transfer. Reusing this identifier for
    * another transfer will result in an error. You can query for the transfer
    * associated with this identifier using the List endpoint.
    */

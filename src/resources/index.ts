@@ -1,6 +1,5 @@
 // File generated from our OpenAPI spec by Stainless.
 
-export * from './shared';
 export {
   ACHPrenotification,
   ACHPrenotificationCreateParams,
@@ -141,6 +140,12 @@ export {
 } from './external-accounts';
 export { File, FileCreateParams, FileListParams, FilesPage, Files } from './files';
 export { Group, Groups } from './groups';
+export {
+  InboundACHTransfer,
+  InboundACHTransferListParams,
+  InboundACHTransfersPage,
+  InboundACHTransfers,
+} from './inbound-ach-transfers';
 export {
   InboundACHTransferReturn,
   InboundACHTransferReturnCreateParams,

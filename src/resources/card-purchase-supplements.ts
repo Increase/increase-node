@@ -264,7 +264,7 @@ export namespace CardPurchaseSupplement {
     total_amount: number | null;
 
     /**
-     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the totla
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
      * amount.
      */
     total_amount_currency: string | null;
