@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.10.1](https://github.com/Increase/increase-node/compare/v0.10.0...v0.10.1) (2023-08-24)
+
+
+### Features
+
+* **types:** export RequestOptions type ([#128](https://github.com/Increase/increase-node/issues/128)) ([a7c479a](https://github.com/Increase/increase-node/commit/a7c479aed355858b0bb42a9cbb556aa6a41efc61))
+
+
+### Bug Fixes
+
+* **core:** fix navigator check for strange environments ([#126](https://github.com/Increase/increase-node/issues/126)) ([3d295e5](https://github.com/Increase/increase-node/commit/3d295e57c0e3f7815650fa42c58a96ec7e696dac))
+
+
+### Chores
+
+* **internal:** add missing eslint-plugin-prettier ([#125](https://github.com/Increase/increase-node/issues/125)) ([44a4416](https://github.com/Increase/increase-node/commit/44a441620bfccca4fd0ce3159bd6aea3daa7da44))
+* **internal:** export HeadersInit type shim ([#129](https://github.com/Increase/increase-node/issues/129)) ([6120e36](https://github.com/Increase/increase-node/commit/6120e36c88e7c7895bed285eeade28b20934432b))
+* **internal:** minor reformatting of code ([#123](https://github.com/Increase/increase-node/issues/123)) ([39f4300](https://github.com/Increase/increase-node/commit/39f4300b5dcf844b3b54068f88230ed0e931a0d1))
+
 ## [0.10.0](https://github.com/Increase/increase-node/compare/v0.9.1...v0.10.0) (2023-08-17)
 
 
