@@ -8,16 +8,6 @@ import { Page, PageParams } from 'increase/pagination';
 
 export class InboundACHTransferReturns extends APIResource {
   /**
-   * Create an ACH Return
-   */
-  create(
-    body: InboundACHTransferReturnCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransferReturn> {
-    return this.post('/inbound_ach_transfer_returns', { body, ...options });
-  }
-
-  /**
    * Retrieve an Inbound ACH Transfer Return
    */
   retrieve(
@@ -146,51 +136,10 @@ export namespace InboundACHTransferReturn {
   }
 }
 
-export interface InboundACHTransferReturnCreateParams {
-  /**
-   * The reason why this transfer will be returned. The most usual return codes are
-   * `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-   *
-   * - `authorization_revoked_by_customer` - The customer no longer authorizes this
-   *   transaction. The Nacha return code is R07.
-   * - `payment_stopped` - The customer asked for the payment to be stopped. This
-   *   reason is only allowed for debits. The Nacha return code is R08.
-   * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
-   *   customer advises that the debit was unauthorized. The Nacha return code is
-   *   R10.
-   * - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
-   *   payee is deceased. The Nacha return code is R14.
-   * - `beneficiary_or_account_holder_deceased` - The account holder is deceased. The
-   *   Nacha return code is R15.
-   * - `credit_entry_refused_by_receiver` - The customer refused a credit entry. This
-   *   reason is only allowed for credits. The Nacha return code is R23.
-   * - `duplicate_entry` - The account holder identified this transaction as a
-   *   duplicate. The Nacha return code is R24.
-   * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
-   *   authorizes this transaction. The Nacha return code is R29.
-   */
-  reason:
-    | 'authorization_revoked_by_customer'
-    | 'payment_stopped'
-    | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
-    | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
-    | 'beneficiary_or_account_holder_deceased'
-    | 'credit_entry_refused_by_receiver'
-    | 'duplicate_entry'
-    | 'corporate_customer_advised_not_authorized';
-
-  /**
-   * The transaction identifier of the Inbound ACH Transfer to return to the
-   * originating financial institution.
-   */
-  transaction_id: string;
-}
-
 export interface InboundACHTransferReturnListParams extends PageParams {}
 
 export namespace InboundACHTransferReturns {
   export import InboundACHTransferReturn = API.InboundACHTransferReturn;
   export type InboundACHTransferReturnsPage = _InboundACHTransferReturnsPage;
-  export import InboundACHTransferReturnCreateParams = API.InboundACHTransferReturnCreateParams;
   export import InboundACHTransferReturnListParams = API.InboundACHTransferReturnListParams;
 }
