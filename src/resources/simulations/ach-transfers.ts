@@ -232,17 +232,34 @@ export namespace ACHTransferSimulation {
        */
       export interface ACHDecline {
         /**
+         * The ACH Decline's identifier.
+         */
+        id: string;
+
+        /**
          * The declined amount in the minor unit of the destination account currency. For
          * dollars, for example, this is cents.
          */
         amount: number;
 
+        /**
+         * The descriptive date of the transfer.
+         */
         originator_company_descriptive_date: string | null;
 
+        /**
+         * The additional information included with the transfer.
+         */
         originator_company_discretionary_data: string | null;
 
+        /**
+         * The identifier of the company that initiated the transfer.
+         */
         originator_company_id: string;
 
+        /**
+         * The name of the company that initiated the transfer.
+         */
         originator_company_name: string;
 
         /**
@@ -280,11 +297,26 @@ export namespace ACHTransferSimulation {
           | 'transaction_not_allowed'
           | 'user_initiated';
 
+        /**
+         * The id of the receiver of the transfer.
+         */
         receiver_id_number: string | null;
 
+        /**
+         * The name of the receiver of the transfer.
+         */
         receiver_name: string | null;
 
+        /**
+         * The trace number of the transfer.
+         */
         trace_number: string;
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `ach_decline`.
+         */
+        type: 'ach_decline';
       }
 
       /**

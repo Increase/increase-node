@@ -388,7 +388,6 @@ export namespace Increase {
   export import InboundACHTransferReturns = API.InboundACHTransferReturns;
   export import InboundACHTransferReturn = API.InboundACHTransferReturn;
   export import InboundACHTransferReturnsPage = API.InboundACHTransferReturnsPage;
-  export import InboundACHTransferReturnCreateParams = API.InboundACHTransferReturnCreateParams;
   export import InboundACHTransferReturnListParams = API.InboundACHTransferReturnListParams;
 
   export import ACHPrenotifications = API.ACHPrenotifications;
@@ -425,6 +424,7 @@ export namespace Increase {
   export import InboundACHTransfer = API.InboundACHTransfer;
   export import InboundACHTransfersPage = API.InboundACHTransfersPage;
   export import InboundACHTransferListParams = API.InboundACHTransferListParams;
+  export import InboundACHTransferTransferReturnParams = API.InboundACHTransferTransferReturnParams;
 
   export import InboundWireDrawdownRequests = API.InboundWireDrawdownRequests;
   export import InboundWireDrawdownRequest = API.InboundWireDrawdownRequest;
