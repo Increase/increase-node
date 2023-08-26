@@ -269,7 +269,6 @@ Types:
 
 Methods:
 
-- <code title="post /inbound_ach_transfer_returns">client.inboundACHTransferReturns.<a href="./src/resources/inbound-ach-transfer-returns.ts">create</a>({ ...params }) -> InboundACHTransferReturn</code>
 - <code title="get /inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}">client.inboundACHTransferReturns.<a href="./src/resources/inbound-ach-transfer-returns.ts">retrieve</a>(inboundACHTransferReturnId) -> InboundACHTransferReturn</code>
 - <code title="get /inbound_ach_transfer_returns">client.inboundACHTransferReturns.<a href="./src/resources/inbound-ach-transfer-returns.ts">list</a>({ ...params }) -> InboundACHTransferReturnsPage</code>
 
@@ -368,6 +367,8 @@ Methods:
 
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">retrieve</a>(inboundACHTransferId) -> InboundACHTransfer</code>
 - <code title="get /inbound_ach_transfers">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">list</a>({ ...params }) -> InboundACHTransfersPage</code>
+- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">decline</a>(inboundACHTransferId) -> InboundACHTransfer</code>
+- <code title="post /inbound_ach_transfer/{inbound_ach_transfer_id}/transfer_returns">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">transferReturn</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
 
 # InboundWireDrawdownRequests
 

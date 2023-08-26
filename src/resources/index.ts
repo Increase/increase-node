@@ -143,12 +143,12 @@ export { Group, Groups } from './groups';
 export {
   InboundACHTransfer,
   InboundACHTransferListParams,
+  InboundACHTransferTransferReturnParams,
   InboundACHTransfersPage,
   InboundACHTransfers,
 } from './inbound-ach-transfers';
 export {
   InboundACHTransferReturn,
-  InboundACHTransferReturnCreateParams,
   InboundACHTransferReturnListParams,
   InboundACHTransferReturnsPage,
   InboundACHTransferReturns,
