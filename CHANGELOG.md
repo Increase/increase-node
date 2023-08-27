@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.2](https://github.com/Increase/increase-node/compare/v0.10.1...v0.10.2) (2023-08-27)
+
+
+### Features
+
+* **api:** move inbound ACH transfer returns (⚠️ breaking); add ACH transfer declines ([#134](https://github.com/Increase/increase-node/issues/134)) ([6640d70](https://github.com/Increase/increase-node/commit/6640d70edf92c902d5e93ed2e36267bbf76a91b5))
+* **api:** updates ([#131](https://github.com/Increase/increase-node/issues/131)) ([b837631](https://github.com/Increase/increase-node/commit/b8376314e257ceb2253eaccd1c8728ac907814fc))
+
+
+### Chores
+
+* **internal:** add helper method ([#133](https://github.com/Increase/increase-node/issues/133)) ([9057d13](https://github.com/Increase/increase-node/commit/9057d13c2164ec74b4001af7c5b08aad6b095c02))
+
 ## [0.10.1](https://github.com/Increase/increase-node/compare/v0.10.0...v0.10.1) (2023-08-24)
 
 
