@@ -344,8 +344,8 @@ export namespace ACHTransferSimulation {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
-         * If the authorization was attempted using a Digital Wallet Token (such as an
-         * Apple Pay purchase), the identifier of the token that was used.
+         * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+         * purchase), the identifier of the token that was used.
          */
         digital_wallet_token_id: string | null;
 
