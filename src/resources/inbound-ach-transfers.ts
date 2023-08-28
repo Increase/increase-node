@@ -47,7 +47,7 @@ export class InboundACHTransfers extends APIResource {
     body: InboundACHTransferTransferReturnParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundACHTransfer> {
-    return this.post(`/inbound_ach_transfer/${inboundACHTransferId}/transfer_returns`, { body, ...options });
+    return this.post(`/inbound_ach_transfers/${inboundACHTransferId}/transfer_return`, { body, ...options });
   }
 }
 
