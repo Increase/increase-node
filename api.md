@@ -261,17 +261,6 @@ Methods:
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.achTransfers.<a href="./src/resources/ach-transfers.ts">approve</a>(achTransferId) -> ACHTransfer</code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.achTransfers.<a href="./src/resources/ach-transfers.ts">cancel</a>(achTransferId) -> ACHTransfer</code>
 
-# InboundACHTransferReturns
-
-Types:
-
-- <code><a href="./src/resources/inbound-ach-transfer-returns.ts">InboundACHTransferReturn</a></code>
-
-Methods:
-
-- <code title="get /inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}">client.inboundACHTransferReturns.<a href="./src/resources/inbound-ach-transfer-returns.ts">retrieve</a>(inboundACHTransferReturnId) -> InboundACHTransferReturn</code>
-- <code title="get /inbound_ach_transfer_returns">client.inboundACHTransferReturns.<a href="./src/resources/inbound-ach-transfer-returns.ts">list</a>({ ...params }) -> InboundACHTransferReturnsPage</code>
-
 # ACHPrenotifications
 
 Types:
