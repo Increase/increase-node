@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.10.3 (2023-08-29)
+
+Full Changelog: [v0.10.2...v0.10.3](https://github.com/Increase/increase-node/compare/v0.10.2...v0.10.3)
+
+### Features
+
+* **api:** remove unused `/inbound_ach_transfer_returns` endpoints ([#141](https://github.com/Increase/increase-node/issues/141)) ([8b5d210](https://github.com/Increase/increase-node/commit/8b5d2108a9f287d0a16dbc70d2d99d0ecbb6a0c5))
+
+
+### Bug Fixes
+
+* **api:** move ACH Return endpoint and add digital wallet properties ([#139](https://github.com/Increase/increase-node/issues/139)) ([ad69548](https://github.com/Increase/increase-node/commit/ad695481fa66240025da740dc621c98a21bc8e95))
+* **types:** improve getNextPage() return type ([#140](https://github.com/Increase/increase-node/issues/140)) ([d45397c](https://github.com/Increase/increase-node/commit/d45397cfc2a9a0f3c6e45fa57cdf31d7f1dd545f))
+
+
+### Chores
+
+* **ci:** setup workflows to create releases and release PRs ([#136](https://github.com/Increase/increase-node/issues/136)) ([71167b0](https://github.com/Increase/increase-node/commit/71167b097733c5c019cd2035d1ca8e59df47166d))
+
 ## [0.10.2](https://github.com/Increase/increase-node/compare/v0.10.1...v0.10.2) (2023-08-27)
 
 
