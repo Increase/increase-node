@@ -148,12 +148,6 @@ export {
   InboundACHTransfers,
 } from './inbound-ach-transfers';
 export {
-  InboundACHTransferReturn,
-  InboundACHTransferReturnListParams,
-  InboundACHTransferReturnsPage,
-  InboundACHTransferReturns,
-} from './inbound-ach-transfer-returns';
-export {
   InboundWireDrawdownRequest,
   InboundWireDrawdownRequestListParams,
   InboundWireDrawdownRequestsPage,

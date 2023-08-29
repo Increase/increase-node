@@ -40,7 +40,7 @@ export class InboundACHTransfers extends APIResource {
   }
 
   /**
-   * Create an ACH Return
+   * Return an Inbound ACH Transfer
    */
   transferReturn(
     inboundACHTransferId: string,
