@@ -2152,6 +2152,13 @@ export namespace InterestPaymentSimulationResult {
         back_image_file_id: string | null;
 
         /**
+         * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+         * bank depositing this check. In some rare cases, this is not transmitted via
+         * Check21 and the value will be null.
+         */
+        bank_of_first_deposit_routing_number: string | null;
+
+        /**
          * When the check was deposited.
          */
         deposited_at: string;
@@ -2322,6 +2329,11 @@ export namespace InterestPaymentSimulationResult {
         receiver_name: string | null;
 
         trace_number: string;
+
+        /**
+         * The inbound ach transfer's identifier.
+         */
+        transfer_id: string;
       }
 
       /**
@@ -2334,6 +2346,13 @@ export namespace InterestPaymentSimulationResult {
          * for example, this is cents.
          */
         amount: number;
+
+        /**
+         * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+         * bank depositing this check. In some rare cases, this is not transmitted via
+         * Check21 and the value will be null.
+         */
+        bank_of_first_deposit_routing_number: string | null;
 
         check_front_image_file_id: string | null;
 
