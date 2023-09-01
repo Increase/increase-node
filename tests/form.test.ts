@@ -1,5 +1,5 @@
 import { multipartFormRequestOptions, createForm } from 'increase/core';
-import { Blob } from 'increase/_shims/formdata';
+import { Blob } from 'increase/_shims/form-data';
 import { toFile } from 'increase';
 
 describe('form data validation', () => {
