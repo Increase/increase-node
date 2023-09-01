@@ -1,7 +1,7 @@
 import { type RequestOptions } from './core';
 import { type Readable } from 'increase/_shims/node-readable';
 import { type BodyInit } from 'increase/_shims/fetch';
-import { FormData, File, type Blob, type FilePropertyBag } from 'increase/_shims/formdata';
+import { FormData, File, type Blob, type FilePropertyBag } from 'increase/_shims/form-data';
 import { getMultipartRequestOptions } from 'increase/_shims/getMultipartRequestOptions';
 import { fileFromPath } from 'increase/_shims/fileFromPath';
 import { type FsReadStream, isFsReadStream } from 'increase/_shims/node-readable';
