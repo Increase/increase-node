@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "increase/_shims/*": ["src/_shims/*.node"],
+      "increase/_shims/*": ["src/_shims/*-node"],
       "increase": ["src/index.ts"],
       "increase/*": ["src/*"],
       "digest-fetch": ["./typings/digest-fetch"]
