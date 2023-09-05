@@ -40,6 +40,20 @@ export class InboundACHTransfers extends APIResource {
   }
 
   /**
+   * Create a notification of change for an Inbound ACH Transfer
+   */
+  notificationOfChange(
+    inboundACHTransferId: string,
+    body: InboundACHTransferNotificationOfChangeParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundACHTransfer> {
+    return this.post(`/inbound_ach_transfers/${inboundACHTransferId}/notification_of_change`, {
+      body,
+      ...options,
+    });
+  }
+
+  /**
    * Return an Inbound ACH Transfer
    */
   transferReturn(
@@ -71,6 +85,11 @@ export interface InboundACHTransfer {
   acceptance: InboundACHTransfer.Acceptance | null;
 
   /**
+   * The identifier of the Account Number to which this transfer was sent.
+   */
+  account_number_id: string;
+
+  /**
    * The transfer amount in USD cents.
    */
   amount: number;
@@ -92,6 +111,12 @@ export interface InboundACHTransfer {
    * - `debit` - Debit
    */
   direction: 'credit' | 'debit';
+
+  /**
+   * If you initiate a notification of change in response to the transfer, this will
+   * contain its details.
+   */
+  notification_of_change: InboundACHTransfer.NotificationOfChange | null;
 
   /**
    * The descriptive date of the transfer.
@@ -191,16 +216,22 @@ export namespace InboundACHTransfer {
      *
      * - `ach_route_canceled` - The account number is canceled.
      * - `ach_route_disabled` - The account number is disabled.
-     * - `breaches_limit` - The transaction would cause a limit to be exceeded.
-     * - `credit_entry_refused_by_receiver` - A credit was refused.
-     * - `duplicate_return` - Other.
+     * - `breaches_limit` - The transaction would cause an Increase limit to be
+     *   exceeded.
+     * - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+     *   reasonable default reason for decline of credits.
+     * - `duplicate_return` - A rare return reason. The return this message refers to
+     *   was a duplicate.
      * - `entity_not_active` - The account's entity is not active.
      * - `group_locked` - Your account is inactive.
      * - `insufficient_funds` - Your account contains insufficient funds.
-     * - `misrouted_return` - Other.
-     * - `return_of_erroneous_or_reversing_debit` - Other.
+     * - `misrouted_return` - A rare return reason. The return this message refers to
+     *   was misrouted.
+     * - `return_of_erroneous_or_reversing_debit` - The originating financial
+     *   institution made a mistake and this return corrects it.
      * - `no_ach_route` - The account number that was debited does not exist.
-     * - `originator_request` - Other.
+     * - `originator_request` - The originating financial institution asked for this
+     *   transfer to be returned.
      * - `transaction_not_allowed` - The transaction is not allowed per Increase's
      *   terms.
      * - `user_initiated` - The user initiated the decline.
@@ -220,6 +251,22 @@ export namespace InboundACHTransfer {
       | 'originator_request'
       | 'transaction_not_allowed'
       | 'user_initiated';
+  }
+
+  /**
+   * If you initiate a notification of change in response to the transfer, this will
+   * contain its details.
+   */
+  export interface NotificationOfChange {
+    /**
+     * The new account number provided in the notification of change
+     */
+    updated_account_number: string | null;
+
+    /**
+     * The new account number provided in the notification of change
+     */
+    updated_routing_number: string | null;
   }
 
   /**
@@ -317,6 +364,18 @@ export namespace InboundACHTransferListParams {
   }
 }
 
+export interface InboundACHTransferNotificationOfChangeParams {
+  /**
+   * The updated account number to send in the notification of change.
+   */
+  updated_account_number?: string;
+
+  /**
+   * The updated routing number to send in the notification of change.
+   */
+  updated_routing_number?: string;
+}
+
 export interface InboundACHTransferTransferReturnParams {
   /**
    * The reason why this transfer will be returned. The most usual return codes are
@@ -355,5 +414,6 @@ export namespace InboundACHTransfers {
   export import InboundACHTransfer = API.InboundACHTransfer;
   export type InboundACHTransfersPage = _InboundACHTransfersPage;
   export import InboundACHTransferListParams = API.InboundACHTransferListParams;
+  export import InboundACHTransferNotificationOfChangeParams = API.InboundACHTransferNotificationOfChangeParams;
   export import InboundACHTransferTransferReturnParams = API.InboundACHTransferTransferReturnParams;
 }

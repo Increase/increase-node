@@ -410,4 +410,23 @@ describe('resource entities', () => {
       increase.entities.archive('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('updateAddress: only required params', async () => {
+    const responsePromise = increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
+      address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('updateAddress: required and optional params', async () => {
+    const response = await increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
+      address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+    });
+  });
 });

@@ -3,9 +3,17 @@
 export {
   BeneficialOwnerCreateParams,
   BeneficialOwnerArchiveParams,
+  BeneficialOwnerUpdateAddressParams,
   BeneficialOwners,
 } from './beneficial-owners';
-export { Entity, EntityCreateParams, EntityListParams, EntitiesPage, Entities } from './entities';
+export {
+  Entity,
+  EntityCreateParams,
+  EntityListParams,
+  EntityUpdateAddressParams,
+  EntitiesPage,
+  Entities,
+} from './entities';
 export {
   SupplementalDocument,
   SupplementalDocumentCreateParams,

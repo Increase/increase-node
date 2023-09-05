@@ -327,6 +327,7 @@ Methods:
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/resources/entities/entities.ts">retrieve</a>(entityId) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities/entities.ts">archive</a>(entityId) -> Entity</code>
+- <code title="post /entities/{entity_id}/address">client.entities.<a href="./src/resources/entities/entities.ts">updateAddress</a>(entityId, { ...params }) -> Entity</code>
 
 ## BeneficialOwners
 
@@ -334,6 +335,7 @@ Methods:
 
 - <code title="post /entity_beneficial_owners">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">create</a>({ ...params }) -> Entities.Entity</code>
 - <code title="post /entity_beneficial_owners/archive">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">archive</a>({ ...params }) -> Entities.Entity</code>
+- <code title="post /entity_beneficial_owners/address">client.entities.beneficialOwners.<a href="./src/resources/entities/beneficial-owners.ts">updateAddress</a>({ ...params }) -> Entities.Entity</code>
 
 ## SupplementalDocuments
 
@@ -357,6 +359,7 @@ Methods:
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">retrieve</a>(inboundACHTransferId) -> InboundACHTransfer</code>
 - <code title="get /inbound_ach_transfers">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">list</a>({ ...params }) -> InboundACHTransfersPage</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">decline</a>(inboundACHTransferId) -> InboundACHTransfer</code>
+- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">notificationOfChange</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">transferReturn</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
 
 # InboundWireDrawdownRequests
