@@ -112,8 +112,8 @@ export class Increase extends Core.APIClient {
 
     const options: ClientOptions = {
       apiKey,
-      environment: 'production',
       ...opts,
+      environment: opts.environment ?? 'production',
     };
 
     super({
