@@ -413,11 +413,13 @@ export namespace Increase {
   export import EntitiesPage = API.EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
+  export import EntityUpdateAddressParams = API.EntityUpdateAddressParams;
 
   export import InboundACHTransfers = API.InboundACHTransfers;
   export import InboundACHTransfer = API.InboundACHTransfer;
   export import InboundACHTransfersPage = API.InboundACHTransfersPage;
   export import InboundACHTransferListParams = API.InboundACHTransferListParams;
+  export import InboundACHTransferNotificationOfChangeParams = API.InboundACHTransferNotificationOfChangeParams;
   export import InboundACHTransferTransferReturnParams = API.InboundACHTransferTransferReturnParams;
 
   export import InboundWireDrawdownRequests = API.InboundWireDrawdownRequests;

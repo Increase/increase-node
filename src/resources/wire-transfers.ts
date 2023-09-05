@@ -272,7 +272,7 @@ export namespace WireTransfer {
    */
   export interface Reversal {
     /**
-     * The amount that was reversed.
+     * The amount that was reversed in USD cents.
      */
     amount: number;
 
@@ -283,7 +283,7 @@ export namespace WireTransfer {
     created_at: string;
 
     /**
-     * The description on the reversal message from Fedwire.
+     * The description on the reversal message from Fedwire, set by the reversing bank.
      */
     description: string;
 
@@ -293,7 +293,8 @@ export namespace WireTransfer {
     financial_institution_to_financial_institution_information: string | null;
 
     /**
-     * The Fedwire cycle date for the wire reversal.
+     * The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
+     * PM Eastern Time on the evening before the `cycle date`.
      */
     input_cycle_date: string;
 
@@ -313,7 +314,8 @@ export namespace WireTransfer {
     input_source: string;
 
     /**
-     * The Fedwire cycle date for the wire transfer that was reversed.
+     * The Fedwire cycle date for the wire transfer that is being reversed by this
+     * message.
      */
     previous_message_input_cycle_date: string;
 

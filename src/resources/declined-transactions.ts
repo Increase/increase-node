@@ -234,16 +234,22 @@ export namespace DeclinedTransaction {
        *
        * - `ach_route_canceled` - The account number is canceled.
        * - `ach_route_disabled` - The account number is disabled.
-       * - `breaches_limit` - The transaction would cause a limit to be exceeded.
-       * - `credit_entry_refused_by_receiver` - A credit was refused.
-       * - `duplicate_return` - Other.
+       * - `breaches_limit` - The transaction would cause an Increase limit to be
+       *   exceeded.
+       * - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+       *   reasonable default reason for decline of credits.
+       * - `duplicate_return` - A rare return reason. The return this message refers to
+       *   was a duplicate.
        * - `entity_not_active` - The account's entity is not active.
        * - `group_locked` - Your account is inactive.
        * - `insufficient_funds` - Your account contains insufficient funds.
-       * - `misrouted_return` - Other.
-       * - `return_of_erroneous_or_reversing_debit` - Other.
+       * - `misrouted_return` - A rare return reason. The return this message refers to
+       *   was misrouted.
+       * - `return_of_erroneous_or_reversing_debit` - The originating financial
+       *   institution made a mistake and this return corrects it.
        * - `no_ach_route` - The account number that was debited does not exist.
-       * - `originator_request` - Other.
+       * - `originator_request` - The originating financial institution asked for this
+       *   transfer to be returned.
        * - `transaction_not_allowed` - The transaction is not allowed per Increase's
        *   terms.
        * - `user_initiated` - The user initiated the decline.
@@ -520,6 +526,11 @@ export namespace DeclinedTransaction {
        */
       amount: number;
 
+      /**
+       * A computer-readable number printed on the MICR line of business checks, usually
+       * the check number. This is useful for positive pay checks, but can be unreliably
+       * transmitted by the bank of first deposit.
+       */
       auxiliary_on_us: string | null;
 
       /**
@@ -728,34 +739,81 @@ export namespace DeclinedTransaction {
        */
       amount: number;
 
+      /**
+       * A free-form address field set by the sender.
+       */
       beneficiary_address_line1: string | null;
 
+      /**
+       * A free-form address field set by the sender.
+       */
       beneficiary_address_line2: string | null;
 
+      /**
+       * A free-form address field set by the sender.
+       */
       beneficiary_address_line3: string | null;
 
+      /**
+       * A name set by the sender.
+       */
       beneficiary_name: string | null;
 
+      /**
+       * A free-form reference string set by the sender, to help identify the transfer.
+       */
       beneficiary_reference: string | null;
 
+      /**
+       * An Increase-constructed description of the declined transaction.
+       */
       description: string;
 
+      /**
+       * A unique identifier available to the originating and receiving banks, commonly
+       * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+       * service and is helpful when debugging wires with the originating bank.
+       */
       input_message_accountability_data: string | null;
 
+      /**
+       * The address of the wire originator, set by the sending bank.
+       */
       originator_address_line1: string | null;
 
+      /**
+       * The address of the wire originator, set by the sending bank.
+       */
       originator_address_line2: string | null;
 
+      /**
+       * The address of the wire originator, set by the sending bank.
+       */
       originator_address_line3: string | null;
 
+      /**
+       * The originator of the wire, set by the sending bank.
+       */
       originator_name: string | null;
 
+      /**
+       * A free-form message set by the wire originator.
+       */
       originator_to_beneficiary_information_line1: string | null;
 
+      /**
+       * A free-form message set by the wire originator.
+       */
       originator_to_beneficiary_information_line2: string | null;
 
+      /**
+       * A free-form message set by the wire originator.
+       */
       originator_to_beneficiary_information_line3: string | null;
 
+      /**
+       * A free-form message set by the wire originator.
+       */
       originator_to_beneficiary_information_line4: string | null;
 
       /**

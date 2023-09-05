@@ -47,6 +47,17 @@ export class Entities extends APIResource {
   archive(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this.post(`/entities/${entityId}/archive`, options);
   }
+
+  /**
+   * Update a Natural Person or Corporation's address
+   */
+  updateAddress(
+    entityId: string,
+    body: EntityUpdateAddressParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Entity> {
+    return this.post(`/entities/${entityId}/address`, { body, ...options });
+  }
 }
 
 export class EntitiesPage extends Page<Entity> {}
@@ -2076,15 +2087,57 @@ export namespace EntityListParams {
   }
 }
 
+export interface EntityUpdateAddressParams {
+  /**
+   * The entity's physical address. Post Office Boxes are disallowed.
+   */
+  address: EntityUpdateAddressParams.Address;
+}
+
+export namespace EntityUpdateAddressParams {
+  /**
+   * The entity's physical address. Post Office Boxes are disallowed.
+   */
+  export interface Address {
+    /**
+     * The city of the address.
+     */
+    city: string;
+
+    /**
+     * The first line of the address. This is usually the street number and street.
+     */
+    line1: string;
+
+    /**
+     * The two-letter United States Postal Service (USPS) abbreviation for the state of
+     * the address.
+     */
+    state: string;
+
+    /**
+     * The ZIP code of the address.
+     */
+    zip: string;
+
+    /**
+     * The second line of the address. This might be the floor or room number.
+     */
+    line2?: string;
+  }
+}
+
 export namespace Entities {
   export import Entity = API.Entity;
   export type EntitiesPage = _EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
+  export import EntityUpdateAddressParams = API.EntityUpdateAddressParams;
 
   export import BeneficialOwners = API.BeneficialOwners;
   export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
   export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
+  export import BeneficialOwnerUpdateAddressParams = API.BeneficialOwnerUpdateAddressParams;
 
   export import SupplementalDocuments = API.SupplementalDocuments;
   export import SupplementalDocument = API.SupplementalDocument;

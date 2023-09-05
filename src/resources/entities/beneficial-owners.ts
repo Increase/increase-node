@@ -22,6 +22,16 @@ export class BeneficialOwners extends APIResource {
   ): Core.APIPromise<Entities.Entity> {
     return this.post('/entity_beneficial_owners/archive', { body, ...options });
   }
+
+  /**
+   * Update the address for a beneficial owner belonging to a corporate Entity
+   */
+  updateAddress(
+    body: BeneficialOwnerUpdateAddressParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Entities.Entity> {
+    return this.post('/entity_beneficial_owners/address', { body, ...options });
+  }
 }
 
 export interface BeneficialOwnerCreateParams {
@@ -270,7 +280,59 @@ export interface BeneficialOwnerArchiveParams {
   entity_id: string;
 }
 
+export interface BeneficialOwnerUpdateAddressParams {
+  /**
+   * The individual's physical address. Post Office Boxes are disallowed.
+   */
+  address: BeneficialOwnerUpdateAddressParams.Address;
+
+  /**
+   * The identifying details of anyone controlling or owning 25% or more of the
+   * corporation.
+   */
+  beneficial_owner_id: string;
+
+  /**
+   * The identifier of the Entity to retrieve.
+   */
+  entity_id: string;
+}
+
+export namespace BeneficialOwnerUpdateAddressParams {
+  /**
+   * The individual's physical address. Post Office Boxes are disallowed.
+   */
+  export interface Address {
+    /**
+     * The city of the address.
+     */
+    city: string;
+
+    /**
+     * The first line of the address. This is usually the street number and street.
+     */
+    line1: string;
+
+    /**
+     * The two-letter United States Postal Service (USPS) abbreviation for the state of
+     * the address.
+     */
+    state: string;
+
+    /**
+     * The ZIP code of the address.
+     */
+    zip: string;
+
+    /**
+     * The second line of the address. This might be the floor or room number.
+     */
+    line2?: string;
+  }
+}
+
 export namespace BeneficialOwners {
   export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
   export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
+  export import BeneficialOwnerUpdateAddressParams = API.BeneficialOwnerUpdateAddressParams;
 }
