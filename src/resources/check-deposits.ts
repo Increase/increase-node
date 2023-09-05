@@ -271,6 +271,9 @@ export namespace CheckDeposit {
     currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
+     * Why this check was returned by the bank holding the account it was drawn
+     * against.
+     *
      * - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
      * - `closed_account` - The account is closed.
      * - `duplicate_submission` - The check has already been deposited.

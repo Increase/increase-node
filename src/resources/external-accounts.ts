@@ -164,6 +164,11 @@ export interface ExternalAccountUpdateParams {
 }
 
 export interface ExternalAccountListParams extends PageParams {
+  /**
+   * Filter External Accounts to those with the specified Routing Number.
+   */
+  routing_number?: string;
+
   status?: ExternalAccountListParams.Status;
 }
 

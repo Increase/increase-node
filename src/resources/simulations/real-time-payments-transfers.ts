@@ -256,16 +256,22 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          *
          * - `ach_route_canceled` - The account number is canceled.
          * - `ach_route_disabled` - The account number is disabled.
-         * - `breaches_limit` - The transaction would cause a limit to be exceeded.
-         * - `credit_entry_refused_by_receiver` - A credit was refused.
-         * - `duplicate_return` - Other.
+         * - `breaches_limit` - The transaction would cause an Increase limit to be
+         *   exceeded.
+         * - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+         *   reasonable default reason for decline of credits.
+         * - `duplicate_return` - A rare return reason. The return this message refers to
+         *   was a duplicate.
          * - `entity_not_active` - The account's entity is not active.
          * - `group_locked` - Your account is inactive.
          * - `insufficient_funds` - Your account contains insufficient funds.
-         * - `misrouted_return` - Other.
-         * - `return_of_erroneous_or_reversing_debit` - Other.
+         * - `misrouted_return` - A rare return reason. The return this message refers to
+         *   was misrouted.
+         * - `return_of_erroneous_or_reversing_debit` - The originating financial
+         *   institution made a mistake and this return corrects it.
          * - `no_ach_route` - The account number that was debited does not exist.
-         * - `originator_request` - Other.
+         * - `originator_request` - The originating financial institution asked for this
+         *   transfer to be returned.
          * - `transaction_not_allowed` - The transaction is not allowed per Increase's
          *   terms.
          * - `user_initiated` - The user initiated the decline.
@@ -542,6 +548,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         amount: number;
 
+        /**
+         * A computer-readable number printed on the MICR line of business checks, usually
+         * the check number. This is useful for positive pay checks, but can be unreliably
+         * transmitted by the bank of first deposit.
+         */
         auxiliary_on_us: string | null;
 
         /**
@@ -750,34 +761,81 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         amount: number;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line1: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line2: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line3: string | null;
 
+        /**
+         * A name set by the sender.
+         */
         beneficiary_name: string | null;
 
+        /**
+         * A free-form reference string set by the sender, to help identify the transfer.
+         */
         beneficiary_reference: string | null;
 
+        /**
+         * An Increase-constructed description of the declined transaction.
+         */
         description: string;
 
+        /**
+         * A unique identifier available to the originating and receiving banks, commonly
+         * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+         * service and is helpful when debugging wires with the originating bank.
+         */
         input_message_accountability_data: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line1: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line2: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line3: string | null;
 
+        /**
+         * The originator of the wire, set by the sending bank.
+         */
         originator_name: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line1: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line2: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line3: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line4: string | null;
 
         /**
@@ -1211,6 +1269,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * response if and only if `category` is equal to `ach_transfer_intention`.
        */
       export interface ACHTransferIntention {
+        /**
+         * The account number for the destination account.
+         */
         account_number: string;
 
         /**
@@ -1219,8 +1280,15 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         amount: number;
 
+        /**
+         * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+         * destination account.
+         */
         routing_number: string;
 
+        /**
+         * A description set when the ACH Transfer was created.
+         */
         statement_descriptor: string;
 
         /**
@@ -1292,7 +1360,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `enr_invalid_individual_name` - Code R45. The individual name field was
          *   invalid.
          * - `returned_per_odfi_request` - Code R06. The originating financial institution
-         *   reversed the transfer.
+         *   asked for this transfer to be returned.
          * - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
          *   supervisor has limited their participation.
          * - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
@@ -1379,7 +1447,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          *   bank disputes that an earlier `duplicate_entry` return was actually a
          *   duplicate.
          * - `return_of_erroneous_or_reversing_debit` - Code R62. A rare return reason. The
-         *   originating bank made a mistake earlier and this return corrects it.
+         *   originating financial institution made a mistake and this return corrects it.
          * - `return_of_improper_credit_entry` - Code R36. A rare return reason. Return of
          *   a malformed credit entry.
          * - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
@@ -2868,6 +2936,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
+         * Why this check was returned by the bank holding the account it was drawn
+         * against.
+         *
          * - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
          * - `closed_account` - The account is closed.
          * - `duplicate_submission` - The check has already been deposited.
@@ -3082,20 +3153,50 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         amount: number;
 
+        /**
+         * The description of the date of the transfer, usually in the format `YYMMDD`.
+         */
         originator_company_descriptive_date: string | null;
 
+        /**
+         * Data set by the originator.
+         */
         originator_company_discretionary_data: string | null;
 
+        /**
+         * An informational description of the transfer.
+         */
         originator_company_entry_description: string;
 
+        /**
+         * An identifier for the originating company. This is generally, but not always, a
+         * stable identifier across multiple transfers.
+         */
         originator_company_id: string;
 
+        /**
+         * A name set by the originator to identify themselves.
+         */
         originator_company_name: string;
 
+        /**
+         * The originator's identifier for the transfer receipient.
+         */
         receiver_id_number: string | null;
 
+        /**
+         * The name of the transfer recipient. This value is informational and not verified
+         * by Increase.
+         */
         receiver_name: string | null;
 
+        /**
+         * A 15 digit number recorded in the Nacha file and available to both the
+         * originating and receiving bank. Along with the amount, date, and originating
+         * routing number, this can be used to identify the ACH transfer at either bank.
+         * ACH trace numbers are not unique, but are
+         * [used to correlate returns](https://increase.com/documentation/ach#returns).
+         */
         trace_number: string;
 
         /**
@@ -3122,10 +3223,20 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         bank_of_first_deposit_routing_number: string | null;
 
+        /**
+         * The front image of the check. This is a black and white TIFF image file.
+         */
         check_front_image_file_id: string | null;
 
+        /**
+         * The number of the check. This field is set by the depositing bank and can be
+         * unreliable.
+         */
         check_number: string | null;
 
+        /**
+         * The rear image of the check. This is a black and white TIFF image file.
+         */
         check_rear_image_file_id: string | null;
 
         /**
@@ -3292,29 +3403,87 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         amount: number;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line1: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line2: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line3: string | null;
 
+        /**
+         * A name set by the sender.
+         */
         beneficiary_name: string | null;
 
+        /**
+         * A free-form reference string set by the sender, to help identify the transfer.
+         */
         beneficiary_reference: string | null;
 
+        /**
+         * An Increase-constructed description of the transfer.
+         */
         description: string;
 
+        /**
+         * A unique identifier available to the originating and receiving banks, commonly
+         * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+         * service and is helpful when debugging wires with the receiving bank.
+         */
         input_message_accountability_data: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line1: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line2: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line3: string | null;
 
+        /**
+         * The originator of the wire, set by the sending bank.
+         */
         originator_name: string | null;
 
+        /**
+         * An Increase-created concatenation of the Originator-to-Beneficiary lines.
+         */
         originator_to_beneficiary_information: string | null;
+
+        /**
+         * A free-form message set by the wire originator.
+         */
+        originator_to_beneficiary_information_line1: string | null;
+
+        /**
+         * A free-form message set by the wire originator.
+         */
+        originator_to_beneficiary_information_line2: string | null;
+
+        /**
+         * A free-form message set by the wire originator.
+         */
+        originator_to_beneficiary_information_line3: string | null;
+
+        /**
+         * A free-form message set by the wire originator.
+         */
+        originator_to_beneficiary_information_line4: string | null;
       }
 
       /**
@@ -3380,7 +3549,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        */
       export interface InboundWireReversal {
         /**
-         * The amount that was reversed.
+         * The amount that was reversed in USD cents.
          */
         amount: number;
 
@@ -3391,7 +3560,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         created_at: string;
 
         /**
-         * The description on the reversal message from Fedwire.
+         * The description on the reversal message from Fedwire, set by the reversing bank.
          */
         description: string;
 
@@ -3401,7 +3570,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         financial_institution_to_financial_institution_information: string | null;
 
         /**
-         * The Fedwire cycle date for the wire reversal.
+         * The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
+         * PM Eastern Time on the evening before the `cycle date`.
          */
         input_cycle_date: string;
 
@@ -3421,7 +3591,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         input_source: string;
 
         /**
-         * The Fedwire cycle date for the wire transfer that was reversed.
+         * The Fedwire cycle date for the wire transfer that is being reversed by this
+         * message.
          */
         previous_message_input_cycle_date: string;
 
@@ -3463,41 +3634,90 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        */
       export interface InboundWireTransfer {
         /**
-         * The amount in the minor unit of the transaction's currency. For dollars, for
-         * example, this is cents.
+         * The amount in USD cents.
          */
         amount: number;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line1: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line2: string | null;
 
+        /**
+         * A free-form address field set by the sender.
+         */
         beneficiary_address_line3: string | null;
 
+        /**
+         * A name set by the sender.
+         */
         beneficiary_name: string | null;
 
+        /**
+         * A free-form reference string set by the sender, to help identify the transfer.
+         */
         beneficiary_reference: string | null;
 
+        /**
+         * An Increase-constructed description of the transfer.
+         */
         description: string;
 
+        /**
+         * A unique identifier available to the originating and receiving banks, commonly
+         * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+         * service and is helpful when debugging wires with the originating bank.
+         */
         input_message_accountability_data: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line1: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line2: string | null;
 
+        /**
+         * The address of the wire originator, set by the sending bank.
+         */
         originator_address_line3: string | null;
 
+        /**
+         * The originator of the wire, set by the sending bank.
+         */
         originator_name: string | null;
 
+        /**
+         * An Increase-created concatenation of the Originator-to-Beneficiary lines.
+         */
         originator_to_beneficiary_information: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line1: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line2: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line3: string | null;
 
+        /**
+         * A free-form message set by the wire originator.
+         */
         originator_to_beneficiary_information_line4: string | null;
       }
 
@@ -3566,6 +3786,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
         /**
+         * An Internal Source is a transaction between you and Increase. This describes the
+         * reason for the transaction.
+         *
          * - `account_closure` - Account closure
          * - `bank_migration` - Bank migration
          * - `cashback` - Cashback
@@ -3664,6 +3887,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          */
         routing_number: string;
 
+        /**
+         * The identifier of the Wire Transfer that led to this Transaction.
+         */
         transfer_id: string;
       }
 
@@ -3672,6 +3898,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * response if and only if `category` is equal to `wire_transfer_rejection`.
        */
       export interface WireTransferRejection {
+        /**
+         * The identifier of the Wire Transfer that led to this Transaction.
+         */
         transfer_id: string;
       }
     }

@@ -119,7 +119,14 @@ export {
   DigitalWalletTokens,
 } from './digital-wallet-tokens';
 export { Document, DocumentListParams, DocumentsPage, Documents } from './documents';
-export { Entity, EntityCreateParams, EntityListParams, EntitiesPage, Entities } from './entities/entities';
+export {
+  Entity,
+  EntityCreateParams,
+  EntityListParams,
+  EntityUpdateAddressParams,
+  EntitiesPage,
+  Entities,
+} from './entities/entities';
 export { Event, EventListParams, EventsPage, Events } from './events';
 export {
   EventSubscription,
@@ -143,6 +150,7 @@ export { Group, Groups } from './groups';
 export {
   InboundACHTransfer,
   InboundACHTransferListParams,
+  InboundACHTransferNotificationOfChangeParams,
   InboundACHTransferTransferReturnParams,
   InboundACHTransfersPage,
   InboundACHTransfers,

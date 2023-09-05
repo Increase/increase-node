@@ -75,8 +75,9 @@ export interface DigitalWalletToken {
    *
    * - `apple_pay` - Apple Pay
    * - `google_pay` - Google Pay
+   * - `unknown` - Unknown
    */
-  token_requestor: 'apple_pay' | 'google_pay';
+  token_requestor: 'apple_pay' | 'google_pay' | 'unknown';
 
   /**
    * A constant representing the object's type. For this resource it will always be

@@ -359,8 +359,9 @@ export namespace RealTimeDecision {
      *
      * - `apple_pay` - Apple Pay
      * - `google_pay` - Google Pay
+     * - `unknown` - Unknown
      */
-    digital_wallet: 'apple_pay' | 'google_pay';
+    digital_wallet: 'apple_pay' | 'google_pay' | 'unknown';
 
     /**
      * The email to send the one-time passcode to if `channel` is equal to `email`.
@@ -419,8 +420,9 @@ export namespace RealTimeDecision {
      *
      * - `apple_pay` - Apple Pay
      * - `google_pay` - Google Pay
+     * - `unknown` - Unknown
      */
-    digital_wallet: 'apple_pay' | 'google_pay';
+    digital_wallet: 'apple_pay' | 'google_pay' | 'unknown';
   }
 }
 

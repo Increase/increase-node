@@ -637,6 +637,9 @@ export namespace PendingTransaction {
      * response if and only if `category` is equal to `wire_transfer_instruction`.
      */
     export interface WireTransferInstruction {
+      /**
+       * The account number for the destination account.
+       */
       account_number: string;
 
       /**
@@ -645,10 +648,20 @@ export namespace PendingTransaction {
        */
       amount: number;
 
+      /**
+       * The message that will show on the recipient's bank statement.
+       */
       message_to_recipient: string;
 
+      /**
+       * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+       * destination account.
+       */
       routing_number: string;
 
+      /**
+       * The identifier of the Wire Transfer that led to this Pending Transaction.
+       */
       transfer_id: string;
     }
   }
