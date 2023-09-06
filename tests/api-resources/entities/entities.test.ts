@@ -57,7 +57,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prongs: ['ownership', 'ownership', 'ownership'],
+            prongs: ['ownership', 'control'],
           },
           {
             individual: {
@@ -85,7 +85,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prongs: ['ownership', 'ownership', 'ownership'],
+            prongs: ['ownership', 'control'],
           },
           {
             individual: {
@@ -113,7 +113,7 @@ describe('resource entities', () => {
               },
             },
             company_title: 'x',
-            prongs: ['ownership', 'ownership', 'ownership'],
+            prongs: ['ownership', 'control'],
           },
         ],
       },

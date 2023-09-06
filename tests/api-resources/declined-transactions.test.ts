@@ -52,7 +52,7 @@ describe('resource declinedTransactions', () => {
       increase.declinedTransactions.list(
         {
           account_id: 'string',
-          category: { in: ['ach_decline', 'ach_decline', 'ach_decline'] },
+          category: { in: ['ach_decline', 'card_decline', 'check_decline'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

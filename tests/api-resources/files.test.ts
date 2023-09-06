@@ -77,7 +77,7 @@ describe('resource files', () => {
           },
           cursor: 'string',
           limit: 0,
-          purpose: { in: ['check_image_front', 'check_image_front', 'check_image_front'] },
+          purpose: { in: ['check_image_front', 'check_image_back', 'mailed_check_image'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

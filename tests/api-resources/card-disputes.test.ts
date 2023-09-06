@@ -78,7 +78,7 @@ describe('resource cardDisputes', () => {
           },
           cursor: 'string',
           limit: 0,
-          status: { in: ['pending_reviewing', 'pending_reviewing', 'pending_reviewing'] },
+          status: { in: ['pending_reviewing', 'accepted', 'rejected'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

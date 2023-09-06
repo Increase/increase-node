@@ -15,7 +15,7 @@ describe('resource beneficialOwners', () => {
           address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
           identification: { method: 'social_security_number', number: 'xxxx' },
         },
-        prongs: ['ownership', 'ownership', 'ownership'],
+        prongs: ['ownership', 'control'],
       },
       entity_id: 'string',
     });
@@ -56,7 +56,7 @@ describe('resource beneficialOwners', () => {
           },
         },
         company_title: 'x',
-        prongs: ['ownership', 'ownership', 'ownership'],
+        prongs: ['ownership', 'control'],
       },
       entity_id: 'string',
     });
