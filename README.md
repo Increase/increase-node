@@ -16,6 +16,8 @@ yarn add increase
 
 ## Usage
 
+The full API of this library can be found in [api.md](https://www.github.com/increase/increase-node/blob/master/api.md).
+
 ```js
 import Increase from 'increase';
 
