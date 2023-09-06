@@ -83,12 +83,7 @@ describe('resource externalAccounts', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.externalAccounts.list(
-        {
-          cursor: 'string',
-          limit: 0,
-          routing_number: 'xxxxxxxxx',
-          status: { in: ['active', 'active', 'active'] },
-        },
+        { cursor: 'string', limit: 0, routing_number: 'xxxxxxxxx', status: { in: ['active', 'archived'] } },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

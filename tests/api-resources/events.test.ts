@@ -48,7 +48,7 @@ describe('resource events', () => {
       increase.events.list(
         {
           associated_object_id: 'string',
-          category: { in: ['account.created', 'account.created', 'account.created'] },
+          category: { in: ['account.created', 'account.updated', 'account_number.created'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

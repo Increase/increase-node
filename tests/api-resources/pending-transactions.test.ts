@@ -51,11 +51,7 @@ describe('resource pendingTransactions', () => {
         {
           account_id: 'string',
           category: {
-            in: [
-              'account_transfer_instruction',
-              'account_transfer_instruction',
-              'account_transfer_instruction',
-            ],
+            in: ['account_transfer_instruction', 'ach_transfer_instruction', 'card_authorization'],
           },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
@@ -67,7 +63,7 @@ describe('resource pendingTransactions', () => {
           limit: 0,
           route_id: 'string',
           source_id: 'string',
-          status: { in: ['pending', 'pending', 'pending'] },
+          status: { in: ['pending', 'complete'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
