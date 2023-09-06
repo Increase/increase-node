@@ -49,7 +49,7 @@ describe('resource transactions', () => {
         {
           account_id: 'string',
           category: {
-            in: ['account_transfer_intention', 'account_transfer_intention', 'account_transfer_intention'],
+            in: ['account_transfer_intention', 'ach_transfer_intention', 'ach_transfer_rejection'],
           },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
