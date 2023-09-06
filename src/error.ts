@@ -159,8 +159,8 @@ export class APIConnectionError extends APIError {
 }
 
 export class APIConnectionTimeoutError extends APIConnectionError {
-  constructor() {
-    super({ message: 'Request timed out.' });
+  constructor({ message }: { message?: string } = {}) {
+    super({ message: message ?? 'Request timed out.' });
   }
 }
 
