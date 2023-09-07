@@ -339,7 +339,7 @@ export namespace PendingTransaction {
       merchant_descriptor: string;
 
       /**
-       * Fields specific to the `network`
+       * Fields specific to the `network`.
        */
       network_details: CardAuthorization.NetworkDetails;
 
@@ -369,25 +369,25 @@ export namespace PendingTransaction {
 
     export namespace CardAuthorization {
       /**
-       * Fields specific to the `network`
+       * Fields specific to the `network`.
        */
       export interface NetworkDetails {
         /**
-         * The payment network used to process this card authorization
+         * The payment network used to process this card authorization.
          *
          * - `visa` - Visa
          */
         category: 'visa';
 
         /**
-         * Fields specific to the `visa` network
+         * Fields specific to the `visa` network.
          */
         visa: NetworkDetails.Visa | null;
       }
 
       export namespace NetworkDetails {
         /**
-         * Fields specific to the `visa` network
+         * Fields specific to the `visa` network.
          */
         export interface Visa {
           /**
@@ -438,7 +438,7 @@ export namespace PendingTransaction {
 
           /**
            * The method used to enter the cardholder's primary account number and card
-           * expiration date
+           * expiration date.
            *
            * - `unknown` - Unknown
            * - `manual` - Manual key entry
