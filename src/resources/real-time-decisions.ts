@@ -150,7 +150,7 @@ export namespace RealTimeDecision {
     merchant_descriptor: string;
 
     /**
-     * Fields specific to the `network`
+     * Fields specific to the `network`.
      */
     network_details: CardAuthorization.NetworkDetails;
 
@@ -193,25 +193,25 @@ export namespace RealTimeDecision {
 
   export namespace CardAuthorization {
     /**
-     * Fields specific to the `network`
+     * Fields specific to the `network`.
      */
     export interface NetworkDetails {
       /**
-       * The payment network used to process this card authorization
+       * The payment network used to process this card authorization.
        *
        * - `visa` - Visa
        */
       category: 'visa';
 
       /**
-       * Fields specific to the `visa` network
+       * Fields specific to the `visa` network.
        */
       visa: NetworkDetails.Visa | null;
     }
 
     export namespace NetworkDetails {
       /**
-       * Fields specific to the `visa` network
+       * Fields specific to the `visa` network.
        */
       export interface Visa {
         /**
@@ -262,7 +262,7 @@ export namespace RealTimeDecision {
 
         /**
          * The method used to enter the cardholder's primary account number and card
-         * expiration date
+         * expiration date.
          *
          * - `unknown` - Unknown
          * - `manual` - Manual key entry
@@ -299,7 +299,7 @@ export namespace RealTimeDecision {
     export interface RequestDetails {
       /**
        * The type of this request (e.g., an initial authorization or an incremental
-       * authorization.)
+       * authorization).
        *
        * - `initial_authorization` - A regular, standalone authorization.
        * - `incremental_authorization` - An incremental request to increase the amount of

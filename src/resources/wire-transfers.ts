@@ -57,7 +57,7 @@ export class WireTransfers extends APIResource {
    * Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
    * Reserve due to error conditions. This will also create a
    * [Transaction](#transaction) to account for the returned funds. This Wire
-   * Transfer must first have a `status` of `complete`.'
+   * Transfer must first have a `status` of `complete`.
    */
   reverse(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);

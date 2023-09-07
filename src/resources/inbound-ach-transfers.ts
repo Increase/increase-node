@@ -212,7 +212,7 @@ export namespace InboundACHTransfer {
     declined_transaction_id: string;
 
     /**
-     * The reason for the transfer decline
+     * The reason for the transfer decline.
      *
      * - `ach_route_canceled` - The account number is canceled.
      * - `ach_route_disabled` - The account number is disabled.
@@ -259,12 +259,12 @@ export namespace InboundACHTransfer {
    */
   export interface NotificationOfChange {
     /**
-     * The new account number provided in the notification of change
+     * The new account number provided in the notification of change.
      */
     updated_account_number: string | null;
 
     /**
-     * The new account number provided in the notification of change
+     * The new account number provided in the notification of change.
      */
     updated_routing_number: string | null;
   }
@@ -274,7 +274,7 @@ export namespace InboundACHTransfer {
    */
   export interface TransferReturn {
     /**
-     * The reason for the transfer return
+     * The reason for the transfer return.
      *
      * - `authorization_revoked_by_customer` - The customer no longer authorizes this
      *   transaction. The Nacha return code is R07.

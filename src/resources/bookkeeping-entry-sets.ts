@@ -31,7 +31,7 @@ export interface BookkeepingEntrySet {
   date: string;
 
   /**
-   * The entries
+   * The entries.
    */
   entries: Array<BookkeepingEntrySet.Entry>;
 

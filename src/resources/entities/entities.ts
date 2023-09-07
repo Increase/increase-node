@@ -566,7 +566,7 @@ export namespace Entity {
     grantor: Trust.Grantor | null;
 
     /**
-     * The trust's name
+     * The trust's name.
      */
     name: string;
 
