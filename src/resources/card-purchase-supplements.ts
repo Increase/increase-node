@@ -259,7 +259,7 @@ export namespace CardPurchaseSupplement {
     sales_tax_rate: string | null;
 
     /**
-     * Total amount of all line items
+     * Total amount of all line items.
      */
     total_amount: number | null;
 
@@ -280,7 +280,7 @@ export namespace CardPurchaseSupplement {
     unit_cost_currency: string | null;
 
     /**
-     * Code indicating unit of measure (gallons, etc.)
+     * Code indicating unit of measure (gallons, etc.).
      */
     unit_of_measure_code: string | null;
   }
