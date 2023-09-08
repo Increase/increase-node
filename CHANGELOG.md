@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.10.4 (2023-09-08)
+
+Full Changelog: [v0.10.3...v0.10.4](https://github.com/increase/increase-node/compare/v0.10.3...v0.10.4)
+
+### Features
+
+* **api:** add bank_of_first_deposit_routing_number and transfer_id properties ([#142](https://github.com/increase/increase-node/issues/142)) ([dbedd6e](https://github.com/increase/increase-node/commit/dbedd6e187c0f5ca02afaf1253a8aeb2e0a7b2d0))
+* **api:** add Update Address  and Create Notification Change endpoints ([#149](https://github.com/increase/increase-node/issues/149)) ([0fb3db0](https://github.com/increase/increase-node/commit/0fb3db0384befb5e321deb4ac0db65d17c7576b3))
+* fixes tests where an array has to have unique enum values ([#150](https://github.com/increase/increase-node/issues/150)) ([ef1a132](https://github.com/increase/increase-node/commit/ef1a132654c96b5761e1f273eb47526272e29ae6))
+* **package:** add Bun export map ([#144](https://github.com/increase/increase-node/issues/144)) ([a4f0dab](https://github.com/increase/increase-node/commit/a4f0dab4a2e7a0d8d356061cba2f14a85c875839))
+
+
+### Bug Fixes
+
+* **client:** fix TS errors that appear when users Go to Source in VSCode ([#147](https://github.com/increase/increase-node/issues/147)) ([c198d77](https://github.com/increase/increase-node/commit/c198d7768eafc3f9a9dc6b6091474b2faae63295))
+* **client:** handle case where the client is instantiated with a undefined baseURL ([#148](https://github.com/increase/increase-node/issues/148)) ([6e63ef2](https://github.com/increase/increase-node/commit/6e63ef243e0188471cb7a39326b84b7b3652bdb7))
+* **client:** use explicit file extensions in _shims imports ([#146](https://github.com/increase/increase-node/issues/146)) ([3645236](https://github.com/increase/increase-node/commit/3645236ad1ab3aace78b4bdb5af0966d540428fc))
+* fix module not found errors in Vercel edge ([#155](https://github.com/increase/increase-node/issues/155)) ([5fa86f3](https://github.com/increase/increase-node/commit/5fa86f3054bafdb72e7cd0b46aa15e9f5364c474))
+* **readme:** update link to api.md to use the correct branch ([#152](https://github.com/increase/increase-node/issues/152)) ([b9db511](https://github.com/increase/increase-node/commit/b9db5115023cc99ca256a94f290872dce1fdae29))
+
+
+### Chores
+
+* **internal:** export helper from core ([#153](https://github.com/increase/increase-node/issues/153)) ([bdddccd](https://github.com/increase/increase-node/commit/bdddccda7f1507b5de3d3a330e60bb2533ceeb4a))
+
+
+### Documentation
+
+* **api:** add docstrings and refine enum types ([#154](https://github.com/increase/increase-node/issues/154)) ([2f16a78](https://github.com/increase/increase-node/commit/2f16a7897d0dff64ea1660e081305a175997ac2c))
+* **readme:** add link to api.md ([#151](https://github.com/increase/increase-node/issues/151)) ([e21123b](https://github.com/increase/increase-node/commit/e21123b89ee1fc32f41e75cdb69ffba3abb3f3b2))
+
 ## 0.10.3 (2023-08-29)
 
 Full Changelog: [v0.10.2...v0.10.3](https://github.com/Increase/increase-node/compare/v0.10.2...v0.10.3)
