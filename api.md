@@ -220,19 +220,6 @@ Methods:
 - <code title="get /declined_transactions/{declined_transaction_id}">client.declinedTransactions.<a href="./src/resources/declined-transactions.ts">retrieve</a>(declinedTransactionId) -> DeclinedTransaction</code>
 - <code title="get /declined_transactions">client.declinedTransactions.<a href="./src/resources/declined-transactions.ts">list</a>({ ...params }) -> DeclinedTransactionsPage</code>
 
-# Limits
-
-Types:
-
-- <code><a href="./src/resources/limits.ts">Limit</a></code>
-
-Methods:
-
-- <code title="post /limits">client.limits.<a href="./src/resources/limits.ts">create</a>({ ...params }) -> Limit</code>
-- <code title="get /limits/{limit_id}">client.limits.<a href="./src/resources/limits.ts">retrieve</a>(limitId) -> Limit</code>
-- <code title="patch /limits/{limit_id}">client.limits.<a href="./src/resources/limits.ts">update</a>(limitId, { ...params }) -> Limit</code>
-- <code title="get /limits">client.limits.<a href="./src/resources/limits.ts">list</a>({ ...params }) -> LimitsPage</code>
-
 # AccountTransfers
 
 Types:

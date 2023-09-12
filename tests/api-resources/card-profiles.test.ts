@@ -87,7 +87,7 @@ describe('resource cardProfiles', () => {
         {
           cursor: 'string',
           limit: 0,
-          physical_cards_status: { in: ['not_eligible', 'rejected', 'pending_reviewing'] },
+          physical_cards_status: { in: ['not_eligible', 'rejected', 'pending_creating'] },
           status: { in: ['pending', 'rejected', 'active'] },
         },
         { path: '/_stainless_unknown_path' },

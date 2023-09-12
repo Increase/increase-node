@@ -18,7 +18,11 @@ describe('resource accountNumbers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.accountNumbers.create({ account_id: 'string', name: 'x' });
+    const response = await increase.accountNumbers.create({
+      account_id: 'string',
+      name: 'x',
+      inbound_ach: { debit_status: 'allowed' },
+    });
   });
 
   test('retrieve', async () => {

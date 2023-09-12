@@ -85,6 +85,11 @@ export interface AccountNumber {
   created_at: string;
 
   /**
+   * Properties related to how this Account Number handles inbound ACH transfers.
+   */
+  inbound_ach: AccountNumber.InboundACH;
+
+  /**
    * The name you choose for the Account Number.
    */
   name: string;
@@ -110,6 +115,22 @@ export interface AccountNumber {
   type: 'account_number';
 }
 
+export namespace AccountNumber {
+  /**
+   * Properties related to how this Account Number handles inbound ACH transfers.
+   */
+  export interface InboundACH {
+    /**
+     * Whether ACH debits are allowed against this Account Number. Note that they will
+     * still be declined if this is `allowed` if the Account Number is not active.
+     *
+     * - `allowed` - ACH Debits are allowed.
+     * - `blocked` - ACH Debits are blocked.
+     */
+    debit_status: 'allowed' | 'blocked';
+  }
+}
+
 export interface AccountNumberCreateParams {
   /**
    * The Account the Account Number should belong to.
@@ -120,9 +141,35 @@ export interface AccountNumberCreateParams {
    * The name you choose for the Account Number.
    */
   name: string;
+
+  /**
+   * Options related to how this Account Number should handle inbound ACH transfers.
+   */
+  inbound_ach?: AccountNumberCreateParams.InboundACH;
+}
+
+export namespace AccountNumberCreateParams {
+  /**
+   * Options related to how this Account Number should handle inbound ACH transfers.
+   */
+  export interface InboundACH {
+    /**
+     * Whether ACH debits are allowed against this Account Number. Note that ACH debits
+     * will be declined if this is `allowed` but the Account Number is not active.
+     *
+     * - `allowed` - ACH Debits are allowed.
+     * - `blocked` - ACH Debits are blocked.
+     */
+    debit_status: 'allowed' | 'blocked';
+  }
 }
 
 export interface AccountNumberUpdateParams {
+  /**
+   * Options related to how this Account Number handles inbound ACH transfers.
+   */
+  inbound_ach?: AccountNumberUpdateParams.InboundACH;
+
   /**
    * The name you choose for the Account Number.
    */
@@ -136,6 +183,22 @@ export interface AccountNumberUpdateParams {
    * - `canceled` - The account number is permanently disabled.
    */
   status?: 'active' | 'disabled' | 'canceled';
+}
+
+export namespace AccountNumberUpdateParams {
+  /**
+   * Options related to how this Account Number handles inbound ACH transfers.
+   */
+  export interface InboundACH {
+    /**
+     * Whether ACH debits are allowed against this Account Number. Note that ACH debits
+     * will be declined if this is `allowed` but the Account Number is not active.
+     *
+     * - `allowed` - ACH Debits are allowed.
+     * - `blocked` - ACH Debits are blocked.
+     */
+    debit_status?: 'allowed' | 'blocked';
+  }
 }
 
 export interface AccountNumberListParams extends PageParams {

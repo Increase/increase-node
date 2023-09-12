@@ -161,7 +161,6 @@ export {
   InboundWireDrawdownRequestsPage,
   InboundWireDrawdownRequests,
 } from './inbound-wire-drawdown-requests';
-export { Limit, LimitCreateParams, LimitUpdateParams, LimitListParams, LimitsPage, Limits } from './limits';
 export {
   OauthConnection,
   OauthConnectionListParams,
