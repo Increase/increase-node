@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.11.0 (2023-09-12)
+
+Full Changelog: [v0.10.4...v0.11.0](https://github.com/increase/increase-node/compare/v0.10.4...v0.11.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** remove Limits API, add ACH controls to Account Numbers   ([#156](https://github.com/increase/increase-node/issues/156))
+
+### Features
+
+* **api:** remove Limits API, add ACH controls to Account Numbers   ([#156](https://github.com/increase/increase-node/issues/156)) ([4e4d1b2](https://github.com/increase/increase-node/commit/4e4d1b2d91c88c22ff6e371d2d06570182492d46))
+
 ## 0.10.4 (2023-09-08)
 
 Full Changelog: [v0.10.3...v0.10.4](https://github.com/increase/increase-node/compare/v0.10.3...v0.10.4)
