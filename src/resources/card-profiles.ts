@@ -206,13 +206,20 @@ export namespace CardProfile {
      * - `not_eligible` - The Card Profile is not eligible for physical cards.
      * - `rejected` - There is an issue with the Physical Card Profile preventing it
      *   from use.
+     * - `pending_creating` - The Card Profile has not yet been processed by Increase.
      * - `pending_reviewing` - The card profile is awaiting review by Increase.
      * - `pending_submitting` - The card profile is awaiting submission to the
      *   fulfillment provider.
      * - `active` - The Physical Card Profile has been submitted to the fulfillment
      *   provider and is ready to use.
      */
-    status: 'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'active';
+    status:
+      | 'not_eligible'
+      | 'rejected'
+      | 'pending_creating'
+      | 'pending_reviewing'
+      | 'pending_submitting'
+      | 'active';
   }
 }
 
@@ -337,7 +344,9 @@ export namespace CardProfileListParams {
      * statuses. For GET requests, this should be encoded as a comma-delimited string,
      * such as `?in=one,two,three`.
      */
-    in?: Array<'not_eligible' | 'rejected' | 'pending_reviewing' | 'pending_submitting' | 'active'>;
+    in?: Array<
+      'not_eligible' | 'rejected' | 'pending_creating' | 'pending_reviewing' | 'pending_submitting' | 'active'
+    >;
   }
 
   export interface Status {

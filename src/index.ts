@@ -148,7 +148,6 @@ export class Increase extends Core.APIClient {
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
   programs: API.Programs = new API.Programs(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
-  limits: API.Limits = new API.Limits(this);
   accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
   achTransfers: API.ACHTransfers = new API.ACHTransfers(this);
   achPrenotifications: API.ACHPrenotifications = new API.ACHPrenotifications(this);
@@ -364,13 +363,6 @@ export namespace Increase {
   export import DeclinedTransaction = API.DeclinedTransaction;
   export import DeclinedTransactionsPage = API.DeclinedTransactionsPage;
   export import DeclinedTransactionListParams = API.DeclinedTransactionListParams;
-
-  export import Limits = API.Limits;
-  export import Limit = API.Limit;
-  export import LimitsPage = API.LimitsPage;
-  export import LimitCreateParams = API.LimitCreateParams;
-  export import LimitUpdateParams = API.LimitUpdateParams;
-  export import LimitListParams = API.LimitListParams;
 
   export import AccountTransfers = API.AccountTransfers;
   export import AccountTransfer = API.AccountTransfer;

@@ -536,38 +536,32 @@ export namespace DeclinedTransaction {
       /**
        * Why the check was declined.
        *
-       * - `ach_route_canceled` - The account number is canceled.
        * - `ach_route_disabled` - The account number is disabled.
+       * - `ach_route_canceled` - The account number is canceled.
        * - `breaches_limit` - The transaction would cause a limit to be exceeded.
        * - `entity_not_active` - The account's entity is not active.
        * - `group_locked` - Your account is inactive.
        * - `insufficient_funds` - Your account contains insufficient funds.
-       * - `unable_to_locate_account` - Unable to locate account.
-       * - `not_our_item` - Routing number on the check is not ours.
-       * - `unable_to_process` - Unable to process.
-       * - `refer_to_image` - Refer to image.
        * - `stop_payment_requested` - Stop payment requested for this check.
-       * - `returned` - Check was returned to sender.
        * - `duplicate_presentment` - The check was a duplicate deposit.
-       * - `not_authorized` - The transaction is not allowed.
-       * - `altered_or_fictitious` - The check was altered or fictitious.
+       * - `not_authorized` - The check was not authorized.
+       * - `amount_mismatch` - The amount the receiving bank is attempting to deposit
+       *   does not match the amount on the check.
+       * - `not_our_item` - The check attempting to be deposited does not belong to
+       *   Increase.
        */
       reason:
-        | 'ach_route_canceled'
         | 'ach_route_disabled'
+        | 'ach_route_canceled'
         | 'breaches_limit'
         | 'entity_not_active'
         | 'group_locked'
         | 'insufficient_funds'
-        | 'unable_to_locate_account'
-        | 'not_our_item'
-        | 'unable_to_process'
-        | 'refer_to_image'
         | 'stop_payment_requested'
-        | 'returned'
         | 'duplicate_presentment'
         | 'not_authorized'
-        | 'altered_or_fictitious';
+        | 'amount_mismatch'
+        | 'not_our_item';
     }
 
     /**
