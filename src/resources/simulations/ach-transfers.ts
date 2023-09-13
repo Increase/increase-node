@@ -331,10 +331,20 @@ export namespace ACHTransferSimulation {
        */
       export interface CardDecline {
         /**
+         * The Card Decline identifier.
+         */
+        id: string;
+
+        /**
          * The declined amount in the minor unit of the destination account currency. For
          * dollars, for example, this is cents.
          */
         amount: number;
+
+        /**
+         * The ID of the Card Payment this transaction belongs to.
+         */
+        card_payment_id: string | null;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -1805,6 +1815,11 @@ export namespace ACHTransferSimulation {
         amount: number;
 
         /**
+         * The ID of the Card Payment this transaction belongs to.
+         */
+        card_payment_id: string | null;
+
+        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          *
@@ -2452,10 +2467,15 @@ export namespace ACHTransferSimulation {
         amount: number;
 
         /**
-         * The Card Authorization that was created prior to this Card Settlement, if on
+         * The Card Authorization that was created prior to this Card Settlement, if one
          * exists.
          */
         card_authorization: string | null;
+
+        /**
+         * The ID of the Card Payment this transaction belongs to.
+         */
+        card_payment_id: string | null;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
