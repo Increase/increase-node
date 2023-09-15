@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.1 (2023-09-15)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/Increase/increase-node/compare/v0.11.0...v0.11.1)
+
+### Features
+
+* **api:** add card payment ID reference to transaction models ([#158](https://github.com/Increase/increase-node/issues/158)) ([1c92078](https://github.com/Increase/increase-node/commit/1c920786fba59a7ae355468e9f9e0b957a693202))
+* **client:** retry on 408 Request Timeout ([#160](https://github.com/Increase/increase-node/issues/160)) ([1792836](https://github.com/Increase/increase-node/commit/1792836c06d3f55e76a1d9347acdedb3ad0148b0))
+* **errors:** add status code to error message ([#164](https://github.com/Increase/increase-node/issues/164)) ([c5493ce](https://github.com/Increase/increase-node/commit/c5493cef8e97b10f72d0cd227ddff4d6d4787103))
+
+
+### Documentation
+
+* declare Bun 1.0 officially supported ([#163](https://github.com/Increase/increase-node/issues/163)) ([a5611aa](https://github.com/Increase/increase-node/commit/a5611aaf9223425264827b6fbf4a0aca13d916ea))
+
 ## 0.11.0 (2023-09-12)
 
 Full Changelog: [v0.10.4...v0.11.0](https://github.com/increase/increase-node/compare/v0.10.4...v0.11.0)
