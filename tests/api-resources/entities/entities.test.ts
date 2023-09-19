@@ -7,10 +7,7 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource entities', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.entities.create({
-      relationship: 'affiliated',
-      structure: 'corporation',
-    });
+    const responsePromise = increase.entities.create({ structure: 'corporation' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +19,6 @@ describe('resource entities', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.entities.create({
-      relationship: 'affiliated',
       structure: 'corporation',
       corporation: {
         name: 'x',
@@ -219,6 +215,7 @@ describe('resource entities', () => {
           },
         },
       },
+      relationship: 'affiliated',
       supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
       trust: {
         name: 'x',

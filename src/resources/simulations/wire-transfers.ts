@@ -500,22 +500,24 @@ export namespace WireTransferSimulation {
         raw_return_reason_code: string;
 
         /**
-         * Why the ACH Transfer was returned.
+         * Why the ACH Transfer was returned. This reason code is sent by the receiving
+         * bank back to Increase.
          *
-         * - `insufficient_fund` - Code R01. Insufficient funds in the source account.
+         * - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
+         *   Sometimes abbreviated to NSF.
          * - `no_account` - Code R03. The account does not exist or the receiving bank was
          *   unable to locate it.
-         * - `account_closed` - Code R02. The account is closed.
+         * - `account_closed` - Code R02. The account is closed at the receiving bank.
          * - `invalid_account_number_structure` - Code R04. The account number is invalid
          *   at the receiving bank.
          * - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-         *   was frozen per the Office of Foreign Assets Control.
+         *   at the receiving bank was frozen per the Office of Foreign Assets Control.
          * - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
          *   refused a credit transfer.
          * - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
          *   The receiving bank rejected because of an incorrect Standard Entry Class code.
          * - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
-         *   reversed the transfer.
+         *   at the receiving bank reversed the transfer.
          * - `payment_stopped` - Code R08. The receiving bank stopped payment on this
          *   transfer.
          * - `non_transaction_account` - Code R20. The receiving bank account does not
@@ -525,19 +527,21 @@ export namespace WireTransferSimulation {
          * - `routing_number_check_digit_error` - Code R28. The routing number is
          *   incorrect.
          * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
-         *   The customer reversed the transfer.
+         *   The customer at the receiving bank reversed the transfer.
          * - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-         * - `authorization_revoked_by_customer` - Code R07. The customer who initiated the
-         *   transfer revoked authorization.
+         * - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
+         *   institution informed their bank that they have revoked authorization for a
+         *   previously authorized transfer.
          * - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
          * - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
          *   process a field in the transfer.
          * - `enr_invalid_individual_name` - Code R45. The individual name field was
          *   invalid.
          * - `returned_per_odfi_request` - Code R06. The originating financial institution
-         *   asked for this transfer to be returned.
+         *   asked for this transfer to be returned. The receiving bank is complying with
+         *   the request.
          * - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
-         *   supervisor has limited their participation.
+         *   supervisor has limited their participation in the ACH network.
          * - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
          *   international ACH transfer was incorrect.
          * - `account_sold_to_another_dfi` - Code R12. A rare return reason. The account
@@ -640,7 +644,7 @@ export namespace WireTransferSimulation {
          *   attached to the ACH, usually an ACH check conversion, includes a stop payment.
          * - `timely_original_return` - Code R73. A rare return reason. The bank receiving
          *   an `untimely_return` believes it was on time.
-         * - `trace_number_error` - Code R27. A rare return reason. An ACH Return's trace
+         * - `trace_number_error` - Code R27. A rare return reason. An ACH return's trace
          *   number does not match an originated ACH.
          * - `untimely_dishonored_return` - Code R72. A rare return reason. The dishonored
          *   return was sent too late.

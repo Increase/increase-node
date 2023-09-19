@@ -96,6 +96,11 @@ export interface Card {
   digital_wallet: Card.DigitalWallet | null;
 
   /**
+   * The identifier for the entity associated with this card.
+   */
+  entity_id: string | null;
+
+  /**
    * The month the card expires in M format (e.g., August is 8).
    */
   expiration_month: number;
@@ -245,6 +250,11 @@ export interface CardCreateParams {
    * `digital_wallet_authentication_requested`.
    */
   digital_wallet?: CardCreateParams.DigitalWallet;
+
+  /**
+   * The Entity the card should belong to.
+   */
+  entity_id?: string;
 }
 
 export namespace CardCreateParams {
