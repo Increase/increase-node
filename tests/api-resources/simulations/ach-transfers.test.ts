@@ -29,6 +29,7 @@ describe('resource achTransfers', () => {
       company_entry_description: 'x',
       company_id: 'x',
       company_name: 'x',
+      resolve_at: '2019-12-27T18:11:19.117Z',
     });
   });
 

@@ -23,6 +23,7 @@ describe('resource cards', () => {
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
       description: 'x',
       digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
+      entity_id: 'string',
     });
   });
 

@@ -14,7 +14,7 @@ export class BeneficialOwners extends APIResource {
   }
 
   /**
-   * Archive a beneficial owner belonging to a corporate Entity
+   * Archive a beneficial owner for a corporate Entity
    */
   archive(
     body: BeneficialOwnerArchiveParams,

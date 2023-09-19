@@ -104,7 +104,7 @@ export interface Entity {
    * - `unaffiliated` - The entity is not controlled by your group, but can still
    *   directly open accounts.
    */
-  relationship: 'affiliated' | 'informational' | 'unaffiliated';
+  relationship: 'affiliated' | 'informational' | 'unaffiliated' | null;
 
   /**
    * The entity's legal structure.
@@ -807,16 +807,6 @@ export namespace Entity {
 
 export interface EntityCreateParams {
   /**
-   * The relationship between your group and the entity.
-   *
-   * - `affiliated` - The entity is controlled by your group.
-   * - `informational` - The entity is for informational purposes only.
-   * - `unaffiliated` - The entity is not controlled by your group, but can still
-   *   directly open accounts.
-   */
-  relationship: 'affiliated' | 'informational' | 'unaffiliated';
-
-  /**
    * The type of Entity to create.
    *
    * - `corporation` - A corporation.
@@ -850,6 +840,16 @@ export interface EntityCreateParams {
    * identification methods.
    */
   natural_person?: EntityCreateParams.NaturalPerson;
+
+  /**
+   * The relationship between your group and the entity.
+   *
+   * - `affiliated` - The entity is controlled by your group.
+   * - `informational` - The entity is for informational purposes only.
+   * - `unaffiliated` - The entity is not controlled by your group, but can still
+   *   directly open accounts.
+   */
+  relationship?: 'affiliated' | 'informational' | 'unaffiliated';
 
   /**
    * Additional documentation associated with the entity.
