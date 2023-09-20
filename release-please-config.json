@@ -57,7 +57,11 @@
       "hidden": true
     }
   ],
-  "reviewers": ["rattrayalex"],
+  "reviewers": [
+    "rattrayalex"
+  ],
   "release-type": "node",
-  "extra-files": ["src/version.ts"]
+  "extra-files": [
+    "src/version.ts"
+  ]
 }

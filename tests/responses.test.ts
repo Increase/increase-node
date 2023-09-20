@@ -1,5 +1,5 @@
 import { createResponseHeaders } from 'increase/core';
-import { Headers } from 'increase/_shims/fetch';
+import { Headers } from 'increase/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters
