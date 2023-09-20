@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/increase.svg)](https://npmjs.org/package/increase)
 
-This library provides convenient access to the Increase Node REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Increase REST API from server-side TypeScript or JavaScript.
 
 The API documentation can be found [here](https://increase.com/documentation).
 
