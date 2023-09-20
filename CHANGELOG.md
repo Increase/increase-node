@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.2 (2023-09-20)
+
+Full Changelog: [v0.11.1...v0.11.2](https://github.com/Increase/increase-node/compare/v0.11.1...v0.11.2)
+
+### Features
+
+* **api:** add entity_id to Card and make relationship nullable ([#165](https://github.com/Increase/increase-node/issues/165)) ([2c72176](https://github.com/Increase/increase-node/commit/2c72176535c865107b25d5e80a9f7e6eb54c0e67))
+* **api:** export account statements in OFX format ([#169](https://github.com/Increase/increase-node/issues/169)) ([88678b7](https://github.com/Increase/increase-node/commit/88678b72ceed45fa445d3d07cc21b09299323fa3))
+* **client:** support importing node or web shims manually ([#168](https://github.com/Increase/increase-node/issues/168)) ([986b86c](https://github.com/Increase/increase-node/commit/986b86cabd898c63cc59500da997a2f68cb44325))
+
+
+### Documentation
+
+* **readme:** remove incorrect wording in opening ([#167](https://github.com/Increase/increase-node/issues/167)) ([70734aa](https://github.com/Increase/increase-node/commit/70734aac9a59686bb2afe56bac9901d0707d41c2))
+
 ## 0.11.1 (2023-09-15)
 
 Full Changelog: [v0.11.0...v0.11.1](https://github.com/Increase/increase-node/compare/v0.11.0...v0.11.1)
