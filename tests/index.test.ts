@@ -3,7 +3,7 @@
 import Increase from 'increase';
 import { APIUserAbortError } from 'increase';
 import { Headers } from 'increase/core';
-import { Response, fetch as defaultFetch, type RequestInit, type RequestInfo } from 'increase/_shims/fetch';
+import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
   const env = process.env;
