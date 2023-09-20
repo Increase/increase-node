@@ -7,7 +7,7 @@ const increase = new Increase({ apiKey: 'something1234', baseURL: 'http://127.0.
 
 describe('resource exports', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.exports.create({ category: 'transaction_csv' });
+    const responsePromise = increase.exports.create({ category: 'account_statement_ofx' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,7 +19,16 @@ describe('resource exports', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.exports.create({
-      category: 'transaction_csv',
+      category: 'account_statement_ofx',
+      account_statement_ofx: {
+        account_id: 'string',
+        created_at: {
+          after: '2019-12-27T18:11:19.117Z',
+          before: '2019-12-27T18:11:19.117Z',
+          on_or_after: '2019-12-27T18:11:19.117Z',
+          on_or_before: '2019-12-27T18:11:19.117Z',
+        },
+      },
       balance_csv: {
         account_id: 'string',
         created_at: {

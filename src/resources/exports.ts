@@ -58,11 +58,13 @@ export interface Export {
    * The category of the Export. We may add additional possible values for this enum
    * over time; your application should be able to handle that gracefully.
    *
+   * - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+   *   transactions and balances for a given time range and Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
    */
-  category: 'transaction_csv' | 'balance_csv';
+  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv';
 
   /**
    * The time the Export was created.
@@ -100,11 +102,19 @@ export interface ExportCreateParams {
   /**
    * The type of Export to create.
    *
+   * - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+   *   transactions and balances for a given time range and Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
    */
-  category: 'transaction_csv' | 'balance_csv';
+  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv';
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_statement_ofx`.
+   */
+  account_statement_ofx?: ExportCreateParams.AccountStatementOfx;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -120,6 +130,53 @@ export interface ExportCreateParams {
 }
 
 export namespace ExportCreateParams {
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_statement_ofx`.
+   */
+  export interface AccountStatementOfx {
+    /**
+     * The Account to create a statement for.
+     */
+    account_id: string;
+
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    created_at?: AccountStatementOfx.CreatedAt;
+  }
+
+  export namespace AccountStatementOfx {
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    export interface CreatedAt {
+      /**
+       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      after?: string;
+
+      /**
+       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      before?: string;
+
+      /**
+       * Return results on or after this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_after?: string;
+
+      /**
+       * Return results on or before this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_before?: string;
+    }
+  }
+
   /**
    * Options for the created export. Required if `category` is equal to
    * `balance_csv`.
