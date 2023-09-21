@@ -214,11 +214,11 @@ const response = await increase.accounts.create({ name: 'My First Increase Accou
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: accounts, response: raw } = await increase.accounts
+const { data: account, response: raw } = await increase.accounts
   .create({ name: 'My First Increase Account' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(accounts.id);
+console.log(account.id);
 ```
 
 ## Configuring an HTTP(S) Agent (e.g., for proxies)
