@@ -33,6 +33,7 @@ describe('resource wireTransfers', () => {
       originator_address_line2: 'x',
       originator_address_line3: 'x',
       originator_name: 'x',
+      originator_routing_number: 'x',
       originator_to_beneficiary_information_line1: 'x',
       originator_to_beneficiary_information_line2: 'x',
       originator_to_beneficiary_information_line3: 'x',
