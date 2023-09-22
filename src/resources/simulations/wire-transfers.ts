@@ -2855,6 +2855,12 @@ export namespace WireTransferSimulation {
         originator_name: string | null;
 
         /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
+
+        /**
          * An Increase-created concatenation of the Originator-to-Beneficiary lines.
          */
         originator_to_beneficiary_information: string | null;
@@ -2915,6 +2921,12 @@ export namespace WireTransferSimulation {
          * The Fedwire input source identifier.
          */
         input_source: string;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * The Fedwire cycle date for the wire transfer that was reversed.
@@ -2983,6 +2995,12 @@ export namespace WireTransferSimulation {
          * The Fedwire input source identifier.
          */
         input_source: string;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * The Fedwire cycle date for the wire transfer that is being reversed by this
@@ -3088,6 +3106,12 @@ export namespace WireTransferSimulation {
          * The originator of the wire, set by the sending bank.
          */
         originator_name: string | null;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * An Increase-created concatenation of the Originator-to-Beneficiary lines.
@@ -3365,6 +3389,12 @@ export interface WireTransferCreateInboundParams {
    * value here.
    */
   originator_name?: string;
+
+  /**
+   * The sending bank will set originator_routing_number in production. You can
+   * simulate any value here.
+   */
+  originator_routing_number?: string;
 
   /**
    * The sending bank will set originator_to_beneficiary_information_line1 in

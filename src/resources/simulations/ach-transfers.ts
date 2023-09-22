@@ -1048,6 +1048,12 @@ export namespace ACHTransferSimulation {
         originator_name: string | null;
 
         /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
+
+        /**
          * A free-form message set by the wire originator.
          */
         originator_to_beneficiary_information_line1: string | null;
@@ -3909,6 +3915,12 @@ export namespace ACHTransferSimulation {
         originator_name: string | null;
 
         /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
+
+        /**
          * An Increase-created concatenation of the Originator-to-Beneficiary lines.
          */
         originator_to_beneficiary_information: string | null;
@@ -3969,6 +3981,12 @@ export namespace ACHTransferSimulation {
          * The Fedwire input source identifier.
          */
         input_source: string;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * The Fedwire cycle date for the wire transfer that was reversed.
@@ -4037,6 +4055,12 @@ export namespace ACHTransferSimulation {
          * The Fedwire input source identifier.
          */
         input_source: string;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * The Fedwire cycle date for the wire transfer that is being reversed by this
@@ -4142,6 +4166,12 @@ export namespace ACHTransferSimulation {
          * The originator of the wire, set by the sending bank.
          */
         originator_name: string | null;
+
+        /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
 
         /**
          * An Increase-created concatenation of the Originator-to-Beneficiary lines.
@@ -4426,6 +4456,12 @@ export namespace ACHTransferSimulation {
      * The name of the company that initiated the transfer.
      */
     originator_company_name: string;
+
+    /**
+     * The American Banking Association (ABA) routing number of the bank originating
+     * the transfer.
+     */
+    originator_routing_number: string;
 
     /**
      * The id of the receiver of the transfer.

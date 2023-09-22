@@ -144,6 +144,12 @@ export interface InboundACHTransfer {
   originator_company_name: string;
 
   /**
+   * The American Banking Association (ABA) routing number of the bank originating
+   * the transfer.
+   */
+  originator_routing_number: string;
+
+  /**
    * The id of the receiver of the transfer.
    */
   receiver_id_number: string | null;

@@ -314,6 +314,12 @@ export namespace WireTransfer {
     input_source: string;
 
     /**
+     * The American Banking Association (ABA) routing number of the bank originating
+     * the transfer.
+     */
+    originator_routing_number: string | null;
+
+    /**
      * The Fedwire cycle date for the wire transfer that is being reversed by this
      * message.
      */

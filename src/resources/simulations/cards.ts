@@ -1029,6 +1029,12 @@ export namespace CardAuthorizationSimulation {
         originator_name: string | null;
 
         /**
+         * The American Banking Association (ABA) routing number of the bank originating
+         * the transfer.
+         */
+        originator_routing_number: string | null;
+
+        /**
          * A free-form message set by the wire originator.
          */
         originator_to_beneficiary_information_line1: string | null;
