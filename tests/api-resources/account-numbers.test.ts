@@ -22,6 +22,7 @@ describe('resource accountNumbers', () => {
       account_id: 'string',
       name: 'x',
       inbound_ach: { debit_status: 'allowed' },
+      inbound_checks: { status: 'allowed' },
     });
   });
 

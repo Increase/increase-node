@@ -90,6 +90,12 @@ export interface AccountNumber {
   inbound_ach: AccountNumber.InboundACH;
 
   /**
+   * Properties related to how this Account Number should handle inbound check
+   * withdrawls.
+   */
+  inbound_checks: AccountNumber.InboundChecks;
+
+  /**
    * The name you choose for the Account Number.
    */
   name: string;
@@ -129,6 +135,22 @@ export namespace AccountNumber {
      */
     debit_status: 'allowed' | 'blocked';
   }
+
+  /**
+   * Properties related to how this Account Number should handle inbound check
+   * withdrawls.
+   */
+  export interface InboundChecks {
+    /**
+     * How Increase should process checks with this account number printed on them.
+     *
+     * - `allowed` - Checks with this Account Number will be processed even if they are
+     *   not associated with a Check Transfer.
+     * - `check_transfers_only` - Checks with this Account Number will be processed
+     *   only if they can be matched to an existing Check Transfer.
+     */
+    status: 'allowed' | 'check_transfers_only';
+  }
 }
 
 export interface AccountNumberCreateParams {
@@ -146,6 +168,12 @@ export interface AccountNumberCreateParams {
    * Options related to how this Account Number should handle inbound ACH transfers.
    */
   inbound_ach?: AccountNumberCreateParams.InboundACH;
+
+  /**
+   * Options related to how this Account Number should handle inbound check
+   * withdrawls.
+   */
+  inbound_checks?: AccountNumberCreateParams.InboundChecks;
 }
 
 export namespace AccountNumberCreateParams {
@@ -161,6 +189,22 @@ export namespace AccountNumberCreateParams {
      * - `blocked` - ACH Debits are blocked.
      */
     debit_status: 'allowed' | 'blocked';
+  }
+
+  /**
+   * Options related to how this Account Number should handle inbound check
+   * withdrawls.
+   */
+  export interface InboundChecks {
+    /**
+     * How Increase should process checks with this account number printed on them.
+     *
+     * - `allowed` - Checks with this Account Number will be processed even if they are
+     *   not associated with a Check Transfer.
+     * - `check_transfers_only` - Checks with this Account Number will be processed
+     *   only if they can be matched to an existing Check Transfer.
+     */
+    status: 'allowed' | 'check_transfers_only';
   }
 }
 
