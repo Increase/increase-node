@@ -105,7 +105,7 @@ export class Increase extends Core.APIClient {
    */
   constructor({ apiKey = Core.readEnv('INCREASE_API_KEY'), ...opts }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Error(
+      throw new Errors.IncreaseError(
         "The INCREASE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Increase client with an apiKey option, like new Increase({ apiKey: 'my apiKey' }).",
       );
     }
@@ -189,6 +189,7 @@ export class Increase extends Core.APIClient {
 
   static Increase = this;
 
+  static IncreaseError = Errors.IncreaseError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -217,6 +218,7 @@ export class Increase extends Core.APIClient {
 }
 
 export const {
+  IncreaseError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
