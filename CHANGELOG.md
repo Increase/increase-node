@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.11.3 (2023-09-25)
+
+Full Changelog: [v0.11.2...v0.11.3](https://github.com/Increase/increase-node/compare/v0.11.2...v0.11.3)
+
+### Features
+
+* **api:** add inbound checks, originating routing number and new event types ([#173](https://github.com/Increase/increase-node/issues/173)) ([d212a98](https://github.com/Increase/increase-node/commit/d212a98092d6858f6c351c95c1086ec8dfdadef9))
+* **client:** handle retry-after with a date ([#175](https://github.com/Increase/increase-node/issues/175)) ([b3a7192](https://github.com/Increase/increase-node/commit/b3a719292e8cc4b7961fe28ddd107f9745256dfb))
+* **package:** export a root error type ([#174](https://github.com/Increase/increase-node/issues/174)) ([d2af282](https://github.com/Increase/increase-node/commit/d2af2822ff7e46083a0a2a86079c361e81a33316))
+
+
+### Documentation
+
+* **api.md:** add shared models ([#172](https://github.com/Increase/increase-node/issues/172)) ([c7c6c32](https://github.com/Increase/increase-node/commit/c7c6c329a39ef77b5fac00fd1e5471597e142293))
+* **README:** fix variable names in some examples ([#170](https://github.com/Increase/increase-node/issues/170)) ([23197d0](https://github.com/Increase/increase-node/commit/23197d0cec26f5bef61e908a8986a4fd25bb47a9))
+
 ## 0.11.2 (2023-09-20)
 
 Full Changelog: [v0.11.1...v0.11.2](https://github.com/Increase/increase-node/compare/v0.11.1...v0.11.2)
