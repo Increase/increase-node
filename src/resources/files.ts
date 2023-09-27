@@ -85,6 +85,11 @@ export interface File {
   filename: string | null;
 
   /**
+   * The MIME type of the file.
+   */
+  mime_type: string;
+
+  /**
    * What the File will be used for. We may add additional possible values for this
    * enum over time; your application should be able to handle such additions
    * gracefully.
