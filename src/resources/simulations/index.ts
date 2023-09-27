@@ -36,6 +36,7 @@ export {
   InterestPaymentCreateParams,
   InterestPayments,
 } from './interest-payments';
+export { PhysicalCardShipmentAdvanceParams, PhysicalCards } from './physical-cards';
 export { ProgramCreateParams, Programs } from './programs';
 export { Simulations } from './simulations';
 export { WireTransferSimulation, WireTransferCreateInboundParams, WireTransfers } from './wire-transfers';

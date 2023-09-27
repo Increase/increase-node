@@ -173,6 +173,14 @@ export {
   PendingTransactionsPage,
   PendingTransactions,
 } from './pending-transactions';
+export {
+  PhysicalCard,
+  PhysicalCardCreateParams,
+  PhysicalCardUpdateParams,
+  PhysicalCardListParams,
+  PhysicalCardsPage,
+  PhysicalCards,
+} from './physical-cards';
 export { Program, ProgramListParams, ProgramsPage, Programs } from './programs';
 export { RealTimeDecision, RealTimeDecisionActionParams, RealTimeDecisions } from './real-time-decisions';
 export {

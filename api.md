@@ -1,5 +1,3 @@
-# Shared
-
 # Accounts
 
 Types:
@@ -602,3 +600,22 @@ Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfers.RealTimePaymentsTransfer</code>
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">createInbound</a>({ ...params }) -> InboundRealTimePaymentsTransferSimulationResult</code>
+
+## PhysicalCards
+
+Methods:
+
+- <code title="post /simulations/physical_cards/{physical_card_id}/shipment_advance">client.simulations.physicalCards.<a href="./src/resources/simulations/physical-cards.ts">shipmentAdvance</a>(physicalCardId, { ...params }) -> PhysicalCards.PhysicalCard</code>
+
+# PhysicalCards
+
+Types:
+
+- <code><a href="./src/resources/physical-cards.ts">PhysicalCard</a></code>
+
+Methods:
+
+- <code title="post /physical_cards">client.physicalCards.<a href="./src/resources/physical-cards.ts">create</a>({ ...params }) -> PhysicalCard</code>
+- <code title="get /physical_cards/{physical_card_id}">client.physicalCards.<a href="./src/resources/physical-cards.ts">retrieve</a>(physicalCardId) -> PhysicalCard</code>
+- <code title="patch /physical_cards/{physical_card_id}">client.physicalCards.<a href="./src/resources/physical-cards.ts">update</a>(physicalCardId, { ...params }) -> PhysicalCard</code>
+- <code title="get /physical_cards">client.physicalCards.<a href="./src/resources/physical-cards.ts">list</a>({ ...params }) -> PhysicalCardsPage</code>
