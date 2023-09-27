@@ -167,6 +167,7 @@ export class Increase extends Core.APIClient {
   routingNumbers: API.RoutingNumbers = new API.RoutingNumbers(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   simulations: API.Simulations = new API.Simulations(this);
+  physicalCards: API.PhysicalCards = new API.PhysicalCards(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -470,6 +471,13 @@ export namespace Increase {
   export import AccountStatementListParams = API.AccountStatementListParams;
 
   export import Simulations = API.Simulations;
+
+  export import PhysicalCards = API.PhysicalCards;
+  export import PhysicalCard = API.PhysicalCard;
+  export import PhysicalCardsPage = API.PhysicalCardsPage;
+  export import PhysicalCardCreateParams = API.PhysicalCardCreateParams;
+  export import PhysicalCardUpdateParams = API.PhysicalCardUpdateParams;
+  export import PhysicalCardListParams = API.PhysicalCardListParams;
 }
 
 export default Increase;

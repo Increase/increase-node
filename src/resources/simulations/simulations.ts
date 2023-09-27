@@ -18,6 +18,7 @@ import { InterestPayments } from './interest-payments';
 import { WireTransfers } from './wire-transfers';
 import { Cards } from './cards';
 import { RealTimePaymentsTransfers } from './real-time-payments-transfers';
+import { PhysicalCards } from './physical-cards';
 import * as API from './index';
 
 export class Simulations extends APIResource {
@@ -38,6 +39,7 @@ export class Simulations extends APIResource {
   wireTransfers: WireTransfers = new WireTransfers(this.client);
   cards: Cards = new Cards(this.client);
   realTimePaymentsTransfers: RealTimePaymentsTransfers = new RealTimePaymentsTransfers(this.client);
+  physicalCards: PhysicalCards = new PhysicalCards(this.client);
 }
 
 export namespace Simulations {
@@ -96,4 +98,7 @@ export namespace Simulations {
   export import InboundRealTimePaymentsTransferSimulationResult = API.InboundRealTimePaymentsTransferSimulationResult;
   export import RealTimePaymentsTransferCompleteParams = API.RealTimePaymentsTransferCompleteParams;
   export import RealTimePaymentsTransferCreateInboundParams = API.RealTimePaymentsTransferCreateInboundParams;
+
+  export import PhysicalCards = API.PhysicalCards;
+  export import PhysicalCardShipmentAdvanceParams = API.PhysicalCardShipmentAdvanceParams;
 }
