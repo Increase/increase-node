@@ -252,7 +252,8 @@ export interface CardCreateParams {
   digital_wallet?: CardCreateParams.DigitalWallet;
 
   /**
-   * The Entity the card should belong to.
+   * The Entity the card belongs to. You only need to supply this in rare situations
+   * when the card is not for the Account holder.
    */
   entity_id?: string;
 }
@@ -333,6 +334,12 @@ export interface CardUpdateParams {
    * steps.
    */
   digital_wallet?: CardUpdateParams.DigitalWallet;
+
+  /**
+   * The Entity the card belongs to. You only need to supply this in rare situations
+   * when the card is not for the Account holder.
+   */
+  entity_id?: string;
 
   /**
    * The status to update the Card with.
