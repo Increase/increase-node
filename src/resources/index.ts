@@ -78,6 +78,7 @@ export {
   CardDisputesPage,
   CardDisputes,
 } from './card-disputes';
+export { CardPayment, CardPaymentListParams, CardPaymentsPage, CardPayments } from './card-payments';
 export {
   CardProfile,
   CardProfileCreateParams,
