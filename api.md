@@ -619,3 +619,14 @@ Methods:
 - <code title="get /physical_cards/{physical_card_id}">client.physicalCards.<a href="./src/resources/physical-cards.ts">retrieve</a>(physicalCardId) -> PhysicalCard</code>
 - <code title="patch /physical_cards/{physical_card_id}">client.physicalCards.<a href="./src/resources/physical-cards.ts">update</a>(physicalCardId, { ...params }) -> PhysicalCard</code>
 - <code title="get /physical_cards">client.physicalCards.<a href="./src/resources/physical-cards.ts">list</a>({ ...params }) -> PhysicalCardsPage</code>
+
+# CardPayments
+
+Types:
+
+- <code><a href="./src/resources/card-payments.ts">CardPayment</a></code>
+
+Methods:
+
+- <code title="get /card_payments/{card_payment_id}">client.cardPayments.<a href="./src/resources/card-payments.ts">retrieve</a>(cardPaymentId) -> CardPayment</code>
+- <code title="get /card_payments">client.cardPayments.<a href="./src/resources/card-payments.ts">list</a>({ ...params }) -> CardPaymentsPage</code>
