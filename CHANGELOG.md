@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.4 (2023-09-29)
+
+Full Changelog: [v0.11.3...v0.11.4](https://github.com/Increase/increase-node/compare/v0.11.3...v0.11.4)
+
+### Features
+
+* **api:** add card payments endpoints ([#178](https://github.com/Increase/increase-node/issues/178)) ([d4c6032](https://github.com/Increase/increase-node/commit/d4c6032050f63186eb9c4f2002ede4d0679ea8d2))
+* **api:** add physical cards endpoints ([#176](https://github.com/Increase/increase-node/issues/176)) ([a96c3e7](https://github.com/Increase/increase-node/commit/a96c3e7225fb83dfb310ac18e9506966240c72b7))
+
 ## 0.11.3 (2023-09-25)
 
 Full Changelog: [v0.11.2...v0.11.3](https://github.com/Increase/increase-node/compare/v0.11.2...v0.11.3)
