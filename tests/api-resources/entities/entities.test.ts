@@ -387,6 +387,7 @@ describe('resource entities', () => {
           },
           cursor: 'string',
           limit: 0,
+          status: { in: ['active', 'archived', 'disabled'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

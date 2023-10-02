@@ -97,14 +97,15 @@ export interface Entity {
   natural_person: Entity.NaturalPerson | null;
 
   /**
-   * The relationship between your group and the entity.
+   * The status of the entity.
    *
-   * - `affiliated` - The entity is controlled by your group.
-   * - `informational` - The entity is for informational purposes only.
-   * - `unaffiliated` - The entity is not controlled by your group, but can still
-   *   directly open accounts.
+   * - `active` - The entity is active.
+   * - `archived` - The entity is archived, and can no longer be used to create
+   *   accounts.
+   * - `disabled` - The entity is temporarily disabled and cannot be used for
+   *   financial activity.
    */
-  relationship: 'affiliated' | 'informational' | 'unaffiliated' | null;
+  status: 'active' | 'archived' | 'disabled';
 
   /**
    * The entity's legal structure.
@@ -2057,6 +2058,8 @@ export namespace EntityCreateParams {
 
 export interface EntityListParams extends PageParams {
   created_at?: EntityListParams.CreatedAt;
+
+  status?: EntityListParams.Status;
 }
 
 export namespace EntityListParams {
@@ -2084,6 +2087,15 @@ export namespace EntityListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Entities for those with the specified status or statuses. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<'active' | 'archived' | 'disabled'>;
   }
 }
 
