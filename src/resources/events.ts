@@ -73,6 +73,10 @@ export interface Event {
    *   updated.
    * - `ach_transfer.created` - Occurs whenever an ACH Transfer is created.
    * - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
+   * - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
+   *   created.
+   * - `bookkeeping_entry_set.updated` - Occurs whenever a Bookkeeping Entry Set is
+   *   created.
    * - `card.created` - Occurs whenever a Card is created.
    * - `card.updated` - Occurs whenever a Card is updated.
    * - `card_payment.created` - Occurs whenever a Card Payment is created.
@@ -94,9 +98,14 @@ export interface Event {
    * - `document.created` - Occurs whenever a Document is created.
    * - `entity.created` - Occurs whenever an Entity is created.
    * - `entity.updated` - Occurs whenever an Entity is updated.
+   * - `event_subscription.created` - Occurs whenever an Event Subscription is
+   *   created.
+   * - `event_subscription.updated` - Occurs whenever an Event Subscription is
+   *   updated.
    * - `export.created` - Occurs whenever an Export is created.
    * - `export.updated` - Occurs whenever an Export is updated.
    * - `external_account.created` - Occurs whenever an External Account is created.
+   * - `external_account.updated` - Occurs whenever an External Account is updated.
    * - `file.created` - Occurs whenever a File is created.
    * - `group.updated` - Occurs whenever a Group is updated.
    * - `group.heartbeat` - Increase may send webhooks with this category to see if a
@@ -162,6 +171,8 @@ export interface Event {
     | 'ach_prenotification.updated'
     | 'ach_transfer.created'
     | 'ach_transfer.updated'
+    | 'bookkeeping_account.created'
+    | 'bookkeeping_entry_set.updated'
     | 'card.created'
     | 'card.updated'
     | 'card_payment.created'
@@ -180,9 +191,12 @@ export interface Event {
     | 'document.created'
     | 'entity.created'
     | 'entity.updated'
+    | 'event_subscription.created'
+    | 'event_subscription.updated'
     | 'export.created'
     | 'export.updated'
     | 'external_account.created'
+    | 'external_account.updated'
     | 'file.created'
     | 'group.updated'
     | 'group.heartbeat'
@@ -256,6 +270,8 @@ export namespace EventListParams {
       | 'ach_prenotification.updated'
       | 'ach_transfer.created'
       | 'ach_transfer.updated'
+      | 'bookkeeping_account.created'
+      | 'bookkeeping_entry_set.updated'
       | 'card.created'
       | 'card.updated'
       | 'card_payment.created'
@@ -274,9 +290,12 @@ export namespace EventListParams {
       | 'document.created'
       | 'entity.created'
       | 'entity.updated'
+      | 'event_subscription.created'
+      | 'event_subscription.updated'
       | 'export.created'
       | 'export.updated'
       | 'external_account.created'
+      | 'external_account.updated'
       | 'file.created'
       | 'group.updated'
       | 'group.heartbeat'
