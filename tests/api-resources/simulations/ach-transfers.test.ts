@@ -11,8 +11,8 @@ const increase = new Increase({
 describe('resource achTransfers', () => {
   test('createInbound: only required params', async () => {
     const responsePromise = increase.simulations.achTransfers.createInbound({
-      account_number_id: 'string',
-      amount: 0,
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,8 +25,8 @@ describe('resource achTransfers', () => {
 
   test('createInbound: required and optional params', async () => {
     const response = await increase.simulations.achTransfers.createInbound({
-      account_number_id: 'string',
-      amount: 0,
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
       company_entry_description: 'x',

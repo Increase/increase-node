@@ -11,7 +11,7 @@ const increase = new Increase({
 describe('resource supplementalDocuments', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.entities.supplementalDocuments.create('entity_n8y8tnk2p9339ti393yi', {
-      file_id: 'string',
+      file_id: 'file_makxrc67oh9l6sg7w9yc',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,7 +24,7 @@ describe('resource supplementalDocuments', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.entities.supplementalDocuments.create('entity_n8y8tnk2p9339ti393yi', {
-      file_id: 'string',
+      file_id: 'file_makxrc67oh9l6sg7w9yc',
     });
   });
 

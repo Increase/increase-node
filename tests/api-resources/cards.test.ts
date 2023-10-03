@@ -10,7 +10,7 @@ const increase = new Increase({
 
 describe('resource cards', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.cards.create({ account_id: 'string' });
+    const responsePromise = increase.cards.create({ account_id: 'account_in71c4amph0vgo2qllky' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,9 +22,9 @@ describe('resource cards', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.cards.create({
-      account_id: 'string',
+      account_id: 'account_in71c4amph0vgo2qllky',
       billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-      description: 'x',
+      description: 'Card for Ian Crease',
       digital_wallet: { email: 'x', phone: 'x', card_profile_id: 'string' },
       entity_id: 'string',
     });

@@ -11,8 +11,8 @@ const increase = new Increase({
 describe('resource cardDisputes', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.cardDisputes.create({
-      disputed_transaction_id: 'string',
-      explanation: 'x',
+      disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
+      explanation: 'Unauthorized recurring transaction.',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,8 +25,8 @@ describe('resource cardDisputes', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.cardDisputes.create({
-      disputed_transaction_id: 'string',
-      explanation: 'x',
+      disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
+      explanation: 'Unauthorized recurring transaction.',
     });
   });
 

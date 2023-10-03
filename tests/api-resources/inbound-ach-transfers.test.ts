@@ -107,7 +107,7 @@ describe('resource inboundACHTransfers', () => {
   test('transferReturn: only required params', async () => {
     const responsePromise = increase.inboundACHTransfers.transferReturn(
       'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
-      { reason: 'authorization_revoked_by_customer' },
+      { reason: 'payment_stopped' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -121,7 +121,7 @@ describe('resource inboundACHTransfers', () => {
   test('transferReturn: required and optional params', async () => {
     const response = await increase.inboundACHTransfers.transferReturn(
       'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
-      { reason: 'authorization_revoked_by_customer' },
+      { reason: 'payment_stopped' },
     );
   });
 });

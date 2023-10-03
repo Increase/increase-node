@@ -11,12 +11,12 @@ const increase = new Increase({
 describe('resource cardProfiles', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.cardProfiles.create({
-      description: 'x',
+      description: 'My Card Profile',
       digital_wallets: {
-        issuer_name: 'x',
-        card_description: 'x',
-        background_image_file_id: 'string',
-        app_icon_file_id: 'string',
+        issuer_name: 'MyBank',
+        card_description: 'MyBank Signature Card',
+        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -30,16 +30,16 @@ describe('resource cardProfiles', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.cardProfiles.create({
-      description: 'x',
+      description: 'My Card Profile',
       digital_wallets: {
-        text_color: { red: 0, green: 0, blue: 0 },
-        issuer_name: 'x',
-        card_description: 'x',
-        contact_website: 'string',
-        contact_email: 'x',
-        contact_phone: 'x',
-        background_image_file_id: 'string',
-        app_icon_file_id: 'string',
+        text_color: { red: 26, green: 43, blue: 59 },
+        issuer_name: 'MyBank',
+        card_description: 'MyBank Signature Card',
+        contact_website: 'https://example.com',
+        contact_email: 'user@example.com',
+        contact_phone: '+18885551212',
+        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       },
       physical_cards: { contact_phone: 'x', front_image_file_id: 'string', carrier_image_file_id: 'string' },
     });

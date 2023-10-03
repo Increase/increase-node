@@ -24,21 +24,27 @@ describe('resource entities', () => {
     const response = await increase.entities.create({
       structure: 'corporation',
       corporation: {
-        name: 'x',
-        website: 'string',
-        tax_identifier: 'x',
-        incorporation_state: 'x',
-        address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+        name: 'National Phonograph Company',
+        website: 'https://example.com',
+        tax_identifier: '602214076',
+        incorporation_state: 'NY',
+        address: { line1: '33 Liberty Street', line2: 'x', city: 'New York', state: 'NY', zip: '10045' },
         beneficial_owners: [
           {
             individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+              name: 'Ian Crease',
+              date_of_birth: '1970-01-31',
+              address: {
+                line1: '33 Liberty Street',
+                line2: 'x',
+                city: 'New York',
+                state: 'NY',
+                zip: '10045',
+              },
               confirmed_no_us_tax_id: true,
               identification: {
                 method: 'social_security_number',
-                number: 'xxxx',
+                number: '078051120',
                 passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
                 drivers_license: {
                   file_id: 'string',
@@ -55,64 +61,8 @@ describe('resource entities', () => {
                 },
               },
             },
-            company_title: 'x',
-            prongs: ['ownership', 'control'],
-          },
-          {
-            individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-              confirmed_no_us_tax_id: true,
-              identification: {
-                method: 'social_security_number',
-                number: 'xxxx',
-                passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
-                drivers_license: {
-                  file_id: 'string',
-                  back_file_id: 'string',
-                  expiration_date: '2019-12-27',
-                  state: 'x',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'string',
-                  back_file_id: 'string',
-                },
-              },
-            },
-            company_title: 'x',
-            prongs: ['ownership', 'control'],
-          },
-          {
-            individual: {
-              name: 'x',
-              date_of_birth: '2019-12-27',
-              address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-              confirmed_no_us_tax_id: true,
-              identification: {
-                method: 'social_security_number',
-                number: 'xxxx',
-                passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
-                drivers_license: {
-                  file_id: 'string',
-                  back_file_id: 'string',
-                  expiration_date: '2019-12-27',
-                  state: 'x',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'string',
-                  back_file_id: 'string',
-                },
-              },
-            },
-            company_title: 'x',
-            prongs: ['ownership', 'control'],
+            company_title: 'CEO',
+            prongs: ['control'],
           },
         ],
       },
@@ -219,7 +169,7 @@ describe('resource entities', () => {
         },
       },
       relationship: 'affiliated',
-      supplemental_documents: [{ file_id: 'string' }, { file_id: 'string' }, { file_id: 'string' }],
+      supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
       trust: {
         name: 'x',
         category: 'revocable',
@@ -414,7 +364,7 @@ describe('resource entities', () => {
 
   test('updateAddress: only required params', async () => {
     const responsePromise = increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
+      address: { line1: '33 Liberty Street', city: 'New York', state: 'NY', zip: '10045' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -427,7 +377,7 @@ describe('resource entities', () => {
 
   test('updateAddress: required and optional params', async () => {
     const response = await increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+      address: { line1: '33 Liberty Street', line2: 'Unit 2', city: 'New York', state: 'NY', zip: '10045' },
     });
   });
 });

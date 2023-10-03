@@ -11,9 +11,9 @@ const increase = new Increase({
 describe('resource externalAccounts', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.externalAccounts.create({
-      account_number: 'x',
-      description: 'x',
-      routing_number: 'xxxxxxxxx',
+      account_number: '987654321',
+      description: 'Landlord',
+      routing_number: '101050001',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,9 +26,9 @@ describe('resource externalAccounts', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.externalAccounts.create({
-      account_number: 'x',
-      description: 'x',
-      routing_number: 'xxxxxxxxx',
+      account_number: '987654321',
+      description: 'Landlord',
+      routing_number: '101050001',
       funding: 'checking',
     });
   });

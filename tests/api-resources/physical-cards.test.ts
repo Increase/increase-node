@@ -11,12 +11,18 @@ const increase = new Increase({
 describe('resource physicalCards', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.physicalCards.create({
-      card_id: 'string',
-      card_profile_id: 'string',
-      cardholder: { first_name: 'x', last_name: 'x' },
+      card_id: 'card_oubs0hwk5rn6knuecxg2',
+      card_profile_id: 'card_profile_cox5y73lob2eqly18piy',
+      cardholder: { first_name: 'Ian', last_name: 'Crease' },
       shipment: {
         method: 'usps',
-        address: { name: 'x', line1: 'x', city: 'x', state: 'x', postal_code: 'x' },
+        address: {
+          name: 'Ian Crease',
+          line1: '33 Liberty Street',
+          city: 'New York',
+          state: 'NY',
+          postal_code: '10045',
+        },
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -30,20 +36,20 @@ describe('resource physicalCards', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.physicalCards.create({
-      card_id: 'string',
-      card_profile_id: 'string',
-      cardholder: { first_name: 'x', last_name: 'x' },
+      card_id: 'card_oubs0hwk5rn6knuecxg2',
+      card_profile_id: 'card_profile_cox5y73lob2eqly18piy',
+      cardholder: { first_name: 'Ian', last_name: 'Crease' },
       shipment: {
         method: 'usps',
         address: {
-          name: 'x',
-          line1: 'x',
-          line2: 'x',
+          name: 'Ian Crease',
+          line1: '33 Liberty Street',
+          line2: 'Unit 2',
           line3: 'x',
           phone_number: 'x',
-          city: 'x',
-          state: 'x',
-          postal_code: 'x',
+          city: 'New York',
+          state: 'NY',
+          postal_code: '10045',
         },
       },
     });
@@ -71,7 +77,7 @@ describe('resource physicalCards', () => {
 
   test('update: only required params', async () => {
     const responsePromise = increase.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'active',
+      status: 'disabled',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -84,7 +90,7 @@ describe('resource physicalCards', () => {
 
   test('update: required and optional params', async () => {
     const response = await increase.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'active',
+      status: 'disabled',
     });
   });
 

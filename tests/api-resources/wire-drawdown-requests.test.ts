@@ -12,12 +12,12 @@ describe('resource wireDrawdownRequests', () => {
   // Prism tests are broken
   test.skip('create: only required params', async () => {
     const responsePromise = increase.wireDrawdownRequests.create({
-      account_number_id: 'string',
-      amount: 1,
-      message_to_recipient: 'x',
-      recipient_account_number: 'x',
-      recipient_name: 'x',
-      recipient_routing_number: 'x',
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 10000,
+      message_to_recipient: 'Invoice 29582',
+      recipient_account_number: '987654321',
+      recipient_name: 'Ian Crease',
+      recipient_routing_number: '101050001',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -31,14 +31,14 @@ describe('resource wireDrawdownRequests', () => {
   // Prism tests are broken
   test.skip('create: required and optional params', async () => {
     const response = await increase.wireDrawdownRequests.create({
-      account_number_id: 'string',
-      amount: 1,
-      message_to_recipient: 'x',
-      recipient_account_number: 'x',
-      recipient_name: 'x',
-      recipient_routing_number: 'x',
-      recipient_address_line1: 'x',
-      recipient_address_line2: 'x',
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 10000,
+      message_to_recipient: 'Invoice 29582',
+      recipient_account_number: '987654321',
+      recipient_name: 'Ian Crease',
+      recipient_routing_number: '101050001',
+      recipient_address_line1: '33 Liberty Street',
+      recipient_address_line2: 'New York, NY, 10045',
       recipient_address_line3: 'x',
     });
   });

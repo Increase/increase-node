@@ -10,7 +10,10 @@ const increase = new Increase({
 
 describe('resource checkTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.checkTransfers.create({ account_id: 'string', amount: 1 });
+    const responsePromise = increase.checkTransfers.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 1000,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,18 +25,32 @@ describe('resource checkTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.checkTransfers.create({
-      account_id: 'string',
-      amount: 1,
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 1000,
       fulfillment_method: 'physical_check',
       physical_check: {
-        memo: 'x',
+        memo: 'Check payment',
         note: 'x',
-        recipient_name: 'x',
-        mailing_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-        return_address: { name: 'x', line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
+        recipient_name: 'Ian Crease',
+        mailing_address: {
+          name: 'Ian Crease',
+          line1: '33 Liberty Street',
+          line2: 'x',
+          city: 'New York',
+          state: 'NY',
+          postal_code: '10045',
+        },
+        return_address: {
+          name: 'Ian Crease',
+          line1: '33 Liberty Street',
+          line2: 'x',
+          city: 'New York',
+          state: 'NY',
+          postal_code: '10045',
+        },
       },
       require_approval: true,
-      source_account_number_id: 'string',
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       unique_identifier: 'x',
     });
   });
