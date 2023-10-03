@@ -11,10 +11,10 @@ const increase = new Increase({
 describe('resource realTimePaymentsTransfers', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.realTimePaymentsTransfers.create({
-      amount: 1,
-      creditor_name: 'x',
-      remittance_information: 'x',
-      source_account_number_id: 'string',
+      amount: 100,
+      creditor_name: 'Ian Crease',
+      remittance_information: 'Invoice 29582',
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,12 +27,12 @@ describe('resource realTimePaymentsTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.realTimePaymentsTransfers.create({
-      amount: 1,
-      creditor_name: 'x',
-      remittance_information: 'x',
-      source_account_number_id: 'string',
-      destination_account_number: 'x',
-      destination_routing_number: 'xxxxxxxxx',
+      amount: 100,
+      creditor_name: 'Ian Crease',
+      remittance_information: 'Invoice 29582',
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      destination_account_number: '987654321',
+      destination_routing_number: '101050001',
       external_account_id: 'string',
       require_approval: true,
       unique_identifier: 'x',

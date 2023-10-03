@@ -179,7 +179,7 @@ describe('idempotency', () => {
       apiKey: 'my api key',
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
     });
-    await client.accounts.create({ name: 'x' }, { idempotencyKey: 'my-idempotency-key' });
+    await client.accounts.create({ name: 'New Account!' }, { idempotencyKey: 'my-idempotency-key' });
   });
 });
 

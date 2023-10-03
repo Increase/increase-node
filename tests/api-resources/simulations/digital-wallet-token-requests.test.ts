@@ -10,7 +10,9 @@ const increase = new Increase({
 
 describe('resource digitalWalletTokenRequests', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.simulations.digitalWalletTokenRequests.create({ card_id: 'string' });
+    const responsePromise = increase.simulations.digitalWalletTokenRequests.create({
+      card_id: 'card_oubs0hwk5rn6knuecxg2',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,6 +23,8 @@ describe('resource digitalWalletTokenRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.simulations.digitalWalletTokenRequests.create({ card_id: 'string' });
+    const response = await increase.simulations.digitalWalletTokenRequests.create({
+      card_id: 'card_oubs0hwk5rn6knuecxg2',
+    });
   });
 });

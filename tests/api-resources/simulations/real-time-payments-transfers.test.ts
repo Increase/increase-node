@@ -25,8 +25,8 @@ describe('resource realTimePaymentsTransfers', () => {
 
   test('createInbound: only required params', async () => {
     const responsePromise = increase.simulations.realTimePaymentsTransfers.createInbound({
-      account_number_id: 'string',
-      amount: 1,
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -39,13 +39,13 @@ describe('resource realTimePaymentsTransfers', () => {
 
   test('createInbound: required and optional params', async () => {
     const response = await increase.simulations.realTimePaymentsTransfers.createInbound({
-      account_number_id: 'string',
-      amount: 1,
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
       debtor_account_number: 'x',
       debtor_name: 'x',
       debtor_routing_number: 'xxxxxxxxx',
       remittance_information: 'x',
-      request_for_payment_id: 'string',
+      request_for_payment_id: 'real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7',
     });
   });
 });
