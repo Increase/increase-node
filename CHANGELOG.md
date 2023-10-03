@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.11.5 (2023-10-03)
+
+Full Changelog: [v0.11.4...v0.11.5](https://github.com/increase/increase-node/compare/v0.11.4...v0.11.5)
+
+### Features
+
+* **api:** expand event categories and Entity status options ([#183](https://github.com/increase/increase-node/issues/183)) ([21f2aa7](https://github.com/increase/increase-node/commit/21f2aa74e15805ad4a4dbbdd4ce96f7165a3c32d))
+
+
+### Chores
+
+* **internal:** update lock file ([#179](https://github.com/increase/increase-node/issues/179)) ([0cf0c29](https://github.com/increase/increase-node/commit/0cf0c29e7e2f13244c3375c9cd95852601ada3da))
+* **tests:** update test examples ([#184](https://github.com/increase/increase-node/issues/184)) ([4a55e48](https://github.com/increase/increase-node/commit/4a55e4806eab51a3077781b77500f5e8dca7f92b))
+
 ## 0.11.4 (2023-09-29)
 
 Full Changelog: [v0.11.3...v0.11.4](https://github.com/Increase/increase-node/compare/v0.11.3...v0.11.4)
