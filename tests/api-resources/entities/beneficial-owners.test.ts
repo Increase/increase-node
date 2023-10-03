@@ -13,14 +13,14 @@ describe('resource beneficialOwners', () => {
     const responsePromise = increase.entities.beneficialOwners.create({
       beneficial_owner: {
         individual: {
-          name: 'x',
-          date_of_birth: '2019-12-27',
-          address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-          identification: { method: 'social_security_number', number: 'xxxx' },
+          name: 'Ian Crease',
+          date_of_birth: '1970-01-31',
+          address: { line1: '33 Liberty Street', city: 'New York', state: 'NY', zip: '10045' },
+          identification: { method: 'social_security_number', number: '078051120' },
         },
-        prongs: ['ownership', 'control'],
+        prongs: ['control'],
       },
-      entity_id: 'string',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -35,13 +35,13 @@ describe('resource beneficialOwners', () => {
     const response = await increase.entities.beneficialOwners.create({
       beneficial_owner: {
         individual: {
-          name: 'x',
-          date_of_birth: '2019-12-27',
-          address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+          name: 'Ian Crease',
+          date_of_birth: '1970-01-31',
+          address: { line1: '33 Liberty Street', line2: 'x', city: 'New York', state: 'NY', zip: '10045' },
           confirmed_no_us_tax_id: true,
           identification: {
             method: 'social_security_number',
-            number: 'xxxx',
+            number: '078051120',
             passport: { file_id: 'string', expiration_date: '2019-12-27', country: 'x' },
             drivers_license: {
               file_id: 'string',
@@ -58,17 +58,17 @@ describe('resource beneficialOwners', () => {
             },
           },
         },
-        company_title: 'x',
-        prongs: ['ownership', 'control'],
+        company_title: 'CEO',
+        prongs: ['control'],
       },
-      entity_id: 'string',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
   });
 
   test('archive: only required params', async () => {
     const responsePromise = increase.entities.beneficialOwners.archive({
-      beneficial_owner_id: 'string',
-      entity_id: 'string',
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -81,16 +81,16 @@ describe('resource beneficialOwners', () => {
 
   test('archive: required and optional params', async () => {
     const response = await increase.entities.beneficialOwners.archive({
-      beneficial_owner_id: 'string',
-      entity_id: 'string',
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
   });
 
   test('updateAddress: only required params', async () => {
     const responsePromise = increase.entities.beneficialOwners.updateAddress({
-      address: { line1: 'x', city: 'x', state: 'x', zip: 'x' },
-      beneficial_owner_id: 'string',
-      entity_id: 'string',
+      address: { line1: '33 Liberty Street', city: 'New York', state: 'NY', zip: '10045' },
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -103,9 +103,9 @@ describe('resource beneficialOwners', () => {
 
   test('updateAddress: required and optional params', async () => {
     const response = await increase.entities.beneficialOwners.updateAddress({
-      address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
-      beneficial_owner_id: 'string',
-      entity_id: 'string',
+      address: { line1: '33 Liberty Street', line2: 'Unit 2', city: 'New York', state: 'NY', zip: '10045' },
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
   });
 });

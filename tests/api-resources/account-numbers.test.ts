@@ -10,7 +10,10 @@ const increase = new Increase({
 
 describe('resource accountNumbers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.accountNumbers.create({ account_id: 'string', name: 'x' });
+    const responsePromise = increase.accountNumbers.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
+      name: 'Rent payments',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,8 +25,8 @@ describe('resource accountNumbers', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.accountNumbers.create({
-      account_id: 'string',
-      name: 'x',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      name: 'Rent payments',
       inbound_ach: { debit_status: 'allowed' },
       inbound_checks: { status: 'allowed' },
     });

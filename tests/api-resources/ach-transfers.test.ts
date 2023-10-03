@@ -11,9 +11,9 @@ const increase = new Increase({
 describe('resource achTransfers', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.achTransfers.create({
-      account_id: 'string',
-      amount: 0,
-      statement_descriptor: 'x',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 100,
+      statement_descriptor: 'New ACH transfer',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,10 +26,10 @@ describe('resource achTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.achTransfers.create({
-      account_id: 'string',
-      amount: 0,
-      statement_descriptor: 'x',
-      account_number: 'x',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 100,
+      statement_descriptor: 'New ACH transfer',
+      account_number: '987654321',
       addendum: 'x',
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
@@ -41,7 +41,7 @@ describe('resource achTransfers', () => {
       individual_id: 'x',
       individual_name: 'x',
       require_approval: true,
-      routing_number: 'xxxxxxxxx',
+      routing_number: '101050001',
       standard_entry_class_code: 'corporate_credit_or_debit',
       unique_identifier: 'x',
     });

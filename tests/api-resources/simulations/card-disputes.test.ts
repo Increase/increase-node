@@ -11,7 +11,7 @@ const increase = new Increase({
 describe('resource cardDisputes', () => {
   test('action: only required params', async () => {
     const responsePromise = increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
-      status: 'accepted',
+      status: 'rejected',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,8 +24,8 @@ describe('resource cardDisputes', () => {
 
   test('action: required and optional params', async () => {
     const response = await increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
-      status: 'accepted',
-      explanation: 'x',
+      status: 'rejected',
+      explanation: 'This was a valid recurring transaction',
     });
   });
 });

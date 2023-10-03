@@ -10,7 +10,7 @@ const increase = new Increase({
 
 describe('resource bookkeepingAccounts', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.bookkeepingAccounts.create({ name: 'x' });
+    const responsePromise = increase.bookkeepingAccounts.create({ name: 'New Account!' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource bookkeepingAccounts', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.bookkeepingAccounts.create({
-      name: 'x',
+      name: 'New Account!',
       account_id: 'string',
       compliance_category: 'commingled_cash',
       entity_id: 'string',

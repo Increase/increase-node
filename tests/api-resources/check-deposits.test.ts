@@ -11,11 +11,11 @@ const increase = new Increase({
 describe('resource checkDeposits', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.checkDeposits.create({
-      account_id: 'string',
-      amount: 0,
-      back_image_file_id: 'string',
-      currency: 'x',
-      front_image_file_id: 'string',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 1000,
+      back_image_file_id: 'file_26khfk98mzfz90a11oqx',
+      currency: 'USD',
+      front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,11 +28,11 @@ describe('resource checkDeposits', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.checkDeposits.create({
-      account_id: 'string',
-      amount: 0,
-      back_image_file_id: 'string',
-      currency: 'x',
-      front_image_file_id: 'string',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 1000,
+      back_image_file_id: 'file_26khfk98mzfz90a11oqx',
+      currency: 'USD',
+      front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
     });
   });
 

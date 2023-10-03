@@ -11,8 +11,8 @@ const increase = new Increase({
 describe('resource achPrenotifications', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.achPrenotifications.create({
-      account_number: 'x',
-      routing_number: 'xxxxxxxxx',
+      account_number: '987654321',
+      routing_number: '101050001',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,8 +25,8 @@ describe('resource achPrenotifications', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.achPrenotifications.create({
-      account_number: 'x',
-      routing_number: 'xxxxxxxxx',
+      account_number: '987654321',
+      routing_number: '101050001',
       addendum: 'x',
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',

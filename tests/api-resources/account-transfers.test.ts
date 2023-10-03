@@ -11,10 +11,10 @@ const increase = new Increase({
 describe('resource accountTransfers', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.accountTransfers.create({
-      account_id: 'string',
-      amount: 1,
-      description: 'x',
-      destination_account_id: 'string',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 100,
+      description: 'Creating liquidity',
+      destination_account_id: 'account_uf16sut2ct5bevmq3eh',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,10 +27,10 @@ describe('resource accountTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.accountTransfers.create({
-      account_id: 'string',
-      amount: 1,
-      description: 'x',
-      destination_account_id: 'string',
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: 100,
+      description: 'Creating liquidity',
+      destination_account_id: 'account_uf16sut2ct5bevmq3eh',
       require_approval: true,
       unique_identifier: 'x',
     });

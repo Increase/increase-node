@@ -95,7 +95,7 @@ a subclass of `APIError` will be thrown:
 
 ```ts
 async function main() {
-  const account = await increase.accounts.create({ name: 'x' }).catch((err) => {
+  const account = await increase.accounts.create({ name: 'New Account!' }).catch((err) => {
     if (err instanceof Increase.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
