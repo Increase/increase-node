@@ -1,6 +1,6 @@
 {
   "name": "increase",
-  "version": "0.11.6",
+  "version": "0.11.7",
   "description": "Client library for the Increase API",
   "author": "Increase <dev-feedback@increase.com>",
   "types": "dist/index.d.ts",
