@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.7 (2023-10-06)
+
+Full Changelog: [v0.11.6...v0.11.7](https://github.com/increase/increase-node/compare/v0.11.6...v0.11.7)
+
+### Bug Fixes
+
+* prevent ReferenceError, update compatibility to ES2020 and Node 18+ ([#187](https://github.com/increase/increase-node/issues/187)) ([ed733e6](https://github.com/increase/increase-node/commit/ed733e623b708211961da39356bf55886c80ce18))
+
 ## 0.11.6 (2023-10-06)
 
 Full Changelog: [v0.11.5...v0.11.6](https://github.com/Increase/increase-node/compare/v0.11.5...v0.11.6)
