@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.6 (2023-10-06)
+
+Full Changelog: [v0.11.5...v0.11.6](https://github.com/Increase/increase-node/compare/v0.11.5...v0.11.6)
+
+### Features
+
+* **api:** add direction property to CardAuthorization ([#185](https://github.com/Increase/increase-node/issues/185)) ([1656128](https://github.com/Increase/increase-node/commit/1656128e9dda73c7e19e39067b8890b23082acec))
+
 ## 0.11.5 (2023-10-03)
 
 Full Changelog: [v0.11.4...v0.11.5](https://github.com/increase/increase-node/compare/v0.11.4...v0.11.5)
