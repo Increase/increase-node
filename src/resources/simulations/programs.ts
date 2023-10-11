@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Programs_ from 'increase/resources/programs';
-import * as API from './index';
+import * as SimulationsProgramsAPI from 'increase/resources/simulations/programs';
+import * as ProgramsAPI from 'increase/resources/programs';
 
 export class Programs extends APIResource {
   /**
@@ -11,7 +11,7 @@ export class Programs extends APIResource {
    * program called Commercial Banking. Note that when your group operates more than
    * one program, `program_id` is a required field when creating accounts.
    */
-  create(body: ProgramCreateParams, options?: Core.RequestOptions): Core.APIPromise<Programs_.Program> {
+  create(body: ProgramCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProgramsAPI.Program> {
     return this.post('/simulations/programs', { body, ...options });
   }
 }
@@ -24,5 +24,5 @@ export interface ProgramCreateParams {
 }
 
 export namespace Programs {
-  export import ProgramCreateParams = API.ProgramCreateParams;
+  export type ProgramCreateParams = SimulationsProgramsAPI.ProgramCreateParams;
 }

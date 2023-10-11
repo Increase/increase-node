@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as EventsAPI from 'increase/resources/events';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Events extends APIResource {
   /**
@@ -31,8 +31,6 @@ export class Events extends APIResource {
 }
 
 export class EventsPage extends Page<Event> {}
-// alias so we can export it in the namespace
-type _EventsPage = EventsPage;
 
 /**
  * Events are records of things that happened to objects at Increase. Events are
@@ -357,7 +355,7 @@ export namespace EventListParams {
 }
 
 export namespace Events {
-  export import Event = API.Event;
-  export type EventsPage = _EventsPage;
-  export import EventListParams = API.EventListParams;
+  export type Event = EventsAPI.Event;
+  export import EventsPage = EventsAPI.EventsPage;
+  export type EventListParams = EventsAPI.EventListParams;
 }

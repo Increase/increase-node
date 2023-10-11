@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CardPurchaseSupplementsAPI from 'increase/resources/card-purchase-supplements';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CardPurchaseSupplements extends APIResource {
   /**
@@ -37,8 +37,6 @@ export class CardPurchaseSupplements extends APIResource {
 }
 
 export class CardPurchaseSupplementsPage extends Page<CardPurchaseSupplement> {}
-// alias so we can export it in the namespace
-type _CardPurchaseSupplementsPage = CardPurchaseSupplementsPage;
 
 /**
  * Additional information about a card purchase (e.g., settlement or refund), such
@@ -325,7 +323,7 @@ export namespace CardPurchaseSupplementListParams {
 }
 
 export namespace CardPurchaseSupplements {
-  export import CardPurchaseSupplement = API.CardPurchaseSupplement;
-  export type CardPurchaseSupplementsPage = _CardPurchaseSupplementsPage;
-  export import CardPurchaseSupplementListParams = API.CardPurchaseSupplementListParams;
+  export type CardPurchaseSupplement = CardPurchaseSupplementsAPI.CardPurchaseSupplement;
+  export import CardPurchaseSupplementsPage = CardPurchaseSupplementsAPI.CardPurchaseSupplementsPage;
+  export type CardPurchaseSupplementListParams = CardPurchaseSupplementsAPI.CardPurchaseSupplementListParams;
 }

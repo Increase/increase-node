@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as AccountTransfersAPI from 'increase/resources/account-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class AccountTransfers extends APIResource {
   /**
@@ -55,8 +55,6 @@ export class AccountTransfers extends APIResource {
 }
 
 export class AccountTransfersPage extends Page<AccountTransfer> {}
-// alias so we can export it in the namespace
-type _AccountTransfersPage = AccountTransfersPage;
 
 /**
  * Account transfers move funds between your own accounts at Increase.
@@ -279,8 +277,8 @@ export namespace AccountTransferListParams {
 }
 
 export namespace AccountTransfers {
-  export import AccountTransfer = API.AccountTransfer;
-  export type AccountTransfersPage = _AccountTransfersPage;
-  export import AccountTransferCreateParams = API.AccountTransferCreateParams;
-  export import AccountTransferListParams = API.AccountTransferListParams;
+  export type AccountTransfer = AccountTransfersAPI.AccountTransfer;
+  export import AccountTransfersPage = AccountTransfersAPI.AccountTransfersPage;
+  export type AccountTransferCreateParams = AccountTransfersAPI.AccountTransferCreateParams;
+  export type AccountTransferListParams = AccountTransfersAPI.AccountTransferListParams;
 }

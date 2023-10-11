@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as DigitalWalletTokensAPI from 'increase/resources/digital-wallet-tokens';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class DigitalWalletTokens extends APIResource {
   /**
@@ -34,8 +34,6 @@ export class DigitalWalletTokens extends APIResource {
 }
 
 export class DigitalWalletTokensPage extends Page<DigitalWalletToken> {}
-// alias so we can export it in the namespace
-type _DigitalWalletTokensPage = DigitalWalletTokensPage;
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -124,7 +122,7 @@ export namespace DigitalWalletTokenListParams {
 }
 
 export namespace DigitalWalletTokens {
-  export import DigitalWalletToken = API.DigitalWalletToken;
-  export type DigitalWalletTokensPage = _DigitalWalletTokensPage;
-  export import DigitalWalletTokenListParams = API.DigitalWalletTokenListParams;
+  export type DigitalWalletToken = DigitalWalletTokensAPI.DigitalWalletToken;
+  export import DigitalWalletTokensPage = DigitalWalletTokensAPI.DigitalWalletTokensPage;
+  export type DigitalWalletTokenListParams = DigitalWalletTokensAPI.DigitalWalletTokenListParams;
 }

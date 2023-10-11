@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CardProfilesAPI from 'increase/resources/card-profiles';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CardProfiles extends APIResource {
   /**
@@ -48,8 +48,6 @@ export class CardProfiles extends APIResource {
 }
 
 export class CardProfilesPage extends Page<CardProfile> {}
-// alias so we can export it in the namespace
-type _CardProfilesPage = CardProfilesPage;
 
 /**
  * This contains artwork and metadata relating to a Card's appearance in digital
@@ -360,8 +358,8 @@ export namespace CardProfileListParams {
 }
 
 export namespace CardProfiles {
-  export import CardProfile = API.CardProfile;
-  export type CardProfilesPage = _CardProfilesPage;
-  export import CardProfileCreateParams = API.CardProfileCreateParams;
-  export import CardProfileListParams = API.CardProfileListParams;
+  export type CardProfile = CardProfilesAPI.CardProfile;
+  export import CardProfilesPage = CardProfilesAPI.CardProfilesPage;
+  export type CardProfileCreateParams = CardProfilesAPI.CardProfileCreateParams;
+  export type CardProfileListParams = CardProfilesAPI.CardProfileListParams;
 }

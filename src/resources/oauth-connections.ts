@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as OauthConnectionsAPI from 'increase/resources/oauth-connections';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class OauthConnections extends APIResource {
   /**
@@ -34,8 +34,6 @@ export class OauthConnections extends APIResource {
 }
 
 export class OauthConnectionsPage extends Page<OauthConnection> {}
-// alias so we can export it in the namespace
-type _OauthConnectionsPage = OauthConnectionsPage;
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
@@ -76,7 +74,7 @@ export interface OauthConnection {
 export interface OauthConnectionListParams extends PageParams {}
 
 export namespace OauthConnections {
-  export import OauthConnection = API.OauthConnection;
-  export type OauthConnectionsPage = _OauthConnectionsPage;
-  export import OauthConnectionListParams = API.OauthConnectionListParams;
+  export type OauthConnection = OauthConnectionsAPI.OauthConnection;
+  export import OauthConnectionsPage = OauthConnectionsAPI.OauthConnectionsPage;
+  export type OauthConnectionListParams = OauthConnectionsAPI.OauthConnectionListParams;
 }

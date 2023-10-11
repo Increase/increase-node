@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as BookkeepingAccountsAPI from 'increase/resources/bookkeeping-accounts';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class BookkeepingAccounts extends APIResource {
   /**
@@ -37,8 +37,6 @@ export class BookkeepingAccounts extends APIResource {
 }
 
 export class BookkeepingAccountsPage extends Page<BookkeepingAccount> {}
-// alias so we can export it in the namespace
-type _BookkeepingAccountsPage = BookkeepingAccountsPage;
 
 /**
  * Accounts are T-accounts. They can store accounting entries.
@@ -107,8 +105,8 @@ export interface BookkeepingAccountCreateParams {
 export interface BookkeepingAccountListParams extends PageParams {}
 
 export namespace BookkeepingAccounts {
-  export import BookkeepingAccount = API.BookkeepingAccount;
-  export type BookkeepingAccountsPage = _BookkeepingAccountsPage;
-  export import BookkeepingAccountCreateParams = API.BookkeepingAccountCreateParams;
-  export import BookkeepingAccountListParams = API.BookkeepingAccountListParams;
+  export type BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
+  export import BookkeepingAccountsPage = BookkeepingAccountsAPI.BookkeepingAccountsPage;
+  export type BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
+  export type BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
 }

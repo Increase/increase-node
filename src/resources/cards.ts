@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CardsAPI from 'increase/resources/cards';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Cards extends APIResource {
   /**
@@ -52,8 +52,6 @@ export class Cards extends APIResource {
 }
 
 export class CardsPage extends Page<Card> {}
-// alias so we can export it in the namespace
-type _CardsPage = CardsPage;
 
 /**
  * Cards are commercial credit cards. They'll immediately work for online purchases
@@ -446,10 +444,10 @@ export namespace CardListParams {
 }
 
 export namespace Cards {
-  export import Card = API.Card;
-  export import CardDetails = API.CardDetails;
-  export type CardsPage = _CardsPage;
-  export import CardCreateParams = API.CardCreateParams;
-  export import CardUpdateParams = API.CardUpdateParams;
-  export import CardListParams = API.CardListParams;
+  export type Card = CardsAPI.Card;
+  export type CardDetails = CardsAPI.CardDetails;
+  export import CardsPage = CardsAPI.CardsPage;
+  export type CardCreateParams = CardsAPI.CardCreateParams;
+  export type CardUpdateParams = CardsAPI.CardUpdateParams;
+  export type CardListParams = CardsAPI.CardListParams;
 }

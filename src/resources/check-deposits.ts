@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CheckDepositsAPI from 'increase/resources/check-deposits';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CheckDeposits extends APIResource {
   /**
@@ -41,8 +41,6 @@ export class CheckDeposits extends APIResource {
 }
 
 export class CheckDepositsPage extends Page<CheckDeposit> {}
-// alias so we can export it in the namespace
-type _CheckDepositsPage = CheckDepositsPage;
 
 /**
  * Check Deposits allow you to deposit images of paper checks into your account.
@@ -381,8 +379,8 @@ export namespace CheckDepositListParams {
 }
 
 export namespace CheckDeposits {
-  export import CheckDeposit = API.CheckDeposit;
-  export type CheckDepositsPage = _CheckDepositsPage;
-  export import CheckDepositCreateParams = API.CheckDepositCreateParams;
-  export import CheckDepositListParams = API.CheckDepositListParams;
+  export type CheckDeposit = CheckDepositsAPI.CheckDeposit;
+  export import CheckDepositsPage = CheckDepositsAPI.CheckDepositsPage;
+  export type CheckDepositCreateParams = CheckDepositsAPI.CheckDepositCreateParams;
+  export type CheckDepositListParams = CheckDepositsAPI.CheckDepositListParams;
 }

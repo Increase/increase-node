@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as RealTimePaymentsTransfersAPI from 'increase/resources/real-time-payments-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -52,8 +52,6 @@ export class RealTimePaymentsTransfers extends APIResource {
 }
 
 export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer> {}
-// alias so we can export it in the namespace
-type _RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
 
 /**
  * Real-Time Payments transfers move funds, within seconds, between your Increase
@@ -448,8 +446,10 @@ export namespace RealTimePaymentsTransferListParams {
 }
 
 export namespace RealTimePaymentsTransfers {
-  export import RealTimePaymentsTransfer = API.RealTimePaymentsTransfer;
-  export type RealTimePaymentsTransfersPage = _RealTimePaymentsTransfersPage;
-  export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
-  export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
+  export type RealTimePaymentsTransfer = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer;
+  export import RealTimePaymentsTransfersPage = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfersPage;
+  export type RealTimePaymentsTransferCreateParams =
+    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateParams;
+  export type RealTimePaymentsTransferListParams =
+    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferListParams;
 }

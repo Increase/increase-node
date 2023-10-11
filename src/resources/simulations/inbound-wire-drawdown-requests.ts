@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as InboundWireDrawdownRequests_ from 'increase/resources/inbound-wire-drawdown-requests';
-import * as API from './index';
+import * as SimulationsInboundWireDrawdownRequestsAPI from 'increase/resources/simulations/inbound-wire-drawdown-requests';
+import * as InboundWireDrawdownRequestsAPI from 'increase/resources/inbound-wire-drawdown-requests';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
@@ -13,7 +13,7 @@ export class InboundWireDrawdownRequests extends APIResource {
   create(
     body: InboundWireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireDrawdownRequests_.InboundWireDrawdownRequest> {
+  ): Core.APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
     return this.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
   }
 }
@@ -127,5 +127,6 @@ export interface InboundWireDrawdownRequestCreateParams {
 }
 
 export namespace InboundWireDrawdownRequests {
-  export import InboundWireDrawdownRequestCreateParams = API.InboundWireDrawdownRequestCreateParams;
+  export type InboundWireDrawdownRequestCreateParams =
+    SimulationsInboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
 }

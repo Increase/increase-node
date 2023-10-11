@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as ACHPrenotificationsAPI from 'increase/resources/ach-prenotifications';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class ACHPrenotifications extends APIResource {
   /**
@@ -44,8 +44,6 @@ export class ACHPrenotifications extends APIResource {
 }
 
 export class ACHPrenotificationsPage extends Page<ACHPrenotification> {}
-// alias so we can export it in the namespace
-type _ACHPrenotificationsPage = ACHPrenotificationsPage;
 
 /**
  * ACH Prenotifications are one way you can verify account and routing numbers by
@@ -555,8 +553,8 @@ export namespace ACHPrenotificationListParams {
 }
 
 export namespace ACHPrenotifications {
-  export import ACHPrenotification = API.ACHPrenotification;
-  export type ACHPrenotificationsPage = _ACHPrenotificationsPage;
-  export import ACHPrenotificationCreateParams = API.ACHPrenotificationCreateParams;
-  export import ACHPrenotificationListParams = API.ACHPrenotificationListParams;
+  export type ACHPrenotification = ACHPrenotificationsAPI.ACHPrenotification;
+  export import ACHPrenotificationsPage = ACHPrenotificationsAPI.ACHPrenotificationsPage;
+  export type ACHPrenotificationCreateParams = ACHPrenotificationsAPI.ACHPrenotificationCreateParams;
+  export type ACHPrenotificationListParams = ACHPrenotificationsAPI.ACHPrenotificationListParams;
 }

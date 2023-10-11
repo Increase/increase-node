@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as CheckDeposits_ from 'increase/resources/check-deposits';
+import * as CheckDepositsAPI from 'increase/resources/check-deposits';
 
 export class CheckDeposits extends APIResource {
   /**
@@ -13,7 +13,7 @@ export class CheckDeposits extends APIResource {
   reject(
     checkDepositId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDeposits_.CheckDeposit> {
+  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
     return this.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
   }
 
@@ -24,7 +24,7 @@ export class CheckDeposits extends APIResource {
   return(
     checkDepositId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDeposits_.CheckDeposit> {
+  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
     return this.post(`/simulations/check_deposits/${checkDepositId}/return`, options);
   }
 
@@ -35,7 +35,7 @@ export class CheckDeposits extends APIResource {
   submit(
     checkDepositId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDeposits_.CheckDeposit> {
+  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
     return this.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
   }
 }

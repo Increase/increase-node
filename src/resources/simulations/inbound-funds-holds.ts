@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as InboundFundsHoldsAPI from 'increase/resources/simulations/inbound-funds-holds';
 
 export class InboundFundsHolds extends APIResource {
   /**
@@ -89,5 +89,5 @@ export interface InboundFundsHoldReleaseResponse {
 }
 
 export namespace InboundFundsHolds {
-  export import InboundFundsHoldReleaseResponse = API.InboundFundsHoldReleaseResponse;
+  export type InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
 }

@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as BookkeepingEntrySetsAPI from 'increase/resources/bookkeeping-entry-sets';
 
 export class BookkeepingEntrySets extends APIResource {
   /**
@@ -101,6 +101,6 @@ export namespace BookkeepingEntrySetCreateParams {
 }
 
 export namespace BookkeepingEntrySets {
-  export import BookkeepingEntrySet = API.BookkeepingEntrySet;
-  export import BookkeepingEntrySetCreateParams = API.BookkeepingEntrySetCreateParams;
+  export type BookkeepingEntrySet = BookkeepingEntrySetsAPI.BookkeepingEntrySet;
+  export type BookkeepingEntrySetCreateParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetCreateParams;
 }
