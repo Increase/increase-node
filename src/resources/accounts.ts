@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as AccountsAPI from 'increase/resources/accounts';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Accounts extends APIResource {
   /**
@@ -56,8 +56,6 @@ export class Accounts extends APIResource {
 }
 
 export class AccountsPage extends Page<Account> {}
-// alias so we can export it in the namespace
-type _AccountsPage = AccountsPage;
 
 /**
  * Accounts are your bank accounts with Increase. They store money, receive
@@ -220,9 +218,9 @@ export namespace AccountListParams {
 }
 
 export namespace Accounts {
-  export import Account = API.Account;
-  export type AccountsPage = _AccountsPage;
-  export import AccountCreateParams = API.AccountCreateParams;
-  export import AccountUpdateParams = API.AccountUpdateParams;
-  export import AccountListParams = API.AccountListParams;
+  export type Account = AccountsAPI.Account;
+  export import AccountsPage = AccountsAPI.AccountsPage;
+  export type AccountCreateParams = AccountsAPI.AccountCreateParams;
+  export type AccountUpdateParams = AccountsAPI.AccountUpdateParams;
+  export type AccountListParams = AccountsAPI.AccountListParams;
 }

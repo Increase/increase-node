@@ -2,14 +2,14 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Documents_ from 'increase/resources/documents';
-import * as API from './index';
+import * as SimulationsDocumentsAPI from 'increase/resources/simulations/documents';
+import * as DocumentsAPI from 'increase/resources/documents';
 
 export class Documents extends APIResource {
   /**
    * Simulates an tax document being created for an account.
    */
-  create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Documents_.Document> {
+  create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<DocumentsAPI.Document> {
     return this.post('/simulations/documents', { body, ...options });
   }
 }
@@ -22,5 +22,5 @@ export interface DocumentCreateParams {
 }
 
 export namespace Documents {
-  export import DocumentCreateParams = API.DocumentCreateParams;
+  export type DocumentCreateParams = SimulationsDocumentsAPI.DocumentCreateParams;
 }

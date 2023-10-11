@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as EventSubscriptionsAPI from 'increase/resources/event-subscriptions';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class EventSubscriptions extends APIResource {
   /**
@@ -55,8 +55,6 @@ export class EventSubscriptions extends APIResource {
 }
 
 export class EventSubscriptionsPage extends Page<EventSubscription> {}
-// alias so we can export it in the namespace
-type _EventSubscriptionsPage = EventSubscriptionsPage;
 
 /**
  * Webhooks are event notifications we send to you by HTTPS POST requests. Event
@@ -476,9 +474,9 @@ export interface EventSubscriptionUpdateParams {
 export interface EventSubscriptionListParams extends PageParams {}
 
 export namespace EventSubscriptions {
-  export import EventSubscription = API.EventSubscription;
-  export type EventSubscriptionsPage = _EventSubscriptionsPage;
-  export import EventSubscriptionCreateParams = API.EventSubscriptionCreateParams;
-  export import EventSubscriptionUpdateParams = API.EventSubscriptionUpdateParams;
-  export import EventSubscriptionListParams = API.EventSubscriptionListParams;
+  export type EventSubscription = EventSubscriptionsAPI.EventSubscription;
+  export import EventSubscriptionsPage = EventSubscriptionsAPI.EventSubscriptionsPage;
+  export type EventSubscriptionCreateParams = EventSubscriptionsAPI.EventSubscriptionCreateParams;
+  export type EventSubscriptionUpdateParams = EventSubscriptionsAPI.EventSubscriptionUpdateParams;
+  export type EventSubscriptionListParams = EventSubscriptionsAPI.EventSubscriptionListParams;
 }

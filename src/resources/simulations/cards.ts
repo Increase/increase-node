@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Transactions from 'increase/resources/transactions';
-import * as API from './index';
+import * as CardsAPI from 'increase/resources/simulations/cards';
+import * as TransactionsAPI from 'increase/resources/transactions';
 
 export class Cards extends APIResource {
   /**
@@ -32,7 +32,7 @@ export class Cards extends APIResource {
   settlement(
     body: CardSettlementParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Transactions.Transaction> {
+  ): Core.APIPromise<TransactionsAPI.Transaction> {
     return this.post('/simulations/card_settlements', { body, ...options });
   }
 }
@@ -1774,7 +1774,7 @@ export interface CardSettlementParams {
 }
 
 export namespace Cards {
-  export import CardAuthorizationSimulation = API.CardAuthorizationSimulation;
-  export import CardAuthorizeParams = API.CardAuthorizeParams;
-  export import CardSettlementParams = API.CardSettlementParams;
+  export type CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;
+  export type CardAuthorizeParams = CardsAPI.CardAuthorizeParams;
+  export type CardSettlementParams = CardsAPI.CardSettlementParams;
 }

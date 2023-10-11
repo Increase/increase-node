@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Transactions from 'increase/resources/transactions';
-import * as API from './index';
+import * as CardRefundsAPI from 'increase/resources/simulations/card-refunds';
+import * as TransactionsAPI from 'increase/resources/transactions';
 
 export class CardRefunds extends APIResource {
   /**
@@ -13,7 +13,7 @@ export class CardRefunds extends APIResource {
   create(
     body: CardRefundCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Transactions.Transaction> {
+  ): Core.APIPromise<TransactionsAPI.Transaction> {
     return this.post('/simulations/card_refunds', { body, ...options });
   }
 }
@@ -27,5 +27,5 @@ export interface CardRefundCreateParams {
 }
 
 export namespace CardRefunds {
-  export import CardRefundCreateParams = API.CardRefundCreateParams;
+  export type CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
 }

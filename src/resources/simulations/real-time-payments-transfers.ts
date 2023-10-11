@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as RealTimePaymentsTransfers_ from 'increase/resources/real-time-payments-transfers';
-import * as API from './index';
+import * as SimulationsRealTimePaymentsTransfersAPI from 'increase/resources/simulations/real-time-payments-transfers';
+import * as RealTimePaymentsTransfersAPI from 'increase/resources/real-time-payments-transfers';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -15,7 +15,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     realTimePaymentsTransferId: string,
     body: RealTimePaymentsTransferCompleteParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfers_.RealTimePaymentsTransfer> {
+  ): Core.APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this.post(`/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`, {
       body,
       ...options,
@@ -4493,7 +4493,10 @@ export interface RealTimePaymentsTransferCreateInboundParams {
 }
 
 export namespace RealTimePaymentsTransfers {
-  export import InboundRealTimePaymentsTransferSimulationResult = API.InboundRealTimePaymentsTransferSimulationResult;
-  export import RealTimePaymentsTransferCompleteParams = API.RealTimePaymentsTransferCompleteParams;
-  export import RealTimePaymentsTransferCreateInboundParams = API.RealTimePaymentsTransferCreateInboundParams;
+  export type InboundRealTimePaymentsTransferSimulationResult =
+    SimulationsRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferSimulationResult;
+  export type RealTimePaymentsTransferCompleteParams =
+    SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export type RealTimePaymentsTransferCreateInboundParams =
+    SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
 }

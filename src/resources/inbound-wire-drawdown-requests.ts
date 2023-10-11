@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as InboundWireDrawdownRequestsAPI from 'increase/resources/inbound-wire-drawdown-requests';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
@@ -42,8 +42,6 @@ export class InboundWireDrawdownRequests extends APIResource {
 }
 
 export class InboundWireDrawdownRequestsPage extends Page<InboundWireDrawdownRequest> {}
-// alias so we can export it in the namespace
-type _InboundWireDrawdownRequestsPage = InboundWireDrawdownRequestsPage;
 
 /**
  * Inbound wire drawdown requests are requests from someone else to send them a
@@ -172,7 +170,8 @@ export interface InboundWireDrawdownRequest {
 export interface InboundWireDrawdownRequestListParams extends PageParams {}
 
 export namespace InboundWireDrawdownRequests {
-  export import InboundWireDrawdownRequest = API.InboundWireDrawdownRequest;
-  export type InboundWireDrawdownRequestsPage = _InboundWireDrawdownRequestsPage;
-  export import InboundWireDrawdownRequestListParams = API.InboundWireDrawdownRequestListParams;
+  export type InboundWireDrawdownRequest = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest;
+  export import InboundWireDrawdownRequestsPage = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestsPage;
+  export type InboundWireDrawdownRequestListParams =
+    InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestListParams;
 }

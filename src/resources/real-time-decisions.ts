@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as RealTimeDecisionsAPI from 'increase/resources/real-time-decisions';
 
 export class RealTimeDecisions extends APIResource {
   /**
@@ -534,6 +534,6 @@ export namespace RealTimeDecisionActionParams {
 }
 
 export namespace RealTimeDecisions {
-  export import RealTimeDecision = API.RealTimeDecision;
-  export import RealTimeDecisionActionParams = API.RealTimeDecisionActionParams;
+  export type RealTimeDecision = RealTimeDecisionsAPI.RealTimeDecision;
+  export type RealTimeDecisionActionParams = RealTimeDecisionsAPI.RealTimeDecisionActionParams;
 }

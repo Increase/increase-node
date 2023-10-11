@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as WireDrawdownRequestsAPI from 'increase/resources/wire-drawdown-requests';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class WireDrawdownRequests extends APIResource {
   /**
@@ -47,8 +47,6 @@ export class WireDrawdownRequests extends APIResource {
 }
 
 export class WireDrawdownRequestsPage extends Page<WireDrawdownRequest> {}
-// alias so we can export it in the namespace
-type _WireDrawdownRequestsPage = WireDrawdownRequestsPage;
 
 /**
  * Wire drawdown requests enable you to request that someone else send you a wire.
@@ -208,8 +206,8 @@ export interface WireDrawdownRequestCreateParams {
 export interface WireDrawdownRequestListParams extends PageParams {}
 
 export namespace WireDrawdownRequests {
-  export import WireDrawdownRequest = API.WireDrawdownRequest;
-  export type WireDrawdownRequestsPage = _WireDrawdownRequestsPage;
-  export import WireDrawdownRequestCreateParams = API.WireDrawdownRequestCreateParams;
-  export import WireDrawdownRequestListParams = API.WireDrawdownRequestListParams;
+  export type WireDrawdownRequest = WireDrawdownRequestsAPI.WireDrawdownRequest;
+  export import WireDrawdownRequestsPage = WireDrawdownRequestsAPI.WireDrawdownRequestsPage;
+  export type WireDrawdownRequestCreateParams = WireDrawdownRequestsAPI.WireDrawdownRequestCreateParams;
+  export type WireDrawdownRequestListParams = WireDrawdownRequestsAPI.WireDrawdownRequestListParams;
 }

@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as AccountNumbersAPI from 'increase/resources/account-numbers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class AccountNumbers extends APIResource {
   /**
@@ -52,8 +52,6 @@ export class AccountNumbers extends APIResource {
 }
 
 export class AccountNumbersPage extends Page<AccountNumber> {}
-// alias so we can export it in the namespace
-type _AccountNumbersPage = AccountNumbersPage;
 
 /**
  * Each account can have multiple account and routing numbers. We recommend that
@@ -292,9 +290,9 @@ export namespace AccountNumberListParams {
 }
 
 export namespace AccountNumbers {
-  export import AccountNumber = API.AccountNumber;
-  export type AccountNumbersPage = _AccountNumbersPage;
-  export import AccountNumberCreateParams = API.AccountNumberCreateParams;
-  export import AccountNumberUpdateParams = API.AccountNumberUpdateParams;
-  export import AccountNumberListParams = API.AccountNumberListParams;
+  export type AccountNumber = AccountNumbersAPI.AccountNumber;
+  export import AccountNumbersPage = AccountNumbersAPI.AccountNumbersPage;
+  export type AccountNumberCreateParams = AccountNumbersAPI.AccountNumberCreateParams;
+  export type AccountNumberUpdateParams = AccountNumbersAPI.AccountNumberUpdateParams;
+  export type AccountNumberListParams = AccountNumbersAPI.AccountNumberListParams;
 }

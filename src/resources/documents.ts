@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as DocumentsAPI from 'increase/resources/documents';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Documents extends APIResource {
   /**
@@ -31,8 +31,6 @@ export class Documents extends APIResource {
 }
 
 export class DocumentsPage extends Page<Document> {}
-// alias so we can export it in the namespace
-type _DocumentsPage = DocumentsPage;
 
 /**
  * Increase generates certain documents / forms automatically for your application;
@@ -128,7 +126,7 @@ export namespace DocumentListParams {
 }
 
 export namespace Documents {
-  export import Document = API.Document;
-  export type DocumentsPage = _DocumentsPage;
-  export import DocumentListParams = API.DocumentListParams;
+  export type Document = DocumentsAPI.Document;
+  export import DocumentsPage = DocumentsAPI.DocumentsPage;
+  export type DocumentListParams = DocumentsAPI.DocumentListParams;
 }

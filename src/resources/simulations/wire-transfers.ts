@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as WireTransfersAPI from 'increase/resources/simulations/wire-transfers';
 
 export class WireTransfers extends APIResource {
   /**
@@ -3422,6 +3422,6 @@ export interface WireTransferCreateInboundParams {
 }
 
 export namespace WireTransfers {
-  export import WireTransferSimulation = API.WireTransferSimulation;
-  export import WireTransferCreateInboundParams = API.WireTransferCreateInboundParams;
+  export type WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
+  export type WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
 }

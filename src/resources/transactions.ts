@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as TransactionsAPI from 'increase/resources/transactions';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Transactions extends APIResource {
   /**
@@ -34,8 +34,6 @@ export class Transactions extends APIResource {
 }
 
 export class TransactionsPage extends Page<Transaction> {}
-// alias so we can export it in the namespace
-type _TransactionsPage = TransactionsPage;
 
 /**
  * Transactions are the immutable additions and removals of money from your bank
@@ -3410,7 +3408,7 @@ export namespace TransactionListParams {
 }
 
 export namespace Transactions {
-  export import Transaction = API.Transaction;
-  export type TransactionsPage = _TransactionsPage;
-  export import TransactionListParams = API.TransactionListParams;
+  export type Transaction = TransactionsAPI.Transaction;
+  export import TransactionsPage = TransactionsAPI.TransactionsPage;
+  export type TransactionListParams = TransactionsAPI.TransactionListParams;
 }

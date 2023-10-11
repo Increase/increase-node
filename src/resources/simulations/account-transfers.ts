@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as AccountTransfers_ from 'increase/resources/account-transfers';
+import * as AccountTransfersAPI from 'increase/resources/account-transfers';
 
 export class AccountTransfers extends APIResource {
   /**
@@ -14,7 +14,7 @@ export class AccountTransfers extends APIResource {
   complete(
     accountTransferId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AccountTransfers_.AccountTransfer> {
+  ): Core.APIPromise<AccountTransfersAPI.AccountTransfer> {
     return this.post(`/simulations/account_transfers/${accountTransferId}/complete`, options);
   }
 }

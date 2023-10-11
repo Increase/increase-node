@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CardPaymentsAPI from 'increase/resources/card-payments';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CardPayments extends APIResource {
   /**
@@ -34,8 +34,6 @@ export class CardPayments extends APIResource {
 }
 
 export class CardPaymentsPage extends Page<CardPayment> {}
-// alias so we can export it in the namespace
-type _CardPaymentsPage = CardPaymentsPage;
 
 /**
  * Card Payments group together interactions related to a single card payment, such
@@ -2289,7 +2287,7 @@ export namespace CardPaymentListParams {
 }
 
 export namespace CardPayments {
-  export import CardPayment = API.CardPayment;
-  export type CardPaymentsPage = _CardPaymentsPage;
-  export import CardPaymentListParams = API.CardPaymentListParams;
+  export type CardPayment = CardPaymentsAPI.CardPayment;
+  export import CardPaymentsPage = CardPaymentsAPI.CardPaymentsPage;
+  export type CardPaymentListParams = CardPaymentsAPI.CardPaymentListParams;
 }

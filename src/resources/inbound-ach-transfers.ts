@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as InboundACHTransfersAPI from 'increase/resources/inbound-ach-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class InboundACHTransfers extends APIResource {
   /**
@@ -66,8 +66,6 @@ export class InboundACHTransfers extends APIResource {
 }
 
 export class InboundACHTransfersPage extends Page<InboundACHTransfer> {}
-// alias so we can export it in the namespace
-type _InboundACHTransfersPage = InboundACHTransfersPage;
 
 /**
  * An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
@@ -417,9 +415,11 @@ export interface InboundACHTransferTransferReturnParams {
 }
 
 export namespace InboundACHTransfers {
-  export import InboundACHTransfer = API.InboundACHTransfer;
-  export type InboundACHTransfersPage = _InboundACHTransfersPage;
-  export import InboundACHTransferListParams = API.InboundACHTransferListParams;
-  export import InboundACHTransferNotificationOfChangeParams = API.InboundACHTransferNotificationOfChangeParams;
-  export import InboundACHTransferTransferReturnParams = API.InboundACHTransferTransferReturnParams;
+  export type InboundACHTransfer = InboundACHTransfersAPI.InboundACHTransfer;
+  export import InboundACHTransfersPage = InboundACHTransfersAPI.InboundACHTransfersPage;
+  export type InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
+  export type InboundACHTransferNotificationOfChangeParams =
+    InboundACHTransfersAPI.InboundACHTransferNotificationOfChangeParams;
+  export type InboundACHTransferTransferReturnParams =
+    InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
 }

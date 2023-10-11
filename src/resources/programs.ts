@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as ProgramsAPI from 'increase/resources/programs';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Programs extends APIResource {
   /**
@@ -31,8 +31,6 @@ export class Programs extends APIResource {
 }
 
 export class ProgramsPage extends Page<Program> {}
-// alias so we can export it in the namespace
-type _ProgramsPage = ProgramsPage;
 
 /**
  * Programs determine the compliance and commercial terms of Accounts. By default,
@@ -73,7 +71,7 @@ export interface Program {
 export interface ProgramListParams extends PageParams {}
 
 export namespace Programs {
-  export import Program = API.Program;
-  export type ProgramsPage = _ProgramsPage;
-  export import ProgramListParams = API.ProgramListParams;
+  export type Program = ProgramsAPI.Program;
+  export import ProgramsPage = ProgramsAPI.ProgramsPage;
+  export type ProgramListParams = ProgramsAPI.ProgramListParams;
 }

@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CheckTransfersAPI from 'increase/resources/check-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CheckTransfers extends APIResource {
   /**
@@ -66,8 +66,6 @@ export class CheckTransfers extends APIResource {
 }
 
 export class CheckTransfersPage extends Page<CheckTransfer> {}
-// alias so we can export it in the namespace
-type _CheckTransfersPage = CheckTransfersPage;
 
 /**
  * Check Transfers move funds from your Increase account by mailing a physical
@@ -676,9 +674,9 @@ export interface CheckTransferStopPaymentParams {
 }
 
 export namespace CheckTransfers {
-  export import CheckTransfer = API.CheckTransfer;
-  export type CheckTransfersPage = _CheckTransfersPage;
-  export import CheckTransferCreateParams = API.CheckTransferCreateParams;
-  export import CheckTransferListParams = API.CheckTransferListParams;
-  export import CheckTransferStopPaymentParams = API.CheckTransferStopPaymentParams;
+  export type CheckTransfer = CheckTransfersAPI.CheckTransfer;
+  export import CheckTransfersPage = CheckTransfersAPI.CheckTransfersPage;
+  export type CheckTransferCreateParams = CheckTransfersAPI.CheckTransferCreateParams;
+  export type CheckTransferListParams = CheckTransfersAPI.CheckTransferListParams;
+  export type CheckTransferStopPaymentParams = CheckTransfersAPI.CheckTransferStopPaymentParams;
 }
