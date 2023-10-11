@@ -122,7 +122,7 @@ export namespace DigitalWalletTokenListParams {
 }
 
 export namespace DigitalWalletTokens {
-  export type DigitalWalletToken = DigitalWalletTokensAPI.DigitalWalletToken;
+  export import DigitalWalletToken = DigitalWalletTokensAPI.DigitalWalletToken;
   export import DigitalWalletTokensPage = DigitalWalletTokensAPI.DigitalWalletTokensPage;
-  export type DigitalWalletTokenListParams = DigitalWalletTokensAPI.DigitalWalletTokenListParams;
+  export import DigitalWalletTokenListParams = DigitalWalletTokensAPI.DigitalWalletTokenListParams;
 }

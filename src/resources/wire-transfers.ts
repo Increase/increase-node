@@ -486,8 +486,8 @@ export namespace WireTransferListParams {
 }
 
 export namespace WireTransfers {
-  export type WireTransfer = WireTransfersAPI.WireTransfer;
+  export import WireTransfer = WireTransfersAPI.WireTransfer;
   export import WireTransfersPage = WireTransfersAPI.WireTransfersPage;
-  export type WireTransferCreateParams = WireTransfersAPI.WireTransferCreateParams;
-  export type WireTransferListParams = WireTransfersAPI.WireTransferListParams;
+  export import WireTransferCreateParams = WireTransfersAPI.WireTransferCreateParams;
+  export import WireTransferListParams = WireTransfersAPI.WireTransferListParams;
 }

@@ -2287,7 +2287,7 @@ export namespace CardPaymentListParams {
 }
 
 export namespace CardPayments {
-  export type CardPayment = CardPaymentsAPI.CardPayment;
+  export import CardPayment = CardPaymentsAPI.CardPayment;
   export import CardPaymentsPage = CardPaymentsAPI.CardPaymentsPage;
-  export type CardPaymentListParams = CardPaymentsAPI.CardPaymentListParams;
+  export import CardPaymentListParams = CardPaymentsAPI.CardPaymentListParams;
 }

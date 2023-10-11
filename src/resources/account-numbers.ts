@@ -290,9 +290,9 @@ export namespace AccountNumberListParams {
 }
 
 export namespace AccountNumbers {
-  export type AccountNumber = AccountNumbersAPI.AccountNumber;
+  export import AccountNumber = AccountNumbersAPI.AccountNumber;
   export import AccountNumbersPage = AccountNumbersAPI.AccountNumbersPage;
-  export type AccountNumberCreateParams = AccountNumbersAPI.AccountNumberCreateParams;
-  export type AccountNumberUpdateParams = AccountNumbersAPI.AccountNumberUpdateParams;
-  export type AccountNumberListParams = AccountNumbersAPI.AccountNumberListParams;
+  export import AccountNumberCreateParams = AccountNumbersAPI.AccountNumberCreateParams;
+  export import AccountNumberUpdateParams = AccountNumbersAPI.AccountNumberUpdateParams;
+  export import AccountNumberListParams = AccountNumbersAPI.AccountNumberListParams;
 }

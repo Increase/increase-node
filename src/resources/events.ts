@@ -355,7 +355,7 @@ export namespace EventListParams {
 }
 
 export namespace Events {
-  export type Event = EventsAPI.Event;
+  export import Event = EventsAPI.Event;
   export import EventsPage = EventsAPI.EventsPage;
-  export type EventListParams = EventsAPI.EventListParams;
+  export import EventListParams = EventsAPI.EventListParams;
 }

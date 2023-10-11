@@ -55,49 +55,43 @@ export class Simulations extends APIResource {
 export namespace Simulations {
   export import AccountTransfers = AccountTransfersAPI.AccountTransfers;
   export import AccountStatements = AccountStatementsAPI.AccountStatements;
-  export type AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
+  export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
   export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
-  export type ACHTransferSimulation = ACHTransfersAPI.ACHTransferSimulation;
-  export type ACHTransferCreateInboundParams = ACHTransfersAPI.ACHTransferCreateInboundParams;
-  export type ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
+  export import ACHTransferSimulation = ACHTransfersAPI.ACHTransferSimulation;
+  export import ACHTransferCreateInboundParams = ACHTransfersAPI.ACHTransferCreateInboundParams;
+  export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
   export import CardDisputes = CardDisputesAPI.CardDisputes;
-  export type CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
+  export import CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
   export import CardProfiles = CardProfilesAPI.CardProfiles;
   export import CardRefunds = CardRefundsAPI.CardRefunds;
-  export type CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
+  export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
   export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
   export import Documents = DocumentsAPI.Documents;
-  export type DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
+  export import DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
   export import DigitalWalletTokenRequests = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests;
-  export type DigitalWalletTokenRequestCreateResponse =
-    DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
-  export type DigitalWalletTokenRequestCreateParams =
-    DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
+  export import DigitalWalletTokenRequestCreateResponse = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
+  export import DigitalWalletTokenRequestCreateParams = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
   export import CheckDeposits = CheckDepositsAPI.CheckDeposits;
   export import Programs = ProgramsAPI.Programs;
-  export type ProgramCreateParams = ProgramsAPI.ProgramCreateParams;
+  export import ProgramCreateParams = ProgramsAPI.ProgramCreateParams;
   export import InboundWireDrawdownRequests = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests;
-  export type InboundWireDrawdownRequestCreateParams =
-    InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
+  export import InboundWireDrawdownRequestCreateParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
   export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
-  export type InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
+  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
   export import InterestPayments = InterestPaymentsAPI.InterestPayments;
-  export type InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
-  export type InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
+  export import InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
+  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
   export import WireTransfers = WireTransfersAPI.WireTransfers;
-  export type WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
-  export type WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
+  export import WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
+  export import WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
   export import Cards = CardsAPI.Cards;
-  export type CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;
-  export type CardAuthorizeParams = CardsAPI.CardAuthorizeParams;
-  export type CardSettlementParams = CardsAPI.CardSettlementParams;
+  export import CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;
+  export import CardAuthorizeParams = CardsAPI.CardAuthorizeParams;
+  export import CardSettlementParams = CardsAPI.CardSettlementParams;
   export import RealTimePaymentsTransfers = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers;
-  export type InboundRealTimePaymentsTransferSimulationResult =
-    RealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferSimulationResult;
-  export type RealTimePaymentsTransferCompleteParams =
-    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
-  export type RealTimePaymentsTransferCreateInboundParams =
-    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
+  export import InboundRealTimePaymentsTransferSimulationResult = RealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferSimulationResult;
+  export import RealTimePaymentsTransferCompleteParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export import RealTimePaymentsTransferCreateInboundParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
   export import PhysicalCards = PhysicalCardsAPI.PhysicalCards;
-  export type PhysicalCardShipmentAdvanceParams = PhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
+  export import PhysicalCardShipmentAdvanceParams = PhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
 }

@@ -27,5 +27,5 @@ export interface CardRefundCreateParams {
 }
 
 export namespace CardRefunds {
-  export type CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
+  export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
 }

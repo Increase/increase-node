@@ -358,8 +358,8 @@ export namespace CardProfileListParams {
 }
 
 export namespace CardProfiles {
-  export type CardProfile = CardProfilesAPI.CardProfile;
+  export import CardProfile = CardProfilesAPI.CardProfile;
   export import CardProfilesPage = CardProfilesAPI.CardProfilesPage;
-  export type CardProfileCreateParams = CardProfilesAPI.CardProfileCreateParams;
-  export type CardProfileListParams = CardProfilesAPI.CardProfileListParams;
+  export import CardProfileCreateParams = CardProfilesAPI.CardProfileCreateParams;
+  export import CardProfileListParams = CardProfilesAPI.CardProfileListParams;
 }

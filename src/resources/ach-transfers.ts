@@ -844,8 +844,8 @@ export namespace ACHTransferListParams {
 }
 
 export namespace ACHTransfers {
-  export type ACHTransfer = ACHTransfersAPI.ACHTransfer;
+  export import ACHTransfer = ACHTransfersAPI.ACHTransfer;
   export import ACHTransfersPage = ACHTransfersAPI.ACHTransfersPage;
-  export type ACHTransferCreateParams = ACHTransfersAPI.ACHTransferCreateParams;
-  export type ACHTransferListParams = ACHTransfersAPI.ACHTransferListParams;
+  export import ACHTransferCreateParams = ACHTransfersAPI.ACHTransferCreateParams;
+  export import ACHTransferListParams = ACHTransfersAPI.ACHTransferListParams;
 }

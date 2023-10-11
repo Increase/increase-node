@@ -379,8 +379,8 @@ export namespace CheckDepositListParams {
 }
 
 export namespace CheckDeposits {
-  export type CheckDeposit = CheckDepositsAPI.CheckDeposit;
+  export import CheckDeposit = CheckDepositsAPI.CheckDeposit;
   export import CheckDepositsPage = CheckDepositsAPI.CheckDepositsPage;
-  export type CheckDepositCreateParams = CheckDepositsAPI.CheckDepositCreateParams;
-  export type CheckDepositListParams = CheckDepositsAPI.CheckDepositListParams;
+  export import CheckDepositCreateParams = CheckDepositsAPI.CheckDepositCreateParams;
+  export import CheckDepositListParams = CheckDepositsAPI.CheckDepositListParams;
 }

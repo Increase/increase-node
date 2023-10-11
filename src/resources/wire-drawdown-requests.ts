@@ -206,8 +206,8 @@ export interface WireDrawdownRequestCreateParams {
 export interface WireDrawdownRequestListParams extends PageParams {}
 
 export namespace WireDrawdownRequests {
-  export type WireDrawdownRequest = WireDrawdownRequestsAPI.WireDrawdownRequest;
+  export import WireDrawdownRequest = WireDrawdownRequestsAPI.WireDrawdownRequest;
   export import WireDrawdownRequestsPage = WireDrawdownRequestsAPI.WireDrawdownRequestsPage;
-  export type WireDrawdownRequestCreateParams = WireDrawdownRequestsAPI.WireDrawdownRequestCreateParams;
-  export type WireDrawdownRequestListParams = WireDrawdownRequestsAPI.WireDrawdownRequestListParams;
+  export import WireDrawdownRequestCreateParams = WireDrawdownRequestsAPI.WireDrawdownRequestCreateParams;
+  export import WireDrawdownRequestListParams = WireDrawdownRequestsAPI.WireDrawdownRequestListParams;
 }

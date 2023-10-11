@@ -323,7 +323,7 @@ export namespace CardPurchaseSupplementListParams {
 }
 
 export namespace CardPurchaseSupplements {
-  export type CardPurchaseSupplement = CardPurchaseSupplementsAPI.CardPurchaseSupplement;
+  export import CardPurchaseSupplement = CardPurchaseSupplementsAPI.CardPurchaseSupplement;
   export import CardPurchaseSupplementsPage = CardPurchaseSupplementsAPI.CardPurchaseSupplementsPage;
-  export type CardPurchaseSupplementListParams = CardPurchaseSupplementsAPI.CardPurchaseSupplementListParams;
+  export import CardPurchaseSupplementListParams = CardPurchaseSupplementsAPI.CardPurchaseSupplementListParams;
 }

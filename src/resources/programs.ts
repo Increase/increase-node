@@ -71,7 +71,7 @@ export interface Program {
 export interface ProgramListParams extends PageParams {}
 
 export namespace Programs {
-  export type Program = ProgramsAPI.Program;
+  export import Program = ProgramsAPI.Program;
   export import ProgramsPage = ProgramsAPI.ProgramsPage;
-  export type ProgramListParams = ProgramsAPI.ProgramListParams;
+  export import ProgramListParams = ProgramsAPI.ProgramListParams;
 }

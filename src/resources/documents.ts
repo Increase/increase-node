@@ -126,7 +126,7 @@ export namespace DocumentListParams {
 }
 
 export namespace Documents {
-  export type Document = DocumentsAPI.Document;
+  export import Document = DocumentsAPI.Document;
   export import DocumentsPage = DocumentsAPI.DocumentsPage;
-  export type DocumentListParams = DocumentsAPI.DocumentListParams;
+  export import DocumentListParams = DocumentsAPI.DocumentListParams;
 }

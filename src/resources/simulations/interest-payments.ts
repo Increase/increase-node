@@ -3347,6 +3347,6 @@ export interface InterestPaymentCreateParams {
 }
 
 export namespace InterestPayments {
-  export type InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
-  export type InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
+  export import InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
+  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
 }

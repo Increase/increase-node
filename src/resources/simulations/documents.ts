@@ -22,5 +22,5 @@ export interface DocumentCreateParams {
 }
 
 export namespace Documents {
-  export type DocumentCreateParams = SimulationsDocumentsAPI.DocumentCreateParams;
+  export import DocumentCreateParams = SimulationsDocumentsAPI.DocumentCreateParams;
 }

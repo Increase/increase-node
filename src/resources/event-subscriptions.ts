@@ -474,9 +474,9 @@ export interface EventSubscriptionUpdateParams {
 export interface EventSubscriptionListParams extends PageParams {}
 
 export namespace EventSubscriptions {
-  export type EventSubscription = EventSubscriptionsAPI.EventSubscription;
+  export import EventSubscription = EventSubscriptionsAPI.EventSubscription;
   export import EventSubscriptionsPage = EventSubscriptionsAPI.EventSubscriptionsPage;
-  export type EventSubscriptionCreateParams = EventSubscriptionsAPI.EventSubscriptionCreateParams;
-  export type EventSubscriptionUpdateParams = EventSubscriptionsAPI.EventSubscriptionUpdateParams;
-  export type EventSubscriptionListParams = EventSubscriptionsAPI.EventSubscriptionListParams;
+  export import EventSubscriptionCreateParams = EventSubscriptionsAPI.EventSubscriptionCreateParams;
+  export import EventSubscriptionUpdateParams = EventSubscriptionsAPI.EventSubscriptionUpdateParams;
+  export import EventSubscriptionListParams = EventSubscriptionsAPI.EventSubscriptionListParams;
 }

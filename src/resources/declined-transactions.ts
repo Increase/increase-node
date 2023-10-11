@@ -1112,7 +1112,7 @@ export namespace DeclinedTransactionListParams {
 }
 
 export namespace DeclinedTransactions {
-  export type DeclinedTransaction = DeclinedTransactionsAPI.DeclinedTransaction;
+  export import DeclinedTransaction = DeclinedTransactionsAPI.DeclinedTransaction;
   export import DeclinedTransactionsPage = DeclinedTransactionsAPI.DeclinedTransactionsPage;
-  export type DeclinedTransactionListParams = DeclinedTransactionsAPI.DeclinedTransactionListParams;
+  export import DeclinedTransactionListParams = DeclinedTransactionsAPI.DeclinedTransactionListParams;
 }
