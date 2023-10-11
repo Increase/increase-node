@@ -534,6 +534,6 @@ export namespace RealTimeDecisionActionParams {
 }
 
 export namespace RealTimeDecisions {
-  export type RealTimeDecision = RealTimeDecisionsAPI.RealTimeDecision;
-  export type RealTimeDecisionActionParams = RealTimeDecisionsAPI.RealTimeDecisionActionParams;
+  export import RealTimeDecision = RealTimeDecisionsAPI.RealTimeDecision;
+  export import RealTimeDecisionActionParams = RealTimeDecisionsAPI.RealTimeDecisionActionParams;
 }

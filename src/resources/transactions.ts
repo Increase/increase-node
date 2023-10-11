@@ -3408,7 +3408,7 @@ export namespace TransactionListParams {
 }
 
 export namespace Transactions {
-  export type Transaction = TransactionsAPI.Transaction;
+  export import Transaction = TransactionsAPI.Transaction;
   export import TransactionsPage = TransactionsAPI.TransactionsPage;
-  export type TransactionListParams = TransactionsAPI.TransactionListParams;
+  export import TransactionListParams = TransactionsAPI.TransactionListParams;
 }

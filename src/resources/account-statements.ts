@@ -129,7 +129,7 @@ export namespace AccountStatementListParams {
 }
 
 export namespace AccountStatements {
-  export type AccountStatement = AccountStatementsAPI.AccountStatement;
+  export import AccountStatement = AccountStatementsAPI.AccountStatement;
   export import AccountStatementsPage = AccountStatementsAPI.AccountStatementsPage;
-  export type AccountStatementListParams = AccountStatementsAPI.AccountStatementListParams;
+  export import AccountStatementListParams = AccountStatementsAPI.AccountStatementListParams;
 }

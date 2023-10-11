@@ -3422,6 +3422,6 @@ export interface WireTransferCreateInboundParams {
 }
 
 export namespace WireTransfers {
-  export type WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
-  export type WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
+  export import WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
+  export import WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
 }

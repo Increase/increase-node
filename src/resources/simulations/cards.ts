@@ -1774,7 +1774,7 @@ export interface CardSettlementParams {
 }
 
 export namespace Cards {
-  export type CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;
-  export type CardAuthorizeParams = CardsAPI.CardAuthorizeParams;
-  export type CardSettlementParams = CardsAPI.CardSettlementParams;
+  export import CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;
+  export import CardAuthorizeParams = CardsAPI.CardAuthorizeParams;
+  export import CardSettlementParams = CardsAPI.CardSettlementParams;
 }

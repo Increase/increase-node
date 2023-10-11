@@ -24,5 +24,5 @@ export interface ProgramCreateParams {
 }
 
 export namespace Programs {
-  export type ProgramCreateParams = SimulationsProgramsAPI.ProgramCreateParams;
+  export import ProgramCreateParams = SimulationsProgramsAPI.ProgramCreateParams;
 }

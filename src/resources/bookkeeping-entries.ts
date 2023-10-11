@@ -63,7 +63,7 @@ export interface BookkeepingEntry {
 export interface BookkeepingEntryListParams extends PageParams {}
 
 export namespace BookkeepingEntries {
-  export type BookkeepingEntry = BookkeepingEntriesAPI.BookkeepingEntry;
+  export import BookkeepingEntry = BookkeepingEntriesAPI.BookkeepingEntry;
   export import BookkeepingEntriesPage = BookkeepingEntriesAPI.BookkeepingEntriesPage;
-  export type BookkeepingEntryListParams = BookkeepingEntriesAPI.BookkeepingEntryListParams;
+  export import BookkeepingEntryListParams = BookkeepingEntriesAPI.BookkeepingEntryListParams;
 }

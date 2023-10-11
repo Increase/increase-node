@@ -335,7 +335,7 @@ export namespace BeneficialOwnerUpdateAddressParams {
 }
 
 export namespace BeneficialOwners {
-  export type BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
-  export type BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
-  export type BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
+  export import BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
+  export import BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
+  export import BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
 }

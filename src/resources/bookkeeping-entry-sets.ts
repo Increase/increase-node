@@ -101,6 +101,6 @@ export namespace BookkeepingEntrySetCreateParams {
 }
 
 export namespace BookkeepingEntrySets {
-  export type BookkeepingEntrySet = BookkeepingEntrySetsAPI.BookkeepingEntrySet;
-  export type BookkeepingEntrySetCreateParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetCreateParams;
+  export import BookkeepingEntrySet = BookkeepingEntrySetsAPI.BookkeepingEntrySet;
+  export import BookkeepingEntrySetCreateParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetCreateParams;
 }

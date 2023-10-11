@@ -415,11 +415,9 @@ export interface InboundACHTransferTransferReturnParams {
 }
 
 export namespace InboundACHTransfers {
-  export type InboundACHTransfer = InboundACHTransfersAPI.InboundACHTransfer;
+  export import InboundACHTransfer = InboundACHTransfersAPI.InboundACHTransfer;
   export import InboundACHTransfersPage = InboundACHTransfersAPI.InboundACHTransfersPage;
-  export type InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
-  export type InboundACHTransferNotificationOfChangeParams =
-    InboundACHTransfersAPI.InboundACHTransferNotificationOfChangeParams;
-  export type InboundACHTransferTransferReturnParams =
-    InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
+  export import InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
+  export import InboundACHTransferNotificationOfChangeParams = InboundACHTransfersAPI.InboundACHTransferNotificationOfChangeParams;
+  export import InboundACHTransferTransferReturnParams = InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
 }

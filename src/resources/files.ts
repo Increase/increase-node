@@ -257,8 +257,8 @@ export namespace FileListParams {
 }
 
 export namespace Files {
-  export type File = FilesAPI.File;
+  export import File = FilesAPI.File;
   export import FilesPage = FilesAPI.FilesPage;
-  export type FileCreateParams = FilesAPI.FileCreateParams;
-  export type FileListParams = FilesAPI.FileListParams;
+  export import FileCreateParams = FilesAPI.FileCreateParams;
+  export import FileListParams = FilesAPI.FileListParams;
 }

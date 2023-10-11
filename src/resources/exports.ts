@@ -273,8 +273,8 @@ export namespace ExportCreateParams {
 export interface ExportListParams extends PageParams {}
 
 export namespace Exports {
-  export type Export = ExportsAPI.Export;
+  export import Export = ExportsAPI.Export;
   export import ExportsPage = ExportsAPI.ExportsPage;
-  export type ExportCreateParams = ExportsAPI.ExportCreateParams;
-  export type ExportListParams = ExportsAPI.ExportListParams;
+  export import ExportCreateParams = ExportsAPI.ExportCreateParams;
+  export import ExportListParams = ExportsAPI.ExportListParams;
 }

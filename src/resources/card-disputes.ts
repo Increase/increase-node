@@ -201,8 +201,8 @@ export namespace CardDisputeListParams {
 }
 
 export namespace CardDisputes {
-  export type CardDispute = CardDisputesAPI.CardDispute;
+  export import CardDispute = CardDisputesAPI.CardDispute;
   export import CardDisputesPage = CardDisputesAPI.CardDisputesPage;
-  export type CardDisputeCreateParams = CardDisputesAPI.CardDisputeCreateParams;
-  export type CardDisputeListParams = CardDisputesAPI.CardDisputeListParams;
+  export import CardDisputeCreateParams = CardDisputesAPI.CardDisputeCreateParams;
+  export import CardDisputeListParams = CardDisputesAPI.CardDisputeListParams;
 }

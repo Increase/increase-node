@@ -2141,18 +2141,18 @@ export namespace EntityUpdateAddressParams {
 }
 
 export namespace Entities {
-  export type Entity = EntitiesAPI.Entity;
+  export import Entity = EntitiesAPI.Entity;
   export import EntitiesPage = EntitiesAPI.EntitiesPage;
-  export type EntityCreateParams = EntitiesAPI.EntityCreateParams;
-  export type EntityListParams = EntitiesAPI.EntityListParams;
-  export type EntityUpdateAddressParams = EntitiesAPI.EntityUpdateAddressParams;
+  export import EntityCreateParams = EntitiesAPI.EntityCreateParams;
+  export import EntityListParams = EntitiesAPI.EntityListParams;
+  export import EntityUpdateAddressParams = EntitiesAPI.EntityUpdateAddressParams;
   export import BeneficialOwners = BeneficialOwnersAPI.BeneficialOwners;
-  export type BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
-  export type BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
-  export type BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
+  export import BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
+  export import BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
+  export import BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
   export import SupplementalDocuments = SupplementalDocumentsAPI.SupplementalDocuments;
-  export type SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
+  export import SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
   export import SupplementalDocumentsPage = SupplementalDocumentsAPI.SupplementalDocumentsPage;
-  export type SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
-  export type SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
+  export import SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
+  export import SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
 }
