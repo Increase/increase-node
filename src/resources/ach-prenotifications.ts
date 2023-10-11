@@ -553,8 +553,8 @@ export namespace ACHPrenotificationListParams {
 }
 
 export namespace ACHPrenotifications {
-  export type ACHPrenotification = ACHPrenotificationsAPI.ACHPrenotification;
+  export import ACHPrenotification = ACHPrenotificationsAPI.ACHPrenotification;
   export import ACHPrenotificationsPage = ACHPrenotificationsAPI.ACHPrenotificationsPage;
-  export type ACHPrenotificationCreateParams = ACHPrenotificationsAPI.ACHPrenotificationCreateParams;
-  export type ACHPrenotificationListParams = ACHPrenotificationsAPI.ACHPrenotificationListParams;
+  export import ACHPrenotificationCreateParams = ACHPrenotificationsAPI.ACHPrenotificationCreateParams;
+  export import ACHPrenotificationListParams = ACHPrenotificationsAPI.ACHPrenotificationListParams;
 }

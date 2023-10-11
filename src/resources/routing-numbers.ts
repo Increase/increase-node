@@ -75,7 +75,7 @@ export interface RoutingNumberListParams extends PageParams {
 }
 
 export namespace RoutingNumbers {
-  export type RoutingNumber = RoutingNumbersAPI.RoutingNumber;
+  export import RoutingNumber = RoutingNumbersAPI.RoutingNumber;
   export import RoutingNumbersPage = RoutingNumbersAPI.RoutingNumbersPage;
-  export type RoutingNumberListParams = RoutingNumbersAPI.RoutingNumberListParams;
+  export import RoutingNumberListParams = RoutingNumbersAPI.RoutingNumberListParams;
 }

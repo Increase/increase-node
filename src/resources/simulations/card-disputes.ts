@@ -38,5 +38,5 @@ export interface CardDisputeActionParams {
 }
 
 export namespace CardDisputes {
-  export type CardDisputeActionParams = SimulationsCardDisputesAPI.CardDisputeActionParams;
+  export import CardDisputeActionParams = SimulationsCardDisputesAPI.CardDisputeActionParams;
 }

@@ -127,6 +127,5 @@ export interface InboundWireDrawdownRequestCreateParams {
 }
 
 export namespace InboundWireDrawdownRequests {
-  export type InboundWireDrawdownRequestCreateParams =
-    SimulationsInboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
+  export import InboundWireDrawdownRequestCreateParams = SimulationsInboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
 }

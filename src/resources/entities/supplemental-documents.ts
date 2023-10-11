@@ -72,8 +72,8 @@ export interface SupplementalDocumentListParams extends PageParams {
 }
 
 export namespace SupplementalDocuments {
-  export type SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
+  export import SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
   export import SupplementalDocumentsPage = SupplementalDocumentsAPI.SupplementalDocumentsPage;
-  export type SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
-  export type SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
+  export import SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
+  export import SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
 }

@@ -105,8 +105,8 @@ export interface BookkeepingAccountCreateParams {
 export interface BookkeepingAccountListParams extends PageParams {}
 
 export namespace BookkeepingAccounts {
-  export type BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
+  export import BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
   export import BookkeepingAccountsPage = BookkeepingAccountsAPI.BookkeepingAccountsPage;
-  export type BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
-  export type BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
+  export import BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
+  export import BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
 }

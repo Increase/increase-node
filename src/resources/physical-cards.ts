@@ -384,9 +384,9 @@ export namespace PhysicalCardListParams {
 }
 
 export namespace PhysicalCards {
-  export type PhysicalCard = PhysicalCardsAPI.PhysicalCard;
+  export import PhysicalCard = PhysicalCardsAPI.PhysicalCard;
   export import PhysicalCardsPage = PhysicalCardsAPI.PhysicalCardsPage;
-  export type PhysicalCardCreateParams = PhysicalCardsAPI.PhysicalCardCreateParams;
-  export type PhysicalCardUpdateParams = PhysicalCardsAPI.PhysicalCardUpdateParams;
-  export type PhysicalCardListParams = PhysicalCardsAPI.PhysicalCardListParams;
+  export import PhysicalCardCreateParams = PhysicalCardsAPI.PhysicalCardCreateParams;
+  export import PhysicalCardUpdateParams = PhysicalCardsAPI.PhysicalCardUpdateParams;
+  export import PhysicalCardListParams = PhysicalCardsAPI.PhysicalCardListParams;
 }

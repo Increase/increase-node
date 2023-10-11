@@ -444,10 +444,10 @@ export namespace CardListParams {
 }
 
 export namespace Cards {
-  export type Card = CardsAPI.Card;
-  export type CardDetails = CardsAPI.CardDetails;
+  export import Card = CardsAPI.Card;
+  export import CardDetails = CardsAPI.CardDetails;
   export import CardsPage = CardsAPI.CardsPage;
-  export type CardCreateParams = CardsAPI.CardCreateParams;
-  export type CardUpdateParams = CardsAPI.CardUpdateParams;
-  export type CardListParams = CardsAPI.CardListParams;
+  export import CardCreateParams = CardsAPI.CardCreateParams;
+  export import CardUpdateParams = CardsAPI.CardUpdateParams;
+  export import CardListParams = CardsAPI.CardListParams;
 }

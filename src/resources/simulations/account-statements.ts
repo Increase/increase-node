@@ -26,5 +26,5 @@ export interface AccountStatementCreateParams {
 }
 
 export namespace AccountStatements {
-  export type AccountStatementCreateParams = SimulationsAccountStatementsAPI.AccountStatementCreateParams;
+  export import AccountStatementCreateParams = SimulationsAccountStatementsAPI.AccountStatementCreateParams;
 }

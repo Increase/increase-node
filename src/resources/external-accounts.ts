@@ -182,9 +182,9 @@ export namespace ExternalAccountListParams {
 }
 
 export namespace ExternalAccounts {
-  export type ExternalAccount = ExternalAccountsAPI.ExternalAccount;
+  export import ExternalAccount = ExternalAccountsAPI.ExternalAccount;
   export import ExternalAccountsPage = ExternalAccountsAPI.ExternalAccountsPage;
-  export type ExternalAccountCreateParams = ExternalAccountsAPI.ExternalAccountCreateParams;
-  export type ExternalAccountUpdateParams = ExternalAccountsAPI.ExternalAccountUpdateParams;
-  export type ExternalAccountListParams = ExternalAccountsAPI.ExternalAccountListParams;
+  export import ExternalAccountCreateParams = ExternalAccountsAPI.ExternalAccountCreateParams;
+  export import ExternalAccountUpdateParams = ExternalAccountsAPI.ExternalAccountUpdateParams;
+  export import ExternalAccountListParams = ExternalAccountsAPI.ExternalAccountListParams;
 }

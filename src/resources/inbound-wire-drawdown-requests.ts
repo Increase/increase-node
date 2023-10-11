@@ -170,8 +170,7 @@ export interface InboundWireDrawdownRequest {
 export interface InboundWireDrawdownRequestListParams extends PageParams {}
 
 export namespace InboundWireDrawdownRequests {
-  export type InboundWireDrawdownRequest = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest;
+  export import InboundWireDrawdownRequest = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest;
   export import InboundWireDrawdownRequestsPage = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestsPage;
-  export type InboundWireDrawdownRequestListParams =
-    InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestListParams;
+  export import InboundWireDrawdownRequestListParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestListParams;
 }

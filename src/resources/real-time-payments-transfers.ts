@@ -446,10 +446,8 @@ export namespace RealTimePaymentsTransferListParams {
 }
 
 export namespace RealTimePaymentsTransfers {
-  export type RealTimePaymentsTransfer = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer;
+  export import RealTimePaymentsTransfer = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer;
   export import RealTimePaymentsTransfersPage = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfersPage;
-  export type RealTimePaymentsTransferCreateParams =
-    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateParams;
-  export type RealTimePaymentsTransferListParams =
-    RealTimePaymentsTransfersAPI.RealTimePaymentsTransferListParams;
+  export import RealTimePaymentsTransferCreateParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateParams;
+  export import RealTimePaymentsTransferListParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferListParams;
 }

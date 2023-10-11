@@ -74,7 +74,7 @@ export interface OauthConnection {
 export interface OauthConnectionListParams extends PageParams {}
 
 export namespace OauthConnections {
-  export type OauthConnection = OauthConnectionsAPI.OauthConnection;
+  export import OauthConnection = OauthConnectionsAPI.OauthConnection;
   export import OauthConnectionsPage = OauthConnectionsAPI.OauthConnectionsPage;
-  export type OauthConnectionListParams = OauthConnectionsAPI.OauthConnectionListParams;
+  export import OauthConnectionListParams = OauthConnectionsAPI.OauthConnectionListParams;
 }

@@ -89,5 +89,5 @@ export interface InboundFundsHoldReleaseResponse {
 }
 
 export namespace InboundFundsHolds {
-  export type InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
+  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
 }

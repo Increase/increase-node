@@ -277,8 +277,8 @@ export namespace AccountTransferListParams {
 }
 
 export namespace AccountTransfers {
-  export type AccountTransfer = AccountTransfersAPI.AccountTransfer;
+  export import AccountTransfer = AccountTransfersAPI.AccountTransfer;
   export import AccountTransfersPage = AccountTransfersAPI.AccountTransfersPage;
-  export type AccountTransferCreateParams = AccountTransfersAPI.AccountTransferCreateParams;
-  export type AccountTransferListParams = AccountTransfersAPI.AccountTransferListParams;
+  export import AccountTransferCreateParams = AccountTransfersAPI.AccountTransferCreateParams;
+  export import AccountTransferListParams = AccountTransfersAPI.AccountTransferListParams;
 }

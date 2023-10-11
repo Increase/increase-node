@@ -47,6 +47,5 @@ export interface PhysicalCardShipmentAdvanceParams {
 }
 
 export namespace PhysicalCards {
-  export type PhysicalCardShipmentAdvanceParams =
-    SimulationsPhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
+  export import PhysicalCardShipmentAdvanceParams = SimulationsPhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
 }

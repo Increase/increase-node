@@ -4909,7 +4909,7 @@ export interface ACHTransferReturnParams {
 }
 
 export namespace ACHTransfers {
-  export type ACHTransferSimulation = SimulationsACHTransfersAPI.ACHTransferSimulation;
-  export type ACHTransferCreateInboundParams = SimulationsACHTransfersAPI.ACHTransferCreateInboundParams;
-  export type ACHTransferReturnParams = SimulationsACHTransfersAPI.ACHTransferReturnParams;
+  export import ACHTransferSimulation = SimulationsACHTransfersAPI.ACHTransferSimulation;
+  export import ACHTransferCreateInboundParams = SimulationsACHTransfersAPI.ACHTransferCreateInboundParams;
+  export import ACHTransferReturnParams = SimulationsACHTransfersAPI.ACHTransferReturnParams;
 }

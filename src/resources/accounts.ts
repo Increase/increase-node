@@ -218,9 +218,9 @@ export namespace AccountListParams {
 }
 
 export namespace Accounts {
-  export type Account = AccountsAPI.Account;
+  export import Account = AccountsAPI.Account;
   export import AccountsPage = AccountsAPI.AccountsPage;
-  export type AccountCreateParams = AccountsAPI.AccountCreateParams;
-  export type AccountUpdateParams = AccountsAPI.AccountUpdateParams;
-  export type AccountListParams = AccountsAPI.AccountListParams;
+  export import AccountCreateParams = AccountsAPI.AccountCreateParams;
+  export import AccountUpdateParams = AccountsAPI.AccountUpdateParams;
+  export import AccountListParams = AccountsAPI.AccountListParams;
 }

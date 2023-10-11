@@ -4493,10 +4493,7 @@ export interface RealTimePaymentsTransferCreateInboundParams {
 }
 
 export namespace RealTimePaymentsTransfers {
-  export type InboundRealTimePaymentsTransferSimulationResult =
-    SimulationsRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferSimulationResult;
-  export type RealTimePaymentsTransferCompleteParams =
-    SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
-  export type RealTimePaymentsTransferCreateInboundParams =
-    SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
+  export import InboundRealTimePaymentsTransferSimulationResult = SimulationsRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferSimulationResult;
+  export import RealTimePaymentsTransferCompleteParams = SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export import RealTimePaymentsTransferCreateInboundParams = SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
 }

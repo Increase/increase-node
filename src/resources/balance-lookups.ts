@@ -58,6 +58,6 @@ export interface BalanceLookupLookupParams {
 }
 
 export namespace BalanceLookups {
-  export type BalanceLookupLookupResponse = BalanceLookupsAPI.BalanceLookupLookupResponse;
-  export type BalanceLookupLookupParams = BalanceLookupsAPI.BalanceLookupLookupParams;
+  export import BalanceLookupLookupResponse = BalanceLookupsAPI.BalanceLookupLookupResponse;
+  export import BalanceLookupLookupParams = BalanceLookupsAPI.BalanceLookupLookupParams;
 }

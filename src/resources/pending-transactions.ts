@@ -761,7 +761,7 @@ export namespace PendingTransactionListParams {
 }
 
 export namespace PendingTransactions {
-  export type PendingTransaction = PendingTransactionsAPI.PendingTransaction;
+  export import PendingTransaction = PendingTransactionsAPI.PendingTransaction;
   export import PendingTransactionsPage = PendingTransactionsAPI.PendingTransactionsPage;
-  export type PendingTransactionListParams = PendingTransactionsAPI.PendingTransactionListParams;
+  export import PendingTransactionListParams = PendingTransactionsAPI.PendingTransactionListParams;
 }

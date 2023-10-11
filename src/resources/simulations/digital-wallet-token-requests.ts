@@ -60,8 +60,6 @@ export interface DigitalWalletTokenRequestCreateParams {
 }
 
 export namespace DigitalWalletTokenRequests {
-  export type DigitalWalletTokenRequestCreateResponse =
-    DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
-  export type DigitalWalletTokenRequestCreateParams =
-    DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
+  export import DigitalWalletTokenRequestCreateResponse = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
+  export import DigitalWalletTokenRequestCreateParams = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
 }

@@ -54,5 +54,5 @@ export interface Group {
 }
 
 export namespace Groups {
-  export type Group = GroupsAPI.Group;
+  export import Group = GroupsAPI.Group;
 }

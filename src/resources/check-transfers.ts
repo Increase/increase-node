@@ -674,9 +674,9 @@ export interface CheckTransferStopPaymentParams {
 }
 
 export namespace CheckTransfers {
-  export type CheckTransfer = CheckTransfersAPI.CheckTransfer;
+  export import CheckTransfer = CheckTransfersAPI.CheckTransfer;
   export import CheckTransfersPage = CheckTransfersAPI.CheckTransfersPage;
-  export type CheckTransferCreateParams = CheckTransfersAPI.CheckTransferCreateParams;
-  export type CheckTransferListParams = CheckTransfersAPI.CheckTransferListParams;
-  export type CheckTransferStopPaymentParams = CheckTransfersAPI.CheckTransferStopPaymentParams;
+  export import CheckTransferCreateParams = CheckTransfersAPI.CheckTransferCreateParams;
+  export import CheckTransferListParams = CheckTransfersAPI.CheckTransferListParams;
+  export import CheckTransferStopPaymentParams = CheckTransfersAPI.CheckTransferStopPaymentParams;
 }
