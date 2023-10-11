@@ -2,6 +2,14 @@
 
 ## 0.11.8 (2023-10-11)
 
+Full Changelog: [v0.11.7...v0.11.8](https://github.com/Increase/increase-node/compare/v0.11.7...v0.11.8)
+
+### Bug Fixes
+
+* **client:** eliminate circular imports, which cause runtime errors in webpack dev bundles ([#189](https://github.com/Increase/increase-node/issues/189)) ([717b395](https://github.com/Increase/increase-node/commit/717b39505e451dfd8018d5a4c99ea6df4c5e4d4d))
+
+## 0.11.8 (2023-10-11)
+
 Full Changelog: [v0.11.7...v0.11.8](https://github.com/increase/increase-node/compare/v0.11.7...v0.11.8)
 
 ### Bug Fixes
