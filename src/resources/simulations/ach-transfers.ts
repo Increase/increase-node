@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as ACHTransfers_ from 'increase/resources/ach-transfers';
-import * as API from './index';
+import * as SimulationsACHTransfersAPI from 'increase/resources/simulations/ach-transfers';
+import * as ACHTransfersAPI from 'increase/resources/ach-transfers';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -34,7 +34,7 @@ export class ACHTransfers extends APIResource {
     achTransferId: string,
     body: ACHTransferReturnParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHTransfers_.ACHTransfer> {
+  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
     return this.post(`/simulations/ach_transfers/${achTransferId}/return`, { body, ...options });
   }
 
@@ -46,7 +46,7 @@ export class ACHTransfers extends APIResource {
    * not submitted to the Federal Reserve, this endpoint allows you to skip that
    * delay and transition the ACH Transfer to a status of `submitted`.
    */
-  submit(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfers_.ACHTransfer> {
+  submit(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
     return this.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
   }
 }
@@ -4909,7 +4909,7 @@ export interface ACHTransferReturnParams {
 }
 
 export namespace ACHTransfers {
-  export import ACHTransferSimulation = API.ACHTransferSimulation;
-  export import ACHTransferCreateInboundParams = API.ACHTransferCreateInboundParams;
-  export import ACHTransferReturnParams = API.ACHTransferReturnParams;
+  export type ACHTransferSimulation = SimulationsACHTransfersAPI.ACHTransferSimulation;
+  export type ACHTransferCreateInboundParams = SimulationsACHTransfersAPI.ACHTransferCreateInboundParams;
+  export type ACHTransferReturnParams = SimulationsACHTransfersAPI.ACHTransferReturnParams;
 }

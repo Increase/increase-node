@@ -3,9 +3,9 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
+import * as FilesAPI from 'increase/resources/files';
 import { type Uploadable, multipartFormRequestOptions } from 'increase/core';
-import { Page, PageParams } from 'increase/pagination';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Files extends APIResource {
   /**
@@ -41,8 +41,6 @@ export class Files extends APIResource {
 }
 
 export class FilesPage extends Page<File> {}
-// alias so we can export it in the namespace
-type _FilesPage = FilesPage;
 
 /**
  * Files are objects that represent a file hosted on Increase's servers. The file
@@ -259,8 +257,8 @@ export namespace FileListParams {
 }
 
 export namespace Files {
-  export import File = API.File;
-  export type FilesPage = _FilesPage;
-  export import FileCreateParams = API.FileCreateParams;
-  export import FileListParams = API.FileListParams;
+  export type File = FilesAPI.File;
+  export import FilesPage = FilesAPI.FilesPage;
+  export type FileCreateParams = FilesAPI.FileCreateParams;
+  export type FileListParams = FilesAPI.FileListParams;
 }

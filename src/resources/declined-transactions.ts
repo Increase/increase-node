@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as DeclinedTransactionsAPI from 'increase/resources/declined-transactions';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class DeclinedTransactions extends APIResource {
   /**
@@ -37,8 +37,6 @@ export class DeclinedTransactions extends APIResource {
 }
 
 export class DeclinedTransactionsPage extends Page<DeclinedTransaction> {}
-// alias so we can export it in the namespace
-type _DeclinedTransactionsPage = DeclinedTransactionsPage;
 
 /**
  * Declined Transactions are refused additions and removals of money from your bank
@@ -1114,7 +1112,7 @@ export namespace DeclinedTransactionListParams {
 }
 
 export namespace DeclinedTransactions {
-  export import DeclinedTransaction = API.DeclinedTransaction;
-  export type DeclinedTransactionsPage = _DeclinedTransactionsPage;
-  export import DeclinedTransactionListParams = API.DeclinedTransactionListParams;
+  export type DeclinedTransaction = DeclinedTransactionsAPI.DeclinedTransaction;
+  export import DeclinedTransactionsPage = DeclinedTransactionsAPI.DeclinedTransactionsPage;
+  export type DeclinedTransactionListParams = DeclinedTransactionsAPI.DeclinedTransactionListParams;
 }

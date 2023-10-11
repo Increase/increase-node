@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as ACHTransfersAPI from 'increase/resources/ach-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -55,8 +55,6 @@ export class ACHTransfers extends APIResource {
 }
 
 export class ACHTransfersPage extends Page<ACHTransfer> {}
-// alias so we can export it in the namespace
-type _ACHTransfersPage = ACHTransfersPage;
 
 /**
  * ACH transfers move funds between your Increase account and any other account
@@ -846,8 +844,8 @@ export namespace ACHTransferListParams {
 }
 
 export namespace ACHTransfers {
-  export import ACHTransfer = API.ACHTransfer;
-  export type ACHTransfersPage = _ACHTransfersPage;
-  export import ACHTransferCreateParams = API.ACHTransferCreateParams;
-  export import ACHTransferListParams = API.ACHTransferListParams;
+  export type ACHTransfer = ACHTransfersAPI.ACHTransfer;
+  export import ACHTransfersPage = ACHTransfersAPI.ACHTransfersPage;
+  export type ACHTransferCreateParams = ACHTransfersAPI.ACHTransferCreateParams;
+  export type ACHTransferListParams = ACHTransfersAPI.ACHTransferListParams;
 }

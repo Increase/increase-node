@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as BalanceLookupsAPI from 'increase/resources/balance-lookups';
 
 export class BalanceLookups extends APIResource {
   /**
@@ -58,6 +58,6 @@ export interface BalanceLookupLookupParams {
 }
 
 export namespace BalanceLookups {
-  export import BalanceLookupLookupResponse = API.BalanceLookupLookupResponse;
-  export import BalanceLookupLookupParams = API.BalanceLookupLookupParams;
+  export type BalanceLookupLookupResponse = BalanceLookupsAPI.BalanceLookupLookupResponse;
+  export type BalanceLookupLookupParams = BalanceLookupsAPI.BalanceLookupLookupParams;
 }

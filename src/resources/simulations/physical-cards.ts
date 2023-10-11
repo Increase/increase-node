@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as PhysicalCards_ from 'increase/resources/physical-cards';
-import * as API from './index';
+import * as SimulationsPhysicalCardsAPI from 'increase/resources/simulations/physical-cards';
+import * as PhysicalCardsAPI from 'increase/resources/physical-cards';
 
 export class PhysicalCards extends APIResource {
   /**
@@ -15,7 +15,7 @@ export class PhysicalCards extends APIResource {
     physicalCardId: string,
     body: PhysicalCardShipmentAdvanceParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCards_.PhysicalCard> {
+  ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
     return this.post(`/simulations/physical_cards/${physicalCardId}/shipment_advance`, { body, ...options });
   }
 }
@@ -47,5 +47,6 @@ export interface PhysicalCardShipmentAdvanceParams {
 }
 
 export namespace PhysicalCards {
-  export import PhysicalCardShipmentAdvanceParams = API.PhysicalCardShipmentAdvanceParams;
+  export type PhysicalCardShipmentAdvanceParams =
+    SimulationsPhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
 }

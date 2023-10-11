@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as InterestPaymentsAPI from 'increase/resources/simulations/interest-payments';
 
 export class InterestPayments extends APIResource {
   /**
@@ -3347,6 +3347,6 @@ export interface InterestPaymentCreateParams {
 }
 
 export namespace InterestPayments {
-  export import InterestPaymentSimulationResult = API.InterestPaymentSimulationResult;
-  export import InterestPaymentCreateParams = API.InterestPaymentCreateParams;
+  export type InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
+  export type InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
 }

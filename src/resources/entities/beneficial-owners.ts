@@ -2,14 +2,17 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as Entities from 'increase/resources/entities/index';
-import * as API from './index';
+import * as BeneficialOwnersAPI from 'increase/resources/entities/beneficial-owners';
+import * as EntitiesAPI from 'increase/resources/entities/entities';
 
 export class BeneficialOwners extends APIResource {
   /**
    * Create a beneficial owner for a corporate Entity
    */
-  create(body: BeneficialOwnerCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entities.Entity> {
+  create(
+    body: BeneficialOwnerCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<EntitiesAPI.Entity> {
     return this.post('/entity_beneficial_owners', { body, ...options });
   }
 
@@ -19,7 +22,7 @@ export class BeneficialOwners extends APIResource {
   archive(
     body: BeneficialOwnerArchiveParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Entities.Entity> {
+  ): Core.APIPromise<EntitiesAPI.Entity> {
     return this.post('/entity_beneficial_owners/archive', { body, ...options });
   }
 
@@ -29,7 +32,7 @@ export class BeneficialOwners extends APIResource {
   updateAddress(
     body: BeneficialOwnerUpdateAddressParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Entities.Entity> {
+  ): Core.APIPromise<EntitiesAPI.Entity> {
     return this.post('/entity_beneficial_owners/address', { body, ...options });
   }
 }
@@ -332,7 +335,7 @@ export namespace BeneficialOwnerUpdateAddressParams {
 }
 
 export namespace BeneficialOwners {
-  export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
-  export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
-  export import BeneficialOwnerUpdateAddressParams = API.BeneficialOwnerUpdateAddressParams;
+  export type BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
+  export type BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
+  export type BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
 }

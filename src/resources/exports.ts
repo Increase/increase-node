@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as ExportsAPI from 'increase/resources/exports';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Exports extends APIResource {
   /**
@@ -38,8 +38,6 @@ export class Exports extends APIResource {
 }
 
 export class ExportsPage extends Page<Export> {}
-// alias so we can export it in the namespace
-type _ExportsPage = ExportsPage;
 
 /**
  * Exports are batch summaries of your Increase data. You can make them from the
@@ -275,8 +273,8 @@ export namespace ExportCreateParams {
 export interface ExportListParams extends PageParams {}
 
 export namespace Exports {
-  export import Export = API.Export;
-  export type ExportsPage = _ExportsPage;
-  export import ExportCreateParams = API.ExportCreateParams;
-  export import ExportListParams = API.ExportListParams;
+  export type Export = ExportsAPI.Export;
+  export import ExportsPage = ExportsAPI.ExportsPage;
+  export type ExportCreateParams = ExportsAPI.ExportCreateParams;
+  export type ExportListParams = ExportsAPI.ExportListParams;
 }

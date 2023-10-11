@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as CardDisputesAPI from 'increase/resources/card-disputes';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class CardDisputes extends APIResource {
   /**
@@ -41,8 +41,6 @@ export class CardDisputes extends APIResource {
 }
 
 export class CardDisputesPage extends Page<CardDispute> {}
-// alias so we can export it in the namespace
-type _CardDisputesPage = CardDisputesPage;
 
 /**
  * If unauthorized activity occurs on a card, you can create a Card Dispute and
@@ -203,8 +201,8 @@ export namespace CardDisputeListParams {
 }
 
 export namespace CardDisputes {
-  export import CardDispute = API.CardDispute;
-  export type CardDisputesPage = _CardDisputesPage;
-  export import CardDisputeCreateParams = API.CardDisputeCreateParams;
-  export import CardDisputeListParams = API.CardDisputeListParams;
+  export type CardDispute = CardDisputesAPI.CardDispute;
+  export import CardDisputesPage = CardDisputesAPI.CardDisputesPage;
+  export type CardDisputeCreateParams = CardDisputesAPI.CardDisputeCreateParams;
+  export type CardDisputeListParams = CardDisputesAPI.CardDisputeListParams;
 }

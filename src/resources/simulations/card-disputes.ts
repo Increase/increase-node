@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as CardDisputes_ from 'increase/resources/card-disputes';
-import * as API from './index';
+import * as SimulationsCardDisputesAPI from 'increase/resources/simulations/card-disputes';
+import * as CardDisputesAPI from 'increase/resources/card-disputes';
 
 export class CardDisputes extends APIResource {
   /**
@@ -16,7 +16,7 @@ export class CardDisputes extends APIResource {
     cardDisputeId: string,
     body: CardDisputeActionParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CardDisputes_.CardDispute> {
+  ): Core.APIPromise<CardDisputesAPI.CardDispute> {
     return this.post(`/simulations/card_disputes/${cardDisputeId}/action`, { body, ...options });
   }
 }
@@ -38,5 +38,5 @@ export interface CardDisputeActionParams {
 }
 
 export namespace CardDisputes {
-  export import CardDisputeActionParams = API.CardDisputeActionParams;
+  export type CardDisputeActionParams = SimulationsCardDisputesAPI.CardDisputeActionParams;
 }

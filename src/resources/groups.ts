@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as API from './index';
+import * as GroupsAPI from 'increase/resources/groups';
 
 export class Groups extends APIResource {
   /**
@@ -54,5 +54,5 @@ export interface Group {
 }
 
 export namespace Groups {
-  export import Group = API.Group;
+  export type Group = GroupsAPI.Group;
 }

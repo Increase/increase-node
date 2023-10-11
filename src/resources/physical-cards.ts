@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as PhysicalCardsAPI from 'increase/resources/physical-cards';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class PhysicalCards extends APIResource {
   /**
@@ -52,8 +52,6 @@ export class PhysicalCards extends APIResource {
 }
 
 export class PhysicalCardsPage extends Page<PhysicalCard> {}
-// alias so we can export it in the namespace
-type _PhysicalCardsPage = PhysicalCardsPage;
 
 /**
  * Custom physical Visa cards that are shipped to your customers. The artwork is
@@ -386,9 +384,9 @@ export namespace PhysicalCardListParams {
 }
 
 export namespace PhysicalCards {
-  export import PhysicalCard = API.PhysicalCard;
-  export type PhysicalCardsPage = _PhysicalCardsPage;
-  export import PhysicalCardCreateParams = API.PhysicalCardCreateParams;
-  export import PhysicalCardUpdateParams = API.PhysicalCardUpdateParams;
-  export import PhysicalCardListParams = API.PhysicalCardListParams;
+  export type PhysicalCard = PhysicalCardsAPI.PhysicalCard;
+  export import PhysicalCardsPage = PhysicalCardsAPI.PhysicalCardsPage;
+  export type PhysicalCardCreateParams = PhysicalCardsAPI.PhysicalCardCreateParams;
+  export type PhysicalCardUpdateParams = PhysicalCardsAPI.PhysicalCardUpdateParams;
+  export type PhysicalCardListParams = PhysicalCardsAPI.PhysicalCardListParams;
 }

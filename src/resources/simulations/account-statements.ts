@@ -2,8 +2,8 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as AccountStatements_ from 'increase/resources/account-statements';
-import * as API from './index';
+import * as SimulationsAccountStatementsAPI from 'increase/resources/simulations/account-statements';
+import * as AccountStatementsAPI from 'increase/resources/account-statements';
 
 export class AccountStatements extends APIResource {
   /**
@@ -13,7 +13,7 @@ export class AccountStatements extends APIResource {
   create(
     body: AccountStatementCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AccountStatements_.AccountStatement> {
+  ): Core.APIPromise<AccountStatementsAPI.AccountStatement> {
     return this.post('/simulations/account_statements', { body, ...options });
   }
 }
@@ -26,5 +26,5 @@ export interface AccountStatementCreateParams {
 }
 
 export namespace AccountStatements {
-  export import AccountStatementCreateParams = API.AccountStatementCreateParams;
+  export type AccountStatementCreateParams = SimulationsAccountStatementsAPI.AccountStatementCreateParams;
 }

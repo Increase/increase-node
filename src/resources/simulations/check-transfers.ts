@@ -2,7 +2,7 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
-import * as CheckTransfers_ from 'increase/resources/check-transfers';
+import * as CheckTransfersAPI from 'increase/resources/check-transfers';
 
 export class CheckTransfers extends APIResource {
   /**
@@ -12,7 +12,7 @@ export class CheckTransfers extends APIResource {
   deposit(
     checkTransferId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckTransfers_.CheckTransfer> {
+  ): Core.APIPromise<CheckTransfersAPI.CheckTransfer> {
     return this.post(`/simulations/check_transfers/${checkTransferId}/deposit`, options);
   }
 
@@ -24,7 +24,7 @@ export class CheckTransfers extends APIResource {
   mail(
     checkTransferId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckTransfers_.CheckTransfer> {
+  ): Core.APIPromise<CheckTransfersAPI.CheckTransfer> {
     return this.post(`/simulations/check_transfers/${checkTransferId}/mail`, options);
   }
 }

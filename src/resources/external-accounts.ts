@@ -3,8 +3,8 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as ExternalAccountsAPI from 'increase/resources/external-accounts';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class ExternalAccounts extends APIResource {
   /**
@@ -52,8 +52,6 @@ export class ExternalAccounts extends APIResource {
 }
 
 export class ExternalAccountsPage extends Page<ExternalAccount> {}
-// alias so we can export it in the namespace
-type _ExternalAccountsPage = ExternalAccountsPage;
 
 /**
  * External Accounts represent accounts at financial institutions other than
@@ -184,9 +182,9 @@ export namespace ExternalAccountListParams {
 }
 
 export namespace ExternalAccounts {
-  export import ExternalAccount = API.ExternalAccount;
-  export type ExternalAccountsPage = _ExternalAccountsPage;
-  export import ExternalAccountCreateParams = API.ExternalAccountCreateParams;
-  export import ExternalAccountUpdateParams = API.ExternalAccountUpdateParams;
-  export import ExternalAccountListParams = API.ExternalAccountListParams;
+  export type ExternalAccount = ExternalAccountsAPI.ExternalAccount;
+  export import ExternalAccountsPage = ExternalAccountsAPI.ExternalAccountsPage;
+  export type ExternalAccountCreateParams = ExternalAccountsAPI.ExternalAccountCreateParams;
+  export type ExternalAccountUpdateParams = ExternalAccountsAPI.ExternalAccountUpdateParams;
+  export type ExternalAccountListParams = ExternalAccountsAPI.ExternalAccountListParams;
 }

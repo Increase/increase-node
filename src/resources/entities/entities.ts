@@ -3,14 +3,17 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import { BeneficialOwners } from './beneficial-owners';
-import { SupplementalDocuments } from './supplemental-documents';
-import * as API from './index';
-import { Page, PageParams } from 'increase/pagination';
+import * as EntitiesAPI from 'increase/resources/entities/entities';
+import * as BeneficialOwnersAPI from 'increase/resources/entities/beneficial-owners';
+import * as SupplementalDocumentsAPI from 'increase/resources/entities/supplemental-documents';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class Entities extends APIResource {
-  beneficialOwners: BeneficialOwners = new BeneficialOwners(this.client);
-  supplementalDocuments: SupplementalDocuments = new SupplementalDocuments(this.client);
+  beneficialOwners: BeneficialOwnersAPI.BeneficialOwners = new BeneficialOwnersAPI.BeneficialOwners(
+    this.client,
+  );
+  supplementalDocuments: SupplementalDocumentsAPI.SupplementalDocuments =
+    new SupplementalDocumentsAPI.SupplementalDocuments(this.client);
 
   /**
    * Create an Entity
@@ -61,8 +64,6 @@ export class Entities extends APIResource {
 }
 
 export class EntitiesPage extends Page<Entity> {}
-// alias so we can export it in the namespace
-type _EntitiesPage = EntitiesPage;
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
@@ -2140,20 +2141,18 @@ export namespace EntityUpdateAddressParams {
 }
 
 export namespace Entities {
-  export import Entity = API.Entity;
-  export type EntitiesPage = _EntitiesPage;
-  export import EntityCreateParams = API.EntityCreateParams;
-  export import EntityListParams = API.EntityListParams;
-  export import EntityUpdateAddressParams = API.EntityUpdateAddressParams;
-
-  export import BeneficialOwners = API.BeneficialOwners;
-  export import BeneficialOwnerCreateParams = API.BeneficialOwnerCreateParams;
-  export import BeneficialOwnerArchiveParams = API.BeneficialOwnerArchiveParams;
-  export import BeneficialOwnerUpdateAddressParams = API.BeneficialOwnerUpdateAddressParams;
-
-  export import SupplementalDocuments = API.SupplementalDocuments;
-  export import SupplementalDocument = API.SupplementalDocument;
-  export import SupplementalDocumentsPage = API.SupplementalDocumentsPage;
-  export import SupplementalDocumentCreateParams = API.SupplementalDocumentCreateParams;
-  export import SupplementalDocumentListParams = API.SupplementalDocumentListParams;
+  export type Entity = EntitiesAPI.Entity;
+  export import EntitiesPage = EntitiesAPI.EntitiesPage;
+  export type EntityCreateParams = EntitiesAPI.EntityCreateParams;
+  export type EntityListParams = EntitiesAPI.EntityListParams;
+  export type EntityUpdateAddressParams = EntitiesAPI.EntityUpdateAddressParams;
+  export import BeneficialOwners = BeneficialOwnersAPI.BeneficialOwners;
+  export type BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;
+  export type BeneficialOwnerArchiveParams = BeneficialOwnersAPI.BeneficialOwnerArchiveParams;
+  export type BeneficialOwnerUpdateAddressParams = BeneficialOwnersAPI.BeneficialOwnerUpdateAddressParams;
+  export import SupplementalDocuments = SupplementalDocumentsAPI.SupplementalDocuments;
+  export type SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
+  export import SupplementalDocumentsPage = SupplementalDocumentsAPI.SupplementalDocumentsPage;
+  export type SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
+  export type SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
 }
