@@ -4,7 +4,7 @@ import Increase from 'increase';
 import { Response } from 'node-fetch';
 
 const increase = new Increase({
-  apiKey: 'something1234',
+  apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
