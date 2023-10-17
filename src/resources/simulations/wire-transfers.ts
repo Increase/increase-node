@@ -2203,6 +2203,11 @@ export namespace WireTransferSimulation {
         transaction_id: string | null;
 
         /**
+         * The identifier of the Check Transfer object that was deposited.
+         */
+        transfer_id: string;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `check_transfer_deposit`.
          */

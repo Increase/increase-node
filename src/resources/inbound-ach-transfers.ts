@@ -88,6 +88,11 @@ export interface InboundACHTransfer {
   account_number_id: string;
 
   /**
+   * Additional information sent from the originator.
+   */
+  addenda: InboundACHTransfer.Addenda | null;
+
+  /**
    * The transfer amount in USD cents.
    */
   amount: number;
@@ -199,6 +204,44 @@ export namespace InboundACHTransfer {
      * The id of the transaction for the accepted transfer.
      */
     transaction_id: string;
+  }
+
+  /**
+   * Additional information sent from the originator.
+   */
+  export interface Addenda {
+    /**
+     * The type of addendum.
+     *
+     * - `freeform` - Unstructured addendum.
+     */
+    category: 'freeform';
+
+    /**
+     * Unstructured `payment_related_information` passed through by the originator.
+     */
+    freeform: Addenda.Freeform | null;
+  }
+
+  export namespace Addenda {
+    /**
+     * Unstructured `payment_related_information` passed through by the originator.
+     */
+    export interface Freeform {
+      /**
+       * Each entry represents an addendum received from the originator.
+       */
+      entries: Array<Freeform.Entry>;
+    }
+
+    export namespace Freeform {
+      export interface Entry {
+        /**
+         * The payment related information passed in the addendum.
+         */
+        payment_related_information: string;
+      }
+    }
   }
 
   /**
