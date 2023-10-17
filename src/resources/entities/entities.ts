@@ -944,7 +944,8 @@ export namespace EntityCreateParams {
 
       /**
        * Why this person is considered a beneficial owner of the entity. At least one
-       * option is required.
+       * option is required, if a person is both a control person and owner, submit an
+       * array containing both.
        */
       prongs: Array<'ownership' | 'control'>;
 

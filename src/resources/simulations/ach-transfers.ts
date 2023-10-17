@@ -3263,6 +3263,11 @@ export namespace ACHTransferSimulation {
         transaction_id: string | null;
 
         /**
+         * The identifier of the Check Transfer object that was deposited.
+         */
+        transfer_id: string;
+
+        /**
          * A constant representing the object's type. For this resource it will always be
          * `check_transfer_deposit`.
          */
@@ -4404,6 +4409,11 @@ export namespace ACHTransferSimulation {
     account_number_id: string;
 
     /**
+     * Additional information sent from the originator.
+     */
+    addenda: Transfer.Addenda | null;
+
+    /**
      * The transfer amount in USD cents.
      */
     amount: number;
@@ -4515,6 +4525,44 @@ export namespace ACHTransferSimulation {
        * The id of the transaction for the accepted transfer.
        */
       transaction_id: string;
+    }
+
+    /**
+     * Additional information sent from the originator.
+     */
+    export interface Addenda {
+      /**
+       * The type of addendum.
+       *
+       * - `freeform` - Unstructured addendum.
+       */
+      category: 'freeform';
+
+      /**
+       * Unstructured `payment_related_information` passed through by the originator.
+       */
+      freeform: Addenda.Freeform | null;
+    }
+
+    export namespace Addenda {
+      /**
+       * Unstructured `payment_related_information` passed through by the originator.
+       */
+      export interface Freeform {
+        /**
+         * Each entry represents an addendum received from the originator.
+         */
+        entries: Array<Freeform.Entry>;
+      }
+
+      export namespace Freeform {
+        export interface Entry {
+          /**
+           * The payment related information passed in the addendum.
+           */
+          payment_related_information: string;
+        }
+      }
     }
 
     /**
