@@ -18,6 +18,17 @@ export class BookkeepingAccounts extends APIResource {
   }
 
   /**
+   * Update a Bookkeeping Account
+   */
+  update(
+    bookkeepingAccountId: string,
+    body: BookkeepingAccountUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BookkeepingAccount> {
+    return this.patch(`/bookkeeping_accounts/${bookkeepingAccountId}`, { body, ...options });
+  }
+
+  /**
    * List Bookkeeping Accounts
    */
   list(
@@ -102,11 +113,19 @@ export interface BookkeepingAccountCreateParams {
   entity_id?: string;
 }
 
+export interface BookkeepingAccountUpdateParams {
+  /**
+   * The name you choose for the account.
+   */
+  name: string;
+}
+
 export interface BookkeepingAccountListParams extends PageParams {}
 
 export namespace BookkeepingAccounts {
   export import BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
   export import BookkeepingAccountsPage = BookkeepingAccountsAPI.BookkeepingAccountsPage;
   export import BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
+  export import BookkeepingAccountUpdateParams = BookkeepingAccountsAPI.BookkeepingAccountUpdateParams;
   export import BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
 }
