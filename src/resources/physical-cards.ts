@@ -328,7 +328,7 @@ export namespace PhysicalCardCreateParams {
       line3?: string;
 
       /**
-       * The phone number of the receipient.
+       * The phone number of the recipient.
        */
       phone_number?: string;
     }
