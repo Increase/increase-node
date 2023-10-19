@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.12.0 (2023-10-19)
+
+Full Changelog: [v0.11.8...v0.12.0](https://github.com/increase/increase-node/compare/v0.11.8...v0.12.0)
+
+### Features
+
+* **api:** add addenda details for ACH transfers ([#202](https://github.com/increase/increase-node/issues/202)) ([0aa3c3f](https://github.com/increase/increase-node/commit/0aa3c3fe6c99c2647d3dd0d52972dcf9419fe3e7))
+* **api:** updates ([#204](https://github.com/increase/increase-node/issues/204)) ([b9ec38a](https://github.com/increase/increase-node/commit/b9ec38af2c855527e71b8d5f53b8014db82aa0f2))
+
+
+### Bug Fixes
+
+* fix namespace exports regression ([#192](https://github.com/increase/increase-node/issues/192)) ([dbb2850](https://github.com/increase/increase-node/commit/dbb28506a43131cea845dc8249ed3dd76e73acfc))
+* import web-streams-polyfill without overriding globals ([#203](https://github.com/increase/increase-node/issues/203)) ([7ef92ce](https://github.com/increase/increase-node/commit/7ef92ceb406d02f04bfd8b413eb421d890a8a0b2))
+* improve status code in error messages ([#200](https://github.com/increase/increase-node/issues/200)) ([488dc57](https://github.com/increase/increase-node/commit/488dc5738fa86f21390c95c8548c00623869abcd))
+
+
+### Chores
+
+* add case insensitive get header function ([#198](https://github.com/increase/increase-node/issues/198)) ([7637a13](https://github.com/increase/increase-node/commit/7637a13612177f5e54ab61b476bd9c992501cdb4))
+* **internal:** refactor status code printing in error ([#195](https://github.com/increase/increase-node/issues/195)) ([3f515e7](https://github.com/increase/increase-node/commit/3f515e747fcc0836776b1ee748827a81998a6366))
+* update comment ([#199](https://github.com/increase/increase-node/issues/199)) ([923a71d](https://github.com/increase/increase-node/commit/923a71d39d1b1b57a32e5c3fc35ee3a84f4ecc4e))
+* update README ([#194](https://github.com/increase/increase-node/issues/194)) ([c0e0c50](https://github.com/increase/increase-node/commit/c0e0c50cafa43d6ebc9159f2887d236a453303e4))
+
+
+### Documentation
+
+* organisation -&gt; organization (UK to US English) ([#201](https://github.com/increase/increase-node/issues/201)) ([8148392](https://github.com/increase/increase-node/commit/81483925ab7dc30d9aba22b554ca7998371a5864))
+
+
+### Refactors
+
+* **test:** refactor authentication tests ([#196](https://github.com/increase/increase-node/issues/196)) ([465ec0e](https://github.com/increase/increase-node/commit/465ec0e885d79b2abfac928ad169a4cf0a2d8c05))
+
 ## 0.11.8 (2023-10-11)
 
 Full Changelog: [v0.11.7...v0.11.8](https://github.com/Increase/increase-node/compare/v0.11.7...v0.11.8)
