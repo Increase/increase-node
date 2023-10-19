@@ -47,6 +47,7 @@ export { BalanceLookupLookupResponse, BalanceLookupLookupParams, BalanceLookups 
 export {
   BookkeepingAccount,
   BookkeepingAccountCreateParams,
+  BookkeepingAccountUpdateParams,
   BookkeepingAccountListParams,
   BookkeepingAccountsPage,
   BookkeepingAccounts,

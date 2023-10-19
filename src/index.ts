@@ -280,6 +280,7 @@ export namespace Increase {
   export import BookkeepingAccount = API.BookkeepingAccount;
   export import BookkeepingAccountsPage = API.BookkeepingAccountsPage;
   export import BookkeepingAccountCreateParams = API.BookkeepingAccountCreateParams;
+  export import BookkeepingAccountUpdateParams = API.BookkeepingAccountUpdateParams;
   export import BookkeepingAccountListParams = API.BookkeepingAccountListParams;
 
   export import BookkeepingEntrySets = API.BookkeepingEntrySets;

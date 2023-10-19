@@ -29,6 +29,25 @@ describe('resource bookkeepingAccounts', () => {
     });
   });
 
+  test('update: only required params', async () => {
+    const responsePromise = increase.bookkeepingAccounts.update('bookkeeping_account_e37p1f1iuocw5intf35v', {
+      name: 'Deprecated Account',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('update: required and optional params', async () => {
+    const response = await increase.bookkeepingAccounts.update('bookkeeping_account_e37p1f1iuocw5intf35v', {
+      name: 'Deprecated Account',
+    });
+  });
+
   test('list', async () => {
     const responsePromise = increase.bookkeepingAccounts.list();
     const rawResponse = await responsePromise.asResponse();
