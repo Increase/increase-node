@@ -109,6 +109,12 @@ export namespace RealTimeDecision {
     card_id: string;
 
     /**
+     * Cardholder address provided in the authorization request and the address on file
+     * we verified it against.
+     */
+    cardholder_address: CardAuthorization.CardholderAddress;
+
+    /**
      * Whether or not the authorization was approved.
      *
      * - `approve` - Approve the authorization.
@@ -192,6 +198,54 @@ export namespace RealTimeDecision {
   }
 
   export namespace CardAuthorization {
+    /**
+     * Cardholder address provided in the authorization request and the address on file
+     * we verified it against.
+     */
+    export interface CardholderAddress {
+      /**
+       * Line 1 of the address on file for the cardholder.
+       */
+      actual_line1: string | null;
+
+      /**
+       * The postal code of the address on file for the cardholder.
+       */
+      actual_postal_code: string | null;
+
+      /**
+       * The cardholder address line 1 provided for verification in the authorization
+       * request.
+       */
+      provided_line1: string | null;
+
+      /**
+       * The postal code provided for verification in the authorization request.
+       */
+      provided_postal_code: string | null;
+
+      /**
+       * The address verification result returned to the card network.
+       *
+       * - `not_checked` - No adress was provided in the authorization request.
+       * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+       *   address was not verified
+       * - `postal_code_match_address_no_match` - Postal code matches, but the street
+       *   address does not match
+       * - `postal_code_no_match_address_match` - Postal code does not match, but the
+       *   street address matches
+       * - `match` - Postal code and street address match
+       * - `no_match` - Postal code and street address do not match
+       */
+      verification_result:
+        | 'not_checked'
+        | 'postal_code_match_address_not_checked'
+        | 'postal_code_match_address_no_match'
+        | 'postal_code_no_match_address_match'
+        | 'match'
+        | 'no_match';
+    }
+
     /**
      * Fields specific to the `network`.
      */
