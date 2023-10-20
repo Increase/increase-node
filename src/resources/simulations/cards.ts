@@ -337,12 +337,6 @@ export namespace CardAuthorizationSimulation {
         card_payment_id: string | null;
 
         /**
-         * Cardholder address provided in the authorization request and the address on file
-         * we verified it against.
-         */
-        cardholder_address: CardDecline.CardholderAddress;
-
-        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
          * account currency.
          *
@@ -449,57 +443,14 @@ export namespace CardAuthorizationSimulation {
           | 'invalid_physical_card'
           | 'missing_original_authorization'
           | 'suspected_fraud';
+
+        /**
+         * Fields related to verification of cardholder-provided values.
+         */
+        verification: CardDecline.Verification;
       }
 
       export namespace CardDecline {
-        /**
-         * Cardholder address provided in the authorization request and the address on file
-         * we verified it against.
-         */
-        export interface CardholderAddress {
-          /**
-           * Line 1 of the address on file for the cardholder.
-           */
-          actual_line1: string | null;
-
-          /**
-           * The postal code of the address on file for the cardholder.
-           */
-          actual_postal_code: string | null;
-
-          /**
-           * The cardholder address line 1 provided for verification in the authorization
-           * request.
-           */
-          provided_line1: string | null;
-
-          /**
-           * The postal code provided for verification in the authorization request.
-           */
-          provided_postal_code: string | null;
-
-          /**
-           * The address verification result returned to the card network.
-           *
-           * - `not_checked` - No adress was provided in the authorization request.
-           * - `postal_code_match_address_not_checked` - Postal code matches, but the street
-           *   address was not verified
-           * - `postal_code_match_address_no_match` - Postal code matches, but the street
-           *   address does not match
-           * - `postal_code_no_match_address_match` - Postal code does not match, but the
-           *   street address matches
-           * - `match` - Postal code and street address match
-           * - `no_match` - Postal code and street address do not match
-           */
-          verification_result:
-            | 'not_checked'
-            | 'postal_code_match_address_not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match';
-        }
-
         /**
          * Fields specific to the `network`.
          */
@@ -598,6 +549,89 @@ export namespace CardAuthorizationSimulation {
               | 'contactless_magnetic_stripe'
               | 'integrated_circuit_card_no_cvv'
               | null;
+          }
+        }
+
+        /**
+         * Fields related to verification of cardholder-provided values.
+         */
+        export interface Verification {
+          /**
+           * Fields related to verification of the Card Verification Code, a 3-digit code on
+           * the back of the card.
+           */
+          card_verification_code: Verification.CardVerificationCode;
+
+          /**
+           * Cardholder address provided in the authorization request and the address on file
+           * we verified it against.
+           */
+          cardholder_address: Verification.CardholderAddress;
+        }
+
+        export namespace Verification {
+          /**
+           * Fields related to verification of the Card Verification Code, a 3-digit code on
+           * the back of the card.
+           */
+          export interface CardVerificationCode {
+            /**
+             * The result of verifying the Card Verification Code.
+             *
+             * - `not_checked` - No card verification code was provided in the authorization
+             *   request.
+             * - `match` - The card verification code matched the one on file.
+             * - `no_match` - The card verification code did not match the one on file.
+             */
+            result: 'not_checked' | 'match' | 'no_match';
+          }
+
+          /**
+           * Cardholder address provided in the authorization request and the address on file
+           * we verified it against.
+           */
+          export interface CardholderAddress {
+            /**
+             * Line 1 of the address on file for the cardholder.
+             */
+            actual_line1: string | null;
+
+            /**
+             * The postal code of the address on file for the cardholder.
+             */
+            actual_postal_code: string | null;
+
+            /**
+             * The cardholder address line 1 provided for verification in the authorization
+             * request.
+             */
+            provided_line1: string | null;
+
+            /**
+             * The postal code provided for verification in the authorization request.
+             */
+            provided_postal_code: string | null;
+
+            /**
+             * The address verification result returned to the card network.
+             *
+             * - `not_checked` - No adress was provided in the authorization request.
+             * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+             *   address was not verified.
+             * - `postal_code_match_address_no_match` - Postal code matches, but the street
+             *   address does not match.
+             * - `postal_code_no_match_address_match` - Postal code does not match, but the
+             *   street address matches.
+             * - `match` - Postal code and street address match.
+             * - `no_match` - Postal code and street address do not match.
+             */
+            result:
+              | 'not_checked'
+              | 'postal_code_match_address_not_checked'
+              | 'postal_code_match_address_no_match'
+              | 'postal_code_no_match_address_match'
+              | 'match'
+              | 'no_match';
           }
         }
       }
@@ -1386,12 +1420,6 @@ export namespace CardAuthorizationSimulation {
         card_payment_id: string | null;
 
         /**
-         * Cardholder address provided in the authorization request and the address on file
-         * we verified it against.
-         */
-        cardholder_address: CardAuthorization.CardholderAddress;
-
-        /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
          * transaction's currency.
          *
@@ -1481,57 +1509,14 @@ export namespace CardAuthorizationSimulation {
          * `card_authorization`.
          */
         type: 'card_authorization';
+
+        /**
+         * Fields related to verification of cardholder-provided values.
+         */
+        verification: CardAuthorization.Verification;
       }
 
       export namespace CardAuthorization {
-        /**
-         * Cardholder address provided in the authorization request and the address on file
-         * we verified it against.
-         */
-        export interface CardholderAddress {
-          /**
-           * Line 1 of the address on file for the cardholder.
-           */
-          actual_line1: string | null;
-
-          /**
-           * The postal code of the address on file for the cardholder.
-           */
-          actual_postal_code: string | null;
-
-          /**
-           * The cardholder address line 1 provided for verification in the authorization
-           * request.
-           */
-          provided_line1: string | null;
-
-          /**
-           * The postal code provided for verification in the authorization request.
-           */
-          provided_postal_code: string | null;
-
-          /**
-           * The address verification result returned to the card network.
-           *
-           * - `not_checked` - No adress was provided in the authorization request.
-           * - `postal_code_match_address_not_checked` - Postal code matches, but the street
-           *   address was not verified
-           * - `postal_code_match_address_no_match` - Postal code matches, but the street
-           *   address does not match
-           * - `postal_code_no_match_address_match` - Postal code does not match, but the
-           *   street address matches
-           * - `match` - Postal code and street address match
-           * - `no_match` - Postal code and street address do not match
-           */
-          verification_result:
-            | 'not_checked'
-            | 'postal_code_match_address_not_checked'
-            | 'postal_code_match_address_no_match'
-            | 'postal_code_no_match_address_match'
-            | 'match'
-            | 'no_match';
-        }
-
         /**
          * Fields specific to the `network`.
          */
@@ -1630,6 +1615,89 @@ export namespace CardAuthorizationSimulation {
               | 'contactless_magnetic_stripe'
               | 'integrated_circuit_card_no_cvv'
               | null;
+          }
+        }
+
+        /**
+         * Fields related to verification of cardholder-provided values.
+         */
+        export interface Verification {
+          /**
+           * Fields related to verification of the Card Verification Code, a 3-digit code on
+           * the back of the card.
+           */
+          card_verification_code: Verification.CardVerificationCode;
+
+          /**
+           * Cardholder address provided in the authorization request and the address on file
+           * we verified it against.
+           */
+          cardholder_address: Verification.CardholderAddress;
+        }
+
+        export namespace Verification {
+          /**
+           * Fields related to verification of the Card Verification Code, a 3-digit code on
+           * the back of the card.
+           */
+          export interface CardVerificationCode {
+            /**
+             * The result of verifying the Card Verification Code.
+             *
+             * - `not_checked` - No card verification code was provided in the authorization
+             *   request.
+             * - `match` - The card verification code matched the one on file.
+             * - `no_match` - The card verification code did not match the one on file.
+             */
+            result: 'not_checked' | 'match' | 'no_match';
+          }
+
+          /**
+           * Cardholder address provided in the authorization request and the address on file
+           * we verified it against.
+           */
+          export interface CardholderAddress {
+            /**
+             * Line 1 of the address on file for the cardholder.
+             */
+            actual_line1: string | null;
+
+            /**
+             * The postal code of the address on file for the cardholder.
+             */
+            actual_postal_code: string | null;
+
+            /**
+             * The cardholder address line 1 provided for verification in the authorization
+             * request.
+             */
+            provided_line1: string | null;
+
+            /**
+             * The postal code provided for verification in the authorization request.
+             */
+            provided_postal_code: string | null;
+
+            /**
+             * The address verification result returned to the card network.
+             *
+             * - `not_checked` - No adress was provided in the authorization request.
+             * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+             *   address was not verified.
+             * - `postal_code_match_address_no_match` - Postal code matches, but the street
+             *   address does not match.
+             * - `postal_code_no_match_address_match` - Postal code does not match, but the
+             *   street address matches.
+             * - `match` - Postal code and street address match.
+             * - `no_match` - Postal code and street address do not match.
+             */
+            result:
+              | 'not_checked'
+              | 'postal_code_match_address_not_checked'
+              | 'postal_code_match_address_no_match'
+              | 'postal_code_no_match_address_match'
+              | 'match'
+              | 'no_match';
           }
         }
       }
