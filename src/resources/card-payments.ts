@@ -99,6 +99,12 @@ export namespace CardPayment {
     card_decline: Element.CardDecline | null;
 
     /**
+     * A Card Fuel Confirmation object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_fuel_confirmation`.
+     */
+    card_fuel_confirmation: Element.CardFuelConfirmation | null;
+
+    /**
      * A Card Increment object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_increment`.
      */
@@ -147,6 +153,8 @@ export namespace CardPayment {
      * - `card_settlement` - Card Settlement: details will be under the
      *   `card_settlement` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
+     * - `card_fuel_confirmation` - Card Fuel Confirmation: details will be under the
+     *   `card_fuel_confirmation` object.
      * - `other` - Unknown card payment element.
      */
     category:
@@ -158,6 +166,7 @@ export namespace CardPayment {
       | 'card_increment'
       | 'card_settlement'
       | 'card_refund'
+      | 'card_fuel_confirmation'
       | 'other';
 
     /**
@@ -842,6 +851,54 @@ export namespace CardPayment {
     }
 
     /**
+     * A Card Fuel Confirmation object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_fuel_confirmation`.
+     */
+    export interface CardFuelConfirmation {
+      /**
+       * The Card Fuel Confirmation identifier.
+       */
+      id: string;
+
+      /**
+       * The identifier for the Card Authorization this updates.
+       */
+      card_authorization_id: string;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
+       * currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
+       */
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * The card network used to process this card authorization.
+       *
+       * - `visa` - Visa
+       */
+      network: 'visa';
+
+      /**
+       * A constant representing the object's type. For this resource it will always be
+       * `card_fuel_confirmation`.
+       */
+      type: 'card_fuel_confirmation';
+
+      /**
+       * The updated authorization amount after this fuel confirmation, in the minor unit
+       * of the transaction's currency. For dollars, for example, this is cents.
+       */
+      updated_authorization_amount: number;
+    }
+
+    /**
      * A Card Increment object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_increment`.
      */
@@ -858,7 +915,7 @@ export namespace CardPayment {
       amount: number;
 
       /**
-       * The identifier for the Card Authorization this reverses.
+       * The identifier for the Card Authorization this increments.
        */
       card_authorization_id: string;
 
@@ -2487,6 +2544,12 @@ export namespace CardPayment {
      * dollars, for example, this is cents.
      */
     authorized_amount: number;
+
+    /**
+     * The total amount from fuel confirmations in the minor unit of the transaction's
+     * currency. For dollars, for example, this is cents.
+     */
+    fuel_confirmed_amount: number;
 
     /**
      * The total incrementally updated authorized amount in the minor unit of the
