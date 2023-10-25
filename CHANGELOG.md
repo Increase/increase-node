@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.0 (2023-10-25)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/Increase/increase-node/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** add fuel confirmation functionality ([#211](https://github.com/Increase/increase-node/issues/211)) ([f18b75e](https://github.com/Increase/increase-node/commit/f18b75eed362eda1039b78c0e65d6197a1d6c054))
+* **api:** add returned_per_odfi_request enum ([#210](https://github.com/Increase/increase-node/issues/210)) ([bfa8677](https://github.com/Increase/increase-node/commit/bfa8677048ceecb400599f850b262e69326c1872))
+* **api:** updates ([#208](https://github.com/Increase/increase-node/issues/208)) ([1eb5ca3](https://github.com/Increase/increase-node/commit/1eb5ca3f0ed85017ff08df789f89fbf3c72f26a8))
+* **api:** updates ([#209](https://github.com/Increase/increase-node/issues/209)) ([7c6b8ba](https://github.com/Increase/increase-node/commit/7c6b8ba888b22a73ebcafe492db0ab0550a4995a))
+* **client:** adjust retry behavior to be exponential backoff ([#212](https://github.com/Increase/increase-node/issues/212)) ([92132b4](https://github.com/Increase/increase-node/commit/92132b47efd3c2720d07444d6153a3a8fd83b645))
+* handle 204 No Content gracefully ([#207](https://github.com/Increase/increase-node/issues/207)) ([e2004f3](https://github.com/Increase/increase-node/commit/e2004f354e9ac1947b4f6844461a6250fb6cb947))
+
 ## 0.12.0 (2023-10-19)
 
 Full Changelog: [v0.11.8...v0.12.0](https://github.com/increase/increase-node/compare/v0.11.8...v0.12.0)
