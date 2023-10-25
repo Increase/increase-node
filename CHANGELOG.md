@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.1 (2023-10-25)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/increase/increase-node/compare/v0.13.0...v0.13.1)
+
+### Bug Fixes
+
+* typo in build script ([#215](https://github.com/increase/increase-node/issues/215)) ([c6d50dd](https://github.com/increase/increase-node/commit/c6d50dde53f8a8f5f1248f2dcec9003787f84e5f))
+
 ## 0.13.0 (2023-10-24)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/increase/increase-node/compare/v0.12.0...v0.13.0)
