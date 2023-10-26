@@ -68,6 +68,14 @@ export interface Account {
   id: string;
 
   /**
+   * The bank the Account is with.
+   *
+   * - `blue_ridge_bank` - Blue Ridge Bank, N.A.
+   * - `first_internet_bank` - First Internet Bank of Indiana
+   */
+  bank: 'blue_ridge_bank' | 'first_internet_bank';
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
    * was created.
    */
