@@ -392,6 +392,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         network_details: CardDecline.NetworkDetails;
 
         /**
+         * Network-specific identifiers for a specific request or transaction.
+         */
+        network_identifiers: CardDecline.NetworkIdentifiers;
+
+        /**
          * If the authorization was made in-person with a physical card, the Physical Card
          * that was used.
          */
@@ -549,6 +554,30 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
               | 'integrated_circuit_card_no_cvv'
               | null;
           }
+        }
+
+        /**
+         * Network-specific identifiers for a specific request or transaction.
+         */
+        export interface NetworkIdentifiers {
+          /**
+           * A life-cycle identifier used across e.g., an authorization and a reversal.
+           * Expected to be unique per acquirer within a window of time. For some card
+           * networks the retrieval reference number includes the trace counter.
+           */
+          retrieval_reference_number: string | null;
+
+          /**
+           * A counter used to verify an individual authorization. Expected to be unique per
+           * acquirer within a window of time.
+           */
+          trace_number: string | null;
+
+          /**
+           * A globally unique transaction identifier provided by the card network, used
+           * across multiple life-cycle requests.
+           */
+          transaction_id: string | null;
         }
 
         /**

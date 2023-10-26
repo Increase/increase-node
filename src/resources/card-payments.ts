@@ -267,6 +267,11 @@ export namespace CardPayment {
       network_details: CardAuthorization.NetworkDetails;
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardAuthorization.NetworkIdentifiers;
+
+      /**
        * The identifier of the Pending Transaction associated with this Transaction.
        */
       pending_transaction_id: string | null;
@@ -395,6 +400,30 @@ export namespace CardPayment {
             | 'integrated_circuit_card_no_cvv'
             | null;
         }
+      }
+
+      /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
       }
 
       /**
@@ -607,6 +636,11 @@ export namespace CardPayment {
       network_details: CardDecline.NetworkDetails;
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardDecline.NetworkIdentifiers;
+
+      /**
        * If the authorization was made in-person with a physical card, the Physical Card
        * that was used.
        */
@@ -767,6 +801,30 @@ export namespace CardPayment {
       }
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
+
+      /**
        * Fields related to verification of cardholder-provided values.
        */
       export interface Verification {
@@ -886,6 +944,12 @@ export namespace CardPayment {
       network: 'visa';
 
       /**
+       * The identifier of the Pending Transaction associated with this Card Fuel
+       * Confirmation.
+       */
+      pending_transaction_id: string | null;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_fuel_confirmation`.
        */
@@ -938,6 +1002,11 @@ export namespace CardPayment {
        * - `visa` - Visa
        */
       network: 'visa';
+
+      /**
+       * The identifier of the Pending Transaction associated with this Card Increment.
+       */
+      pending_transaction_id: string | null;
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -1604,6 +1673,11 @@ export namespace CardPayment {
        * - `visa` - Visa
        */
       network: 'visa';
+
+      /**
+       * The identifier of the Pending Transaction associated with this Card Reversal.
+       */
+      pending_transaction_id: string | null;
 
       /**
        * The amount of this reversal in the minor unit of the transaction's currency. For
@@ -2325,6 +2399,11 @@ export namespace CardPayment {
       network_details: CardValidation.NetworkDetails;
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardValidation.NetworkIdentifiers;
+
+      /**
        * If the authorization was made in-person with a physical card, the Physical Card
        * that was used.
        */
@@ -2448,6 +2527,30 @@ export namespace CardPayment {
             | 'integrated_circuit_card_no_cvv'
             | null;
         }
+      }
+
+      /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
       }
 
       /**
