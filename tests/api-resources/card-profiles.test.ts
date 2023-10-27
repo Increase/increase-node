@@ -89,7 +89,7 @@ describe('resource cardProfiles', () => {
       increase.cardProfiles.list(
         {
           cursor: 'string',
-          limit: 0,
+          limit: 1,
           physical_cards_status: { in: ['not_eligible', 'rejected', 'pending_creating'] },
           status: { in: ['pending', 'rejected', 'active'] },
         },

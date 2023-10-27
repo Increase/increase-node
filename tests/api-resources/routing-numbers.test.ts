@@ -24,7 +24,7 @@ describe('resource routingNumbers', () => {
     const response = await increase.routingNumbers.list({
       routing_number: 'xxxxxxxxx',
       cursor: 'string',
-      limit: 0,
+      limit: 1,
     });
   });
 });
