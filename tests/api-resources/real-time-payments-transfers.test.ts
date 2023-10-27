@@ -93,7 +93,7 @@ describe('resource realTimePaymentsTransfers', () => {
           },
           cursor: 'string',
           external_account_id: 'string',
-          limit: 0,
+          limit: 1,
           unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },

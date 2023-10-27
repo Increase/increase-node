@@ -43,7 +43,7 @@ describe('resource supplementalDocuments', () => {
     const response = await increase.entities.supplementalDocuments.list({
       entity_id: 'string',
       cursor: 'string',
-      limit: 0,
+      limit: 1,
     });
   });
 });

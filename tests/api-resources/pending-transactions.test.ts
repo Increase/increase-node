@@ -63,7 +63,7 @@ describe('resource pendingTransactions', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
-          limit: 0,
+          limit: 1,
           route_id: 'string',
           source_id: 'string',
           status: { in: ['pending', 'complete'] },

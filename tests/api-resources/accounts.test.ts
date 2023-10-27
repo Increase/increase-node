@@ -90,7 +90,7 @@ describe('resource accounts', () => {
           cursor: 'string',
           entity_id: 'string',
           informational_entity_id: 'string',
-          limit: 0,
+          limit: 1,
           status: 'open',
         },
         { path: '/_stainless_unknown_path' },
