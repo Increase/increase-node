@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.15.0 (2023-10-27)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/increase/increase-node/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** add network identifiers and effective date ([#219](https://github.com/increase/increase-node/issues/219)) ([de92338](https://github.com/increase/increase-node/commit/de92338f10e54b67e88a5e0e959923ea157d35d7))
+
 ## 0.14.0 (2023-10-26)
 
 Full Changelog: [v0.13.1...v0.14.0](https://github.com/increase/increase-node/compare/v0.13.1...v0.14.0)
