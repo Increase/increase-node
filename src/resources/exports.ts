@@ -61,8 +61,10 @@ export interface Export {
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
+   * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+   *   balances for the dates in a given range.
    */
-  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv';
+  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv';
 
   /**
    * The time the Export was created.
@@ -105,8 +107,10 @@ export interface ExportCreateParams {
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
+   * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+   *   balances for the dates in a given range.
    */
-  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv';
+  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -119,6 +123,12 @@ export interface ExportCreateParams {
    * `balance_csv`.
    */
   balance_csv?: ExportCreateParams.BalanceCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `bookkeeping_account_balance_csv`.
+   */
+  bookkeeping_account_balance_csv?: ExportCreateParams.BookkeepingAccountBalanceCsv;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -192,6 +202,53 @@ export namespace ExportCreateParams {
   }
 
   export namespace BalanceCsv {
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    export interface CreatedAt {
+      /**
+       * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      after?: string;
+
+      /**
+       * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+       * timestamp.
+       */
+      before?: string;
+
+      /**
+       * Return results on or after this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_after?: string;
+
+      /**
+       * Return results on or before this
+       * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+       */
+      on_or_before?: string;
+    }
+  }
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `bookkeeping_account_balance_csv`.
+   */
+  export interface BookkeepingAccountBalanceCsv {
+    /**
+     * Filter exported Transactions to the specified BookkeepingAccount.
+     */
+    bookkeeping_account_id?: string;
+
+    /**
+     * Filter results by time range on the `created_at` attribute.
+     */
+    created_at?: BookkeepingAccountBalanceCsv.CreatedAt;
+  }
+
+  export namespace BookkeepingAccountBalanceCsv {
     /**
      * Filter results by time range on the `created_at` attribute.
      */

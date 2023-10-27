@@ -653,6 +653,14 @@ export namespace ACHTransfer {
    */
   export interface Submission {
     /**
+     * The ACH's effective date sent to the receiving bank. If `effective_date` is
+     * configured in the ACH transfer, this will match the value there. Otherwise, it
+     * will the date that the ACH transfer was processed, which is usually the current
+     * or subsequent business day.
+     */
+    effective_date: string;
+
+    /**
      * When the funds transfer is expected to settle in the recipient's account.
      * Credits may be available sooner, at the receiving banks discretion. The FedACH
      * schedule is published

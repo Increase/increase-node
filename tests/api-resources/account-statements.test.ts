@@ -54,7 +54,7 @@ describe('resource accountStatements', () => {
         {
           account_id: 'string',
           cursor: 'string',
-          limit: 0,
+          limit: 1,
           statement_period_start: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

@@ -1983,6 +1983,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         merchant_state: string | null;
 
         /**
+         * Network-specific identifiers for this refund.
+         */
+        network_identifiers: CardRefund.NetworkIdentifiers;
+
+        /**
          * Additional details about the card purchase, such as tax and industry-specific
          * fields.
          */
@@ -2001,6 +2006,28 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       }
 
       export namespace CardRefund {
+        /**
+         * Network-specific identifiers for this refund.
+         */
+        export interface NetworkIdentifiers {
+          /**
+           * A network assigned business ID that identifies the acquirer that processed this
+           * transaction.
+           */
+          acquirer_business_id: string;
+
+          /**
+           * A globally unique identifier for this settlement.
+           */
+          acquirer_reference_number: string;
+
+          /**
+           * A globally unique transaction identifier provided by the card network, used
+           * across multiple life-cycle requests.
+           */
+          transaction_id: string | null;
+        }
+
         /**
          * Additional details about the card purchase, such as tax and industry-specific
          * fields.
@@ -2641,6 +2668,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         merchant_state: string | null;
 
         /**
+         * Network-specific identifiers for this refund.
+         */
+        network_identifiers: CardSettlement.NetworkIdentifiers;
+
+        /**
          * The identifier of the Pending Transaction associated with this Transaction.
          */
         pending_transaction_id: string | null;
@@ -2675,6 +2707,28 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       }
 
       export namespace CardSettlement {
+        /**
+         * Network-specific identifiers for this refund.
+         */
+        export interface NetworkIdentifiers {
+          /**
+           * A network assigned business ID that identifies the acquirer that processed this
+           * transaction.
+           */
+          acquirer_business_id: string;
+
+          /**
+           * A globally unique identifier for this settlement.
+           */
+          acquirer_reference_number: string;
+
+          /**
+           * A globally unique transaction identifier provided by the card network, used
+           * across multiple life-cycle requests.
+           */
+          transaction_id: string | null;
+        }
+
         /**
          * Additional details about the card purchase, such as tax and industry-specific
          * fields.

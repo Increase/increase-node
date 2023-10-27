@@ -944,6 +944,11 @@ export namespace CardPayment {
       network: 'visa';
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardFuelConfirmation.NetworkIdentifiers;
+
+      /**
        * The identifier of the Pending Transaction associated with this Card Fuel
        * Confirmation.
        */
@@ -960,6 +965,32 @@ export namespace CardPayment {
        * of the transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+    }
+
+    export namespace CardFuelConfirmation {
+      /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
     }
 
     /**
@@ -1004,6 +1035,11 @@ export namespace CardPayment {
       network: 'visa';
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardIncrement.NetworkIdentifiers;
+
+      /**
        * The identifier of the Pending Transaction associated with this Card Increment.
        */
       pending_transaction_id: string | null;
@@ -1025,6 +1061,32 @@ export namespace CardPayment {
        * transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+    }
+
+    export namespace CardIncrement {
+      /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
     }
 
     /**
@@ -1093,6 +1155,11 @@ export namespace CardPayment {
       merchant_state: string | null;
 
       /**
+       * Network-specific identifiers for this refund.
+       */
+      network_identifiers: CardRefund.NetworkIdentifiers;
+
+      /**
        * Additional details about the card purchase, such as tax and industry-specific
        * fields.
        */
@@ -1111,6 +1178,28 @@ export namespace CardPayment {
     }
 
     export namespace CardRefund {
+      /**
+       * Network-specific identifiers for this refund.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A network assigned business ID that identifies the acquirer that processed this
+         * transaction.
+         */
+        acquirer_business_id: string;
+
+        /**
+         * A globally unique identifier for this settlement.
+         */
+        acquirer_reference_number: string;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
+
       /**
        * Additional details about the card purchase, such as tax and industry-specific
        * fields.
@@ -1675,6 +1764,11 @@ export namespace CardPayment {
       network: 'visa';
 
       /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      network_identifiers: CardReversal.NetworkIdentifiers;
+
+      /**
        * The identifier of the Pending Transaction associated with this Card Reversal.
        */
       pending_transaction_id: string | null;
@@ -1696,6 +1790,32 @@ export namespace CardPayment {
        * transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+    }
+
+    export namespace CardReversal {
+      /**
+       * Network-specific identifiers for a specific request or transaction.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A life-cycle identifier used across e.g., an authorization and a reversal.
+         * Expected to be unique per acquirer within a window of time. For some card
+         * networks the retrieval reference number includes the trace counter.
+         */
+        retrieval_reference_number: string | null;
+
+        /**
+         * A counter used to verify an individual authorization. Expected to be unique per
+         * acquirer within a window of time.
+         */
+        trace_number: string | null;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
     }
 
     /**
@@ -1770,6 +1890,11 @@ export namespace CardPayment {
       merchant_state: string | null;
 
       /**
+       * Network-specific identifiers for this refund.
+       */
+      network_identifiers: CardSettlement.NetworkIdentifiers;
+
+      /**
        * The identifier of the Pending Transaction associated with this Transaction.
        */
       pending_transaction_id: string | null;
@@ -1804,6 +1929,28 @@ export namespace CardPayment {
     }
 
     export namespace CardSettlement {
+      /**
+       * Network-specific identifiers for this refund.
+       */
+      export interface NetworkIdentifiers {
+        /**
+         * A network assigned business ID that identifies the acquirer that processed this
+         * transaction.
+         */
+        acquirer_business_id: string;
+
+        /**
+         * A globally unique identifier for this settlement.
+         */
+        acquirer_reference_number: string;
+
+        /**
+         * A globally unique transaction identifier provided by the card network, used
+         * across multiple life-cycle requests.
+         */
+        transaction_id: string | null;
+      }
+
       /**
        * Additional details about the card purchase, such as tax and industry-specific
        * fields.
