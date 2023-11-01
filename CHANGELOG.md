@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.16.0 (2023-11-01)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/increase/increase-node/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** add failed to export status enum ([#224](https://github.com/increase/increase-node/issues/224)) ([4fa60c0](https://github.com/increase/increase-node/commit/4fa60c0ac93001d6009a529bc9d04a4c520fe641))
+* **github:** include a devcontainer setup ([#223](https://github.com/increase/increase-node/issues/223)) ([d1b23c3](https://github.com/increase/increase-node/commit/d1b23c30e9b2d0c898f531f0fe8924f045dc7ca3))
+
+
+### Chores
+
+* **internal:** update gitignore ([#221](https://github.com/increase/increase-node/issues/221)) ([a8170f6](https://github.com/increase/increase-node/commit/a8170f617db0e9b86193e434a669539e5fd4c74b))
+
 ## 0.15.0 (2023-10-27)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/increase/increase-node/compare/v0.14.0...v0.15.0)
