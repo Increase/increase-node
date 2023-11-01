@@ -88,8 +88,10 @@ export interface Export {
    *
    * - `pending` - Increase is generating the export.
    * - `complete` - The export has been successfully generated.
+   * - `failed` - The export failed to generate. Increase will reach out to you to
+   *   resolve the issue.
    */
-  status: 'pending' | 'complete';
+  status: 'pending' | 'complete' | 'failed';
 
   /**
    * A constant representing the object's type. For this resource it will always be
