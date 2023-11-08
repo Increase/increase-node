@@ -16,9 +16,11 @@ export {
 } from './ach-transfers';
 export {
   Account,
+  BalanceLookup,
   AccountCreateParams,
   AccountUpdateParams,
   AccountListParams,
+  AccountBalanceParams,
   AccountsPage,
   Accounts,
 } from './accounts';
@@ -43,12 +45,13 @@ export {
   AccountTransfersPage,
   AccountTransfers,
 } from './account-transfers';
-export { BalanceLookupLookupResponse, BalanceLookupLookupParams, BalanceLookups } from './balance-lookups';
 export {
   BookkeepingAccount,
+  BookkeepingBalanceLookup,
   BookkeepingAccountCreateParams,
   BookkeepingAccountUpdateParams,
   BookkeepingAccountListParams,
+  BookkeepingAccountBalanceParams,
   BookkeepingAccountsPage,
   BookkeepingAccounts,
 } from './bookkeeping-accounts';
@@ -61,6 +64,8 @@ export {
 export {
   BookkeepingEntrySet,
   BookkeepingEntrySetCreateParams,
+  BookkeepingEntrySetListParams,
+  BookkeepingEntrySetsPage,
   BookkeepingEntrySets,
 } from './bookkeeping-entry-sets';
 export {

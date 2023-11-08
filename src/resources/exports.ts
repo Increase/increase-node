@@ -63,8 +63,14 @@ export interface Export {
    *   range.
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
+   * - `entity_csv` - Export a CSV of entities with a given status.
    */
-  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv';
+  category:
+    | 'account_statement_ofx'
+    | 'transaction_csv'
+    | 'balance_csv'
+    | 'bookkeeping_account_balance_csv'
+    | 'entity_csv';
 
   /**
    * The time the Export was created.
@@ -111,8 +117,14 @@ export interface ExportCreateParams {
    *   range.
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
+   * - `entity_csv` - Export a CSV of entities with a given status.
    */
-  category: 'account_statement_ofx' | 'transaction_csv' | 'balance_csv' | 'bookkeeping_account_balance_csv';
+  category:
+    | 'account_statement_ofx'
+    | 'transaction_csv'
+    | 'balance_csv'
+    | 'bookkeeping_account_balance_csv'
+    | 'entity_csv';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -131,6 +143,11 @@ export interface ExportCreateParams {
    * `bookkeeping_account_balance_csv`.
    */
   bookkeeping_account_balance_csv?: ExportCreateParams.BookkeepingAccountBalanceCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to `entity_csv`.
+   */
+  entity_csv?: ExportCreateParams.EntityCsv;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -278,6 +295,29 @@ export namespace ExportCreateParams {
        * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
        */
       on_or_before?: string;
+    }
+  }
+
+  /**
+   * Options for the created export. Required if `category` is equal to `entity_csv`.
+   */
+  export interface EntityCsv {
+    /**
+     * Entity statuses to filter by.
+     */
+    status?: EntityCsv.Status;
+  }
+
+  export namespace EntityCsv {
+    /**
+     * Entity statuses to filter by.
+     */
+    export interface Status {
+      /**
+       * Entity statuses to filter by. For GET requests, this should be encoded as a
+       * comma-delimited string, such as `?in=one,two,three`.
+       */
+      in: Array<'active' | 'archived' | 'disabled'>;
     }
   }
 

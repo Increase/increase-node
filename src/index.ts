@@ -136,7 +136,6 @@ export class Increase extends Core.APIClient {
   bookkeepingEntries: API.BookkeepingEntries = new API.BookkeepingEntries(this);
   realTimeDecisions: API.RealTimeDecisions = new API.RealTimeDecisions(this);
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
-  balanceLookups: API.BalanceLookups = new API.BalanceLookups(this);
   cards: API.Cards = new API.Cards(this);
   cardDisputes: API.CardDisputes = new API.CardDisputes(this);
   cardProfiles: API.CardProfiles = new API.CardProfiles(this);
@@ -264,10 +263,12 @@ export namespace Increase {
 
   export import Accounts = API.Accounts;
   export import Account = API.Account;
+  export import BalanceLookup = API.BalanceLookup;
   export import AccountsPage = API.AccountsPage;
   export import AccountCreateParams = API.AccountCreateParams;
   export import AccountUpdateParams = API.AccountUpdateParams;
   export import AccountListParams = API.AccountListParams;
+  export import AccountBalanceParams = API.AccountBalanceParams;
 
   export import AccountNumbers = API.AccountNumbers;
   export import AccountNumber = API.AccountNumber;
@@ -278,14 +279,18 @@ export namespace Increase {
 
   export import BookkeepingAccounts = API.BookkeepingAccounts;
   export import BookkeepingAccount = API.BookkeepingAccount;
+  export import BookkeepingBalanceLookup = API.BookkeepingBalanceLookup;
   export import BookkeepingAccountsPage = API.BookkeepingAccountsPage;
   export import BookkeepingAccountCreateParams = API.BookkeepingAccountCreateParams;
   export import BookkeepingAccountUpdateParams = API.BookkeepingAccountUpdateParams;
   export import BookkeepingAccountListParams = API.BookkeepingAccountListParams;
+  export import BookkeepingAccountBalanceParams = API.BookkeepingAccountBalanceParams;
 
   export import BookkeepingEntrySets = API.BookkeepingEntrySets;
   export import BookkeepingEntrySet = API.BookkeepingEntrySet;
+  export import BookkeepingEntrySetsPage = API.BookkeepingEntrySetsPage;
   export import BookkeepingEntrySetCreateParams = API.BookkeepingEntrySetCreateParams;
+  export import BookkeepingEntrySetListParams = API.BookkeepingEntrySetListParams;
 
   export import BookkeepingEntries = API.BookkeepingEntries;
   export import BookkeepingEntry = API.BookkeepingEntry;
@@ -301,10 +306,6 @@ export namespace Increase {
   export import RealTimePaymentsTransfersPage = API.RealTimePaymentsTransfersPage;
   export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
   export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
-
-  export import BalanceLookups = API.BalanceLookups;
-  export import BalanceLookupLookupResponse = API.BalanceLookupLookupResponse;
-  export import BalanceLookupLookupParams = API.BalanceLookupLookupParams;
 
   export import Cards = API.Cards;
   export import Card = API.Card;

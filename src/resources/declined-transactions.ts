@@ -379,6 +379,31 @@ export namespace DeclinedTransaction {
       physical_card_id: string | null;
 
       /**
+       * The processing category describes the intent behind the authorization, such as
+       * whether it was used for bill payments or an automatic fuel dispenser.
+       *
+       * - `account_funding` - Account funding transactions are transactions used to
+       *   e.g., fund an account or transfer funds between accounts.
+       * - `automatic_fuel_dispenser` - Automatic fuel dispenser authorizations occur
+       *   when a card is used at a gas pump, prior to the actual transaction amount
+       *   being known. They are followed by an advice message that updates the amount of
+       *   the pending transaction.
+       * - `bill_payment` - A transaction used to pay a bill.
+       * - `purchase` - A regular purchase.
+       * - `quasi_cash` - Quasi-cash transactions represent purchases of items which may
+       *   be convertible to cash.
+       * - `refund` - A refund card authorization, sometimes referred to as a credit
+       *   voucher authorization, where funds are credited to the cardholder.
+       */
+      processing_category:
+        | 'account_funding'
+        | 'automatic_fuel_dispenser'
+        | 'bill_payment'
+        | 'purchase'
+        | 'quasi_cash'
+        | 'refund';
+
+      /**
        * The identifier of the Real-Time Decision sent to approve or decline this
        * transaction.
        */
@@ -657,6 +682,18 @@ export namespace DeclinedTransaction {
        * transmitted by the bank of first deposit.
        */
       auxiliary_on_us: string | null;
+
+      /**
+       * The identifier of the API File object containing an image of the back of the
+       * declined check.
+       */
+      back_image_file_id: string | null;
+
+      /**
+       * The identifier of the API File object containing an image of the front of the
+       * declined check.
+       */
+      front_image_file_id: string | null;
 
       /**
        * Why the check was declined.

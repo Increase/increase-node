@@ -45,12 +45,37 @@ export class BookkeepingAccounts extends APIResource {
     }
     return this.getAPIList('/bookkeeping_accounts', BookkeepingAccountsPage, { query, ...options });
   }
+
+  /**
+   * Retrieve a Bookkeeping Account Balance
+   */
+  balance(
+    bookkeepingAccountId: string,
+    query?: BookkeepingAccountBalanceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BookkeepingBalanceLookup>;
+  balance(
+    bookkeepingAccountId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BookkeepingBalanceLookup>;
+  balance(
+    bookkeepingAccountId: string,
+    query: BookkeepingAccountBalanceParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BookkeepingBalanceLookup> {
+    if (isRequestOptions(query)) {
+      return this.balance(bookkeepingAccountId, {}, query);
+    }
+    return this.get(`/bookkeeping_accounts/${bookkeepingAccountId}/balance`, { query, ...options });
+  }
 }
 
 export class BookkeepingAccountsPage extends Page<BookkeepingAccount> {}
 
 /**
- * Accounts are T-accounts. They can store accounting entries.
+ * Accounts are T-accounts. They can store accounting entries. Your compliance
+ * setup might require annotating money movements using this API. Learn more in our
+ * [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
  */
 export interface BookkeepingAccount {
   /**
@@ -88,6 +113,29 @@ export interface BookkeepingAccount {
   type: 'bookkeeping_account';
 }
 
+/**
+ * Represents a request to lookup the balance of an Bookkeeping Account at a given
+ * point in time.
+ */
+export interface BookkeepingBalanceLookup {
+  /**
+   * The Bookkeeping Account's current balance, representing the sum of all
+   * Bookkeeping Entries on the Bookkeeping Account.
+   */
+  balance: number;
+
+  /**
+   * The identifier for the account for which the balance was queried.
+   */
+  bookkeeping_account_id: string;
+
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `bookkeeping_balance_lookup`.
+   */
+  type: 'bookkeeping_balance_lookup';
+}
+
 export interface BookkeepingAccountCreateParams {
   /**
    * The name you choose for the account.
@@ -122,10 +170,19 @@ export interface BookkeepingAccountUpdateParams {
 
 export interface BookkeepingAccountListParams extends PageParams {}
 
+export interface BookkeepingAccountBalanceParams {
+  /**
+   * The moment to query the balance at. If not set, returns the current balances.
+   */
+  at_time?: string;
+}
+
 export namespace BookkeepingAccounts {
   export import BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
+  export import BookkeepingBalanceLookup = BookkeepingAccountsAPI.BookkeepingBalanceLookup;
   export import BookkeepingAccountsPage = BookkeepingAccountsAPI.BookkeepingAccountsPage;
   export import BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
   export import BookkeepingAccountUpdateParams = BookkeepingAccountsAPI.BookkeepingAccountUpdateParams;
   export import BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
+  export import BookkeepingAccountBalanceParams = BookkeepingAccountsAPI.BookkeepingAccountBalanceParams;
 }
