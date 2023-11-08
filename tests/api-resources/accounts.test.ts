@@ -98,6 +98,35 @@ describe('resource accounts', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
+  test('balance', async () => {
+    const responsePromise = increase.accounts.balance('account_in71c4amph0vgo2qllky');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('balance: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.accounts.balance('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('balance: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.accounts.balance(
+        'account_in71c4amph0vgo2qllky',
+        { at_time: '2019-12-27T18:11:19.117Z' },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
   // Prism tests are broken
   test.skip('close', async () => {
     const responsePromise = increase.accounts.close('account_in71c4amph0vgo2qllky');

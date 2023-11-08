@@ -2,7 +2,9 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
+import { isRequestOptions } from 'increase/core';
 import * as BookkeepingEntrySetsAPI from 'increase/resources/bookkeeping-entry-sets';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class BookkeepingEntrySets extends APIResource {
   /**
@@ -14,16 +16,54 @@ export class BookkeepingEntrySets extends APIResource {
   ): Core.APIPromise<BookkeepingEntrySet> {
     return this.post('/bookkeeping_entry_sets', { body, ...options });
   }
+
+  /**
+   * Retrieve a Bookkeeping Entry Set
+   */
+  retrieve(
+    bookkeepingEntrySetId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BookkeepingEntrySet> {
+    return this.get(`/bookkeeping_entry_sets/${bookkeepingEntrySetId}`, options);
+  }
+
+  /**
+   * List Bookkeeping Entry Sets
+   */
+  list(
+    query?: BookkeepingEntrySetListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet>;
+  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet>;
+  list(
+    query: BookkeepingEntrySetListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this.getAPIList('/bookkeeping_entry_sets', BookkeepingEntrySetsPage, { query, ...options });
+  }
 }
 
+export class BookkeepingEntrySetsPage extends Page<BookkeepingEntrySet> {}
+
 /**
- * Entry Sets are accounting entries that are transactionally applied.
+ * Entry Sets are accounting entries that are transactionally applied. Your
+ * compliance setup might require annotating money movements using this API. Learn
+ * more in our
+ * [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
  */
 export interface BookkeepingEntrySet {
   /**
    * The entry set identifier.
    */
   id: string;
+
+  /**
+   * When the entry set was created.
+   */
+  created_at: string;
 
   /**
    * The timestamp of the entry set.
@@ -100,7 +140,16 @@ export namespace BookkeepingEntrySetCreateParams {
   }
 }
 
+export interface BookkeepingEntrySetListParams extends PageParams {
+  /**
+   * Filter to the Bookkeeping Entry Set that maps to this Transaction.
+   */
+  transaction_id?: string;
+}
+
 export namespace BookkeepingEntrySets {
   export import BookkeepingEntrySet = BookkeepingEntrySetsAPI.BookkeepingEntrySet;
+  export import BookkeepingEntrySetsPage = BookkeepingEntrySetsAPI.BookkeepingEntrySetsPage;
   export import BookkeepingEntrySetCreateParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetCreateParams;
+  export import BookkeepingEntrySetListParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetListParams;
 }
