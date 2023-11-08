@@ -48,6 +48,26 @@ export class Accounts extends APIResource {
   }
 
   /**
+   * Retrieve an Account Balance
+   */
+  balance(
+    accountId: string,
+    query?: AccountBalanceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BalanceLookup>;
+  balance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<BalanceLookup>;
+  balance(
+    accountId: string,
+    query: AccountBalanceParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<BalanceLookup> {
+    if (isRequestOptions(query)) {
+      return this.balance(accountId, {}, query);
+    }
+    return this.get(`/accounts/${accountId}/balance`, { query, ...options });
+  }
+
+  /**
    * Close an Account
    */
   close(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
@@ -144,6 +164,35 @@ export interface Account {
   type: 'account';
 }
 
+/**
+ * Represents a request to lookup the balance of an Account at a given point in
+ * time.
+ */
+export interface BalanceLookup {
+  /**
+   * The identifier for the account for which the balance was queried.
+   */
+  account_id: string;
+
+  /**
+   * The Account's available balance, representing the current balance less any open
+   * Pending Transactions on the Account.
+   */
+  available_balance: number;
+
+  /**
+   * The Account's current balance, representing the sum of all posted Transactions
+   * on the Account.
+   */
+  current_balance: number;
+
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `balance_lookup`.
+   */
+  type: 'balance_lookup';
+}
+
 export interface AccountCreateParams {
   /**
    * The name you choose for the Account.
@@ -225,10 +274,19 @@ export namespace AccountListParams {
   }
 }
 
+export interface AccountBalanceParams {
+  /**
+   * The moment to query the balance at. If not set, returns the current balances.
+   */
+  at_time?: string;
+}
+
 export namespace Accounts {
   export import Account = AccountsAPI.Account;
+  export import BalanceLookup = AccountsAPI.BalanceLookup;
   export import AccountsPage = AccountsAPI.AccountsPage;
   export import AccountCreateParams = AccountsAPI.AccountCreateParams;
   export import AccountUpdateParams = AccountsAPI.AccountUpdateParams;
   export import AccountListParams = AccountsAPI.AccountListParams;
+  export import AccountBalanceParams = AccountsAPI.AccountBalanceParams;
 }

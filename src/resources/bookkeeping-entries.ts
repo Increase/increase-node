@@ -8,6 +8,13 @@ import { Page, type PageParams } from 'increase/pagination';
 
 export class BookkeepingEntries extends APIResource {
   /**
+   * Retrieve a Bookkeeping Entry
+   */
+  retrieve(bookkeepingEntryId: string, options?: Core.RequestOptions): Core.APIPromise<BookkeepingEntry> {
+    return this.get(`/bookkeeping_entries/${bookkeepingEntryId}`, options);
+  }
+
+  /**
    * List Bookkeeping Entries
    */
   list(
@@ -29,7 +36,9 @@ export class BookkeepingEntries extends APIResource {
 export class BookkeepingEntriesPage extends Page<BookkeepingEntry> {}
 
 /**
- * Entries are T-account entries recording debits and credits.
+ * Entries are T-account entries recording debits and credits. Your compliance
+ * setup might require annotating money movements using this API. Learn more in our
+ * [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
  */
 export interface BookkeepingEntry {
   /**
@@ -47,6 +56,11 @@ export interface BookkeepingEntry {
    * this is cents.
    */
   amount: number;
+
+  /**
+   * When the entry set was created.
+   */
+  created_at: string;
 
   /**
    * The identifier for the Account the Entry belongs to.

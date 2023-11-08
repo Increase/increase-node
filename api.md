@@ -3,6 +3,7 @@
 Types:
 
 - <code><a href="./src/resources/accounts.ts">Account</a></code>
+- <code><a href="./src/resources/accounts.ts">BalanceLookup</a></code>
 
 Methods:
 
@@ -10,6 +11,7 @@ Methods:
 - <code title="get /accounts/{account_id}">client.accounts.<a href="./src/resources/accounts.ts">retrieve</a>(accountId) -> Account</code>
 - <code title="patch /accounts/{account_id}">client.accounts.<a href="./src/resources/accounts.ts">update</a>(accountId, { ...params }) -> Account</code>
 - <code title="get /accounts">client.accounts.<a href="./src/resources/accounts.ts">list</a>({ ...params }) -> AccountsPage</code>
+- <code title="get /accounts/{account_id}/balance">client.accounts.<a href="./src/resources/accounts.ts">balance</a>(accountId, { ...params }) -> BalanceLookup</code>
 - <code title="post /accounts/{account_id}/close">client.accounts.<a href="./src/resources/accounts.ts">close</a>(accountId) -> Account</code>
 
 # AccountNumbers
@@ -30,12 +32,14 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/bookkeeping-accounts.ts">BookkeepingAccount</a></code>
+- <code><a href="./src/resources/bookkeeping-accounts.ts">BookkeepingBalanceLookup</a></code>
 
 Methods:
 
 - <code title="post /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">create</a>({ ...params }) -> BookkeepingAccount</code>
 - <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">update</a>(bookkeepingAccountId, { ...params }) -> BookkeepingAccount</code>
 - <code title="get /bookkeeping_accounts">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">list</a>({ ...params }) -> BookkeepingAccountsPage</code>
+- <code title="get /bookkeeping_accounts/{bookkeeping_account_id}/balance">client.bookkeepingAccounts.<a href="./src/resources/bookkeeping-accounts.ts">balance</a>(bookkeepingAccountId, { ...params }) -> BookkeepingBalanceLookup</code>
 
 # BookkeepingEntrySets
 
@@ -46,6 +50,8 @@ Types:
 Methods:
 
 - <code title="post /bookkeeping_entry_sets">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">create</a>({ ...params }) -> BookkeepingEntrySet</code>
+- <code title="get /bookkeeping_entry_sets/{bookkeeping_entry_set_id}">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">retrieve</a>(bookkeepingEntrySetId) -> BookkeepingEntrySet</code>
+- <code title="get /bookkeeping_entry_sets">client.bookkeepingEntrySets.<a href="./src/resources/bookkeeping-entry-sets.ts">list</a>({ ...params }) -> BookkeepingEntrySetsPage</code>
 
 # BookkeepingEntries
 
@@ -55,6 +61,7 @@ Types:
 
 Methods:
 
+- <code title="get /bookkeeping_entries/{bookkeeping_entry_id}">client.bookkeepingEntries.<a href="./src/resources/bookkeeping-entries.ts">retrieve</a>(bookkeepingEntryId) -> BookkeepingEntry</code>
 - <code title="get /bookkeeping_entries">client.bookkeepingEntries.<a href="./src/resources/bookkeeping-entries.ts">list</a>({ ...params }) -> BookkeepingEntriesPage</code>
 
 # RealTimeDecisions
@@ -79,16 +86,6 @@ Methods:
 - <code title="post /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">create</a>({ ...params }) -> RealTimePaymentsTransfer</code>
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">retrieve</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
 - <code title="get /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">list</a>({ ...params }) -> RealTimePaymentsTransfersPage</code>
-
-# BalanceLookups
-
-Types:
-
-- <code><a href="./src/resources/balance-lookups.ts">BalanceLookupLookupResponse</a></code>
-
-Methods:
-
-- <code title="post /balance_lookups">client.balanceLookups.<a href="./src/resources/balance-lookups.ts">lookup</a>({ ...params }) -> BalanceLookupLookupResponse</code>
 
 # Cards
 

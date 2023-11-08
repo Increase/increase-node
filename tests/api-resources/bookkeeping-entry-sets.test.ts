@@ -35,4 +35,54 @@ describe('resource bookkeepingEntrySets', () => {
       transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
     });
   });
+
+  test('retrieve', async () => {
+    const responsePromise = increase.bookkeepingEntrySets.retrieve(
+      'bookkeeping_entry_set_n80c6wr2p8gtc6p4ingf',
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.bookkeepingEntrySets.retrieve('bookkeeping_entry_set_n80c6wr2p8gtc6p4ingf', {
+        path: '/_stainless_unknown_path',
+      }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('list', async () => {
+    const responsePromise = increase.bookkeepingEntrySets.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(increase.bookkeepingEntrySets.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Increase.NotFoundError,
+    );
+  });
+
+  test('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.bookkeepingEntrySets.list(
+        { cursor: 'string', limit: 1, transaction_id: 'string' },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
 });
