@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.17.0 (2023-11-08)
+
+Full Changelog: [v0.16.0...v0.17.0](https://github.com/increase/increase-node/compare/v0.16.0...v0.17.0)
+
+### Features
+
+* **api:** restructure balance lookups ([#231](https://github.com/increase/increase-node/issues/231)) ([dffe560](https://github.com/increase/increase-node/commit/dffe560494144adddc63bdce6a7c8cae5bfc94c0))
+* **client:** allow binary returns ([#225](https://github.com/increase/increase-node/issues/225)) ([00b2a56](https://github.com/increase/increase-node/commit/00b2a563b4358b2a056ca45da1335067fe92c3ff))
+
+
+### Chores
+
+* **ci:** update release-please config ([#228](https://github.com/increase/increase-node/issues/228)) ([c6c8015](https://github.com/increase/increase-node/commit/c6c80154b0d7602fb9f6a0f5a0b20f259879a509))
+* **docs:** fix github links ([#229](https://github.com/increase/increase-node/issues/229)) ([dcf7fb7](https://github.com/increase/increase-node/commit/dcf7fb7342f941aac2b67a753da729315382a089))
+* **internal:** update tsconfig ([#230](https://github.com/increase/increase-node/issues/230)) ([9486e84](https://github.com/increase/increase-node/commit/9486e84052b1c6509fa50acd2a2a78fac9bd49b4))
+
+
+### Documentation
+
+* document customizing fetch ([#227](https://github.com/increase/increase-node/issues/227)) ([ca94993](https://github.com/increase/increase-node/commit/ca949933ab57c2bebdfbb4d59df588d1c00182a7))
+
 ## 0.16.0 (2023-11-01)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/increase/increase-node/compare/v0.15.0...v0.16.0)
