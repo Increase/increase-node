@@ -11,7 +11,7 @@ export class Documents extends APIResource {
    * Retrieve a Document
    */
   retrieve(documentId: string, options?: Core.RequestOptions): Core.APIPromise<Document> {
-    return this.get(`/documents/${documentId}`, options);
+    return this._client.get(`/documents/${documentId}`, options);
   }
 
   /**
@@ -26,7 +26,7 @@ export class Documents extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/documents', DocumentsPage, { query, ...options });
+    return this._client.getAPIList('/documents', DocumentsPage, { query, ...options });
   }
 }
 

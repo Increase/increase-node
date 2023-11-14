@@ -14,7 +14,7 @@ export class BookkeepingAccounts extends APIResource {
     body: BookkeepingAccountCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<BookkeepingAccount> {
-    return this.post('/bookkeeping_accounts', { body, ...options });
+    return this._client.post('/bookkeeping_accounts', { body, ...options });
   }
 
   /**
@@ -25,7 +25,7 @@ export class BookkeepingAccounts extends APIResource {
     body: BookkeepingAccountUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<BookkeepingAccount> {
-    return this.patch(`/bookkeeping_accounts/${bookkeepingAccountId}`, { body, ...options });
+    return this._client.patch(`/bookkeeping_accounts/${bookkeepingAccountId}`, { body, ...options });
   }
 
   /**
@@ -43,7 +43,7 @@ export class BookkeepingAccounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/bookkeeping_accounts', BookkeepingAccountsPage, { query, ...options });
+    return this._client.getAPIList('/bookkeeping_accounts', BookkeepingAccountsPage, { query, ...options });
   }
 
   /**
@@ -66,7 +66,7 @@ export class BookkeepingAccounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.balance(bookkeepingAccountId, {}, query);
     }
-    return this.get(`/bookkeeping_accounts/${bookkeepingAccountId}/balance`, { query, ...options });
+    return this._client.get(`/bookkeeping_accounts/${bookkeepingAccountId}/balance`, { query, ...options });
   }
 }
 

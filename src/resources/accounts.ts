@@ -11,14 +11,14 @@ export class Accounts extends APIResource {
    * Create an Account
    */
   create(body: AccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<Account> {
-    return this.post('/accounts', { body, ...options });
+    return this._client.post('/accounts', { body, ...options });
   }
 
   /**
    * Retrieve an Account
    */
   retrieve(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
-    return this.get(`/accounts/${accountId}`, options);
+    return this._client.get(`/accounts/${accountId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class Accounts extends APIResource {
     body: AccountUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Account> {
-    return this.patch(`/accounts/${accountId}`, { body, ...options });
+    return this._client.patch(`/accounts/${accountId}`, { body, ...options });
   }
 
   /**
@@ -44,7 +44,7 @@ export class Accounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/accounts', AccountsPage, { query, ...options });
+    return this._client.getAPIList('/accounts', AccountsPage, { query, ...options });
   }
 
   /**
@@ -64,14 +64,14 @@ export class Accounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.balance(accountId, {}, query);
     }
-    return this.get(`/accounts/${accountId}/balance`, { query, ...options });
+    return this._client.get(`/accounts/${accountId}/balance`, { query, ...options });
   }
 
   /**
    * Close an Account
    */
   close(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
-    return this.post(`/accounts/${accountId}/close`, options);
+    return this._client.post(`/accounts/${accountId}/close`, options);
   }
 }
 

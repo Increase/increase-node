@@ -11,21 +11,21 @@ export class Cards extends APIResource {
    * Create a Card
    */
   create(body: CardCreateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
-    return this.post('/cards', { body, ...options });
+    return this._client.post('/cards', { body, ...options });
   }
 
   /**
    * Retrieve a Card
    */
   retrieve(cardId: string, options?: Core.RequestOptions): Core.APIPromise<Card> {
-    return this.get(`/cards/${cardId}`, options);
+    return this._client.get(`/cards/${cardId}`, options);
   }
 
   /**
    * Update a Card
    */
   update(cardId: string, body: CardUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
-    return this.patch(`/cards/${cardId}`, { body, ...options });
+    return this._client.patch(`/cards/${cardId}`, { body, ...options });
   }
 
   /**
@@ -40,14 +40,14 @@ export class Cards extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/cards', CardsPage, { query, ...options });
+    return this._client.getAPIList('/cards', CardsPage, { query, ...options });
   }
 
   /**
    * Retrieve sensitive details for a Card
    */
   retrieveSensitiveDetails(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
-    return this.get(`/cards/${cardId}/details`, options);
+    return this._client.get(`/cards/${cardId}/details`, options);
   }
 }
 

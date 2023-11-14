@@ -11,7 +11,7 @@ export class BookkeepingEntries extends APIResource {
    * Retrieve a Bookkeeping Entry
    */
   retrieve(bookkeepingEntryId: string, options?: Core.RequestOptions): Core.APIPromise<BookkeepingEntry> {
-    return this.get(`/bookkeeping_entries/${bookkeepingEntryId}`, options);
+    return this._client.get(`/bookkeeping_entries/${bookkeepingEntryId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class BookkeepingEntries extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/bookkeeping_entries', BookkeepingEntriesPage, { query, ...options });
+    return this._client.getAPIList('/bookkeeping_entries', BookkeepingEntriesPage, { query, ...options });
   }
 }
 

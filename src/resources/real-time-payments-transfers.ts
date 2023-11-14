@@ -14,7 +14,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     body: RealTimePaymentsTransferCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<RealTimePaymentsTransfer> {
-    return this.post('/real_time_payments_transfers', { body, ...options });
+    return this._client.post('/real_time_payments_transfers', { body, ...options });
   }
 
   /**
@@ -24,7 +24,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     realTimePaymentsTransferId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<RealTimePaymentsTransfer> {
-    return this.get(`/real_time_payments_transfers/${realTimePaymentsTransferId}`, options);
+    return this._client.get(`/real_time_payments_transfers/${realTimePaymentsTransferId}`, options);
   }
 
   /**
@@ -44,7 +44,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/real_time_payments_transfers', RealTimePaymentsTransfersPage, {
+    return this._client.getAPIList('/real_time_payments_transfers', RealTimePaymentsTransfersPage, {
       query,
       ...options,
     });

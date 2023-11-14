@@ -15,6 +15,6 @@ export class AccountTransfers extends APIResource {
     accountTransferId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<AccountTransfersAPI.AccountTransfer> {
-    return this.post(`/simulations/account_transfers/${accountTransferId}/complete`, options);
+    return this._client.post(`/simulations/account_transfers/${accountTransferId}/complete`, options);
   }
 }

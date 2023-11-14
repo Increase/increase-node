@@ -11,14 +11,14 @@ export class CheckTransfers extends APIResource {
    * Create a Check Transfer
    */
   create(body: CheckTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this.post('/check_transfers', { body, ...options });
+    return this._client.post('/check_transfers', { body, ...options });
   }
 
   /**
    * Retrieve a Check Transfer
    */
   retrieve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this.get(`/check_transfers/${checkTransferId}`, options);
+    return this._client.get(`/check_transfers/${checkTransferId}`, options);
   }
 
   /**
@@ -36,21 +36,21 @@ export class CheckTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
+    return this._client.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
   }
 
   /**
    * Approve a Check Transfer
    */
   approve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this.post(`/check_transfers/${checkTransferId}/approve`, options);
+    return this._client.post(`/check_transfers/${checkTransferId}/approve`, options);
   }
 
   /**
    * Cancel a pending Check Transfer
    */
   cancel(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this.post(`/check_transfers/${checkTransferId}/cancel`, options);
+    return this._client.post(`/check_transfers/${checkTransferId}/cancel`, options);
   }
 
   /**
@@ -61,7 +61,7 @@ export class CheckTransfers extends APIResource {
     body: CheckTransferStopPaymentParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CheckTransfer> {
-    return this.post(`/check_transfers/${checkTransferId}/stop_payment`, { body, ...options });
+    return this._client.post(`/check_transfers/${checkTransferId}/stop_payment`, { body, ...options });
   }
 }
 

@@ -22,7 +22,7 @@ export class ACHTransfers extends APIResource {
     body: ACHTransferCreateInboundParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ACHTransferSimulation> {
-    return this.post('/simulations/inbound_ach_transfers', { body, ...options });
+    return this._client.post('/simulations/inbound_ach_transfers', { body, ...options });
   }
 
   /**
@@ -35,7 +35,7 @@ export class ACHTransfers extends APIResource {
     body: ACHTransferReturnParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this.post(`/simulations/ach_transfers/${achTransferId}/return`, { body, ...options });
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/return`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,7 @@ export class ACHTransfers extends APIResource {
    * delay and transition the ACH Transfer to a status of `submitted`.
    */
   submit(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
   }
 }
 

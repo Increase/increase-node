@@ -11,7 +11,7 @@ export class AccountStatements extends APIResource {
    * Retrieve an Account Statement
    */
   retrieve(accountStatementId: string, options?: Core.RequestOptions): Core.APIPromise<AccountStatement> {
-    return this.get(`/account_statements/${accountStatementId}`, options);
+    return this._client.get(`/account_statements/${accountStatementId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class AccountStatements extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/account_statements', AccountStatementsPage, { query, ...options });
+    return this._client.getAPIList('/account_statements', AccountStatementsPage, { query, ...options });
   }
 }
 

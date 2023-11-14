@@ -14,7 +14,7 @@ export class CheckDeposits extends APIResource {
     checkDepositId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
+    return this._client.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
   }
 
   /**
@@ -25,7 +25,7 @@ export class CheckDeposits extends APIResource {
     checkDepositId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this.post(`/simulations/check_deposits/${checkDepositId}/return`, options);
+    return this._client.post(`/simulations/check_deposits/${checkDepositId}/return`, options);
   }
 
   /**
@@ -36,6 +36,6 @@ export class CheckDeposits extends APIResource {
     checkDepositId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
+    return this._client.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
   }
 }

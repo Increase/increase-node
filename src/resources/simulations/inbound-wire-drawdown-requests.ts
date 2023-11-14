@@ -14,7 +14,7 @@ export class InboundWireDrawdownRequests extends APIResource {
     body: InboundWireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
-    return this.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
+    return this._client.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
   }
 }
 

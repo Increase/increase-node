@@ -11,14 +11,14 @@ export class Exports extends APIResource {
    * Create an Export
    */
   create(body: ExportCreateParams, options?: Core.RequestOptions): Core.APIPromise<Export> {
-    return this.post('/exports', { body, ...options });
+    return this._client.post('/exports', { body, ...options });
   }
 
   /**
    * Retrieve an Export
    */
   retrieve(exportId: string, options?: Core.RequestOptions): Core.APIPromise<Export> {
-    return this.get(`/exports/${exportId}`, options);
+    return this._client.get(`/exports/${exportId}`, options);
   }
 
   /**
@@ -33,7 +33,7 @@ export class Exports extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/exports', ExportsPage, { query, ...options });
+    return this._client.getAPIList('/exports', ExportsPage, { query, ...options });
   }
 }
 

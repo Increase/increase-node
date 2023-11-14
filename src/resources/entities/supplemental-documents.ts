@@ -15,7 +15,7 @@ export class SupplementalDocuments extends APIResource {
     body: SupplementalDocumentCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EntitiesAPI.Entity> {
-    return this.post(`/entities/${entityId}/supplemental_documents`, { body, ...options });
+    return this._client.post(`/entities/${entityId}/supplemental_documents`, { body, ...options });
   }
 
   /**
@@ -25,7 +25,7 @@ export class SupplementalDocuments extends APIResource {
     query: SupplementalDocumentListParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<SupplementalDocumentsPage, SupplementalDocument> {
-    return this.getAPIList('/entity_supplemental_documents', SupplementalDocumentsPage, {
+    return this._client.getAPIList('/entity_supplemental_documents', SupplementalDocumentsPage, {
       query,
       ...options,
     });

@@ -14,7 +14,7 @@ export class DeclinedTransactions extends APIResource {
     declinedTransactionId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DeclinedTransaction> {
-    return this.get(`/declined_transactions/${declinedTransactionId}`, options);
+    return this._client.get(`/declined_transactions/${declinedTransactionId}`, options);
   }
 
   /**
@@ -32,7 +32,7 @@ export class DeclinedTransactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/declined_transactions', DeclinedTransactionsPage, { query, ...options });
+    return this._client.getAPIList('/declined_transactions', DeclinedTransactionsPage, { query, ...options });
   }
 }
 

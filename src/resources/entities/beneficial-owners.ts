@@ -13,7 +13,7 @@ export class BeneficialOwners extends APIResource {
     body: BeneficialOwnerCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EntitiesAPI.Entity> {
-    return this.post('/entity_beneficial_owners', { body, ...options });
+    return this._client.post('/entity_beneficial_owners', { body, ...options });
   }
 
   /**
@@ -23,7 +23,7 @@ export class BeneficialOwners extends APIResource {
     body: BeneficialOwnerArchiveParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EntitiesAPI.Entity> {
-    return this.post('/entity_beneficial_owners/archive', { body, ...options });
+    return this._client.post('/entity_beneficial_owners/archive', { body, ...options });
   }
 
   /**
@@ -33,7 +33,7 @@ export class BeneficialOwners extends APIResource {
     body: BeneficialOwnerUpdateAddressParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EntitiesAPI.Entity> {
-    return this.post('/entity_beneficial_owners/address', { body, ...options });
+    return this._client.post('/entity_beneficial_owners/address', { body, ...options });
   }
 }
 

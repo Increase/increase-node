@@ -14,14 +14,14 @@ export class Files extends APIResource {
    * upload, as well as the parameters for creating a file.
    */
   create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
-    return this.post('/files', multipartFormRequestOptions({ body, ...options }));
+    return this._client.post('/files', multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
    * Retrieve a File
    */
   retrieve(fileId: string, options?: Core.RequestOptions): Core.APIPromise<File> {
-    return this.get(`/files/${fileId}`, options);
+    return this._client.get(`/files/${fileId}`, options);
   }
 
   /**
@@ -36,7 +36,7 @@ export class Files extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/files', FilesPage, { query, ...options });
+    return this._client.getAPIList('/files', FilesPage, { query, ...options });
   }
 }
 

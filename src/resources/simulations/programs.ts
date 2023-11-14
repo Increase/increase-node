@@ -12,7 +12,7 @@ export class Programs extends APIResource {
    * one program, `program_id` is a required field when creating accounts.
    */
   create(body: ProgramCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProgramsAPI.Program> {
-    return this.post('/simulations/programs', { body, ...options });
+    return this._client.post('/simulations/programs', { body, ...options });
   }
 }
 

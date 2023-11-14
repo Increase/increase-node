@@ -11,14 +11,14 @@ export class CardDisputes extends APIResource {
    * Create a Card Dispute
    */
   create(body: CardDisputeCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
-    return this.post('/card_disputes', { body, ...options });
+    return this._client.post('/card_disputes', { body, ...options });
   }
 
   /**
    * Retrieve a Card Dispute
    */
   retrieve(cardDisputeId: string, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
-    return this.get(`/card_disputes/${cardDisputeId}`, options);
+    return this._client.get(`/card_disputes/${cardDisputeId}`, options);
   }
 
   /**
@@ -36,7 +36,7 @@ export class CardDisputes extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/card_disputes', CardDisputesPage, { query, ...options });
+    return this._client.getAPIList('/card_disputes', CardDisputesPage, { query, ...options });
   }
 }
 

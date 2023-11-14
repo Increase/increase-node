@@ -12,7 +12,7 @@ export class WireTransfers extends APIResource {
     body: WireTransferCreateInboundParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<WireTransferSimulation> {
-    return this.post('/simulations/inbound_wire_transfers', { body, ...options });
+    return this._client.post('/simulations/inbound_wire_transfers', { body, ...options });
   }
 }
 
