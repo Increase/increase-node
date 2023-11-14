@@ -10,7 +10,7 @@ export class Documents extends APIResource {
    * Simulates an tax document being created for an account.
    */
   create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<DocumentsAPI.Document> {
-    return this.post('/simulations/documents', { body, ...options });
+    return this._client.post('/simulations/documents', { body, ...options });
   }
 }
 

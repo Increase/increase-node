@@ -11,7 +11,7 @@ export class Programs extends APIResource {
    * Retrieve a Program
    */
   retrieve(programId: string, options?: Core.RequestOptions): Core.APIPromise<Program> {
-    return this.get(`/programs/${programId}`, options);
+    return this._client.get(`/programs/${programId}`, options);
   }
 
   /**
@@ -26,7 +26,7 @@ export class Programs extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/programs', ProgramsPage, { query, ...options });
+    return this._client.getAPIList('/programs', ProgramsPage, { query, ...options });
   }
 }
 

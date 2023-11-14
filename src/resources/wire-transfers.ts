@@ -11,14 +11,14 @@ export class WireTransfers extends APIResource {
    * Create a Wire Transfer
    */
   create(body: WireTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.post('/wire_transfers', { body, ...options });
+    return this._client.post('/wire_transfers', { body, ...options });
   }
 
   /**
    * Retrieve a Wire Transfer
    */
   retrieve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.get(`/wire_transfers/${wireTransferId}`, options);
+    return this._client.get(`/wire_transfers/${wireTransferId}`, options);
   }
 
   /**
@@ -36,21 +36,21 @@ export class WireTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/wire_transfers', WireTransfersPage, { query, ...options });
+    return this._client.getAPIList('/wire_transfers', WireTransfersPage, { query, ...options });
   }
 
   /**
    * Approve a Wire Transfer
    */
   approve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.post(`/wire_transfers/${wireTransferId}/approve`, options);
+    return this._client.post(`/wire_transfers/${wireTransferId}/approve`, options);
   }
 
   /**
    * Cancel a pending Wire Transfer
    */
   cancel(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.post(`/wire_transfers/${wireTransferId}/cancel`, options);
+    return this._client.post(`/wire_transfers/${wireTransferId}/cancel`, options);
   }
 
   /**
@@ -60,7 +60,7 @@ export class WireTransfers extends APIResource {
    * Transfer must first have a `status` of `complete`.
    */
   reverse(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
+    return this._client.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
   }
 
   /**
@@ -69,7 +69,7 @@ export class WireTransfers extends APIResource {
    * `pending_creating`.
    */
   submit(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
+    return this._client.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
   }
 }
 

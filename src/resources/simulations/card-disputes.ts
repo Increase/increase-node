@@ -17,7 +17,7 @@ export class CardDisputes extends APIResource {
     body: CardDisputeActionParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CardDisputesAPI.CardDispute> {
-    return this.post(`/simulations/card_disputes/${cardDisputeId}/action`, { body, ...options });
+    return this._client.post(`/simulations/card_disputes/${cardDisputeId}/action`, { body, ...options });
   }
 }
 

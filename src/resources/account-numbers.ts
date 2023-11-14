@@ -11,14 +11,14 @@ export class AccountNumbers extends APIResource {
    * Create an Account Number
    */
   create(body: AccountNumberCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
-    return this.post('/account_numbers', { body, ...options });
+    return this._client.post('/account_numbers', { body, ...options });
   }
 
   /**
    * Retrieve an Account Number
    */
   retrieve(accountNumberId: string, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
-    return this.get(`/account_numbers/${accountNumberId}`, options);
+    return this._client.get(`/account_numbers/${accountNumberId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class AccountNumbers extends APIResource {
     body: AccountNumberUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<AccountNumber> {
-    return this.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
+    return this._client.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,7 @@ export class AccountNumbers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/account_numbers', AccountNumbersPage, { query, ...options });
+    return this._client.getAPIList('/account_numbers', AccountNumbersPage, { query, ...options });
   }
 }
 

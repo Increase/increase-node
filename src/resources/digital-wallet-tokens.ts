@@ -11,7 +11,7 @@ export class DigitalWalletTokens extends APIResource {
    * Retrieve a Digital Wallet Token
    */
   retrieve(digitalWalletTokenId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalWalletToken> {
-    return this.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
+    return this._client.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class DigitalWalletTokens extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/digital_wallet_tokens', DigitalWalletTokensPage, { query, ...options });
+    return this._client.getAPIList('/digital_wallet_tokens', DigitalWalletTokensPage, { query, ...options });
   }
 }
 

@@ -11,7 +11,7 @@ export class Transactions extends APIResource {
    * Retrieve a Transaction
    */
   retrieve(transactionId: string, options?: Core.RequestOptions): Core.APIPromise<Transaction> {
-    return this.get(`/transactions/${transactionId}`, options);
+    return this._client.get(`/transactions/${transactionId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class Transactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/transactions', TransactionsPage, { query, ...options });
+    return this._client.getAPIList('/transactions', TransactionsPage, { query, ...options });
   }
 }
 

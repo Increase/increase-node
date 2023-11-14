@@ -14,7 +14,7 @@ export class InboundWireDrawdownRequests extends APIResource {
     inboundWireDrawdownRequestId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundWireDrawdownRequest> {
-    return this.get(`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestId}`, options);
+    return this._client.get(`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestId}`, options);
   }
 
   /**
@@ -34,7 +34,7 @@ export class InboundWireDrawdownRequests extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/inbound_wire_drawdown_requests', InboundWireDrawdownRequestsPage, {
+    return this._client.getAPIList('/inbound_wire_drawdown_requests', InboundWireDrawdownRequestsPage, {
       query,
       ...options,
     });

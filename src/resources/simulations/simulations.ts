@@ -22,34 +22,34 @@ import * as WireTransfersAPI from 'increase/resources/simulations/wire-transfers
 
 export class Simulations extends APIResource {
   accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
-    this.client,
+    this._client,
   );
   accountStatements: AccountStatementsAPI.AccountStatements = new AccountStatementsAPI.AccountStatements(
-    this.client,
+    this._client,
   );
-  achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this.client);
-  cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this.client);
-  cardProfiles: CardProfilesAPI.CardProfiles = new CardProfilesAPI.CardProfiles(this.client);
-  cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this.client);
-  checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this.client);
-  documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this.client);
+  achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this._client);
+  cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
+  cardProfiles: CardProfilesAPI.CardProfiles = new CardProfilesAPI.CardProfiles(this._client);
+  cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
+  checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
+  documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
-    new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this.client);
-  checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this.client);
-  programs: ProgramsAPI.Programs = new ProgramsAPI.Programs(this.client);
+    new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this._client);
+  checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
+  programs: ProgramsAPI.Programs = new ProgramsAPI.Programs(this._client);
   inboundWireDrawdownRequests: InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests =
-    new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this.client);
+    new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this._client);
   inboundFundsHolds: InboundFundsHoldsAPI.InboundFundsHolds = new InboundFundsHoldsAPI.InboundFundsHolds(
-    this.client,
+    this._client,
   );
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
-    this.client,
+    this._client,
   );
-  wireTransfers: WireTransfersAPI.WireTransfers = new WireTransfersAPI.WireTransfers(this.client);
-  cards: CardsAPI.Cards = new CardsAPI.Cards(this.client);
+  wireTransfers: WireTransfersAPI.WireTransfers = new WireTransfersAPI.WireTransfers(this._client);
+  cards: CardsAPI.Cards = new CardsAPI.Cards(this._client);
   realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
-    new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this.client);
-  physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this.client);
+    new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
+  physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
 }
 
 export namespace Simulations {

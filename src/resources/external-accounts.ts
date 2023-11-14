@@ -11,14 +11,14 @@ export class ExternalAccounts extends APIResource {
    * Create an External Account
    */
   create(body: ExternalAccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
-    return this.post('/external_accounts', { body, ...options });
+    return this._client.post('/external_accounts', { body, ...options });
   }
 
   /**
    * Retrieve an External Account
    */
   retrieve(externalAccountId: string, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
-    return this.get(`/external_accounts/${externalAccountId}`, options);
+    return this._client.get(`/external_accounts/${externalAccountId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class ExternalAccounts extends APIResource {
     body: ExternalAccountUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ExternalAccount> {
-    return this.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
+    return this._client.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,7 @@ export class ExternalAccounts extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/external_accounts', ExternalAccountsPage, { query, ...options });
+    return this._client.getAPIList('/external_accounts', ExternalAccountsPage, { query, ...options });
   }
 }
 

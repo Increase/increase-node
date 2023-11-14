@@ -14,14 +14,14 @@ export class EventSubscriptions extends APIResource {
     body: EventSubscriptionCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EventSubscription> {
-    return this.post('/event_subscriptions', { body, ...options });
+    return this._client.post('/event_subscriptions', { body, ...options });
   }
 
   /**
    * Retrieve an Event Subscription
    */
   retrieve(eventSubscriptionId: string, options?: Core.RequestOptions): Core.APIPromise<EventSubscription> {
-    return this.get(`/event_subscriptions/${eventSubscriptionId}`, options);
+    return this._client.get(`/event_subscriptions/${eventSubscriptionId}`, options);
   }
 
   /**
@@ -32,7 +32,7 @@ export class EventSubscriptions extends APIResource {
     body: EventSubscriptionUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<EventSubscription> {
-    return this.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
+    return this._client.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
   }
 
   /**
@@ -50,7 +50,7 @@ export class EventSubscriptions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/event_subscriptions', EventSubscriptionsPage, { query, ...options });
+    return this._client.getAPIList('/event_subscriptions', EventSubscriptionsPage, { query, ...options });
   }
 }
 

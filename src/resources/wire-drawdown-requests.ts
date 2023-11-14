@@ -14,7 +14,7 @@ export class WireDrawdownRequests extends APIResource {
     body: WireDrawdownRequestCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<WireDrawdownRequest> {
-    return this.post('/wire_drawdown_requests', { body, ...options });
+    return this._client.post('/wire_drawdown_requests', { body, ...options });
   }
 
   /**
@@ -24,7 +24,7 @@ export class WireDrawdownRequests extends APIResource {
     wireDrawdownRequestId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<WireDrawdownRequest> {
-    return this.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
+    return this._client.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
   }
 
   /**
@@ -42,7 +42,10 @@ export class WireDrawdownRequests extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/wire_drawdown_requests', WireDrawdownRequestsPage, { query, ...options });
+    return this._client.getAPIList('/wire_drawdown_requests', WireDrawdownRequestsPage, {
+      query,
+      ...options,
+    });
   }
 }
 

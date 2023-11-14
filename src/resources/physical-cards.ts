@@ -11,14 +11,14 @@ export class PhysicalCards extends APIResource {
    * Create a Physical Card
    */
   create(body: PhysicalCardCreateParams, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
-    return this.post('/physical_cards', { body, ...options });
+    return this._client.post('/physical_cards', { body, ...options });
   }
 
   /**
    * Retrieve a Physical Card
    */
   retrieve(physicalCardId: string, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
-    return this.get(`/physical_cards/${physicalCardId}`, options);
+    return this._client.get(`/physical_cards/${physicalCardId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class PhysicalCards extends APIResource {
     body: PhysicalCardUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<PhysicalCard> {
-    return this.patch(`/physical_cards/${physicalCardId}`, { body, ...options });
+    return this._client.patch(`/physical_cards/${physicalCardId}`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,7 @@ export class PhysicalCards extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/physical_cards', PhysicalCardsPage, { query, ...options });
+    return this._client.getAPIList('/physical_cards', PhysicalCardsPage, { query, ...options });
   }
 }
 

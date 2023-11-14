@@ -11,14 +11,14 @@ export class ACHTransfers extends APIResource {
    * Create an ACH Transfer
    */
   create(body: ACHTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this.post('/ach_transfers', { body, ...options });
+    return this._client.post('/ach_transfers', { body, ...options });
   }
 
   /**
    * Retrieve an ACH Transfer
    */
   retrieve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this.get(`/ach_transfers/${achTransferId}`, options);
+    return this._client.get(`/ach_transfers/${achTransferId}`, options);
   }
 
   /**
@@ -36,21 +36,21 @@ export class ACHTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/ach_transfers', ACHTransfersPage, { query, ...options });
+    return this._client.getAPIList('/ach_transfers', ACHTransfersPage, { query, ...options });
   }
 
   /**
    * Approves an ACH Transfer in a pending_approval state.
    */
   approve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this.post(`/ach_transfers/${achTransferId}/approve`, options);
+    return this._client.post(`/ach_transfers/${achTransferId}/approve`, options);
   }
 
   /**
    * Cancels an ACH Transfer in a pending_approval state.
    */
   cancel(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this.post(`/ach_transfers/${achTransferId}/cancel`, options);
+    return this._client.post(`/ach_transfers/${achTransferId}/cancel`, options);
   }
 }
 
