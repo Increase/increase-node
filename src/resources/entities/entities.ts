@@ -10,23 +10,23 @@ import { Page, type PageParams } from 'increase/pagination';
 
 export class Entities extends APIResource {
   beneficialOwners: BeneficialOwnersAPI.BeneficialOwners = new BeneficialOwnersAPI.BeneficialOwners(
-    this.client,
+    this._client,
   );
   supplementalDocuments: SupplementalDocumentsAPI.SupplementalDocuments =
-    new SupplementalDocumentsAPI.SupplementalDocuments(this.client);
+    new SupplementalDocumentsAPI.SupplementalDocuments(this._client);
 
   /**
    * Create an Entity
    */
   create(body: EntityCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this.post('/entities', { body, ...options });
+    return this._client.post('/entities', { body, ...options });
   }
 
   /**
    * Retrieve an Entity
    */
   retrieve(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this.get(`/entities/${entityId}`, options);
+    return this._client.get(`/entities/${entityId}`, options);
   }
 
   /**
@@ -41,14 +41,14 @@ export class Entities extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/entities', EntitiesPage, { query, ...options });
+    return this._client.getAPIList('/entities', EntitiesPage, { query, ...options });
   }
 
   /**
    * Archive an Entity
    */
   archive(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this.post(`/entities/${entityId}/archive`, options);
+    return this._client.post(`/entities/${entityId}/archive`, options);
   }
 
   /**
@@ -59,7 +59,7 @@ export class Entities extends APIResource {
     body: EntityUpdateAddressParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Entity> {
-    return this.post(`/entities/${entityId}/address`, { body, ...options });
+    return this._client.post(`/entities/${entityId}/address`, { body, ...options });
   }
 }
 

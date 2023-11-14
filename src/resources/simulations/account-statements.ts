@@ -14,7 +14,7 @@ export class AccountStatements extends APIResource {
     body: AccountStatementCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<AccountStatementsAPI.AccountStatement> {
-    return this.post('/simulations/account_statements', { body, ...options });
+    return this._client.post('/simulations/account_statements', { body, ...options });
   }
 }
 

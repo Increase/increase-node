@@ -11,7 +11,7 @@ export class OauthConnections extends APIResource {
    * Retrieve an OAuth Connection
    */
   retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OauthConnection> {
-    return this.get(`/oauth_connections/${oauthConnectionId}`, options);
+    return this._client.get(`/oauth_connections/${oauthConnectionId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class OauthConnections extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/oauth_connections', OauthConnectionsPage, { query, ...options });
+    return this._client.getAPIList('/oauth_connections', OauthConnectionsPage, { query, ...options });
   }
 }
 

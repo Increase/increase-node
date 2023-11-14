@@ -14,7 +14,7 @@ export class CardRefunds extends APIResource {
     body: CardRefundCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<TransactionsAPI.Transaction> {
-    return this.post('/simulations/card_refunds', { body, ...options });
+    return this._client.post('/simulations/card_refunds', { body, ...options });
   }
 }
 

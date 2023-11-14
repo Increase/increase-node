@@ -13,7 +13,7 @@ export class InterestPayments extends APIResource {
     body: InterestPaymentCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InterestPaymentSimulationResult> {
-    return this.post('/simulations/interest_payment', { body, ...options });
+    return this._client.post('/simulations/interest_payment', { body, ...options });
   }
 }
 

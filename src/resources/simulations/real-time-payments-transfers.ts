@@ -16,10 +16,10 @@ export class RealTimePaymentsTransfers extends APIResource {
     body: RealTimePaymentsTransferCompleteParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
-    return this.post(`/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`, {
-      body,
-      ...options,
-    });
+    return this._client.post(
+      `/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`,
+      { body, ...options },
+    );
   }
 
   /**
@@ -30,7 +30,7 @@ export class RealTimePaymentsTransfers extends APIResource {
     body: RealTimePaymentsTransferCreateInboundParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundRealTimePaymentsTransferSimulationResult> {
-    return this.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
+    return this._client.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
 }
 

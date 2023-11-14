@@ -16,7 +16,10 @@ export class PhysicalCards extends APIResource {
     body: PhysicalCardShipmentAdvanceParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this.post(`/simulations/physical_cards/${physicalCardId}/shipment_advance`, { body, ...options });
+    return this._client.post(`/simulations/physical_cards/${physicalCardId}/shipment_advance`, {
+      body,
+      ...options,
+    });
   }
 }
 

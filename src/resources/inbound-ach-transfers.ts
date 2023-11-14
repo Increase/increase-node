@@ -11,7 +11,7 @@ export class InboundACHTransfers extends APIResource {
    * Retrieve an Inbound ACH Transfer
    */
   retrieve(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
-    return this.get(`/inbound_ach_transfers/${inboundACHTransferId}`, options);
+    return this._client.get(`/inbound_ach_transfers/${inboundACHTransferId}`, options);
   }
 
   /**
@@ -29,14 +29,14 @@ export class InboundACHTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/inbound_ach_transfers', InboundACHTransfersPage, { query, ...options });
+    return this._client.getAPIList('/inbound_ach_transfers', InboundACHTransfersPage, { query, ...options });
   }
 
   /**
    * Decline an Inbound ACH Transfer
    */
   decline(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
-    return this.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, options);
+    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, options);
   }
 
   /**
@@ -47,7 +47,7 @@ export class InboundACHTransfers extends APIResource {
     body: InboundACHTransferNotificationOfChangeParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundACHTransfer> {
-    return this.post(`/inbound_ach_transfers/${inboundACHTransferId}/notification_of_change`, {
+    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/notification_of_change`, {
       body,
       ...options,
     });
@@ -61,7 +61,10 @@ export class InboundACHTransfers extends APIResource {
     body: InboundACHTransferTransferReturnParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundACHTransfer> {
-    return this.post(`/inbound_ach_transfers/${inboundACHTransferId}/transfer_return`, { body, ...options });
+    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/transfer_return`, {
+      body,
+      ...options,
+    });
   }
 }
 

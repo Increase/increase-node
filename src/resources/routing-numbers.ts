@@ -16,7 +16,7 @@ export class RoutingNumbers extends APIResource {
     query: RoutingNumberListParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<RoutingNumbersPage, RoutingNumber> {
-    return this.getAPIList('/routing_numbers', RoutingNumbersPage, { query, ...options });
+    return this._client.getAPIList('/routing_numbers', RoutingNumbersPage, { query, ...options });
   }
 }
 

@@ -11,7 +11,7 @@ export class CardPayments extends APIResource {
    * Retrieve a Card Payment
    */
   retrieve(cardPaymentId: string, options?: Core.RequestOptions): Core.APIPromise<CardPayment> {
-    return this.get(`/card_payments/${cardPaymentId}`, options);
+    return this._client.get(`/card_payments/${cardPaymentId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class CardPayments extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/card_payments', CardPaymentsPage, { query, ...options });
+    return this._client.getAPIList('/card_payments', CardPaymentsPage, { query, ...options });
   }
 }
 

@@ -11,14 +11,14 @@ export class CardProfiles extends APIResource {
    * Create a Card Profile
    */
   create(body: CardProfileCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
-    return this.post('/card_profiles', { body, ...options });
+    return this._client.post('/card_profiles', { body, ...options });
   }
 
   /**
    * Retrieve a Card Profile
    */
   retrieve(cardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
-    return this.get(`/card_profiles/${cardProfileId}`, options);
+    return this._client.get(`/card_profiles/${cardProfileId}`, options);
   }
 
   /**
@@ -36,14 +36,14 @@ export class CardProfiles extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/card_profiles', CardProfilesPage, { query, ...options });
+    return this._client.getAPIList('/card_profiles', CardProfilesPage, { query, ...options });
   }
 
   /**
    * Archive an Card Profile
    */
   archive(cardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<CardProfile> {
-    return this.post(`/card_profiles/${cardProfileId}/archive`, options);
+    return this._client.post(`/card_profiles/${cardProfileId}/archive`, options);
   }
 }
 

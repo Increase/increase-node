@@ -13,7 +13,7 @@ export class InboundFundsHolds extends APIResource {
     inboundFundsHoldId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<InboundFundsHoldReleaseResponse> {
-    return this.post(`/simulations/inbound_funds_holds/${inboundFundsHoldId}/release`, options);
+    return this._client.post(`/simulations/inbound_funds_holds/${inboundFundsHoldId}/release`, options);
   }
 }
 

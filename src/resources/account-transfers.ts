@@ -11,14 +11,14 @@ export class AccountTransfers extends APIResource {
    * Create an Account Transfer
    */
   create(body: AccountTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this.post('/account_transfers', { body, ...options });
+    return this._client.post('/account_transfers', { body, ...options });
   }
 
   /**
    * Retrieve an Account Transfer
    */
   retrieve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this.get(`/account_transfers/${accountTransferId}`, options);
+    return this._client.get(`/account_transfers/${accountTransferId}`, options);
   }
 
   /**
@@ -36,21 +36,21 @@ export class AccountTransfers extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/account_transfers', AccountTransfersPage, { query, ...options });
+    return this._client.getAPIList('/account_transfers', AccountTransfersPage, { query, ...options });
   }
 
   /**
    * Approve an Account Transfer
    */
   approve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this.post(`/account_transfers/${accountTransferId}/approve`, options);
+    return this._client.post(`/account_transfers/${accountTransferId}/approve`, options);
   }
 
   /**
    * Cancel an Account Transfer
    */
   cancel(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this.post(`/account_transfers/${accountTransferId}/cancel`, options);
+    return this._client.post(`/account_transfers/${accountTransferId}/cancel`, options);
   }
 }
 

@@ -9,7 +9,7 @@ export class Groups extends APIResource {
    * Returns details for the currently authenticated Group.
    */
   retrieveDetails(options?: Core.RequestOptions): Core.APIPromise<Group> {
-    return this.get('/groups/current', options);
+    return this._client.get('/groups/current', options);
   }
 }
 

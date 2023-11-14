@@ -11,14 +11,14 @@ export class CheckDeposits extends APIResource {
    * Create a Check Deposit
    */
   create(body: CheckDepositCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
-    return this.post('/check_deposits', { body, ...options });
+    return this._client.post('/check_deposits', { body, ...options });
   }
 
   /**
    * Retrieve a Check Deposit
    */
   retrieve(checkDepositId: string, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
-    return this.get(`/check_deposits/${checkDepositId}`, options);
+    return this._client.get(`/check_deposits/${checkDepositId}`, options);
   }
 
   /**
@@ -36,7 +36,7 @@ export class CheckDeposits extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/check_deposits', CheckDepositsPage, { query, ...options });
+    return this._client.getAPIList('/check_deposits', CheckDepositsPage, { query, ...options });
   }
 }
 

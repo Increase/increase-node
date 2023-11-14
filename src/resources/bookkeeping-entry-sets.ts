@@ -14,7 +14,7 @@ export class BookkeepingEntrySets extends APIResource {
     body: BookkeepingEntrySetCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<BookkeepingEntrySet> {
-    return this.post('/bookkeeping_entry_sets', { body, ...options });
+    return this._client.post('/bookkeeping_entry_sets', { body, ...options });
   }
 
   /**
@@ -24,7 +24,7 @@ export class BookkeepingEntrySets extends APIResource {
     bookkeepingEntrySetId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<BookkeepingEntrySet> {
-    return this.get(`/bookkeeping_entry_sets/${bookkeepingEntrySetId}`, options);
+    return this._client.get(`/bookkeeping_entry_sets/${bookkeepingEntrySetId}`, options);
   }
 
   /**
@@ -42,7 +42,10 @@ export class BookkeepingEntrySets extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/bookkeeping_entry_sets', BookkeepingEntrySetsPage, { query, ...options });
+    return this._client.getAPIList('/bookkeeping_entry_sets', BookkeepingEntrySetsPage, {
+      query,
+      ...options,
+    });
   }
 }
 

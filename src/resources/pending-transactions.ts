@@ -11,7 +11,7 @@ export class PendingTransactions extends APIResource {
    * Retrieve a Pending Transaction
    */
   retrieve(pendingTransactionId: string, options?: Core.RequestOptions): Core.APIPromise<PendingTransaction> {
-    return this.get(`/pending_transactions/${pendingTransactionId}`, options);
+    return this._client.get(`/pending_transactions/${pendingTransactionId}`, options);
   }
 
   /**
@@ -29,7 +29,7 @@ export class PendingTransactions extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this.getAPIList('/pending_transactions', PendingTransactionsPage, { query, ...options });
+    return this._client.getAPIList('/pending_transactions', PendingTransactionsPage, { query, ...options });
   }
 }
 

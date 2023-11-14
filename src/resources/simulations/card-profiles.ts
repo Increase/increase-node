@@ -16,6 +16,6 @@ export class CardProfiles extends APIResource {
     cardProfileId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CardProfilesAPI.CardProfile> {
-    return this.post(`/simulations/card_profiles/${cardProfileId}/approve`, options);
+    return this._client.post(`/simulations/card_profiles/${cardProfileId}/approve`, options);
   }
 }
