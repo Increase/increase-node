@@ -132,6 +132,34 @@ describe('instantiate client', () => {
       const client = new Increase({ baseURL: 'http://localhost:5000/custom/path', apiKey: 'My API Key' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
+
+    afterEach(() => {
+      process.env['SINK_BASE_URL'] = undefined;
+    });
+
+    test('explicit option', () => {
+      const client = new Increase({ baseURL: 'https://example.com', apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://example.com');
+    });
+
+    test('env variable', () => {
+      process.env['INCREASE_BASE_URL'] = 'https://example.com/from_env';
+      const client = new Increase({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://example.com/from_env');
+    });
+
+    test('env variable with environment', () => {
+      process.env['INCREASE_BASE_URL'] = 'https://example.com/from_env';
+
+      expect(
+        () => new Increase({ apiKey: 'My API Key', environment: 'production' }),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or INCREASE_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      );
+
+      const client = new Increase({ apiKey: 'My API Key', baseURL: null, environment: 'production' });
+      expect(client.baseURL).toEqual('https://api.increase.com');
+    });
   });
 
   test('maxRetries option is correctly set', () => {
