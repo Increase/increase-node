@@ -22,7 +22,7 @@ The full API of this library can be found in [api.md](https://www.github.com/inc
 import Increase from 'increase';
 
 const increase = new Increase({
-  apiKey: 'My API Key', // defaults to process.env["INCREASE_API_KEY"]
+  apiKey: process.env['INCREASE_API_KEY'], // This is the default and can be omitted
   environment: 'sandbox', // defaults to 'production'
 });
 
@@ -43,7 +43,7 @@ This library includes TypeScript definitions for all request params and response
 import Increase from 'increase';
 
 const increase = new Increase({
-  apiKey: 'My API Key', // defaults to process.env["INCREASE_API_KEY"]
+  apiKey: process.env['INCREASE_API_KEY'], // This is the default and can be omitted
   environment: 'sandbox', // defaults to 'production'
 });
 
