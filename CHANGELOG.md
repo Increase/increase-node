@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.18.0 (2023-12-04)
+
+Full Changelog: [v0.17.0...v0.18.0](https://github.com/increase/increase-node/compare/v0.17.0...v0.18.0)
+
+### Features
+
+* allow installing package directly from github ([#235](https://github.com/increase/increase-node/issues/235)) ([4239d30](https://github.com/increase/increase-node/commit/4239d3025215e8d45beb10fa089b99dcce7393f9))
+* **client:** support reading the base url from an env variable ([#240](https://github.com/increase/increase-node/issues/240)) ([3edcfbd](https://github.com/increase/increase-node/commit/3edcfbd8cf6c2bea49d1c3121c9fa83b32955ad4))
+
+
+### Chores
+
+* **internal:** don't call prepare in dist ([#236](https://github.com/increase/increase-node/issues/236)) ([67e6f5a](https://github.com/increase/increase-node/commit/67e6f5a49e6caa8bd75f9807f151d1da03676a01))
+* **internal:** remove file import and conditionally run prepare ([#237](https://github.com/increase/increase-node/issues/237)) ([1432101](https://github.com/increase/increase-node/commit/14321015e67bedabc473b28fdf8926d57123d69d))
+* **internal:** update APIResource structure ([#234](https://github.com/increase/increase-node/issues/234)) ([c0885ff](https://github.com/increase/increase-node/commit/c0885ff85a42aa9e55b154d66c18f2c7b81a59d0))
+* **internal:** update jest config ([#232](https://github.com/increase/increase-node/issues/232)) ([6072553](https://github.com/increase/increase-node/commit/607255347b59d8d7b4ef48a1272e61ef2a98fa5f))
+
+
+### Documentation
+
+* **readme:** update example snippets ([#239](https://github.com/increase/increase-node/issues/239)) ([cd72a09](https://github.com/increase/increase-node/commit/cd72a0966555ee5ba85b058d5c0feaf169717765))
+
 ## 0.17.0 (2023-11-08)
 
 Full Changelog: [v0.16.0...v0.17.0](https://github.com/increase/increase-node/compare/v0.16.0...v0.17.0)
