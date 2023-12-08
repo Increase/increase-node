@@ -189,6 +189,19 @@ export {
   PhysicalCards,
 } from './physical-cards';
 export { Program, ProgramListParams, ProgramsPage, Programs } from './programs';
+export {
+  ProofOfAuthorizationRequest,
+  ProofOfAuthorizationRequestListParams,
+  ProofOfAuthorizationRequestsPage,
+  ProofOfAuthorizationRequests,
+} from './proof-of-authorization-requests';
+export {
+  ProofOfAuthorizationRequestSubmission,
+  ProofOfAuthorizationRequestSubmissionCreateParams,
+  ProofOfAuthorizationRequestSubmissionListParams,
+  ProofOfAuthorizationRequestSubmissionsPage,
+  ProofOfAuthorizationRequestSubmissions,
+} from './proof-of-authorization-request-submissions';
 export { RealTimeDecision, RealTimeDecisionActionParams, RealTimeDecisions } from './real-time-decisions';
 export {
   RealTimePaymentsTransfer,

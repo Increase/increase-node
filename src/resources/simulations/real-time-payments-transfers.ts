@@ -3391,6 +3391,23 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `unmatched_details` - The image doesn't match the details submitted.
          * - `unreadable_image` - The image could not be read.
          * - `endorsement_irregular` - The check endorsement was irregular.
+         * - `altered_or_fictitious_item` - The check present was either altered or fake.
+         * - `frozen_or_blocked_account` - The account this check is drawn on is frozen.
+         * - `post_dated` - The check is post dated.
+         * - `endorsement_missing` - The endorsement was missing.
+         * - `signature_missing` - The check signature was missing.
+         * - `stop_payment_suspect` - The bank suspects a stop payment will be placed.
+         * - `unusable_image` - The bank cannot read the image.
+         * - `image_fails_security_check` - The check image fails the bank's security
+         *   check.
+         * - `cannot_determine_amount` - The bank cannot determine the amount.
+         * - `signature_irregular` - The signature is inconsistent with prior signatures.
+         * - `non_cash_item` - The check is a non-cash item and cannot be drawn against the
+         *   account.
+         * - `unable_to_process` - The bank is unable to process this check.
+         * - `item_exceeds_dollar_limit` - The check exceeds the bank or customer's limit.
+         * - `branch_or_account_sold` - The bank sold this account and no longer services
+         *   this customer.
          */
         return_reason:
           | 'ach_conversion_not_supported'
@@ -3404,7 +3421,21 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'unknown_reason'
           | 'unmatched_details'
           | 'unreadable_image'
-          | 'endorsement_irregular';
+          | 'endorsement_irregular'
+          | 'altered_or_fictitious_item'
+          | 'frozen_or_blocked_account'
+          | 'post_dated'
+          | 'endorsement_missing'
+          | 'signature_missing'
+          | 'stop_payment_suspect'
+          | 'unusable_image'
+          | 'image_fails_security_check'
+          | 'cannot_determine_amount'
+          | 'signature_irregular'
+          | 'non_cash_item'
+          | 'unable_to_process'
+          | 'item_exceeds_dollar_limit'
+          | 'branch_or_account_sold';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
