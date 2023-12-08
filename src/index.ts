@@ -181,6 +181,9 @@ export class Increase extends Core.APIClient {
   simulations: API.Simulations = new API.Simulations(this);
   physicalCards: API.PhysicalCards = new API.PhysicalCards(this);
   cardPayments: API.CardPayments = new API.CardPayments(this);
+  proofOfAuthorizationRequests: API.ProofOfAuthorizationRequests = new API.ProofOfAuthorizationRequests(this);
+  proofOfAuthorizationRequestSubmissions: API.ProofOfAuthorizationRequestSubmissions =
+    new API.ProofOfAuthorizationRequestSubmissions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -499,6 +502,17 @@ export namespace Increase {
   export import CardPayment = API.CardPayment;
   export import CardPaymentsPage = API.CardPaymentsPage;
   export import CardPaymentListParams = API.CardPaymentListParams;
+
+  export import ProofOfAuthorizationRequests = API.ProofOfAuthorizationRequests;
+  export import ProofOfAuthorizationRequest = API.ProofOfAuthorizationRequest;
+  export import ProofOfAuthorizationRequestsPage = API.ProofOfAuthorizationRequestsPage;
+  export import ProofOfAuthorizationRequestListParams = API.ProofOfAuthorizationRequestListParams;
+
+  export import ProofOfAuthorizationRequestSubmissions = API.ProofOfAuthorizationRequestSubmissions;
+  export import ProofOfAuthorizationRequestSubmission = API.ProofOfAuthorizationRequestSubmission;
+  export import ProofOfAuthorizationRequestSubmissionsPage = API.ProofOfAuthorizationRequestSubmissionsPage;
+  export import ProofOfAuthorizationRequestSubmissionCreateParams = API.ProofOfAuthorizationRequestSubmissionCreateParams;
+  export import ProofOfAuthorizationRequestSubmissionListParams = API.ProofOfAuthorizationRequestSubmissionListParams;
 }
 
 export default Increase;

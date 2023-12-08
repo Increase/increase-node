@@ -628,3 +628,26 @@ Methods:
 
 - <code title="get /card_payments/{card_payment_id}">client.cardPayments.<a href="./src/resources/card-payments.ts">retrieve</a>(cardPaymentId) -> CardPayment</code>
 - <code title="get /card_payments">client.cardPayments.<a href="./src/resources/card-payments.ts">list</a>({ ...params }) -> CardPaymentsPage</code>
+
+# ProofOfAuthorizationRequests
+
+Types:
+
+- <code><a href="./src/resources/proof-of-authorization-requests.ts">ProofOfAuthorizationRequest</a></code>
+
+Methods:
+
+- <code title="get /proof_of_authorization_requests/{proof_of_authorization_request_id}">client.proofOfAuthorizationRequests.<a href="./src/resources/proof-of-authorization-requests.ts">retrieve</a>(proofOfAuthorizationRequestId) -> ProofOfAuthorizationRequest</code>
+- <code title="get /proof_of_authorization_requests">client.proofOfAuthorizationRequests.<a href="./src/resources/proof-of-authorization-requests.ts">list</a>({ ...params }) -> ProofOfAuthorizationRequestsPage</code>
+
+# ProofOfAuthorizationRequestSubmissions
+
+Types:
+
+- <code><a href="./src/resources/proof-of-authorization-request-submissions.ts">ProofOfAuthorizationRequestSubmission</a></code>
+
+Methods:
+
+- <code title="post /proof_of_authorization_request_submissions">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">create</a>({ ...params }) -> ProofOfAuthorizationRequestSubmission</code>
+- <code title="get /proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">retrieve</a>(proofOfAuthorizationRequestSubmissionId) -> ProofOfAuthorizationRequestSubmission</code>
+- <code title="get /proof_of_authorization_request_submissions">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">list</a>({ ...params }) -> ProofOfAuthorizationRequestSubmissionsPage</code>
