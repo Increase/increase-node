@@ -220,6 +220,7 @@ export namespace CheckDeposit {
      *   deposit.
      * - `missing_required_data_elements` - This check is missing at least one required
      *   field
+     * - `suspected_fraud` - This check is suspected to be fraudulent.
      * - `unknown` - The check was rejected for an unknown reason.
      */
     reason:
@@ -230,6 +231,7 @@ export namespace CheckDeposit {
       | 'incorrect_recipient'
       | 'not_eligible_for_mobile_deposit'
       | 'missing_required_data_elements'
+      | 'suspected_fraud'
       | 'unknown';
 
     /**
