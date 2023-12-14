@@ -110,6 +110,12 @@ export interface RealTimePaymentsTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
+   * The name of the transfer's sender. If not provided, the account's entity name
+   * will be used.
+   */
+  debtor_name: string | null;
+
+  /**
    * The destination account number.
    */
   destination_account_number: string;
@@ -188,6 +194,16 @@ export interface RealTimePaymentsTransfer {
    * `real_time_payments_transfer`.
    */
   type: 'real_time_payments_transfer';
+
+  /**
+   * The name of the party on whose behalf the creditor is receiving the payment.
+   */
+  ultimate_creditor_name: string | null;
+
+  /**
+   * The name of the the party on whose behalf the debtor is instructing the payment.
+   */
+  ultimate_debtor_name: string | null;
 
   /**
    * The unique identifier you chose for this transfer.
@@ -367,6 +383,12 @@ export interface RealTimePaymentsTransferCreateParams {
   source_account_number_id: string;
 
   /**
+   * The name of the transfer's sender. If not provided, the account's entity name
+   * will be used.
+   */
+  debtor_name?: string;
+
+  /**
    * The destination account number.
    */
   destination_account_number?: string;
@@ -388,6 +410,16 @@ export interface RealTimePaymentsTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
+
+  /**
+   * The name of the party on whose behalf the creditor is receiving the payment.
+   */
+  ultimate_creditor_name?: string;
+
+  /**
+   * The name of the the party on whose behalf the debtor is instructing the payment.
+   */
+  ultimate_debtor_name?: string;
 
   /**
    * A unique identifier you choose for the transfer. Reusing this identifier for
