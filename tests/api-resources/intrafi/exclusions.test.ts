@@ -8,13 +8,11 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource realTimePaymentsTransfers', () => {
+describe('resource exclusions', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.realTimePaymentsTransfers.create({
-      amount: 100,
-      creditor_name: 'Ian Crease',
-      remittance_information: 'Invoice 29582',
-      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+    const responsePromise = increase.intrafi.exclusions.create({
+      bank_name: 'Example Bank',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,26 +24,14 @@ describe('resource realTimePaymentsTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.realTimePaymentsTransfers.create({
-      amount: 100,
-      creditor_name: 'Ian Crease',
-      remittance_information: 'Invoice 29582',
-      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      debtor_name: 'x',
-      destination_account_number: '987654321',
-      destination_routing_number: '101050001',
-      external_account_id: 'string',
-      require_approval: true,
-      ultimate_creditor_name: 'x',
-      ultimate_debtor_name: 'x',
-      unique_identifier: 'x',
+    const response = await increase.intrafi.exclusions.create({
+      bank_name: 'Example Bank',
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.realTimePaymentsTransfers.retrieve(
-      'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
-    );
+    const responsePromise = increase.intrafi.exclusions.retrieve('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -58,14 +44,14 @@ describe('resource realTimePaymentsTransfers', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.realTimePaymentsTransfers.retrieve('real_time_payments_transfer_iyuhl5kdn7ssmup83mvq', {
+      increase.intrafi.exclusions.retrieve('account_in71c4amph0vgo2qllky', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.realTimePaymentsTransfers.list();
+    const responsePromise = increase.intrafi.exclusions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -77,30 +63,38 @@ describe('resource realTimePaymentsTransfers', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      increase.realTimePaymentsTransfers.list({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
+    await expect(increase.intrafi.exclusions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Increase.NotFoundError,
+    );
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.realTimePaymentsTransfers.list(
-        {
-          account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
-          cursor: 'string',
-          external_account_id: 'string',
-          limit: 1,
-          unique_identifier: 'x',
-        },
+      increase.intrafi.exclusions.list(
+        { cursor: 'string', entity_id: 'string', limit: 1 },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('archive', async () => {
+    const responsePromise = increase.intrafi.exclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('archive: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.intrafi.exclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

@@ -184,6 +184,7 @@ export class Increase extends Core.APIClient {
   proofOfAuthorizationRequests: API.ProofOfAuthorizationRequests = new API.ProofOfAuthorizationRequests(this);
   proofOfAuthorizationRequestSubmissions: API.ProofOfAuthorizationRequestSubmissions =
     new API.ProofOfAuthorizationRequestSubmissions(this);
+  intrafi: API.Intrafi = new API.Intrafi(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -513,6 +514,8 @@ export namespace Increase {
   export import ProofOfAuthorizationRequestSubmissionsPage = API.ProofOfAuthorizationRequestSubmissionsPage;
   export import ProofOfAuthorizationRequestSubmissionCreateParams = API.ProofOfAuthorizationRequestSubmissionCreateParams;
   export import ProofOfAuthorizationRequestSubmissionListParams = API.ProofOfAuthorizationRequestSubmissionListParams;
+
+  export import Intrafi = API.Intrafi;
 }
 
 export default Increase;

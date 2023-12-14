@@ -651,3 +651,41 @@ Methods:
 - <code title="post /proof_of_authorization_request_submissions">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">create</a>({ ...params }) -> ProofOfAuthorizationRequestSubmission</code>
 - <code title="get /proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">retrieve</a>(proofOfAuthorizationRequestSubmissionId) -> ProofOfAuthorizationRequestSubmission</code>
 - <code title="get /proof_of_authorization_request_submissions">client.proofOfAuthorizationRequestSubmissions.<a href="./src/resources/proof-of-authorization-request-submissions.ts">list</a>({ ...params }) -> ProofOfAuthorizationRequestSubmissionsPage</code>
+
+# Intrafi
+
+## AccountEnrollments
+
+Types:
+
+- <code><a href="./src/resources/intrafi/account-enrollments.ts">IntrafiAccountEnrollment</a></code>
+
+Methods:
+
+- <code title="post /intrafi_account_enrollments">client.intrafi.accountEnrollments.<a href="./src/resources/intrafi/account-enrollments.ts">create</a>({ ...params }) -> IntrafiAccountEnrollment</code>
+- <code title="get /intrafi_account_enrollments/{intrafi_account_enrollment_id}">client.intrafi.accountEnrollments.<a href="./src/resources/intrafi/account-enrollments.ts">retrieve</a>(intrafiAccountEnrollmentId) -> IntrafiAccountEnrollment</code>
+- <code title="get /intrafi_account_enrollments">client.intrafi.accountEnrollments.<a href="./src/resources/intrafi/account-enrollments.ts">list</a>({ ...params }) -> IntrafiAccountEnrollmentsPage</code>
+- <code title="post /intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll">client.intrafi.accountEnrollments.<a href="./src/resources/intrafi/account-enrollments.ts">unenroll</a>(intrafiAccountEnrollmentId) -> IntrafiAccountEnrollment</code>
+
+## Balances
+
+Types:
+
+- <code><a href="./src/resources/intrafi/balances.ts">IntrafiBalance</a></code>
+
+Methods:
+
+- <code title="get /intrafi_balances/{account_id}">client.intrafi.balances.<a href="./src/resources/intrafi/balances.ts">retrieve</a>(accountId) -> IntrafiBalance</code>
+
+## Exclusions
+
+Types:
+
+- <code><a href="./src/resources/intrafi/exclusions.ts">IntrafiExclusion</a></code>
+
+Methods:
+
+- <code title="post /intrafi_exclusions">client.intrafi.exclusions.<a href="./src/resources/intrafi/exclusions.ts">create</a>({ ...params }) -> IntrafiExclusion</code>
+- <code title="get /intrafi_exclusions/{intrafi_exclusion_id}">client.intrafi.exclusions.<a href="./src/resources/intrafi/exclusions.ts">retrieve</a>(intrafiExclusionId) -> IntrafiExclusion</code>
+- <code title="get /intrafi_exclusions">client.intrafi.exclusions.<a href="./src/resources/intrafi/exclusions.ts">list</a>({ ...params }) -> IntrafiExclusionsPage</code>
+- <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi.exclusions.<a href="./src/resources/intrafi/exclusions.ts">archive</a>(intrafiExclusionId) -> IntrafiExclusion</code>
