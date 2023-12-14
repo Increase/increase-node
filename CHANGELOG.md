@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.20.0 (2023-12-14)
+
+Full Changelog: [v0.19.0...v0.20.0](https://github.com/increase/increase-node/compare/v0.19.0...v0.20.0)
+
+### Features
+
+* **api:** add `suspected_fraud` rejection reason ([#247](https://github.com/increase/increase-node/issues/247)) ([845dbb9](https://github.com/increase/increase-node/commit/845dbb9af358791aad4ad1e4d8ad65ea82c9f4a4))
+
+
+### Build System
+
+* specify `packageManager: yarn` ([#245](https://github.com/increase/increase-node/issues/245)) ([fe2ae7f](https://github.com/increase/increase-node/commit/fe2ae7fef1dbdc2a7d51b164398aa4ea92a6529c))
+
 ## 0.19.0 (2023-12-08)
 
 Full Changelog: [v0.18.0...v0.19.0](https://github.com/increase/increase-node/compare/v0.18.0...v0.19.0)
