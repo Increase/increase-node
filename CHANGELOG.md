@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.21.0 (2023-12-18)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/increase/increase-node/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* **api:** add deposit_submission property to check deposit ([#253](https://github.com/increase/increase-node/issues/253)) ([bc6c3eb](https://github.com/increase/increase-node/commit/bc6c3ebe476188290b54aab4505b976094f4beb5))
+
+
+### Chores
+
+* **ci:** run release workflow once per day ([#251](https://github.com/increase/increase-node/issues/251)) ([ccee7fc](https://github.com/increase/increase-node/commit/ccee7fc247e8dde383f034c9a64b6c08f2920760))
+* **deps:** update dependency ts-jest to v29.1.1 ([#252](https://github.com/increase/increase-node/issues/252)) ([61974d2](https://github.com/increase/increase-node/commit/61974d220c3eb9bf3e51905802313323ba0ed088))
+* update dependencies ([#250](https://github.com/increase/increase-node/issues/250)) ([538bcd3](https://github.com/increase/increase-node/commit/538bcd3f631b703a1c35c5b57b01034d34ac6208))
+* update prettier ([#248](https://github.com/increase/increase-node/issues/248)) ([90324e3](https://github.com/increase/increase-node/commit/90324e3b528ee452d98249e552afce573167c5fc))
+
 ## 0.20.0 (2023-12-14)
 
 Full Changelog: [v0.19.0...v0.20.0](https://github.com/increase/increase-node/compare/v0.19.0...v0.20.0)
