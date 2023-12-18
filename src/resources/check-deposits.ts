@@ -104,6 +104,12 @@ export interface CheckDeposit {
   deposit_return: CheckDeposit.DepositReturn | null;
 
   /**
+   * After the check is parsed, it is submitted to the Check21 network for
+   * processing. This will contain details of the submission.
+   */
+  deposit_submission: CheckDeposit.DepositSubmission | null;
+
+  /**
    * The ID for the File containing the image of the front of the check.
    */
   front_image_file_id: string;
@@ -343,6 +349,19 @@ export namespace CheckDeposit {
      * transaction.
      */
     transaction_id: string;
+  }
+
+  /**
+   * After the check is parsed, it is submitted to the Check21 network for
+   * processing. This will contain details of the submission.
+   */
+  export interface DepositSubmission {
+    /**
+     * When the check deposit was submitted to the Check21 network for processing.
+     * During business days, this happens within a few hours of the check being
+     * accepted by Increase.
+     */
+    submitted_at: string;
   }
 }
 
