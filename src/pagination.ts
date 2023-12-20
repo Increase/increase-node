@@ -2,9 +2,6 @@
 
 import { AbstractPage, Response, APIClient, FinalRequestOptions, PageInfo } from './core';
 
-/**
- * A list of Account objects.
- */
 export interface PageResponse<Item> {
   data: Array<Item>;
 
@@ -38,12 +35,12 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
   constructor(client: APIClient, response: Response, body: PageResponse<Item>, options: FinalRequestOptions) {
     super(client, response, body, options);
 
-    this.data = body.data;
-    this.next_cursor = body.next_cursor;
+    this.data = body.data || [];
+    this.next_cursor = body.next_cursor || '';
   }
 
   getPaginatedItems(): Item[] {
-    return this.data;
+    return this.data ?? [];
   }
 
   // @deprecated Please use `nextPageInfo()` instead
@@ -57,8 +54,15 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
   }
 
   nextPageInfo(): PageInfo | null {
-    if (!this.next_cursor) return null;
+    const cursor = this.next_cursor;
+    if (!cursor) {
+      return null;
+    }
 
-    return { params: { cursor: this.next_cursor } };
+    return {
+      params: {
+        cursor: cursor,
+      },
+    };
   }
 }
