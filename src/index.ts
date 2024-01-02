@@ -185,6 +185,8 @@ export class Increase extends Core.APIClient {
   proofOfAuthorizationRequestSubmissions: API.ProofOfAuthorizationRequestSubmissions =
     new API.ProofOfAuthorizationRequestSubmissions(this);
   intrafi: API.Intrafi = new API.Intrafi(this);
+  realTimePaymentsRequestForPayments: API.RealTimePaymentsRequestForPayments =
+    new API.RealTimePaymentsRequestForPayments(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -516,6 +518,12 @@ export namespace Increase {
   export import ProofOfAuthorizationRequestSubmissionListParams = API.ProofOfAuthorizationRequestSubmissionListParams;
 
   export import Intrafi = API.Intrafi;
+
+  export import RealTimePaymentsRequestForPayments = API.RealTimePaymentsRequestForPayments;
+  export import RealTimePaymentsRequestForPayment = API.RealTimePaymentsRequestForPayment;
+  export import RealTimePaymentsRequestForPaymentsPage = API.RealTimePaymentsRequestForPaymentsPage;
+  export import RealTimePaymentsRequestForPaymentCreateParams = API.RealTimePaymentsRequestForPaymentCreateParams;
+  export import RealTimePaymentsRequestForPaymentListParams = API.RealTimePaymentsRequestForPaymentListParams;
 }
 
 export default Increase;
