@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.22.0 (2024-01-02)
+
+Full Changelog: [v0.21.0...v0.22.0](https://github.com/increase/increase-node/compare/v0.21.0...v0.22.0)
+
+### Features
+
+* **api:** add real-time payments request for payment endpoints ([#260](https://github.com/increase/increase-node/issues/260)) ([66afdeb](https://github.com/increase/increase-node/commit/66afdeb6d050af4b3a083eb93a34e655155e8085))
+
+
+### Chores
+
+* **deps:** update jest ([#254](https://github.com/increase/increase-node/issues/254)) ([9429b9a](https://github.com/increase/increase-node/commit/9429b9a9551c3e9da543edb731d213c976a01ee2))
+* **internal:** bump license ([#259](https://github.com/increase/increase-node/issues/259)) ([9a910e4](https://github.com/increase/increase-node/commit/9a910e48e6c81c534de490f4f8e0295e3381b83b))
+* **internal:** minor updates to pagination ([#257](https://github.com/increase/increase-node/issues/257)) ([5a176b0](https://github.com/increase/increase-node/commit/5a176b0b7fbb9dc561a7f38a41b3489f4bcc1140))
+
+
+### Documentation
+
+* reformat README.md ([#258](https://github.com/increase/increase-node/issues/258)) ([4662f4a](https://github.com/increase/increase-node/commit/4662f4af05c3edef21012d50c8772d6338a05c95))
+
+
+### Refactors
+
+* write jest config in typescript ([#256](https://github.com/increase/increase-node/issues/256)) ([2282980](https://github.com/increase/increase-node/commit/22829807357244fadc2e3f7f65c0c523ad2da911))
+
 ## 0.21.0 (2023-12-18)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/increase/increase-node/compare/v0.20.0...v0.21.0)
