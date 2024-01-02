@@ -216,6 +216,11 @@ export namespace PhysicalCard {
       number: string;
 
       /**
+       * For returned shipments, the tracking number of the return shipment.
+       */
+      return_number: string | null;
+
+      /**
        * For returned shipments, this describes why the package was returned.
        */
       return_reason: string | null;
