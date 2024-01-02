@@ -188,6 +188,7 @@ export interface CheckTransfer {
    * - `rejected` - The transfer has been rejected.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
+   * - `returned` - The transfer has been returned.
    */
   status:
     | 'pending_approval'
@@ -199,7 +200,8 @@ export interface CheckTransfer {
     | 'deposited'
     | 'stopped'
     | 'rejected'
-    | 'requires_attention';
+    | 'requires_attention'
+    | 'returned';
 
   /**
    * After a stop-payment is requested on the check, this will contain supplemental
@@ -438,9 +440,10 @@ export namespace CheckTransfer {
      * - `mail_delivery_failed` - The check could not be delivered.
      * - `rejected_by_increase` - The check was canceled by an Increase operator who
      *   will provide details out-of-band.
+     * - `not_authorized` - The check was not authorized.
      * - `unknown` - The check was stopped for another reason.
      */
-    reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'unknown';
+    reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'not_authorized' | 'unknown';
 
     /**
      * The time the stop-payment was requested.
@@ -673,9 +676,10 @@ export interface CheckTransferStopPaymentParams {
    * The reason why this transfer should be stopped.
    *
    * - `mail_delivery_failed` - The check could not be delivered.
+   * - `not_authorized` - The check was not authorized.
    * - `unknown` - The check was stopped for another reason.
    */
-  reason?: 'mail_delivery_failed' | 'unknown';
+  reason?: 'mail_delivery_failed' | 'not_authorized' | 'unknown';
 }
 
 export namespace CheckTransfers {

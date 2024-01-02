@@ -205,6 +205,13 @@ export {
 } from './proof-of-authorization-request-submissions';
 export { RealTimeDecision, RealTimeDecisionActionParams, RealTimeDecisions } from './real-time-decisions';
 export {
+  RealTimePaymentsRequestForPayment,
+  RealTimePaymentsRequestForPaymentCreateParams,
+  RealTimePaymentsRequestForPaymentListParams,
+  RealTimePaymentsRequestForPaymentsPage,
+  RealTimePaymentsRequestForPayments,
+} from './real-time-payments-request-for-payments';
+export {
   RealTimePaymentsTransfer,
   RealTimePaymentsTransferCreateParams,
   RealTimePaymentsTransferListParams,
