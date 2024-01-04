@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.1 (2024-01-04)
+
+Full Changelog: [v0.22.0...v0.22.1](https://github.com/increase/increase-node/compare/v0.22.0...v0.22.1)
+
+### Bug Fixes
+
+* **headers:** always send lowercase headers and strip undefined (BREAKING in rare cases) ([#261](https://github.com/increase/increase-node/issues/261)) ([55226ec](https://github.com/increase/increase-node/commit/55226ec6d038aac74524ef9e3b40d92ebe499f1f))
+
 ## 0.22.0 (2024-01-02)
 
 Full Changelog: [v0.21.0...v0.22.0](https://github.com/increase/increase-node/compare/v0.21.0...v0.22.0)
