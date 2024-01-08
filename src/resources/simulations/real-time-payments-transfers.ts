@@ -3625,6 +3625,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        */
       export interface InboundACHTransfer {
         /**
+         * Additional information sent from the originator.
+         */
+        addenda: InboundACHTransfer.Addenda | null;
+
+        /**
          * The amount in the minor unit of the destination account currency. For dollars,
          * for example, this is cents.
          */
@@ -3680,6 +3685,46 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * The inbound ach transfer's identifier.
          */
         transfer_id: string;
+      }
+
+      export namespace InboundACHTransfer {
+        /**
+         * Additional information sent from the originator.
+         */
+        export interface Addenda {
+          /**
+           * The type of addendum.
+           *
+           * - `freeform` - Unstructured addendum.
+           */
+          category: 'freeform';
+
+          /**
+           * Unstructured `payment_related_information` passed through by the originator.
+           */
+          freeform: Addenda.Freeform | null;
+        }
+
+        export namespace Addenda {
+          /**
+           * Unstructured `payment_related_information` passed through by the originator.
+           */
+          export interface Freeform {
+            /**
+             * Each entry represents an addendum received from the originator.
+             */
+            entries: Array<Freeform.Entry>;
+          }
+
+          export namespace Freeform {
+            export interface Entry {
+              /**
+               * The payment related information passed in the addendum.
+               */
+              payment_related_information: string;
+            }
+          }
+        }
       }
 
       /**

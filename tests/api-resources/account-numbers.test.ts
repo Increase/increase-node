@@ -87,6 +87,7 @@ describe('resource accountNumbers', () => {
       increase.accountNumbers.list(
         {
           account_id: 'string',
+          ach_debit_status: 'allowed',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

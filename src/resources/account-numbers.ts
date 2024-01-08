@@ -249,6 +249,14 @@ export interface AccountNumberListParams extends PageParams {
    */
   account_id?: string;
 
+  /**
+   * The ACH Debit status to retrieve Account Numbers for.
+   *
+   * - `allowed` - ACH Debits are allowed.
+   * - `blocked` - ACH Debits are blocked.
+   */
+  ach_debit_status?: 'allowed' | 'blocked';
+
   created_at?: AccountNumberListParams.CreatedAt;
 
   /**
