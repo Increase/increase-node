@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.23.0 (2024-01-08)
+
+Full Changelog: [v0.22.1...v0.23.0](https://github.com/increase/increase-node/compare/v0.22.1...v0.23.0)
+
+### Features
+
+* **api:** add `ach_debit_status` ([#265](https://github.com/increase/increase-node/issues/265)) ([0b1f17e](https://github.com/increase/increase-node/commit/0b1f17e4640938ff63affa0e72c528a538591cc5))
+
+
+### Chores
+
+* **internal:** improve type signatures ([#263](https://github.com/increase/increase-node/issues/263)) ([d0130da](https://github.com/increase/increase-node/commit/d0130da799bc666fbd7c07872d55bfb4d02cbece))
+
 ## 0.22.1 (2024-01-04)
 
 Full Changelog: [v0.22.0...v0.22.1](https://github.com/increase/increase-node/compare/v0.22.0...v0.22.1)
