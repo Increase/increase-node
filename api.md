@@ -701,3 +701,5 @@ Methods:
 - <code title="post /real_time_payments_request_for_payments">client.realTimePaymentsRequestForPayments.<a href="./src/resources/real-time-payments-request-for-payments.ts">create</a>({ ...params }) -> RealTimePaymentsRequestForPayment</code>
 - <code title="get /real_time_payments_request_for_payments/{request_for_payment_id}">client.realTimePaymentsRequestForPayments.<a href="./src/resources/real-time-payments-request-for-payments.ts">retrieve</a>(requestForPaymentId) -> RealTimePaymentsRequestForPayment</code>
 - <code title="get /real_time_payments_request_for_payments">client.realTimePaymentsRequestForPayments.<a href="./src/resources/real-time-payments-request-for-payments.ts">list</a>({ ...params }) -> RealTimePaymentsRequestForPaymentsPage</code>
+
+# Webhooks
