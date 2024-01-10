@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.23.1 (2024-01-10)
+
+Full Changelog: [v0.23.0...v0.23.1](https://github.com/increase/increase-node/compare/v0.23.0...v0.23.1)
+
+### Bug Fixes
+
+* use default base url if BASE_URL env var is blank ([#269](https://github.com/increase/increase-node/issues/269)) ([03365e2](https://github.com/increase/increase-node/commit/03365e22f44c40d336347d585043fe699250e1c8))
+
+
+### Chores
+
+* add .keep files for examples and custom code directories ([#266](https://github.com/increase/increase-node/issues/266)) ([0e828fb](https://github.com/increase/increase-node/commit/0e828fb44b2590feee7846a61f17126f3efcba87))
+* **api:** update for other platforms ([#268](https://github.com/increase/increase-node/issues/268)) ([c6e35d7](https://github.com/increase/increase-node/commit/c6e35d7ad6c2dc43224a478cb78d0b5ae34f2531))
+
 ## 0.23.0 (2024-01-08)
 
 Full Changelog: [v0.22.1...v0.23.0](https://github.com/increase/increase-node/compare/v0.22.1...v0.23.0)
