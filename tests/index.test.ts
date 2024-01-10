@@ -134,7 +134,7 @@ describe('instantiate client', () => {
     });
 
     afterEach(() => {
-      process.env['SINK_BASE_URL'] = undefined;
+      process.env['INCREASE_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
@@ -146,6 +146,18 @@ describe('instantiate client', () => {
       process.env['INCREASE_BASE_URL'] = 'https://example.com/from_env';
       const client = new Increase({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
+    });
+
+    test('empty env variable', () => {
+      process.env['INCREASE_BASE_URL'] = ''; // empty
+      const client = new Increase({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.increase.com');
+    });
+
+    test('blank env variable', () => {
+      process.env['INCREASE_BASE_URL'] = '  '; // blank
+      const client = new Increase({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.increase.com');
     });
 
     test('env variable with environment', () => {
