@@ -21,6 +21,11 @@ export interface ClientOptions {
   apiKey?: string;
 
   /**
+   * Defaults to process.env['INCREASE_WEBHOOK_SECRET'].
+   */
+  webhookSecret?: string | null;
+
+  /**
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
@@ -89,6 +94,7 @@ export interface ClientOptions {
 /** API Client for interfacing with the Increase API. */
 export class Increase extends Core.APIClient {
   apiKey: string;
+  webhookSecret: string | null;
 
   private _options: ClientOptions;
 
@@ -96,6 +102,7 @@ export class Increase extends Core.APIClient {
    * API Client for interfacing with the Increase API.
    *
    * @param {string} [opts.apiKey=process.env['INCREASE_API_KEY'] ?? undefined]
+   * @param {string | null} [opts.webhookSecret=process.env['INCREASE_WEBHOOK_SECRET'] ?? null]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['INCREASE_BASE_URL'] ?? https://api.increase.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -108,6 +115,7 @@ export class Increase extends Core.APIClient {
   constructor({
     baseURL = Core.readEnv('INCREASE_BASE_URL'),
     apiKey = Core.readEnv('INCREASE_API_KEY'),
+    webhookSecret = Core.readEnv('INCREASE_WEBHOOK_SECRET') ?? null,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -118,6 +126,7 @@ export class Increase extends Core.APIClient {
 
     const options: ClientOptions = {
       apiKey,
+      webhookSecret,
       ...opts,
       baseURL,
       environment: opts.environment ?? 'production',
@@ -140,6 +149,7 @@ export class Increase extends Core.APIClient {
     this.idempotencyHeader = 'Idempotency-Key';
 
     this.apiKey = apiKey;
+    this.webhookSecret = webhookSecret;
   }
 
   accounts: API.Accounts = new API.Accounts(this);
@@ -187,6 +197,7 @@ export class Increase extends Core.APIClient {
   intrafi: API.Intrafi = new API.Intrafi(this);
   realTimePaymentsRequestForPayments: API.RealTimePaymentsRequestForPayments =
     new API.RealTimePaymentsRequestForPayments(this);
+  webhooks: API.Webhooks = new API.Webhooks(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -524,6 +535,8 @@ export namespace Increase {
   export import RealTimePaymentsRequestForPaymentsPage = API.RealTimePaymentsRequestForPaymentsPage;
   export import RealTimePaymentsRequestForPaymentCreateParams = API.RealTimePaymentsRequestForPaymentCreateParams;
   export import RealTimePaymentsRequestForPaymentListParams = API.RealTimePaymentsRequestForPaymentListParams;
+
+  export import Webhooks = API.Webhooks;
 }
 
 export default Increase;
