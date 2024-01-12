@@ -26,9 +26,7 @@ export class RealTimeDecisions extends APIResource {
 
 /**
  * Real Time Decisions are created when your application needs to take action in
- * real-time to some event such as a card authorization. Real time decisions are
- * currently in beta; please contact support@increase.com if you're interested in
- * trying them out!
+ * real-time to some event such as a card authorization.
  */
 export interface RealTimeDecision {
   /**

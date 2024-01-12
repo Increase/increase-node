@@ -80,7 +80,8 @@ export namespace BeneficialOwnerCreateParams {
      */
     export interface Individual {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       address: Individual.Address;
 
@@ -110,7 +111,8 @@ export namespace BeneficialOwnerCreateParams {
 
     export namespace Individual {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       export interface Address {
         /**
@@ -286,7 +288,8 @@ export interface BeneficialOwnerArchiveParams {
 
 export interface BeneficialOwnerUpdateAddressParams {
   /**
-   * The individual's physical address. Post Office Boxes are disallowed.
+   * The individual's physical address. Mail receiving locations like PO Boxes and
+   * PMB's are disallowed.
    */
   address: BeneficialOwnerUpdateAddressParams.Address;
 
@@ -304,7 +307,8 @@ export interface BeneficialOwnerUpdateAddressParams {
 
 export namespace BeneficialOwnerUpdateAddressParams {
   /**
-   * The individual's physical address. Post Office Boxes are disallowed.
+   * The individual's physical address. Mail receiving locations like PO Boxes and
+   * PMB's are disallowed.
    */
   export interface Address {
     /**

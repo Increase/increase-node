@@ -2048,6 +2048,33 @@ export interface CardAuthorizeParams {
   event_subscription_id?: string;
 
   /**
+   * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+   * is transacting with.
+   */
+  merchant_acceptor_id?: string;
+
+  /**
+   * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+   * card is transacting with.
+   */
+  merchant_category_code?: string;
+
+  /**
+   * The city the merchant resides in.
+   */
+  merchant_city?: string;
+
+  /**
+   * The country the merchant resides in.
+   */
+  merchant_country?: string;
+
+  /**
+   * The merchant descriptor of the merchant the card is transacting with.
+   */
+  merchant_descriptor?: string;
+
+  /**
    * The identifier of the Physical Card to be authorized.
    */
   physical_card_id?: string;

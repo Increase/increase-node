@@ -872,7 +872,8 @@ export namespace EntityCreateParams {
    */
   export interface Corporation {
     /**
-     * The corporation's physical address. Post Office Boxes are disallowed.
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
      */
     address: Corporation.Address;
 
@@ -906,7 +907,8 @@ export namespace EntityCreateParams {
 
   export namespace Corporation {
     /**
-     * The corporation's physical address. Post Office Boxes are disallowed.
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
      */
     export interface Address {
       /**
@@ -961,7 +963,8 @@ export namespace EntityCreateParams {
        */
       export interface Individual {
         /**
-         * The individual's physical address. Post Office Boxes are disallowed.
+         * The individual's physical address. Mail receiving locations like PO Boxes and
+         * PMB's are disallowed.
          */
         address: Individual.Address;
 
@@ -991,7 +994,8 @@ export namespace EntityCreateParams {
 
       export namespace Individual {
         /**
-         * The individual's physical address. Post Office Boxes are disallowed.
+         * The individual's physical address. Mail receiving locations like PO Boxes and
+         * PMB's are disallowed.
          */
         export interface Address {
           /**
@@ -1171,7 +1175,8 @@ export namespace EntityCreateParams {
   export namespace Joint {
     export interface Individual {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       address: Individual.Address;
 
@@ -1201,7 +1206,8 @@ export namespace EntityCreateParams {
 
     export namespace Individual {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       export interface Address {
         /**
@@ -1369,7 +1375,8 @@ export namespace EntityCreateParams {
    */
   export interface NaturalPerson {
     /**
-     * The individual's physical address. Post Office Boxes are disallowed.
+     * The individual's physical address. Mail receiving locations like PO Boxes and
+     * PMB's are disallowed.
      */
     address: NaturalPerson.Address;
 
@@ -1399,7 +1406,8 @@ export namespace EntityCreateParams {
 
   export namespace NaturalPerson {
     /**
-     * The individual's physical address. Post Office Boxes are disallowed.
+     * The individual's physical address. Mail receiving locations like PO Boxes and
+     * PMB's are disallowed.
      */
     export interface Address {
       /**
@@ -1571,7 +1579,8 @@ export namespace EntityCreateParams {
    */
   export interface Trust {
     /**
-     * The trust's physical address. Post Office Boxes are disallowed.
+     * The trust's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
      */
     address: Trust.Address;
 
@@ -1620,7 +1629,8 @@ export namespace EntityCreateParams {
 
   export namespace Trust {
     /**
-     * The trust's physical address. Post Office Boxes are disallowed.
+     * The trust's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
      */
     export interface Address {
       /**
@@ -1672,7 +1682,8 @@ export namespace EntityCreateParams {
        */
       export interface Individual {
         /**
-         * The individual's physical address. Post Office Boxes are disallowed.
+         * The individual's physical address. Mail receiving locations like PO Boxes and
+         * PMB's are disallowed.
          */
         address: Individual.Address;
 
@@ -1702,7 +1713,8 @@ export namespace EntityCreateParams {
 
       export namespace Individual {
         /**
-         * The individual's physical address. Post Office Boxes are disallowed.
+         * The individual's physical address. Mail receiving locations like PO Boxes and
+         * PMB's are disallowed.
          */
         export interface Address {
           /**
@@ -1867,7 +1879,8 @@ export namespace EntityCreateParams {
      */
     export interface Grantor {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       address: Grantor.Address;
 
@@ -1897,7 +1910,8 @@ export namespace EntityCreateParams {
 
     export namespace Grantor {
       /**
-       * The individual's physical address. Post Office Boxes are disallowed.
+       * The individual's physical address. Mail receiving locations like PO Boxes and
+       * PMB's are disallowed.
        */
       export interface Address {
         /**
@@ -2103,14 +2117,16 @@ export namespace EntityListParams {
 
 export interface EntityUpdateAddressParams {
   /**
-   * The entity's physical address. Post Office Boxes are disallowed.
+   * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+   * are disallowed.
    */
   address: EntityUpdateAddressParams.Address;
 }
 
 export namespace EntityUpdateAddressParams {
   /**
-   * The entity's physical address. Post Office Boxes are disallowed.
+   * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+   * are disallowed.
    */
   export interface Address {
     /**
