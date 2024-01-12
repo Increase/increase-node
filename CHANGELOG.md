@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.24.0 (2024-01-12)
+
+Full Changelog: [v0.23.1...v0.24.0](https://github.com/increase/increase-node/compare/v0.23.1...v0.24.0)
+
+### Features
+
+* **api:** add merchant data to simulation api ([#273](https://github.com/increase/increase-node/issues/273)) ([856b155](https://github.com/increase/increase-node/commit/856b155e8d11de4c63130fec66e29e76c2d2a497))
+
+
+### Chores
+
+* **internal:** narrow type into stringifyQuery ([#270](https://github.com/increase/increase-node/issues/270)) ([b7b5615](https://github.com/increase/increase-node/commit/b7b5615666467f331d33c10c1dabc1ed4fc220b2))
+
+
+### Documentation
+
+* **readme:** improve api reference ([#272](https://github.com/increase/increase-node/issues/272)) ([d83747f](https://github.com/increase/increase-node/commit/d83747f5044ecbc34a51dd1dd0d010b48e5486c1))
+
 ## 0.23.1 (2024-01-10)
 
 Full Changelog: [v0.23.0...v0.23.1](https://github.com/increase/increase-node/compare/v0.23.0...v0.23.1)
