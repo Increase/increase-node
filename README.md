@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Increase REST API from server-side TypeScript or JavaScript.
 
-The API documentation can be found [here](https://increase.com/documentation).
+The REST API documentation can be found [on increase.com](https://increase.com/documentation). The full API of this library can be found in [api.md](https://www.github.com/increase/increase-node/blob/main/api.md).
 
 ## Installation
 
