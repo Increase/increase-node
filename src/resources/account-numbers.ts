@@ -89,7 +89,7 @@ export interface AccountNumber {
 
   /**
    * Properties related to how this Account Number should handle inbound check
-   * withdrawls.
+   * withdrawals.
    */
   inbound_checks: AccountNumber.InboundChecks;
 
@@ -136,7 +136,7 @@ export namespace AccountNumber {
 
   /**
    * Properties related to how this Account Number should handle inbound check
-   * withdrawls.
+   * withdrawals.
    */
   export interface InboundChecks {
     /**
@@ -169,7 +169,7 @@ export interface AccountNumberCreateParams {
 
   /**
    * Options related to how this Account Number should handle inbound check
-   * withdrawls.
+   * withdrawals.
    */
   inbound_checks?: AccountNumberCreateParams.InboundChecks;
 }
@@ -191,7 +191,7 @@ export namespace AccountNumberCreateParams {
 
   /**
    * Options related to how this Account Number should handle inbound check
-   * withdrawls.
+   * withdrawals.
    */
   export interface InboundChecks {
     /**
