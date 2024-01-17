@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.24.1 (2024-01-17)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/increase/increase-node/compare/v0.24.0...v0.24.1)
+
+### Bug Fixes
+
+* **types:** accept undefined for optional client options ([#279](https://github.com/increase/increase-node/issues/279)) ([73ad36c](https://github.com/increase/increase-node/commit/73ad36cb4670eaacd67c487cdc78144fdf053ad0))
+
+
+### Chores
+
+* **internal:** debug logging for retries; speculative retry-after-ms support ([#278](https://github.com/increase/increase-node/issues/278)) ([8c34478](https://github.com/increase/increase-node/commit/8c34478e5dd83d8e695e8ea271cff849a246c866))
+* remove Alex Rattray from reviewers ([#277](https://github.com/increase/increase-node/issues/277)) ([73a27cc](https://github.com/increase/increase-node/commit/73a27cc60f79b975896c58e87569d6a711008207))
+
+
+### Documentation
+
+* **api:** fix typo ([#276](https://github.com/increase/increase-node/issues/276)) ([1d3e115](https://github.com/increase/increase-node/commit/1d3e115d5fb38877918b62351fc9cc49061fa005))
+* fix missing async in readme code sample ([#274](https://github.com/increase/increase-node/issues/274)) ([1f3c7d8](https://github.com/increase/increase-node/commit/1f3c7d8a6bad27336f7202d4aefc5ab34026cbdc))
+
 ## 0.24.0 (2024-01-12)
 
 Full Changelog: [v0.23.1...v0.24.0](https://github.com/increase/increase-node/compare/v0.23.1...v0.24.0)
