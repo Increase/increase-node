@@ -18,12 +18,12 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['INCREASE_API_KEY'].
    */
-  apiKey?: string;
+  apiKey?: string | undefined;
 
   /**
    * Defaults to process.env['INCREASE_WEBHOOK_SECRET'].
    */
-  webhookSecret?: string | null;
+  webhookSecret?: string | null | undefined;
 
   /**
    * Specifies the environment to use for the API.
@@ -101,8 +101,8 @@ export class Increase extends Core.APIClient {
   /**
    * API Client for interfacing with the Increase API.
    *
-   * @param {string} [opts.apiKey=process.env['INCREASE_API_KEY'] ?? undefined]
-   * @param {string | null} [opts.webhookSecret=process.env['INCREASE_WEBHOOK_SECRET'] ?? null]
+   * @param {string | undefined} [opts.apiKey=process.env['INCREASE_API_KEY'] ?? undefined]
+   * @param {string | null | undefined} [opts.webhookSecret=process.env['INCREASE_WEBHOOK_SECRET'] ?? null]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['INCREASE_BASE_URL'] ?? https://api.increase.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
