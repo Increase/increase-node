@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.24.3 (2024-01-18)
+
+Full Changelog: [v0.24.2...v0.24.3](https://github.com/increase/increase-node/compare/v0.24.2...v0.24.3)
+
+### Bug Fixes
+
+* allow body type in RequestOptions to be null ([#282](https://github.com/increase/increase-node/issues/282)) ([8f848bf](https://github.com/increase/increase-node/commit/8f848bf1c2f674617baff7bd6bee702fb2e6b070))
+
 ## 0.24.2 (2024-01-18)
 
 Full Changelog: [v0.24.1...v0.24.2](https://github.com/increase/increase-node/compare/v0.24.1...v0.24.2)
