@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.24.2 (2024-01-18)
+
+Full Changelog: [v0.24.1...v0.24.2](https://github.com/increase/increase-node/compare/v0.24.1...v0.24.2)
+
+### Bug Fixes
+
+* **ci:** ignore stainless-app edits to release PR title ([#280](https://github.com/increase/increase-node/issues/280)) ([99d6035](https://github.com/increase/increase-node/commit/99d6035543ab0ecf2424e7889eb9e68a6727ffa0))
+
 ## 0.24.1 (2024-01-17)
 
 Full Changelog: [v0.24.0...v0.24.1](https://github.com/increase/increase-node/compare/v0.24.0...v0.24.1)
