@@ -3,14 +3,14 @@
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
-import * as OauthConnectionsAPI from 'increase/resources/oauth-connections';
+import * as OAuthConnectionsAPI from 'increase/resources/oauth-connections';
 import { Page, type PageParams } from 'increase/pagination';
 
-export class OauthConnections extends APIResource {
+export class OAuthConnections extends APIResource {
   /**
    * Retrieve an OAuth Connection
    */
-  retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OauthConnection> {
+  retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OAuthConnection> {
     return this._client.get(`/oauth_connections/${oauthConnectionId}`, options);
   }
 
@@ -18,28 +18,28 @@ export class OauthConnections extends APIResource {
    * List OAuth Connections
    */
   list(
-    query?: OauthConnectionListParams,
+    query?: OAuthConnectionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OauthConnectionsPage, OauthConnection>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OauthConnectionsPage, OauthConnection>;
+  ): Core.PagePromise<OAuthConnectionsPage, OAuthConnection>;
+  list(options?: Core.RequestOptions): Core.PagePromise<OAuthConnectionsPage, OAuthConnection>;
   list(
-    query: OauthConnectionListParams | Core.RequestOptions = {},
+    query: OAuthConnectionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<OauthConnectionsPage, OauthConnection> {
+  ): Core.PagePromise<OAuthConnectionsPage, OAuthConnection> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.getAPIList('/oauth_connections', OauthConnectionsPage, { query, ...options });
+    return this._client.getAPIList('/oauth_connections', OAuthConnectionsPage, { query, ...options });
   }
 }
 
-export class OauthConnectionsPage extends Page<OauthConnection> {}
+export class OAuthConnectionsPage extends Page<OAuthConnection> {}
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
  * created.
  */
-export interface OauthConnection {
+export interface OAuthConnection {
   /**
    * The OAuth Connection's identifier.
    */
@@ -71,10 +71,10 @@ export interface OauthConnection {
   type: 'oauth_connection';
 }
 
-export interface OauthConnectionListParams extends PageParams {}
+export interface OAuthConnectionListParams extends PageParams {}
 
-export namespace OauthConnections {
-  export import OauthConnection = OauthConnectionsAPI.OauthConnection;
-  export import OauthConnectionsPage = OauthConnectionsAPI.OauthConnectionsPage;
-  export import OauthConnectionListParams = OauthConnectionsAPI.OauthConnectionListParams;
+export namespace OAuthConnections {
+  export import OAuthConnection = OAuthConnectionsAPI.OAuthConnection;
+  export import OAuthConnectionsPage = OAuthConnectionsAPI.OAuthConnectionsPage;
+  export import OAuthConnectionListParams = OAuthConnectionsAPI.OAuthConnectionListParams;
 }
