@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.25.0 (2024-01-19)
+
+Full Changelog: [v0.24.3...v0.25.0](https://github.com/increase/increase-node/compare/v0.24.3...v0.25.0)
+
+### ⚠ BREAKING CHANGES
+
+* fix oauth casing ([#286](https://github.com/increase/increase-node/issues/286))
+
+### Features
+
+* add webhook support for node and python SDKs ([#284](https://github.com/increase/increase-node/issues/284)) ([0d6c1de](https://github.com/increase/increase-node/commit/0d6c1de1807cd4735982d28b0623dd7b95939c5e))
+* **api:** add oauth token and inbound wire transfer methods ([#287](https://github.com/increase/increase-node/issues/287)) ([0c814d8](https://github.com/increase/increase-node/commit/0c814d86b1d97215ba419f24468ac5b584b336d1))
+
+
+### Refactors
+
+* fix oauth casing ([#286](https://github.com/increase/increase-node/issues/286)) ([91a333b](https://github.com/increase/increase-node/commit/91a333b2aff2f6b17d44650da0e06dc1c5adaf69))
+
 ## 0.24.3 (2024-01-18)
 
 Full Changelog: [v0.24.2...v0.24.3](https://github.com/increase/increase-node/compare/v0.24.2...v0.24.3)
