@@ -52,6 +52,7 @@ describe('resource physicalCards', () => {
           postal_code: '10045',
         },
       },
+      physical_card_profile_id: 'string',
     });
   });
 

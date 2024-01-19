@@ -331,7 +331,8 @@ export namespace ACHTransfer {
      * - `incorrect_routing_number` - The routing number was incorrect.
      * - `incorrect_routing_number_and_account_number` - Both the routing number and
      *   the account number were incorrect.
-     * - `incorrect_transaction_code` - The transaction code was incorrect.
+     * - `incorrect_transaction_code` - The transaction code was incorrect. Try
+     *   changing the `funding` parameter from checking to savings or vice-versa.
      * - `incorrect_account_number_and_transaction_code` - The account number and the
      *   transaction code were incorrect.
      * - `incorrect_routing_number_account_number_and_transaction_code` - The routing
@@ -383,7 +384,11 @@ export namespace ACHTransfer {
       | 'incorrect_transaction_code_by_originating_depository_financial_institution';
 
     /**
-     * The corrected data that should be used in future ACHs to this account.
+     * The corrected data that should be used in future ACHs to this account. This may
+     * contain the suggested new account number or routing number. When the
+     * `change_code` is `incorrect_transaction_code`, this field contains an integer.
+     * Numbers starting with a 2 encourage changing the `funding` parameter to
+     * checking; numbers starting with a 3 encourage changing to savings.
      */
     corrected_data: string;
 

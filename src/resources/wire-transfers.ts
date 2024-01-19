@@ -167,6 +167,26 @@ export interface WireTransfer {
   network: 'wire';
 
   /**
+   * The originator's address line 1.
+   */
+  originator_address_line1: string | null;
+
+  /**
+   * The originator's address line 2.
+   */
+  originator_address_line2: string | null;
+
+  /**
+   * The originator's address line 3.
+   */
+  originator_address_line3: string | null;
+
+  /**
+   * The originator's name.
+   */
+  originator_name: string | null;
+
+  /**
    * The ID for the pending transaction representing the transfer. A pending
    * transaction is created when the transfer
    * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
@@ -418,6 +438,30 @@ export interface WireTransferCreateParams {
    * provided, `account_number` and `routing_number` must be absent.
    */
   external_account_id?: string;
+
+  /**
+   * The originator's address line 1. This is only necessary if you're transferring
+   * from a commingled account. Otherwise, we'll use the associated entity's details.
+   */
+  originator_address_line1?: string;
+
+  /**
+   * The originator's address line 2. This is only necessary if you're transferring
+   * from a commingled account. Otherwise, we'll use the associated entity's details.
+   */
+  originator_address_line2?: string;
+
+  /**
+   * The originator's address line 3. This is only necessary if you're transferring
+   * from a commingled account. Otherwise, we'll use the associated entity's details.
+   */
+  originator_address_line3?: string;
+
+  /**
+   * The originator's name. This is only necessary if you're transferring from a
+   * commingled account. Otherwise, we'll use the associated entity's details.
+   */
+  originator_name?: string;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.

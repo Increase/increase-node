@@ -296,10 +296,14 @@ export namespace CardCreateParams {
    */
   export interface DigitalWallet {
     /**
-     * The card profile assigned to this digital card. Card profiles may also be
-     * assigned at the program level.
+     * The card profile assigned to this digital card.
      */
     card_profile_id?: string;
+
+    /**
+     * The digital card profile assigned to this digital card.
+     */
+    digital_card_profile_id?: string;
 
     /**
      * An email address that can be used to verify the cardholder via one-time passcode

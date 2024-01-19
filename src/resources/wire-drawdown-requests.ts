@@ -91,6 +91,26 @@ export interface WireDrawdownRequest {
   message_to_recipient: string;
 
   /**
+   * The originator's address line 1.
+   */
+  originator_address_line1: string | null;
+
+  /**
+   * The originator's address line 2.
+   */
+  originator_address_line2: string | null;
+
+  /**
+   * The originator's address line 3.
+   */
+  originator_address_line3: string | null;
+
+  /**
+   * The originator's name.
+   */
+  originator_name: string | null;
+
+  /**
    * The drawdown request's recipient's account number.
    */
   recipient_account_number: string;
@@ -189,6 +209,34 @@ export interface WireDrawdownRequestCreateParams {
    * The drawdown request's recipient's routing number.
    */
   recipient_routing_number: string;
+
+  /**
+   * The drawdown request originator's address line 1. This is only necessary if
+   * you're requesting a payment to a commingled account. Otherwise, we'll use the
+   * associated entity's details.
+   */
+  originator_address_line1?: string;
+
+  /**
+   * The drawdown request originator's address line 2. This is only necessary if
+   * you're requesting a payment to a commingled account. Otherwise, we'll use the
+   * associated entity's details.
+   */
+  originator_address_line2?: string;
+
+  /**
+   * The drawdown request originator's address line 3. This is only necessary if
+   * you're requesting a payment to a commingled account. Otherwise, we'll use the
+   * associated entity's details.
+   */
+  originator_address_line3?: string;
+
+  /**
+   * The drawdown request originator's name. This is only necessary if you're
+   * requesting a payment to a commingled account. Otherwise, we'll use the
+   * associated entity's details.
+   */
+  originator_name?: string;
 
   /**
    * Line 1 of the drawdown request's recipient's address.

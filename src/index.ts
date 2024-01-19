@@ -198,6 +198,8 @@ export class Increase extends Core.APIClient {
   realTimePaymentsRequestForPayments: API.RealTimePaymentsRequestForPayments =
     new API.RealTimePaymentsRequestForPayments(this);
   webhooks: API.Webhooks = new API.Webhooks(this);
+  oauthTokens: API.OAuthTokens = new API.OAuthTokens(this);
+  inboundWireTransfers: API.InboundWireTransfers = new API.InboundWireTransfers(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -537,6 +539,13 @@ export namespace Increase {
   export import RealTimePaymentsRequestForPaymentListParams = API.RealTimePaymentsRequestForPaymentListParams;
 
   export import Webhooks = API.Webhooks;
+
+  export import OAuthTokens = API.OAuthTokens;
+  export import OAuthToken = API.OAuthToken;
+  export import OAuthTokenCreateParams = API.OAuthTokenCreateParams;
+
+  export import InboundWireTransfers = API.InboundWireTransfers;
+  export import InboundWireTransfer = API.InboundWireTransfer;
 }
 
 export default Increase;
