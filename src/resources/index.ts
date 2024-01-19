@@ -170,10 +170,10 @@ export {
 } from './inbound-wire-drawdown-requests';
 export { Intrafi } from './intrafi/intrafi';
 export {
-  OauthConnection,
-  OauthConnectionListParams,
-  OauthConnectionsPage,
-  OauthConnections,
+  OAuthConnection,
+  OAuthConnectionListParams,
+  OAuthConnectionsPage,
+  OAuthConnections,
 } from './oauth-connections';
 export {
   PendingTransaction,

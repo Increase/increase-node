@@ -416,16 +416,16 @@ Methods:
 
 - <code title="get /groups/current">client.groups.<a href="./src/resources/groups.ts">retrieveDetails</a>() -> Group</code>
 
-# OauthConnections
+# OAuthConnections
 
 Types:
 
-- <code><a href="./src/resources/oauth-connections.ts">OauthConnection</a></code>
+- <code><a href="./src/resources/oauth-connections.ts">OAuthConnection</a></code>
 
 Methods:
 
-- <code title="get /oauth_connections/{oauth_connection_id}">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">retrieve</a>(oauthConnectionId) -> OauthConnection</code>
-- <code title="get /oauth_connections">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">list</a>({ ...params }) -> OauthConnectionsPage</code>
+- <code title="get /oauth_connections/{oauth_connection_id}">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">retrieve</a>(oauthConnectionId) -> OAuthConnection</code>
+- <code title="get /oauth_connections">client.oauthConnections.<a href="./src/resources/oauth-connections.ts">list</a>({ ...params }) -> OAuthConnectionsPage</code>
 
 # CheckDeposits
 
