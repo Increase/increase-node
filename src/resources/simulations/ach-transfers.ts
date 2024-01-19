@@ -4399,6 +4399,11 @@ export namespace ACHTransferSimulation {
        */
       export interface InboundWireTransfer {
         /**
+         * The inbound wire transfer's identifier.
+         */
+        id: string;
+
+        /**
          * The amount in USD cents.
          */
         amount: number;
@@ -4490,6 +4495,17 @@ export namespace ACHTransferSimulation {
          * A free-form message set by the wire originator.
          */
         originator_to_beneficiary_information_line4: string | null;
+
+        /**
+         * The ID of the Inbound Wire Transfer object that resulted in this Transaction.
+         */
+        transfer_id: string;
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `inbound_wire_transfer`.
+         */
+        type: 'inbound_wire_transfer';
       }
 
       /**
@@ -4682,7 +4698,7 @@ export namespace ACHTransferSimulation {
    */
   export interface Transfer {
     /**
-     * The inbound ach transfer's identifier.
+     * The inbound ACH transfer's identifier.
      */
     id: string;
 

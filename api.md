@@ -708,3 +708,23 @@ Methods:
 
 - <code>client.webhooks.<a href="./src/resources/webhooks.ts">unwrap</a>(payload, headers, secret) -> Record&lt;string, unknown&gt;</code>
 - <code>client.webhooks.<a href="./src/resources/webhooks.ts">verifySignature</a>(payload, headers, secret) -> void</code>
+
+# OAuthTokens
+
+Types:
+
+- <code><a href="./src/resources/oauth-tokens.ts">OAuthToken</a></code>
+
+Methods:
+
+- <code title="post /oauth/tokens">client.oauthTokens.<a href="./src/resources/oauth-tokens.ts">create</a>({ ...params }) -> OAuthToken</code>
+
+# InboundWireTransfers
+
+Types:
+
+- <code><a href="./src/resources/inbound-wire-transfers.ts">InboundWireTransfer</a></code>
+
+Methods:
+
+- <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">retrieve</a>(inboundWireTransferId) -> InboundWireTransfer</code>
