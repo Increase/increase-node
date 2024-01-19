@@ -76,7 +76,7 @@ export class InboundACHTransfersPage extends Page<InboundACHTransfer> {}
  */
 export interface InboundACHTransfer {
   /**
-   * The inbound ach transfer's identifier.
+   * The inbound ACH transfer's identifier.
    */
   id: string;
 

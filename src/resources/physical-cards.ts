@@ -255,6 +255,11 @@ export interface PhysicalCardCreateParams {
    * The details used to ship this physical card.
    */
   shipment: PhysicalCardCreateParams.Shipment;
+
+  /**
+   * The physical card profile to use for this physical card.
+   */
+  physical_card_profile_id?: string;
 }
 
 export namespace PhysicalCardCreateParams {

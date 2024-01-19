@@ -168,6 +168,7 @@ export {
   InboundWireDrawdownRequestsPage,
   InboundWireDrawdownRequests,
 } from './inbound-wire-drawdown-requests';
+export { InboundWireTransfer, InboundWireTransfers } from './inbound-wire-transfers';
 export { Intrafi } from './intrafi/intrafi';
 export {
   OAuthConnection,
@@ -175,6 +176,7 @@ export {
   OAuthConnectionsPage,
   OAuthConnections,
 } from './oauth-connections';
+export { OAuthToken, OAuthTokenCreateParams, OAuthTokens } from './oauth-tokens';
 export {
   PendingTransaction,
   PendingTransactionListParams,

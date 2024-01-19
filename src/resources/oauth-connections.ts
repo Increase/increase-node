@@ -37,7 +37,8 @@ export class OAuthConnectionsPage extends Page<OAuthConnection> {}
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
- * created.
+ * created. Learn more about OAuth
+ * [here](https://increase.com/documentation/oauth).
  */
 export interface OAuthConnection {
   /**

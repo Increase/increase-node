@@ -91,6 +91,10 @@ export interface Event {
    * - `check_transfer.updated` - Occurs whenever a Check Transfer is updated.
    * - `declined_transaction.created` - Occurs whenever a Declined Transaction is
    *   created.
+   * - `digital_card_profile.created` - Occurs whenever a Digital Card Profile is
+   *   created.
+   * - `digital_card_profile.updated` - Occurs whenever a Digital Card Profile is
+   *   updated.
    * - `digital_wallet_token.created` - Occurs whenever a Digital Wallet Token is
    *   created.
    * - `digital_wallet_token.updated` - Occurs whenever a Digital Wallet Token is
@@ -135,6 +139,10 @@ export interface Event {
    *   updated.
    * - `physical_card.created` - Occurs whenever a Physical Card is created.
    * - `physical_card.updated` - Occurs whenever a Physical Card is updated.
+   * - `physical_card_profile.created` - Occurs whenever a Physical Card Profile is
+   *   created.
+   * - `physical_card_profile.updated` - Occurs whenever a Physical Card Profile is
+   *   updated.
    * - `proof_of_authorization_request.created` - Occurs whenever a Proof of
    *   Authorization Request is created.
    * - `proof_of_authorization_request.updated` - Occurs whenever a Proof of
@@ -195,6 +203,8 @@ export interface Event {
     | 'check_transfer.created'
     | 'check_transfer.updated'
     | 'declined_transaction.created'
+    | 'digital_card_profile.created'
+    | 'digital_card_profile.updated'
     | 'digital_wallet_token.created'
     | 'digital_wallet_token.updated'
     | 'document.created'
@@ -224,6 +234,8 @@ export interface Event {
     | 'pending_transaction.updated'
     | 'physical_card.created'
     | 'physical_card.updated'
+    | 'physical_card_profile.created'
+    | 'physical_card_profile.updated'
     | 'proof_of_authorization_request.created'
     | 'proof_of_authorization_request.updated'
     | 'proof_of_authorization_request_submission.created'
@@ -299,6 +311,8 @@ export namespace EventListParams {
       | 'check_transfer.created'
       | 'check_transfer.updated'
       | 'declined_transaction.created'
+      | 'digital_card_profile.created'
+      | 'digital_card_profile.updated'
       | 'digital_wallet_token.created'
       | 'digital_wallet_token.updated'
       | 'document.created'
@@ -328,6 +342,8 @@ export namespace EventListParams {
       | 'pending_transaction.updated'
       | 'physical_card.created'
       | 'physical_card.updated'
+      | 'physical_card_profile.created'
+      | 'physical_card_profile.updated'
       | 'proof_of_authorization_request.created'
       | 'proof_of_authorization_request.updated'
       | 'proof_of_authorization_request_submission.created'
