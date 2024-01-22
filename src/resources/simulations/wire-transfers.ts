@@ -218,8 +218,8 @@ export namespace WireTransferSimulation {
        *   be under the `inbound_wire_drawdown_payment` object.
        * - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
        *   `inbound_wire_reversal` object.
-       * - `inbound_wire_transfer` - Inbound Wire Transfer: details will be under the
-       *   `inbound_wire_transfer` object.
+       * - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
+       *   under the `inbound_wire_transfer` object.
        * - `interest_payment` - Interest Payment: details will be under the
        *   `interest_payment` object.
        * - `internal_source` - Internal Source: details will be under the
@@ -350,8 +350,8 @@ export namespace WireTransferSimulation {
       inbound_wire_reversal: Source.InboundWireReversal | null;
 
       /**
-       * An Inbound Wire Transfer object. This field will be present in the JSON response
-       * if and only if `category` is equal to `inbound_wire_transfer`.
+       * An Inbound Wire Transfer Intention object. This field will be present in the
+       * JSON response if and only if `category` is equal to `inbound_wire_transfer`.
        */
       inbound_wire_transfer: Source.InboundWireTransfer | null;
 
@@ -3177,15 +3177,10 @@ export namespace WireTransferSimulation {
       }
 
       /**
-       * An Inbound Wire Transfer object. This field will be present in the JSON response
-       * if and only if `category` is equal to `inbound_wire_transfer`.
+       * An Inbound Wire Transfer Intention object. This field will be present in the
+       * JSON response if and only if `category` is equal to `inbound_wire_transfer`.
        */
       export interface InboundWireTransfer {
-        /**
-         * The inbound wire transfer's identifier.
-         */
-        id: string;
-
         /**
          * The amount in USD cents.
          */
@@ -3283,12 +3278,6 @@ export namespace WireTransferSimulation {
          * The ID of the Inbound Wire Transfer object that resulted in this Transaction.
          */
         transfer_id: string;
-
-        /**
-         * A constant representing the object's type. For this resource it will always be
-         * `inbound_wire_transfer`.
-         */
-        type: 'inbound_wire_transfer';
       }
 
       /**
