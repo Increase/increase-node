@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.26.0 (2024-01-22)
+
+Full Changelog: [v0.25.0...v0.26.0](https://github.com/increase/increase-node/compare/v0.25.0...v0.26.0)
+
+### Features
+
+* **api:** simplify WireDecline and InboundWireTransfer ([#288](https://github.com/increase/increase-node/issues/288)) ([ac8f91d](https://github.com/increase/increase-node/commit/ac8f91d87a92c4237969dfaade41afbcb5de0835))
+
 ## 0.25.0 (2024-01-19)
 
 Full Changelog: [v0.24.3...v0.25.0](https://github.com/increase/increase-node/compare/v0.24.3...v0.25.0)
