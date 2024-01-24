@@ -546,6 +546,8 @@ export namespace Increase {
 
   export import InboundWireTransfers = API.InboundWireTransfers;
   export import InboundWireTransfer = API.InboundWireTransfer;
+  export import InboundWireTransfersPage = API.InboundWireTransfersPage;
+  export import InboundWireTransferListParams = API.InboundWireTransferListParams;
 }
 
 export default Increase;

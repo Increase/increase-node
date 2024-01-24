@@ -29,6 +29,7 @@ describe('resource accountNumbers', () => {
       name: 'Rent payments',
       inbound_ach: { debit_status: 'allowed' },
       inbound_checks: { status: 'allowed' },
+      unique_identifier: 'x',
     });
   });
 
@@ -97,6 +98,7 @@ describe('resource accountNumbers', () => {
           cursor: 'string',
           limit: 1,
           status: 'active',
+          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

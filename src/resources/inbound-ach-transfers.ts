@@ -86,6 +86,11 @@ export interface InboundACHTransfer {
   acceptance: InboundACHTransfer.Acceptance | null;
 
   /**
+   * The Account to which the transfer belongs.
+   */
+  account_id: string;
+
+  /**
    * The identifier of the Account Number to which this transfer was sent.
    */
   account_number_id: string;

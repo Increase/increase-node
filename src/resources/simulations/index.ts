@@ -1,11 +1,6 @@
 // File generated from our OpenAPI spec by Stainless.
 
-export {
-  ACHTransferSimulation,
-  ACHTransferCreateInboundParams,
-  ACHTransferReturnParams,
-  ACHTransfers,
-} from './ach-transfers';
+export { ACHTransferCreateInboundParams, ACHTransferReturnParams, ACHTransfers } from './ach-transfers';
 export { AccountStatementCreateParams, AccountStatements } from './account-statements';
 export { AccountTransfers } from './account-transfers';
 export { CardAuthorizationSimulation, CardAuthorizeParams, CardSettlementParams, Cards } from './cards';
@@ -39,4 +34,4 @@ export {
 export { PhysicalCardShipmentAdvanceParams, PhysicalCards } from './physical-cards';
 export { ProgramCreateParams, Programs } from './programs';
 export { Simulations } from './simulations';
-export { WireTransferSimulation, WireTransferCreateInboundParams, WireTransfers } from './wire-transfers';
+export { WireTransferCreateInboundParams, WireTransfers } from './wire-transfers';
