@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.27.0 (2024-01-24)
+
+Full Changelog: [v0.26.0...v0.27.0](https://github.com/increase/increase-node/compare/v0.26.0...v0.27.0)
+
+### Features
+
+* **api:** list Inbound Wire Transfers, change transfer simulation return types ([#292](https://github.com/increase/increase-node/issues/292)) ([7277e79](https://github.com/increase/increase-node/commit/7277e7944c0a745c65f3e993322369bcfcda29a7))
+
+
+### Chores
+
+* **internal:** add internal helpers & improve build scripts ([#290](https://github.com/increase/increase-node/issues/290)) ([ed13602](https://github.com/increase/increase-node/commit/ed136020c749eee30889b5e6e26788d9c7847594))
+
 ## 0.26.0 (2024-01-22)
 
 Full Changelog: [v0.25.0...v0.26.0](https://github.com/increase/increase-node/compare/v0.25.0...v0.26.0)
