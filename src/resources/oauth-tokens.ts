@@ -39,7 +39,8 @@ export interface OAuthToken {
 
 export interface OAuthTokenCreateParams {
   /**
-   * The credential you request in exchange for the code.
+   * The credential you request in exchange for the code. In Production, this is
+   * always `authorization_code`. In Sandbox, you can pass either enum value.
    *
    * - `authorization_code` - An OAuth authorization code.
    * - `production_token` - An OAuth production token.
