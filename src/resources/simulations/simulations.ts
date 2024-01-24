@@ -57,7 +57,6 @@ export namespace Simulations {
   export import AccountStatements = AccountStatementsAPI.AccountStatements;
   export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
   export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
-  export import ACHTransferSimulation = ACHTransfersAPI.ACHTransferSimulation;
   export import ACHTransferCreateInboundParams = ACHTransfersAPI.ACHTransferCreateInboundParams;
   export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
   export import CardDisputes = CardDisputesAPI.CardDisputes;
@@ -82,7 +81,6 @@ export namespace Simulations {
   export import InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
   export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
   export import WireTransfers = WireTransfersAPI.WireTransfers;
-  export import WireTransferSimulation = WireTransfersAPI.WireTransferSimulation;
   export import WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;
   export import Cards = CardsAPI.Cards;
   export import CardAuthorizationSimulation = CardsAPI.CardAuthorizationSimulation;

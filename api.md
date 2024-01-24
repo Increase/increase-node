@@ -476,13 +476,9 @@ Methods:
 
 ## ACHTransfers
 
-Types:
-
-- <code><a href="./src/resources/simulations/ach-transfers.ts">ACHTransferSimulation</a></code>
-
 Methods:
 
-- <code title="post /simulations/inbound_ach_transfers">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">createInbound</a>({ ...params }) -> ACHTransferSimulation</code>
+- <code title="post /simulations/inbound_ach_transfers">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">createInbound</a>({ ...params }) -> InboundACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfer</code>
 
@@ -569,13 +565,9 @@ Methods:
 
 ## WireTransfers
 
-Types:
-
-- <code><a href="./src/resources/simulations/wire-transfers.ts">WireTransferSimulation</a></code>
-
 Methods:
 
-- <code title="post /simulations/inbound_wire_transfers">client.simulations.wireTransfers.<a href="./src/resources/simulations/wire-transfers.ts">createInbound</a>({ ...params }) -> WireTransferSimulation</code>
+- <code title="post /simulations/inbound_wire_transfers">client.simulations.wireTransfers.<a href="./src/resources/simulations/wire-transfers.ts">createInbound</a>({ ...params }) -> InboundWireTransfer</code>
 
 ## Cards
 
@@ -728,3 +720,4 @@ Types:
 Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">retrieve</a>(inboundWireTransferId) -> InboundWireTransfer</code>
+- <code title="get /inbound_wire_transfers">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">list</a>({ ...params }) -> InboundWireTransfersPage</code>

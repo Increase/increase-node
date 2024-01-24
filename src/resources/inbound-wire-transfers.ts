@@ -2,7 +2,9 @@
 
 import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
+import { isRequestOptions } from 'increase/core';
 import * as InboundWireTransfersAPI from 'increase/resources/inbound-wire-transfers';
+import { Page, type PageParams } from 'increase/pagination';
 
 export class InboundWireTransfers extends APIResource {
   /**
@@ -14,7 +16,30 @@ export class InboundWireTransfers extends APIResource {
   ): Core.APIPromise<InboundWireTransfer> {
     return this._client.get(`/inbound_wire_transfers/${inboundWireTransferId}`, options);
   }
+
+  /**
+   * List Inbound Wire Transfers
+   */
+  list(
+    query?: InboundWireTransferListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer>;
+  list(options?: Core.RequestOptions): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer>;
+  list(
+    query: InboundWireTransferListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.getAPIList('/inbound_wire_transfers', InboundWireTransfersPage, {
+      query,
+      ...options,
+    });
+  }
 }
+
+export class InboundWireTransfersPage extends Page<InboundWireTransfer> {}
 
 /**
  * An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
@@ -25,6 +50,16 @@ export interface InboundWireTransfer {
    * The inbound wire transfer's identifier.
    */
   id: string;
+
+  /**
+   * The Account to which the transfer belongs.
+   */
+  account_id: string;
+
+  /**
+   * The identifier of the Account Number to which this transfer was sent.
+   */
+  account_number_id: string;
 
   /**
    * The amount in USD cents.
@@ -120,12 +155,73 @@ export interface InboundWireTransfer {
   originator_to_beneficiary_information_line4: string | null;
 
   /**
+   * The status of the transfer.
+   *
+   * - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+   *   automatically if no action is taken.
+   * - `accepted` - The Inbound Wire Transfer is accepted.
+   * - `declined` - The Inbound Wire Transfer was declined.
+   * - `reversed` - The Inbound Wire Transfer was reversed.
+   */
+  status: 'pending' | 'accepted' | 'declined' | 'reversed';
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `inbound_wire_transfer`.
    */
   type: 'inbound_wire_transfer';
 }
 
+export interface InboundWireTransferListParams extends PageParams {
+  /**
+   * Filter Inbound Wire Tranfers to ones belonging to the specified Account.
+   */
+  account_id?: string;
+
+  created_at?: InboundWireTransferListParams.CreatedAt;
+
+  /**
+   * Filter Inbound Wire Transfers to those with the specified status.
+   *
+   * - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+   *   automatically if no action is taken.
+   * - `accepted` - The Inbound Wire Transfer is accepted.
+   * - `declined` - The Inbound Wire Transfer was declined.
+   * - `reversed` - The Inbound Wire Transfer was reversed.
+   */
+  status?: 'pending' | 'accepted' | 'declined' | 'reversed';
+}
+
+export namespace InboundWireTransferListParams {
+  export interface CreatedAt {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
+  }
+}
+
 export namespace InboundWireTransfers {
   export import InboundWireTransfer = InboundWireTransfersAPI.InboundWireTransfer;
+  export import InboundWireTransfersPage = InboundWireTransfersAPI.InboundWireTransfersPage;
+  export import InboundWireTransferListParams = InboundWireTransfersAPI.InboundWireTransferListParams;
 }
