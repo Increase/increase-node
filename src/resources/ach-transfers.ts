@@ -267,7 +267,7 @@ export interface ACHTransfer {
   type: 'ach_transfer';
 
   /**
-   * The unique identifier you chose for this transfer.
+   * The unique identifier you chose for this object.
    */
   unique_identifier: string | null;
 }
@@ -802,9 +802,9 @@ export interface ACHTransferCreateParams {
     | 'internet_initiated';
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifier for
-   * another transfer will result in an error. You can query for the transfer
-   * associated with this identifier using the List endpoint.
+   * A unique identifier you choose for the object. Reusing this identifier for
+   * another object will result in an error. You can query for the object associated
+   * with this identifier using the List endpoint.
    */
   unique_identifier?: string;
 }
@@ -823,7 +823,7 @@ export interface ACHTransferListParams extends PageParams {
   external_account_id?: string;
 
   /**
-   * Filter ACH Transfers to the one with the specified unique identifier.
+   * Filter records to the one with the specified `unique_identifier`.
    */
   unique_identifier?: string;
 }
