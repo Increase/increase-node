@@ -156,7 +156,7 @@ export interface AccountTransfer {
   type: 'account_transfer';
 
   /**
-   * The unique identifier you chose for this transfer.
+   * The unique identifier you chose for this object.
    */
   unique_identifier: string | null;
 }
@@ -227,9 +227,9 @@ export interface AccountTransferCreateParams {
   require_approval?: boolean;
 
   /**
-   * A unique identifier you choose for the transfer. Reusing this identifier for
-   * another transfer will result in an error. You can query for the transfer
-   * associated with this identifier using the List endpoint.
+   * A unique identifier you choose for the object. Reusing this identifier for
+   * another object will result in an error. You can query for the object associated
+   * with this identifier using the List endpoint.
    */
   unique_identifier?: string;
 }
@@ -243,7 +243,7 @@ export interface AccountTransferListParams extends PageParams {
   created_at?: AccountTransferListParams.CreatedAt;
 
   /**
-   * Filter Account Transfers to the one with the specified unique identifier.
+   * Filter records to the one with the specified `unique_identifier`.
    */
   unique_identifier?: string;
 }
