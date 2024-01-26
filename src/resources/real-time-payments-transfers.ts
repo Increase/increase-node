@@ -206,7 +206,7 @@ export interface RealTimePaymentsTransfer {
   ultimate_debtor_name: string | null;
 
   /**
-   * The unique identifier you chose for this transfer.
+   * The unique identifier you chose for this object.
    */
   unique_identifier: string | null;
 }
@@ -444,7 +444,7 @@ export interface RealTimePaymentsTransferListParams extends PageParams {
   external_account_id?: string;
 
   /**
-   * Filter ACH Transfers to the one with the specified unique identifier.
+   * Filter records to the one with the specified `unique_identifier`.
    */
   unique_identifier?: string;
 }

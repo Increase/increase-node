@@ -221,7 +221,7 @@ export interface CheckTransfer {
   type: 'check_transfer';
 
   /**
-   * The unique identifier you chose for this transfer.
+   * The unique identifier you chose for this object.
    */
   unique_identifier: string | null;
 }
@@ -638,7 +638,7 @@ export interface CheckTransferListParams extends PageParams {
   created_at?: CheckTransferListParams.CreatedAt;
 
   /**
-   * Filter Check Transfers to the one with the specified unique identifier.
+   * Filter records to the one with the specified `unique_identifier`.
    */
   unique_identifier?: string;
 }
