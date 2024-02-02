@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Increase REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on increase.com](https://increase.com/documentation). The full API of this library can be found in [api.md](https://www.github.com/increase/increase-node/blob/main/api.md).
+The REST API documentation can be found [on increase.com](https://increase.com/documentation). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -16,7 +16,7 @@ yarn add increase
 
 ## Usage
 
-The full API of this library can be found in [api.md](https://www.github.com/increase/increase-node/blob/main/api.md).
+The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
