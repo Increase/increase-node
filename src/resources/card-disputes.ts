@@ -75,6 +75,13 @@ export interface CardDispute {
   explanation: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * If the Card Dispute's status is `rejected`, this will contain details of the
    * unsuccessful dispute.
    */
@@ -159,6 +166,14 @@ export interface CardDisputeCreateParams {
 
 export interface CardDisputeListParams extends PageParams {
   created_at?: CardDisputeListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 
   status?: CardDisputeListParams.Status;
 }

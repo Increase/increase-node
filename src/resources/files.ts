@@ -83,6 +83,13 @@ export interface File {
   filename: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The MIME type of the file.
    */
   mime_type: string;
@@ -198,6 +205,14 @@ export interface FileCreateParams {
 
 export interface FileListParams extends PageParams {
   created_at?: FileListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 
   purpose?: FileListParams.Purpose;
 }

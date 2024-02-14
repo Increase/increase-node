@@ -123,6 +123,13 @@ export interface AccountTransfer {
   destination_transaction_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The transfer's network.
    */
   network: 'account';
@@ -154,11 +161,6 @@ export interface AccountTransfer {
    * `account_transfer`.
    */
   type: 'account_transfer';
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace AccountTransfer {
@@ -225,13 +227,6 @@ export interface AccountTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
-
-  /**
-   * A unique identifier you choose for the object. Reusing this identifier for
-   * another object will result in an error. You can query for the object associated
-   * with this identifier using the List endpoint.
-   */
-  unique_identifier?: string;
 }
 
 export interface AccountTransferListParams extends PageParams {
@@ -243,9 +238,12 @@ export interface AccountTransferListParams extends PageParams {
   created_at?: AccountTransferListParams.CreatedAt;
 
   /**
-   * Filter records to the one with the specified `unique_identifier`.
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
-  unique_identifier?: string;
+  idempotency_key?: string;
 }
 
 export namespace AccountTransferListParams {

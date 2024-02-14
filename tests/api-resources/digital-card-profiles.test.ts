@@ -8,9 +8,15 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource cards', () => {
+describe('resource digitalCardProfiles', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.cards.create({ account_id: 'account_in71c4amph0vgo2qllky' });
+    const responsePromise = increase.digitalCardProfiles.create({
+      app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+      background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+      card_description: 'MyBank Signature Card',
+      description: 'My Card Profile',
+      issuer_name: 'MyBank',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,17 +27,23 @@ describe('resource cards', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.cards.create({
-      account_id: 'account_in71c4amph0vgo2qllky',
-      billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
-      description: 'Card for Ian Crease',
-      digital_wallet: { email: 'x', phone: 'x', digital_card_profile_id: 'string' },
-      entity_id: 'string',
+    const response = await increase.digitalCardProfiles.create({
+      app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+      background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+      card_description: 'MyBank Signature Card',
+      description: 'My Card Profile',
+      issuer_name: 'MyBank',
+      contact_email: 'user@example.com',
+      contact_phone: '+18885551212',
+      contact_website: 'https://example.com',
+      text_color: { red: 26, green: 43, blue: 59 },
     });
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
+    const responsePromise = increase.digitalCardProfiles.retrieve(
+      'digital_card_profile_s3puplu90f04xhcwkiga',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,23 +56,14 @@ describe('resource cards', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
+      increase.digitalCardProfiles.retrieve('digital_card_profile_s3puplu90f04xhcwkiga', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('update', async () => {
-    const responsePromise = increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
   test('list', async () => {
-    const responsePromise = increase.cards.list();
+    const responsePromise = increase.digitalCardProfiles.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,7 +75,7 @@ describe('resource cards', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.cards.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.digitalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -80,26 +83,20 @@ describe('resource cards', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cards.list(
+      increase.digitalCardProfiles.list(
         {
-          account_id: 'string',
-          created_at: {
-            after: '2019-12-27T18:11:19.117Z',
-            before: '2019-12-27T18:11:19.117Z',
-            on_or_after: '2019-12-27T18:11:19.117Z',
-            on_or_before: '2019-12-27T18:11:19.117Z',
-          },
           cursor: 'string',
           idempotency_key: 'x',
           limit: 1,
+          status: { in: ['pending', 'rejected', 'active'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('retrieveSensitiveDetails', async () => {
-    const responsePromise = increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2');
+  test('archive', async () => {
+    const responsePromise = increase.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -109,12 +106,26 @@ describe('resource cards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieveSensitiveDetails: request options instead of params are passed correctly', async () => {
+  test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2', {
+      increase.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('clone', async () => {
+    const responsePromise = increase.digitalCardProfiles.clone(
+      'digital_card_profile_s3puplu90f04xhcwkiga',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 });

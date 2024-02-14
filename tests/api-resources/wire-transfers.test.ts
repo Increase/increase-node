@@ -42,7 +42,6 @@ describe('resource wireTransfers', () => {
       originator_name: 'x',
       require_approval: true,
       routing_number: '101050001',
-      unique_identifier: 'x',
     });
   });
 
@@ -98,8 +97,8 @@ describe('resource wireTransfers', () => {
           },
           cursor: 'string',
           external_account_id: 'string',
+          idempotency_key: 'x',
           limit: 1,
-          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -83,6 +83,13 @@ export interface AccountNumber {
   created_at: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * Properties related to how this Account Number handles inbound ACH transfers.
    */
   inbound_ach: AccountNumber.InboundACH;
@@ -117,11 +124,6 @@ export interface AccountNumber {
    * `account_number`.
    */
   type: 'account_number';
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace AccountNumber {
@@ -177,13 +179,6 @@ export interface AccountNumberCreateParams {
    * withdrawals.
    */
   inbound_checks?: AccountNumberCreateParams.InboundChecks;
-
-  /**
-   * A unique identifier you choose for the object. Reusing this identifier for
-   * another object will result in an error. You can query for the object associated
-   * with this identifier using the List endpoint.
-   */
-  unique_identifier?: string;
 }
 
 export namespace AccountNumberCreateParams {
@@ -272,6 +267,14 @@ export interface AccountNumberListParams extends PageParams {
   created_at?: AccountNumberListParams.CreatedAt;
 
   /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+
+  /**
    * The status to retrieve Account Numbers for.
    *
    * - `active` - The account number is active.
@@ -279,11 +282,6 @@ export interface AccountNumberListParams extends PageParams {
    * - `canceled` - The account number is permanently disabled.
    */
   status?: 'active' | 'disabled' | 'canceled';
-
-  /**
-   * Filter records to the one with the specified `unique_identifier`.
-   */
-  unique_identifier?: string;
 }
 
 export namespace AccountNumberListParams {

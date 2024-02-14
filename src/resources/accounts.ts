@@ -120,6 +120,13 @@ export interface Account {
   entity_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The identifier of an Entity that, while not owning the Account, is associated
    * with its activity.
    */
@@ -231,6 +238,14 @@ export interface AccountListParams extends PageParams {
    * Filter Accounts for those belonging to the specified Entity.
    */
   entity_id?: string;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 
   /**
    * Filter Accounts for those belonging to the specified Entity as informational.

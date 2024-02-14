@@ -86,7 +86,7 @@ export interface ACHTransfer {
   /**
    * Additional information that will be sent to the recipient.
    */
-  addendum: string | null;
+  addenda: ACHTransfer.Addenda | null;
 
   /**
    * The transfer amount in USD cents. A positive amount indicates a credit transfer
@@ -147,6 +147,16 @@ export interface ACHTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
+   * The type of entity that owns the account to which the ACH Transfer is being
+   * sent.
+   *
+   * - `business` - The External Account is owned by a business.
+   * - `individual` - The External Account is owned by an individual.
+   * - `unknown` - It's unknown what kind of entity owns the External Account.
+   */
+  destination_account_holder: 'business' | 'individual' | 'unknown';
+
+  /**
    * The transfer effective date in
    * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
    */
@@ -164,6 +174,13 @@ export interface ACHTransfer {
    * - `savings` - A savings account.
    */
   funding: 'checking' | 'savings';
+
+  /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
 
   /**
    * Your identifier for the transfer recipient.
@@ -265,11 +282,6 @@ export interface ACHTransfer {
    * `ach_transfer`.
    */
   type: 'ach_transfer';
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace ACHTransfer {
@@ -284,6 +296,86 @@ export namespace ACHTransfer {
      * transfer.
      */
     acknowledged_at: string;
+  }
+
+  /**
+   * Additional information that will be sent to the recipient.
+   */
+  export interface Addenda {
+    /**
+     * The type of the resource. We may add additional possible values for this enum
+     * over time; your application should be able to handle such additions gracefully.
+     *
+     * - `freeform` - ACH Transfer Freeform Addenda: details will be under the
+     *   `freeform` object.
+     * - `payment_order_remittance_advice` - ACH Transfer Payment Order Remittance
+     *   Advice Addenda: details will be under the `payment_order_remittance_advice`
+     *   object.
+     * - `other` - Unknown addenda type.
+     */
+    category: 'freeform' | 'payment_order_remittance_advice' | 'other';
+
+    /**
+     * An ACH Transfer Freeform Addenda object. This field will be present in the JSON
+     * response if and only if `category` is equal to `freeform`.
+     */
+    freeform: Addenda.Freeform | null;
+
+    /**
+     * An ACH Transfer Payment Order Remittance Advice Addenda object. This field will
+     * be present in the JSON response if and only if `category` is equal to
+     * `payment_order_remittance_advice`.
+     */
+    payment_order_remittance_advice: Addenda.PaymentOrderRemittanceAdvice | null;
+  }
+
+  export namespace Addenda {
+    /**
+     * An ACH Transfer Freeform Addenda object. This field will be present in the JSON
+     * response if and only if `category` is equal to `freeform`.
+     */
+    export interface Freeform {
+      /**
+       * Each entry represents an addendum sent with the transfer.
+       */
+      entries: Array<Freeform.Entry>;
+    }
+
+    export namespace Freeform {
+      export interface Entry {
+        /**
+         * The payment related information passed in the addendum.
+         */
+        payment_related_information: string;
+      }
+    }
+
+    /**
+     * An ACH Transfer Payment Order Remittance Advice Addenda object. This field will
+     * be present in the JSON response if and only if `category` is equal to
+     * `payment_order_remittance_advice`.
+     */
+    export interface PaymentOrderRemittanceAdvice {
+      /**
+       * ASC X12 RMR records for this specific transfer.
+       */
+      invoices: Array<PaymentOrderRemittanceAdvice.Invoice>;
+    }
+
+    export namespace PaymentOrderRemittanceAdvice {
+      export interface Invoice {
+        /**
+         * The invoice number for this reference, determined in advance with the receiver.
+         */
+        invoice_number: string;
+
+        /**
+         * The amount that was paid for this invoice in the minor unit of its currency. For
+         * dollars, for example, this is cents.
+         */
+        paid_amount: number;
+      }
+    }
   }
 
   /**
@@ -721,7 +813,7 @@ export interface ACHTransferCreateParams {
    * Additional information that will be sent to the recipient. This is included in
    * the transfer data sent to the receiving bank.
    */
-  addendum?: string;
+  addenda?: ACHTransferCreateParams.Addenda;
 
   /**
    * The description of the date of the transfer, usually in the format `YYMMDD`.
@@ -746,6 +838,16 @@ export interface ACHTransferCreateParams {
    * sent to the receiving bank.
    */
   company_name?: string;
+
+  /**
+   * The type of entity that owns the account to which the ACH Transfer is being
+   * sent.
+   *
+   * - `business` - The External Account is owned by a business.
+   * - `individual` - The External Account is owned by an individual.
+   * - `unknown` - It's unknown what kind of entity owns the External Account.
+   */
+  destination_account_holder?: 'business' | 'individual' | 'unknown';
 
   /**
    * The transfer effective date in
@@ -800,13 +902,85 @@ export interface ACHTransferCreateParams {
     | 'corporate_credit_or_debit'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
+}
 
+export namespace ACHTransferCreateParams {
   /**
-   * A unique identifier you choose for the object. Reusing this identifier for
-   * another object will result in an error. You can query for the object associated
-   * with this identifier using the List endpoint.
+   * Additional information that will be sent to the recipient. This is included in
+   * the transfer data sent to the receiving bank.
    */
-  unique_identifier?: string;
+  export interface Addenda {
+    /**
+     * The type of addenda to pass with the transfer.
+     *
+     * - `freeform` - Unstructured `payment_related_information` passed through with
+     *   the transfer.
+     * - `payment_order_remittance_advice` - Structured ASC X12 820 remittance advice
+     *   records. Please reach out to
+     *   [support@increase.com](mailto:support@increase.com) for more information.
+     */
+    category: 'freeform' | 'payment_order_remittance_advice';
+
+    /**
+     * Unstructured `payment_related_information` passed through with the transfer.
+     */
+    freeform?: Addenda.Freeform;
+
+    /**
+     * Structured ASC X12 820 remittance advice records. Please reach out to
+     * [support@increase.com](mailto:support@increase.com) for more information.
+     */
+    payment_order_remittance_advice?: Addenda.PaymentOrderRemittanceAdvice;
+  }
+
+  export namespace Addenda {
+    /**
+     * Unstructured `payment_related_information` passed through with the transfer.
+     */
+    export interface Freeform {
+      /**
+       * Each entry represents an addendum sent with the transfer. Please reach out to
+       * [support@increase.com](mailto:support@increase.com) to send more than one
+       * addendum.
+       */
+      entries: Array<Freeform.Entry>;
+    }
+
+    export namespace Freeform {
+      export interface Entry {
+        /**
+         * The payment related information passed in the addendum.
+         */
+        payment_related_information: string;
+      }
+    }
+
+    /**
+     * Structured ASC X12 820 remittance advice records. Please reach out to
+     * [support@increase.com](mailto:support@increase.com) for more information.
+     */
+    export interface PaymentOrderRemittanceAdvice {
+      /**
+       * ASC X12 RMR records for this specific transfer.
+       */
+      invoices: Array<PaymentOrderRemittanceAdvice.Invoice>;
+    }
+
+    export namespace PaymentOrderRemittanceAdvice {
+      export interface Invoice {
+        /**
+         * The invoice number for this reference, determined in advance with the receiver.
+         */
+        invoice_number: string;
+
+        /**
+         * The amount that was paid for this invoice in the minor unit of its currency. For
+         * dollars, for example, this is cents.
+         */
+        paid_amount: number;
+      }
+    }
+  }
 }
 
 export interface ACHTransferListParams extends PageParams {
@@ -823,9 +997,12 @@ export interface ACHTransferListParams extends PageParams {
   external_account_id?: string;
 
   /**
-   * Filter records to the one with the specified `unique_identifier`.
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
-  unique_identifier?: string;
+  idempotency_key?: string;
 }
 
 export namespace ACHTransferListParams {

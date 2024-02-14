@@ -64,6 +64,15 @@ export interface ExternalAccount {
   id: string;
 
   /**
+   * The type of entity that owns the External Account.
+   *
+   * - `business` - The External Account is owned by a business.
+   * - `individual` - The External Account is owned by an individual.
+   * - `unknown` - It's unknown what kind of entity owns the External Account.
+   */
+  account_holder: 'business' | 'individual' | 'unknown';
+
+  /**
    * The destination account number.
    */
   account_number: string;
@@ -87,6 +96,13 @@ export interface ExternalAccount {
    * - `other` - A different type of account.
    */
   funding: 'checking' | 'savings' | 'other';
+
+  /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
 
   /**
    * The American Bankers' Association (ABA) Routing Transit Number (RTN).
@@ -136,6 +152,15 @@ export interface ExternalAccountCreateParams {
   routing_number: string;
 
   /**
+   * The type of entity that owns the External Account.
+   *
+   * - `business` - The External Account is owned by a business.
+   * - `individual` - The External Account is owned by an individual.
+   * - `unknown` - It's unknown what kind of entity owns the External Account.
+   */
+  account_holder?: 'business' | 'individual' | 'unknown';
+
+  /**
    * The type of the destination account. Defaults to `checking`.
    *
    * - `checking` - A checking account.
@@ -146,6 +171,14 @@ export interface ExternalAccountCreateParams {
 }
 
 export interface ExternalAccountUpdateParams {
+  /**
+   * The type of entity that owns the External Account.
+   *
+   * - `business` - The External Account is owned by a business.
+   * - `individual` - The External Account is owned by an individual.
+   */
+  account_holder?: 'business' | 'individual';
+
   /**
    * The description you choose to give the external account.
    */
@@ -162,6 +195,14 @@ export interface ExternalAccountUpdateParams {
 }
 
 export interface ExternalAccountListParams extends PageParams {
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+
   /**
    * Filter External Accounts to those with the specified Routing Number.
    */

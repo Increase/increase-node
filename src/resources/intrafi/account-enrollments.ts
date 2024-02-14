@@ -83,6 +83,13 @@ export interface IntrafiAccountEnrollment {
   account_id: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The identifier of the account in IntraFi's system. This identifier will be
    * printed on any IntraFi statements or documents.
    */
@@ -127,6 +134,14 @@ export interface AccountEnrollmentListParams extends PageParams {
    * Filter IntraFi Account Enrollments to the one belonging to an account.
    */
   account_id?: string;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 
   status?: AccountEnrollmentListParams.Status;
 }

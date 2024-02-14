@@ -86,6 +86,13 @@ export interface WireDrawdownRequest {
   fulfillment_transaction_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The message the recipient will see as part of the drawdown request.
    */
   message_to_recipient: string;

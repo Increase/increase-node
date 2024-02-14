@@ -5,7 +5,6 @@ export { AccountStatementCreateParams, AccountStatements } from './account-state
 export { AccountTransfers } from './account-transfers';
 export { CardAuthorizationSimulation, CardAuthorizeParams, CardSettlementParams, Cards } from './cards';
 export { CardDisputeActionParams, CardDisputes } from './card-disputes';
-export { CardProfiles } from './card-profiles';
 export { CardRefundCreateParams, CardRefunds } from './card-refunds';
 export { CheckDeposits } from './check-deposits';
 export { CheckTransfers } from './check-transfers';
@@ -26,12 +25,14 @@ export {
   InboundWireDrawdownRequestCreateParams,
   InboundWireDrawdownRequests,
 } from './inbound-wire-drawdown-requests';
-export {
-  InterestPaymentSimulationResult,
-  InterestPaymentCreateParams,
-  InterestPayments,
-} from './interest-payments';
+export { InterestPaymentCreateParams, InterestPayments } from './interest-payments';
 export { PhysicalCardShipmentAdvanceParams, PhysicalCards } from './physical-cards';
 export { ProgramCreateParams, Programs } from './programs';
-export { Simulations } from './simulations';
+export {
+  SimulationCardAuthorizationExpirationsParams,
+  SimulationCardFuelConfirmationsParams,
+  SimulationCardIncrementsParams,
+  SimulationCardReversalsParams,
+  Simulations,
+} from './simulations';
 export { WireTransferCreateInboundParams, WireTransfers } from './wire-transfers';

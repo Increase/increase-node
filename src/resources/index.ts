@@ -86,13 +86,6 @@ export {
 } from './card-disputes';
 export { CardPayment, CardPaymentListParams, CardPaymentsPage, CardPayments } from './card-payments';
 export {
-  CardProfile,
-  CardProfileCreateParams,
-  CardProfileListParams,
-  CardProfilesPage,
-  CardProfiles,
-} from './card-profiles';
-export {
   CardPurchaseSupplement,
   CardPurchaseSupplementListParams,
   CardPurchaseSupplementsPage,
@@ -119,6 +112,14 @@ export {
   DeclinedTransactionsPage,
   DeclinedTransactions,
 } from './declined-transactions';
+export {
+  DigitalCardProfile,
+  DigitalCardProfileCreateParams,
+  DigitalCardProfileListParams,
+  DigitalCardProfileCloneParams,
+  DigitalCardProfilesPage,
+  DigitalCardProfiles,
+} from './digital-card-profiles';
 export {
   DigitalWalletToken,
   DigitalWalletTokenListParams,
@@ -196,6 +197,14 @@ export {
   PhysicalCardsPage,
   PhysicalCards,
 } from './physical-cards';
+export {
+  PhysicalCardProfile,
+  PhysicalCardProfileCreateParams,
+  PhysicalCardProfileListParams,
+  PhysicalCardProfileCloneParams,
+  PhysicalCardProfilesPage,
+  PhysicalCardProfiles,
+} from './physical-card-profiles';
 export { Program, ProgramListParams, ProgramsPage, Programs } from './programs';
 export {
   ProofOfAuthorizationRequest,
@@ -231,7 +240,13 @@ export {
   RoutingNumbersPage,
   RoutingNumbers,
 } from './routing-numbers';
-export { Simulations } from './simulations/simulations';
+export {
+  SimulationCardAuthorizationExpirationsParams,
+  SimulationCardFuelConfirmationsParams,
+  SimulationCardIncrementsParams,
+  SimulationCardReversalsParams,
+  Simulations,
+} from './simulations/simulations';
 export { Transaction, TransactionListParams, TransactionsPage, Transactions } from './transactions';
 export { Webhooks } from './webhooks';
 export {

@@ -79,6 +79,13 @@ export interface BookkeepingEntrySet {
   entries: Array<BookkeepingEntrySet.Entry>;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The transaction identifier, if any.
    */
   transaction_id: string | null;
@@ -144,6 +151,14 @@ export namespace BookkeepingEntrySetCreateParams {
 }
 
 export interface BookkeepingEntrySetListParams extends PageParams {
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+
   /**
    * Filter to the Bookkeeping Entry Set that maps to this Transaction.
    */
