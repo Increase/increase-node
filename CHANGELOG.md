@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.29.0 (2024-02-14)
+
+Full Changelog: [v0.28.0...v0.29.0](https://github.com/Increase/increase-node/compare/v0.28.0...v0.29.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** split card profile resource into digital and physical card profile resources ([#303](https://github.com/Increase/increase-node/issues/303))
+
+### Features
+
+* **api:** split card profile resource into digital and physical card profile resources ([#303](https://github.com/Increase/increase-node/issues/303)) ([e94fd3b](https://github.com/Increase/increase-node/commit/e94fd3bfe40cd1bc5a1ee683226ac031777c7ff7))
+
+
+### Chores
+
+* **ci:** uses Stainless GitHub App for releases ([#302](https://github.com/Increase/increase-node/issues/302)) ([ca42ccd](https://github.com/Increase/increase-node/commit/ca42ccd5ae8bc4a0e630b04767d3eec1f8f6805e))
+* **interal:** make link to api.md relative ([#297](https://github.com/Increase/increase-node/issues/297)) ([5e926c1](https://github.com/Increase/increase-node/commit/5e926c1dc21817c51b8a5ac396b8d0ed353ce479))
+* **internal:** enable building when git installed ([#299](https://github.com/Increase/increase-node/issues/299)) ([43c4bbe](https://github.com/Increase/increase-node/commit/43c4bbe41452a12779aee0054daf6efb12a7b2ce))
+* **internal:** re-order pagination import ([#298](https://github.com/Increase/increase-node/issues/298)) ([c15d905](https://github.com/Increase/increase-node/commit/c15d9057e460bab6ce51d6a95e669f199fc19f28))
+* **internal:** support pre-release versioning ([#295](https://github.com/Increase/increase-node/issues/295)) ([f5a596a](https://github.com/Increase/increase-node/commit/f5a596a3f412a4641e37cba9af421fc7a5db3056))
+* respect `application/vnd.api+json` content-type header ([#301](https://github.com/Increase/increase-node/issues/301)) ([c45a065](https://github.com/Increase/increase-node/commit/c45a065c5bf220dca8f70099c847aa32c0baf74f))
+
+
+### Documentation
+
+* add a CONTRIBUTING.md ([#300](https://github.com/Increase/increase-node/issues/300)) ([8a175ac](https://github.com/Increase/increase-node/commit/8a175ac27898272092f07b9890f08087cd04ab32))
+
 ## 0.28.0 (2024-01-26)
 
 Full Changelog: [v0.27.0...v0.28.0](https://github.com/increase/increase-node/compare/v0.27.0...v0.28.0)
