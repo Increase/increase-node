@@ -51,7 +51,6 @@ describe('resource checkTransfers', () => {
       },
       require_approval: true,
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
-      unique_identifier: 'x',
     });
   });
 
@@ -106,8 +105,8 @@ describe('resource checkTransfers', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
-          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

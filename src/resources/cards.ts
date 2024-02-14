@@ -109,6 +109,13 @@ export interface Card {
   expiration_year: number;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The last 4 digits of the Card's Primary Account Number.
    */
   last4: string;
@@ -296,11 +303,6 @@ export namespace CardCreateParams {
    */
   export interface DigitalWallet {
     /**
-     * The card profile assigned to this digital card.
-     */
-    card_profile_id?: string;
-
-    /**
      * The digital card profile assigned to this digital card.
      */
     digital_card_profile_id?: string;
@@ -397,6 +399,11 @@ export namespace CardUpdateParams {
     card_profile_id?: string;
 
     /**
+     * The digital card profile assigned to this digital card.
+     */
+    digital_card_profile_id?: string;
+
+    /**
      * An email address that can be used to verify the cardholder via one-time passcode
      * over email.
      */
@@ -417,6 +424,14 @@ export interface CardListParams extends PageParams {
   account_id?: string;
 
   created_at?: CardListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace CardListParams {

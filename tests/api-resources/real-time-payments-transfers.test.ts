@@ -38,7 +38,6 @@ describe('resource realTimePaymentsTransfers', () => {
       require_approval: true,
       ultimate_creditor_name: 'x',
       ultimate_debtor_name: 'x',
-      unique_identifier: 'x',
     });
   });
 
@@ -96,8 +95,8 @@ describe('resource realTimePaymentsTransfers', () => {
           },
           cursor: 'string',
           external_account_id: 'string',
+          idempotency_key: 'x',
           limit: 1,
-          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

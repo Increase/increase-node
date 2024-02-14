@@ -88,6 +88,18 @@ export interface PhysicalCard {
   created_at: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
+   * The Physical Card Profile used for this Physical Card.
+   */
+  physical_card_profile_id: string | null;
+
+  /**
    * The details used to ship this physical card.
    */
   shipment: PhysicalCard.Shipment;
@@ -242,11 +254,6 @@ export interface PhysicalCardCreateParams {
   card_id: string;
 
   /**
-   * The card profile to use for this physical card.
-   */
-  card_profile_id: string;
-
-  /**
    * Details about the cardholder, as it will appear on the physical card.
    */
   cardholder: PhysicalCardCreateParams.Cardholder;
@@ -363,6 +370,14 @@ export interface PhysicalCardListParams extends PageParams {
   card_id?: string;
 
   created_at?: PhysicalCardListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace PhysicalCardListParams {

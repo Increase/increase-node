@@ -43,6 +43,7 @@ describe('resource supplementalDocuments', () => {
     const response = await increase.entities.supplementalDocuments.list({
       entity_id: 'string',
       cursor: 'string',
+      idempotency_key: 'x',
       limit: 1,
     });
   });

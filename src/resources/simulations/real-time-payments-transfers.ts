@@ -737,6 +737,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          *   Increase.
          * - `no_account_number_found` - The account number on the check does not exist at
          *   Increase.
+         * - `refer_to_image` - The check is not readable. Please refer to the image.
+         * - `unable_to_process` - The check cannot be processed. This is rare: please
+         *   contact support.
          */
         reason:
           | 'ach_route_disabled'
@@ -750,7 +753,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'not_authorized'
           | 'amount_mismatch'
           | 'not_our_item'
-          | 'no_account_number_found';
+          | 'no_account_number_found'
+          | 'refer_to_image'
+          | 'unable_to_process';
       }
 
       /**
@@ -4468,6 +4473,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `bank_migration` - Bank migration
          * - `cashback` - Cashback
          * - `check_adjustment` - Check adjustment
+         * - `collection_payment` - Collection payment
          * - `collection_receivable` - Collection receivable
          * - `empyreal_adjustment` - Empyreal adjustment
          * - `error` - Error
@@ -4483,6 +4489,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'bank_migration'
           | 'cashback'
           | 'check_adjustment'
+          | 'collection_payment'
           | 'collection_receivable'
           | 'empyreal_adjustment'
           | 'error'

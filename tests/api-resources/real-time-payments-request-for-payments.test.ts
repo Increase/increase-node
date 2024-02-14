@@ -97,6 +97,7 @@ describe('resource realTimePaymentsRequestForPayments', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
         },
         { path: '/_stainless_unknown_path' },

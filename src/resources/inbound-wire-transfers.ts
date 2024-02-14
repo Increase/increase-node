@@ -178,6 +178,11 @@ export interface InboundWireTransferListParams extends PageParams {
    */
   account_id?: string;
 
+  /**
+   * Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
+   */
+  account_number_id?: string;
+
   created_at?: InboundWireTransferListParams.CreatedAt;
 
   /**

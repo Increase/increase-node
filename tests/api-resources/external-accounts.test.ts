@@ -29,6 +29,7 @@ describe('resource externalAccounts', () => {
       account_number: '987654321',
       description: 'Landlord',
       routing_number: '101050001',
+      account_holder: 'business',
       funding: 'checking',
     });
   });
@@ -86,7 +87,13 @@ describe('resource externalAccounts', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.externalAccounts.list(
-        { cursor: 'string', limit: 1, routing_number: 'xxxxxxxxx', status: { in: ['active', 'archived'] } },
+        {
+          cursor: 'string',
+          idempotency_key: 'x',
+          limit: 1,
+          routing_number: 'xxxxxxxxx',
+          status: { in: ['active', 'archived'] },
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

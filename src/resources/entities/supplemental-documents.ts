@@ -51,6 +51,13 @@ export interface SupplementalDocument {
   file_id: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `entity_supplemental_document`.
    */
@@ -69,6 +76,14 @@ export interface SupplementalDocumentListParams extends PageParams {
    * The identifier of the Entity to list supplemental documents for.
    */
   entity_id: string;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace SupplementalDocuments {

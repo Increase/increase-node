@@ -79,6 +79,7 @@ describe('resource files', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
           purpose: { in: ['check_image_front', 'check_image_back', 'mailed_check_image'] },
         },

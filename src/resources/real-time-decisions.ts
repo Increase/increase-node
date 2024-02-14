@@ -646,7 +646,13 @@ export namespace RealTimeDecisionActionParams {
       /**
        * The identifier of the Card Profile to assign to the Digital Wallet token.
        */
-      card_profile_id: string;
+      card_profile_id?: string;
+
+      /**
+       * The identifier of the Digital Card Profile to assign to the Digital Wallet
+       * token.
+       */
+      digital_card_profile_id?: string;
 
       /**
        * An email address that can be used to verify the cardholder via one-time

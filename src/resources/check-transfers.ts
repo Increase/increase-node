@@ -144,6 +144,13 @@ export interface CheckTransfer {
   fulfillment_method: 'physical_check' | 'third_party';
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * If the check has been mailed by Increase, this will contain details of the
    * shipment.
    */
@@ -219,11 +226,6 @@ export interface CheckTransfer {
    * `check_transfer`.
    */
   type: 'check_transfer';
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace CheckTransfer {
@@ -511,13 +513,6 @@ export interface CheckTransferCreateParams {
    * on the check.
    */
   source_account_number_id?: string;
-
-  /**
-   * A unique identifier you choose for the transfer. Reusing this identifier for
-   * another transfer will result in an error. You can query for the transfer
-   * associated with this identifier using the List endpoint.
-   */
-  unique_identifier?: string;
 }
 
 export namespace CheckTransferCreateParams {
@@ -638,9 +633,12 @@ export interface CheckTransferListParams extends PageParams {
   created_at?: CheckTransferListParams.CreatedAt;
 
   /**
-   * Filter records to the one with the specified `unique_identifier`.
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
-  unique_identifier?: string;
+  idempotency_key?: string;
 }
 
 export namespace CheckTransferListParams {

@@ -90,6 +90,13 @@ export interface Export {
   file_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The status of the Export.
    *
    * - `pending` - Increase is generating the export.

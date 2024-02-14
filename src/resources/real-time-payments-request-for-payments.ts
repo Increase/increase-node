@@ -116,6 +116,13 @@ export interface RealTimePaymentsRequestForPayment {
   fulfillment_transaction_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * If the request for payment is refused by the destination financial institution
    * or the receiving customer, this will contain supplemental details.
    */
@@ -412,6 +419,14 @@ export interface RealTimePaymentsRequestForPaymentListParams extends PageParams 
   account_id?: string;
 
   created_at?: RealTimePaymentsRequestForPaymentListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace RealTimePaymentsRequestForPaymentListParams {

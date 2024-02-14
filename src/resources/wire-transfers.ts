@@ -157,6 +157,13 @@ export interface WireTransfer {
   external_account_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The message that will show on the recipient's bank statement.
    */
   message_to_recipient: string | null;
@@ -241,11 +248,6 @@ export interface WireTransfer {
    * `wire_transfer`.
    */
   type: 'wire_transfer';
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace WireTransfer {
@@ -473,13 +475,6 @@ export interface WireTransferCreateParams {
    * destination account.
    */
   routing_number?: string;
-
-  /**
-   * A unique identifier you choose for the transfer. Reusing this identifier for
-   * another transfer will result in an error. You can query for the transfer
-   * associated with this identifier using the List endpoint.
-   */
-  unique_identifier?: string;
 }
 
 export interface WireTransferListParams extends PageParams {
@@ -496,9 +491,12 @@ export interface WireTransferListParams extends PageParams {
   external_account_id?: string;
 
   /**
-   * Filter records to the one with the specified `unique_identifier`.
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
-  unique_identifier?: string;
+  idempotency_key?: string;
 }
 
 export namespace WireTransferListParams {
