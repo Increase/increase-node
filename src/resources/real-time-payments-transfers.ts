@@ -132,6 +132,13 @@ export interface RealTimePaymentsTransfer {
   external_account_id: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The ID for the pending transaction representing the transfer. A pending
    * transaction is created when the transfer
    * [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
@@ -204,11 +211,6 @@ export interface RealTimePaymentsTransfer {
    * The name of the the party on whose behalf the debtor is instructing the payment.
    */
   ultimate_debtor_name: string | null;
-
-  /**
-   * The unique identifier you chose for this object.
-   */
-  unique_identifier: string | null;
 }
 
 export namespace RealTimePaymentsTransfer {
@@ -420,13 +422,6 @@ export interface RealTimePaymentsTransferCreateParams {
    * The name of the the party on whose behalf the debtor is instructing the payment.
    */
   ultimate_debtor_name?: string;
-
-  /**
-   * A unique identifier you choose for the transfer. Reusing this identifier for
-   * another transfer will result in an error. You can query for the transfer
-   * associated with this identifier using the List endpoint.
-   */
-  unique_identifier?: string;
 }
 
 export interface RealTimePaymentsTransferListParams extends PageParams {
@@ -444,9 +439,12 @@ export interface RealTimePaymentsTransferListParams extends PageParams {
   external_account_id?: string;
 
   /**
-   * Filter records to the one with the specified `unique_identifier`.
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
-  unique_identifier?: string;
+  idempotency_key?: string;
 }
 
 export namespace RealTimePaymentsTransferListParams {

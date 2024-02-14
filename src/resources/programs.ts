@@ -45,6 +45,11 @@ export interface Program {
   id: string;
 
   /**
+   * The Program billing account.
+   */
+  billing_account_id: string | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
    * was created.
    */

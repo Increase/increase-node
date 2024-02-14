@@ -76,6 +76,13 @@ export interface EventSubscription {
   created_at: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * If specified, this subscription will only receive webhooks for Events with the
    * specified `category`.
    *
@@ -537,7 +544,15 @@ export interface EventSubscriptionUpdateParams {
   status?: 'active' | 'disabled' | 'deleted';
 }
 
-export interface EventSubscriptionListParams extends PageParams {}
+export interface EventSubscriptionListParams extends PageParams {
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+}
 
 export namespace EventSubscriptions {
   export import EventSubscription = EventSubscriptionsAPI.EventSubscription;

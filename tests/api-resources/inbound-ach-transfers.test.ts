@@ -55,6 +55,7 @@ describe('resource inboundACHTransfers', () => {
       increase.inboundACHTransfers.list(
         {
           account_id: 'string',
+          account_number_id: 'string',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

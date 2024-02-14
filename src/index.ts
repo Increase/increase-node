@@ -161,7 +161,6 @@ export class Increase extends Core.APIClient {
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
   cards: API.Cards = new API.Cards(this);
   cardDisputes: API.CardDisputes = new API.CardDisputes(this);
-  cardProfiles: API.CardProfiles = new API.CardProfiles(this);
   cardPurchaseSupplements: API.CardPurchaseSupplements = new API.CardPurchaseSupplements(this);
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
   exports: API.Exports = new API.Exports(this);
@@ -200,6 +199,8 @@ export class Increase extends Core.APIClient {
   webhooks: API.Webhooks = new API.Webhooks(this);
   oauthTokens: API.OAuthTokens = new API.OAuthTokens(this);
   inboundWireTransfers: API.InboundWireTransfers = new API.InboundWireTransfers(this);
+  digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
+  physicalCardProfiles: API.PhysicalCardProfiles = new API.PhysicalCardProfiles(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -247,7 +248,7 @@ export class Increase extends Core.APIClient {
   static IdempotencyConflictError = Errors.IdempotencyConflictError;
   static InsufficientPermissionsError = Errors.InsufficientPermissionsError;
   static IdempotencyUnprocessableError = Errors.IdempotencyUnprocessableError;
-  static UniqueIdentifierAlreadyExistsError = Errors.UniqueIdentifierAlreadyExistsError;
+  static IdempotencyKeyAlreadyUsedError = Errors.IdempotencyKeyAlreadyUsedError;
 }
 
 export const {
@@ -276,7 +277,7 @@ export const {
   IdempotencyConflictError,
   InsufficientPermissionsError,
   IdempotencyUnprocessableError,
-  UniqueIdentifierAlreadyExistsError,
+  IdempotencyKeyAlreadyUsedError,
 } = Errors;
 
 export import toFile = Uploads.toFile;
@@ -352,12 +353,6 @@ export namespace Increase {
   export import CardDisputesPage = API.CardDisputesPage;
   export import CardDisputeCreateParams = API.CardDisputeCreateParams;
   export import CardDisputeListParams = API.CardDisputeListParams;
-
-  export import CardProfiles = API.CardProfiles;
-  export import CardProfile = API.CardProfile;
-  export import CardProfilesPage = API.CardProfilesPage;
-  export import CardProfileCreateParams = API.CardProfileCreateParams;
-  export import CardProfileListParams = API.CardProfileListParams;
 
   export import CardPurchaseSupplements = API.CardPurchaseSupplements;
   export import CardPurchaseSupplement = API.CardPurchaseSupplement;
@@ -506,6 +501,10 @@ export namespace Increase {
   export import AccountStatementListParams = API.AccountStatementListParams;
 
   export import Simulations = API.Simulations;
+  export import SimulationCardAuthorizationExpirationsParams = API.SimulationCardAuthorizationExpirationsParams;
+  export import SimulationCardFuelConfirmationsParams = API.SimulationCardFuelConfirmationsParams;
+  export import SimulationCardIncrementsParams = API.SimulationCardIncrementsParams;
+  export import SimulationCardReversalsParams = API.SimulationCardReversalsParams;
 
   export import PhysicalCards = API.PhysicalCards;
   export import PhysicalCard = API.PhysicalCard;
@@ -548,6 +547,20 @@ export namespace Increase {
   export import InboundWireTransfer = API.InboundWireTransfer;
   export import InboundWireTransfersPage = API.InboundWireTransfersPage;
   export import InboundWireTransferListParams = API.InboundWireTransferListParams;
+
+  export import DigitalCardProfiles = API.DigitalCardProfiles;
+  export import DigitalCardProfile = API.DigitalCardProfile;
+  export import DigitalCardProfilesPage = API.DigitalCardProfilesPage;
+  export import DigitalCardProfileCreateParams = API.DigitalCardProfileCreateParams;
+  export import DigitalCardProfileListParams = API.DigitalCardProfileListParams;
+  export import DigitalCardProfileCloneParams = API.DigitalCardProfileCloneParams;
+
+  export import PhysicalCardProfiles = API.PhysicalCardProfiles;
+  export import PhysicalCardProfile = API.PhysicalCardProfile;
+  export import PhysicalCardProfilesPage = API.PhysicalCardProfilesPage;
+  export import PhysicalCardProfileCreateParams = API.PhysicalCardProfileCreateParams;
+  export import PhysicalCardProfileListParams = API.PhysicalCardProfileListParams;
+  export import PhysicalCardProfileCloneParams = API.PhysicalCardProfileCloneParams;
 }
 
 export default Increase;

@@ -89,6 +89,7 @@ describe('resource accounts', () => {
           },
           cursor: 'string',
           entity_id: 'string',
+          idempotency_key: 'x',
           informational_entity_id: 'string',
           limit: 1,
           status: 'open',

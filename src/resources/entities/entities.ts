@@ -87,6 +87,13 @@ export interface Entity {
   description: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * Details of the joint entity. Will be present if `structure` is equal to `joint`.
    */
   joint: Entity.Joint | null;
@@ -526,6 +533,13 @@ export namespace Entity {
      * The File containing the document.
      */
     file_id: string;
+
+    /**
+     * The idempotency key you chose for this object. This value is unique across
+     * Increase and is used to ensure that a request is only processed once. Learn more
+     * about [idempotency](https://increase.com/documentation/idempotency-keys).
+     */
+    idempotency_key: string | null;
 
     /**
      * A constant representing the object's type. For this resource it will always be
@@ -2074,6 +2088,14 @@ export namespace EntityCreateParams {
 
 export interface EntityListParams extends PageParams {
   created_at?: EntityListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 
   status?: EntityListParams.Status;
 }

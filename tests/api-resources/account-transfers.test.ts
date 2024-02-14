@@ -32,7 +32,6 @@ describe('resource accountTransfers', () => {
       description: 'Creating liquidity',
       destination_account_id: 'account_uf16sut2ct5bevmq3eh',
       require_approval: true,
-      unique_identifier: 'x',
     });
   });
 
@@ -87,8 +86,8 @@ describe('resource accountTransfers', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
-          unique_identifier: 'x',
         },
         { path: '/_stainless_unknown_path' },
       ),

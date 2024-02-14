@@ -83,6 +83,13 @@ export interface IntrafiExclusion {
   fdic_certificate_number: string | null;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The status of the exclusion request.
    *
    * - `pending` - The exclusion is being added to the IntraFi network.
@@ -120,6 +127,14 @@ export interface ExclusionListParams extends PageParams {
    * Filter IntraFi Exclusions for those belonging to the specified Entity.
    */
   entity_id?: string;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace Exclusions {

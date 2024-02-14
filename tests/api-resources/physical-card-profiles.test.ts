@@ -8,16 +8,13 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource cardProfiles', () => {
+describe('resource physicalCardProfiles', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.cardProfiles.create({
+    const responsePromise = increase.physicalCardProfiles.create({
+      carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
+      contact_phone: '+16505046304',
       description: 'My Card Profile',
-      digital_wallets: {
-        issuer_name: 'MyBank',
-        card_description: 'MyBank Signature Card',
-        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
-      },
+      front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -29,24 +26,18 @@ describe('resource cardProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.cardProfiles.create({
+    const response = await increase.physicalCardProfiles.create({
+      carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
+      contact_phone: '+16505046304',
       description: 'My Card Profile',
-      digital_wallets: {
-        text_color: { red: 26, green: 43, blue: 59 },
-        issuer_name: 'MyBank',
-        card_description: 'MyBank Signature Card',
-        contact_website: 'https://example.com',
-        contact_email: 'user@example.com',
-        contact_phone: '+18885551212',
-        background_image_file_id: 'file_1ai913suu1zfn1pdetru',
-        app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
-      },
-      physical_cards: { contact_phone: 'x', front_image_file_id: 'string', carrier_image_file_id: 'string' },
+      front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
     });
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.cardProfiles.retrieve('card_profile_cox5y73lob2eqly18piy');
+    const responsePromise = increase.physicalCardProfiles.retrieve(
+      'physical_card_profile_m534d5rn9qyy9ufqxoec',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,14 +50,14 @@ describe('resource cardProfiles', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cardProfiles.retrieve('card_profile_cox5y73lob2eqly18piy', {
+      increase.physicalCardProfiles.retrieve('physical_card_profile_m534d5rn9qyy9ufqxoec', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.cardProfiles.list();
+    const responsePromise = increase.physicalCardProfiles.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,7 +69,7 @@ describe('resource cardProfiles', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.cardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.physicalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -86,12 +77,12 @@ describe('resource cardProfiles', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cardProfiles.list(
+      increase.physicalCardProfiles.list(
         {
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
-          physical_cards_status: { in: ['not_eligible', 'rejected', 'pending_creating'] },
-          status: { in: ['pending', 'rejected', 'active'] },
+          status: { in: ['pending_creating', 'pending_reviewing', 'rejected'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
@@ -99,7 +90,9 @@ describe('resource cardProfiles', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = increase.cardProfiles.archive('card_profile_cox5y73lob2eqly18piy');
+    const responsePromise = increase.physicalCardProfiles.archive(
+      'physical_card_profile_m534d5rn9qyy9ufqxoec',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -112,9 +105,23 @@ describe('resource cardProfiles', () => {
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cardProfiles.archive('card_profile_cox5y73lob2eqly18piy', {
+      increase.physicalCardProfiles.archive('physical_card_profile_m534d5rn9qyy9ufqxoec', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('clone', async () => {
+    const responsePromise = increase.physicalCardProfiles.clone(
+      'physical_card_profile_m534d5rn9qyy9ufqxoec',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 });

@@ -1,11 +1,13 @@
 // File generated from our OpenAPI spec by Stainless.
 
+import * as Core from 'increase/core';
 import { APIResource } from 'increase/resource';
+import * as SimulationsAPI from 'increase/resources/simulations/simulations';
+import * as CardPaymentsAPI from 'increase/resources/card-payments';
 import * as AccountStatementsAPI from 'increase/resources/simulations/account-statements';
 import * as AccountTransfersAPI from 'increase/resources/simulations/account-transfers';
 import * as ACHTransfersAPI from 'increase/resources/simulations/ach-transfers';
 import * as CardDisputesAPI from 'increase/resources/simulations/card-disputes';
-import * as CardProfilesAPI from 'increase/resources/simulations/card-profiles';
 import * as CardRefundsAPI from 'increase/resources/simulations/card-refunds';
 import * as CardsAPI from 'increase/resources/simulations/cards';
 import * as CheckDepositsAPI from 'increase/resources/simulations/check-deposits';
@@ -29,7 +31,6 @@ export class Simulations extends APIResource {
   );
   achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this._client);
   cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
-  cardProfiles: CardProfilesAPI.CardProfiles = new CardProfilesAPI.CardProfiles(this._client);
   cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
   checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
   documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
@@ -50,9 +51,112 @@ export class Simulations extends APIResource {
   realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
     new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
+
+  /**
+   * Simulates expiring a card authorization immediately.
+   */
+  cardAuthorizationExpirations(
+    body: SimulationCardAuthorizationExpirationsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CardPaymentsAPI.CardPayment> {
+    return this._client.post('/simulations/card_authorization_expirations', { body, ...options });
+  }
+
+  /**
+   * Simulates the fuel confirmation of an authorization by a card acquirer. This
+   * happens asynchronously right after a fuel pump transaction is completed. A fuel
+   * confirmation can only happen once per authorization.
+   */
+  cardFuelConfirmations(
+    body: SimulationCardFuelConfirmationsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CardPaymentsAPI.CardPayment> {
+    return this._client.post('/simulations/card_fuel_confirmations', { body, ...options });
+  }
+
+  /**
+   * Simulates the increment of an authorization by a card acquirer. An authorization
+   * can be incremented multiple times.
+   */
+  cardIncrements(
+    body: SimulationCardIncrementsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CardPaymentsAPI.CardPayment> {
+    return this._client.post('/simulations/card_increments', { body, ...options });
+  }
+
+  /**
+   * Simulates the reversal of an authorization by a card acquirer. An authorization
+   * can be partially reversed multiple times, up until the total authorized amount.
+   * Marks the pending transaction as complete if the authorization is fully
+   * reversed.
+   */
+  cardReversals(
+    body: SimulationCardReversalsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CardPaymentsAPI.CardPayment> {
+    return this._client.post('/simulations/card_reversals', { body, ...options });
+  }
+}
+
+export interface SimulationCardAuthorizationExpirationsParams {
+  /**
+   * The identifier of the Card Payment to expire.
+   */
+  card_payment_id: string;
+}
+
+export interface SimulationCardFuelConfirmationsParams {
+  /**
+   * The amount of the fuel_confirmation in minor units in the card authorization's
+   * currency.
+   */
+  amount: number;
+
+  /**
+   * The identifier of the Card Payment to create a fuel_confirmation on.
+   */
+  card_payment_id: string;
+}
+
+export interface SimulationCardIncrementsParams {
+  /**
+   * The amount of the increment in minor units in the card authorization's currency.
+   */
+  amount: number;
+
+  /**
+   * The identifier of the Card Payment to create a increment on.
+   */
+  card_payment_id: string;
+
+  /**
+   * The identifier of the Event Subscription to use. If provided, will override the
+   * default real time event subscription. Because you can only create one real time
+   * decision event subscription, you can use this field to route events to any
+   * specified event subscription for testing purposes.
+   */
+  event_subscription_id?: string;
+}
+
+export interface SimulationCardReversalsParams {
+  /**
+   * The identifier of the Card Payment to create a reversal on.
+   */
+  card_payment_id: string;
+
+  /**
+   * The amount of the reversal in minor units in the card authorization's currency.
+   * This defaults to the authorization amount.
+   */
+  amount?: number;
 }
 
 export namespace Simulations {
+  export import SimulationCardAuthorizationExpirationsParams = SimulationsAPI.SimulationCardAuthorizationExpirationsParams;
+  export import SimulationCardFuelConfirmationsParams = SimulationsAPI.SimulationCardFuelConfirmationsParams;
+  export import SimulationCardIncrementsParams = SimulationsAPI.SimulationCardIncrementsParams;
+  export import SimulationCardReversalsParams = SimulationsAPI.SimulationCardReversalsParams;
   export import AccountTransfers = AccountTransfersAPI.AccountTransfers;
   export import AccountStatements = AccountStatementsAPI.AccountStatements;
   export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
@@ -61,7 +165,6 @@ export namespace Simulations {
   export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
   export import CardDisputes = CardDisputesAPI.CardDisputes;
   export import CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
-  export import CardProfiles = CardProfilesAPI.CardProfiles;
   export import CardRefunds = CardRefundsAPI.CardRefunds;
   export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
   export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
@@ -78,7 +181,6 @@ export namespace Simulations {
   export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
   export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
   export import InterestPayments = InterestPaymentsAPI.InterestPayments;
-  export import InterestPaymentSimulationResult = InterestPaymentsAPI.InterestPaymentSimulationResult;
   export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
   export import WireTransfers = WireTransfersAPI.WireTransfers;
   export import WireTransferCreateInboundParams = WireTransfersAPI.WireTransferCreateInboundParams;

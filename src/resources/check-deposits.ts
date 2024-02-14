@@ -115,6 +115,13 @@ export interface CheckDeposit {
   front_image_file_id: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * The status of the Check Deposit.
    *
    * - `pending` - The Check Deposit is pending review.
@@ -225,8 +232,9 @@ export namespace CheckDeposit {
      * - `not_eligible_for_mobile_deposit` - This check was not eligible for mobile
      *   deposit.
      * - `missing_required_data_elements` - This check is missing at least one required
-     *   field
+     *   field.
      * - `suspected_fraud` - This check is suspected to be fraudulent.
+     * - `deposit_window_expired` - This check's deposit window has expired.
      * - `unknown` - The check was rejected for an unknown reason.
      */
     reason:
@@ -238,6 +246,7 @@ export namespace CheckDeposit {
       | 'not_eligible_for_mobile_deposit'
       | 'missing_required_data_elements'
       | 'suspected_fraud'
+      | 'deposit_window_expired'
       | 'unknown';
 
     /**
@@ -400,6 +409,14 @@ export interface CheckDepositListParams extends PageParams {
   account_id?: string;
 
   created_at?: CheckDepositListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace CheckDepositListParams {

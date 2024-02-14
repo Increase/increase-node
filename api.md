@@ -114,19 +114,6 @@ Methods:
 - <code title="get /card_disputes/{card_dispute_id}">client.cardDisputes.<a href="./src/resources/card-disputes.ts">retrieve</a>(cardDisputeId) -> CardDispute</code>
 - <code title="get /card_disputes">client.cardDisputes.<a href="./src/resources/card-disputes.ts">list</a>({ ...params }) -> CardDisputesPage</code>
 
-# CardProfiles
-
-Types:
-
-- <code><a href="./src/resources/card-profiles.ts">CardProfile</a></code>
-
-Methods:
-
-- <code title="post /card_profiles">client.cardProfiles.<a href="./src/resources/card-profiles.ts">create</a>({ ...params }) -> CardProfile</code>
-- <code title="get /card_profiles/{card_profile_id}">client.cardProfiles.<a href="./src/resources/card-profiles.ts">retrieve</a>(cardProfileId) -> CardProfile</code>
-- <code title="get /card_profiles">client.cardProfiles.<a href="./src/resources/card-profiles.ts">list</a>({ ...params }) -> CardProfilesPage</code>
-- <code title="post /card_profiles/{card_profile_id}/archive">client.cardProfiles.<a href="./src/resources/card-profiles.ts">archive</a>(cardProfileId) -> CardProfile</code>
-
 # CardPurchaseSupplements
 
 Types:
@@ -462,6 +449,13 @@ Methods:
 
 # Simulations
 
+Methods:
+
+- <code title="post /simulations/card_authorization_expirations">client.simulations.<a href="./src/resources/simulations/simulations.ts">cardAuthorizationExpirations</a>({ ...params }) -> CardPayment</code>
+- <code title="post /simulations/card_fuel_confirmations">client.simulations.<a href="./src/resources/simulations/simulations.ts">cardFuelConfirmations</a>({ ...params }) -> CardPayment</code>
+- <code title="post /simulations/card_increments">client.simulations.<a href="./src/resources/simulations/simulations.ts">cardIncrements</a>({ ...params }) -> CardPayment</code>
+- <code title="post /simulations/card_reversals">client.simulations.<a href="./src/resources/simulations/simulations.ts">cardReversals</a>({ ...params }) -> CardPayment</code>
+
 ## AccountTransfers
 
 Methods:
@@ -487,12 +481,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./src/resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDispute</code>
-
-## CardProfiles
-
-Methods:
-
-- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.cardProfiles.<a href="./src/resources/simulations/card-profiles.ts">approve</a>(cardProfileId) -> CardProfile</code>
 
 ## CardRefunds
 
@@ -555,13 +543,9 @@ Methods:
 
 ## InterestPayments
 
-Types:
-
-- <code><a href="./src/resources/simulations/interest-payments.ts">InterestPaymentSimulationResult</a></code>
-
 Methods:
 
-- <code title="post /simulations/interest_payment">client.simulations.interestPayments.<a href="./src/resources/simulations/interest-payments.ts">create</a>({ ...params }) -> InterestPaymentSimulationResult</code>
+- <code title="post /simulations/interest_payment">client.simulations.interestPayments.<a href="./src/resources/simulations/interest-payments.ts">create</a>({ ...params }) -> Transaction</code>
 
 ## WireTransfers
 
@@ -721,3 +705,31 @@ Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">retrieve</a>(inboundWireTransferId) -> InboundWireTransfer</code>
 - <code title="get /inbound_wire_transfers">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">list</a>({ ...params }) -> InboundWireTransfersPage</code>
+
+# DigitalCardProfiles
+
+Types:
+
+- <code><a href="./src/resources/digital-card-profiles.ts">DigitalCardProfile</a></code>
+
+Methods:
+
+- <code title="post /digital_card_profiles">client.digitalCardProfiles.<a href="./src/resources/digital-card-profiles.ts">create</a>({ ...params }) -> DigitalCardProfile</code>
+- <code title="get /digital_card_profiles/{digital_card_profile_id}">client.digitalCardProfiles.<a href="./src/resources/digital-card-profiles.ts">retrieve</a>(digitalCardProfileId) -> DigitalCardProfile</code>
+- <code title="get /digital_card_profiles">client.digitalCardProfiles.<a href="./src/resources/digital-card-profiles.ts">list</a>({ ...params }) -> DigitalCardProfilesPage</code>
+- <code title="post /digital_card_profiles/{digital_card_profile_id}/archive">client.digitalCardProfiles.<a href="./src/resources/digital-card-profiles.ts">archive</a>(digitalCardProfileId) -> DigitalCardProfile</code>
+- <code title="post /digital_card_profiles/{digital_card_profile_id}/clone">client.digitalCardProfiles.<a href="./src/resources/digital-card-profiles.ts">clone</a>(digitalCardProfileId, { ...params }) -> DigitalCardProfile</code>
+
+# PhysicalCardProfiles
+
+Types:
+
+- <code><a href="./src/resources/physical-card-profiles.ts">PhysicalCardProfile</a></code>
+
+Methods:
+
+- <code title="post /physical_card_profiles">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">create</a>({ ...params }) -> PhysicalCardProfile</code>
+- <code title="get /physical_card_profiles/{physical_card_profile_id}">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">retrieve</a>(physicalCardProfileId) -> PhysicalCardProfile</code>
+- <code title="get /physical_card_profiles">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">list</a>({ ...params }) -> PhysicalCardProfilesPage</code>
+- <code title="post /physical_card_profiles/{physical_card_profile_id}/archive">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">archive</a>(physicalCardProfileId) -> PhysicalCardProfile</code>
+- <code title="post /physical_card_profiles/{physical_card_profile_id}/clone">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">clone</a>(physicalCardProfileId, { ...params }) -> PhysicalCardProfile</code>

@@ -77,6 +77,7 @@ describe('resource accountEnrollments', () => {
         {
           account_id: 'string',
           cursor: 'string',
+          idempotency_key: 'x',
           limit: 1,
           status: { in: ['pending_enrolling', 'enrolled', 'pending_unenrolling'] },
         },
