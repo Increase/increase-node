@@ -220,6 +220,12 @@ export interface AccountNumberUpdateParams {
   inbound_ach?: AccountNumberUpdateParams.InboundACH;
 
   /**
+   * Options related to how this Account Number should handle inbound check
+   * withdrawals.
+   */
+  inbound_checks?: AccountNumberUpdateParams.InboundChecks;
+
+  /**
    * The name you choose for the Account Number.
    */
   name?: string;
@@ -247,6 +253,22 @@ export namespace AccountNumberUpdateParams {
      * - `blocked` - ACH Debits are blocked.
      */
     debit_status?: 'allowed' | 'blocked';
+  }
+
+  /**
+   * Options related to how this Account Number should handle inbound check
+   * withdrawals.
+   */
+  export interface InboundChecks {
+    /**
+     * How Increase should process checks with this account number printed on them.
+     *
+     * - `allowed` - Checks with this Account Number will be processed even if they are
+     *   not associated with a Check Transfer.
+     * - `check_transfers_only` - Checks with this Account Number will be processed
+     *   only if they can be matched to an existing Check Transfer.
+     */
+    status: 'allowed' | 'check_transfers_only';
   }
 }
 
