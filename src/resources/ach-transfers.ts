@@ -306,33 +306,30 @@ export namespace ACHTransfer {
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
-     * - `freeform` - ACH Transfer Freeform Addenda: details will be under the
-     *   `freeform` object.
-     * - `payment_order_remittance_advice` - ACH Transfer Payment Order Remittance
-     *   Advice Addenda: details will be under the `payment_order_remittance_advice`
-     *   object.
+     * - `freeform` - Unstructured `payment_related_information` passed through with
+     *   the transfer.
+     * - `payment_order_remittance_advice` - Structured ASC X12 820 remittance advice
+     *   records. Please reach out to
+     *   [support@increase.com](mailto:support@increase.com) for more information.
      * - `other` - Unknown addenda type.
      */
     category: 'freeform' | 'payment_order_remittance_advice' | 'other';
 
     /**
-     * An ACH Transfer Freeform Addenda object. This field will be present in the JSON
-     * response if and only if `category` is equal to `freeform`.
+     * Unstructured `payment_related_information` passed through with the transfer.
      */
     freeform: Addenda.Freeform | null;
 
     /**
-     * An ACH Transfer Payment Order Remittance Advice Addenda object. This field will
-     * be present in the JSON response if and only if `category` is equal to
-     * `payment_order_remittance_advice`.
+     * Structured ASC X12 820 remittance advice records. Please reach out to
+     * [support@increase.com](mailto:support@increase.com) for more information.
      */
     payment_order_remittance_advice: Addenda.PaymentOrderRemittanceAdvice | null;
   }
 
   export namespace Addenda {
     /**
-     * An ACH Transfer Freeform Addenda object. This field will be present in the JSON
-     * response if and only if `category` is equal to `freeform`.
+     * Unstructured `payment_related_information` passed through with the transfer.
      */
     export interface Freeform {
       /**
@@ -351,9 +348,8 @@ export namespace ACHTransfer {
     }
 
     /**
-     * An ACH Transfer Payment Order Remittance Advice Addenda object. This field will
-     * be present in the JSON response if and only if `category` is equal to
-     * `payment_order_remittance_advice`.
+     * Structured ASC X12 820 remittance advice records. Please reach out to
+     * [support@increase.com](mailto:support@increase.com) for more information.
      */
     export interface PaymentOrderRemittanceAdvice {
       /**

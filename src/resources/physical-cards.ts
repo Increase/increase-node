@@ -264,7 +264,8 @@ export interface PhysicalCardCreateParams {
   shipment: PhysicalCardCreateParams.Shipment;
 
   /**
-   * The physical card profile to use for this physical card.
+   * The physical card profile to use for this physical card. The latest default
+   * physical card profile will be used if not provided.
    */
   physical_card_profile_id?: string;
 }
