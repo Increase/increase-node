@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.30.0 (2024-02-19)
+
+Full Changelog: [v0.29.0...v0.30.0](https://github.com/Increase/increase-node/compare/v0.29.0...v0.30.0)
+
+### Features
+
+* **api:** inbound checks ([#307](https://github.com/Increase/increase-node/issues/307)) ([554cbdd](https://github.com/Increase/increase-node/commit/554cbdd4e94ff7bce42156d0af5782e3415e7262))
+
+
+### Chores
+
+* **internal:** refactor release environment script ([#304](https://github.com/Increase/increase-node/issues/304)) ([b144603](https://github.com/Increase/increase-node/commit/b1446035d4f753c679908239a359a99270d7ce96))
+
 ## 0.29.0 (2024-02-14)
 
 Full Changelog: [v0.28.0...v0.29.0](https://github.com/Increase/increase-node/compare/v0.28.0...v0.29.0)
