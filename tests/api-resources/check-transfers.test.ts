@@ -13,6 +13,7 @@ describe('resource checkTransfers', () => {
     const responsePromise = increase.checkTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,6 +28,7 @@ describe('resource checkTransfers', () => {
     const response = await increase.checkTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       fulfillment_method: 'physical_check',
       physical_check: {
         memo: 'Check payment',
@@ -50,7 +52,6 @@ describe('resource checkTransfers', () => {
         },
       },
       require_approval: true,
-      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
     });
   });
 
