@@ -88,20 +88,12 @@ export class APIError extends IncreaseError {
       return new ObjectNotFoundError(status, error, message, headers);
     }
 
-    if (type === 'idempotency_conflict_error') {
-      return new IdempotencyConflictError(status, error, message, headers);
-    }
-
     if (type === 'idempotency_key_already_used_error') {
       return new IdempotencyKeyAlreadyUsedError(status, error, message, headers);
     }
 
     if (type === 'invalid_operation_error') {
       return new InvalidOperationError(status, error, message, headers);
-    }
-
-    if (type === 'idempotency_unprocessable_error') {
-      return new IdempotencyUnprocessableError(status, error, message, headers);
     }
 
     if (type === 'rate_limited_error') {
@@ -411,31 +403,6 @@ export class ObjectNotFoundError extends NotFoundError {
   }
 }
 
-export class IdempotencyConflictError extends ConflictError {
-  detail: string | null;
-
-  override status: 409;
-
-  title: string;
-
-  type: 'idempotency_conflict_error';
-
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
-    const data = error as Record<string, any>;
-    super(status, error, data?.['title'] || message, headers);
-
-    this.detail = data?.['detail'];
-    this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
-  }
-}
-
 export class IdempotencyKeyAlreadyUsedError extends ConflictError {
   detail: string | null;
 
@@ -472,31 +439,6 @@ export class InvalidOperationError extends ConflictError {
   title: string;
 
   type: 'invalid_operation_error';
-
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
-    const data = error as Record<string, any>;
-    super(status, error, data?.['title'] || message, headers);
-
-    this.detail = data?.['detail'];
-    this.status = data?.['status'];
-    this.title = data?.['title'];
-    this.type = data?.['type'];
-  }
-}
-
-export class IdempotencyUnprocessableError extends UnprocessableEntityError {
-  detail: string | null;
-
-  override status: 422;
-
-  title: string;
-
-  type: 'idempotency_unprocessable_error';
 
   constructor(
     status: number | undefined,

@@ -226,11 +226,13 @@ export interface ACHTransfer {
    * The Standard Entry Class (SEC) code to use for the transfer.
    *
    * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+   * - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
    * - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
    * - `internet_initiated` - Internet Initiated (WEB).
    */
   standard_entry_class_code:
     | 'corporate_credit_or_debit'
+    | 'corporate_trade_exchange'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
 
@@ -891,11 +893,13 @@ export interface ACHTransferCreateParams {
    * The Standard Entry Class (SEC) code to use for the transfer.
    *
    * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+   * - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
    * - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
    * - `internet_initiated` - Internet Initiated (WEB).
    */
   standard_entry_class_code?:
     | 'corporate_credit_or_debit'
+    | 'corporate_trade_exchange'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
 }
