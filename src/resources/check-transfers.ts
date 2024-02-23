@@ -487,6 +487,12 @@ export interface CheckTransferCreateParams {
   amount: number;
 
   /**
+   * The identifier of the Account Number from which to send the transfer and print
+   * on the check.
+   */
+  source_account_number_id: string;
+
+  /**
    * Whether Increase will print and mail the check or if you will do it yourself.
    *
    * - `physical_check` - Increase will print and mail a physical check.
@@ -507,12 +513,6 @@ export interface CheckTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
-
-  /**
-   * The identifier of the Account Number from which to send the transfer and print
-   * on the check.
-   */
-  source_account_number_id?: string;
 }
 
 export namespace CheckTransferCreateParams {

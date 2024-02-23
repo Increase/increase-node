@@ -230,6 +230,32 @@ export interface PhysicalCardProfileCloneParams {
    * The identifier of the File containing the physical card's front image.
    */
   front_image_file_id?: string;
+
+  /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  front_text?: PhysicalCardProfileCloneParams.FrontText;
+}
+
+export namespace PhysicalCardProfileCloneParams {
+  /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  export interface FrontText {
+    /**
+     * The first line of text on the front of the card.
+     */
+    line1: string;
+
+    /**
+     * The second line of text on the front of the card. Providing a second line moves
+     * the first line slightly higher and prints the second line in the spot where the
+     * first line would have otherwise been printed.
+     */
+    line2?: string;
+  }
 }
 
 export namespace PhysicalCardProfiles {

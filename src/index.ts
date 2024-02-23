@@ -245,9 +245,7 @@ export class Increase extends Core.APIClient {
   static InvalidParametersError = Errors.InvalidParametersError;
   static UnprocessableEntityError = Errors.UnprocessableEntityError;
   static EnvironmentMismatchError = Errors.EnvironmentMismatchError;
-  static IdempotencyConflictError = Errors.IdempotencyConflictError;
   static InsufficientPermissionsError = Errors.InsufficientPermissionsError;
-  static IdempotencyUnprocessableError = Errors.IdempotencyUnprocessableError;
   static IdempotencyKeyAlreadyUsedError = Errors.IdempotencyKeyAlreadyUsedError;
 }
 
@@ -274,9 +272,7 @@ export const {
   InvalidParametersError,
   UnprocessableEntityError,
   EnvironmentMismatchError,
-  IdempotencyConflictError,
   InsufficientPermissionsError,
-  IdempotencyUnprocessableError,
   IdempotencyKeyAlreadyUsedError,
 } = Errors;
 
