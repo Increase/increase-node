@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.31.0 (2024-02-23)
+
+Full Changelog: [v0.30.0...v0.31.0](https://github.com/Increase/increase-node/compare/v0.30.0...v0.31.0)
+
+### Features
+
+* **api:** physical card clone update ([#310](https://github.com/Increase/increase-node/issues/310)) ([928f605](https://github.com/Increase/increase-node/commit/928f605598b6dcf52cf1510ba7723c2dce85344c))
+
+
+### Chores
+
+* **internal:** update deps ([#308](https://github.com/Increase/increase-node/issues/308)) ([753ea77](https://github.com/Increase/increase-node/commit/753ea777f1e72af18ba271e9cd5893521ee9f043))
+
 ## 0.30.0 (2024-02-19)
 
 Full Changelog: [v0.29.0...v0.30.0](https://github.com/Increase/increase-node/compare/v0.29.0...v0.30.0)
