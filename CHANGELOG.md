@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.32.0 (2024-02-26)
+
+Full Changelog: [v0.31.0...v0.32.0](https://github.com/Increase/increase-node/compare/v0.31.0...v0.32.0)
+
+### Features
+
+* **api:** add unusual_activity_report_attachment enum member ([#311](https://github.com/Increase/increase-node/issues/311)) ([c416e7e](https://github.com/Increase/increase-node/commit/c416e7e6cad90c8ba3e994e6a238aa665849e281))
+
 ## 0.31.0 (2024-02-23)
 
 Full Changelog: [v0.30.0...v0.31.0](https://github.com/Increase/increase-node/compare/v0.30.0...v0.31.0)
