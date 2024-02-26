@@ -123,6 +123,8 @@ export interface File {
    * - `entity_supplemental_document` - A supplemental document associated an an
    *   Entity.
    * - `export` - The results of an Export you requested via the dashboard or API.
+   * - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+   *   Report.
    */
   purpose:
     | 'check_image_front'
@@ -141,7 +143,8 @@ export interface File {
     | 'physical_card_carrier'
     | 'document_request'
     | 'entity_supplemental_document'
-    | 'export';
+    | 'export'
+    | 'unusual_activity_report_attachment';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -181,6 +184,8 @@ export interface FileCreateParams {
    * - `document_request` - A document requested by Increase.
    * - `entity_supplemental_document` - A supplemental document associated an an
    *   Entity.
+   * - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+   *   Report.
    */
   purpose:
     | 'check_image_front'
@@ -195,7 +200,8 @@ export interface FileCreateParams {
     | 'physical_card_front'
     | 'physical_card_carrier'
     | 'document_request'
-    | 'entity_supplemental_document';
+    | 'entity_supplemental_document'
+    | 'unusual_activity_report_attachment';
 
   /**
    * The description you choose to give the File.
@@ -267,6 +273,7 @@ export namespace FileListParams {
       | 'document_request'
       | 'entity_supplemental_document'
       | 'export'
+      | 'unusual_activity_report_attachment'
     >;
   }
 }
