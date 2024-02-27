@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.33.0 (2024-02-27)
+
+Full Changelog: [v0.32.0...v0.33.0](https://github.com/Increase/increase-node/compare/v0.32.0...v0.33.0)
+
+### Features
+
+* **api:** add `industry_code` property to methods ([#313](https://github.com/Increase/increase-node/issues/313)) ([78fcc3e](https://github.com/Increase/increase-node/commit/78fcc3ee19abc5cefc1b25b022368d28f4f38cb1))
+
 ## 0.32.0 (2024-02-26)
 
 Full Changelog: [v0.31.0...v0.32.0](https://github.com/Increase/increase-node/compare/v0.31.0...v0.32.0)
