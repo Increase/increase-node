@@ -168,6 +168,12 @@ export namespace Entity {
     incorporation_state: string | null;
 
     /**
+     * The numeric North American Industry Classification System (NAICS) code submitted
+     * for the corporation.
+     */
+    industry_code: string | null;
+
+    /**
      * The legal name of the corporation.
      */
     name: string;
@@ -912,6 +918,14 @@ export namespace EntityCreateParams {
      * corporation's state of incorporation.
      */
     incorporation_state?: string;
+
+    /**
+     * The North American Industry Classification System (NAICS) code for the
+     * corporation's primary line of business. This is a number, like `5132` for
+     * `Software Publishers`. A full list of classification codes is available at
+     * https://www.naics.com.
+     */
+    industry_code?: string;
 
     /**
      * The website of the corporation.

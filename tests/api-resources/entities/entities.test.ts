@@ -28,6 +28,7 @@ describe('resource entities', () => {
         website: 'https://example.com',
         tax_identifier: '602214076',
         incorporation_state: 'NY',
+        industry_code: 'x',
         address: { line1: '33 Liberty Street', line2: 'x', city: 'New York', state: 'NY', zip: '10045' },
         beneficial_owners: [
           {
