@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.34.0 (2024-02-29)
+
+Full Changelog: [v0.33.0...v0.34.0](https://github.com/Increase/increase-node/compare/v0.33.0...v0.34.0)
+
+### Features
+
+* **api:** add post /entities/{entity_id}/industry_code endpoint ([#317](https://github.com/Increase/increase-node/issues/317)) ([20404be](https://github.com/Increase/increase-node/commit/20404be4b66526097dab3be6cba9a6eafe6c96d1))
+
+
+### Documentation
+
+* **contributing:** improve wording ([#315](https://github.com/Increase/increase-node/issues/315)) ([e1a6af8](https://github.com/Increase/increase-node/commit/e1a6af86738be4d19c6f64fd9cd58d680db6d817))
+* **readme:** fix typo in custom fetch implementation ([#318](https://github.com/Increase/increase-node/issues/318)) ([90aa82e](https://github.com/Increase/increase-node/commit/90aa82e757cbaffbffa348abe823aa8ba7068c8d))
+
 ## 0.33.0 (2024-02-27)
 
 Full Changelog: [v0.32.0...v0.33.0](https://github.com/Increase/increase-node/compare/v0.32.0...v0.33.0)
