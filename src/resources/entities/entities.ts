@@ -5,6 +5,7 @@ import { APIResource } from 'increase/resource';
 import { isRequestOptions } from 'increase/core';
 import * as EntitiesAPI from 'increase/resources/entities/entities';
 import * as BeneficialOwnersAPI from 'increase/resources/entities/beneficial-owners';
+import * as IndustryCodeAPI from 'increase/resources/entities/industry-code';
 import * as SupplementalDocumentsAPI from 'increase/resources/entities/supplemental-documents';
 import { Page, type PageParams } from 'increase/pagination';
 
@@ -14,6 +15,7 @@ export class Entities extends APIResource {
   );
   supplementalDocuments: SupplementalDocumentsAPI.SupplementalDocuments =
     new SupplementalDocumentsAPI.SupplementalDocuments(this._client);
+  industryCode: IndustryCodeAPI.IndustryCode = new IndustryCodeAPI.IndustryCode(this._client);
 
   /**
    * Create an Entity
@@ -2208,4 +2210,6 @@ export namespace Entities {
   export import SupplementalDocumentsPage = SupplementalDocumentsAPI.SupplementalDocumentsPage;
   export import SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
   export import SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
+  export import IndustryCode = IndustryCodeAPI.IndustryCode;
+  export import IndustryCodeCreateParams = IndustryCodeAPI.IndustryCodeCreateParams;
 }

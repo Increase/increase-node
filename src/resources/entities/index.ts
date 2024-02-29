@@ -14,6 +14,7 @@ export {
   EntitiesPage,
   Entities,
 } from './entities';
+export { IndustryCodeCreateParams, IndustryCode } from './industry-code';
 export {
   SupplementalDocument,
   SupplementalDocumentCreateParams,
