@@ -320,6 +320,12 @@ Methods:
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">create</a>(entityId, { ...params }) -> Entity</code>
 - <code title="get /entity_supplemental_documents">client.entities.supplementalDocuments.<a href="./src/resources/entities/supplemental-documents.ts">list</a>({ ...params }) -> SupplementalDocumentsPage</code>
 
+## IndustryCode
+
+Methods:
+
+- <code title="post /entities/{entity_id}/industry_code">client.entities.industryCode.<a href="./src/resources/entities/industry-code.ts">create</a>(entityId, { ...params }) -> Entity</code>
+
 # InboundACHTransfers
 
 Types:
