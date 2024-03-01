@@ -188,6 +188,17 @@ export namespace CardPayment {
       id: string;
 
       /**
+       * Whether this authorization was approved by Increase, the card network through
+       * stand-in processing, or the user through a real-time decision.
+       *
+       * - `user` - This object was actioned by the user through a real-time decision.
+       * - `increase` - This object was actioned by Increase without user intervention.
+       * - `network` - This object was actioned by the network, through stand-in
+       *   processing.
+       */
+      actioner: 'user' | 'increase' | 'network';
+
+      /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
        * for example, this is cents.
        */
@@ -592,6 +603,17 @@ export namespace CardPayment {
        * The Card Decline identifier.
        */
       id: string;
+
+      /**
+       * Whether this authorization was approved by Increase, the card network through
+       * stand-in processing, or the user through a real-time decision.
+       *
+       * - `user` - This object was actioned by the user through a real-time decision.
+       * - `increase` - This object was actioned by Increase without user intervention.
+       * - `network` - This object was actioned by the network, through stand-in
+       *   processing.
+       */
+      actioner: 'user' | 'increase' | 'network';
 
       /**
        * The declined amount in the minor unit of the destination account currency. For
@@ -1052,6 +1074,17 @@ export namespace CardPayment {
        * The Card Increment identifier.
        */
       id: string;
+
+      /**
+       * Whether this authorization was approved by Increase, the card network through
+       * stand-in processing, or the user through a real-time decision.
+       *
+       * - `user` - This object was actioned by the user through a real-time decision.
+       * - `increase` - This object was actioned by Increase without user intervention.
+       * - `network` - This object was actioned by the network, through stand-in
+       *   processing.
+       */
+      actioner: 'user' | 'increase' | 'network';
 
       /**
        * The amount of this increment in the minor unit of the transaction's currency.
@@ -2538,6 +2571,17 @@ export namespace CardPayment {
        * The Card Validation identifier.
        */
       id: string;
+
+      /**
+       * Whether this authorization was approved by Increase, the card network through
+       * stand-in processing, or the user through a real-time decision.
+       *
+       * - `user` - This object was actioned by the user through a real-time decision.
+       * - `increase` - This object was actioned by Increase without user intervention.
+       * - `network` - This object was actioned by the network, through stand-in
+       *   processing.
+       */
+      actioner: 'user' | 'increase' | 'network';
 
       /**
        * The ID of the Card Payment this transaction belongs to.
