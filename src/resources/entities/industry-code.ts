@@ -7,7 +7,7 @@ import * as EntitiesAPI from 'increase/resources/entities/entities';
 
 export class IndustryCode extends APIResource {
   /**
-   * Update a Corporation Entity's industry code
+   * Update the industry code for a corporate Entity
    */
   create(
     entityId: string,
