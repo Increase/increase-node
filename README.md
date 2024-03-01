@@ -9,6 +9,7 @@ The REST API documentation can be found [on increase.com](https://increase.com/d
 ## Installation
 
 ```sh
+# install from NPM
 npm install --save increase
 # or
 yarn add increase
