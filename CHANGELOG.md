@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.35.0 (2024-03-01)
+
+Full Changelog: [v0.34.0...v0.35.0](https://github.com/Increase/increase-node/compare/v0.34.0...v0.35.0)
+
+### Features
+
+* **api:** add actioner properties ([#322](https://github.com/Increase/increase-node/issues/322)) ([b2b67fe](https://github.com/Increase/increase-node/commit/b2b67fe19bf44f1e34efd7d4e4b72e698025bc80))
+
+
+### Chores
+
+* **docs:** mention install from git repo ([#319](https://github.com/Increase/increase-node/issues/319)) ([a62fea6](https://github.com/Increase/increase-node/commit/a62fea612ef79fa289bc037b4226d2fbaf51119b))
+
+
+### Documentation
+
+* change industry code docstring ([#321](https://github.com/Increase/increase-node/issues/321)) ([d724ee6](https://github.com/Increase/increase-node/commit/d724ee6d850b92f341080c17cbcb1f988f1257fe))
+
 ## 0.34.0 (2024-02-29)
 
 Full Changelog: [v0.33.0...v0.34.0](https://github.com/Increase/increase-node/compare/v0.33.0...v0.34.0)
