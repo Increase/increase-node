@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.36.0 (2024-03-04)
+
+Full Changelog: [v0.35.0...v0.36.0](https://github.com/Increase/increase-node/compare/v0.35.0...v0.36.0)
+
+### ⚠ BREAKING CHANGES
+
+* rename card_profile_id -> digital_card_profile_id ([#323](https://github.com/Increase/increase-node/issues/323))
+
+### Bug Fixes
+
+* rename card_profile_id -&gt; digital_card_profile_id ([#323](https://github.com/Increase/increase-node/issues/323)) ([44b2285](https://github.com/Increase/increase-node/commit/44b22858851f254023916a005f939c1224f6052d))
+
 ## 0.35.0 (2024-03-01)
 
 Full Changelog: [v0.34.0...v0.35.0](https://github.com/Increase/increase-node/compare/v0.34.0...v0.35.0)
