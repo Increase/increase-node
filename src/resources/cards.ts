@@ -308,14 +308,14 @@ export namespace CardCreateParams {
     digital_card_profile_id?: string;
 
     /**
-     * An email address that can be used to verify the cardholder via one-time passcode
-     * over email.
+     * An email address that can be used to contact and verify the cardholder via
+     * one-time passcode over email.
      */
     email?: string;
 
     /**
-     * A phone number that can be used to verify the cardholder via one-time passcode
-     * over SMS.
+     * A phone number that can be used to contact and verify the cardholder via
+     * one-time passcode over SMS.
      */
     phone?: string;
   }
