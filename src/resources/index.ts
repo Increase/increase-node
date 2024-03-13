@@ -131,6 +131,7 @@ export {
   Entity,
   EntityCreateParams,
   EntityListParams,
+  EntityConfirmParams,
   EntityUpdateAddressParams,
   EntitiesPage,
   Entities,
