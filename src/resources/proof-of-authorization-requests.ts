@@ -63,6 +63,11 @@ export interface ProofOfAuthorizationRequest {
   created_at: string;
 
   /**
+   * The time the Proof of Authorization Request is due.
+   */
+  due_on: string;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `proof_of_authorization_request`.
    */

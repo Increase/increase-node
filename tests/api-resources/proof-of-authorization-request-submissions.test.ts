@@ -15,7 +15,11 @@ describe('resource proofOfAuthorizationRequestSubmissions', () => {
       authorized_at: '2020-01-31T23:59:59Z',
       authorizer_email: 'user@example.com',
       authorizer_name: 'Ian Crease',
+      customer_has_been_offboarded: true,
       proof_of_authorization_request_id: 'proof_of_authorization_request_iwp8no25h3rjvil6ad3b',
+      validated_account_ownership_via_credential: true,
+      validated_account_ownership_with_account_statement: true,
+      validated_account_ownership_with_microdeposit: true,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,7 +36,11 @@ describe('resource proofOfAuthorizationRequestSubmissions', () => {
       authorized_at: '2020-01-31T23:59:59Z',
       authorizer_email: 'user@example.com',
       authorizer_name: 'Ian Crease',
+      customer_has_been_offboarded: true,
       proof_of_authorization_request_id: 'proof_of_authorization_request_iwp8no25h3rjvil6ad3b',
+      validated_account_ownership_via_credential: true,
+      validated_account_ownership_with_account_statement: true,
+      validated_account_ownership_with_microdeposit: true,
       authorizer_company: 'National Phonograph Company',
       authorizer_ip_address: 'x',
     });
