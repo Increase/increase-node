@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.37.0 (2024-03-13)
+
+Full Changelog: [v0.36.0...v0.37.0](https://github.com/Increase/increase-node/compare/v0.36.0...v0.37.0)
+
+### Features
+
+* **api:** confirm entities ([#330](https://github.com/Increase/increase-node/issues/330)) ([b664e68](https://github.com/Increase/increase-node/commit/b664e68088ea0733afda85eb097b17912bbd22cc))
+
+
+### Chores
+
+* fix error handler in readme ([#325](https://github.com/Increase/increase-node/issues/325)) ([d9eaca9](https://github.com/Increase/increase-node/commit/d9eaca9e23cbb60999eecbd671e9b7b1a8252249))
+
+
+### Documentation
+
+* **readme:** fix https proxy example ([#327](https://github.com/Increase/increase-node/issues/327)) ([deaa721](https://github.com/Increase/increase-node/commit/deaa72164c03287a17cadcad31bd6769d90cf70f))
+* remove extraneous --save and yarn install instructions ([#329](https://github.com/Increase/increase-node/issues/329)) ([efb6ddc](https://github.com/Increase/increase-node/commit/efb6ddc030bfa71e5ef16eb4444aa4fa0ce4644a))
+* update docs for digital wallet phone/email ([#328](https://github.com/Increase/increase-node/issues/328)) ([56804ba](https://github.com/Increase/increase-node/commit/56804ba7ce6d151be8a01b2909a7e0fca6c534a1))
+
 ## 0.36.0 (2024-03-04)
 
 Full Changelog: [v0.35.0...v0.36.0](https://github.com/Increase/increase-node/compare/v0.35.0...v0.36.0)
