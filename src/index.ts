@@ -434,6 +434,7 @@ export namespace Increase {
   export import EntitiesPage = API.EntitiesPage;
   export import EntityCreateParams = API.EntityCreateParams;
   export import EntityListParams = API.EntityListParams;
+  export import EntityConfirmParams = API.EntityConfirmParams;
   export import EntityUpdateAddressParams = API.EntityUpdateAddressParams;
 
   export import InboundACHTransfers = API.InboundACHTransfers;

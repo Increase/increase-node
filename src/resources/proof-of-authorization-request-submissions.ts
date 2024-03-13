@@ -106,6 +106,11 @@ export interface ProofOfAuthorizationRequestSubmission {
   created_at: string;
 
   /**
+   * Whether the customer has been offboarded.
+   */
+  customer_has_been_offboarded: boolean | null;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -139,6 +144,21 @@ export interface ProofOfAuthorizationRequestSubmission {
    * The time the Proof of Authorization Request Submission was last updated.
    */
   updated_at: string;
+
+  /**
+   * Whether account ownership was validated via credential (for instance, Plaid).
+   */
+  validated_account_ownership_via_credential: boolean | null;
+
+  /**
+   * Whether account ownership was validated with an account statement.
+   */
+  validated_account_ownership_with_account_statement: boolean | null;
+
+  /**
+   * Whether account ownership was validated with microdeposit.
+   */
+  validated_account_ownership_with_microdeposit: boolean | null;
 }
 
 export interface ProofOfAuthorizationRequestSubmissionCreateParams {
@@ -163,9 +183,29 @@ export interface ProofOfAuthorizationRequestSubmissionCreateParams {
   authorizer_name: string;
 
   /**
+   * Whether the customer has been offboarded or suspended.
+   */
+  customer_has_been_offboarded: boolean;
+
+  /**
    * ID of the proof of authorization request.
    */
   proof_of_authorization_request_id: string;
+
+  /**
+   * Whether the account ownership was validated via credential (e.g. Plaid).
+   */
+  validated_account_ownership_via_credential: boolean;
+
+  /**
+   * Whether the account ownership was validated with an account statement.
+   */
+  validated_account_ownership_with_account_statement: boolean;
+
+  /**
+   * Whether the account ownership was validated with a microdeposit.
+   */
+  validated_account_ownership_with_microdeposit: boolean;
 
   /**
    * Company of the authorizer.

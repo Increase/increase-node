@@ -299,6 +299,7 @@ Methods:
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/resources/entities/entities.ts">retrieve</a>(entityId) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities/entities.ts">archive</a>(entityId) -> Entity</code>
+- <code title="post /entities/{entity_id}/confirm">client.entities.<a href="./src/resources/entities/entities.ts">confirm</a>(entityId, { ...params }) -> Entity</code>
 - <code title="post /entities/{entity_id}/address">client.entities.<a href="./src/resources/entities/entities.ts">updateAddress</a>(entityId, { ...params }) -> Entity</code>
 
 ## BeneficialOwners

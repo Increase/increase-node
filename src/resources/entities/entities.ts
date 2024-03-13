@@ -54,6 +54,19 @@ export class Entities extends APIResource {
   }
 
   /**
+   * Depending on your program, you may be required to re-confirm an Entity's details
+   * on a recurring basis. After making any required updates, call this endpoint to
+   * record that your user confirmed their details.
+   */
+  confirm(
+    entityId: string,
+    body: EntityConfirmParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Entity> {
+    return this._client.post(`/entities/${entityId}/confirm`, { body, ...options });
+  }
+
+  /**
    * Update a Natural Person or Corporation's address
    */
   updateAddress(
@@ -87,6 +100,11 @@ export interface Entity {
    * The entity's description for display purposes.
    */
   description: string | null;
+
+  /**
+   * The date and time at which the entity's details were most recently confirmed.
+   */
+  details_confirmed_at: string | null;
 
   /**
    * The idempotency key you chose for this object. This value is unique across
@@ -2153,6 +2171,14 @@ export namespace EntityListParams {
   }
 }
 
+export interface EntityConfirmParams {
+  /**
+   * When your user confirmed the Entity's details. If not provided, the current time
+   * will be used.
+   */
+  confirmed_at?: string;
+}
+
 export interface EntityUpdateAddressParams {
   /**
    * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
@@ -2200,6 +2226,7 @@ export namespace Entities {
   export import EntitiesPage = EntitiesAPI.EntitiesPage;
   export import EntityCreateParams = EntitiesAPI.EntityCreateParams;
   export import EntityListParams = EntitiesAPI.EntityListParams;
+  export import EntityConfirmParams = EntitiesAPI.EntityConfirmParams;
   export import EntityUpdateAddressParams = EntitiesAPI.EntityUpdateAddressParams;
   export import BeneficialOwners = BeneficialOwnersAPI.BeneficialOwners;
   export import BeneficialOwnerCreateParams = BeneficialOwnersAPI.BeneficialOwnerCreateParams;

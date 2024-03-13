@@ -364,6 +364,17 @@ describe('resource entities', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
+  test('confirm', async () => {
+    const responsePromise = increase.entities.confirm('entity_n8y8tnk2p9339ti393yi', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('updateAddress: only required params', async () => {
     const responsePromise = increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { line1: '33 Liberty Street', city: 'New York', state: 'NY', zip: '10045' },
