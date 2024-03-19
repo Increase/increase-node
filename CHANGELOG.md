@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.37.1 (2024-03-19)
+
+Full Changelog: [v0.37.0...v0.37.1](https://github.com/Increase/increase-node/compare/v0.37.0...v0.37.1)
+
+### Bug Fixes
+
+* **internal:** make toFile use input file's options ([#334](https://github.com/Increase/increase-node/issues/334)) ([11bca30](https://github.com/Increase/increase-node/commit/11bca3005a1db35cd43fb2b1e52b2c918416517d))
+
+
+### Chores
+
+* **internal:** update generated pragma comment ([#333](https://github.com/Increase/increase-node/issues/333)) ([90096f6](https://github.com/Increase/increase-node/commit/90096f646f8b5d6c5b62830df7f8b49092f6c844))
+
+
+### Documentation
+
+* fix typo in CONTRIBUTING.md ([#331](https://github.com/Increase/increase-node/issues/331)) ([e1f2ebf](https://github.com/Increase/increase-node/commit/e1f2ebf673505e04889e22eacfd6caca6793f4b3))
+
 ## 0.37.0 (2024-03-13)
 
 Full Changelog: [v0.36.0...v0.37.0](https://github.com/Increase/increase-node/compare/v0.36.0...v0.37.0)
