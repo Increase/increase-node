@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless.
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export { ACHTransferCreateInboundParams, ACHTransferReturnParams, ACHTransfers } from './ach-transfers';
 export { AccountStatementCreateParams, AccountStatements } from './account-statements';
