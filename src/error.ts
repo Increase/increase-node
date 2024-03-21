@@ -221,7 +221,7 @@ export class InvalidParametersError extends BadRequestError {
     super(status, error, data?.['title'] || message, headers);
 
     this.detail = data?.['detail'];
-    this.errors = data?.['errors'];
+    this.errors = data?.['errors'] ?? [];
     this.status = data?.['status'];
     this.title = data?.['title'];
     this.type = data?.['type'];
