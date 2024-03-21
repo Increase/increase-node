@@ -72,11 +72,6 @@ export interface PhysicalCard {
   card_id: string;
 
   /**
-   * The Card Profile used for this Physical Card.
-   */
-  card_profile_id: string | null;
-
-  /**
    * Details about the cardholder, as it appears on the printed card.
    */
   cardholder: PhysicalCard.Cardholder | null;

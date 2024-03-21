@@ -393,12 +393,6 @@ export namespace CardUpdateParams {
    */
   export interface DigitalWallet {
     /**
-     * The card profile assigned to this card. Card profiles may also be assigned at
-     * the program level.
-     */
-    card_profile_id?: string;
-
-    /**
      * The digital card profile assigned to this digital card.
      */
     digital_card_profile_id?: string;

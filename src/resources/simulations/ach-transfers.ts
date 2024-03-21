@@ -81,7 +81,7 @@ export interface ACHTransferCreateInboundParams {
   company_entry_description?: string;
 
   /**
-   * The sender's company id.
+   * The sender's company ID.
    */
   company_id?: string;
 
@@ -89,6 +89,16 @@ export interface ACHTransferCreateInboundParams {
    * The name of the sender.
    */
   company_name?: string;
+
+  /**
+   * The ID of the receiver of the transfer.
+   */
+  receiver_id_number?: string;
+
+  /**
+   * The name of the receiver of the transfer.
+   */
+  receiver_name?: string;
 
   /**
    * The time at which the transfer should be resolved. If not provided will resolve

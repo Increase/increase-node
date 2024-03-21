@@ -217,6 +217,7 @@ export interface WireTransfer {
    * - `canceled` - The transfer has been canceled.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
+   * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `pending_approval` - The transfer is pending approval.
    * - `rejected` - The transfer has been rejected.
    * - `reversed` - The transfer has been reversed.
@@ -226,6 +227,7 @@ export interface WireTransfer {
   status:
     | 'canceled'
     | 'requires_attention'
+    | 'pending_reviewing'
     | 'pending_approval'
     | 'rejected'
     | 'reversed'
