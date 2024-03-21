@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.38.0 (2024-03-21)
+
+Full Changelog: [v0.37.1...v0.38.0](https://github.com/Increase/increase-node/compare/v0.37.1...v0.38.0)
+
+### Features
+
+* **api:** adding `pending_reviewing` wire transfer state ([ba88eba](https://github.com/Increase/increase-node/commit/ba88ebac15c50b17611e9feefb9c248f4538dcf9))
+* **api:** introduce `network_risk_score` ([#339](https://github.com/Increase/increase-node/issues/339)) ([ba88eba](https://github.com/Increase/increase-node/commit/ba88ebac15c50b17611e9feefb9c248f4538dcf9))
+* **api:** remove Card Profile ID properties ([ba88eba](https://github.com/Increase/increase-node/commit/ba88ebac15c50b17611e9feefb9c248f4538dcf9))
+
+
+### Chores
+
+* **errors:** fallback to empty array for errors ([#338](https://github.com/Increase/increase-node/issues/338)) ([fbeeb26](https://github.com/Increase/increase-node/commit/fbeeb2687f0e09e19c802ccfc5f52d409226206c))
+
+
+### Documentation
+
+* **readme:** consistent use of sentence case in headings ([#335](https://github.com/Increase/increase-node/issues/335)) ([13776d1](https://github.com/Increase/increase-node/commit/13776d171ce0def60b476940643248337233d0b0))
+* **readme:** document how to make undocumented requests ([#337](https://github.com/Increase/increase-node/issues/337)) ([79e55a8](https://github.com/Increase/increase-node/commit/79e55a8c341ac5ae9f9974d748e45b70c7751ecf))
+
 ## 0.37.1 (2024-03-19)
 
 Full Changelog: [v0.37.0...v0.37.1](https://github.com/Increase/increase-node/compare/v0.37.0...v0.37.1)
