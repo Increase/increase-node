@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.38.1 (2024-03-25)
+
+Full Changelog: [v0.38.0...v0.38.1](https://github.com/Increase/increase-node/compare/v0.38.0...v0.38.1)
+
+### Bug Fixes
+
+* **client:** correctly send deno version header ([#342](https://github.com/Increase/increase-node/issues/342)) ([fdb2a46](https://github.com/Increase/increase-node/commit/fdb2a468f86928f48160328773fba7afc17c240a))
+* handle process.env being undefined in debug func ([#340](https://github.com/Increase/increase-node/issues/340)) ([376a162](https://github.com/Increase/increase-node/commit/376a1623b3e6caae56505b26311ab38adcedffdf))
+
 ## 0.38.0 (2024-03-21)
 
 Full Changelog: [v0.37.1...v0.38.0](https://github.com/Increase/increase-node/compare/v0.37.1...v0.38.0)
