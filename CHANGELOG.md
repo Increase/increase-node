@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.40.0 (2024-03-27)
+
+Full Changelog: [v0.39.0...v0.40.0](https://github.com/Increase/increase-node/compare/v0.39.0...v0.40.0)
+
+### Features
+
+* **api:** add `funding` parameter to external account update ([#345](https://github.com/Increase/increase-node/issues/345)) ([401da90](https://github.com/Increase/increase-node/commit/401da90116673dac3173dd3020a61f6990bb20fe))
+
 ## 0.39.0 (2024-03-25)
 
 Full Changelog: [v0.38.1...v0.39.0](https://github.com/Increase/increase-node/compare/v0.38.1...v0.39.0)
