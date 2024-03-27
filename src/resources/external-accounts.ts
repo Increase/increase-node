@@ -185,6 +185,15 @@ export interface ExternalAccountUpdateParams {
   description?: string;
 
   /**
+   * The funding type of the External Account.
+   *
+   * - `checking` - A checking account.
+   * - `savings` - A savings account.
+   * - `other` - A different type of account.
+   */
+  funding?: 'checking' | 'savings' | 'other';
+
+  /**
    * The status of the External Account.
    *
    * - `active` - The External Account is active.
