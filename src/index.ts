@@ -196,6 +196,7 @@ export class Increase extends Core.APIClient {
   intrafi: API.Intrafi = new API.Intrafi(this);
   realTimePaymentsRequestForPayments: API.RealTimePaymentsRequestForPayments =
     new API.RealTimePaymentsRequestForPayments(this);
+  webhooks: API.Webhooks = new API.Webhooks(this);
   oauthTokens: API.OAuthTokens = new API.OAuthTokens(this);
   inboundWireTransfers: API.InboundWireTransfers = new API.InboundWireTransfers(this);
   digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
@@ -532,6 +533,8 @@ export namespace Increase {
   export import RealTimePaymentsRequestForPaymentsPage = API.RealTimePaymentsRequestForPaymentsPage;
   export import RealTimePaymentsRequestForPaymentCreateParams = API.RealTimePaymentsRequestForPaymentCreateParams;
   export import RealTimePaymentsRequestForPaymentListParams = API.RealTimePaymentsRequestForPaymentListParams;
+
+  export import Webhooks = API.Webhooks;
 
   export import OAuthTokens = API.OAuthTokens;
   export import OAuthToken = API.OAuthToken;
