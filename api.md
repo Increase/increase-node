@@ -685,13 +685,6 @@ Methods:
 - <code title="get /real_time_payments_request_for_payments/{request_for_payment_id}">client.realTimePaymentsRequestForPayments.<a href="./src/resources/real-time-payments-request-for-payments.ts">retrieve</a>(requestForPaymentId) -> RealTimePaymentsRequestForPayment</code>
 - <code title="get /real_time_payments_request_for_payments">client.realTimePaymentsRequestForPayments.<a href="./src/resources/real-time-payments-request-for-payments.ts">list</a>({ ...params }) -> RealTimePaymentsRequestForPaymentsPage</code>
 
-# Webhooks
-
-Methods:
-
-- <code>client.webhooks.<a href="./src/resources/webhooks.ts">unwrap</a>(payload, headers, secret) -> Record&lt;string, unknown&gt;</code>
-- <code>client.webhooks.<a href="./src/resources/webhooks.ts">verifySignature</a>(payload, headers, secret) -> void</code>
-
 # OAuthTokens
 
 Types:
