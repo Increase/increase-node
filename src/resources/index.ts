@@ -249,7 +249,6 @@ export {
   Simulations,
 } from './simulations/simulations';
 export { Transaction, TransactionListParams, TransactionsPage, Transactions } from './transactions';
-export { Webhooks } from './webhooks';
 export {
   WireDrawdownRequest,
   WireDrawdownRequestCreateParams,
