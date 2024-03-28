@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.40.1 (2024-03-28)
+
+Full Changelog: [v0.40.0...v0.40.1](https://github.com/Increase/increase-node/compare/v0.40.0...v0.40.1)
+
+### Chores
+
+* **internal:** bump dependencies ([#349](https://github.com/Increase/increase-node/issues/349)) ([08f274c](https://github.com/Increase/increase-node/commit/08f274c395a3b34a7d98a487b0e5c8e6c2d7ed75))
+* revert temporary commit ([e139b3c](https://github.com/Increase/increase-node/commit/e139b3c2839d092a439ab987d8f1b5c0ad79fa0b))
+* temporary commit ([#347](https://github.com/Increase/increase-node/issues/347)) ([3b34ec1](https://github.com/Increase/increase-node/commit/3b34ec1f31949f5e6777b56f3f79219607367fa3))
+
 ## 0.40.0 (2024-03-27)
 
 Full Changelog: [v0.39.0...v0.40.0](https://github.com/Increase/increase-node/compare/v0.39.0...v0.40.0)
