@@ -92,9 +92,8 @@ export interface Account {
    *
    * - `blue_ridge_bank` - Blue Ridge Bank, N.A.
    * - `first_internet_bank` - First Internet Bank of Indiana
-   * - `grasshopper_bank` - Grasshopper Bank
    */
-  bank: 'blue_ridge_bank' | 'first_internet_bank' | 'grasshopper_bank';
+  bank: 'blue_ridge_bank' | 'first_internet_bank';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
@@ -156,6 +155,12 @@ export interface Account {
    * The name you choose for the Account.
    */
   name: string;
+
+  /**
+   * The identifier of the Program determining the compliance and commercial terms of
+   * this Account.
+   */
+  program_id: string;
 
   /**
    * The status of the Account.
