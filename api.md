@@ -480,6 +480,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_ach_transfers">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">createInbound</a>({ ...params }) -> InboundACHTransfer</code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/notification_of_change">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">notificationOfChange</a>(achTransferId, { ...params }) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfer</code>
 

@@ -38,6 +38,27 @@ describe('resource achTransfers', () => {
     });
   });
 
+  test('notificationOfChange: only required params', async () => {
+    const responsePromise = increase.simulations.achTransfers.notificationOfChange(
+      'ach_transfer_uoxatyh3lt5evrsdvo7q',
+      { change_code: 'incorrect_routing_number', corrected_data: '123456789' },
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('notificationOfChange: required and optional params', async () => {
+    const response = await increase.simulations.achTransfers.notificationOfChange(
+      'ach_transfer_uoxatyh3lt5evrsdvo7q',
+      { change_code: 'incorrect_routing_number', corrected_data: '123456789' },
+    );
+  });
+
   // Prism incorrectly returns an invalid JSON error
   test.skip('return', async () => {
     const responsePromise = increase.simulations.achTransfers.return('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
