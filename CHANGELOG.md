@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.42.0 (2024-03-29)
+
+Full Changelog: [v0.41.0...v0.42.0](https://github.com/Increase/increase-node/compare/v0.41.0...v0.42.0)
+
+### Features
+
+* **api:** remove check transfer intention ([#351](https://github.com/Increase/increase-node/issues/351)) ([387c27e](https://github.com/Increase/increase-node/commit/387c27e0d12e78bcc569b619214a096e9359f363))
+
 ## 0.41.0 (2024-03-29)
 
 Full Changelog: [v0.40.0...v0.41.0](https://github.com/Increase/increase-node/compare/v0.40.0...v0.41.0)
