@@ -162,6 +162,7 @@ export namespace Simulations {
   export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
   export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
   export import ACHTransferCreateInboundParams = ACHTransfersAPI.ACHTransferCreateInboundParams;
+  export import ACHTransferNotificationOfChangeParams = ACHTransfersAPI.ACHTransferNotificationOfChangeParams;
   export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
   export import CardDisputes = CardDisputesAPI.CardDisputes;
   export import CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
