@@ -1329,8 +1329,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        *   `check_deposit_return` object.
        * - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
        *   `check_transfer_deposit` object.
-       * - `check_transfer_intention` - Check Transfer Intention: details will be under
-       *   the `check_transfer_intention` object.
        * - `check_transfer_stop_payment_request` - Check Transfer Stop Payment Request:
        *   details will be under the `check_transfer_stop_payment_request` object.
        * - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
@@ -1384,7 +1382,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'check_deposit_acceptance'
         | 'check_deposit_return'
         | 'check_transfer_deposit'
-        | 'check_transfer_intention'
         | 'check_transfer_stop_payment_request'
         | 'fee_payment'
         | 'inbound_ach_transfer'
@@ -1422,12 +1419,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * if and only if `category` is equal to `check_transfer_deposit`.
        */
       check_transfer_deposit: Source.CheckTransferDeposit | null;
-
-      /**
-       * A Check Transfer Intention object. This field will be present in the JSON
-       * response if and only if `category` is equal to `check_transfer_intention`.
-       */
-      check_transfer_intention: Source.CheckTransferIntention | null;
 
       /**
        * A Check Transfer Stop Payment Request object. This field will be present in the
@@ -3428,72 +3419,13 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         /**
          * The identifier of the Check Transfer object that was deposited.
          */
-        transfer_id: string;
+        transfer_id: string | null;
 
         /**
          * A constant representing the object's type. For this resource it will always be
          * `check_transfer_deposit`.
          */
         type: 'check_transfer_deposit';
-      }
-
-      /**
-       * A Check Transfer Intention object. This field will be present in the JSON
-       * response if and only if `category` is equal to `check_transfer_intention`.
-       */
-      export interface CheckTransferIntention {
-        /**
-         * The city of the check's destination.
-         */
-        address_city: string | null;
-
-        /**
-         * The street address of the check's destination.
-         */
-        address_line1: string | null;
-
-        /**
-         * The second line of the address of the check's destination.
-         */
-        address_line2: string | null;
-
-        /**
-         * The state of the check's destination.
-         */
-        address_state: string | null;
-
-        /**
-         * The postal code of the check's destination.
-         */
-        address_zip: string | null;
-
-        /**
-         * The transfer amount in USD cents.
-         */
-        amount: number;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-         * currency.
-         *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
-         * - `USD` - US Dollar (USD)
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-        /**
-         * The name that will be printed on the check.
-         */
-        recipient_name: string | null;
-
-        /**
-         * The identifier of the Check Transfer with which this is associated.
-         */
-        transfer_id: string;
       }
 
       /**

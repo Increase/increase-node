@@ -299,7 +299,7 @@ export namespace CheckTransfer {
     /**
      * The identifier of the Check Transfer object that was deposited.
      */
-    transfer_id: string;
+    transfer_id: string | null;
 
     /**
      * A constant representing the object's type. For this resource it will always be
