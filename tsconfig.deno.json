@@ -9,7 +9,6 @@
       "increase/_shims/auto/*": ["deno/_shims/auto/*-deno"],
       "increase/*": ["deno/*"],
       "increase": ["deno/index.ts"],
-      "digest-fetch": ["./typings/digest-fetch"]
     },
     "noEmit": true,
     "declaration": true,
