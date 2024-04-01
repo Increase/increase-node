@@ -12,7 +12,6 @@
       "increase/_shims/auto/*": ["src/_shims/auto/*-node"],
       "increase/*": ["src/*"],
       "increase": ["src/index.ts"],
-      "digest-fetch": ["./typings/digest-fetch"]
     },
     "noEmit": true,
 
