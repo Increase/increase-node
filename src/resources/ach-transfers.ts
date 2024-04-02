@@ -773,7 +773,7 @@ export namespace ACHTransfer {
      * bank. Along with the amount, date, and originating routing number, this can be
      * used to identify the ACH transfer at the receiving bank. ACH trace numbers are
      * not unique, but are
-     * [used to correlate returns](https://increase.com/documentation/ach#returns).
+     * [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
      */
     trace_number: string;
   }
