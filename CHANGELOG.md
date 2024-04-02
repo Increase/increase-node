@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.43.0 (2024-04-02)
+
+Full Changelog: [v0.42.0...v0.43.0](https://github.com/Increase/increase-node/compare/v0.42.0...v0.43.0)
+
+### Features
+
+* **api:** filter OAuth connections by their status ([#356](https://github.com/Increase/increase-node/issues/356)) ([0316140](https://github.com/Increase/increase-node/commit/03161400fe12547c1e87aba24339c380babbc69f))
+
+
+### Chores
+
+* **deps:** remove unused dependency digest-fetch ([#354](https://github.com/Increase/increase-node/issues/354)) ([415325a](https://github.com/Increase/increase-node/commit/415325a7387c2df4ec56ccb2d3d066877391cce3))
+
 ## 0.42.0 (2024-03-29)
 
 Full Changelog: [v0.41.0...v0.42.0](https://github.com/Increase/increase-node/compare/v0.41.0...v0.42.0)
