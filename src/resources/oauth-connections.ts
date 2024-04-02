@@ -53,6 +53,12 @@ export interface OAuthConnection {
   created_at: string;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+   * Connection was deleted.
+   */
+  deleted_at: string | null;
+
+  /**
    * The identifier of the Group that has authorized your OAuth application.
    */
   group_id: string;
@@ -72,7 +78,20 @@ export interface OAuthConnection {
   type: 'oauth_connection';
 }
 
-export interface OAuthConnectionListParams extends PageParams {}
+export interface OAuthConnectionListParams extends PageParams {
+  status?: OAuthConnectionListParams.Status;
+}
+
+export namespace OAuthConnectionListParams {
+  export interface Status {
+    /**
+     * Filter to OAuth Connections by their status. By default, return only the
+     * `active` ones. For GET requests, this should be encoded as a comma-delimited
+     * string, such as `?in=one,two,three`.
+     */
+    in?: Array<'active' | 'inactive'>;
+  }
+}
 
 export namespace OAuthConnections {
   export import OAuthConnection = OAuthConnectionsAPI.OAuthConnection;
