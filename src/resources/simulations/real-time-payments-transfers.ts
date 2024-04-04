@@ -1337,8 +1337,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
        *   Intention: details will be under the `inbound_ach_transfer_return_intention`
        *   object.
-       * - `inbound_check` - Inbound Check: details will be under the `inbound_check`
-       *   object.
        * - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
        *   details will be under the `inbound_international_ach_transfer` object.
        * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
@@ -1386,7 +1384,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'fee_payment'
         | 'inbound_ach_transfer'
         | 'inbound_ach_transfer_return_intention'
-        | 'inbound_check'
         | 'inbound_international_ach_transfer'
         | 'inbound_real_time_payments_transfer_confirmation'
         | 'inbound_wire_drawdown_payment_reversal'
@@ -1438,12 +1435,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        * response if and only if `category` is equal to `inbound_ach_transfer`.
        */
       inbound_ach_transfer: Source.InboundACHTransfer | null;
-
-      /**
-       * An Inbound Check object. This field will be present in the JSON response if and
-       * only if `category` is equal to `inbound_check`.
-       */
-      inbound_check: Source.InboundCheck | null;
 
       /**
        * An Inbound International ACH Transfer object. This field will be present in the
@@ -3598,54 +3589,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
             }
           }
         }
-      }
-
-      /**
-       * An Inbound Check object. This field will be present in the JSON response if and
-       * only if `category` is equal to `inbound_check`.
-       */
-      export interface InboundCheck {
-        /**
-         * The amount in the minor unit of the destination account currency. For dollars,
-         * for example, this is cents.
-         */
-        amount: number;
-
-        /**
-         * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-         * bank depositing this check. In some rare cases, this is not transmitted via
-         * Check21 and the value will be null.
-         */
-        bank_of_first_deposit_routing_number: string | null;
-
-        /**
-         * The front image of the check. This is a black and white TIFF image file.
-         */
-        check_front_image_file_id: string | null;
-
-        /**
-         * The number of the check. This field is set by the depositing bank and can be
-         * unreliable.
-         */
-        check_number: string | null;
-
-        /**
-         * The rear image of the check. This is a black and white TIFF image file.
-         */
-        check_rear_image_file_id: string | null;
-
-        /**
-         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
-         *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
-         * - `USD` - US Dollar (USD)
-         */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
       }
 
       /**
