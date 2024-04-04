@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.44.0 (2024-04-04)
+
+Full Changelog: [v0.43.0...v0.44.0](https://github.com/Increase/increase-node/compare/v0.43.0...v0.44.0)
+
+### Features
+
+* **api:** remove inbound_check category, rename check_deposit_mail_item, add inbound_mail_item ([#360](https://github.com/Increase/increase-node/issues/360)) ([408444e](https://github.com/Increase/increase-node/commit/408444ebdfaa66da1d0751d3173482d100a425c7))
+
+
+### Chores
+
+* **deps:** bump yarn to v1.22.22 ([#357](https://github.com/Increase/increase-node/issues/357)) ([dace670](https://github.com/Increase/increase-node/commit/dace670dbb1b1c2805fccff963fdb0884277004d))
+
 ## 0.43.0 (2024-04-02)
 
 Full Changelog: [v0.42.0...v0.43.0](https://github.com/Increase/increase-node/compare/v0.42.0...v0.43.0)
