@@ -83,6 +83,12 @@ export interface EventSubscription {
   idempotency_key: string | null;
 
   /**
+   * If specified, this subscription will only receive webhooks for Events associated
+   * with this OAuth Connection.
+   */
+  oauth_connection_id: string | null;
+
+  /**
    * If specified, this subscription will only receive webhooks for Events with the
    * specified `category`.
    *
@@ -150,6 +156,8 @@ export interface EventSubscription {
    *   Transfer Return is created.
    * - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
    *   Transfer Return is updated.
+   * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
+   * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
    * - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
    *   Drawdown Request is created.
    * - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
@@ -255,6 +263,8 @@ export interface EventSubscription {
     | 'inbound_ach_transfer.updated'
     | 'inbound_ach_transfer_return.created'
     | 'inbound_ach_transfer_return.updated'
+    | 'inbound_mail_item.created'
+    | 'inbound_mail_item.updated'
     | 'inbound_wire_drawdown_request.created'
     | 'inbound_wire_transfer.created'
     | 'inbound_wire_transfer.updated'
@@ -318,6 +328,12 @@ export interface EventSubscriptionCreateParams {
    * The URL you'd like us to send webhooks to.
    */
   url: string;
+
+  /**
+   * If specified, this subscription will only receive webhooks for Events associated
+   * with the specified OAuth Connection.
+   */
+  oauth_connection_id?: string;
 
   /**
    * If specified, this subscription will only receive webhooks for Events with the
@@ -387,6 +403,8 @@ export interface EventSubscriptionCreateParams {
    *   Transfer Return is created.
    * - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
    *   Transfer Return is updated.
+   * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
+   * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
    * - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
    *   Drawdown Request is created.
    * - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
@@ -492,6 +510,8 @@ export interface EventSubscriptionCreateParams {
     | 'inbound_ach_transfer.updated'
     | 'inbound_ach_transfer_return.created'
     | 'inbound_ach_transfer_return.updated'
+    | 'inbound_mail_item.created'
+    | 'inbound_mail_item.updated'
     | 'inbound_wire_drawdown_request.created'
     | 'inbound_wire_transfer.created'
     | 'inbound_wire_transfer.updated'
