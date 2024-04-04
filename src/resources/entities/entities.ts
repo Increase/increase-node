@@ -97,12 +97,19 @@ export interface Entity {
   corporation: Entity.Corporation | null;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
+   * was created.
+   */
+  created_at: string;
+
+  /**
    * The entity's description for display purposes.
    */
   description: string | null;
 
   /**
-   * The date and time at which the entity's details were most recently confirmed.
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+   * Entity's details were most recently confirmed.
    */
   details_confirmed_at: string | null;
 
