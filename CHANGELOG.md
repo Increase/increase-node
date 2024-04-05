@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.45.0 (2024-04-05)
+
+Full Changelog: [v0.44.0...v0.45.0](https://github.com/Increase/increase-node/compare/v0.44.0...v0.45.0)
+
+### Features
+
+* **api:** add inbound check deposit return intention ([#361](https://github.com/Increase/increase-node/issues/361)) ([82b351a](https://github.com/Increase/increase-node/commit/82b351a52e4a7b8a3c3e29973571d3c8209233c1))
+
 ## 0.44.0 (2024-04-04)
 
 Full Changelog: [v0.43.0...v0.44.0](https://github.com/Increase/increase-node/compare/v0.43.0...v0.44.0)
