@@ -169,6 +169,12 @@ export namespace Transaction {
     card_settlement: Source.CardSettlement | null;
 
     /**
+     * A Cashback Payment object. This field will be present in the JSON response if
+     * and only if `category` is equal to `cashback_payment`.
+     */
+    cashback_payment: Source.CashbackPayment | null;
+
+    /**
      * The type of the resource. We may add additional possible values for this enum
      * over time; your application should be able to handle such additions gracefully.
      *
@@ -180,6 +186,8 @@ export namespace Transaction {
      *   `ach_transfer_rejection` object.
      * - `ach_transfer_return` - ACH Transfer Return: details will be under the
      *   `ach_transfer_return` object.
+     * - `cashback_payment` - Cashback Payment: details will be under the
+     *   `cashback_payment` object.
      * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
      *   `card_dispute_acceptance` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
@@ -240,6 +248,7 @@ export namespace Transaction {
       | 'ach_transfer_intention'
       | 'ach_transfer_rejection'
       | 'ach_transfer_return'
+      | 'cashback_payment'
       | 'card_dispute_acceptance'
       | 'card_refund'
       | 'card_settlement'
@@ -2086,6 +2095,46 @@ export namespace Transaction {
     }
 
     /**
+     * A Cashback Payment object. This field will be present in the JSON response if
+     * and only if `category` is equal to `cashback_payment`.
+     */
+    export interface CashbackPayment {
+      /**
+       * The card on which the cashback was accrued.
+       */
+      accrued_on_card_id: string;
+
+      /**
+       * The amount in the minor unit of the transaction's currency. For dollars, for
+       * example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+       * currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
+       */
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * The end of the period for which this transaction paid cashback.
+       */
+      period_end: string;
+
+      /**
+       * The start of the period for which this transaction paid cashback.
+       */
+      period_start: string;
+    }
+
+    /**
      * A Check Deposit Acceptance object. This field will be present in the JSON
      * response if and only if `category` is equal to `check_deposit_acceptance`.
      */
@@ -3376,6 +3425,7 @@ export namespace TransactionListParams {
       | 'ach_transfer_intention'
       | 'ach_transfer_rejection'
       | 'ach_transfer_return'
+      | 'cashback_payment'
       | 'card_dispute_acceptance'
       | 'card_refund'
       | 'card_settlement'
