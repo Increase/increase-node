@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.46.0 (2024-04-10)
+
+Full Changelog: [v0.45.0...v0.46.0](https://github.com/Increase/increase-node/compare/v0.45.0...v0.46.0)
+
+### Features
+
+* **api:** updates ([#365](https://github.com/Increase/increase-node/issues/365)) ([5f85a33](https://github.com/Increase/increase-node/commit/5f85a337a3d0fccc1e782a849d43e79762c03fa7))
+
+
+### Documentation
+
+* **api:** update links to NAICS classification codes ([#363](https://github.com/Increase/increase-node/issues/363)) ([975632f](https://github.com/Increase/increase-node/commit/975632f2c0aa3c20c9485bcd58d51545166d9134))
+
 ## 0.45.0 (2024-04-05)
 
 Full Changelog: [v0.44.0...v0.45.0](https://github.com/Increase/increase-node/compare/v0.44.0...v0.45.0)
