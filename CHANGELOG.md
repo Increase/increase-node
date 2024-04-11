@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.46.1 (2024-04-11)
+
+Full Changelog: [v0.46.0...v0.46.1](https://github.com/Increase/increase-node/compare/v0.46.0...v0.46.1)
+
+### Bug Fixes
+
+* **types:** mark physical card cardholder as required ([#366](https://github.com/Increase/increase-node/issues/366)) ([e84890a](https://github.com/Increase/increase-node/commit/e84890a35217f1e386db997e4b18599fc711be5f))
+
 ## 0.46.0 (2024-04-10)
 
 Full Changelog: [v0.45.0...v0.46.0](https://github.com/Increase/increase-node/compare/v0.45.0...v0.46.0)
