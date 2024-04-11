@@ -74,7 +74,7 @@ export interface PhysicalCard {
   /**
    * Details about the cardholder, as it appears on the printed card.
    */
-  cardholder: PhysicalCard.Cardholder | null;
+  cardholder: PhysicalCard.Cardholder;
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
