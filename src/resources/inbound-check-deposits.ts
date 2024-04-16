@@ -59,7 +59,7 @@ export interface InboundCheckDeposit {
   /**
    * The Account Number the check is being deposited against.
    */
-  account_number_id: string;
+  account_number_id: string | null;
 
   /**
    * The deposited amount in the minor unit of the destination account currency. For
