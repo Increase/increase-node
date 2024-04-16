@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.48.0 (2024-04-16)
+
+Full Changelog: [v0.47.0...v0.48.0](https://github.com/Increase/increase-node/compare/v0.47.0...v0.48.0)
+
+### Features
+
+* **api:** remove deposit field from check transfer ([#374](https://github.com/Increase/increase-node/issues/374)) ([8316f48](https://github.com/Increase/increase-node/commit/8316f48c57c54c1f70c9832dc081a8b321294800))
+
+
+### Build System
+
+* configure UTF-8 locale in devcontainer ([#372](https://github.com/Increase/increase-node/issues/372)) ([b692ad8](https://github.com/Increase/increase-node/commit/b692ad8f41b05a67ba6b9626d9924596a8e8b812))
+
 ## 0.47.0 (2024-04-16)
 
 Full Changelog: [v0.46.1...v0.47.0](https://github.com/Increase/increase-node/compare/v0.46.1...v0.47.0)
