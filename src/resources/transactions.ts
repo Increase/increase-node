@@ -2102,7 +2102,7 @@ export namespace Transaction {
       /**
        * The card on which the cashback was accrued.
        */
-      accrued_on_card_id: string;
+      accrued_on_card_id: string | null;
 
       /**
        * The amount in the minor unit of the transaction's currency. For dollars, for
@@ -3286,7 +3286,6 @@ export namespace Transaction {
        *
        * - `account_closure` - Account closure
        * - `bank_migration` - Bank migration
-       * - `cashback` - Cashback
        * - `check_adjustment` - Check adjustment
        * - `collection_payment` - Collection payment
        * - `collection_receivable` - Collection receivable
@@ -3302,7 +3301,6 @@ export namespace Transaction {
       reason:
         | 'account_closure'
         | 'bank_migration'
-        | 'cashback'
         | 'check_adjustment'
         | 'collection_payment'
         | 'collection_receivable'
