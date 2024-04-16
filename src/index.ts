@@ -200,6 +200,7 @@ export class Increase extends Core.APIClient {
   inboundWireTransfers: API.InboundWireTransfers = new API.InboundWireTransfers(this);
   digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
   physicalCardProfiles: API.PhysicalCardProfiles = new API.PhysicalCardProfiles(this);
+  inboundCheckDeposits: API.InboundCheckDeposits = new API.InboundCheckDeposits(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -555,6 +556,11 @@ export namespace Increase {
   export import PhysicalCardProfileCreateParams = API.PhysicalCardProfileCreateParams;
   export import PhysicalCardProfileListParams = API.PhysicalCardProfileListParams;
   export import PhysicalCardProfileCloneParams = API.PhysicalCardProfileCloneParams;
+
+  export import InboundCheckDeposits = API.InboundCheckDeposits;
+  export import InboundCheckDeposit = API.InboundCheckDeposit;
+  export import InboundCheckDepositsPage = API.InboundCheckDepositsPage;
+  export import InboundCheckDepositListParams = API.InboundCheckDepositListParams;
 }
 
 export default Increase;

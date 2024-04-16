@@ -500,7 +500,6 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">deposit</a>(checkTransferId) -> CheckTransfer</code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.checkTransfers.<a href="./src/resources/simulations/check-transfers.ts">mail</a>(checkTransferId) -> CheckTransfer</code>
 
 ## Documents
@@ -588,6 +587,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/physical_cards/{physical_card_id}/shipment_advance">client.simulations.physicalCards.<a href="./src/resources/simulations/physical-cards.ts">shipmentAdvance</a>(physicalCardId, { ...params }) -> PhysicalCard</code>
+
+## InboundCheckDeposits
+
+Methods:
+
+- <code title="post /simulations/inbound_check_deposits">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">create</a>({ ...params }) -> InboundCheckDeposit</code>
 
 # PhysicalCards
 
@@ -734,3 +739,14 @@ Methods:
 - <code title="get /physical_card_profiles">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">list</a>({ ...params }) -> PhysicalCardProfilesPage</code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/archive">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">archive</a>(physicalCardProfileId) -> PhysicalCardProfile</code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/clone">client.physicalCardProfiles.<a href="./src/resources/physical-card-profiles.ts">clone</a>(physicalCardProfileId, { ...params }) -> PhysicalCardProfile</code>
+
+# InboundCheckDeposits
+
+Types:
+
+- <code><a href="./src/resources/inbound-check-deposits.ts">InboundCheckDeposit</a></code>
+
+Methods:
+
+- <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">retrieve</a>(inboundCheckDepositId) -> InboundCheckDeposit</code>
+- <code title="get /inbound_check_deposits">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">list</a>({ ...params }) -> InboundCheckDepositsPage</code>

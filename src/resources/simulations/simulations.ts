@@ -14,6 +14,7 @@ import * as CheckDepositsAPI from 'increase/resources/simulations/check-deposits
 import * as CheckTransfersAPI from 'increase/resources/simulations/check-transfers';
 import * as DigitalWalletTokenRequestsAPI from 'increase/resources/simulations/digital-wallet-token-requests';
 import * as DocumentsAPI from 'increase/resources/simulations/documents';
+import * as InboundCheckDepositsAPI from 'increase/resources/simulations/inbound-check-deposits';
 import * as InboundFundsHoldsAPI from 'increase/resources/simulations/inbound-funds-holds';
 import * as InboundWireDrawdownRequestsAPI from 'increase/resources/simulations/inbound-wire-drawdown-requests';
 import * as InterestPaymentsAPI from 'increase/resources/simulations/interest-payments';
@@ -51,6 +52,8 @@ export class Simulations extends APIResource {
   realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
     new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
+  inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
+    new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
 
   /**
    * Simulates expiring a card authorization immediately.
@@ -195,4 +198,6 @@ export namespace Simulations {
   export import RealTimePaymentsTransferCreateInboundParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateInboundParams;
   export import PhysicalCards = PhysicalCardsAPI.PhysicalCards;
   export import PhysicalCardShipmentAdvanceParams = PhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
+  export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
+  export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
 }
