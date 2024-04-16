@@ -99,6 +99,12 @@ export interface CheckTransfer {
   approval: CheckTransfer.Approval | null;
 
   /**
+   * If the Check Transfer was successfully deposited, this will contain the
+   * identifier of the Inbound Check Deposit object with details of the deposit.
+   */
+  approved_inbound_check_deposit_id: string | null;
+
+  /**
    * If your account requires approvals for transfers and the transfer was not
    * approved, this will contain details of the cancellation.
    */
@@ -127,11 +133,6 @@ export interface CheckTransfer {
    * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-  /**
-   * After a check transfer is deposited, this will contain supplemental details.
-   */
-  deposit: CheckTransfer.Deposit | null;
 
   /**
    * Whether Increase will print and mail the check or if you will do it yourself.
@@ -261,57 +262,6 @@ export namespace CheckTransfer {
      * that user.
      */
     canceled_by: string | null;
-  }
-
-  /**
-   * After a check transfer is deposited, this will contain supplemental details.
-   */
-  export interface Deposit {
-    /**
-     * The identifier of the API File object containing an image of the back of the
-     * deposited check.
-     */
-    back_image_file_id: string | null;
-
-    /**
-     * The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-     * bank depositing this check. In some rare cases, this is not transmitted via
-     * Check21 and the value will be null.
-     */
-    bank_of_first_deposit_routing_number: string | null;
-
-    /**
-     * When the check was deposited.
-     */
-    deposited_at: string;
-
-    /**
-     * The identifier of the API File object containing an image of the front of the
-     * deposited check.
-     */
-    front_image_file_id: string | null;
-
-    /**
-     * The identifier of the Inbound Check Deposit object associated with this
-     * transaction.
-     */
-    inbound_check_deposit_id: string | null;
-
-    /**
-     * The identifier of the Transaction object created when the check was deposited.
-     */
-    transaction_id: string | null;
-
-    /**
-     * The identifier of the Check Transfer object that was deposited.
-     */
-    transfer_id: string | null;
-
-    /**
-     * A constant representing the object's type. For this resource it will always be
-     * `check_transfer_deposit`.
-     */
-    type: 'check_transfer_deposit';
   }
 
   /**
