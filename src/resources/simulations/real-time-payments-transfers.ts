@@ -232,6 +232,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         amount: number;
 
         /**
+         * The identifier of the Inbound ACH Transfer object associated with this decline.
+         */
+        inbound_ach_transfer_id: string;
+
+        /**
          * The descriptive date of the transfer.
          */
         originator_company_descriptive_date: string | null;
@@ -731,10 +736,20 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         back_image_file_id: string | null;
 
         /**
+         * The identifier of the Check Transfer object associated with this decline.
+         */
+        check_transfer_id: string | null;
+
+        /**
          * The identifier of the API File object containing an image of the front of the
          * declined check.
          */
         front_image_file_id: string | null;
+
+        /**
+         * The identifier of the Inbound Check Deposit object associated with this decline.
+         */
+        inbound_check_deposit_id: string | null;
 
         /**
          * Why the check was declined.
@@ -3456,6 +3471,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         front_image_file_id: string | null;
 
         /**
+         * The identifier of the Inbound Check Deposit object associated with this
+         * transaction.
+         */
+        inbound_check_deposit_id: string | null;
+
+        /**
          * The identifier of the Transaction object created when the check was deposited.
          */
         transaction_id: string | null;
@@ -3599,7 +3620,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         trace_number: string;
 
         /**
-         * The inbound ach transfer's identifier.
+         * The Inbound ACH Transfer's identifier.
          */
         transfer_id: string;
       }

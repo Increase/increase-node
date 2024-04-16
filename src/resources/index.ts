@@ -165,6 +165,12 @@ export {
   InboundACHTransfers,
 } from './inbound-ach-transfers';
 export {
+  InboundCheckDeposit,
+  InboundCheckDepositListParams,
+  InboundCheckDepositsPage,
+  InboundCheckDeposits,
+} from './inbound-check-deposits';
+export {
   InboundWireDrawdownRequest,
   InboundWireDrawdownRequestListParams,
   InboundWireDrawdownRequestsPage,
