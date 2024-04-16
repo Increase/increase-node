@@ -2320,6 +2320,12 @@ export namespace Transaction {
       front_image_file_id: string | null;
 
       /**
+       * The identifier of the Inbound Check Deposit object associated with this
+       * transaction.
+       */
+      inbound_check_deposit_id: string | null;
+
+      /**
        * The identifier of the Transaction object created when the check was deposited.
        */
       transaction_id: string | null;
@@ -2463,7 +2469,7 @@ export namespace Transaction {
       trace_number: string;
 
       /**
-       * The inbound ach transfer's identifier.
+       * The Inbound ACH Transfer's identifier.
        */
       transfer_id: string;
     }

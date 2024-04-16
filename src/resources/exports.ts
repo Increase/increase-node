@@ -376,7 +376,73 @@ export namespace ExportCreateParams {
   }
 }
 
-export interface ExportListParams extends PageParams {}
+export interface ExportListParams extends PageParams {
+  category?: ExportListParams.Category;
+
+  created_at?: ExportListParams.CreatedAt;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+
+  status?: ExportListParams.Status;
+}
+
+export namespace ExportListParams {
+  export interface Category {
+    /**
+     * Filter Exports for those with the specified category or categories. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'account_statement_ofx'
+      | 'transaction_csv'
+      | 'balance_csv'
+      | 'bookkeeping_account_balance_csv'
+      | 'entity_csv'
+    >;
+  }
+
+  export interface CreatedAt {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Exports for those with the specified status or statuses. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<'pending' | 'complete' | 'failed'>;
+  }
+}
 
 export namespace Exports {
   export import Export = ExportsAPI.Export;

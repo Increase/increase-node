@@ -261,7 +261,27 @@ export interface WireDrawdownRequestCreateParams {
   recipient_address_line3?: string;
 }
 
-export interface WireDrawdownRequestListParams extends PageParams {}
+export interface WireDrawdownRequestListParams extends PageParams {
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
+
+  /**
+   * Filter Wire Drawdown Requests for those with the specified status.
+   *
+   * - `pending_submission` - The drawdown request is queued to be submitted to
+   *   Fedwire.
+   * - `pending_response` - The drawdown request has been sent and the recipient
+   *   should respond in some way.
+   * - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+   * - `refused` - The drawdown request has been refused by the recipient.
+   */
+  status?: 'pending_submission' | 'pending_response' | 'fulfilled' | 'refused';
+}
 
 export namespace WireDrawdownRequests {
   export import WireDrawdownRequest = WireDrawdownRequestsAPI.WireDrawdownRequest;
