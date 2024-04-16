@@ -102,7 +102,22 @@ describe('resource exports', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.exports.list({ cursor: 'string', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      increase.exports.list(
+        {
+          category: { in: ['account_statement_ofx', 'transaction_csv', 'balance_csv'] },
+          created_at: {
+            after: '2019-12-27T18:11:19.117Z',
+            before: '2019-12-27T18:11:19.117Z',
+            on_or_after: '2019-12-27T18:11:19.117Z',
+            on_or_before: '2019-12-27T18:11:19.117Z',
+          },
+          cursor: 'string',
+          idempotency_key: 'x',
+          limit: 1,
+          status: { in: ['pending', 'complete', 'failed'] },
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

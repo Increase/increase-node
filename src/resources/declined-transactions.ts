@@ -208,6 +208,11 @@ export namespace DeclinedTransaction {
       amount: number;
 
       /**
+       * The identifier of the Inbound ACH Transfer object associated with this decline.
+       */
+      inbound_ach_transfer_id: string;
+
+      /**
        * The descriptive date of the transfer.
        */
       originator_company_descriptive_date: string | null;
@@ -707,10 +712,20 @@ export namespace DeclinedTransaction {
       back_image_file_id: string | null;
 
       /**
+       * The identifier of the Check Transfer object associated with this decline.
+       */
+      check_transfer_id: string | null;
+
+      /**
        * The identifier of the API File object containing an image of the front of the
        * declined check.
        */
       front_image_file_id: string | null;
+
+      /**
+       * The identifier of the Inbound Check Deposit object associated with this decline.
+       */
+      inbound_check_deposit_id: string | null;
 
       /**
        * Why the check was declined.
