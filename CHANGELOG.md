@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.47.0 (2024-04-16)
+
+Full Changelog: [v0.46.1...v0.47.0](https://github.com/Increase/increase-node/compare/v0.46.1...v0.47.0)
+
+### Features
+
+* **api:** add /inbound_check_deposits endpoints ([#371](https://github.com/Increase/increase-node/issues/371)) ([12032a4](https://github.com/Increase/increase-node/commit/12032a43dddb125375878a1de58bc006c7e04ce7))
+
+
+### Chores
+
+* **internal:** formatting ([#370](https://github.com/Increase/increase-node/issues/370)) ([0700ec8](https://github.com/Increase/increase-node/commit/0700ec887ec9350085ad59c815b270d4adbc76c9))
+* **internal:** update gitignore ([#368](https://github.com/Increase/increase-node/issues/368)) ([69e44bc](https://github.com/Increase/increase-node/commit/69e44bc4a16654ad01cb2ad76524594e09d053bf))
+
 ## 0.46.1 (2024-04-11)
 
 Full Changelog: [v0.46.0...v0.46.1](https://github.com/Increase/increase-node/compare/v0.46.0...v0.46.1)
