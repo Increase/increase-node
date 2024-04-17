@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.49.0 (2024-04-17)
+
+Full Changelog: [v0.48.0...v0.49.0](https://github.com/Increase/increase-node/compare/v0.48.0...v0.49.0)
+
+### Features
+
+* **api:** add altered_or_fictitious check decline reason ([#375](https://github.com/Increase/increase-node/issues/375)) ([78770e5](https://github.com/Increase/increase-node/commit/78770e56ed15045706f03aa1deb3fead5e8c1ae8))
+
 ## 0.48.0 (2024-04-16)
 
 Full Changelog: [v0.47.0...v0.48.0](https://github.com/Increase/increase-node/compare/v0.47.0...v0.48.0)
