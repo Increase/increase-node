@@ -90,6 +90,12 @@ export interface InboundWireDrawdownRequest {
   beneficiary_routing_number: string;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the inbound wire drawdown requested was created.
+   */
+  created_at: string;
+
+  /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
    * requested. Will always be "USD".
    */

@@ -122,6 +122,10 @@ export interface Event {
    *   Transfer Return is created.
    * - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
    *   Transfer Return is updated.
+   * - `inbound_check_deposit.created` - Occurs whenever an Inbound Check Deposit is
+   *   created.
+   * - `inbound_check_deposit.updated` - Occurs whenever an Inbound Check Deposit is
+   *   updated.
    * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
    * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
    * - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
@@ -229,6 +233,8 @@ export interface Event {
     | 'inbound_ach_transfer.updated'
     | 'inbound_ach_transfer_return.created'
     | 'inbound_ach_transfer_return.updated'
+    | 'inbound_check_deposit.created'
+    | 'inbound_check_deposit.updated'
     | 'inbound_mail_item.created'
     | 'inbound_mail_item.updated'
     | 'inbound_wire_drawdown_request.created'
@@ -341,6 +347,8 @@ export namespace EventListParams {
       | 'inbound_ach_transfer.updated'
       | 'inbound_ach_transfer_return.created'
       | 'inbound_ach_transfer_return.updated'
+      | 'inbound_check_deposit.created'
+      | 'inbound_check_deposit.updated'
       | 'inbound_mail_item.created'
       | 'inbound_mail_item.updated'
       | 'inbound_wire_drawdown_request.created'
