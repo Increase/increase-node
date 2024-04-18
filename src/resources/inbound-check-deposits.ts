@@ -37,6 +37,16 @@ export class InboundCheckDeposits extends APIResource {
       ...options,
     });
   }
+
+  /**
+   * Decline an Inbound Check Deposit
+   */
+  decline(
+    inboundCheckDepositId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundCheckDeposit> {
+    return this._client.post(`/inbound_check_deposits/${inboundCheckDepositId}/decline`, options);
+  }
 }
 
 export class InboundCheckDepositsPage extends Page<InboundCheckDeposit> {}

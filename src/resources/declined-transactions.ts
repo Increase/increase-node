@@ -255,7 +255,7 @@ export namespace DeclinedTransaction {
        *   transfer to be returned.
        * - `transaction_not_allowed` - The transaction is not allowed per Increase's
        *   terms.
-       * - `user_initiated` - The user initiated the decline.
+       * - `user_initiated` - Your integration declined this transfer via the API.
        */
       reason:
         | 'ach_route_canceled'
@@ -749,6 +749,7 @@ export namespace DeclinedTransaction {
        * - `refer_to_image` - The check is not readable. Please refer to the image.
        * - `unable_to_process` - The check cannot be processed. This is rare: please
        *   contact support.
+       * - `user_initiated` - Your integration declined this check via the API.
        */
       reason:
         | 'ach_route_disabled'
@@ -765,7 +766,8 @@ export namespace DeclinedTransaction {
         | 'not_our_item'
         | 'no_account_number_found'
         | 'refer_to_image'
-        | 'unable_to_process';
+        | 'unable_to_process'
+        | 'user_initiated';
     }
 
     /**
