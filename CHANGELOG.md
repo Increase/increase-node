@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.50.0 (2024-04-18)
+
+Full Changelog: [v0.49.0...v0.50.0](https://github.com/Increase/increase-node/compare/v0.49.0...v0.50.0)
+
+### Features
+
+* **api:** add inbound_check_deposits decline endpoint ([#377](https://github.com/Increase/increase-node/issues/377)) ([0c88faa](https://github.com/Increase/increase-node/commit/0c88faa475a4271efbe2d37089e6688da0be2cb0))
+
 ## 0.49.0 (2024-04-17)
 
 Full Changelog: [v0.48.0...v0.49.0](https://github.com/Increase/increase-node/compare/v0.48.0...v0.49.0)
