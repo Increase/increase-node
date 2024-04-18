@@ -68,4 +68,26 @@ describe('resource inboundCheckDeposits', () => {
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('decline', async () => {
+    const responsePromise = increase.inboundCheckDeposits.decline(
+      'inbound_check_deposit_zoshvqybq0cjjm31mra',
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('decline: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      increase.inboundCheckDeposits.decline('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+        path: '/_stainless_unknown_path',
+      }),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
 });
