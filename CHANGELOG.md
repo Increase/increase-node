@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.51.0 (2024-04-19)
+
+Full Changelog: [v0.50.0...v0.51.0](https://github.com/Increase/increase-node/compare/v0.50.0...v0.51.0)
+
+### Features
+
+* **api:** add account_id param to ach_prenotification and third_party to check_transfer ([#379](https://github.com/Increase/increase-node/issues/379)) ([dc4addf](https://github.com/Increase/increase-node/commit/dc4addf4692f2d24ecaa0696116b6d806f7ef773))
+
 ## 0.50.0 (2024-04-18)
 
 Full Changelog: [v0.49.0...v0.50.0](https://github.com/Increase/increase-node/compare/v0.49.0...v0.50.0)
