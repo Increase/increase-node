@@ -62,6 +62,13 @@ export interface InboundCheckDeposit {
   id: string;
 
   /**
+   * If the Inbound Check Deposit was accepted, the
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+   * took place.
+   */
+  accepted_at: string | null;
+
+  /**
    * The Account the check is being deposited against.
    */
   account_id: string;
@@ -119,6 +126,13 @@ export interface InboundCheckDeposit {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
+   * If the Inbound Check Deposit was declined, the
+   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+   * took place.
+   */
+  declined_at: string | null;
+
+  /**
    * If the deposit attempt has been rejected, the identifier of the Declined
    * Transaction object created as a result of the failed deposit.
    */
@@ -134,9 +148,9 @@ export interface InboundCheckDeposit {
    *
    * - `pending` - The Inbound Check Deposit is pending.
    * - `accepted` - The Inbound Check Deposit was accepted.
-   * - `rejected` - The Inbound Check Deposit was rejected.
+   * - `declined` - The Inbound Check Deposit was rejected.
    */
-  status: 'pending' | 'accepted' | 'rejected';
+  status: 'pending' | 'accepted' | 'declined';
 
   /**
    * If the deposit attempt has been accepted, the identifier of the Transaction
@@ -156,6 +170,12 @@ export interface InboundCheckDepositListParams extends PageParams {
    * Filter Inbound Check Deposits to those belonging to the specified Account.
    */
   account_id?: string;
+
+  /**
+   * Filter Inbound Check Deposits to those belonging to the specified Check
+   * Transfer.
+   */
+  check_transfer_id?: string;
 
   created_at?: InboundCheckDepositListParams.CreatedAt;
 }

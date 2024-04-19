@@ -169,7 +169,6 @@ describe('resource entities', () => {
           },
         },
       },
-      relationship: 'affiliated',
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
       trust: {
         name: 'x',
