@@ -27,6 +27,7 @@ describe('resource achPrenotifications', () => {
     const response = await increase.achPrenotifications.create({
       account_number: '987654321',
       routing_number: '101050001',
+      account_id: 'string',
       addendum: 'x',
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',

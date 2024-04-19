@@ -470,6 +470,11 @@ export interface ACHPrenotificationCreateParams {
   routing_number: string;
 
   /**
+   * The Increase identifier for the account that will send the transfer.
+   */
+  account_id?: string;
+
+  /**
    * Additional information that will be sent to the recipient.
    */
   addendum?: string;

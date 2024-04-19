@@ -221,6 +221,12 @@ export interface CheckTransfer {
   submission: CheckTransfer.Submission | null;
 
   /**
+   * Details relating to the custom fulfillment you will perform. Will be present if
+   * and only if `fulfillment_method` is equal to `third_party`.
+   */
+  third_party: CheckTransfer.ThirdParty | null;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `check_transfer`.
    */
@@ -427,6 +433,17 @@ export namespace CheckTransfer {
      */
     submitted_at: string;
   }
+
+  /**
+   * Details relating to the custom fulfillment you will perform. Will be present if
+   * and only if `fulfillment_method` is equal to `third_party`.
+   */
+  export interface ThirdParty {
+    /**
+     * The check number that will be printed on the check.
+     */
+    check_number: string | null;
+  }
 }
 
 export interface CheckTransferCreateParams {
@@ -467,6 +484,13 @@ export interface CheckTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
+
+  /**
+   * Details relating to the custom fulfillment you will perform. This is required if
+   * `fulfillment_method` is equal to `third_party`. It must not be included if any
+   * other `fulfillment_method` is provided.
+   */
+  third_party?: CheckTransferCreateParams.ThirdParty;
 }
 
 export namespace CheckTransferCreateParams {
@@ -575,6 +599,20 @@ export namespace CheckTransferCreateParams {
        */
       line2?: string;
     }
+  }
+
+  /**
+   * Details relating to the custom fulfillment you will perform. This is required if
+   * `fulfillment_method` is equal to `third_party`. It must not be included if any
+   * other `fulfillment_method` is provided.
+   */
+  export interface ThirdParty {
+    /**
+     * The check number you will print on the check. This should not contain leading
+     * zeroes. If this is omitted, Increase will generate a check number for you; you
+     * should inspect the response and use that check number.
+     */
+    check_number?: string;
   }
 }
 
