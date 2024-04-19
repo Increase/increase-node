@@ -52,6 +52,7 @@ describe('resource checkTransfers', () => {
         },
       },
       require_approval: true,
+      third_party: { check_number: 'x' },
     });
   });
 

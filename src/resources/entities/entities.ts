@@ -891,16 +891,6 @@ export interface EntityCreateParams {
   natural_person?: EntityCreateParams.NaturalPerson;
 
   /**
-   * The relationship between your group and the entity.
-   *
-   * - `affiliated` - The entity is controlled by your group.
-   * - `informational` - The entity is for informational purposes only.
-   * - `unaffiliated` - The entity is not controlled by your group, but can still
-   *   directly open accounts.
-   */
-  relationship?: 'affiliated' | 'informational' | 'unaffiliated';
-
-  /**
    * Additional documentation associated with the entity.
    */
   supplemental_documents?: Array<EntityCreateParams.SupplementalDocument>;
