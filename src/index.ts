@@ -248,6 +248,9 @@ export class Increase extends Core.APIClient {
   static EnvironmentMismatchError = Errors.EnvironmentMismatchError;
   static InsufficientPermissionsError = Errors.InsufficientPermissionsError;
   static IdempotencyKeyAlreadyUsedError = Errors.IdempotencyKeyAlreadyUsedError;
+
+  static toFile = Uploads.toFile;
+  static fileFromPath = Uploads.fileFromPath;
 }
 
 export const {
@@ -281,10 +284,6 @@ export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
 export namespace Increase {
-  // Helper functions
-  export import toFile = Uploads.toFile;
-  export import fileFromPath = Uploads.fileFromPath;
-
   export import RequestOptions = Core.RequestOptions;
 
   export import Page = Pagination.Page;
