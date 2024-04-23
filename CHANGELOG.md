@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.52.0 (2024-04-23)
+
+Full Changelog: [v0.51.0...v0.52.0](https://github.com/Increase/increase-node/compare/v0.51.0...v0.52.0)
+
+### Features
+
+* **api:** remove inbound_wire_drawdown_payment_reversal ([#384](https://github.com/Increase/increase-node/issues/384)) ([396a2f0](https://github.com/Increase/increase-node/commit/396a2f0759afb7ac82de61692b8337a264535bf7))
+
+
+### Chores
+
+* **internal:** use @swc/jest for running tests ([#381](https://github.com/Increase/increase-node/issues/381)) ([919d14d](https://github.com/Increase/increase-node/commit/919d14da4c5e379b3cfb62bcab0ba2b6c5ddb5d8))
+
 ## 0.51.0 (2024-04-19)
 
 Full Changelog: [v0.50.0...v0.51.0](https://github.com/Increase/increase-node/compare/v0.50.0...v0.51.0)
