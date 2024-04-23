@@ -217,9 +217,6 @@ export namespace Transaction {
      * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
-     * - `inbound_wire_drawdown_payment_reversal` - Inbound Wire Drawdown Payment
-     *   Reversal: details will be under the `inbound_wire_drawdown_payment_reversal`
-     *   object.
      * - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
      *   be under the `inbound_wire_drawdown_payment` object.
      * - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
@@ -263,7 +260,6 @@ export namespace Transaction {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_international_ach_transfer'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_drawdown_payment_reversal'
       | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
@@ -332,13 +328,6 @@ export namespace Transaction {
      * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
      */
     inbound_wire_drawdown_payment: Source.InboundWireDrawdownPayment | null;
-
-    /**
-     * An Inbound Wire Drawdown Payment Reversal object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `inbound_wire_drawdown_payment_reversal`.
-     */
-    inbound_wire_drawdown_payment_reversal: Source.InboundWireDrawdownPaymentReversal | null;
 
     /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
@@ -2959,69 +2948,6 @@ export namespace Transaction {
     }
 
     /**
-     * An Inbound Wire Drawdown Payment Reversal object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `inbound_wire_drawdown_payment_reversal`.
-     */
-    export interface InboundWireDrawdownPaymentReversal {
-      /**
-       * The amount that was reversed.
-       */
-      amount: number;
-
-      /**
-       * The description on the reversal message from Fedwire.
-       */
-      description: string;
-
-      /**
-       * The Fedwire cycle date for the wire reversal.
-       */
-      input_cycle_date: string;
-
-      /**
-       * The Fedwire transaction identifier.
-       */
-      input_message_accountability_data: string;
-
-      /**
-       * The Fedwire sequence number.
-       */
-      input_sequence_number: string;
-
-      /**
-       * The Fedwire input source identifier.
-       */
-      input_source: string;
-
-      /**
-       * The American Banking Association (ABA) routing number of the bank originating
-       * the transfer.
-       */
-      originator_routing_number: string | null;
-
-      /**
-       * The Fedwire cycle date for the wire transfer that was reversed.
-       */
-      previous_message_input_cycle_date: string;
-
-      /**
-       * The Fedwire transaction identifier for the wire transfer that was reversed.
-       */
-      previous_message_input_message_accountability_data: string;
-
-      /**
-       * The Fedwire sequence number for the wire transfer that was reversed.
-       */
-      previous_message_input_sequence_number: string;
-
-      /**
-       * The Fedwire input source identifier for the wire transfer that was reversed.
-       */
-      previous_message_input_source: string;
-    }
-
-    /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_reversal`.
      */
@@ -3444,7 +3370,6 @@ export namespace TransactionListParams {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_international_ach_transfer'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_drawdown_payment_reversal'
       | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
