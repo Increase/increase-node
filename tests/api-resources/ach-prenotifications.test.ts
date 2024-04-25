@@ -11,6 +11,7 @@ const increase = new Increase({
 describe('resource achPrenotifications', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.achPrenotifications.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',
     });
@@ -25,9 +26,9 @@ describe('resource achPrenotifications', () => {
 
   test('create: required and optional params', async () => {
     const response = await increase.achPrenotifications.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',
-      account_id: 'string',
       addendum: 'x',
       company_descriptive_date: 'x',
       company_discretionary_data: 'x',
