@@ -459,6 +459,11 @@ export namespace ACHPrenotification {
 
 export interface ACHPrenotificationCreateParams {
   /**
+   * The Increase identifier for the account that will send the transfer.
+   */
+  account_id: string;
+
+  /**
    * The account number for the destination account.
    */
   account_number: string;
@@ -468,11 +473,6 @@ export interface ACHPrenotificationCreateParams {
    * destination account.
    */
   routing_number: string;
-
-  /**
-   * The Increase identifier for the account that will send the transfer.
-   */
-  account_id?: string;
 
   /**
    * Additional information that will be sent to the recipient.
