@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.53.0 (2024-04-25)
+
+Full Changelog: [v0.52.0...v0.53.0](https://github.com/Increase/increase-node/compare/v0.52.0...v0.53.0)
+
+### ⚠ BREAKING CHANGES
+
+* require account ID for creating an ACH prenotification ([#387](https://github.com/Increase/increase-node/issues/387))
+
+### Bug Fixes
+
+* require account ID for creating an ACH prenotification ([#387](https://github.com/Increase/increase-node/issues/387)) ([3f3633e](https://github.com/Increase/increase-node/commit/3f3633ef8afb3dc1d2660709a60c4eb0dae86213))
+
+
+### Chores
+
+* **internal:** use actions/checkout@v4 for codeflow ([#385](https://github.com/Increase/increase-node/issues/385)) ([442d578](https://github.com/Increase/increase-node/commit/442d57826f04f4337d61a13dc8fe80f3bb91eb2a))
+
 ## 0.52.0 (2024-04-23)
 
 Full Changelog: [v0.51.0...v0.52.0](https://github.com/Increase/increase-node/compare/v0.51.0...v0.52.0)
