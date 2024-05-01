@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.54.0 (2024-05-01)
+
+Full Changelog: [v0.53.0...v0.54.0](https://github.com/Increase/increase-node/compare/v0.53.0...v0.54.0)
+
+### Features
+
+* **api:** updates ([#394](https://github.com/Increase/increase-node/issues/394)) ([30dfb15](https://github.com/Increase/increase-node/commit/30dfb1582fdfc7ddc435f3b57a255c5597aa6ce7))
+
+
+### Chores
+
+* **internal:** add link to openapi spec ([#391](https://github.com/Increase/increase-node/issues/391)) ([32ea381](https://github.com/Increase/increase-node/commit/32ea38145a5b8385be4408dbc253003925c99104))
+* **internal:** add scripts/test and scripts/mock ([#388](https://github.com/Increase/increase-node/issues/388)) ([da57efb](https://github.com/Increase/increase-node/commit/da57efba3fba940b5f683ff5efc96b275c61fd87))
+* **internal:** add scripts/test, scripts/mock and add ci job ([#392](https://github.com/Increase/increase-node/issues/392)) ([7e895b5](https://github.com/Increase/increase-node/commit/7e895b5a634f0c000ddd36e1508283cbd0f5325a))
+* **internal:** forward arguments in scripts/test ([#393](https://github.com/Increase/increase-node/issues/393)) ([99378df](https://github.com/Increase/increase-node/commit/99378df86a0a253b652d6cb88fcc86e818bcf257))
+* **internal:** refactor scripts ([#390](https://github.com/Increase/increase-node/issues/390)) ([f74c2b9](https://github.com/Increase/increase-node/commit/f74c2b9c283d139a1a7dbdf5c830b944237fd1ce))
+
 ## 0.53.0 (2024-04-25)
 
 Full Changelog: [v0.52.0...v0.53.0](https://github.com/Increase/increase-node/compare/v0.52.0...v0.53.0)
