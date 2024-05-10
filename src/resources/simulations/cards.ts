@@ -426,6 +426,17 @@ export namespace CardAuthorizationSimulation {
         physical_card_id: string | null;
 
         /**
+         * The declined amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
+
+        /**
          * The processing category describes the intent behind the authorization, such as
          * whether it was used for bill payments or an automatic fuel dispenser.
          *
@@ -1545,6 +1556,17 @@ export namespace CardAuthorizationSimulation {
          * that was used.
          */
         physical_card_id: string | null;
+
+        /**
+         * The pending amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
 
         /**
          * The processing category describes the intent behind the authorization, such as

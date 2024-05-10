@@ -109,6 +109,11 @@ export namespace RealTimeDecision {
     card_id: string;
 
     /**
+     * The identifier of the Card Payment this authorization belongs to.
+     */
+    card_payment_id: string;
+
+    /**
      * Whether or not the authorization was approved.
      *
      * - `approve` - Approve the authorization.

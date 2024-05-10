@@ -97,6 +97,12 @@ export interface Account {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+   * was closed.
+   */
+  closed_at: string | null;
+
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
    * was created.
    */
   created_at: string;
