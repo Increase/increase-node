@@ -82,7 +82,7 @@ export class EntitiesPage extends Page<Entity> {}
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
- * corporations, partnerships, or trusts.
+ * corporations, partnerships, government authorities, or trusts.
  */
 export interface Entity {
   /**
@@ -112,6 +112,12 @@ export interface Entity {
    * Entity's details were most recently confirmed.
    */
   details_confirmed_at: string | null;
+
+  /**
+   * Details of the government authority entity. Will be present if `structure` is
+   * equal to `government_authority`.
+   */
+  government_authority: Entity.GovernmentAuthority | null;
 
   /**
    * The idempotency key you chose for this object. This value is unique across
@@ -149,8 +155,9 @@ export interface Entity {
    * - `natural_person` - An individual person.
    * - `joint` - Multiple individual people.
    * - `trust` - A trust.
+   * - `government_authority` - A government authority.
    */
-  structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
+  structure: 'corporation' | 'natural_person' | 'joint' | 'trust' | 'government_authority';
 
   /**
    * Additional documentation associated with the entity. This is limited to the
@@ -361,6 +368,89 @@ export namespace Entity {
           number_last4: string;
         }
       }
+    }
+  }
+
+  /**
+   * Details of the government authority entity. Will be present if `structure` is
+   * equal to `government_authority`.
+   */
+  export interface GovernmentAuthority {
+    /**
+     * The government authority's address.
+     */
+    address: GovernmentAuthority.Address;
+
+    /**
+     * The identifying details of authorized persons of the government authority.
+     */
+    authorized_persons: Array<GovernmentAuthority.AuthorizedPerson>;
+
+    /**
+     * The category of the government authority.
+     *
+     * - `municipality` - The Public Entity is a Municipality.
+     */
+    category: 'municipality';
+
+    /**
+     * The government authority's name.
+     */
+    name: string;
+
+    /**
+     * The Employer Identification Number (EIN) of the government authority.
+     */
+    tax_identifier: string | null;
+
+    /**
+     * The government authority's website.
+     */
+    website: string | null;
+  }
+
+  export namespace GovernmentAuthority {
+    /**
+     * The government authority's address.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address.
+       */
+      line1: string;
+
+      /**
+       * The second line of the address.
+       */
+      line2: string | null;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+    }
+
+    export interface AuthorizedPerson {
+      /**
+       * The identifier of this authorized person.
+       */
+      authorized_person_id: string;
+
+      /**
+       * The person's legal name.
+       */
+      name: string;
     }
   }
 
@@ -862,8 +952,9 @@ export interface EntityCreateParams {
    * - `natural_person` - An individual person.
    * - `joint` - Multiple individual people.
    * - `trust` - A trust.
+   * - `government_authority` - A government authority.
    */
-  structure: 'corporation' | 'natural_person' | 'joint' | 'trust';
+  structure: 'corporation' | 'natural_person' | 'joint' | 'trust' | 'government_authority';
 
   /**
    * Details of the corporation entity to create. Required if `structure` is equal to
@@ -875,6 +966,12 @@ export interface EntityCreateParams {
    * The description you choose to give the entity.
    */
   description?: string;
+
+  /**
+   * Details of the Government Authority entity to create. Required if `structure` is
+   * equal to `Government Authority`.
+   */
+  government_authority?: EntityCreateParams.GovernmentAuthority;
 
   /**
    * Details of the joint entity to create. Required if `structure` is equal to
@@ -1198,6 +1295,86 @@ export namespace EntityCreateParams {
           }
         }
       }
+    }
+  }
+
+  /**
+   * Details of the Government Authority entity to create. Required if `structure` is
+   * equal to `Government Authority`.
+   */
+  export interface GovernmentAuthority {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    address: GovernmentAuthority.Address;
+
+    /**
+     * The identifying details of authorized officials acting on the entity's behalf.
+     */
+    authorized_persons: Array<GovernmentAuthority.AuthorizedPerson>;
+
+    /**
+     * The category of the government authority.
+     *
+     * - `municipality` - The Public Entity is a Municipality.
+     */
+    category: 'municipality';
+
+    /**
+     * The legal name of the government authority.
+     */
+    name: string;
+
+    /**
+     * The Employer Identification Number (EIN) for the government authority.
+     */
+    tax_identifier: string;
+
+    /**
+     * The website of the government authority.
+     */
+    website?: string;
+  }
+
+  export namespace GovernmentAuthority {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
+
+    export interface AuthorizedPerson {
+      /**
+       * The person's legal name.
+       */
+      name: string;
     }
   }
 
