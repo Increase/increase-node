@@ -68,6 +68,14 @@ describe('resource entities', () => {
         ],
       },
       description: 'x',
+      government_authority: {
+        name: 'x',
+        website: 'string',
+        category: 'municipality',
+        tax_identifier: 'x',
+        address: { line1: 'x', line2: 'x', city: 'x', state: 'x', zip: 'x' },
+        authorized_persons: [{ name: 'x' }, { name: 'x' }, { name: 'x' }],
+      },
       joint: {
         name: 'x',
         individuals: [
