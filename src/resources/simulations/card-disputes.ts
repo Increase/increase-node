@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsCardDisputesAPI from 'increase/resources/simulations/card-disputes';
-import * as CardDisputesAPI from 'increase/resources/card-disputes';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsCardDisputesAPI from './card-disputes';
+import * as CardDisputesAPI from '../card-disputes';
 
 export class CardDisputes extends APIResource {
   /**

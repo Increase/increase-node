@@ -1,27 +1,27 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsAPI from 'increase/resources/simulations/simulations';
-import * as CardPaymentsAPI from 'increase/resources/card-payments';
-import * as AccountStatementsAPI from 'increase/resources/simulations/account-statements';
-import * as AccountTransfersAPI from 'increase/resources/simulations/account-transfers';
-import * as ACHTransfersAPI from 'increase/resources/simulations/ach-transfers';
-import * as CardDisputesAPI from 'increase/resources/simulations/card-disputes';
-import * as CardRefundsAPI from 'increase/resources/simulations/card-refunds';
-import * as CardsAPI from 'increase/resources/simulations/cards';
-import * as CheckDepositsAPI from 'increase/resources/simulations/check-deposits';
-import * as CheckTransfersAPI from 'increase/resources/simulations/check-transfers';
-import * as DigitalWalletTokenRequestsAPI from 'increase/resources/simulations/digital-wallet-token-requests';
-import * as DocumentsAPI from 'increase/resources/simulations/documents';
-import * as InboundCheckDepositsAPI from 'increase/resources/simulations/inbound-check-deposits';
-import * as InboundFundsHoldsAPI from 'increase/resources/simulations/inbound-funds-holds';
-import * as InboundWireDrawdownRequestsAPI from 'increase/resources/simulations/inbound-wire-drawdown-requests';
-import * as InterestPaymentsAPI from 'increase/resources/simulations/interest-payments';
-import * as PhysicalCardsAPI from 'increase/resources/simulations/physical-cards';
-import * as ProgramsAPI from 'increase/resources/simulations/programs';
-import * as RealTimePaymentsTransfersAPI from 'increase/resources/simulations/real-time-payments-transfers';
-import * as WireTransfersAPI from 'increase/resources/simulations/wire-transfers';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsAPI from './simulations';
+import * as CardPaymentsAPI from '../card-payments';
+import * as AccountStatementsAPI from './account-statements';
+import * as AccountTransfersAPI from './account-transfers';
+import * as ACHTransfersAPI from './ach-transfers';
+import * as CardDisputesAPI from './card-disputes';
+import * as CardRefundsAPI from './card-refunds';
+import * as CardsAPI from './cards';
+import * as CheckDepositsAPI from './check-deposits';
+import * as CheckTransfersAPI from './check-transfers';
+import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
+import * as DocumentsAPI from './documents';
+import * as InboundCheckDepositsAPI from './inbound-check-deposits';
+import * as InboundFundsHoldsAPI from './inbound-funds-holds';
+import * as InboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
+import * as InterestPaymentsAPI from './interest-payments';
+import * as PhysicalCardsAPI from './physical-cards';
+import * as ProgramsAPI from './programs';
+import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
+import * as WireTransfersAPI from './wire-transfers';
 
 export class Simulations extends APIResource {
   accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsACHTransfersAPI from 'increase/resources/simulations/ach-transfers';
-import * as ACHTransfersAPI from 'increase/resources/ach-transfers';
-import * as InboundACHTransfersAPI from 'increase/resources/inbound-ach-transfers';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsACHTransfersAPI from './ach-transfers';
+import * as ACHTransfersAPI from '../ach-transfers';
+import * as InboundACHTransfersAPI from '../inbound-ach-transfers';
 
 export class ACHTransfers extends APIResource {
   /**

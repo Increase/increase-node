@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as BalancesAPI from 'increase/resources/intrafi/balances';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as BalancesAPI from './balances';
 
 export class Balances extends APIResource {
   /**

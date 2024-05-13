@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import { isRequestOptions } from 'increase/core';
-import * as AccountsAPI from 'increase/resources/accounts';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as AccountsAPI from './accounts';
+import { Page, type PageParams } from '../pagination';
 
 export class Accounts extends APIResource {
   /**

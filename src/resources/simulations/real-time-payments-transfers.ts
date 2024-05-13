@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsRealTimePaymentsTransfersAPI from 'increase/resources/simulations/real-time-payments-transfers';
-import * as RealTimePaymentsTransfersAPI from 'increase/resources/real-time-payments-transfers';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsRealTimePaymentsTransfersAPI from './real-time-payments-transfers';
+import * as RealTimePaymentsTransfersAPI from '../real-time-payments-transfers';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**

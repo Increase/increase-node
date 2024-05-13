@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as AccountTransfersAPI from 'increase/resources/account-transfers';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as AccountTransfersAPI from '../account-transfers';
 
 export class AccountTransfers extends APIResource {
   /**

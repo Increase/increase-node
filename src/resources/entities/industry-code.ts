@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as IndustryCodeAPI from 'increase/resources/entities/industry-code';
-import * as EntitiesAPI from 'increase/resources/entities/entities';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as IndustryCodeAPI from './industry-code';
+import * as EntitiesAPI from './entities';
 
 export class IndustryCode extends APIResource {
   /**
