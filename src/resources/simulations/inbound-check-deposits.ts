@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsInboundCheckDepositsAPI from 'increase/resources/simulations/inbound-check-deposits';
-import * as InboundCheckDepositsAPI from 'increase/resources/inbound-check-deposits';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsInboundCheckDepositsAPI from './inbound-check-deposits';
+import * as InboundCheckDepositsAPI from '../inbound-check-deposits';
 
 export class InboundCheckDeposits extends APIResource {
   /**

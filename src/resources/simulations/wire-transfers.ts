@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as WireTransfersAPI from 'increase/resources/simulations/wire-transfers';
-import * as InboundWireTransfersAPI from 'increase/resources/inbound-wire-transfers';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as WireTransfersAPI from './wire-transfers';
+import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
 
 export class WireTransfers extends APIResource {
   /**

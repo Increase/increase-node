@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as BeneficialOwnersAPI from 'increase/resources/entities/beneficial-owners';
-import * as EntitiesAPI from 'increase/resources/entities/entities';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as BeneficialOwnersAPI from './beneficial-owners';
+import * as EntitiesAPI from './entities';
 
 export class BeneficialOwners extends APIResource {
   /**

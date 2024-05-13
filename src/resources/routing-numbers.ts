@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as RoutingNumbersAPI from 'increase/resources/routing-numbers';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import * as RoutingNumbersAPI from './routing-numbers';
+import { Page, type PageParams } from '../pagination';
 
 export class RoutingNumbers extends APIResource {
   /**

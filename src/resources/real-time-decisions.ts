@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as RealTimeDecisionsAPI from 'increase/resources/real-time-decisions';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import * as RealTimeDecisionsAPI from './real-time-decisions';
 
 export class RealTimeDecisions extends APIResource {
   /**
