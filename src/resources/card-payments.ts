@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import { isRequestOptions } from 'increase/core';
-import * as CardPaymentsAPI from 'increase/resources/card-payments';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as CardPaymentsAPI from './card-payments';
+import { Page, type PageParams } from '../pagination';
 
 export class CardPayments extends APIResource {
   /**

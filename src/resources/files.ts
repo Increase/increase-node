@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import { isRequestOptions } from 'increase/core';
-import * as FilesAPI from 'increase/resources/files';
-import { type Uploadable, multipartFormRequestOptions } from 'increase/core';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as FilesAPI from './files';
+import { type Uploadable, multipartFormRequestOptions } from '../core';
+import { Page, type PageParams } from '../pagination';
 
 export class Files extends APIResource {
   /**

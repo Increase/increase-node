@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsAccountStatementsAPI from 'increase/resources/simulations/account-statements';
-import * as AccountStatementsAPI from 'increase/resources/account-statements';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsAccountStatementsAPI from './account-statements';
+import * as AccountStatementsAPI from '../account-statements';
 
 export class AccountStatements extends APIResource {
   /**

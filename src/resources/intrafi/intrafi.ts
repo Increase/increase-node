@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from 'increase/resource';
-import * as AccountEnrollmentsAPI from 'increase/resources/intrafi/account-enrollments';
-import * as BalancesAPI from 'increase/resources/intrafi/balances';
-import * as ExclusionsAPI from 'increase/resources/intrafi/exclusions';
+import { APIResource } from '../../resource';
+import * as AccountEnrollmentsAPI from './account-enrollments';
+import * as BalancesAPI from './balances';
+import * as ExclusionsAPI from './exclusions';
 
 export class Intrafi extends APIResource {
   accountEnrollments: AccountEnrollmentsAPI.AccountEnrollments = new AccountEnrollmentsAPI.AccountEnrollments(

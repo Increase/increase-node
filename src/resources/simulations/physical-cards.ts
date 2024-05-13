@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsPhysicalCardsAPI from 'increase/resources/simulations/physical-cards';
-import * as PhysicalCardsAPI from 'increase/resources/physical-cards';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsPhysicalCardsAPI from './physical-cards';
+import * as PhysicalCardsAPI from '../physical-cards';
 
 export class PhysicalCards extends APIResource {
   /**
