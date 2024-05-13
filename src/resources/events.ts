@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import { isRequestOptions } from 'increase/core';
-import * as EventsAPI from 'increase/resources/events';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as EventsAPI from './events';
+import { Page, type PageParams } from '../pagination';
 
 export class Events extends APIResource {
   /**

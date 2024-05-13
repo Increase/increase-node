@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as InboundFundsHoldsAPI from 'increase/resources/simulations/inbound-funds-holds';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as InboundFundsHoldsAPI from './inbound-funds-holds';
 
 export class InboundFundsHolds extends APIResource {
   /**

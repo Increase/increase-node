@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsDocumentsAPI from 'increase/resources/simulations/documents';
-import * as DocumentsAPI from 'increase/resources/documents';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsDocumentsAPI from './documents';
+import * as DocumentsAPI from '../documents';
 
 export class Documents extends APIResource {
   /**

@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as CardRefundsAPI from 'increase/resources/simulations/card-refunds';
-import * as TransactionsAPI from 'increase/resources/transactions';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as CardRefundsAPI from './card-refunds';
+import * as TransactionsAPI from '../transactions';
 
 export class CardRefunds extends APIResource {
   /**

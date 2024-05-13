@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SupplementalDocumentsAPI from 'increase/resources/entities/supplemental-documents';
-import * as EntitiesAPI from 'increase/resources/entities/entities';
-import { Page, type PageParams } from 'increase/pagination';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SupplementalDocumentsAPI from './supplemental-documents';
+import * as EntitiesAPI from './entities';
+import { Page, type PageParams } from '../../pagination';
 
 export class SupplementalDocuments extends APIResource {
   /**

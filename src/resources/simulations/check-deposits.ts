@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as CheckDepositsAPI from 'increase/resources/check-deposits';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as CheckDepositsAPI from '../check-deposits';
 
 export class CheckDeposits extends APIResource {
   /**

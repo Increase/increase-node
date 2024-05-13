@@ -5,8 +5,8 @@ import * as Errors from './error';
 import { type Agent } from './_shims/index';
 import * as Uploads from './uploads';
 import * as qs from 'qs';
-import * as Pagination from 'increase/pagination';
-import * as API from 'increase/resources/index';
+import * as Pagination from './pagination';
+import * as API from './resources/index';
 
 const environments = {
   production: 'https://api.increase.com',

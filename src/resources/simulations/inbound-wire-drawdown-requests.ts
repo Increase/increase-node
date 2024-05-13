@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'increase/core';
-import { APIResource } from 'increase/resource';
-import * as SimulationsInboundWireDrawdownRequestsAPI from 'increase/resources/simulations/inbound-wire-drawdown-requests';
-import * as InboundWireDrawdownRequestsAPI from 'increase/resources/inbound-wire-drawdown-requests';
+import * as Core from '../../core';
+import { APIResource } from '../../resource';
+import * as SimulationsInboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
+import * as InboundWireDrawdownRequestsAPI from '../inbound-wire-drawdown-requests';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
