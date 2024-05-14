@@ -36,7 +36,7 @@ describe('resource digitalCardProfiles', () => {
       contact_email: 'user@example.com',
       contact_phone: '+18885551212',
       contact_website: 'https://example.com',
-      text_color: { red: 26, green: 43, blue: 59 },
+      text_color: { blue: 59, green: 43, red: 26 },
     });
   });
 
