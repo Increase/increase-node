@@ -12,7 +12,7 @@ describe('resource realTimePaymentsRequestForPayments', () => {
   test('create: only required params', async () => {
     const responsePromise = increase.realTimePaymentsRequestForPayments.create({
       amount: 100,
-      debtor: { name: 'Ian Crease', address: { country: 'US' } },
+      debtor: { address: { country: 'US' }, name: 'Ian Crease' },
       destination_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       expires_at: '2025-12-31',
       remittance_information: 'Invoice 29582',
@@ -32,8 +32,8 @@ describe('resource realTimePaymentsRequestForPayments', () => {
     const response = await increase.realTimePaymentsRequestForPayments.create({
       amount: 100,
       debtor: {
+        address: { city: 'x', country: 'US', post_code: 'x', street_name: 'Liberty Street' },
         name: 'Ian Crease',
-        address: { street_name: 'Liberty Street', post_code: 'x', city: 'x', country: 'US' },
       },
       destination_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       expires_at: '2025-12-31',
