@@ -14,14 +14,14 @@ describe('resource physicalCards', () => {
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       cardholder: { first_name: 'Ian', last_name: 'Crease' },
       shipment: {
-        method: 'usps',
         address: {
-          name: 'Ian Crease',
-          line1: '33 Liberty Street',
           city: 'New York',
-          state: 'NY',
+          line1: '33 Liberty Street',
+          name: 'Ian Crease',
           postal_code: '10045',
+          state: 'NY',
         },
+        method: 'usps',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -38,17 +38,17 @@ describe('resource physicalCards', () => {
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       cardholder: { first_name: 'Ian', last_name: 'Crease' },
       shipment: {
-        method: 'usps',
         address: {
-          name: 'Ian Crease',
+          city: 'New York',
           line1: '33 Liberty Street',
           line2: 'Unit 2',
           line3: 'x',
+          name: 'Ian Crease',
           phone_number: 'x',
-          city: 'New York',
-          state: 'NY',
           postal_code: '10045',
+          state: 'NY',
         },
+        method: 'usps',
       },
       physical_card_profile_id: 'string',
     });

@@ -23,9 +23,9 @@ describe('resource cards', () => {
   test('create: required and optional params', async () => {
     const response = await increase.cards.create({
       account_id: 'account_in71c4amph0vgo2qllky',
-      billing_address: { line1: 'x', line2: 'x', city: 'x', state: 'x', postal_code: 'x' },
+      billing_address: { city: 'x', line1: 'x', line2: 'x', postal_code: 'x', state: 'x' },
       description: 'Card for Ian Crease',
-      digital_wallet: { email: 'x', phone: 'x', digital_card_profile_id: 'string' },
+      digital_wallet: { digital_card_profile_id: 'string', email: 'x', phone: 'x' },
       entity_id: 'string',
     });
   });

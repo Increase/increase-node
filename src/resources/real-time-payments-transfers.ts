@@ -92,7 +92,8 @@ export interface RealTimePaymentsTransfer {
   created_at: string;
 
   /**
-   * The name of the transfer's recipient as provided by the sender.
+   * The name of the transfer's recipient. This is set by the sender when creating
+   * the transfer.
    */
   creditor_name: string;
 
@@ -110,8 +111,8 @@ export interface RealTimePaymentsTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
-   * The name of the transfer's sender. If not provided, the account's entity name
-   * will be used.
+   * The name of the transfer's sender. If not provided, defaults to the name of the
+   * account's entity.
    */
   debtor_name: string | null;
 
@@ -205,12 +206,14 @@ export interface RealTimePaymentsTransfer {
   type: 'real_time_payments_transfer';
 
   /**
-   * The name of the party on whose behalf the creditor is receiving the payment.
+   * The name of the ultimate recipient of the transfer. Set this if the creditor is
+   * an intermediary receiving the payment for someone else.
    */
   ultimate_creditor_name: string | null;
 
   /**
-   * The name of the the party on whose behalf the debtor is instructing the payment.
+   * The name of the ultimate sender of the transfer. Set this if the funds are being
+   * sent on behalf of someone who is not the account holder at Increase.
    */
   ultimate_debtor_name: string | null;
 }
@@ -387,8 +390,8 @@ export interface RealTimePaymentsTransferCreateParams {
   source_account_number_id: string;
 
   /**
-   * The name of the transfer's sender. If not provided, the account's entity name
-   * will be used.
+   * The name of the transfer's sender. If not provided, defaults to the name of the
+   * account's entity.
    */
   debtor_name?: string;
 
@@ -416,12 +419,14 @@ export interface RealTimePaymentsTransferCreateParams {
   require_approval?: boolean;
 
   /**
-   * The name of the party on whose behalf the creditor is receiving the payment.
+   * The name of the ultimate recipient of the transfer. Set this if the creditor is
+   * an intermediary receiving the payment for someone else.
    */
   ultimate_creditor_name?: string;
 
   /**
-   * The name of the the party on whose behalf the debtor is instructing the payment.
+   * The name of the ultimate sender of the transfer. Set this if the funds are being
+   * sent on behalf of someone who is not the account holder at Increase.
    */
   ultimate_debtor_name?: string;
 }
