@@ -122,6 +122,11 @@ export interface CheckTransfer {
   created_at: string;
 
   /**
+   * What object created the transfer, either via the API or the dashboard.
+   */
+  created_by: CheckTransfer.CreatedBy | null;
+
+  /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
    * currency.
    *
@@ -268,6 +273,69 @@ export namespace CheckTransfer {
      * that user.
      */
     canceled_by: string | null;
+  }
+
+  /**
+   * What object created the transfer, either via the API or the dashboard.
+   */
+  export interface CreatedBy {
+    /**
+     * If present, details about the API key that created the transfer.
+     */
+    api_key: CreatedBy.APIKey | null;
+
+    /**
+     * The type of object that created this transfer.
+     *
+     * - `api_key` - An API key. Details will be under the `api_key` object.
+     * - `oauth_application` - An OAuth application you connected to Increase. Details
+     *   will be under the `oauth_application` object.
+     * - `user` - A User in the Increase dashboard. Details will be under the `user`
+     *   object.
+     */
+    category: 'api_key' | 'oauth_application' | 'user';
+
+    /**
+     * If present, details about the OAuth Application that created the transfer.
+     */
+    oauth_application: CreatedBy.OAuthApplication | null;
+
+    /**
+     * If present, details about the User that created the transfer.
+     */
+    user: CreatedBy.User | null;
+  }
+
+  export namespace CreatedBy {
+    /**
+     * If present, details about the API key that created the transfer.
+     */
+    export interface APIKey {
+      /**
+       * The description set for the API key when it was created.
+       */
+      description: string | null;
+    }
+
+    /**
+     * If present, details about the OAuth Application that created the transfer.
+     */
+    export interface OAuthApplication {
+      /**
+       * The name of the OAuth Application.
+       */
+      name: string;
+    }
+
+    /**
+     * If present, details about the User that created the transfer.
+     */
+    export interface User {
+      /**
+       * The email address of the User.
+       */
+      email: string;
+    }
   }
 
   /**
