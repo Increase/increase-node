@@ -208,6 +208,11 @@ export namespace CheckDeposit {
     amount: number;
 
     /**
+     * The identifier of the Check Deposit that was rejected.
+     */
+    check_deposit_id: string;
+
+    /**
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
      * currency.
      *
