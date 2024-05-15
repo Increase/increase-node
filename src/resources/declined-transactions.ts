@@ -152,6 +152,8 @@ export namespace DeclinedTransaction {
      *   the `international_ach_decline` object.
      * - `wire_decline` - Wire Decline: details will be under the `wire_decline`
      *   object.
+     * - `check_deposit_rejection` - Check Deposit Rejection: details will be under the
+     *   `check_deposit_rejection` object.
      * - `other` - The Declined Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -162,6 +164,7 @@ export namespace DeclinedTransaction {
       | 'inbound_real_time_payments_transfer_decline'
       | 'international_ach_decline'
       | 'wire_decline'
+      | 'check_deposit_rejection'
       | 'other';
 
     /**
@@ -169,6 +172,12 @@ export namespace DeclinedTransaction {
      * only if `category` is equal to `check_decline`.
      */
     check_decline: Source.CheckDecline | null;
+
+    /**
+     * A Check Deposit Rejection object. This field will be present in the JSON
+     * response if and only if `category` is equal to `check_deposit_rejection`.
+     */
+    check_deposit_rejection: Source.CheckDepositRejection | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Decline object. This field will be
@@ -782,6 +791,71 @@ export namespace DeclinedTransaction {
     }
 
     /**
+     * A Check Deposit Rejection object. This field will be present in the JSON
+     * response if and only if `category` is equal to `check_deposit_rejection`.
+     */
+    export interface CheckDepositRejection {
+      /**
+       * The rejected amount in the minor unit of check's currency. For dollars, for
+       * example, this is cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Check Deposit that was rejected.
+       */
+      check_deposit_id: string;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+       * currency.
+       *
+       * - `CAD` - Canadian Dollar (CAD)
+       * - `CHF` - Swiss Franc (CHF)
+       * - `EUR` - Euro (EUR)
+       * - `GBP` - British Pound (GBP)
+       * - `JPY` - Japanese Yen (JPY)
+       * - `USD` - US Dollar (USD)
+       */
+      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * Why the check deposit was rejected.
+       *
+       * - `incomplete_image` - The check's image is incomplete.
+       * - `duplicate` - This is a duplicate check submission.
+       * - `poor_image_quality` - This check has poor image quality.
+       * - `incorrect_amount` - The check was deposited with the incorrect amount.
+       * - `incorrect_recipient` - The check is made out to someone other than the
+       *   account holder.
+       * - `not_eligible_for_mobile_deposit` - This check was not eligible for mobile
+       *   deposit.
+       * - `missing_required_data_elements` - This check is missing at least one required
+       *   field.
+       * - `suspected_fraud` - This check is suspected to be fraudulent.
+       * - `deposit_window_expired` - This check's deposit window has expired.
+       * - `unknown` - The check was rejected for an unknown reason.
+       */
+      reason:
+        | 'incomplete_image'
+        | 'duplicate'
+        | 'poor_image_quality'
+        | 'incorrect_amount'
+        | 'incorrect_recipient'
+        | 'not_eligible_for_mobile_deposit'
+        | 'missing_required_data_elements'
+        | 'suspected_fraud'
+        | 'deposit_window_expired'
+        | 'unknown';
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the check deposit was rejected.
+       */
+      rejected_at: string;
+    }
+
+    /**
      * An Inbound Real-Time Payments Transfer Decline object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_decline`.
@@ -1205,6 +1279,7 @@ export namespace DeclinedTransactionListParams {
       | 'inbound_real_time_payments_transfer_decline'
       | 'international_ach_decline'
       | 'wire_decline'
+      | 'check_deposit_rejection'
       | 'other'
     >;
   }
