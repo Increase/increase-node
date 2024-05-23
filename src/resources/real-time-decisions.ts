@@ -109,11 +109,6 @@ export namespace RealTimeDecision {
     card_id: string;
 
     /**
-     * The identifier of the Card Payment this authorization belongs to.
-     */
-    card_payment_id: string;
-
-    /**
      * Whether or not the authorization was approved.
      *
      * - `approve` - Approve the authorization.
@@ -230,6 +225,12 @@ export namespace RealTimeDecision {
      * transaction will be settled in.
      */
     settlement_currency: string;
+
+    /**
+     * The identifier of the Card Payment this authorization will belong to. Available
+     * in the API once the card authorization has completed.
+     */
+    upcoming_card_payment_id: string;
 
     /**
      * Fields related to verification of cardholder-provided values.
