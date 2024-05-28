@@ -1,6 +1,6 @@
 # Increase Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/increase.svg)](https://npmjs.org/package/increase)
+[![NPM version](https://img.shields.io/npm/v/increase.svg)](https://npmjs.org/package/increase) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/increase)
 
 This library provides convenient access to the Increase REST API from server-side TypeScript or JavaScript.
 
