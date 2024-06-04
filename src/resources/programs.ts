@@ -56,6 +56,11 @@ export interface Program {
   created_at: string;
 
   /**
+   * The default configuration for digital cards attached to this Program.
+   */
+  default_digital_card_profile_id: string | null;
+
+  /**
    * The name of the Program.
    */
   name: string;
