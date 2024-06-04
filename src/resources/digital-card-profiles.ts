@@ -123,12 +123,6 @@ export interface DigitalCardProfile {
   idempotency_key: string | null;
 
   /**
-   * Whether this Digital Card Profile is the default for all cards in its Increase
-   * group.
-   */
-  is_default: boolean;
-
-  /**
    * A user-facing description for whoever is issuing the card.
    */
   issuer_name: string;
