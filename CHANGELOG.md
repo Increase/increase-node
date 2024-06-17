@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.55.0 (2024-06-17)
+
+Full Changelog: [v0.54.0...v0.55.0](https://github.com/Increase/increase-node/compare/v0.54.0...v0.55.0)
+
+### Features
+
+* **api:** add `default_digital_card_profile_id` property ([#409](https://github.com/Increase/increase-node/issues/409)) ([664e20a](https://github.com/Increase/increase-node/commit/664e20a4fe2f5ff72a941bfaaecc101618c875c7))
+* **api:** add trace number to ach transfer returns ([#406](https://github.com/Increase/increase-node/issues/406)) ([3c51d32](https://github.com/Increase/increase-node/commit/3c51d322628297555a4160ee4b2fe0cfe77ecac4))
+* **api:** enhance API with extended transaction details and new entity types ([#398](https://github.com/Increase/increase-node/issues/398)) ([101a46d](https://github.com/Increase/increase-node/commit/101a46d1d76d7959137b113ca78257721568d9aa))
+* **api:** realtime decision updates ([#404](https://github.com/Increase/increase-node/issues/404)) ([36772d0](https://github.com/Increase/increase-node/commit/36772d09d420f751d8b8e18d583710a9bd57d7f1))
+* **api:** updates ([#403](https://github.com/Increase/increase-node/issues/403)) ([6d1d404](https://github.com/Increase/increase-node/commit/6d1d4045c706fb21cf617fa12ad92b8120bfc2f9))
+* **api:** updates ([#408](https://github.com/Increase/increase-node/issues/408)) ([1997776](https://github.com/Increase/increase-node/commit/19977768df7094fefeaa7ec7ed615d566ab02ee8))
+* support `application/octet-stream` request bodies ([#410](https://github.com/Increase/increase-node/issues/410)) ([0f87fc2](https://github.com/Increase/increase-node/commit/0f87fc28d5e616207c0a165fb82e5d6c329a7d68))
+
+
+### Bug Fixes
+
+* allow git imports for pnpm ([#407](https://github.com/Increase/increase-node/issues/407)) ([8b92dc9](https://github.com/Increase/increase-node/commit/8b92dc9947ad794d3f885a9bb7dfc7e36816a800))
+* **package:** revert recent client file change ([#396](https://github.com/Increase/increase-node/issues/396)) ([8dae0f6](https://github.com/Increase/increase-node/commit/8dae0f6009f99c6917af71724b6a3f14d617cc4d))
+
+
+### Chores
+
+* **docs:** add SECURITY.md ([#399](https://github.com/Increase/increase-node/issues/399)) ([9ea713e](https://github.com/Increase/increase-node/commit/9ea713e976158e6af199c0793ab94b59bd9d1858))
+* **internal:** add slightly better logging to scripts ([#402](https://github.com/Increase/increase-node/issues/402)) ([4878594](https://github.com/Increase/increase-node/commit/4878594ff14f8b4d45db7c388e454cd54fa52142))
+* **internal:** fix generated version numbers ([#397](https://github.com/Increase/increase-node/issues/397)) ([65dbf3d](https://github.com/Increase/increase-node/commit/65dbf3d4cef831c7d235138a4042ef18451ee934))
+* **internal:** move client class to separate file ([#395](https://github.com/Increase/increase-node/issues/395)) ([d96cc38](https://github.com/Increase/increase-node/commit/d96cc38b4c8ee08809af25dc5e8bd1025e1ca305))
+
+
+### Documentation
+
+* **api:** update examples & docstrings ([#401](https://github.com/Increase/increase-node/issues/401)) ([fb5cafb](https://github.com/Increase/increase-node/commit/fb5cafb5d1f347baf18b84f3fc993ac393306c76))
+* **readme:** add bundle size badge ([#405](https://github.com/Increase/increase-node/issues/405)) ([7a07bcb](https://github.com/Increase/increase-node/commit/7a07bcb7e8d22702c77b87974692ab2cdc619516))
+
+
+### Refactors
+
+* change import paths to be relative ([#400](https://github.com/Increase/increase-node/issues/400)) ([7500ca7](https://github.com/Increase/increase-node/commit/7500ca73b55fdaf02d63bed19157e72f50f4314f))
+
 ## 0.54.0 (2024-05-01)
 
 Full Changelog: [v0.53.0...v0.54.0](https://github.com/Increase/increase-node/compare/v0.53.0...v0.54.0)
