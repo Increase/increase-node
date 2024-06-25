@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from '../../core';
 import { APIResource } from '../../resource';
+import * as Core from '../../core';
 import * as SimulationsInboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
 import * as InboundWireDrawdownRequestsAPI from '../inbound-wire-drawdown-requests';
 
