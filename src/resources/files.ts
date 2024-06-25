@@ -1,10 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from '../core';
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
+import * as Core from '../core';
 import * as FilesAPI from './files';
-import { type Uploadable, multipartFormRequestOptions } from '../core';
 import { Page, type PageParams } from '../pagination';
 
 export class Files extends APIResource {
@@ -14,7 +13,7 @@ export class Files extends APIResource {
    * upload, as well as the parameters for creating a file.
    */
   create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
-    return this._client.post('/files', multipartFormRequestOptions({ body, ...options }));
+    return this._client.post('/files', Core.multipartFormRequestOptions({ body, ...options }));
   }
 
   /**
@@ -161,7 +160,7 @@ export interface FileCreateParams {
    * [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
    * transfers for the multipart/form-data protocol.
    */
-  file: Uploadable;
+  file: Core.Uploadable;
 
   /**
    * What the File will be used for in Increase's systems.
