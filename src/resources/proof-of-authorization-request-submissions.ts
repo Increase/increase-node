@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from '../core';
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
+import * as Core from '../core';
 import * as ProofOfAuthorizationRequestSubmissionsAPI from './proof-of-authorization-request-submissions';
 import { Page, type PageParams } from '../pagination';
 
