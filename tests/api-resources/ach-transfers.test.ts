@@ -57,6 +57,7 @@ describe('resource achTransfers', () => {
       funding: 'checking',
       individual_id: 'x',
       individual_name: 'x',
+      preferred_effective_date: { date: '2019-12-27', settlement_schedule: 'same_day' },
       require_approval: true,
       routing_number: '101050001',
       standard_entry_class_code: 'corporate_credit_or_debit',

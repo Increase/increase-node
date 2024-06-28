@@ -174,6 +174,8 @@ export interface EventSubscription {
    *   Enrollment is updated.
    * - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
    * - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
+   * - `lockbox.created` - Occurs whenever a Lockbox is created.
+   * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
@@ -278,6 +280,8 @@ export interface EventSubscription {
     | 'intrafi_account_enrollment.updated'
     | 'intrafi_exclusion.created'
     | 'intrafi_exclusion.updated'
+    | 'lockbox.created'
+    | 'lockbox.updated'
     | 'oauth_connection.created'
     | 'oauth_connection.deactivated'
     | 'pending_transaction.created'
@@ -427,6 +431,8 @@ export interface EventSubscriptionCreateParams {
    *   Enrollment is updated.
    * - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
    * - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
+   * - `lockbox.created` - Occurs whenever a Lockbox is created.
+   * - `lockbox.updated` - Occurs whenever a Lockbox is updated.
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
@@ -531,6 +537,8 @@ export interface EventSubscriptionCreateParams {
     | 'intrafi_account_enrollment.updated'
     | 'intrafi_exclusion.created'
     | 'intrafi_exclusion.updated'
+    | 'lockbox.created'
+    | 'lockbox.updated'
     | 'oauth_connection.created'
     | 'oauth_connection.deactivated'
     | 'pending_transaction.created'

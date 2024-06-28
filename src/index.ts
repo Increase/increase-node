@@ -204,6 +204,8 @@ export class Increase extends Core.APIClient {
   digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
   physicalCardProfiles: API.PhysicalCardProfiles = new API.PhysicalCardProfiles(this);
   inboundCheckDeposits: API.InboundCheckDeposits = new API.InboundCheckDeposits(this);
+  inboundMailItems: API.InboundMailItems = new API.InboundMailItems(this);
+  lockboxes: API.Lockboxes = new API.Lockboxes(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -563,6 +565,20 @@ export namespace Increase {
   export import InboundCheckDeposit = API.InboundCheckDeposit;
   export import InboundCheckDepositsPage = API.InboundCheckDepositsPage;
   export import InboundCheckDepositListParams = API.InboundCheckDepositListParams;
+
+  export import InboundMailItems = API.InboundMailItems;
+  export import InboundMailItem = API.InboundMailItem;
+  export import InboundMailItemList = API.InboundMailItemList;
+  export import InboundMailItemsPage = API.InboundMailItemsPage;
+  export import InboundMailItemListParams = API.InboundMailItemListParams;
+
+  export import Lockboxes = API.Lockboxes;
+  export import Lockbox = API.Lockbox;
+  export import LockboxList = API.LockboxList;
+  export import LockboxesPage = API.LockboxesPage;
+  export import LockboxCreateParams = API.LockboxCreateParams;
+  export import LockboxUpdateParams = API.LockboxUpdateParams;
+  export import LockboxListParams = API.LockboxListParams;
 }
 
 export default Increase;

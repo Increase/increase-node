@@ -74,18 +74,6 @@ export interface CheckDeposit {
   created_at: string;
 
   /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-   *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
-   * - `USD` - US Dollar (USD)
-   */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-  /**
    * If your deposit is successfully parsed and accepted by Increase, this will
    * contain details of the parsed check.
    */
@@ -110,6 +98,11 @@ export interface CheckDeposit {
   deposit_submission: CheckDeposit.DepositSubmission | null;
 
   /**
+   * The description of the Check Deposit, for display purposes only.
+   */
+  description: string | null;
+
+  /**
    * The ID for the File containing the image of the front of the check.
    */
   front_image_file_id: string;
@@ -120,6 +113,18 @@ export interface CheckDeposit {
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key: string | null;
+
+  /**
+   * If the Check Deposit was the result of an Inbound Mail Item, this will contain
+   * the identifier of the Inbound Mail Item.
+   */
+  inbound_mail_item_id: string | null;
+
+  /**
+   * If the Check Deposit was the result of an Inbound Mail Item, this will contain
+   * the identifier of the Lockbox that received it.
+   */
+  lockbox_id: string | null;
 
   /**
    * The status of the Check Deposit.
@@ -241,6 +246,8 @@ export namespace CheckDeposit {
      * - `suspected_fraud` - This check is suspected to be fraudulent.
      * - `deposit_window_expired` - This check's deposit window has expired.
      * - `unknown` - The check was rejected for an unknown reason.
+     * - `operator` - The check was rejected by an operator who will provide details
+     *   out-of-band.
      */
     reason:
       | 'incomplete_image'
@@ -252,7 +259,8 @@ export namespace CheckDeposit {
       | 'missing_required_data_elements'
       | 'suspected_fraud'
       | 'deposit_window_expired'
-      | 'unknown';
+      | 'unknown'
+      | 'operator';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -371,6 +379,18 @@ export namespace CheckDeposit {
    */
   export interface DepositSubmission {
     /**
+     * The ID for the File containing the check back image that was submitted to the
+     * Check21 network.
+     */
+    back_file_id: string;
+
+    /**
+     * The ID for the File containing the check front image that was submitted to the
+     * Check21 network.
+     */
+    front_file_id: string;
+
+    /**
      * When the check deposit was submitted to the Check21 network for processing.
      * During business days, this happens within a few hours of the check being
      * accepted by Increase.
@@ -397,14 +417,14 @@ export interface CheckDepositCreateParams {
   back_image_file_id: string;
 
   /**
-   * The currency to use for the deposit.
-   */
-  currency: string;
-
-  /**
    * The File containing the check's front image.
    */
   front_image_file_id: string;
+
+  /**
+   * The description you choose to give the Check Deposit, for display purposes only.
+   */
+  description?: string;
 }
 
 export interface CheckDepositListParams extends PageParams {

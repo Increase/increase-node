@@ -82,6 +82,12 @@ export interface CardDispute {
   idempotency_key: string | null;
 
   /**
+   * If the Card Dispute's status is `lost`, this will contain details of the lost
+   * dispute.
+   */
+  loss: CardDispute.Loss | null;
+
+  /**
    * If the Card Dispute's status is `rejected`, this will contain details of the
    * unsuccessful dispute.
    */
@@ -92,16 +98,26 @@ export interface CardDispute {
    *
    * - `pending_reviewing` - The Card Dispute is pending review.
    * - `accepted` - The Card Dispute has been accepted and your funds have been
-   *   returned.
+   *   returned. The card dispute will eventually transition into `won` or `lost`
+   *   depending on the outcome.
    * - `rejected` - The Card Dispute has been rejected.
+   * - `lost` - The Card Dispute has been lost and funds previously credited from the
+   *   acceptance have been debited.
+   * - `won` - The Card Dispute has been won and no further action can be taken.
    */
-  status: 'pending_reviewing' | 'accepted' | 'rejected';
+  status: 'pending_reviewing' | 'accepted' | 'rejected' | 'lost' | 'won';
 
   /**
    * A constant representing the object's type. For this resource it will always be
    * `card_dispute`.
    */
   type: 'card_dispute';
+
+  /**
+   * If the Card Dispute's status is `won`, this will contain details of the won
+   * dispute.
+   */
+  win: CardDispute.Win | null;
 }
 
 export namespace CardDispute {
@@ -129,6 +145,34 @@ export namespace CardDispute {
   }
 
   /**
+   * If the Card Dispute's status is `lost`, this will contain details of the lost
+   * dispute.
+   */
+  export interface Loss {
+    /**
+     * The identifier of the Card Dispute that was lost.
+     */
+    card_dispute_id: string;
+
+    /**
+     * Why the Card Dispute was lost.
+     */
+    explanation: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Card Dispute was lost.
+     */
+    lost_at: string;
+
+    /**
+     * The identifier of the Transaction that was created to debit the disputed funds
+     * from your account.
+     */
+    transaction_id: string;
+  }
+
+  /**
    * If the Card Dispute's status is `rejected`, this will contain details of the
    * unsuccessful dispute.
    */
@@ -148,6 +192,23 @@ export namespace CardDispute {
      * the Card Dispute was rejected.
      */
     rejected_at: string;
+  }
+
+  /**
+   * If the Card Dispute's status is `won`, this will contain details of the won
+   * dispute.
+   */
+  export interface Win {
+    /**
+     * The identifier of the Card Dispute that was won.
+     */
+    card_dispute_id: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the Card Dispute was won.
+     */
+    won_at: string;
   }
 }
 
@@ -211,7 +272,7 @@ export namespace CardDisputeListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<'pending_reviewing' | 'accepted' | 'rejected'>;
+    in?: Array<'pending_reviewing' | 'accepted' | 'rejected' | 'lost' | 'won'>;
   }
 }
 

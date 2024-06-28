@@ -20,6 +20,11 @@ export class Balances extends APIResource {
  */
 export interface IntrafiBalance {
   /**
+   * The identifier of this balance.
+   */
+  id: string;
+
+  /**
    * Each entry represents a balance held at a different bank. IntraFi separates the
    * total balance across many participating banks in the network.
    */
@@ -58,6 +63,11 @@ export interface IntrafiBalance {
 
 export namespace IntrafiBalance {
   export interface Balance {
+    /**
+     * The identifier of this balance.
+     */
+    id: string;
+
     /**
      * The balance, in minor units of `currency`, held with this bank.
      */

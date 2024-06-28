@@ -94,8 +94,9 @@ export interface Transaction {
    *
    * - `account_number` - An Account Number.
    * - `card` - A Card.
+   * - `lockbox` - A Lockbox.
    */
-  route_type: 'account_number' | 'card' | null;
+  route_type: 'account_number' | 'card' | 'lockbox' | null;
 
   /**
    * This is an object giving more details on the network-level event that caused the
@@ -151,6 +152,12 @@ export namespace Transaction {
     card_dispute_acceptance: Source.CardDisputeAcceptance | null;
 
     /**
+     * A Card Dispute Loss object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_dispute_loss`.
+     */
+    card_dispute_loss: Source.CardDisputeLoss | null;
+
+    /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`.
      */
@@ -190,6 +197,8 @@ export namespace Transaction {
      *   `cashback_payment` object.
      * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
      *   `card_dispute_acceptance` object.
+     * - `card_dispute_loss` - Card Dispute Loss: details will be under the
+     *   `card_dispute_loss` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
      * - `card_settlement` - Card Settlement: details will be under the
      *   `card_settlement` object.
@@ -247,6 +256,7 @@ export namespace Transaction {
       | 'ach_transfer_return'
       | 'cashback_payment'
       | 'card_dispute_acceptance'
+      | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
       | 'card_revenue_payment'
@@ -752,6 +762,34 @@ export namespace Transaction {
     }
 
     /**
+     * A Card Dispute Loss object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_dispute_loss`.
+     */
+    export interface CardDisputeLoss {
+      /**
+       * The identifier of the Card Dispute that was lost.
+       */
+      card_dispute_id: string;
+
+      /**
+       * Why the Card Dispute was lost.
+       */
+      explanation: string;
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the Card Dispute was lost.
+       */
+      lost_at: string;
+
+      /**
+       * The identifier of the Transaction that was created to debit the disputed funds
+       * from your account.
+       */
+      transaction_id: string;
+    }
+
+    /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`.
      */
@@ -762,19 +800,19 @@ export namespace Transaction {
       id: string;
 
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The amount in the minor unit of the transaction's settlement currency. For
+       * dollars, for example, this is cents.
        */
       amount: number;
 
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-       * transaction's currency.
+       * transaction's settlement currency.
        *
        * - `CAD` - Canadian Dollar (CAD)
        * - `CHF` - Swiss Franc (CHF)
@@ -820,6 +858,17 @@ export namespace Transaction {
        * Network-specific identifiers for this refund.
        */
       network_identifiers: CardRefund.NetworkIdentifiers;
+
+      /**
+       * The amount in the minor unit of the transaction's presentment currency.
+       */
+      presentment_amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+       * transaction's presentment currency.
+       */
+      presentment_currency: string;
 
       /**
        * Additional details about the card purchase, such as tax and industry-specific
@@ -1455,7 +1504,7 @@ export namespace Transaction {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -3365,6 +3414,7 @@ export namespace TransactionListParams {
       | 'ach_transfer_return'
       | 'cashback_payment'
       | 'card_dispute_acceptance'
+      | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
       | 'card_revenue_payment'

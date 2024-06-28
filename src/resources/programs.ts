@@ -61,6 +61,13 @@ export interface Program {
   default_digital_card_profile_id: string | null;
 
   /**
+   * The Interest Rate currently being earned on the accounts in this program, as a
+   * string containing a decimal number. For example, a 1% interest rate would be
+   * represented as "0.01".
+   */
+  interest_rate: string;
+
+  /**
    * The name of the Program.
    */
   name: string;
