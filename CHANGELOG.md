@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.56.0 (2024-06-28)
+
+Full Changelog: [v0.55.0...v0.56.0](https://github.com/Increase/increase-node/compare/v0.55.0...v0.56.0)
+
+### Features
+
+* **api:** updates ([#416](https://github.com/Increase/increase-node/issues/416)) ([a2983dd](https://github.com/Increase/increase-node/commit/a2983dd9c021d43a75c746292fcf7b58a92ff467))
+
+
+### Chores
+
+* gitignore test server logs ([#415](https://github.com/Increase/increase-node/issues/415)) ([dd8e696](https://github.com/Increase/increase-node/commit/dd8e6962ce7cb0f5008da9b051866978ad940754))
+* **internal:** minor reformatting ([#413](https://github.com/Increase/increase-node/issues/413)) ([eeb05b1](https://github.com/Increase/increase-node/commit/eeb05b111fe8db410b2967bbdf61c7e45d9f4707))
+
 ## 0.55.0 (2024-06-17)
 
 Full Changelog: [v0.54.0...v0.55.0](https://github.com/Increase/increase-node/compare/v0.54.0...v0.55.0)
