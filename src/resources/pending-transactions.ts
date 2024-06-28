@@ -100,8 +100,9 @@ export interface PendingTransaction {
    *
    * - `account_number` - An Account Number.
    * - `card` - A Card.
+   * - `lockbox` - A Lockbox.
    */
-  route_type: 'account_number' | 'card' | null;
+  route_type: 'account_number' | 'card' | 'lockbox' | null;
 
   /**
    * This is an object giving more details on the network-level event that caused the
@@ -298,7 +299,7 @@ export namespace PendingTransaction {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the

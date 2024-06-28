@@ -385,6 +385,12 @@ export namespace CheckTransfer {
      * The return address to be printed on the check.
      */
     return_address: PhysicalCheck.ReturnAddress | null;
+
+    /**
+     * The text that will appear as the signature on the check in cursive font. If
+     * blank, the check will be printed with 'No signature required'.
+     */
+    signature_text: string | null;
   }
 
   export namespace PhysicalCheck {
@@ -593,6 +599,12 @@ export namespace CheckTransferCreateParams {
      * the address of the Entity of the Account used to make the Check Transfer.
      */
     return_address?: PhysicalCheck.ReturnAddress;
+
+    /**
+     * The text that will appear as the signature on the check in cursive font. If not
+     * provided, the check will be printed with 'No signature required'.
+     */
+    signature_text?: string;
   }
 
   export namespace PhysicalCheck {

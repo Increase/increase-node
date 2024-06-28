@@ -190,6 +190,11 @@ export namespace CardPurchaseSupplement {
 
   export interface LineItem {
     /**
+     * The Card Purchase Supplement Line Item identifier.
+     */
+    id: string;
+
+    /**
      * Indicates the type of line item.
      *
      * - `normal` - Normal

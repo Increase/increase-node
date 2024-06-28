@@ -171,6 +171,13 @@ export {
   InboundCheckDeposits,
 } from './inbound-check-deposits';
 export {
+  InboundMailItem,
+  InboundMailItemList,
+  InboundMailItemListParams,
+  InboundMailItemsPage,
+  InboundMailItems,
+} from './inbound-mail-items';
+export {
   InboundWireDrawdownRequest,
   InboundWireDrawdownRequestListParams,
   InboundWireDrawdownRequestsPage,
@@ -183,6 +190,15 @@ export {
   InboundWireTransfers,
 } from './inbound-wire-transfers';
 export { Intrafi } from './intrafi/intrafi';
+export {
+  Lockbox,
+  LockboxList,
+  LockboxCreateParams,
+  LockboxUpdateParams,
+  LockboxListParams,
+  LockboxesPage,
+  Lockboxes,
+} from './lockboxes';
 export {
   OAuthConnection,
   OAuthConnectionListParams,

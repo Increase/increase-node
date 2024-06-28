@@ -64,13 +64,16 @@ export interface Export {
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
    * - `entity_csv` - Export a CSV of entities with a given status.
+   * - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+   *   management dashboard.
    */
   category:
     | 'account_statement_ofx'
     | 'transaction_csv'
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
-    | 'entity_csv';
+    | 'entity_csv'
+    | 'vendor_csv';
 
   /**
    * The time the Export was created.
@@ -125,13 +128,16 @@ export interface ExportCreateParams {
    * - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
    *   balances for the dates in a given range.
    * - `entity_csv` - Export a CSV of entities with a given status.
+   * - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+   *   management dashboard.
    */
   category:
     | 'account_statement_ofx'
     | 'transaction_csv'
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
-    | 'entity_csv';
+    | 'entity_csv'
+    | 'vendor_csv';
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -161,6 +167,11 @@ export interface ExportCreateParams {
    * `transaction_csv`.
    */
   transaction_csv?: ExportCreateParams.TransactionCsv;
+
+  /**
+   * Options for the created export. Required if `category` is equal to `vendor_csv`.
+   */
+  vendor_csv?: unknown;
 }
 
 export namespace ExportCreateParams {
@@ -405,6 +416,7 @@ export namespace ExportListParams {
       | 'balance_csv'
       | 'bookkeeping_account_balance_csv'
       | 'entity_csv'
+      | 'vendor_csv'
     >;
   }
 
