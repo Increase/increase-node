@@ -162,12 +162,6 @@ export interface ACHTransfer {
   destination_account_holder: 'business' | 'individual' | 'unknown';
 
   /**
-   * The transfer effective date in
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-   */
-  effective_date: string | null;
-
-  /**
    * The identifier of the External Account the transfer was made to, if any.
    */
   external_account_id: string | null;
@@ -216,6 +210,14 @@ export interface ACHTransfer {
    * by someone else in your organization.
    */
   pending_transaction_id: string | null;
+
+  /**
+   * Configuration for how the effective date of the transfer will be set. This
+   * determines same-day vs future-dated settlement timing. If not set, defaults to a
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * must be set.
+   */
+  preferred_effective_date: ACHTransfer.PreferredEffectiveDate;
 
   /**
    * If your transfer is returned, this will contain details of the return.
@@ -558,6 +560,33 @@ export namespace ACHTransfer {
   }
 
   /**
+   * Configuration for how the effective date of the transfer will be set. This
+   * determines same-day vs future-dated settlement timing. If not set, defaults to a
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * must be set.
+   */
+  export interface PreferredEffectiveDate {
+    /**
+     * A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+     * use as the effective date when submitting this transfer.
+     */
+    date: string | null;
+
+    /**
+     * A schedule by which Increase whill choose an effective date for the transfer.
+     *
+     * - `same_day` - The chosen effective date will be the same as the ACH processing
+     *   date on which the transfer is submitted. This is necessary, but not sufficient
+     *   for the transfer to be settled same-day: it must also be submitted before the
+     *   last same-day cutoff and be less than or equal to $1,000.000.00.
+     * - `future_dated` - The chosen effective date will be the business day following
+     *   the ACH processing date on which the transfer is submitted. The transfer will
+     *   be settled on that future day.
+     */
+    settlement_schedule: 'same_day' | 'future_dated' | null;
+  }
+
+  /**
    * If your transfer is returned, this will contain details of the return.
    */
   export interface Return {
@@ -824,20 +853,30 @@ export namespace ACHTransfer {
    */
   export interface Submission {
     /**
-     * The ACH's effective date sent to the receiving bank. If `effective_date` is
-     * configured in the ACH transfer, this will match the value there. Otherwise, it
-     * will the date that the ACH transfer was processed, which is usually the current
-     * or subsequent business day.
+     * The ACH transfer's effective date as sent to the Federal Reserve. If a specific
+     * date was configured using `preferred_effective_date`, this will match that
+     * value. Otherwise, it will be the date selected (following the specified
+     * settlement schedule) at the time the transfer was submitted.
      */
     effective_date: string;
 
     /**
-     * When the funds transfer is expected to settle in the recipient's account.
-     * Credits may be available sooner, at the receiving banks discretion. The FedACH
-     * schedule is published
+     * When the transfer is expected to settle in the recipient's account. Credits may
+     * be available sooner, at the receiving banks discretion. The FedACH schedule is
+     * published
      * [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
      */
     expected_funds_settlement_at: string;
+
+    /**
+     * The settlement schedule the transfer is expected to follow. This expectation
+     * takes into account the `effective_date`, `submitted_at`, and the amount of the
+     * transfer.
+     *
+     * - `same_day` - The transfer is expected to settle same-day.
+     * - `future_dated` - The transfer is expected to settle on a future date.
+     */
+    expected_settlement_schedule: 'same_day' | 'future_dated';
 
     /**
      * When the ACH transfer was sent to FedACH.
@@ -955,6 +994,14 @@ export interface ACHTransferCreateParams {
   individual_name?: string;
 
   /**
+   * Configuration for how the effective date of the transfer will be set. This
+   * determines same-day vs future-dated settlement timing. If not set, defaults to a
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * must be set.
+   */
+  preferred_effective_date?: ACHTransferCreateParams.PreferredEffectiveDate;
+
+  /**
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
@@ -1056,6 +1103,33 @@ export namespace ACHTransferCreateParams {
         paid_amount: number;
       }
     }
+  }
+
+  /**
+   * Configuration for how the effective date of the transfer will be set. This
+   * determines same-day vs future-dated settlement timing. If not set, defaults to a
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * must be set.
+   */
+  export interface PreferredEffectiveDate {
+    /**
+     * A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+     * use as the effective date when submitting this transfer.
+     */
+    date?: string;
+
+    /**
+     * A schedule by which Increase whill choose an effective date for the transfer.
+     *
+     * - `same_day` - The chosen effective date will be the same as the ACH processing
+     *   date on which the transfer is submitted. This is necessary, but not sufficient
+     *   for the transfer to be settled same-day: it must also be submitted before the
+     *   last same-day cutoff and be less than or equal to $1,000.000.00.
+     * - `future_dated` - The chosen effective date will be the business day following
+     *   the ACH processing date on which the transfer is submitted. The transfer will
+     *   be settled on that future day.
+     */
+    settlement_schedule?: 'same_day' | 'future_dated';
   }
 }
 

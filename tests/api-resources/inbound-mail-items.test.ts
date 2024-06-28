@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Increase, { toFile } from 'increase';
+import Increase from 'increase';
 import { Response } from 'node-fetch';
 
 const increase = new Increase({
@@ -8,31 +8,9 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource files', () => {
-  test('create: only required params', async () => {
-    const responsePromise = increase.files.create({
-      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
-      purpose: 'check_image_front',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('create: required and optional params', async () => {
-    const response = await increase.files.create({
-      file: await toFile(Buffer.from('# my file contents'), 'README.md'),
-      purpose: 'check_image_front',
-      description: 'x',
-    });
-  });
-
+describe('resource inboundMailItems', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.files.retrieve('file_makxrc67oh9l6sg7w9yc');
+    const responsePromise = increase.inboundMailItems.retrieve('inbound_mail_item_q6rrg7mmqpplx80zceev');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -45,12 +23,14 @@ describe('resource files', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.files.retrieve('file_makxrc67oh9l6sg7w9yc', { path: '/_stainless_unknown_path' }),
+      increase.inboundMailItems.retrieve('inbound_mail_item_q6rrg7mmqpplx80zceev', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.files.list();
+    const responsePromise = increase.inboundMailItems.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -62,7 +42,7 @@ describe('resource files', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.files.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.inboundMailItems.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -70,7 +50,7 @@ describe('resource files', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.files.list(
+      increase.inboundMailItems.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
@@ -79,9 +59,8 @@ describe('resource files', () => {
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
           cursor: 'string',
-          idempotency_key: 'x',
           limit: 1,
-          purpose: { in: ['check_image_front', 'check_image_back', 'processed_check_image_front'] },
+          lockbox_id: 'string',
         },
         { path: '/_stainless_unknown_path' },
       ),

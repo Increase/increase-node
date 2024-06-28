@@ -50,6 +50,7 @@ describe('resource checkTransfers', () => {
           postal_code: '10045',
           state: 'NY',
         },
+        signature_text: 'Ian Crease',
       },
       require_approval: true,
       third_party: { check_number: 'x' },
