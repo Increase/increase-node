@@ -26,10 +26,14 @@ export interface CardDisputeActionParams {
    * The status to move the dispute to.
    *
    * - `accepted` - The Card Dispute has been accepted and your funds have been
-   *   returned.
+   *   returned. The card dispute will eventually transition into `won` or `lost`
+   *   depending on the outcome.
    * - `rejected` - The Card Dispute has been rejected.
+   * - `lost` - The Card Dispute has been lost and funds previously credited from the
+   *   acceptance have been debited.
+   * - `won` - The Card Dispute has been won and no further action can be taken.
    */
-  status: 'accepted' | 'rejected';
+  status: 'accepted' | 'rejected' | 'lost' | 'won';
 
   /**
    * Why the dispute was rejected. Not required for accepting disputes.

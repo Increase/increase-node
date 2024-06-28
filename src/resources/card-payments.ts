@@ -62,9 +62,19 @@ export interface CardPayment {
   created_at: string;
 
   /**
+   * The Digital Wallet Token identifier for this payment.
+   */
+  digital_wallet_token_id: string | null;
+
+  /**
    * The interactions related to this card payment.
    */
   elements: Array<CardPayment.Element>;
+
+  /**
+   * The Physical Card identifier for this payment.
+   */
+  physical_card_id: string | null;
 
   /**
    * The summarized state of this card payment.
@@ -207,7 +217,7 @@ export namespace CardPayment {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -641,7 +651,7 @@ export namespace CardPayment {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -655,6 +665,11 @@ export namespace CardPayment {
        * - `USD` - US Dollar (USD)
        */
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+      /**
+       * The identifier of the declined transaction created for this Card Decline.
+       */
+      declined_transaction_id: string;
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -768,6 +783,8 @@ export namespace CardPayment {
        * - `insufficient_funds` - The Card's Account did not have a sufficient available
        *   balance.
        * - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+       * - `card_expiration_mismatch` - The given expiration date did not match the
+       *   card's value. Only applies when a CVV2 is present.
        * - `transaction_not_allowed` - The attempted card transaction is not allowed per
        *   Increase's terms.
        * - `breaches_limit` - The transaction was blocked by a Limit.
@@ -789,6 +806,7 @@ export namespace CardPayment {
         | 'group_locked'
         | 'insufficient_funds'
         | 'cvv2_mismatch'
+        | 'card_expiration_mismatch'
         | 'transaction_not_allowed'
         | 'breaches_limit'
         | 'webhook_declined'
@@ -1223,19 +1241,19 @@ export namespace CardPayment {
       id: string;
 
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The amount in the minor unit of the transaction's settlement currency. For
+       * dollars, for example, this is cents.
        */
       amount: number;
 
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-       * transaction's currency.
+       * transaction's settlement currency.
        *
        * - `CAD` - Canadian Dollar (CAD)
        * - `CHF` - Swiss Franc (CHF)
@@ -1281,6 +1299,17 @@ export namespace CardPayment {
        * Network-specific identifiers for this refund.
        */
       network_identifiers: CardRefund.NetworkIdentifiers;
+
+      /**
+       * The amount in the minor unit of the transaction's presentment currency.
+       */
+      presentment_amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+       * transaction's presentment currency.
+       */
+      presentment_currency: string;
 
       /**
        * Additional details about the card purchase, such as tax and industry-specific
@@ -1966,7 +1995,7 @@ export namespace CardPayment {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -2626,7 +2655,7 @@ export namespace CardPayment {
       /**
        * The ID of the Card Payment this transaction belongs to.
        */
-      card_payment_id: string | null;
+      card_payment_id: string;
 
       /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the

@@ -14,7 +14,6 @@ describe('resource checkDeposits', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       back_image_file_id: 'file_26khfk98mzfz90a11oqx',
-      currency: 'USD',
       front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -31,8 +30,8 @@ describe('resource checkDeposits', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       back_image_file_id: 'file_26khfk98mzfz90a11oqx',
-      currency: 'USD',
       front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
+      description: 'Vendor payment',
     });
   });
 

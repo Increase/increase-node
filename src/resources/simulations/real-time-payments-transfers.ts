@@ -120,8 +120,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
      *
      * - `account_number` - An Account Number.
      * - `card` - A Card.
+     * - `lockbox` - A Lockbox.
      */
-    route_type: 'account_number' | 'card' | null;
+    route_type: 'account_number' | 'card' | 'lockbox' | null;
 
     /**
      * This is an object giving more details on the network-level event that caused the
@@ -277,6 +278,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `duplicate_return` - A rare return reason. The return this message refers to
          *   was a duplicate.
          * - `entity_not_active` - The account's entity is not active.
+         * - `field_error` - There was an error with one of the required fields.
          * - `group_locked` - Your account is inactive.
          * - `insufficient_funds` - Your account contains insufficient funds.
          * - `misrouted_return` - A rare return reason. The return this message refers to
@@ -297,6 +299,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'credit_entry_refused_by_receiver'
           | 'duplicate_return'
           | 'entity_not_active'
+          | 'field_error'
           | 'group_locked'
           | 'insufficient_funds'
           | 'misrouted_return'
@@ -358,7 +361,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         /**
          * The ID of the Card Payment this transaction belongs to.
          */
-        card_payment_id: string | null;
+        card_payment_id: string;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -372,6 +375,11 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `USD` - US Dollar (USD)
          */
         currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+        /**
+         * The identifier of the declined transaction created for this Card Decline.
+         */
+        declined_transaction_id: string;
 
         /**
          * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -485,6 +493,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `insufficient_funds` - The Card's Account did not have a sufficient available
          *   balance.
          * - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+         * - `card_expiration_mismatch` - The given expiration date did not match the
+         *   card's value. Only applies when a CVV2 is present.
          * - `transaction_not_allowed` - The attempted card transaction is not allowed per
          *   Increase's terms.
          * - `breaches_limit` - The transaction was blocked by a Limit.
@@ -506,6 +516,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'group_locked'
           | 'insufficient_funds'
           | 'cvv2_mismatch'
+          | 'card_expiration_mismatch'
           | 'transaction_not_allowed'
           | 'breaches_limit'
           | 'webhook_declined'
@@ -859,6 +870,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `suspected_fraud` - This check is suspected to be fraudulent.
          * - `deposit_window_expired` - This check's deposit window has expired.
          * - `unknown` - The check was rejected for an unknown reason.
+         * - `operator` - The check was rejected by an operator who will provide details
+         *   out-of-band.
          */
         reason:
           | 'incomplete_image'
@@ -870,7 +883,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'missing_required_data_elements'
           | 'suspected_fraud'
           | 'deposit_window_expired'
-          | 'unknown';
+          | 'unknown'
+          | 'operator';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1334,8 +1348,9 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
      *
      * - `account_number` - An Account Number.
      * - `card` - A Card.
+     * - `lockbox` - A Lockbox.
      */
-    route_type: 'account_number' | 'card' | null;
+    route_type: 'account_number' | 'card' | 'lockbox' | null;
 
     /**
      * This is an object giving more details on the network-level event that caused the
@@ -1391,6 +1406,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       card_dispute_acceptance: Source.CardDisputeAcceptance | null;
 
       /**
+       * A Card Dispute Loss object. This field will be present in the JSON response if
+       * and only if `category` is equal to `card_dispute_loss`.
+       */
+      card_dispute_loss: Source.CardDisputeLoss | null;
+
+      /**
        * A Card Refund object. This field will be present in the JSON response if and
        * only if `category` is equal to `card_refund`.
        */
@@ -1430,6 +1451,8 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
        *   `cashback_payment` object.
        * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
        *   `card_dispute_acceptance` object.
+       * - `card_dispute_loss` - Card Dispute Loss: details will be under the
+       *   `card_dispute_loss` object.
        * - `card_refund` - Card Refund: details will be under the `card_refund` object.
        * - `card_settlement` - Card Settlement: details will be under the
        *   `card_settlement` object.
@@ -1487,6 +1510,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         | 'ach_transfer_return'
         | 'cashback_payment'
         | 'card_dispute_acceptance'
+        | 'card_dispute_loss'
         | 'card_refund'
         | 'card_settlement'
         | 'card_revenue_payment'
@@ -1992,6 +2016,34 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
       }
 
       /**
+       * A Card Dispute Loss object. This field will be present in the JSON response if
+       * and only if `category` is equal to `card_dispute_loss`.
+       */
+      export interface CardDisputeLoss {
+        /**
+         * The identifier of the Card Dispute that was lost.
+         */
+        card_dispute_id: string;
+
+        /**
+         * Why the Card Dispute was lost.
+         */
+        explanation: string;
+
+        /**
+         * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+         * the Card Dispute was lost.
+         */
+        lost_at: string;
+
+        /**
+         * The identifier of the Transaction that was created to debit the disputed funds
+         * from your account.
+         */
+        transaction_id: string;
+      }
+
+      /**
        * A Card Refund object. This field will be present in the JSON response if and
        * only if `category` is equal to `card_refund`.
        */
@@ -2002,19 +2054,19 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         id: string;
 
         /**
-         * The pending amount in the minor unit of the transaction's currency. For dollars,
-         * for example, this is cents.
+         * The amount in the minor unit of the transaction's settlement currency. For
+         * dollars, for example, this is cents.
          */
         amount: number;
 
         /**
          * The ID of the Card Payment this transaction belongs to.
          */
-        card_payment_id: string | null;
+        card_payment_id: string;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-         * transaction's currency.
+         * transaction's settlement currency.
          *
          * - `CAD` - Canadian Dollar (CAD)
          * - `CHF` - Swiss Franc (CHF)
@@ -2060,6 +2112,17 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * Network-specific identifiers for this refund.
          */
         network_identifiers: CardRefund.NetworkIdentifiers;
+
+        /**
+         * The amount in the minor unit of the transaction's presentment currency.
+         */
+        presentment_amount: number;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+         * transaction's presentment currency.
+         */
+        presentment_currency: string;
 
         /**
          * Additional details about the card purchase, such as tax and industry-specific
@@ -2695,7 +2758,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
         /**
          * The ID of the Card Payment this transaction belongs to.
          */
-        card_payment_id: string | null;
+        card_payment_id: string;
 
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the

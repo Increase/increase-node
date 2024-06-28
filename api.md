@@ -758,3 +758,29 @@ Methods:
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">retrieve</a>(inboundCheckDepositId) -> InboundCheckDeposit</code>
 - <code title="get /inbound_check_deposits">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">list</a>({ ...params }) -> InboundCheckDepositsPage</code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">decline</a>(inboundCheckDepositId) -> InboundCheckDeposit</code>
+
+# InboundMailItems
+
+Types:
+
+- <code><a href="./src/resources/inbound-mail-items.ts">InboundMailItem</a></code>
+- <code><a href="./src/resources/inbound-mail-items.ts">InboundMailItemList</a></code>
+
+Methods:
+
+- <code title="get /inbound_mail_items/{inbound_mail_item_id}">client.inboundMailItems.<a href="./src/resources/inbound-mail-items.ts">retrieve</a>(inboundMailItemId) -> InboundMailItem</code>
+- <code title="get /inbound_mail_items">client.inboundMailItems.<a href="./src/resources/inbound-mail-items.ts">list</a>({ ...params }) -> InboundMailItemsPage</code>
+
+# Lockboxes
+
+Types:
+
+- <code><a href="./src/resources/lockboxes.ts">Lockbox</a></code>
+- <code><a href="./src/resources/lockboxes.ts">LockboxList</a></code>
+
+Methods:
+
+- <code title="post /lockboxes">client.lockboxes.<a href="./src/resources/lockboxes.ts">create</a>({ ...params }) -> Lockbox</code>
+- <code title="get /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/resources/lockboxes.ts">retrieve</a>(lockboxId) -> Lockbox</code>
+- <code title="patch /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/resources/lockboxes.ts">update</a>(lockboxId, { ...params }) -> Lockbox</code>
+- <code title="get /lockboxes">client.lockboxes.<a href="./src/resources/lockboxes.ts">list</a>({ ...params }) -> LockboxesPage</code>
