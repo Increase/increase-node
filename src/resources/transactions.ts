@@ -2846,6 +2846,12 @@ export namespace Transaction {
        * [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
        */
       trace_number: string;
+
+      /**
+       * A constant representing the object's type. For this resource it will always be
+       * `inbound_international_ach_transfer`.
+       */
+      type: 'inbound_international_ach_transfer';
     }
 
     /**
