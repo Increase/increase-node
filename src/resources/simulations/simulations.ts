@@ -16,6 +16,7 @@ import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests'
 import * as DocumentsAPI from './documents';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import * as InboundFundsHoldsAPI from './inbound-funds-holds';
+import * as InboundInternationalACHTransfersAPI from './inbound-international-ach-transfers';
 import * as InboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
 import * as InterestPaymentsAPI from './interest-payments';
 import * as PhysicalCardsAPI from './physical-cards';
@@ -54,6 +55,8 @@ export class Simulations extends APIResource {
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
     new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
+  inboundInternationalACHTransfers: InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers =
+    new InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers(this._client);
 
   /**
    * Simulates expiring a card authorization immediately.
@@ -200,4 +203,7 @@ export namespace Simulations {
   export import PhysicalCardShipmentAdvanceParams = PhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
   export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
   export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
+  export import InboundInternationalACHTransfers = InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers;
+  export import InboundInternationalACHTransfer = InboundInternationalACHTransfersAPI.InboundInternationalACHTransfer;
+  export import InboundInternationalACHTransferCreateParams = InboundInternationalACHTransfersAPI.InboundInternationalACHTransferCreateParams;
 }

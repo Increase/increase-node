@@ -870,8 +870,6 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * - `suspected_fraud` - This check is suspected to be fraudulent.
          * - `deposit_window_expired` - This check's deposit window has expired.
          * - `unknown` - The check was rejected for an unknown reason.
-         * - `operator` - The check was rejected by an operator who will provide details
-         *   out-of-band.
          */
         reason:
           | 'incomplete_image'
@@ -883,8 +881,7 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
           | 'missing_required_data_elements'
           | 'suspected_fraud'
           | 'deposit_window_expired'
-          | 'unknown'
-          | 'operator';
+          | 'unknown';
 
         /**
          * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -4100,6 +4097,12 @@ export namespace InboundRealTimePaymentsTransferSimulationResult {
          * [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
          */
         trace_number: string;
+
+        /**
+         * A constant representing the object's type. For this resource it will always be
+         * `inbound_international_ach_transfer`.
+         */
+        type: 'inbound_international_ach_transfer';
       }
 
       /**
