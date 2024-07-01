@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.57.0 (2024-07-01)
+
+Full Changelog: [v0.56.0...v0.57.0](https://github.com/Increase/increase-node/compare/v0.56.0...v0.57.0)
+
+### Features
+
+* **api:** add method to simulate international ACH transfers ([#417](https://github.com/Increase/increase-node/issues/417)) ([a9a1220](https://github.com/Increase/increase-node/commit/a9a122022aaccb88dacba2a3633c51c4d9bdc03c))
+
 ## 0.56.0 (2024-06-28)
 
 Full Changelog: [v0.55.0...v0.56.0](https://github.com/Increase/increase-node/compare/v0.55.0...v0.56.0)
