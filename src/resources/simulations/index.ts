@@ -22,6 +22,11 @@ export { DocumentCreateParams, Documents } from './documents';
 export { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
 export { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 export {
+  InboundInternationalACHTransfer,
+  InboundInternationalACHTransferCreateParams,
+  InboundInternationalACHTransfers,
+} from './inbound-international-ach-transfers';
+export {
   InboundRealTimePaymentsTransferSimulationResult,
   RealTimePaymentsTransferCompleteParams,
   RealTimePaymentsTransferCreateInboundParams,

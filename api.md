@@ -594,6 +594,16 @@ Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">create</a>({ ...params }) -> InboundCheckDeposit</code>
 
+## InboundInternationalACHTransfers
+
+Types:
+
+- <code><a href="./src/resources/simulations/inbound-international-ach-transfers.ts">InboundInternationalACHTransfer</a></code>
+
+Methods:
+
+- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inboundInternationalACHTransfers.<a href="./src/resources/simulations/inbound-international-ach-transfers.ts">create</a>({ ...params }) -> InboundInternationalACHTransfer</code>
+
 # PhysicalCards
 
 Types:
