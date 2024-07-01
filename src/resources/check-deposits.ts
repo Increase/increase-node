@@ -246,8 +246,6 @@ export namespace CheckDeposit {
      * - `suspected_fraud` - This check is suspected to be fraudulent.
      * - `deposit_window_expired` - This check's deposit window has expired.
      * - `unknown` - The check was rejected for an unknown reason.
-     * - `operator` - The check was rejected by an operator who will provide details
-     *   out-of-band.
      */
     reason:
       | 'incomplete_image'
@@ -259,8 +257,7 @@ export namespace CheckDeposit {
       | 'missing_required_data_elements'
       | 'suspected_fraud'
       | 'deposit_window_expired'
-      | 'unknown'
-      | 'operator';
+      | 'unknown';
 
     /**
      * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
