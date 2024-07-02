@@ -139,6 +139,12 @@ export interface InboundCheckDeposit {
   declined_transaction_id: string | null;
 
   /**
+   * If you requested a return of this deposit, this will contain details of the
+   * return.
+   */
+  deposit_return: InboundCheckDeposit.DepositReturn | null;
+
+  /**
    * The ID for the File containing the image of the front of the check.
    */
   front_image_file_id: string | null;
@@ -163,6 +169,24 @@ export interface InboundCheckDeposit {
    * `inbound_check_deposit`.
    */
   type: 'inbound_check_deposit';
+}
+
+export namespace InboundCheckDeposit {
+  /**
+   * If you requested a return of this deposit, this will contain details of the
+   * return.
+   */
+  export interface DepositReturn {
+    /**
+     * The time at which the deposit was returned.
+     */
+    returned_at: string;
+
+    /**
+     * The id of the transaction for the returned deposit.
+     */
+    transaction_id: string;
+  }
 }
 
 export interface InboundCheckDepositListParams extends PageParams {
