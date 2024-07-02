@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.58.0 (2024-07-02)
+
+Full Changelog: [v0.57.0...v0.58.0](https://github.com/Increase/increase-node/compare/v0.57.0...v0.58.0)
+
+### Features
+
+* **api:** add deposit return property to inbound check deposit model ([#419](https://github.com/Increase/increase-node/issues/419)) ([336df2f](https://github.com/Increase/increase-node/commit/336df2f5b6eb752665e31bf930a649f2cf0b87c7))
+
 ## 0.57.0 (2024-07-01)
 
 Full Changelog: [v0.56.0...v0.57.0](https://github.com/Increase/increase-node/compare/v0.56.0...v0.57.0)
