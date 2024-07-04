@@ -351,6 +351,11 @@ export interface InboundInternationalACHTransferCreateParams {
   originator_name?: string;
 
   /**
+   * An identification number the originator uses for the receiver.
+   */
+  receiver_identification_number?: string;
+
+  /**
    * The name of the receiver of the transfer.
    */
   receiving_company_or_individual_name?: string;
