@@ -33,6 +33,7 @@ describe('resource inboundInternationalACHTransfers', () => {
       originating_currency_code: 'NOK',
       originator_company_entry_description: 'x',
       originator_name: 'x',
+      receiver_identification_number: 'x',
       receiving_company_or_individual_name: 'x',
     });
   });
