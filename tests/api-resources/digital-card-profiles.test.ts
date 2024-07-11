@@ -85,7 +85,7 @@ describe('resource digitalCardProfiles', () => {
     await expect(
       increase.digitalCardProfiles.list(
         {
-          cursor: 'string',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
           status: { in: ['pending', 'rejected', 'active'] },

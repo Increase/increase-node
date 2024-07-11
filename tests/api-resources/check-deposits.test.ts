@@ -78,14 +78,14 @@ describe('resource checkDeposits', () => {
     await expect(
       increase.checkDeposits.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
         },

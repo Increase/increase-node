@@ -34,7 +34,7 @@ describe('resource realTimePaymentsTransfers', () => {
       debtor_name: 'x',
       destination_account_number: '987654321',
       destination_routing_number: '101050001',
-      external_account_id: 'string',
+      external_account_id: 'external_account_id',
       require_approval: true,
       ultimate_creditor_name: 'x',
       ultimate_debtor_name: 'x',
@@ -86,15 +86,15 @@ describe('resource realTimePaymentsTransfers', () => {
     await expect(
       increase.realTimePaymentsTransfers.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
-          external_account_id: 'string',
+          cursor: 'cursor',
+          external_account_id: 'external_account_id',
           idempotency_key: 'x',
           limit: 1,
         },

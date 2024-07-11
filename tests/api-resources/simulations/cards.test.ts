@@ -24,14 +24,14 @@ describe('resource cards', () => {
     const response = await increase.simulations.cards.authorize({
       amount: 1000,
       card_id: 'card_oubs0hwk5rn6knuecxg2',
-      digital_wallet_token_id: 'string',
+      digital_wallet_token_id: 'digital_wallet_token_id',
       event_subscription_id: 'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
       merchant_acceptor_id: '5665270011000168',
       merchant_category_code: '5734',
       merchant_city: 'New York',
       merchant_country: 'US',
       merchant_descriptor: 'AMAZON.COM',
-      physical_card_id: 'string',
+      physical_card_id: 'physical_card_id',
     });
   });
 

@@ -75,8 +75,8 @@ describe('resource accountEnrollments', () => {
     await expect(
       increase.intrafi.accountEnrollments.list(
         {
-          account_id: 'string',
-          cursor: 'string',
+          account_id: 'account_id',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
           status: { in: ['pending_enrolling', 'enrolled', 'pending_unenrolling'] },
