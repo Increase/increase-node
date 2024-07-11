@@ -53,7 +53,7 @@ describe('resource achTransfers', () => {
       company_name: 'x',
       destination_account_holder: 'business',
       effective_date: '2019-12-27',
-      external_account_id: 'string',
+      external_account_id: 'external_account_id',
       funding: 'checking',
       individual_id: 'x',
       individual_name: 'x',
@@ -107,15 +107,15 @@ describe('resource achTransfers', () => {
     await expect(
       increase.achTransfers.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
-          external_account_id: 'string',
+          cursor: 'cursor',
+          external_account_id: 'external_account_id',
           idempotency_key: 'x',
           limit: 1,
         },

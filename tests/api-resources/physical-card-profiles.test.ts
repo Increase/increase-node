@@ -79,7 +79,7 @@ describe('resource physicalCardProfiles', () => {
     await expect(
       increase.physicalCardProfiles.list(
         {
-          cursor: 'string',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
           status: { in: ['pending_creating', 'pending_reviewing', 'rejected'] },

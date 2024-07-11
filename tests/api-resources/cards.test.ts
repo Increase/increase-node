@@ -25,8 +25,8 @@ describe('resource cards', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       billing_address: { city: 'x', line1: 'x', line2: 'x', postal_code: 'x', state: 'x' },
       description: 'Card for Ian Crease',
-      digital_wallet: { digital_card_profile_id: 'string', email: 'x', phone: 'x' },
-      entity_id: 'string',
+      digital_wallet: { digital_card_profile_id: 'digital_card_profile_id', email: 'x', phone: 'x' },
+      entity_id: 'entity_id',
     });
   });
 
@@ -82,14 +82,14 @@ describe('resource cards', () => {
     await expect(
       increase.cards.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
         },

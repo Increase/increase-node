@@ -50,7 +50,7 @@ describe('resource events', () => {
     await expect(
       increase.events.list(
         {
-          associated_object_id: 'string',
+          associated_object_id: 'associated_object_id',
           category: { in: ['account.created', 'account.updated', 'account_number.created'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
@@ -58,7 +58,7 @@ describe('resource events', () => {
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           limit: 1,
         },
         { path: '/_stainless_unknown_path' },

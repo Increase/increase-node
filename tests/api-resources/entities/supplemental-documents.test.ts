@@ -29,7 +29,7 @@ describe('resource supplementalDocuments', () => {
   });
 
   test('list: only required params', async () => {
-    const responsePromise = increase.entities.supplementalDocuments.list({ entity_id: 'string' });
+    const responsePromise = increase.entities.supplementalDocuments.list({ entity_id: 'entity_id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -41,8 +41,8 @@ describe('resource supplementalDocuments', () => {
 
   test('list: required and optional params', async () => {
     const response = await increase.entities.supplementalDocuments.list({
-      entity_id: 'string',
-      cursor: 'string',
+      entity_id: 'entity_id',
+      cursor: 'cursor',
       idempotency_key: 'x',
       limit: 1,
     });

@@ -54,15 +54,15 @@ describe('resource inboundCheckDeposits', () => {
     await expect(
       increase.inboundCheckDeposits.list(
         {
-          account_id: 'string',
-          check_transfer_id: 'string',
+          account_id: 'account_id',
+          check_transfer_id: 'check_transfer_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           limit: 1,
         },
         { path: '/_stainless_unknown_path' },
