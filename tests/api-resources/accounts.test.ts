@@ -24,7 +24,7 @@ describe('resource accounts', () => {
     const response = await increase.accounts.create({
       name: 'New Account!',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
-      informational_entity_id: 'string',
+      informational_entity_id: 'informational_entity_id',
       program_id: 'program_i2v2os4mwza1oetokh9i',
     });
   });
@@ -87,10 +87,10 @@ describe('resource accounts', () => {
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
-          entity_id: 'string',
+          cursor: 'cursor',
+          entity_id: 'entity_id',
           idempotency_key: 'x',
-          informational_entity_id: 'string',
+          informational_entity_id: 'informational_entity_id',
           limit: 1,
           status: 'open',
         },

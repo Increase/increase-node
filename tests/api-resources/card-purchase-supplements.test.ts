@@ -54,14 +54,14 @@ describe('resource cardPurchaseSupplements', () => {
     await expect(
       increase.cardPurchaseSupplements.list(
         {
-          card_payment_id: 'string',
+          card_payment_id: 'card_payment_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           limit: 1,
         },
         { path: '/_stainless_unknown_path' },

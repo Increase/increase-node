@@ -50,7 +50,7 @@ describe('resource transactions', () => {
     await expect(
       increase.transactions.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           category: {
             in: ['account_transfer_intention', 'ach_transfer_intention', 'ach_transfer_rejection'],
           },
@@ -60,9 +60,9 @@ describe('resource transactions', () => {
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           limit: 1,
-          route_id: 'string',
+          route_id: 'route_id',
         },
         { path: '/_stainless_unknown_path' },
       ),

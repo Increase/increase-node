@@ -88,7 +88,7 @@ describe('resource externalAccounts', () => {
     await expect(
       increase.externalAccounts.list(
         {
-          cursor: 'string',
+          cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
           routing_number: 'xxxxxxxxx',

@@ -52,7 +52,7 @@ describe('resource pendingTransactions', () => {
     await expect(
       increase.pendingTransactions.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           category: {
             in: ['account_transfer_instruction', 'ach_transfer_instruction', 'card_authorization'],
           },
@@ -62,10 +62,10 @@ describe('resource pendingTransactions', () => {
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
+          cursor: 'cursor',
           limit: 1,
-          route_id: 'string',
-          source_id: 'string',
+          route_id: 'route_id',
+          source_id: 'source_id',
           status: { in: ['pending', 'complete'] },
         },
         { path: '/_stainless_unknown_path' },

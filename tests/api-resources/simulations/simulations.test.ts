@@ -67,7 +67,7 @@ describe('resource simulations', () => {
     const response = await increase.simulations.cardIncrements({
       amount: 500,
       card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
-      event_subscription_id: 'string',
+      event_subscription_id: 'event_subscription_id',
     });
   });
 

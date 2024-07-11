@@ -91,7 +91,12 @@ describe('resource proofOfAuthorizationRequestSubmissions', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.proofOfAuthorizationRequestSubmissions.list(
-        { cursor: 'string', idempotency_key: 'x', limit: 1, proof_of_authorization_request_id: 'string' },
+        {
+          cursor: 'cursor',
+          idempotency_key: 'x',
+          limit: 1,
+          proof_of_authorization_request_id: 'proof_of_authorization_request_id',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

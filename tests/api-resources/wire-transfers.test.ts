@@ -35,7 +35,7 @@ describe('resource wireTransfers', () => {
       beneficiary_address_line1: '33 Liberty Street',
       beneficiary_address_line2: 'New York',
       beneficiary_address_line3: 'NY 10045',
-      external_account_id: 'string',
+      external_account_id: 'external_account_id',
       originator_address_line1: 'x',
       originator_address_line2: 'x',
       originator_address_line3: 'x',
@@ -88,15 +88,15 @@ describe('resource wireTransfers', () => {
     await expect(
       increase.wireTransfers.list(
         {
-          account_id: 'string',
+          account_id: 'account_id',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
             on_or_after: '2019-12-27T18:11:19.117Z',
             on_or_before: '2019-12-27T18:11:19.117Z',
           },
-          cursor: 'string',
-          external_account_id: 'string',
+          cursor: 'cursor',
+          external_account_id: 'external_account_id',
           idempotency_key: 'x',
           limit: 1,
         },

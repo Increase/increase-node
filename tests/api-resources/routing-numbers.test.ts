@@ -23,7 +23,7 @@ describe('resource routingNumbers', () => {
   test('list: required and optional params', async () => {
     const response = await increase.routingNumbers.list({
       routing_number: 'xxxxxxxxx',
-      cursor: 'string',
+      cursor: 'cursor',
       limit: 1,
     });
   });
