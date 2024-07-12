@@ -71,6 +71,20 @@ describe('resource inboundACHTransfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
+  test('createNotificationOfChange', async () => {
+    const responsePromise = increase.inboundACHTransfers.createNotificationOfChange(
+      'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+      {},
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('decline', async () => {
     const responsePromise = increase.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev');
     const rawResponse = await responsePromise.asResponse();
@@ -89,20 +103,6 @@ describe('resource inboundACHTransfers', () => {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
-  });
-
-  test('notificationOfChange', async () => {
-    const responsePromise = increase.inboundACHTransfers.notificationOfChange(
-      'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
-      {},
-    );
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('transferReturn: only required params', async () => {

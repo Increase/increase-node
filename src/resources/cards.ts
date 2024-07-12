@@ -46,7 +46,7 @@ export class Cards extends APIResource {
   /**
    * Retrieve sensitive details for a Card
    */
-  retrieveSensitiveDetails(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
+  details(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
     return this._client.get(`/cards/${cardId}/details`, options);
   }
 }

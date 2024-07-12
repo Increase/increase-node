@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
-import * as AccountEnrollmentsAPI from './account-enrollments';
-import { Page, type PageParams } from '../../pagination';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
+import * as IntrafiAccountEnrollmentsAPI from './intrafi-account-enrollments';
+import { Page, type PageParams } from '../pagination';
 
-export class AccountEnrollments extends APIResource {
+export class IntrafiAccountEnrollments extends APIResource {
   /**
    * Enroll an account in the IntraFi deposit sweep network.
    */
   create(
-    body: AccountEnrollmentCreateParams,
+    body: IntrafiAccountEnrollmentCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<IntrafiAccountEnrollment> {
     return this._client.post('/intrafi_account_enrollments', { body, ...options });
@@ -31,14 +31,14 @@ export class AccountEnrollments extends APIResource {
    * List IntraFi Account Enrollments
    */
   list(
-    query?: AccountEnrollmentListParams,
+    query?: IntrafiAccountEnrollmentListParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment>;
   list(
     options?: Core.RequestOptions,
   ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment>;
   list(
-    query: AccountEnrollmentListParams | Core.RequestOptions = {},
+    query: IntrafiAccountEnrollmentListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment> {
     if (isRequestOptions(query)) {
@@ -117,7 +117,7 @@ export interface IntrafiAccountEnrollment {
   type: 'intrafi_account_enrollment';
 }
 
-export interface AccountEnrollmentCreateParams {
+export interface IntrafiAccountEnrollmentCreateParams {
   /**
    * The identifier for the account to be added to IntraFi.
    */
@@ -129,7 +129,7 @@ export interface AccountEnrollmentCreateParams {
   email_address: string;
 }
 
-export interface AccountEnrollmentListParams extends PageParams {
+export interface IntrafiAccountEnrollmentListParams extends PageParams {
   /**
    * Filter IntraFi Account Enrollments to the one belonging to an account.
    */
@@ -143,10 +143,10 @@ export interface AccountEnrollmentListParams extends PageParams {
    */
   idempotency_key?: string;
 
-  status?: AccountEnrollmentListParams.Status;
+  status?: IntrafiAccountEnrollmentListParams.Status;
 }
 
-export namespace AccountEnrollmentListParams {
+export namespace IntrafiAccountEnrollmentListParams {
   export interface Status {
     /**
      * Filter IntraFi Account Enrollments for those with the specified status or
@@ -159,9 +159,9 @@ export namespace AccountEnrollmentListParams {
   }
 }
 
-export namespace AccountEnrollments {
-  export import IntrafiAccountEnrollment = AccountEnrollmentsAPI.IntrafiAccountEnrollment;
-  export import IntrafiAccountEnrollmentsPage = AccountEnrollmentsAPI.IntrafiAccountEnrollmentsPage;
-  export import AccountEnrollmentCreateParams = AccountEnrollmentsAPI.AccountEnrollmentCreateParams;
-  export import AccountEnrollmentListParams = AccountEnrollmentsAPI.AccountEnrollmentListParams;
+export namespace IntrafiAccountEnrollments {
+  export import IntrafiAccountEnrollment = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollment;
+  export import IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentsPage;
+  export import IntrafiAccountEnrollmentCreateParams = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentCreateParams;
+  export import IntrafiAccountEnrollmentListParams = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentListParams;
 }

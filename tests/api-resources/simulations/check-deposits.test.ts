@@ -9,8 +9,7 @@ const increase = new Increase({
 });
 
 describe('resource checkDeposits', () => {
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('reject', async () => {
+  test('reject', async () => {
     const responsePromise = increase.simulations.checkDeposits.reject('check_deposit_f06n9gpg7sxn8t19lfc1');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -21,8 +20,7 @@ describe('resource checkDeposits', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('reject: request options instead of params are passed correctly', async () => {
+  test('reject: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.simulations.checkDeposits.reject('check_deposit_f06n9gpg7sxn8t19lfc1', {
@@ -51,8 +49,7 @@ describe('resource checkDeposits', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('submit', async () => {
+  test('submit', async () => {
     const responsePromise = increase.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -63,8 +60,7 @@ describe('resource checkDeposits', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('submit: request options instead of params are passed correctly', async () => {
+  test('submit: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.simulations.checkDeposits.submit('check_deposit_f06n9gpg7sxn8t19lfc1', {

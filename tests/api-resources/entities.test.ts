@@ -371,6 +371,25 @@ describe('resource entities', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
+  test('archiveBeneficialOwner: only required params', async () => {
+    const responsePromise = increase.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('archiveBeneficialOwner: required and optional params', async () => {
+    const response = await increase.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+    });
+  });
+
   test('confirm', async () => {
     const responsePromise = increase.entities.confirm('entity_n8y8tnk2p9339ti393yi', {});
     const rawResponse = await responsePromise.asResponse();
@@ -380,6 +399,60 @@ describe('resource entities', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('createBeneficialOwner: only required params', async () => {
+    const responsePromise = increase.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+      beneficial_owner: {
+        individual: {
+          address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
+          date_of_birth: '1970-01-31',
+          identification: { method: 'social_security_number', number: '078051120' },
+          name: 'Ian Crease',
+        },
+        prongs: ['control'],
+      },
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('createBeneficialOwner: required and optional params', async () => {
+    const response = await increase.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+      beneficial_owner: {
+        company_title: 'CEO',
+        individual: {
+          address: { city: 'New York', line1: '33 Liberty Street', line2: 'x', state: 'NY', zip: '10045' },
+          confirmed_no_us_tax_id: true,
+          date_of_birth: '1970-01-31',
+          identification: {
+            drivers_license: {
+              back_file_id: 'back_file_id',
+              expiration_date: '2019-12-27',
+              file_id: 'file_id',
+              state: 'x',
+            },
+            method: 'social_security_number',
+            number: '078051120',
+            other: {
+              back_file_id: 'back_file_id',
+              country: 'x',
+              description: 'x',
+              expiration_date: '2019-12-27',
+              file_id: 'file_id',
+            },
+            passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+          },
+          name: 'Ian Crease',
+        },
+        prongs: ['control'],
+      },
+    });
   });
 
   test('updateAddress: only required params', async () => {
@@ -398,6 +471,46 @@ describe('resource entities', () => {
   test('updateAddress: required and optional params', async () => {
     const response = await increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
+    });
+  });
+
+  test('updateBeneficialOwnerAddress: only required params', async () => {
+    const responsePromise = increase.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
+      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('updateBeneficialOwnerAddress: required and optional params', async () => {
+    const response = await increase.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
+      address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
+      beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+    });
+  });
+
+  test('updateIndustryCode: only required params', async () => {
+    const responsePromise = increase.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
+      industry_code: '5132',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('updateIndustryCode: required and optional params', async () => {
+    const response = await increase.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
+      industry_code: '5132',
     });
   });
 });

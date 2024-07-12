@@ -10,7 +10,8 @@ const increase = new Increase({
 
 describe('resource supplementalDocuments', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.entities.supplementalDocuments.create('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = increase.supplementalDocuments.create({
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
       file_id: 'file_makxrc67oh9l6sg7w9yc',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -23,13 +24,14 @@ describe('resource supplementalDocuments', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.entities.supplementalDocuments.create('entity_n8y8tnk2p9339ti393yi', {
+    const response = await increase.supplementalDocuments.create({
+      entity_id: 'entity_n8y8tnk2p9339ti393yi',
       file_id: 'file_makxrc67oh9l6sg7w9yc',
     });
   });
 
   test('list: only required params', async () => {
-    const responsePromise = increase.entities.supplementalDocuments.list({ entity_id: 'entity_id' });
+    const responsePromise = increase.supplementalDocuments.list({ entity_id: 'entity_id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,7 +42,7 @@ describe('resource supplementalDocuments', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await increase.entities.supplementalDocuments.list({
+    const response = await increase.supplementalDocuments.list({
       entity_id: 'entity_id',
       cursor: 'cursor',
       idempotency_key: 'x',

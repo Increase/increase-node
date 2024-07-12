@@ -131,11 +131,22 @@ export {
   Entity,
   EntityCreateParams,
   EntityListParams,
+  EntityArchiveBeneficialOwnerParams,
   EntityConfirmParams,
+  EntityCreateBeneficialOwnerParams,
   EntityUpdateAddressParams,
+  EntityUpdateBeneficialOwnerAddressParams,
+  EntityUpdateIndustryCodeParams,
   EntitiesPage,
   Entities,
-} from './entities/entities';
+} from './entities';
+export {
+  EntitySupplementalDocument,
+  SupplementalDocumentCreateParams,
+  SupplementalDocumentListParams,
+  EntitySupplementalDocumentsPage,
+  SupplementalDocuments,
+} from './supplemental-documents';
 export { Event, EventListParams, EventsPage, Events } from './events';
 export {
   EventSubscription,
@@ -159,7 +170,7 @@ export { Group, Groups } from './groups';
 export {
   InboundACHTransfer,
   InboundACHTransferListParams,
-  InboundACHTransferNotificationOfChangeParams,
+  InboundACHTransferCreateNotificationOfChangeParams,
   InboundACHTransferTransferReturnParams,
   InboundACHTransfersPage,
   InboundACHTransfers,
@@ -167,12 +178,12 @@ export {
 export {
   InboundCheckDeposit,
   InboundCheckDepositListParams,
+  InboundCheckDepositReturnParams,
   InboundCheckDepositsPage,
   InboundCheckDeposits,
 } from './inbound-check-deposits';
 export {
   InboundMailItem,
-  InboundMailItemList,
   InboundMailItemListParams,
   InboundMailItemsPage,
   InboundMailItems,
@@ -189,10 +200,23 @@ export {
   InboundWireTransfersPage,
   InboundWireTransfers,
 } from './inbound-wire-transfers';
-export { Intrafi } from './intrafi/intrafi';
+export {
+  IntrafiAccountEnrollment,
+  IntrafiAccountEnrollmentCreateParams,
+  IntrafiAccountEnrollmentListParams,
+  IntrafiAccountEnrollmentsPage,
+  IntrafiAccountEnrollments,
+} from './intrafi-account-enrollments';
+export { IntrafiBalance, IntrafiBalances } from './intrafi-balances';
+export {
+  IntrafiExclusion,
+  IntrafiExclusionCreateParams,
+  IntrafiExclusionListParams,
+  IntrafiExclusionsPage,
+  IntrafiExclusions,
+} from './intrafi-exclusions';
 export {
   Lockbox,
-  LockboxList,
   LockboxCreateParams,
   LockboxUpdateParams,
   LockboxListParams,
@@ -258,18 +282,12 @@ export {
   RealTimePaymentsTransfers,
 } from './real-time-payments-transfers';
 export {
-  RoutingNumber,
+  RoutingNumberListResponse,
   RoutingNumberListParams,
-  RoutingNumbersPage,
+  RoutingNumberListResponsesPage,
   RoutingNumbers,
 } from './routing-numbers';
-export {
-  SimulationCardAuthorizationExpirationsParams,
-  SimulationCardFuelConfirmationsParams,
-  SimulationCardIncrementsParams,
-  SimulationCardReversalsParams,
-  Simulations,
-} from './simulations/simulations';
+export { Simulations } from './simulations/simulations';
 export { Transaction, TransactionListParams, TransactionsPage, Transactions } from './transactions';
 export { Webhooks } from './webhooks';
 export {
