@@ -8,12 +8,12 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource realTimePaymentsTransfers', () => {
-  test('complete', async () => {
-    const responsePromise = increase.simulations.realTimePaymentsTransfers.complete(
-      'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
-      {},
-    );
+describe('resource cardIncrements', () => {
+  test('create: only required params', async () => {
+    const responsePromise = increase.simulations.cardIncrements.create({
+      amount: 500,
+      card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,5 +21,13 @@ describe('resource realTimePaymentsTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await increase.simulations.cardIncrements.create({
+      amount: 500,
+      card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+      event_subscription_id: 'event_subscription_id',
+    });
   });
 });

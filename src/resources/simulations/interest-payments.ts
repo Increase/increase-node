@@ -14,7 +14,7 @@ export class InterestPayments extends APIResource {
     body: InterestPaymentCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<TransactionsAPI.Transaction> {
-    return this._client.post('/simulations/interest_payment', { body, ...options });
+    return this._client.post('/simulations/interest_payments', { body, ...options });
   }
 }
 

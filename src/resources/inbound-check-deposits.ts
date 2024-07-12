@@ -47,6 +47,17 @@ export class InboundCheckDeposits extends APIResource {
   ): Core.APIPromise<InboundCheckDeposit> {
     return this._client.post(`/inbound_check_deposits/${inboundCheckDepositId}/decline`, options);
   }
+
+  /**
+   * Return an Inbound Check Deposit
+   */
+  return(
+    inboundCheckDepositId: string,
+    body: InboundCheckDepositReturnParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundCheckDeposit> {
+    return this._client.post(`/inbound_check_deposits/${inboundCheckDepositId}/return`, { body, ...options });
+  }
 }
 
 export class InboundCheckDepositsPage extends Page<InboundCheckDeposit> {}
@@ -155,8 +166,9 @@ export interface InboundCheckDeposit {
    * - `pending` - The Inbound Check Deposit is pending.
    * - `accepted` - The Inbound Check Deposit was accepted.
    * - `declined` - The Inbound Check Deposit was rejected.
+   * - `returned` - The Inbound Check Deposit was returned.
    */
-  status: 'pending' | 'accepted' | 'declined';
+  status: 'pending' | 'accepted' | 'declined' | 'returned';
 
   /**
    * If the deposit attempt has been accepted, the identifier of the Transaction
@@ -177,6 +189,15 @@ export namespace InboundCheckDeposit {
    * return.
    */
   export interface DepositReturn {
+    /**
+     * The reason the deposit was returned.
+     *
+     * - `altered_or_fictitious` - The check was altered or fictitious.
+     * - `not_authorized` - The check was not authorized.
+     * - `duplicate_presentment` - The check was a duplicate presentment.
+     */
+    reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment';
+
     /**
      * The time at which the deposit was returned.
      */
@@ -232,8 +253,20 @@ export namespace InboundCheckDepositListParams {
   }
 }
 
+export interface InboundCheckDepositReturnParams {
+  /**
+   * The reason to return the Inbound Check Deposit.
+   *
+   * - `altered_or_fictitious` - The check was altered or fictitious.
+   * - `not_authorized` - The check was not authorized.
+   * - `duplicate_presentment` - The check was a duplicate presentment.
+   */
+  reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment';
+}
+
 export namespace InboundCheckDeposits {
   export import InboundCheckDeposit = InboundCheckDepositsAPI.InboundCheckDeposit;
   export import InboundCheckDepositsPage = InboundCheckDepositsAPI.InboundCheckDepositsPage;
   export import InboundCheckDepositListParams = InboundCheckDepositsAPI.InboundCheckDepositListParams;
+  export import InboundCheckDepositReturnParams = InboundCheckDepositsAPI.InboundCheckDepositReturnParams;
 }

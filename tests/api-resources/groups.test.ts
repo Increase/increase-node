@@ -9,8 +9,8 @@ const increase = new Increase({
 });
 
 describe('resource groups', () => {
-  test('retrieveDetails', async () => {
-    const responsePromise = increase.groups.retrieveDetails();
+  test('retrieve', async () => {
+    const responsePromise = increase.groups.retrieve();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,9 +20,9 @@ describe('resource groups', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieveDetails: request options instead of params are passed correctly', async () => {
+  test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.groups.retrieveDetails({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.groups.retrieve({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
