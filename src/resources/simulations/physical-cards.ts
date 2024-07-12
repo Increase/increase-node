@@ -11,19 +11,19 @@ export class PhysicalCards extends APIResource {
    * Card, to simulate e.g., that a physical card was attempted shipped but then
    * failed delivery.
    */
-  shipmentAdvance(
+  advanceShipment(
     physicalCardId: string,
-    body: PhysicalCardShipmentAdvanceParams,
+    body: PhysicalCardAdvanceShipmentParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(`/simulations/physical_cards/${physicalCardId}/shipment_advance`, {
+    return this._client.post(`/simulations/physical_cards/${physicalCardId}/advance_shipment`, {
       body,
       ...options,
     });
   }
 }
 
-export interface PhysicalCardShipmentAdvanceParams {
+export interface PhysicalCardAdvanceShipmentParams {
   /**
    * The shipment status to move the Physical Card to.
    *
@@ -50,5 +50,5 @@ export interface PhysicalCardShipmentAdvanceParams {
 }
 
 export namespace PhysicalCards {
-  export import PhysicalCardShipmentAdvanceParams = SimulationsPhysicalCardsAPI.PhysicalCardShipmentAdvanceParams;
+  export import PhysicalCardAdvanceShipmentParams = SimulationsPhysicalCardsAPI.PhysicalCardAdvanceShipmentParams;
 }

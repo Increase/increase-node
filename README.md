@@ -26,7 +26,11 @@ const increase = new Increase({
 });
 
 async function main() {
-  const account = await increase.accounts.create({ name: 'My First Increase Account' });
+  const account = await increase.accounts.create({
+    name: 'New Account!',
+    entity_id: 'entity_n8y8tnk2p9339ti393yi',
+    program_id: 'program_i2v2os4mwza1oetokh9i',
+  });
 
   console.log(account.id);
 }
@@ -48,7 +52,11 @@ const increase = new Increase({
 });
 
 async function main() {
-  const params: Increase.AccountCreateParams = { name: 'My First Increase Account' };
+  const params: Increase.AccountCreateParams = {
+    name: 'New Account!',
+    entity_id: 'entity_n8y8tnk2p9339ti393yi',
+    program_id: 'program_i2v2os4mwza1oetokh9i',
+  };
   const account: Increase.Account = await increase.accounts.create(params);
 }
 
@@ -74,17 +82,23 @@ import Increase, { toFile } from 'increase';
 const increase = new Increase();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
-await increase.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'other' });
+await increase.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'check_image_front' });
 
 // Or if you have the web `File` API you can pass a `File` instance:
-await increase.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'other' });
+await increase.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'check_image_front' });
 
 // You can also pass a `fetch` `Response`:
-await increase.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'other' });
+await increase.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'check_image_front' });
 
 // Finally, if none of the above are convenient, you can use our `toFile` helper:
-await increase.files.create({ file: await toFile(Buffer.from('my bytes'), 'file.txt'), purpose: 'other' });
-await increase.files.create({ file: await toFile(new Uint8Array([0, 1, 2]), 'file.txt'), purpose: 'other' });
+await increase.files.create({
+  file: await toFile(Buffer.from('my bytes'), 'file.txt'),
+  purpose: 'check_image_front',
+});
+await increase.files.create({
+  file: await toFile(new Uint8Array([0, 1, 2]), 'file.txt'),
+  purpose: 'check_image_front',
+});
 ```
 
 ## Handling errors
@@ -100,10 +114,6 @@ async function main() {
     if (err instanceof Increase.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
-      console.log(err.error?.type); // missing_param
-      console.log(err.error?.title); // Missing param "name"
-      console.log(err.error?.detail); // Looks like "naem" may have been a typo?
-      console.log(err.error?.status); // 400
       console.log(err.headers); // {server: 'nginx', ...}
     } else {
       throw err;
@@ -143,7 +153,7 @@ const increase = new Increase({
 });
 
 // Or, configure per-request:
-await increase.accounts.create({ name: 'Jack' }, {
+await increase.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
   maxRetries: 5,
 });
 ```
@@ -160,7 +170,7 @@ const increase = new Increase({
 });
 
 // Override per-request:
-await increase.accounts.list({ status: 'open' }, {
+await increase.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -212,12 +222,22 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const increase = new Increase();
 
-const response = await increase.accounts.create({ name: 'My First Increase Account' }).asResponse();
+const response = await increase.accounts
+  .create({
+    name: 'New Account!',
+    entity_id: 'entity_n8y8tnk2p9339ti393yi',
+    program_id: 'program_i2v2os4mwza1oetokh9i',
+  })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: account, response: raw } = await increase.accounts
-  .create({ name: 'My First Increase Account' })
+  .create({
+    name: 'New Account!',
+    entity_id: 'entity_n8y8tnk2p9339ti393yi',
+    program_id: 'program_i2v2os4mwza1oetokh9i',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(account.id);
@@ -324,8 +344,12 @@ const increase = new Increase({
 });
 
 // Override per-request:
-await increase.accounts.list(
-  { status: 'open' },
+await increase.accounts.create(
+  {
+    name: 'New Account!',
+    entity_id: 'entity_n8y8tnk2p9339ti393yi',
+    program_id: 'program_i2v2os4mwza1oetokh9i',
+  },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

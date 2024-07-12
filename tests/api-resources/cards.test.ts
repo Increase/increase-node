@@ -98,8 +98,8 @@ describe('resource cards', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  test('retrieveSensitiveDetails', async () => {
-    const responsePromise = increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2');
+  test('details', async () => {
+    const responsePromise = increase.cards.details('card_oubs0hwk5rn6knuecxg2');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -109,12 +109,10 @@ describe('resource cards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieveSensitiveDetails: request options instead of params are passed correctly', async () => {
+  test('details: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.cards.retrieveSensitiveDetails('card_oubs0hwk5rn6knuecxg2', {
-        path: '/_stainless_unknown_path',
-      }),
+      increase.cards.details('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

@@ -1,21 +1,19 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import * as Core from '../core';
 import * as SupplementalDocumentsAPI from './supplemental-documents';
-import * as EntitiesAPI from './entities';
-import { Page, type PageParams } from '../../pagination';
+import { Page, type PageParams } from '../pagination';
 
 export class SupplementalDocuments extends APIResource {
   /**
    * Create a supplemental document for an Entity
    */
   create(
-    entityId: string,
     body: SupplementalDocumentCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<EntitiesAPI.Entity> {
-    return this._client.post(`/entities/${entityId}/supplemental_documents`, { body, ...options });
+  ): Core.APIPromise<EntitySupplementalDocument> {
+    return this._client.post('/entity_supplemental_documents', { body, ...options });
   }
 
   /**
@@ -24,26 +22,31 @@ export class SupplementalDocuments extends APIResource {
   list(
     query: SupplementalDocumentListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<SupplementalDocumentsPage, SupplementalDocument> {
-    return this._client.getAPIList('/entity_supplemental_documents', SupplementalDocumentsPage, {
+  ): Core.PagePromise<EntitySupplementalDocumentsPage, EntitySupplementalDocument> {
+    return this._client.getAPIList('/entity_supplemental_documents', EntitySupplementalDocumentsPage, {
       query,
       ...options,
     });
   }
 }
 
-export class SupplementalDocumentsPage extends Page<SupplementalDocument> {}
+export class EntitySupplementalDocumentsPage extends Page<EntitySupplementalDocument> {}
 
 /**
  * Supplemental Documents are uploaded files connected to an Entity during
  * onboarding.
  */
-export interface SupplementalDocument {
+export interface EntitySupplementalDocument {
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
    * Supplemental Document was created.
    */
   created_at: string;
+
+  /**
+   * The Entity the supplemental document is attached to.
+   */
+  entity_id: string;
 
   /**
    * The File containing the document.
@@ -66,6 +69,11 @@ export interface SupplementalDocument {
 
 export interface SupplementalDocumentCreateParams {
   /**
+   * The identifier of the Entity to associate with the supplemental document.
+   */
+  entity_id: string;
+
+  /**
    * The identifier of the File containing the document.
    */
   file_id: string;
@@ -87,8 +95,8 @@ export interface SupplementalDocumentListParams extends PageParams {
 }
 
 export namespace SupplementalDocuments {
-  export import SupplementalDocument = SupplementalDocumentsAPI.SupplementalDocument;
-  export import SupplementalDocumentsPage = SupplementalDocumentsAPI.SupplementalDocumentsPage;
+  export import EntitySupplementalDocument = SupplementalDocumentsAPI.EntitySupplementalDocument;
+  export import EntitySupplementalDocumentsPage = SupplementalDocumentsAPI.EntitySupplementalDocumentsPage;
   export import SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
   export import SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
 }

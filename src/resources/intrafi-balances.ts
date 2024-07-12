@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as BalancesAPI from './balances';
+import { APIResource } from '../resource';
+import * as Core from '../core';
+import * as IntrafiBalancesAPI from './intrafi-balances';
 
-export class Balances extends APIResource {
+export class IntrafiBalances extends APIResource {
   /**
    * Get IntraFi balances by bank
    */
@@ -109,6 +109,6 @@ export namespace IntrafiBalance {
   }
 }
 
-export namespace Balances {
-  export import IntrafiBalance = BalancesAPI.IntrafiBalance;
+export namespace IntrafiBalances {
+  export import IntrafiBalance = IntrafiBalancesAPI.IntrafiBalance;
 }

@@ -103,14 +103,6 @@ export class APIError extends IncreaseError {
     if (type === 'internal_server_error') {
       return new InternalServerError(status, error, message, headers);
     }
-    if (status === 500) {
-      return new InternalServerError(
-        status,
-        { detail: null, status: 500, title: '', type: 'internal_server_error' },
-        message,
-        headers,
-      );
-    }
 
     if (status === 400) {
       return new BadRequestError(status, error, message, headers);

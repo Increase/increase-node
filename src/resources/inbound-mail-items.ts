@@ -133,21 +133,6 @@ export namespace InboundMailItem {
   }
 }
 
-/**
- * A list of Inbound Mail Item objects.
- */
-export interface InboundMailItemList {
-  /**
-   * The contents of the list.
-   */
-  data: Array<InboundMailItem>;
-
-  /**
-   * A pointer to a place in the list.
-   */
-  next_cursor: string | null;
-}
-
 export interface InboundMailItemListParams extends PageParams {
   created_at?: InboundMailItemListParams.CreatedAt;
 
@@ -187,7 +172,6 @@ export namespace InboundMailItemListParams {
 
 export namespace InboundMailItems {
   export import InboundMailItem = InboundMailItemsAPI.InboundMailItem;
-  export import InboundMailItemList = InboundMailItemsAPI.InboundMailItemList;
   export import InboundMailItemsPage = InboundMailItemsAPI.InboundMailItemsPage;
   export import InboundMailItemListParams = InboundMailItemsAPI.InboundMailItemListParams;
 }

@@ -9,8 +9,7 @@ const increase = new Increase({
 });
 
 describe('resource wireDrawdownRequests', () => {
-  // Prism tests are broken
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = increase.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
@@ -28,8 +27,7 @@ describe('resource wireDrawdownRequests', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are broken
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await increase.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,

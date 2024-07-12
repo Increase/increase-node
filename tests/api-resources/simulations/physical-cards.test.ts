@@ -9,8 +9,8 @@ const increase = new Increase({
 });
 
 describe('resource physicalCards', () => {
-  test('shipmentAdvance: only required params', async () => {
-    const responsePromise = increase.simulations.physicalCards.shipmentAdvance(
+  test('advanceShipment: only required params', async () => {
+    const responsePromise = increase.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
       { shipment_status: 'shipped' },
     );
@@ -23,8 +23,8 @@ describe('resource physicalCards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('shipmentAdvance: required and optional params', async () => {
-    const response = await increase.simulations.physicalCards.shipmentAdvance(
+  test('advanceShipment: required and optional params', async () => {
+    const response = await increase.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
       { shipment_status: 'shipped' },
     );
