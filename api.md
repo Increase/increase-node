@@ -711,16 +711,6 @@ Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfer</code>
 
-## InboundInternationalACHTransfers
-
-Types:
-
-- <code><a href="./src/resources/simulations/inbound-international-ach-transfers.ts">InboundInternationalACHTransferCreateResponse</a></code>
-
-Methods:
-
-- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inboundInternationalACHTransfers.<a href="./src/resources/simulations/inbound-international-ach-transfers.ts">create</a>({ ...params }) -> InboundInternationalACHTransferCreateResponse</code>
-
 ## CardAuthorizations
 
 Types:
