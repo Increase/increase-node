@@ -144,48 +144,4 @@ describe('resource wireTransfers', () => {
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
-
-  // Prism tests are broken
-  test.skip('reverse', async () => {
-    const responsePromise = increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are broken
-  test.skip('reverse: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      increase.wireTransfers.reverse('wire_transfer_5akynk7dqsq25qwk9q2u', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
-  // Prism tests are broken
-  test.skip('submit', async () => {
-    const responsePromise = increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are broken
-  test.skip('submit: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      increase.wireTransfers.submit('wire_transfer_5akynk7dqsq25qwk9q2u', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
 });

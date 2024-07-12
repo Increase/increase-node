@@ -139,21 +139,6 @@ export namespace Lockbox {
   }
 }
 
-/**
- * A list of Lockbox objects.
- */
-export interface LockboxList {
-  /**
-   * The contents of the list.
-   */
-  data: Array<Lockbox>;
-
-  /**
-   * A pointer to a place in the list.
-   */
-  next_cursor: string | null;
-}
-
 export interface LockboxCreateParams {
   /**
    * The Account checks sent to this Lockbox should be deposited into.
@@ -230,7 +215,6 @@ export namespace LockboxListParams {
 
 export namespace Lockboxes {
   export import Lockbox = LockboxesAPI.Lockbox;
-  export import LockboxList = LockboxesAPI.LockboxList;
   export import LockboxesPage = LockboxesAPI.LockboxesPage;
   export import LockboxCreateParams = LockboxesAPI.LockboxCreateParams;
   export import LockboxUpdateParams = LockboxesAPI.LockboxUpdateParams;

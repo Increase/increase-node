@@ -9,8 +9,7 @@ const increase = new Increase({
 });
 
 describe('resource checkTransfers', () => {
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('mail', async () => {
+  test('mail', async () => {
     const responsePromise = increase.simulations.checkTransfers.mail('check_transfer_30b43acfu9vw8fyc4f5');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -21,8 +20,7 @@ describe('resource checkTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism incorrectly returns an invalid JSON error
-  test.skip('mail: request options instead of params are passed correctly', async () => {
+  test('mail: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.simulations.checkTransfers.mail('check_transfer_30b43acfu9vw8fyc4f5', {

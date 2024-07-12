@@ -9,8 +9,7 @@ const increase = new Increase({
 });
 
 describe('resource accountTransfers', () => {
-  // Prism tests are broken
-  test.skip('complete', async () => {
+  test('complete', async () => {
     const responsePromise = increase.simulations.accountTransfers.complete(
       'account_transfer_7k9qe1ysdgqztnt63l7n',
     );
@@ -23,8 +22,7 @@ describe('resource accountTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are broken
-  test.skip('complete: request options instead of params are passed correctly', async () => {
+  test('complete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.simulations.accountTransfers.complete('account_transfer_7k9qe1ysdgqztnt63l7n', {

@@ -8,10 +8,11 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource industryCode', () => {
+describe('resource inboundRealTimePaymentsTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.entities.industryCode.create('entity_n8y8tnk2p9339ti393yi', {
-      industry_code: '5132',
+    const responsePromise = increase.simulations.inboundRealTimePaymentsTransfers.create({
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -23,8 +24,14 @@ describe('resource industryCode', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.entities.industryCode.create('entity_n8y8tnk2p9339ti393yi', {
-      industry_code: '5132',
+    const response = await increase.simulations.inboundRealTimePaymentsTransfers.create({
+      account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      amount: 1000,
+      debtor_account_number: 'x',
+      debtor_name: 'x',
+      debtor_routing_number: 'xxxxxxxxx',
+      remittance_information: 'x',
+      request_for_payment_id: 'real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7',
     });
   });
 });

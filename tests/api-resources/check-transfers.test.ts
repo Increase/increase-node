@@ -156,8 +156,7 @@ describe('resource checkTransfers', () => {
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
-  // Prism doesn't accept no request body being sent but returns 415 if it is sent
-  test.skip('stopPayment', async () => {
+  test('stopPayment', async () => {
     const responsePromise = increase.checkTransfers.stopPayment('check_transfer_30b43acfu9vw8fyc4f5', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

@@ -1,16 +1,19 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
-import * as ExclusionsAPI from './exclusions';
-import { Page, type PageParams } from '../../pagination';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
+import * as IntrafiExclusionsAPI from './intrafi-exclusions';
+import { Page, type PageParams } from '../pagination';
 
-export class Exclusions extends APIResource {
+export class IntrafiExclusions extends APIResource {
   /**
    * Create an IntraFi Exclusion
    */
-  create(body: ExclusionCreateParams, options?: Core.RequestOptions): Core.APIPromise<IntrafiExclusion> {
+  create(
+    body: IntrafiExclusionCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<IntrafiExclusion> {
     return this._client.post('/intrafi_exclusions', { body, ...options });
   }
 
@@ -25,12 +28,12 @@ export class Exclusions extends APIResource {
    * List IntraFi Exclusions.
    */
   list(
-    query?: ExclusionListParams,
+    query?: IntrafiExclusionListParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion>;
   list(options?: Core.RequestOptions): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion>;
   list(
-    query: ExclusionListParams | Core.RequestOptions = {},
+    query: IntrafiExclusionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion> {
     if (isRequestOptions(query)) {
@@ -110,7 +113,7 @@ export interface IntrafiExclusion {
   type: 'intrafi_exclusion';
 }
 
-export interface ExclusionCreateParams {
+export interface IntrafiExclusionCreateParams {
   /**
    * The name of the financial institution to be excluded.
    */
@@ -122,7 +125,7 @@ export interface ExclusionCreateParams {
   entity_id: string;
 }
 
-export interface ExclusionListParams extends PageParams {
+export interface IntrafiExclusionListParams extends PageParams {
   /**
    * Filter IntraFi Exclusions for those belonging to the specified Entity.
    */
@@ -137,9 +140,9 @@ export interface ExclusionListParams extends PageParams {
   idempotency_key?: string;
 }
 
-export namespace Exclusions {
-  export import IntrafiExclusion = ExclusionsAPI.IntrafiExclusion;
-  export import IntrafiExclusionsPage = ExclusionsAPI.IntrafiExclusionsPage;
-  export import ExclusionCreateParams = ExclusionsAPI.ExclusionCreateParams;
-  export import ExclusionListParams = ExclusionsAPI.ExclusionListParams;
+export namespace IntrafiExclusions {
+  export import IntrafiExclusion = IntrafiExclusionsAPI.IntrafiExclusion;
+  export import IntrafiExclusionsPage = IntrafiExclusionsAPI.IntrafiExclusionsPage;
+  export import IntrafiExclusionCreateParams = IntrafiExclusionsAPI.IntrafiExclusionCreateParams;
+  export import IntrafiExclusionListParams = IntrafiExclusionsAPI.IntrafiExclusionListParams;
 }

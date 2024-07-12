@@ -4,38 +4,33 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as SimulationsACHTransfersAPI from './ach-transfers';
 import * as ACHTransfersAPI from '../ach-transfers';
-import * as InboundACHTransfersAPI from '../inbound-ach-transfers';
 
 export class ACHTransfers extends APIResource {
   /**
-   * Simulates an inbound ACH transfer to your account. This imitates initiating a
-   * transfer to an Increase account from a different financial institution. The
-   * transfer may be either a credit or a debit depending on if the `amount` is
-   * positive or negative. The result of calling this API will contain the created
-   * transfer. You can pass a `resolve_at` parameter to allow for a window to
-   * [action on the Inbound ACH Transfer](https://increase.com/documentation/receiving-ach-transfers).
-   * Alternatively, if you don't pass the `resolve_at` parameter the result will
-   * contain either a [Transaction](#transactions) or a
-   * [Declined Transaction](#declined-transactions) depending on whether or not the
-   * transfer is allowed.
+   * Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
+   * Federal Reserve. This transfer must first have a `status` of `submitted` . In
+   * production, the Federal Reserve generally acknowledges submitted ACH files
+   * within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
+   * Reserve, this endpoint allows you to skip that delay and add the acknowledgment
+   * subresource to the ACH Transfer.
    */
-  createInbound(
-    body: ACHTransferCreateInboundParams,
+  acknowledge(
+    achTransferId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfersAPI.InboundACHTransfer> {
-    return this._client.post('/simulations/inbound_ach_transfers', { body, ...options });
+  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/acknowledge`, options);
   }
 
   /**
    * Simulates receiving a Notification of Change for an
    * [ACH Transfer](#ach-transfers).
    */
-  notificationOfChange(
+  createNotificationOfChange(
     achTransferId: string,
-    body: ACHTransferNotificationOfChangeParams,
+    body: ACHTransferCreateNotificationOfChangeParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/notification_of_change`, {
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/create_notification_of_change`, {
       body,
       ...options,
     });
@@ -67,62 +62,7 @@ export class ACHTransfers extends APIResource {
   }
 }
 
-export interface ACHTransferCreateInboundParams {
-  /**
-   * The identifier of the Account Number the inbound ACH Transfer is for.
-   */
-  account_number_id: string;
-
-  /**
-   * The transfer amount in cents. A positive amount originates a credit transfer
-   * pushing funds to the receiving account. A negative amount originates a debit
-   * transfer pulling funds from the receiving account.
-   */
-  amount: number;
-
-  /**
-   * The description of the date of the transfer.
-   */
-  company_descriptive_date?: string;
-
-  /**
-   * Data associated with the transfer set by the sender.
-   */
-  company_discretionary_data?: string;
-
-  /**
-   * The description of the transfer set by the sender.
-   */
-  company_entry_description?: string;
-
-  /**
-   * The sender's company ID.
-   */
-  company_id?: string;
-
-  /**
-   * The name of the sender.
-   */
-  company_name?: string;
-
-  /**
-   * The ID of the receiver of the transfer.
-   */
-  receiver_id_number?: string;
-
-  /**
-   * The name of the receiver of the transfer.
-   */
-  receiver_name?: string;
-
-  /**
-   * The time at which the transfer should be resolved. If not provided will resolve
-   * immediately.
-   */
-  resolve_at?: string;
-}
-
-export interface ACHTransferNotificationOfChangeParams {
+export interface ACHTransferCreateNotificationOfChangeParams {
   /**
    * The reason for the notification of change.
    *
@@ -415,7 +355,6 @@ export interface ACHTransferReturnParams {
 }
 
 export namespace ACHTransfers {
-  export import ACHTransferCreateInboundParams = SimulationsACHTransfersAPI.ACHTransferCreateInboundParams;
-  export import ACHTransferNotificationOfChangeParams = SimulationsACHTransfersAPI.ACHTransferNotificationOfChangeParams;
+  export import ACHTransferCreateNotificationOfChangeParams = SimulationsACHTransfersAPI.ACHTransferCreateNotificationOfChangeParams;
   export import ACHTransferReturnParams = SimulationsACHTransfersAPI.ACHTransferReturnParams;
 }

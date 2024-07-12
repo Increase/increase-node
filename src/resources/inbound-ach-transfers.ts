@@ -33,24 +33,24 @@ export class InboundACHTransfers extends APIResource {
   }
 
   /**
+   * Create a notification of change for an Inbound ACH Transfer
+   */
+  createNotificationOfChange(
+    inboundACHTransferId: string,
+    body: InboundACHTransferCreateNotificationOfChangeParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundACHTransfer> {
+    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/create_notification_of_change`, {
+      body,
+      ...options,
+    });
+  }
+
+  /**
    * Decline an Inbound ACH Transfer
    */
   decline(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
     return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, options);
-  }
-
-  /**
-   * Create a notification of change for an Inbound ACH Transfer
-   */
-  notificationOfChange(
-    inboundACHTransferId: string,
-    body: InboundACHTransferNotificationOfChangeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfer> {
-    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/notification_of_change`, {
-      body,
-      ...options,
-    });
   }
 
   /**
@@ -469,7 +469,7 @@ export namespace InboundACHTransferListParams {
   }
 }
 
-export interface InboundACHTransferNotificationOfChangeParams {
+export interface InboundACHTransferCreateNotificationOfChangeParams {
   /**
    * The updated account number to send in the notification of change.
    */
@@ -526,6 +526,6 @@ export namespace InboundACHTransfers {
   export import InboundACHTransfer = InboundACHTransfersAPI.InboundACHTransfer;
   export import InboundACHTransfersPage = InboundACHTransfersAPI.InboundACHTransfersPage;
   export import InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
-  export import InboundACHTransferNotificationOfChangeParams = InboundACHTransfersAPI.InboundACHTransferNotificationOfChangeParams;
+  export import InboundACHTransferCreateNotificationOfChangeParams = InboundACHTransfersAPI.InboundACHTransferCreateNotificationOfChangeParams;
   export import InboundACHTransferTransferReturnParams = InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
 }

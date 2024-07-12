@@ -15,17 +15,17 @@ export class RoutingNumbers extends APIResource {
   list(
     query: RoutingNumberListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<RoutingNumbersPage, RoutingNumber> {
-    return this._client.getAPIList('/routing_numbers', RoutingNumbersPage, { query, ...options });
+  ): Core.PagePromise<RoutingNumberListResponsesPage, RoutingNumberListResponse> {
+    return this._client.getAPIList('/routing_numbers', RoutingNumberListResponsesPage, { query, ...options });
   }
 }
 
-export class RoutingNumbersPage extends Page<RoutingNumber> {}
+export class RoutingNumberListResponsesPage extends Page<RoutingNumberListResponse> {}
 
 /**
  * Routing numbers are used to identify your bank in a financial transaction.
  */
-export interface RoutingNumber {
+export interface RoutingNumberListResponse {
   /**
    * This routing number's support for ACH Transfers.
    *
@@ -75,7 +75,7 @@ export interface RoutingNumberListParams extends PageParams {
 }
 
 export namespace RoutingNumbers {
-  export import RoutingNumber = RoutingNumbersAPI.RoutingNumber;
-  export import RoutingNumbersPage = RoutingNumbersAPI.RoutingNumbersPage;
+  export import RoutingNumberListResponse = RoutingNumbersAPI.RoutingNumberListResponse;
+  export import RoutingNumberListResponsesPage = RoutingNumbersAPI.RoutingNumberListResponsesPage;
   export import RoutingNumberListParams = RoutingNumbersAPI.RoutingNumberListParams;
 }

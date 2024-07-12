@@ -15,7 +15,7 @@ export class InboundInternationalACHTransfers extends APIResource {
   create(
     body: InboundInternationalACHTransferCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundInternationalACHTransfer> {
+  ): Core.APIPromise<InboundInternationalACHTransferCreateResponse> {
     return this._client.post('/simulations/inbound_international_ach_transfers', { body, ...options });
   }
 }
@@ -25,7 +25,7 @@ export class InboundInternationalACHTransfers extends APIResource {
  * initiated at another bank and received by Increase. There are additional fields
  * on this object that are not present on all Inbound ACH Transfer object.
  */
-export interface InboundInternationalACHTransfer {
+export interface InboundInternationalACHTransferCreateResponse {
   /**
    * The amount in the minor unit of the destination account currency. For dollars,
    * for example, this is cents.
@@ -362,6 +362,6 @@ export interface InboundInternationalACHTransferCreateParams {
 }
 
 export namespace InboundInternationalACHTransfers {
-  export import InboundInternationalACHTransfer = InboundInternationalACHTransfersAPI.InboundInternationalACHTransfer;
+  export import InboundInternationalACHTransferCreateResponse = InboundInternationalACHTransfersAPI.InboundInternationalACHTransferCreateResponse;
   export import InboundInternationalACHTransferCreateParams = InboundInternationalACHTransfersAPI.InboundInternationalACHTransferCreateParams;
 }
