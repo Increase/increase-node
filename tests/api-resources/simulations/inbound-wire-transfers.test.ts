@@ -41,6 +41,7 @@ describe('resource inboundWireTransfers', () => {
       originator_to_beneficiary_information_line2: 'x',
       originator_to_beneficiary_information_line3: 'x',
       originator_to_beneficiary_information_line4: 'x',
+      sender_reference: 'x',
     });
   });
 });
