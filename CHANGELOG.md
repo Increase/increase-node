@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.60.0 (2024-07-14)
+
+Full Changelog: [v0.59.1...v0.60.0](https://github.com/Increase/increase-node/compare/v0.59.1...v0.60.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#426](https://github.com/Increase/increase-node/issues/426)) ([47ccc98](https://github.com/Increase/increase-node/commit/47ccc9860e80ed2febc9a9e783d8abe05760ec76))
+* **api:** OpenAPI spec update via Stainless API ([#428](https://github.com/Increase/increase-node/issues/428)) ([4119e7f](https://github.com/Increase/increase-node/commit/4119e7f268e21cb4841ddbdcff036c93117cc2a2))
+* **api:** OpenAPI spec update via Stainless API ([#429](https://github.com/Increase/increase-node/issues/429)) ([c2e8f5c](https://github.com/Increase/increase-node/commit/c2e8f5cab642fe25a9dc2c1cfc0380ceade285c7))
+* **api:** OpenAPI spec update via Stainless API ([#430](https://github.com/Increase/increase-node/issues/430)) ([d044c25](https://github.com/Increase/increase-node/commit/d044c256532958f9d88707b84fefdae0397f23b1))
+* **api:** OpenAPI spec update via Stainless API ([#431](https://github.com/Increase/increase-node/issues/431)) ([e235818](https://github.com/Increase/increase-node/commit/e23581889cded743d847b7317519c63d51255d8c))
+* **api:** OpenAPI spec update via Stainless API ([#432](https://github.com/Increase/increase-node/issues/432)) ([e15fd49](https://github.com/Increase/increase-node/commit/e15fd4912edd1f32b839b4e48063e0d422ec85f3))
+
+
+### Chores
+
+* **internal:** version bump ([#433](https://github.com/Increase/increase-node/issues/433)) ([cfe1484](https://github.com/Increase/increase-node/commit/cfe14848bff36908d2b08d9898fc8c68d03b9df1))
+
 ## 0.59.1 (2024-07-11)
 
 Full Changelog: [v0.59.0...v0.59.1](https://github.com/Increase/increase-node/compare/v0.59.0...v0.59.1)
