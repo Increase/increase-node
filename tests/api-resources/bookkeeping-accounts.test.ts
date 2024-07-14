@@ -23,9 +23,9 @@ describe('resource bookkeepingAccounts', () => {
   test('create: required and optional params', async () => {
     const response = await increase.bookkeepingAccounts.create({
       name: 'New Account!',
-      account_id: 'string',
+      account_id: 'account_id',
       compliance_category: 'commingled_cash',
-      entity_id: 'string',
+      entity_id: 'entity_id',
     });
   });
 
@@ -70,7 +70,7 @@ describe('resource bookkeepingAccounts', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       increase.bookkeepingAccounts.list(
-        { cursor: 'string', idempotency_key: 'x', limit: 1 },
+        { cursor: 'cursor', idempotency_key: 'x', limit: 1 },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

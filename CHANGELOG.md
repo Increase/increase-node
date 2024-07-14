@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.59.1 (2024-07-11)
+
+Full Changelog: [v0.59.0...v0.59.1](https://github.com/Increase/increase-node/compare/v0.59.0...v0.59.1)
+
+### Chores
+
+* **ci:** also run workflows for PRs targeting `next` ([#423](https://github.com/Increase/increase-node/issues/423)) ([f0427df](https://github.com/Increase/increase-node/commit/f0427df11e2d5fa38c2891bdf18d1d4cf5575016))
+
+
+### Documentation
+
+* **examples:** update example values ([#425](https://github.com/Increase/increase-node/issues/425)) ([e495197](https://github.com/Increase/increase-node/commit/e495197b349032ffac3992c4c20e03e2dfcefea3))
+
 ## 0.59.0 (2024-07-04)
 
 Full Changelog: [v0.58.0...v0.59.0](https://github.com/Increase/increase-node/compare/v0.58.0...v0.59.0)

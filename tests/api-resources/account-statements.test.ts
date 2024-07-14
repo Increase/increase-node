@@ -52,8 +52,8 @@ describe('resource accountStatements', () => {
     await expect(
       increase.accountStatements.list(
         {
-          account_id: 'string',
-          cursor: 'string',
+          account_id: 'account_id',
+          cursor: 'cursor',
           limit: 1,
           statement_period_start: {
             after: '2019-12-27T18:11:19.117Z',
