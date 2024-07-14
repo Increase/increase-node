@@ -210,8 +210,6 @@ export namespace Transaction {
      *   `check_deposit_return` object.
      * - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
      *   `check_transfer_deposit` object.
-     * - `check_transfer_stop_payment_request` - Check Transfer Stop Payment Request:
-     *   details will be under the `check_transfer_stop_payment_request` object.
      * - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
      * - `inbound_ach_transfer` - Inbound ACH Transfer Intention: details will be under
      *   the `inbound_ach_transfer` object.
@@ -261,7 +259,6 @@ export namespace Transaction {
       | 'check_deposit_acceptance'
       | 'check_deposit_return'
       | 'check_transfer_deposit'
-      | 'check_transfer_stop_payment_request'
       | 'fee_payment'
       | 'inbound_ach_transfer'
       | 'inbound_ach_transfer_return_intention'
@@ -296,13 +293,6 @@ export namespace Transaction {
      * if and only if `category` is equal to `check_transfer_deposit`.
      */
     check_transfer_deposit: Source.CheckTransferDeposit | null;
-
-    /**
-     * A Check Transfer Stop Payment Request object. This field will be present in the
-     * JSON response if and only if `category` is equal to
-     * `check_transfer_stop_payment_request`.
-     */
-    check_transfer_stop_payment_request: Source.CheckTransferStopPaymentRequest | null;
 
     /**
      * A Fee Payment object. This field will be present in the JSON response if and
@@ -2379,40 +2369,6 @@ export namespace Transaction {
     }
 
     /**
-     * A Check Transfer Stop Payment Request object. This field will be present in the
-     * JSON response if and only if `category` is equal to
-     * `check_transfer_stop_payment_request`.
-     */
-    export interface CheckTransferStopPaymentRequest {
-      /**
-       * The reason why this transfer was stopped.
-       *
-       * - `mail_delivery_failed` - The check could not be delivered.
-       * - `rejected_by_increase` - The check was canceled by an Increase operator who
-       *   will provide details out-of-band.
-       * - `not_authorized` - The check was not authorized.
-       * - `unknown` - The check was stopped for another reason.
-       */
-      reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'not_authorized' | 'unknown';
-
-      /**
-       * The time the stop-payment was requested.
-       */
-      requested_at: string;
-
-      /**
-       * The ID of the check transfer that was stopped.
-       */
-      transfer_id: string;
-
-      /**
-       * A constant representing the object's type. For this resource it will always be
-       * `check_transfer_stop_payment_request`.
-       */
-      type: 'check_transfer_stop_payment_request';
-    }
-
-    /**
      * A Fee Payment object. This field will be present in the JSON response if and
      * only if `category` is equal to `fee_payment`.
      */
@@ -3128,7 +3084,6 @@ export namespace TransactionListParams {
       | 'check_deposit_acceptance'
       | 'check_deposit_return'
       | 'check_transfer_deposit'
-      | 'check_transfer_stop_payment_request'
       | 'fee_payment'
       | 'inbound_ach_transfer'
       | 'inbound_ach_transfer_return_intention'
