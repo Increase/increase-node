@@ -289,7 +289,6 @@ Methods:
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">retrieve</a>(inboundCheckDepositId) -> InboundCheckDeposit</code>
 - <code title="get /inbound_check_deposits">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">list</a>({ ...params }) -> InboundCheckDepositsPage</code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">decline</a>(inboundCheckDepositId) -> InboundCheckDeposit</code>
-- <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/return">client.inboundCheckDeposits.<a href="./src/resources/inbound-check-deposits.ts">return</a>(inboundCheckDepositId, { ...params }) -> InboundCheckDeposit</code>
 
 # RealTimePaymentsTransfers
 
@@ -717,6 +716,16 @@ Methods:
 Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.realTimePaymentsTransfers.<a href="./src/resources/simulations/real-time-payments-transfers.ts">complete</a>(realTimePaymentsTransferId, { ...params }) -> RealTimePaymentsTransfer</code>
+
+## InboundInternationalACHTransfers
+
+Types:
+
+- <code><a href="./src/resources/simulations/inbound-international-ach-transfers.ts">InboundInternationalACHTransferCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inboundInternationalACHTransfers.<a href="./src/resources/simulations/inbound-international-ach-transfers.ts">create</a>({ ...params }) -> InboundInternationalACHTransferCreateResponse</code>
 
 ## CardAuthorizations
 

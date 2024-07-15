@@ -19,6 +19,7 @@ import * as DocumentsAPI from './documents';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import * as InboundFundsHoldsAPI from './inbound-funds-holds';
+import * as InboundInternationalACHTransfersAPI from './inbound-international-ach-transfers';
 import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
 import * as InboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
 import * as InboundWireTransfersAPI from './inbound-wire-transfers';
@@ -51,6 +52,8 @@ export class Simulations extends APIResource {
   );
   realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
     new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
+  inboundInternationalACHTransfers: InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers =
+    new InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers(this._client);
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
@@ -99,6 +102,9 @@ export namespace Simulations {
   export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
   export import RealTimePaymentsTransfers = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers;
   export import RealTimePaymentsTransferCompleteParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export import InboundInternationalACHTransfers = InboundInternationalACHTransfersAPI.InboundInternationalACHTransfers;
+  export import InboundInternationalACHTransferCreateResponse = InboundInternationalACHTransfersAPI.InboundInternationalACHTransferCreateResponse;
+  export import InboundInternationalACHTransferCreateParams = InboundInternationalACHTransfersAPI.InboundInternationalACHTransferCreateParams;
   export import CardAuthorizations = CardAuthorizationsAPI.CardAuthorizations;
   export import CardAuthorizationCreateResponse = CardAuthorizationsAPI.CardAuthorizationCreateResponse;
   export import CardAuthorizationCreateParams = CardAuthorizationsAPI.CardAuthorizationCreateParams;
