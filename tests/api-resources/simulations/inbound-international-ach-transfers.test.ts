@@ -8,11 +8,13 @@ const increase = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inboundACHTransfers', () => {
+describe('resource inboundInternationalACHTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.simulations.inboundACHTransfers.create({
+    const responsePromise = increase.simulations.inboundInternationalACHTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
+      foreign_payment_amount: 10650,
+      originating_currency_code: 'NOK',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,17 +26,15 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.simulations.inboundACHTransfers.create({
+    const response = await increase.simulations.inboundInternationalACHTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
-      company_descriptive_date: 'x',
-      company_discretionary_data: 'x',
-      company_entry_description: 'x',
-      company_id: 'x',
-      company_name: 'x',
-      receiver_id_number: 'x',
-      receiver_name: 'x',
-      resolve_at: '2019-12-27T18:11:19.117Z',
+      foreign_payment_amount: 10650,
+      originating_currency_code: 'NOK',
+      originator_company_entry_description: 'x',
+      originator_name: 'x',
+      receiver_identification_number: 'x',
+      receiving_company_or_individual_name: 'x',
     });
   });
 });
