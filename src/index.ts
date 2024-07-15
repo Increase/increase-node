@@ -436,6 +436,7 @@ export namespace Increase {
   export import InboundCheckDeposit = API.InboundCheckDeposit;
   export import InboundCheckDepositsPage = API.InboundCheckDepositsPage;
   export import InboundCheckDepositListParams = API.InboundCheckDepositListParams;
+  export import InboundCheckDepositReturnParams = API.InboundCheckDepositReturnParams;
 
   export import RealTimePaymentsTransfers = API.RealTimePaymentsTransfers;
   export import RealTimePaymentsTransfer = API.RealTimePaymentsTransfer;
