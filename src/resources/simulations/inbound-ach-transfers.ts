@@ -79,6 +79,44 @@ export interface InboundACHTransferCreateParams {
    * immediately.
    */
   resolve_at?: string;
+
+  /**
+   * The standard entry class code for the transfer.
+   *
+   * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+   * - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
+   * - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+   * - `internet_initiated` - Internet Initiated (WEB).
+   * - `point_of_sale` - Point of Sale (POS).
+   * - `telephone_initiated` - Telephone Initiated (TEL).
+   * - `customer_initiated` - Customer Initiated (CIE).
+   * - `accounts_receivable` - Accounts Receivable (ARC).
+   * - `machine_transfer` - Machine Transfer (MTE).
+   * - `shared_network_transaction` - Shared Network Transaction (SHR).
+   * - `represented_check` - Represented Check (RCK).
+   * - `back_office_conversion` - Back Office Conversion (BOC).
+   * - `point_of_purchase` - Point of Purchase (POP).
+   * - `check_truncation` - Check Truncation (TRC).
+   * - `destroyed_check` - Destroyed Check (XCK).
+   * - `international_ach_transaction` - International ACH Transaction (IAT).
+   */
+  standard_entry_class_code?:
+    | 'corporate_credit_or_debit'
+    | 'corporate_trade_exchange'
+    | 'prearranged_payments_and_deposit'
+    | 'internet_initiated'
+    | 'point_of_sale'
+    | 'telephone_initiated'
+    | 'customer_initiated'
+    | 'accounts_receivable'
+    | 'machine_transfer'
+    | 'shared_network_transaction'
+    | 'represented_check'
+    | 'back_office_conversion'
+    | 'point_of_purchase'
+    | 'check_truncation'
+    | 'destroyed_check'
+    | 'international_ach_transaction';
 }
 
 export namespace InboundACHTransfers {

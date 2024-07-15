@@ -91,4 +91,24 @@ describe('resource inboundCheckDeposits', () => {
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('return: only required params', async () => {
+    const responsePromise = increase.inboundCheckDeposits.return(
+      'inbound_check_deposit_zoshvqybq0cjjm31mra',
+      { reason: 'altered_or_fictitious' },
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('return: required and optional params', async () => {
+    const response = await increase.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+      reason: 'altered_or_fictitious',
+    });
+  });
 });
