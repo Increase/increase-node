@@ -418,11 +418,6 @@ export namespace WireTransfer {
     receiver_financial_institution_information: string | null;
 
     /**
-     * The sending bank's reference number for the wire reversal.
-     */
-    sender_reference: string | null;
-
-    /**
      * The ID for the Transaction associated with the transfer reversal.
      */
     transaction_id: string;
