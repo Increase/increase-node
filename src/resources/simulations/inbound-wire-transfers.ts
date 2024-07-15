@@ -111,6 +111,12 @@ export interface InboundWireTransferCreateParams {
    * production. You can simulate any value here.
    */
   originator_to_beneficiary_information_line4?: string;
+
+  /**
+   * The sending bank will set sender_reference in production. You can simulate any
+   * value here.
+   */
+  sender_reference?: string;
 }
 
 export namespace InboundWireTransfers {
