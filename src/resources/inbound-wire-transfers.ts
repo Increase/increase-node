@@ -155,11 +155,6 @@ export interface InboundWireTransfer {
   originator_to_beneficiary_information_line4: string | null;
 
   /**
-   * The sending bank's reference number for the wire transfer.
-   */
-  sender_reference: string | null;
-
-  /**
    * The status of the transfer.
    *
    * - `pending` - The Inbound Wire Transfer is awaiting action, will transition

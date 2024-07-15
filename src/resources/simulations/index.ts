@@ -34,6 +34,11 @@ export { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-a
 export { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
 export { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 export {
+  InboundInternationalACHTransferCreateResponse,
+  InboundInternationalACHTransferCreateParams,
+  InboundInternationalACHTransfers,
+} from './inbound-international-ach-transfers';
+export {
   InboundRealTimePaymentsTransferCreateResponse,
   InboundRealTimePaymentsTransferCreateParams,
   InboundRealTimePaymentsTransfers,

@@ -178,7 +178,6 @@ export {
 export {
   InboundCheckDeposit,
   InboundCheckDepositListParams,
-  InboundCheckDepositReturnParams,
   InboundCheckDepositsPage,
   InboundCheckDeposits,
 } from './inbound-check-deposits';
