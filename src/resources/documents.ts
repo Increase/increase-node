@@ -34,8 +34,7 @@ export class DocumentsPage extends Page<Document> {}
 
 /**
  * Increase generates certain documents / forms automatically for your application;
- * they can be listed here. Currently the only supported document type is IRS Form
- * 1099-INT.
+ * they can be listed here.
  */
 export interface Document {
   /**
