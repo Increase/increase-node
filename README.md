@@ -20,7 +20,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Increase from 'increase';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: process.env['INCREASE_API_KEY'], // This is the default and can be omitted
   environment: 'sandbox', // defaults to 'production'
 });
@@ -46,7 +46,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Increase from 'increase';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: process.env['INCREASE_API_KEY'], // This is the default and can be omitted
   environment: 'sandbox', // defaults to 'production'
 });
@@ -79,7 +79,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import Increase, { toFile } from 'increase';
 
-const increase = new Increase();
+const client = new Increase();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
 await increase.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'check_image_front' });
@@ -148,7 +148,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const increase = new Increase({
+const client = new Increase({
   maxRetries: 0, // default is 2
 });
 
@@ -165,7 +165,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const increase = new Increase({
+const client = new Increase({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -220,7 +220,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const increase = new Increase();
+const client = new Increase();
 
 const response = await increase.accounts
   .create({
@@ -339,7 +339,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const increase = new Increase({
+const client = new Increase({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
