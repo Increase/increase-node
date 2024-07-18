@@ -195,8 +195,9 @@ export namespace InboundCheckDeposit {
      * - `altered_or_fictitious` - The check was altered or fictitious.
      * - `not_authorized` - The check was not authorized.
      * - `duplicate_presentment` - The check was a duplicate presentment.
+     * - `endorsement_missing` - The check was not endorsed.
      */
-    reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment';
+    reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment' | 'endorsement_missing';
 
     /**
      * The time at which the deposit was returned.
@@ -260,8 +261,9 @@ export interface InboundCheckDepositReturnParams {
    * - `altered_or_fictitious` - The check was altered or fictitious.
    * - `not_authorized` - The check was not authorized.
    * - `duplicate_presentment` - The check was a duplicate presentment.
+   * - `endorsement_missing` - The check was not endorsed.
    */
-  reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment';
+  reason: 'altered_or_fictitious' | 'not_authorized' | 'duplicate_presentment' | 'endorsement_missing';
 }
 
 export namespace InboundCheckDeposits {
