@@ -124,6 +124,14 @@ export interface InboundACHTransfer {
   direction: 'credit' | 'debit';
 
   /**
+   * The settlement schedule the transfer is expected to follow.
+   *
+   * - `same_day` - The transfer is expected to settle same-day.
+   * - `future_dated` - The transfer is expected to settle on a future date.
+   */
+  expected_settlement_schedule: 'same_day' | 'future_dated';
+
+  /**
    * If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
    * contain fields pertaining to the International ACH Transaction.
    */
