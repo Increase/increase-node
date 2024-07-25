@@ -129,8 +129,8 @@ export interface File {
    * - `export` - The results of an Export you requested via the dashboard or API.
    * - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
    *   Report.
-   * - `deposit_access_control_agreement` - A document granting another entity access
-   *   to the funds into your account.
+   * - `deposit_account_control_agreement` - A document granting another entity
+   *   access to the funds into your account.
    */
   purpose:
     | 'check_image_front'
@@ -154,7 +154,7 @@ export interface File {
     | 'entity_supplemental_document'
     | 'export'
     | 'unusual_activity_report_attachment'
-    | 'deposit_access_control_agreement';
+    | 'deposit_account_control_agreement';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -287,7 +287,7 @@ export namespace FileListParams {
       | 'entity_supplemental_document'
       | 'export'
       | 'unusual_activity_report_attachment'
-      | 'deposit_access_control_agreement'
+      | 'deposit_account_control_agreement'
     >;
   }
 }
