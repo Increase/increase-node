@@ -283,6 +283,11 @@ export namespace CardPayment {
       merchant_descriptor: string;
 
       /**
+       * The state the merchant resides in.
+       */
+      merchant_state: string | null;
+
+      /**
        * Fields specific to the `network`.
        */
       network_details: CardAuthorization.NetworkDetails;
@@ -2702,6 +2707,11 @@ export namespace CardPayment {
        * The merchant descriptor of the merchant the card is transacting with.
        */
       merchant_descriptor: string;
+
+      /**
+       * The state the merchant resides in.
+       */
+      merchant_state: string | null;
 
       /**
        * Fields specific to the `network`.
