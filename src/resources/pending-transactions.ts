@@ -365,6 +365,11 @@ export namespace PendingTransaction {
       merchant_descriptor: string;
 
       /**
+       * The state the merchant resides in.
+       */
+      merchant_state: string | null;
+
+      /**
        * Fields specific to the `network`.
        */
       network_details: CardAuthorization.NetworkDetails;
