@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.66.1 (2024-07-25)
+
+Full Changelog: [v0.66.0...v0.66.1](https://github.com/Increase/increase-node/compare/v0.66.0...v0.66.1)
+
+### Bug Fixes
+
+* **compat:** remove ReadableStream polyfill redundant since node v16 ([#456](https://github.com/Increase/increase-node/issues/456)) ([7fa7ae5](https://github.com/Increase/increase-node/commit/7fa7ae5a759d2c59d2e567a64758dd809842e7b5))
+
 ## 0.66.0 (2024-07-25)
 
 Full Changelog: [v0.65.0...v0.66.0](https://github.com/Increase/increase-node/compare/v0.65.0...v0.66.0)
