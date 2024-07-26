@@ -283,6 +283,12 @@ export namespace CardPayment {
       merchant_descriptor: string;
 
       /**
+       * The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+       * ZIP code, where the first 5 and last 4 are separated by a dash.
+       */
+      merchant_postal_code: string | null;
+
+      /**
        * The state the merchant resides in.
        */
       merchant_state: string | null;
@@ -708,6 +714,12 @@ export namespace CardPayment {
        * The merchant descriptor of the merchant the card is transacting with.
        */
       merchant_descriptor: string;
+
+      /**
+       * The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+       * ZIP code, where the first 5 and last 4 are separated by a dash.
+       */
+      merchant_postal_code: string | null;
 
       /**
        * The state the merchant resides in.
@@ -2707,6 +2719,12 @@ export namespace CardPayment {
        * The merchant descriptor of the merchant the card is transacting with.
        */
       merchant_descriptor: string;
+
+      /**
+       * The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+       * ZIP code, where the first 5 and last 4 are separated by a dash.
+       */
+      merchant_postal_code: string | null;
 
       /**
        * The state the merchant resides in.
