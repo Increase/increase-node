@@ -231,6 +231,7 @@ export class Increase extends Core.APIClient {
   }
 
   static Increase = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static IncreaseError = Errors.IncreaseError;
   static APIError = Errors.APIError;
