@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource accounts', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.accounts.create({ name: 'New Account!' });
+    const responsePromise = client.accounts.create({ name: 'New Account!' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource accounts', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.accounts.create({
+    const response = await client.accounts.create({
       name: 'New Account!',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
       informational_entity_id: 'informational_entity_id',
@@ -30,7 +30,7 @@ describe('resource accounts', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.accounts.retrieve('account_in71c4amph0vgo2qllky');
+    const responsePromise = client.accounts.retrieve('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -43,12 +43,12 @@ describe('resource accounts', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accounts.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+      client.accounts.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = increase.accounts.update('account_in71c4amph0vgo2qllky', {});
+    const responsePromise = client.accounts.update('account_in71c4amph0vgo2qllky', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,7 +59,7 @@ describe('resource accounts', () => {
   });
 
   test('list', async () => {
-    const responsePromise = increase.accounts.list();
+    const responsePromise = client.accounts.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -71,7 +71,7 @@ describe('resource accounts', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.accounts.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.accounts.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -79,7 +79,7 @@ describe('resource accounts', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accounts.list(
+      client.accounts.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
@@ -100,7 +100,7 @@ describe('resource accounts', () => {
   });
 
   test('balance', async () => {
-    const responsePromise = increase.accounts.balance('account_in71c4amph0vgo2qllky');
+    const responsePromise = client.accounts.balance('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -113,14 +113,14 @@ describe('resource accounts', () => {
   test('balance: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accounts.balance('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+      client.accounts.balance('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('balance: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accounts.balance(
+      client.accounts.balance(
         'account_in71c4amph0vgo2qllky',
         { at_time: '2019-12-27T18:11:19.117Z' },
         { path: '/_stainless_unknown_path' },
@@ -129,7 +129,7 @@ describe('resource accounts', () => {
   });
 
   test('close', async () => {
-    const responsePromise = increase.accounts.close('account_in71c4amph0vgo2qllky');
+    const responsePromise = client.accounts.close('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -142,7 +142,7 @@ describe('resource accounts', () => {
   test('close: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.accounts.close('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+      client.accounts.close('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

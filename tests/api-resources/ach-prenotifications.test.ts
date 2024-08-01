@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource achPrenotifications', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.achPrenotifications.create({
+    const responsePromise = client.achPrenotifications.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',
@@ -25,7 +25,7 @@ describe('resource achPrenotifications', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.achPrenotifications.create({
+    const response = await client.achPrenotifications.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       account_number: '987654321',
       routing_number: '101050001',
@@ -43,7 +43,7 @@ describe('resource achPrenotifications', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34');
+    const responsePromise = client.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -56,14 +56,14 @@ describe('resource achPrenotifications', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34', {
+      client.achPrenotifications.retrieve('ach_prenotification_ubjf9qqsxl3obbcn1u34', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.achPrenotifications.list();
+    const responsePromise = client.achPrenotifications.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -75,7 +75,7 @@ describe('resource achPrenotifications', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.achPrenotifications.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.achPrenotifications.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -83,7 +83,7 @@ describe('resource achPrenotifications', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achPrenotifications.list(
+      client.achPrenotifications.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',

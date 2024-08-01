@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource oauthConnections', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my');
+    const responsePromise = client.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,14 +23,14 @@ describe('resource oauthConnections', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my', {
+      client.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.oauthConnections.list();
+    const responsePromise = client.oauthConnections.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,7 +42,7 @@ describe('resource oauthConnections', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.oauthConnections.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.oauthConnections.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -50,7 +50,7 @@ describe('resource oauthConnections', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.oauthConnections.list(
+      client.oauthConnections.list(
         { cursor: 'cursor', limit: 1, status: { in: ['active', 'inactive'] } },
         { path: '/_stainless_unknown_path' },
       ),
