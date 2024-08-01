@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource lockboxes', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.lockboxes.create({ account_id: 'account_in71c4amph0vgo2qllky' });
+    const responsePromise = client.lockboxes.create({ account_id: 'account_in71c4amph0vgo2qllky' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource lockboxes', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.lockboxes.create({
+    const response = await client.lockboxes.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       description: 'Rent payments',
       recipient_name: 'x',
@@ -29,7 +29,7 @@ describe('resource lockboxes', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.lockboxes.retrieve('lockbox_3xt21ok13q19advds4t5');
+    const responsePromise = client.lockboxes.retrieve('lockbox_3xt21ok13q19advds4t5');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,12 +42,12 @@ describe('resource lockboxes', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.lockboxes.retrieve('lockbox_3xt21ok13q19advds4t5', { path: '/_stainless_unknown_path' }),
+      client.lockboxes.retrieve('lockbox_3xt21ok13q19advds4t5', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = increase.lockboxes.update('lockbox_3xt21ok13q19advds4t5', {});
+    const responsePromise = client.lockboxes.update('lockbox_3xt21ok13q19advds4t5', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -58,7 +58,7 @@ describe('resource lockboxes', () => {
   });
 
   test('list', async () => {
-    const responsePromise = increase.lockboxes.list();
+    const responsePromise = client.lockboxes.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -70,7 +70,7 @@ describe('resource lockboxes', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.lockboxes.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.lockboxes.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -78,7 +78,7 @@ describe('resource lockboxes', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.lockboxes.list(
+      client.lockboxes.list(
         {
           account_id: 'account_id',
           created_at: {

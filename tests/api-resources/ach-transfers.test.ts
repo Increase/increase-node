@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource achTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.achTransfers.create({
+    const responsePromise = client.achTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       statement_descriptor: 'New ACH transfer',
@@ -25,7 +25,7 @@ describe('resource achTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.achTransfers.create({
+    const response = await client.achTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       statement_descriptor: 'New ACH transfer',
@@ -65,7 +65,7 @@ describe('resource achTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = client.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,14 +78,12 @@ describe('resource achTransfers', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.achTransfers.list();
+    const responsePromise = client.achTransfers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -97,7 +95,7 @@ describe('resource achTransfers', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.achTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.achTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -105,7 +103,7 @@ describe('resource achTransfers', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.list(
+      client.achTransfers.list(
         {
           account_id: 'account_id',
           created_at: {
@@ -125,7 +123,7 @@ describe('resource achTransfers', () => {
   });
 
   test('approve', async () => {
-    const responsePromise = increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = client.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -138,14 +136,12 @@ describe('resource achTransfers', () => {
   test('approve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('cancel', async () => {
-    const responsePromise = increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = client.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -158,7 +154,7 @@ describe('resource achTransfers', () => {
   test('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
+      client.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

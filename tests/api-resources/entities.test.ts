@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource entities', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.entities.create({ structure: 'corporation' });
+    const responsePromise = client.entities.create({ structure: 'corporation' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource entities', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.entities.create({
+    const response = await client.entities.create({
       structure: 'corporation',
       corporation: {
         address: { city: 'New York', line1: '33 Liberty Street', line2: 'x', state: 'NY', zip: '10045' },
@@ -297,7 +297,7 @@ describe('resource entities', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.entities.retrieve('entity_n8y8tnk2p9339ti393yi');
+    const responsePromise = client.entities.retrieve('entity_n8y8tnk2p9339ti393yi');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -310,12 +310,12 @@ describe('resource entities', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.entities.retrieve('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
+      client.entities.retrieve('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.entities.list();
+    const responsePromise = client.entities.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -327,7 +327,7 @@ describe('resource entities', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.entities.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.entities.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -335,7 +335,7 @@ describe('resource entities', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.entities.list(
+      client.entities.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
@@ -354,7 +354,7 @@ describe('resource entities', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = increase.entities.archive('entity_n8y8tnk2p9339ti393yi');
+    const responsePromise = client.entities.archive('entity_n8y8tnk2p9339ti393yi');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -367,12 +367,12 @@ describe('resource entities', () => {
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.entities.archive('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
+      client.entities.archive('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('archiveBeneficialOwner: only required params', async () => {
-    const responsePromise = increase.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = client.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -385,13 +385,13 @@ describe('resource entities', () => {
   });
 
   test('archiveBeneficialOwner: required and optional params', async () => {
-    const response = await increase.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+    const response = await client.entities.archiveBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
   });
 
   test('confirm', async () => {
-    const responsePromise = increase.entities.confirm('entity_n8y8tnk2p9339ti393yi', {});
+    const responsePromise = client.entities.confirm('entity_n8y8tnk2p9339ti393yi', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -402,7 +402,7 @@ describe('resource entities', () => {
   });
 
   test('createBeneficialOwner: only required params', async () => {
-    const responsePromise = increase.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
         individual: {
           address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
@@ -423,7 +423,7 @@ describe('resource entities', () => {
   });
 
   test('createBeneficialOwner: required and optional params', async () => {
-    const response = await increase.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
+    const response = await client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
         company_title: 'CEO',
         individual: {
@@ -456,7 +456,7 @@ describe('resource entities', () => {
   });
 
   test('updateAddress: only required params', async () => {
-    const responsePromise = increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -469,13 +469,13 @@ describe('resource entities', () => {
   });
 
   test('updateAddress: required and optional params', async () => {
-    const response = await increase.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
+    const response = await client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
     });
   });
 
   test('updateBeneficialOwnerAddress: only required params', async () => {
-    const responsePromise = increase.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
@@ -489,14 +489,14 @@ describe('resource entities', () => {
   });
 
   test('updateBeneficialOwnerAddress: required and optional params', async () => {
-    const response = await increase.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
+    const response = await client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
       address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
   });
 
   test('updateIndustryCode: only required params', async () => {
-    const responsePromise = increase.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
+    const responsePromise = client.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
       industry_code: '5132',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -509,7 +509,7 @@ describe('resource entities', () => {
   });
 
   test('updateIndustryCode: required and optional params', async () => {
-    const response = await increase.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
+    const response = await client.entities.updateIndustryCode('entity_n8y8tnk2p9339ti393yi', {
       industry_code: '5132',
     });
   });

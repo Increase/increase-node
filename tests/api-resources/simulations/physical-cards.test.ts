@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource physicalCards', () => {
   test('advanceShipment: only required params', async () => {
-    const responsePromise = increase.simulations.physicalCards.advanceShipment(
+    const responsePromise = client.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
       { shipment_status: 'shipped' },
     );
@@ -24,7 +24,7 @@ describe('resource physicalCards', () => {
   });
 
   test('advanceShipment: required and optional params', async () => {
-    const response = await increase.simulations.physicalCards.advanceShipment(
+    const response = await client.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
       { shipment_status: 'shipped' },
     );
