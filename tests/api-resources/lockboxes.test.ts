@@ -24,6 +24,7 @@ describe('resource lockboxes', () => {
     const response = await increase.lockboxes.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       description: 'Rent payments',
+      recipient_name: 'x',
     });
   });
 
