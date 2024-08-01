@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource intrafiExclusions', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.intrafiExclusions.create({
+    const responsePromise = client.intrafiExclusions.create({
       bank_name: 'Example Bank',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
@@ -24,14 +24,14 @@ describe('resource intrafiExclusions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.intrafiExclusions.create({
+    const response = await client.intrafiExclusions.create({
       bank_name: 'Example Bank',
       entity_id: 'entity_n8y8tnk2p9339ti393yi',
     });
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.intrafiExclusions.retrieve('account_in71c4amph0vgo2qllky');
+    const responsePromise = client.intrafiExclusions.retrieve('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,14 +44,12 @@ describe('resource intrafiExclusions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.intrafiExclusions.retrieve('account_in71c4amph0vgo2qllky', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.intrafiExclusions.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.intrafiExclusions.list();
+    const responsePromise = client.intrafiExclusions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -63,7 +61,7 @@ describe('resource intrafiExclusions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.intrafiExclusions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.intrafiExclusions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -71,7 +69,7 @@ describe('resource intrafiExclusions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.intrafiExclusions.list(
+      client.intrafiExclusions.list(
         { cursor: 'cursor', entity_id: 'entity_id', idempotency_key: 'x', limit: 1 },
         { path: '/_stainless_unknown_path' },
       ),
@@ -79,7 +77,7 @@ describe('resource intrafiExclusions', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = increase.intrafiExclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh');
+    const responsePromise = client.intrafiExclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -92,7 +90,7 @@ describe('resource intrafiExclusions', () => {
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.intrafiExclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh', {
+      client.intrafiExclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);

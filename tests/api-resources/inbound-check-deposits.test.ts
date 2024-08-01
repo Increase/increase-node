@@ -3,16 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource inboundCheckDeposits', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.inboundCheckDeposits.retrieve(
-      'inbound_check_deposit_zoshvqybq0cjjm31mra',
-    );
+    const responsePromise = client.inboundCheckDeposits.retrieve('inbound_check_deposit_zoshvqybq0cjjm31mra');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -25,14 +23,14 @@ describe('resource inboundCheckDeposits', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.inboundCheckDeposits.retrieve('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+      client.inboundCheckDeposits.retrieve('inbound_check_deposit_zoshvqybq0cjjm31mra', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.inboundCheckDeposits.list();
+    const responsePromise = client.inboundCheckDeposits.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,7 +42,7 @@ describe('resource inboundCheckDeposits', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.inboundCheckDeposits.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.inboundCheckDeposits.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -52,7 +50,7 @@ describe('resource inboundCheckDeposits', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.inboundCheckDeposits.list(
+      client.inboundCheckDeposits.list(
         {
           account_id: 'account_id',
           check_transfer_id: 'check_transfer_id',
@@ -71,9 +69,7 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('decline', async () => {
-    const responsePromise = increase.inboundCheckDeposits.decline(
-      'inbound_check_deposit_zoshvqybq0cjjm31mra',
-    );
+    const responsePromise = client.inboundCheckDeposits.decline('inbound_check_deposit_zoshvqybq0cjjm31mra');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -86,17 +82,16 @@ describe('resource inboundCheckDeposits', () => {
   test('decline: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.inboundCheckDeposits.decline('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+      client.inboundCheckDeposits.decline('inbound_check_deposit_zoshvqybq0cjjm31mra', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('return: only required params', async () => {
-    const responsePromise = increase.inboundCheckDeposits.return(
-      'inbound_check_deposit_zoshvqybq0cjjm31mra',
-      { reason: 'altered_or_fictitious' },
-    );
+    const responsePromise = client.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+      reason: 'altered_or_fictitious',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -107,7 +102,7 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('return: required and optional params', async () => {
-    const response = await increase.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
+    const response = await client.inboundCheckDeposits.return('inbound_check_deposit_zoshvqybq0cjjm31mra', {
       reason: 'altered_or_fictitious',
     });
   });
