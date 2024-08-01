@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource inboundACHTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.inboundACHTransfers.create({
+    const responsePromise = increase.simulations.inboundACHTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
     });
@@ -24,7 +24,7 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundACHTransfers.create({
+    const response = await increase.simulations.inboundACHTransfers.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       company_descriptive_date: 'x',

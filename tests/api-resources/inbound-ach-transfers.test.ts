@@ -3,14 +3,16 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource inboundACHTransfers', () => {
   test('retrieve', async () => {
-    const responsePromise = client.inboundACHTransfers.retrieve('inbound_ach_transfer_tdrwqr3fq9gnnq49odev');
+    const responsePromise = increase.inboundACHTransfers.retrieve(
+      'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,14 +25,14 @@ describe('resource inboundACHTransfers', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.inboundACHTransfers.retrieve('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
+      increase.inboundACHTransfers.retrieve('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.inboundACHTransfers.list();
+    const responsePromise = increase.inboundACHTransfers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,7 +44,7 @@ describe('resource inboundACHTransfers', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.inboundACHTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.inboundACHTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -50,7 +52,7 @@ describe('resource inboundACHTransfers', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.inboundACHTransfers.list(
+      increase.inboundACHTransfers.list(
         {
           account_id: 'account_id',
           account_number_id: 'account_number_id',
@@ -70,7 +72,7 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('createNotificationOfChange', async () => {
-    const responsePromise = client.inboundACHTransfers.createNotificationOfChange(
+    const responsePromise = increase.inboundACHTransfers.createNotificationOfChange(
       'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
       {},
     );
@@ -84,7 +86,7 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('decline', async () => {
-    const responsePromise = client.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev');
+    const responsePromise = increase.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -97,14 +99,14 @@ describe('resource inboundACHTransfers', () => {
   test('decline: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
+      increase.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('transferReturn: only required params', async () => {
-    const responsePromise = client.inboundACHTransfers.transferReturn(
+    const responsePromise = increase.inboundACHTransfers.transferReturn(
       'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
       { reason: 'payment_stopped' },
     );
@@ -118,7 +120,7 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('transferReturn: required and optional params', async () => {
-    const response = await client.inboundACHTransfers.transferReturn(
+    const response = await increase.inboundACHTransfers.transferReturn(
       'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
       { reason: 'payment_stopped' },
     );

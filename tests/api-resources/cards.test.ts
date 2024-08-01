@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource cards', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.cards.create({ account_id: 'account_in71c4amph0vgo2qllky' });
+    const responsePromise = increase.cards.create({ account_id: 'account_in71c4amph0vgo2qllky' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource cards', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.cards.create({
+    const response = await increase.cards.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       billing_address: { city: 'x', line1: 'x', line2: 'x', postal_code: 'x', state: 'x' },
       description: 'Card for Ian Crease',
@@ -31,7 +31,7 @@ describe('resource cards', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
+    const responsePromise = increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,12 +44,12 @@ describe('resource cards', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.cards.retrieve('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
+      increase.cards.retrieve('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = client.cards.update('card_oubs0hwk5rn6knuecxg2', {});
+    const responsePromise = increase.cards.update('card_oubs0hwk5rn6knuecxg2', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -60,7 +60,7 @@ describe('resource cards', () => {
   });
 
   test('list', async () => {
-    const responsePromise = client.cards.list();
+    const responsePromise = increase.cards.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,7 +72,7 @@ describe('resource cards', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.cards.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.cards.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -80,7 +80,7 @@ describe('resource cards', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.cards.list(
+      increase.cards.list(
         {
           account_id: 'account_id',
           created_at: {
@@ -99,7 +99,7 @@ describe('resource cards', () => {
   });
 
   test('details', async () => {
-    const responsePromise = client.cards.details('card_oubs0hwk5rn6knuecxg2');
+    const responsePromise = increase.cards.details('card_oubs0hwk5rn6knuecxg2');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -112,7 +112,7 @@ describe('resource cards', () => {
   test('details: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.cards.details('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
+      increase.cards.details('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

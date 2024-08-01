@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource physicalCardProfiles', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.physicalCardProfiles.create({
+    const responsePromise = increase.physicalCardProfiles.create({
       carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
       contact_phone: '+16505046304',
       description: 'My Card Profile',
@@ -26,7 +26,7 @@ describe('resource physicalCardProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.physicalCardProfiles.create({
+    const response = await increase.physicalCardProfiles.create({
       carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
       contact_phone: '+16505046304',
       description: 'My Card Profile',
@@ -35,7 +35,7 @@ describe('resource physicalCardProfiles', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.physicalCardProfiles.retrieve(
+    const responsePromise = increase.physicalCardProfiles.retrieve(
       'physical_card_profile_m534d5rn9qyy9ufqxoec',
     );
     const rawResponse = await responsePromise.asResponse();
@@ -50,14 +50,14 @@ describe('resource physicalCardProfiles', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.physicalCardProfiles.retrieve('physical_card_profile_m534d5rn9qyy9ufqxoec', {
+      increase.physicalCardProfiles.retrieve('physical_card_profile_m534d5rn9qyy9ufqxoec', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.physicalCardProfiles.list();
+    const responsePromise = increase.physicalCardProfiles.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -69,7 +69,7 @@ describe('resource physicalCardProfiles', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.physicalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.physicalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -77,7 +77,7 @@ describe('resource physicalCardProfiles', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.physicalCardProfiles.list(
+      increase.physicalCardProfiles.list(
         {
           cursor: 'cursor',
           idempotency_key: 'x',
@@ -90,7 +90,9 @@ describe('resource physicalCardProfiles', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = client.physicalCardProfiles.archive('physical_card_profile_m534d5rn9qyy9ufqxoec');
+    const responsePromise = increase.physicalCardProfiles.archive(
+      'physical_card_profile_m534d5rn9qyy9ufqxoec',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -103,14 +105,14 @@ describe('resource physicalCardProfiles', () => {
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.physicalCardProfiles.archive('physical_card_profile_m534d5rn9qyy9ufqxoec', {
+      increase.physicalCardProfiles.archive('physical_card_profile_m534d5rn9qyy9ufqxoec', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('clone', async () => {
-    const responsePromise = client.physicalCardProfiles.clone(
+    const responsePromise = increase.physicalCardProfiles.clone(
       'physical_card_profile_m534d5rn9qyy9ufqxoec',
       {},
     );

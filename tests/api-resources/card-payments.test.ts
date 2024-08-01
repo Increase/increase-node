@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource cardPayments', () => {
   test('retrieve', async () => {
-    const responsePromise = client.cardPayments.retrieve('card_payment_nd3k2kacrqjli8482ave');
+    const responsePromise = increase.cardPayments.retrieve('card_payment_nd3k2kacrqjli8482ave');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,12 +23,14 @@ describe('resource cardPayments', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.cardPayments.retrieve('card_payment_nd3k2kacrqjli8482ave', { path: '/_stainless_unknown_path' }),
+      increase.cardPayments.retrieve('card_payment_nd3k2kacrqjli8482ave', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.cardPayments.list();
+    const responsePromise = increase.cardPayments.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,7 +42,7 @@ describe('resource cardPayments', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.cardPayments.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.cardPayments.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -48,7 +50,7 @@ describe('resource cardPayments', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.cardPayments.list(
+      increase.cardPayments.list(
         {
           account_id: 'account_id',
           card_id: 'card_id',

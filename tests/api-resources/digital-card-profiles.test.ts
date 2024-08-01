@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource digitalCardProfiles', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.digitalCardProfiles.create({
+    const responsePromise = increase.digitalCardProfiles.create({
       app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       background_image_file_id: 'file_1ai913suu1zfn1pdetru',
       card_description: 'MyBank Signature Card',
@@ -27,7 +27,7 @@ describe('resource digitalCardProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.digitalCardProfiles.create({
+    const response = await increase.digitalCardProfiles.create({
       app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
       background_image_file_id: 'file_1ai913suu1zfn1pdetru',
       card_description: 'MyBank Signature Card',
@@ -41,7 +41,9 @@ describe('resource digitalCardProfiles', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.digitalCardProfiles.retrieve('digital_card_profile_s3puplu90f04xhcwkiga');
+    const responsePromise = increase.digitalCardProfiles.retrieve(
+      'digital_card_profile_s3puplu90f04xhcwkiga',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -54,14 +56,14 @@ describe('resource digitalCardProfiles', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.digitalCardProfiles.retrieve('digital_card_profile_s3puplu90f04xhcwkiga', {
+      increase.digitalCardProfiles.retrieve('digital_card_profile_s3puplu90f04xhcwkiga', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.digitalCardProfiles.list();
+    const responsePromise = increase.digitalCardProfiles.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -73,7 +75,7 @@ describe('resource digitalCardProfiles', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.digitalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.digitalCardProfiles.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -81,7 +83,7 @@ describe('resource digitalCardProfiles', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.digitalCardProfiles.list(
+      increase.digitalCardProfiles.list(
         {
           cursor: 'cursor',
           idempotency_key: 'x',
@@ -94,7 +96,7 @@ describe('resource digitalCardProfiles', () => {
   });
 
   test('archive', async () => {
-    const responsePromise = client.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga');
+    const responsePromise = increase.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -107,14 +109,17 @@ describe('resource digitalCardProfiles', () => {
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga', {
+      increase.digitalCardProfiles.archive('digital_card_profile_s3puplu90f04xhcwkiga', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('clone', async () => {
-    const responsePromise = client.digitalCardProfiles.clone('digital_card_profile_s3puplu90f04xhcwkiga', {});
+    const responsePromise = increase.digitalCardProfiles.clone(
+      'digital_card_profile_s3puplu90f04xhcwkiga',
+      {},
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

@@ -3,14 +3,14 @@
 import Increase, { toFile } from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource files', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.files.create({
+    const responsePromise = increase.files.create({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
       purpose: 'check_image_front',
     });
@@ -24,7 +24,7 @@ describe('resource files', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.files.create({
+    const response = await increase.files.create({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
       purpose: 'check_image_front',
       description: 'x',
@@ -32,7 +32,7 @@ describe('resource files', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.files.retrieve('file_makxrc67oh9l6sg7w9yc');
+    const responsePromise = increase.files.retrieve('file_makxrc67oh9l6sg7w9yc');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -45,12 +45,12 @@ describe('resource files', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.files.retrieve('file_makxrc67oh9l6sg7w9yc', { path: '/_stainless_unknown_path' }),
+      increase.files.retrieve('file_makxrc67oh9l6sg7w9yc', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.files.list();
+    const responsePromise = increase.files.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -62,7 +62,7 @@ describe('resource files', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.files.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.files.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -70,7 +70,7 @@ describe('resource files', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.files.list(
+      increase.files.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',

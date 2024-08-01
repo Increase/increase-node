@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource checkDeposits', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.checkDeposits.create({
+    const responsePromise = increase.checkDeposits.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       back_image_file_id: 'file_26khfk98mzfz90a11oqx',
@@ -26,7 +26,7 @@ describe('resource checkDeposits', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.checkDeposits.create({
+    const response = await increase.checkDeposits.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
       back_image_file_id: 'file_26khfk98mzfz90a11oqx',
@@ -36,7 +36,7 @@ describe('resource checkDeposits', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8');
+    const responsePromise = increase.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -49,14 +49,14 @@ describe('resource checkDeposits', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8', {
+      increase.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.checkDeposits.list();
+    const responsePromise = increase.checkDeposits.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -68,7 +68,7 @@ describe('resource checkDeposits', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.checkDeposits.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.checkDeposits.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -76,7 +76,7 @@ describe('resource checkDeposits', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.checkDeposits.list(
+      increase.checkDeposits.list(
         {
           account_id: 'account_id',
           created_at: {
