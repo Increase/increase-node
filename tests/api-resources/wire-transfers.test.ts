@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource wireTransfers', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.wireTransfers.create({
+    const responsePromise = client.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       beneficiary_name: 'Ian Crease',
@@ -26,7 +26,7 @@ describe('resource wireTransfers', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.wireTransfers.create({
+    const response = await client.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       beneficiary_name: 'Ian Crease',
@@ -46,7 +46,7 @@ describe('resource wireTransfers', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = client.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -59,14 +59,14 @@ describe('resource wireTransfers', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u', {
+      client.wireTransfers.retrieve('wire_transfer_5akynk7dqsq25qwk9q2u', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.wireTransfers.list();
+    const responsePromise = client.wireTransfers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,7 +78,7 @@ describe('resource wireTransfers', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.wireTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.wireTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -86,7 +86,7 @@ describe('resource wireTransfers', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.list(
+      client.wireTransfers.list(
         {
           account_id: 'account_id',
           created_at: {
@@ -106,7 +106,7 @@ describe('resource wireTransfers', () => {
   });
 
   test('approve', async () => {
-    const responsePromise = increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = client.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -119,14 +119,14 @@ describe('resource wireTransfers', () => {
   test('approve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u', {
+      client.wireTransfers.approve('wire_transfer_5akynk7dqsq25qwk9q2u', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('cancel', async () => {
-    const responsePromise = increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u');
+    const responsePromise = client.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -139,9 +139,7 @@ describe('resource wireTransfers', () => {
   test('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.wireTransfers.cancel('wire_transfer_5akynk7dqsq25qwk9q2u', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

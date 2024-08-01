@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource exports', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.exports.create({ category: 'transaction_csv' });
+    const responsePromise = client.exports.create({ category: 'transaction_csv' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource exports', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.exports.create({
+    const response = await client.exports.create({
       category: 'transaction_csv',
       account_statement_ofx: {
         account_id: 'account_id',
@@ -65,7 +65,7 @@ describe('resource exports', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.exports.retrieve('export_8s4m48qz3bclzje0zwh9');
+    const responsePromise = client.exports.retrieve('export_8s4m48qz3bclzje0zwh9');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,12 +78,12 @@ describe('resource exports', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.exports.retrieve('export_8s4m48qz3bclzje0zwh9', { path: '/_stainless_unknown_path' }),
+      client.exports.retrieve('export_8s4m48qz3bclzje0zwh9', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.exports.list();
+    const responsePromise = client.exports.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -95,7 +95,7 @@ describe('resource exports', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.exports.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.exports.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -103,7 +103,7 @@ describe('resource exports', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.exports.list(
+      client.exports.list(
         {
           category: { in: ['account_statement_ofx', 'transaction_csv', 'balance_csv'] },
           created_at: {

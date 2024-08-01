@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource cardRefunds', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.simulations.cardRefunds.create({
+    const responsePromise = client.simulations.cardRefunds.create({
       transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -23,7 +23,7 @@ describe('resource cardRefunds', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.simulations.cardRefunds.create({
+    const response = await client.simulations.cardRefunds.create({
       transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
     });
   });

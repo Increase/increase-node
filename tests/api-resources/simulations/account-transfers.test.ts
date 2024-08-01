@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource accountTransfers', () => {
   test('complete', async () => {
-    const responsePromise = increase.simulations.accountTransfers.complete(
+    const responsePromise = client.simulations.accountTransfers.complete(
       'account_transfer_7k9qe1ysdgqztnt63l7n',
     );
     const rawResponse = await responsePromise.asResponse();
@@ -25,7 +25,7 @@ describe('resource accountTransfers', () => {
   test('complete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.simulations.accountTransfers.complete('account_transfer_7k9qe1ysdgqztnt63l7n', {
+      client.simulations.accountTransfers.complete('account_transfer_7k9qe1ysdgqztnt63l7n', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);

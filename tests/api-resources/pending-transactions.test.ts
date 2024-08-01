@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource pendingTransactions', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4');
+    const responsePromise = client.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,14 +23,14 @@ describe('resource pendingTransactions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4', {
+      client.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.pendingTransactions.list();
+    const responsePromise = client.pendingTransactions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,7 +42,7 @@ describe('resource pendingTransactions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.pendingTransactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.pendingTransactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -50,7 +50,7 @@ describe('resource pendingTransactions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.pendingTransactions.list(
+      client.pendingTransactions.list(
         {
           account_id: 'account_id',
           category: {
