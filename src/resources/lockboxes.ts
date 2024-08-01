@@ -90,6 +90,11 @@ export interface Lockbox {
   idempotency_key: string | null;
 
   /**
+   * The recipient name you choose for the Lockbox.
+   */
+  recipient_name: string | null;
+
+  /**
    * This indicates if mail can be sent to this address.
    *
    * - `active` - This Lockbox is active. Checks mailed to it will be deposited
@@ -132,6 +137,14 @@ export namespace Lockbox {
     postal_code: string;
 
     /**
+     * The recipient line of the address. This will include the recipient name you
+     * provide when creating the address, as well as an ATTN suffix to help route the
+     * mail to your lockbox. Mail senders must include this ATTN line to receive mail
+     * at this Lockbox.
+     */
+    recipient: string | null;
+
+    /**
      * The two-letter United States Postal Service (USPS) abbreviation for the state of
      * the address.
      */
@@ -149,6 +162,11 @@ export interface LockboxCreateParams {
    * The description you choose for the Lockbox, for display purposes.
    */
   description?: string;
+
+  /**
+   * The name of the recipient that will receive mail at this location.
+   */
+  recipient_name?: string;
 }
 
 export interface LockboxUpdateParams {
@@ -156,6 +174,11 @@ export interface LockboxUpdateParams {
    * The description you choose for the Lockbox.
    */
   description?: string;
+
+  /**
+   * The recipient name you choose for the Lockbox.
+   */
+  recipient_name?: string;
 
   /**
    * This indicates if checks can be sent to the Lockbox.
