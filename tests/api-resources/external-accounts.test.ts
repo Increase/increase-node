@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource externalAccounts', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.externalAccounts.create({
+    const responsePromise = client.externalAccounts.create({
       account_number: '987654321',
       description: 'Landlord',
       routing_number: '101050001',
@@ -25,7 +25,7 @@ describe('resource externalAccounts', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.externalAccounts.create({
+    const response = await client.externalAccounts.create({
       account_number: '987654321',
       description: 'Landlord',
       routing_number: '101050001',
@@ -35,7 +35,7 @@ describe('resource externalAccounts', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv');
+    const responsePromise = client.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -48,14 +48,14 @@ describe('resource externalAccounts', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv', {
+      client.externalAccounts.retrieve('external_account_ukk55lr923a3ac0pp7iv', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = increase.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {});
+    const responsePromise = client.externalAccounts.update('external_account_ukk55lr923a3ac0pp7iv', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -66,7 +66,7 @@ describe('resource externalAccounts', () => {
   });
 
   test('list', async () => {
-    const responsePromise = increase.externalAccounts.list();
+    const responsePromise = client.externalAccounts.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,7 +78,7 @@ describe('resource externalAccounts', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.externalAccounts.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.externalAccounts.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -86,7 +86,7 @@ describe('resource externalAccounts', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.externalAccounts.list(
+      client.externalAccounts.list(
         {
           cursor: 'cursor',
           idempotency_key: 'x',

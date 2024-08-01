@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource cardDisputes', () => {
   test('action: only required params', async () => {
-    const responsePromise = increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
+    const responsePromise = client.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
       status: 'rejected',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -23,7 +23,7 @@ describe('resource cardDisputes', () => {
   });
 
   test('action: required and optional params', async () => {
-    const response = await increase.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
+    const response = await client.simulations.cardDisputes.action('card_dispute_h9sc95nbl1cgltpp7men', {
       status: 'rejected',
       explanation: 'This was a valid recurring transaction',
     });
