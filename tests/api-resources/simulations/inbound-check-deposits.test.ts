@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource inboundCheckDeposits', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.inboundCheckDeposits.create({
+    const responsePromise = increase.simulations.inboundCheckDeposits.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       check_number: '1234567890',
@@ -25,7 +25,7 @@ describe('resource inboundCheckDeposits', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundCheckDeposits.create({
+    const response = await increase.simulations.inboundCheckDeposits.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       check_number: '1234567890',

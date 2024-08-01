@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource proofOfAuthorizationRequests', () => {
   test('retrieve', async () => {
-    const responsePromise = client.proofOfAuthorizationRequests.retrieve(
+    const responsePromise = increase.proofOfAuthorizationRequests.retrieve(
       'proof_of_authorization_request_iwp8no25h3rjvil6ad3b',
     );
     const rawResponse = await responsePromise.asResponse();
@@ -25,14 +25,14 @@ describe('resource proofOfAuthorizationRequests', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.proofOfAuthorizationRequests.retrieve('proof_of_authorization_request_iwp8no25h3rjvil6ad3b', {
+      increase.proofOfAuthorizationRequests.retrieve('proof_of_authorization_request_iwp8no25h3rjvil6ad3b', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.proofOfAuthorizationRequests.list();
+    const responsePromise = increase.proofOfAuthorizationRequests.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -45,14 +45,14 @@ describe('resource proofOfAuthorizationRequests', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.proofOfAuthorizationRequests.list({ path: '/_stainless_unknown_path' }),
+      increase.proofOfAuthorizationRequests.list({ path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.proofOfAuthorizationRequests.list(
+      increase.proofOfAuthorizationRequests.list(
         {
           created_at: {
             after: '2019-12-27T18:11:19.117Z',

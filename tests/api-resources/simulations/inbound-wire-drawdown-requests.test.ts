@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource inboundWireDrawdownRequests', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.inboundWireDrawdownRequests.create({
+    const responsePromise = increase.simulations.inboundWireDrawdownRequests.create({
       amount: 10000,
       beneficiary_account_number: '987654321',
       beneficiary_routing_number: '101050001',
@@ -30,7 +30,7 @@ describe('resource inboundWireDrawdownRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.inboundWireDrawdownRequests.create({
+    const response = await increase.simulations.inboundWireDrawdownRequests.create({
       amount: 10000,
       beneficiary_account_number: '987654321',
       beneficiary_routing_number: '101050001',

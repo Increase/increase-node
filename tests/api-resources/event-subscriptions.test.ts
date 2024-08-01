@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource eventSubscriptions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.eventSubscriptions.create({ url: 'https://website.com/webhooks' });
+    const responsePromise = increase.eventSubscriptions.create({ url: 'https://website.com/webhooks' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource eventSubscriptions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.eventSubscriptions.create({
+    const response = await increase.eventSubscriptions.create({
       url: 'https://website.com/webhooks',
       oauth_connection_id: 'oauth_connection_id',
       selected_event_category: 'account.created',
@@ -30,7 +30,7 @@ describe('resource eventSubscriptions', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.eventSubscriptions.retrieve(
+    const responsePromise = increase.eventSubscriptions.retrieve(
       'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
     );
     const rawResponse = await responsePromise.asResponse();
@@ -45,14 +45,14 @@ describe('resource eventSubscriptions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.eventSubscriptions.retrieve('event_subscription_001dzz0r20rcdxgb013zqb8m04g', {
+      increase.eventSubscriptions.retrieve('event_subscription_001dzz0r20rcdxgb013zqb8m04g', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = client.eventSubscriptions.update(
+    const responsePromise = increase.eventSubscriptions.update(
       'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
       {},
     );
@@ -66,7 +66,7 @@ describe('resource eventSubscriptions', () => {
   });
 
   test('list', async () => {
-    const responsePromise = client.eventSubscriptions.list();
+    const responsePromise = increase.eventSubscriptions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -78,7 +78,7 @@ describe('resource eventSubscriptions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.eventSubscriptions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.eventSubscriptions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -86,7 +86,7 @@ describe('resource eventSubscriptions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.eventSubscriptions.list(
+      increase.eventSubscriptions.list(
         { cursor: 'cursor', idempotency_key: 'x', limit: 1 },
         { path: '/_stainless_unknown_path' },
       ),

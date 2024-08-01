@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource events', () => {
   test('retrieve', async () => {
-    const responsePromise = client.events.retrieve('event_001dzz0r20rzr4zrhrr1364hy80');
+    const responsePromise = increase.events.retrieve('event_001dzz0r20rzr4zrhrr1364hy80');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,12 +23,12 @@ describe('resource events', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.events.retrieve('event_001dzz0r20rzr4zrhrr1364hy80', { path: '/_stainless_unknown_path' }),
+      increase.events.retrieve('event_001dzz0r20rzr4zrhrr1364hy80', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.events.list();
+    const responsePromise = increase.events.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,7 +40,7 @@ describe('resource events', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.events.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(increase.events.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -48,7 +48,7 @@ describe('resource events', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.events.list(
+      increase.events.list(
         {
           associated_object_id: 'associated_object_id',
           category: { in: ['account.created', 'account.updated', 'account_number.created'] },

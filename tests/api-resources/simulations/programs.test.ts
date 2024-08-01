@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const client = new Increase({
+const increase = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource programs', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.simulations.programs.create({ name: 'For Benefit Of' });
+    const responsePromise = increase.simulations.programs.create({ name: 'For Benefit Of' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,6 +21,6 @@ describe('resource programs', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.programs.create({ name: 'For Benefit Of' });
+    const response = await increase.simulations.programs.create({ name: 'For Benefit Of' });
   });
 });

@@ -26,7 +26,7 @@ const client = new Increase({
 });
 
 async function main() {
-  const account = await client.accounts.create({
+  const account = await increase.accounts.create({
     name: 'New Account!',
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
     program_id: 'program_i2v2os4mwza1oetokh9i',
@@ -57,7 +57,7 @@ async function main() {
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
     program_id: 'program_i2v2os4mwza1oetokh9i',
   };
-  const account: Increase.Account = await client.accounts.create(params);
+  const account: Increase.Account = await increase.accounts.create(params);
 }
 
 main();
@@ -82,20 +82,20 @@ import Increase, { toFile } from 'increase';
 const client = new Increase();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
-await client.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'check_image_front' });
+await increase.files.create({ file: fs.createReadStream('my/file.txt'), purpose: 'check_image_front' });
 
 // Or if you have the web `File` API you can pass a `File` instance:
-await client.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'check_image_front' });
+await increase.files.create({ file: new File(['my bytes'], 'file.txt'), purpose: 'check_image_front' });
 
 // You can also pass a `fetch` `Response`:
-await client.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'check_image_front' });
+await increase.files.create({ file: await fetch('https://somesite/file.txt'), purpose: 'check_image_front' });
 
 // Finally, if none of the above are convenient, you can use our `toFile` helper:
-await client.files.create({
+await increase.files.create({
   file: await toFile(Buffer.from('my bytes'), 'file.txt'),
   purpose: 'check_image_front',
 });
-await client.files.create({
+await increase.files.create({
   file: await toFile(new Uint8Array([0, 1, 2]), 'file.txt'),
   purpose: 'check_image_front',
 });
@@ -110,7 +110,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const account = await client.accounts.create({ name: 'New Account!' }).catch(async (err) => {
+  const account = await increase.accounts.create({ name: 'New Account!' }).catch(async (err) => {
     if (err instanceof Increase.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -153,7 +153,7 @@ const client = new Increase({
 });
 
 // Or, configure per-request:
-await client.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
+await increase.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
   maxRetries: 5,
 });
 ```
@@ -170,7 +170,7 @@ const client = new Increase({
 });
 
 // Override per-request:
-await client.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
+await increase.accounts.create({ name: 'New Account!', entity_id: 'entity_n8y8tnk2p9339ti393yi', program_id: 'program_i2v2os4mwza1oetokh9i' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -188,7 +188,7 @@ You can use `for await … of` syntax to iterate through items across all pages:
 async function fetchAllAccounts(params) {
   const allAccounts = [];
   // Automatically fetches more pages as needed.
-  for await (const account of client.accounts.list()) {
+  for await (const account of increase.accounts.list()) {
     allAccounts.push(account);
   }
   return allAccounts;
@@ -198,7 +198,7 @@ async function fetchAllAccounts(params) {
 Alternatively, you can make request a single page at a time:
 
 ```ts
-let page = await client.accounts.list();
+let page = await increase.accounts.list();
 for (const account of page.data) {
   console.log(account);
 }
@@ -222,7 +222,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Increase();
 
-const response = await client.accounts
+const response = await increase.accounts
   .create({
     name: 'New Account!',
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
@@ -232,7 +232,7 @@ const response = await client.accounts
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: account, response: raw } = await client.accounts
+const { data: account, response: raw } = await increase.accounts
   .create({
     name: 'New Account!',
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
@@ -344,7 +344,7 @@ const client = new Increase({
 });
 
 // Override per-request:
-await client.accounts.create(
+await increase.accounts.create(
   {
     name: 'New Account!',
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
