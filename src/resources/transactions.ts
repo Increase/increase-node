@@ -222,8 +222,6 @@ export namespace Transaction {
      * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
-     * - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
-     *   be under the `inbound_wire_drawdown_payment` object.
      * - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
      *   `inbound_wire_reversal` object.
      * - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
@@ -264,7 +262,6 @@ export namespace Transaction {
       | 'inbound_ach_transfer_return_intention'
       | 'inbound_check_deposit_return_intention'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
       | 'inbound_wire_transfer_reversal'
@@ -312,12 +309,6 @@ export namespace Transaction {
      * `inbound_real_time_payments_transfer_confirmation`.
      */
     inbound_real_time_payments_transfer_confirmation: Source.InboundRealTimePaymentsTransferConfirmation | null;
-
-    /**
-     * An Inbound Wire Drawdown Payment object. This field will be present in the JSON
-     * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
-     */
-    inbound_wire_drawdown_payment: Source.InboundWireDrawdownPayment | null;
 
     /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
@@ -2563,106 +2554,6 @@ export namespace Transaction {
     }
 
     /**
-     * An Inbound Wire Drawdown Payment object. This field will be present in the JSON
-     * response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
-     */
-    export interface InboundWireDrawdownPayment {
-      /**
-       * The amount in the minor unit of the transaction's currency. For dollars, for
-       * example, this is cents.
-       */
-      amount: number;
-
-      /**
-       * A free-form address field set by the sender.
-       */
-      beneficiary_address_line1: string | null;
-
-      /**
-       * A free-form address field set by the sender.
-       */
-      beneficiary_address_line2: string | null;
-
-      /**
-       * A free-form address field set by the sender.
-       */
-      beneficiary_address_line3: string | null;
-
-      /**
-       * A name set by the sender.
-       */
-      beneficiary_name: string | null;
-
-      /**
-       * A free-form reference string set by the sender, to help identify the transfer.
-       */
-      beneficiary_reference: string | null;
-
-      /**
-       * An Increase-constructed description of the transfer.
-       */
-      description: string;
-
-      /**
-       * A unique identifier available to the originating and receiving banks, commonly
-       * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-       * service and is helpful when debugging wires with the receiving bank.
-       */
-      input_message_accountability_data: string | null;
-
-      /**
-       * The address of the wire originator, set by the sending bank.
-       */
-      originator_address_line1: string | null;
-
-      /**
-       * The address of the wire originator, set by the sending bank.
-       */
-      originator_address_line2: string | null;
-
-      /**
-       * The address of the wire originator, set by the sending bank.
-       */
-      originator_address_line3: string | null;
-
-      /**
-       * The originator of the wire, set by the sending bank.
-       */
-      originator_name: string | null;
-
-      /**
-       * The American Banking Association (ABA) routing number of the bank originating
-       * the transfer.
-       */
-      originator_routing_number: string | null;
-
-      /**
-       * An Increase-created concatenation of the Originator-to-Beneficiary lines.
-       */
-      originator_to_beneficiary_information: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line1: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line2: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line3: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line4: string | null;
-    }
-
-    /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_reversal`.
      */
@@ -3093,7 +2984,6 @@ export namespace TransactionListParams {
       | 'inbound_ach_transfer_return_intention'
       | 'inbound_check_deposit_return_intention'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_wire_drawdown_payment'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
       | 'inbound_wire_transfer_reversal'
