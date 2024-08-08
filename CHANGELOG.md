@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.72.0 (2024-08-08)
+
+Full Changelog: [v0.71.0...v0.72.0](https://github.com/Increase/increase-node/compare/v0.71.0...v0.72.0)
+
+### Features
+
+* **api:** api updates ([#479](https://github.com/Increase/increase-node/issues/479)) ([660b768](https://github.com/Increase/increase-node/commit/660b768c793b26f61acd886794c33a13373ad100))
+
+
+### Chores
+
+* **docs:** fix incorrect client var names ([#475](https://github.com/Increase/increase-node/issues/475)) ([2c3c90f](https://github.com/Increase/increase-node/commit/2c3c90ffdb8c05add33adceac30fe139be135b8b))
+* **internal:** add constant for default timeout ([#477](https://github.com/Increase/increase-node/issues/477)) ([7aa0dcd](https://github.com/Increase/increase-node/commit/7aa0dcdb020f670f9ad7c198a79215074715cb67))
+* **internal:** capitalize github org name ([#480](https://github.com/Increase/increase-node/issues/480)) ([4dcfcde](https://github.com/Increase/increase-node/commit/4dcfcde2213cafce4ebb6f7695ab24ca34e7841e))
+* **internal:** version bump ([#478](https://github.com/Increase/increase-node/issues/478)) ([563efd7](https://github.com/Increase/increase-node/commit/563efd7e7b9727dfb56f02da8d45dc9fd23d29f1))
+
 ## 0.71.0 (2024-08-01)
 
 Full Changelog: [v0.70.0...v0.71.0](https://github.com/Increase/increase-node/compare/v0.70.0...v0.71.0)

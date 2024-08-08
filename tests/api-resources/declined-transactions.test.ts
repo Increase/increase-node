@@ -3,16 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource declinedTransactions', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.declinedTransactions.retrieve(
-      'declined_transaction_17jbn0yyhvkt4v4ooym8',
-    );
+    const responsePromise = client.declinedTransactions.retrieve('declined_transaction_17jbn0yyhvkt4v4ooym8');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -25,14 +23,14 @@ describe('resource declinedTransactions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.declinedTransactions.retrieve('declined_transaction_17jbn0yyhvkt4v4ooym8', {
+      client.declinedTransactions.retrieve('declined_transaction_17jbn0yyhvkt4v4ooym8', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.declinedTransactions.list();
+    const responsePromise = client.declinedTransactions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,7 +42,7 @@ describe('resource declinedTransactions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.declinedTransactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.declinedTransactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -52,7 +50,7 @@ describe('resource declinedTransactions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.declinedTransactions.list(
+      client.declinedTransactions.list(
         {
           account_id: 'account_id',
           category: { in: ['ach_decline', 'card_decline', 'check_decline'] },

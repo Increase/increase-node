@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource wireDrawdownRequests', () => {
   test('create: only required params', async () => {
-    const responsePromise = increase.wireDrawdownRequests.create({
+    const responsePromise = client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
       message_to_recipient: 'Invoice 29582',
@@ -28,7 +28,7 @@ describe('resource wireDrawdownRequests', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await increase.wireDrawdownRequests.create({
+    const response = await client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
       message_to_recipient: 'Invoice 29582',
@@ -46,7 +46,7 @@ describe('resource wireDrawdownRequests', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = increase.wireDrawdownRequests.retrieve(
+    const responsePromise = client.wireDrawdownRequests.retrieve(
       'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
     );
     const rawResponse = await responsePromise.asResponse();
@@ -61,14 +61,14 @@ describe('resource wireDrawdownRequests', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireDrawdownRequests.retrieve('wire_drawdown_request_q6lmocus3glo0lr2bfv3', {
+      client.wireDrawdownRequests.retrieve('wire_drawdown_request_q6lmocus3glo0lr2bfv3', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.wireDrawdownRequests.list();
+    const responsePromise = client.wireDrawdownRequests.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -80,7 +80,7 @@ describe('resource wireDrawdownRequests', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.wireDrawdownRequests.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.wireDrawdownRequests.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -88,7 +88,7 @@ describe('resource wireDrawdownRequests', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.wireDrawdownRequests.list(
+      client.wireDrawdownRequests.list(
         { cursor: 'cursor', idempotency_key: 'x', limit: 1, status: 'pending_submission' },
         { path: '/_stainless_unknown_path' },
       ),

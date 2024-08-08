@@ -3,14 +3,14 @@
 import Increase from 'increase';
 import { Response } from 'node-fetch';
 
-const increase = new Increase({
+const client = new Increase({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource transactions', () => {
   test('retrieve', async () => {
-    const responsePromise = increase.transactions.retrieve('transaction_uyrp7fld2ium70oa7oi');
+    const responsePromise = client.transactions.retrieve('transaction_uyrp7fld2ium70oa7oi');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,12 +23,12 @@ describe('resource transactions', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.transactions.retrieve('transaction_uyrp7fld2ium70oa7oi', { path: '/_stainless_unknown_path' }),
+      client.transactions.retrieve('transaction_uyrp7fld2ium70oa7oi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = increase.transactions.list();
+    const responsePromise = client.transactions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,7 +40,7 @@ describe('resource transactions', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(increase.transactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.transactions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -48,7 +48,7 @@ describe('resource transactions', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      increase.transactions.list(
+      client.transactions.list(
         {
           account_id: 'account_id',
           category: {
