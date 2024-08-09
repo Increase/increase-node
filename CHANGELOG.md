@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.73.0 (2024-08-09)
+
+Full Changelog: [v0.72.0...v0.73.0](https://github.com/Increase/increase-node/compare/v0.72.0...v0.73.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#484](https://github.com/Increase/increase-node/issues/484)) ([46b2f44](https://github.com/Increase/increase-node/commit/46b2f441281b58a8eb4af43dfe2484e5941c4a8e))
+* **api:** OpenAPI spec update via Stainless API ([#485](https://github.com/Increase/increase-node/issues/485)) ([acc60c0](https://github.com/Increase/increase-node/commit/acc60c0dca5970a0193819d93cd3814a66e1aba0))
+* **api:** OpenAPI spec update via Stainless API ([#486](https://github.com/Increase/increase-node/issues/486)) ([daa6483](https://github.com/Increase/increase-node/commit/daa6483d68ea3713b3610256138fbc570af0208a))
+
+
+### Chores
+
+* force eslint to use non flat config ([#482](https://github.com/Increase/increase-node/issues/482)) ([abcbe18](https://github.com/Increase/increase-node/commit/abcbe18b201f25e92a46c7c123208839e74ff227))
+
 ## 0.72.0 (2024-08-08)
 
 Full Changelog: [v0.71.0...v0.72.0](https://github.com/Increase/increase-node/compare/v0.71.0...v0.72.0)
