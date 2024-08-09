@@ -878,11 +878,6 @@ export interface PendingTransactionListParams extends PageParams {
    */
   route_id?: string;
 
-  /**
-   * Filter pending transactions to those caused by the specified source.
-   */
-  source_id?: string;
-
   status?: PendingTransactionListParams.Status;
 }
 
