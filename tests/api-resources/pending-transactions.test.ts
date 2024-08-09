@@ -65,7 +65,6 @@ describe('resource pendingTransactions', () => {
           cursor: 'cursor',
           limit: 1,
           route_id: 'route_id',
-          source_id: 'source_id',
           status: { in: ['pending', 'complete'] },
         },
         { path: '/_stainless_unknown_path' },
