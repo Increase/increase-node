@@ -10,7 +10,7 @@ const client = new Increase({
 
 describe('resource exports', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.exports.create({ category: 'transaction_csv' });
+    const responsePromise = client.exports.create({ category: 'account_statement_ofx' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource exports', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.exports.create({
-      category: 'transaction_csv',
+      category: 'account_statement_ofx',
       account_statement_ofx: {
         account_id: 'account_id',
         created_at: {

@@ -41,12 +41,12 @@ describe('resource physicalCards', () => {
         address: {
           city: 'New York',
           line1: '33 Liberty Street',
-          line2: 'Unit 2',
-          line3: 'x',
           name: 'Ian Crease',
-          phone_number: 'x',
           postal_code: '10045',
           state: 'NY',
+          line2: 'Unit 2',
+          line3: 'x',
+          phone_number: 'x',
         },
         method: 'usps',
       },
@@ -76,7 +76,7 @@ describe('resource physicalCards', () => {
 
   test('update: only required params', async () => {
     const responsePromise = client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'disabled',
+      status: 'active',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -89,7 +89,7 @@ describe('resource physicalCards', () => {
 
   test('update: required and optional params', async () => {
     const response = await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'disabled',
+      status: 'active',
     });
   });
 
