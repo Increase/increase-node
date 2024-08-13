@@ -32,7 +32,7 @@ describe('resource realTimePaymentsRequestForPayments', () => {
     const response = await client.realTimePaymentsRequestForPayments.create({
       amount: 100,
       debtor: {
-        address: { city: 'x', country: 'US', post_code: 'x', street_name: 'Liberty Street' },
+        address: { country: 'US', city: 'x', post_code: 'x', street_name: 'Liberty Street' },
         name: 'Ian Crease',
       },
       destination_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',

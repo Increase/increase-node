@@ -24,52 +24,52 @@ describe('resource entities', () => {
     const response = await client.entities.create({
       structure: 'corporation',
       corporation: {
-        address: { city: 'New York', line1: '33 Liberty Street', line2: 'x', state: 'NY', zip: '10045' },
+        address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'x' },
         beneficial_owners: [
           {
-            company_title: 'CEO',
             individual: {
               address: {
                 city: 'New York',
                 line1: '33 Liberty Street',
-                line2: 'x',
                 state: 'NY',
                 zip: '10045',
+                line2: 'x',
               },
-              confirmed_no_us_tax_id: true,
               date_of_birth: '1970-01-31',
               identification: {
+                method: 'social_security_number',
+                number: '078051120',
                 drivers_license: {
-                  back_file_id: 'back_file_id',
                   expiration_date: '2019-12-27',
                   file_id: 'file_id',
                   state: 'x',
-                },
-                method: 'social_security_number',
-                number: '078051120',
-                other: {
                   back_file_id: 'back_file_id',
+                },
+                other: {
                   country: 'x',
                   description: 'x',
-                  expiration_date: '2019-12-27',
                   file_id: 'file_id',
+                  back_file_id: 'back_file_id',
+                  expiration_date: '2019-12-27',
                 },
                 passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
               },
               name: 'Ian Crease',
+              confirmed_no_us_tax_id: true,
             },
-            prongs: ['control'],
+            prongs: ['ownership'],
+            company_title: 'CEO',
           },
         ],
-        incorporation_state: 'NY',
-        industry_code: 'x',
         name: 'National Phonograph Company',
         tax_identifier: '602214076',
+        incorporation_state: 'NY',
+        industry_code: 'x',
         website: 'https://example.com',
       },
       description: 'x',
       government_authority: {
-        address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
+        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
         authorized_persons: [{ name: 'x' }, { name: 'x' }, { name: 'x' }],
         category: 'municipality',
         name: 'x',
@@ -79,219 +79,219 @@ describe('resource entities', () => {
       joint: {
         individuals: [
           {
-            address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-            confirmed_no_us_tax_id: true,
+            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
             date_of_birth: '2019-12-27',
             identification: {
+              method: 'social_security_number',
+              number: 'xxxx',
               drivers_license: {
-                back_file_id: 'back_file_id',
                 expiration_date: '2019-12-27',
                 file_id: 'file_id',
                 state: 'x',
-              },
-              method: 'social_security_number',
-              number: 'xxxx',
-              other: {
                 back_file_id: 'back_file_id',
+              },
+              other: {
                 country: 'x',
                 description: 'x',
-                expiration_date: '2019-12-27',
                 file_id: 'file_id',
+                back_file_id: 'back_file_id',
+                expiration_date: '2019-12-27',
               },
               passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
             },
             name: 'x',
+            confirmed_no_us_tax_id: true,
           },
           {
-            address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-            confirmed_no_us_tax_id: true,
+            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
             date_of_birth: '2019-12-27',
             identification: {
+              method: 'social_security_number',
+              number: 'xxxx',
               drivers_license: {
-                back_file_id: 'back_file_id',
                 expiration_date: '2019-12-27',
                 file_id: 'file_id',
                 state: 'x',
-              },
-              method: 'social_security_number',
-              number: 'xxxx',
-              other: {
                 back_file_id: 'back_file_id',
+              },
+              other: {
                 country: 'x',
                 description: 'x',
-                expiration_date: '2019-12-27',
                 file_id: 'file_id',
+                back_file_id: 'back_file_id',
+                expiration_date: '2019-12-27',
               },
               passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
             },
             name: 'x',
+            confirmed_no_us_tax_id: true,
           },
           {
-            address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-            confirmed_no_us_tax_id: true,
+            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
             date_of_birth: '2019-12-27',
             identification: {
+              method: 'social_security_number',
+              number: 'xxxx',
               drivers_license: {
-                back_file_id: 'back_file_id',
                 expiration_date: '2019-12-27',
                 file_id: 'file_id',
                 state: 'x',
-              },
-              method: 'social_security_number',
-              number: 'xxxx',
-              other: {
                 back_file_id: 'back_file_id',
+              },
+              other: {
                 country: 'x',
                 description: 'x',
-                expiration_date: '2019-12-27',
                 file_id: 'file_id',
+                back_file_id: 'back_file_id',
+                expiration_date: '2019-12-27',
               },
               passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
             },
             name: 'x',
+            confirmed_no_us_tax_id: true,
           },
         ],
         name: 'x',
       },
       natural_person: {
-        address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-        confirmed_no_us_tax_id: true,
+        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
         date_of_birth: '2019-12-27',
         identification: {
+          method: 'social_security_number',
+          number: 'xxxx',
           drivers_license: {
-            back_file_id: 'back_file_id',
             expiration_date: '2019-12-27',
             file_id: 'file_id',
             state: 'x',
-          },
-          method: 'social_security_number',
-          number: 'xxxx',
-          other: {
             back_file_id: 'back_file_id',
+          },
+          other: {
             country: 'x',
             description: 'x',
-            expiration_date: '2019-12-27',
             file_id: 'file_id',
+            back_file_id: 'back_file_id',
+            expiration_date: '2019-12-27',
           },
           passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
         },
         name: 'x',
+        confirmed_no_us_tax_id: true,
       },
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
       trust: {
-        address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
+        address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
         category: 'revocable',
+        name: 'x',
+        trustees: [
+          {
+            structure: 'individual',
+            individual: {
+              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+              date_of_birth: '2019-12-27',
+              identification: {
+                method: 'social_security_number',
+                number: 'xxxx',
+                drivers_license: {
+                  expiration_date: '2019-12-27',
+                  file_id: 'file_id',
+                  state: 'x',
+                  back_file_id: 'back_file_id',
+                },
+                other: {
+                  country: 'x',
+                  description: 'x',
+                  file_id: 'file_id',
+                  back_file_id: 'back_file_id',
+                  expiration_date: '2019-12-27',
+                },
+                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+              },
+              name: 'x',
+              confirmed_no_us_tax_id: true,
+            },
+          },
+          {
+            structure: 'individual',
+            individual: {
+              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+              date_of_birth: '2019-12-27',
+              identification: {
+                method: 'social_security_number',
+                number: 'xxxx',
+                drivers_license: {
+                  expiration_date: '2019-12-27',
+                  file_id: 'file_id',
+                  state: 'x',
+                  back_file_id: 'back_file_id',
+                },
+                other: {
+                  country: 'x',
+                  description: 'x',
+                  file_id: 'file_id',
+                  back_file_id: 'back_file_id',
+                  expiration_date: '2019-12-27',
+                },
+                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+              },
+              name: 'x',
+              confirmed_no_us_tax_id: true,
+            },
+          },
+          {
+            structure: 'individual',
+            individual: {
+              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
+              date_of_birth: '2019-12-27',
+              identification: {
+                method: 'social_security_number',
+                number: 'xxxx',
+                drivers_license: {
+                  expiration_date: '2019-12-27',
+                  file_id: 'file_id',
+                  state: 'x',
+                  back_file_id: 'back_file_id',
+                },
+                other: {
+                  country: 'x',
+                  description: 'x',
+                  file_id: 'file_id',
+                  back_file_id: 'back_file_id',
+                  expiration_date: '2019-12-27',
+                },
+                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
+              },
+              name: 'x',
+              confirmed_no_us_tax_id: true,
+            },
+          },
+        ],
         formation_document_file_id: 'formation_document_file_id',
         formation_state: 'x',
         grantor: {
-          address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-          confirmed_no_us_tax_id: true,
+          address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
           date_of_birth: '2019-12-27',
           identification: {
+            method: 'social_security_number',
+            number: 'xxxx',
             drivers_license: {
-              back_file_id: 'back_file_id',
               expiration_date: '2019-12-27',
               file_id: 'file_id',
               state: 'x',
-            },
-            method: 'social_security_number',
-            number: 'xxxx',
-            other: {
               back_file_id: 'back_file_id',
+            },
+            other: {
               country: 'x',
               description: 'x',
-              expiration_date: '2019-12-27',
               file_id: 'file_id',
+              back_file_id: 'back_file_id',
+              expiration_date: '2019-12-27',
             },
             passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
           },
           name: 'x',
+          confirmed_no_us_tax_id: true,
         },
-        name: 'x',
         tax_identifier: 'x',
-        trustees: [
-          {
-            individual: {
-              address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-              confirmed_no_us_tax_id: true,
-              date_of_birth: '2019-12-27',
-              identification: {
-                drivers_license: {
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                },
-                method: 'social_security_number',
-                number: 'xxxx',
-                other: {
-                  back_file_id: 'back_file_id',
-                  country: 'x',
-                  description: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-              },
-              name: 'x',
-            },
-            structure: 'individual',
-          },
-          {
-            individual: {
-              address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-              confirmed_no_us_tax_id: true,
-              date_of_birth: '2019-12-27',
-              identification: {
-                drivers_license: {
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                },
-                method: 'social_security_number',
-                number: 'xxxx',
-                other: {
-                  back_file_id: 'back_file_id',
-                  country: 'x',
-                  description: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-              },
-              name: 'x',
-            },
-            structure: 'individual',
-          },
-          {
-            individual: {
-              address: { city: 'x', line1: 'x', line2: 'x', state: 'x', zip: 'x' },
-              confirmed_no_us_tax_id: true,
-              date_of_birth: '2019-12-27',
-              identification: {
-                drivers_license: {
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                },
-                method: 'social_security_number',
-                number: 'xxxx',
-                other: {
-                  back_file_id: 'back_file_id',
-                  country: 'x',
-                  description: 'x',
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-              },
-              name: 'x',
-            },
-            structure: 'individual',
-          },
-        ],
       },
     });
   });
@@ -410,7 +410,7 @@ describe('resource entities', () => {
           identification: { method: 'social_security_number', number: '078051120' },
           name: 'Ian Crease',
         },
-        prongs: ['control'],
+        prongs: ['ownership'],
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -425,32 +425,32 @@ describe('resource entities', () => {
   test('createBeneficialOwner: required and optional params', async () => {
     const response = await client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
-        company_title: 'CEO',
         individual: {
-          address: { city: 'New York', line1: '33 Liberty Street', line2: 'x', state: 'NY', zip: '10045' },
-          confirmed_no_us_tax_id: true,
+          address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'x' },
           date_of_birth: '1970-01-31',
           identification: {
+            method: 'social_security_number',
+            number: '078051120',
             drivers_license: {
-              back_file_id: 'back_file_id',
               expiration_date: '2019-12-27',
               file_id: 'file_id',
               state: 'x',
-            },
-            method: 'social_security_number',
-            number: '078051120',
-            other: {
               back_file_id: 'back_file_id',
+            },
+            other: {
               country: 'x',
               description: 'x',
-              expiration_date: '2019-12-27',
               file_id: 'file_id',
+              back_file_id: 'back_file_id',
+              expiration_date: '2019-12-27',
             },
             passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
           },
           name: 'Ian Crease',
+          confirmed_no_us_tax_id: true,
         },
-        prongs: ['control'],
+        prongs: ['ownership'],
+        company_title: 'CEO',
       },
     });
   });
@@ -470,7 +470,7 @@ describe('resource entities', () => {
 
   test('updateAddress: required and optional params', async () => {
     const response = await client.entities.updateAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
+      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'Unit 2' },
     });
   });
 
@@ -490,7 +490,7 @@ describe('resource entities', () => {
 
   test('updateBeneficialOwnerAddress: required and optional params', async () => {
     const response = await client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', line2: 'Unit 2', state: 'NY', zip: '10045' },
+      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'Unit 2' },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
   });
