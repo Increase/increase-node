@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.74.0 (2024-08-13)
+
+Full Changelog: [v0.73.0...v0.74.0](https://github.com/Increase/increase-node/compare/v0.73.0...v0.74.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#491](https://github.com/Increase/increase-node/issues/491)) ([df17137](https://github.com/Increase/increase-node/commit/df17137ccb0bd2720602c5c520ea4068a82506a0))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#490](https://github.com/Increase/increase-node/issues/490)) ([fa46857](https://github.com/Increase/increase-node/commit/fa46857aaa1b14c03fe38e5d109fbead7816279f))
+* **ci:** minor changes ([#488](https://github.com/Increase/increase-node/issues/488)) ([d0add68](https://github.com/Increase/increase-node/commit/d0add682988908f288005e9573b54dfcbeefda15))
+
 ## 0.73.0 (2024-08-09)
 
 Full Changelog: [v0.72.0...v0.73.0](https://github.com/Increase/increase-node/compare/v0.72.0...v0.73.0)
