@@ -182,6 +182,12 @@ export interface ACHTransfer {
   idempotency_key: string | null;
 
   /**
+   * Increase will sometimes hold the funds for ACH debit transfers. If funds are
+   * held, this sub-object will contain details of the hold.
+   */
+  inbound_funds_hold: ACHTransfer.InboundFundsHold | null;
+
+  /**
    * Your identifier for the transfer recipient.
    */
   individual_id: string | null;
@@ -480,6 +486,77 @@ export namespace ACHTransfer {
        */
       email: string;
     }
+  }
+
+  /**
+   * Increase will sometimes hold the funds for ACH debit transfers. If funds are
+   * held, this sub-object will contain details of the hold.
+   */
+  export interface InboundFundsHold {
+    /**
+     * The Inbound Funds Hold identifier.
+     */
+    id: string;
+
+    /**
+     * The held amount in the minor unit of the account's currency. For dollars, for
+     * example, this is cents.
+     */
+    amount: number;
+
+    /**
+     * When the hold will be released automatically. Certain conditions may cause it to
+     * be released before this time.
+     */
+    automatically_releases_at: string;
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+     * was created.
+     */
+    created_at: string;
+
+    /**
+     * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+     * currency.
+     *
+     * - `CAD` - Canadian Dollar (CAD)
+     * - `CHF` - Swiss Franc (CHF)
+     * - `EUR` - Euro (EUR)
+     * - `GBP` - British Pound (GBP)
+     * - `JPY` - Japanese Yen (JPY)
+     * - `USD` - US Dollar (USD)
+     */
+    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+    /**
+     * The ID of the Transaction for which funds were held.
+     */
+    held_transaction_id: string | null;
+
+    /**
+     * The ID of the Pending Transaction representing the held funds.
+     */
+    pending_transaction_id: string | null;
+
+    /**
+     * When the hold was released (if it has been released).
+     */
+    released_at: string | null;
+
+    /**
+     * The status of the hold.
+     *
+     * - `held` - Funds are still being held.
+     * - `complete` - Funds have been released.
+     */
+    status: 'held' | 'complete';
+
+    /**
+     * A constant representing the object's type. For this resource it will always be
+     * `inbound_funds_hold`.
+     */
+    type: 'inbound_funds_hold';
   }
 
   export interface NotificationsOfChange {
