@@ -596,8 +596,7 @@ export namespace CheckTransferCreateParams {
 
     /**
      * The return address to be printed on the check. If omitted this will default to
-     * an Increase-owned address that will mark checks as delivery failed and shred
-     * them.
+     * the address of the Entity of the Account used to make the Check Transfer.
      */
     return_address?: PhysicalCheck.ReturnAddress;
 
@@ -647,8 +646,7 @@ export namespace CheckTransferCreateParams {
 
     /**
      * The return address to be printed on the check. If omitted this will default to
-     * an Increase-owned address that will mark checks as delivery failed and shred
-     * them.
+     * the address of the Entity of the Account used to make the Check Transfer.
      */
     export interface ReturnAddress {
       /**
