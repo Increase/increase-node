@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.79.0 (2024-08-15)
+
+Full Changelog: [v0.78.0...v0.79.0](https://github.com/Increase/increase-node/compare/v0.78.0...v0.79.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#506](https://github.com/Increase/increase-node/issues/506)) ([2dc602f](https://github.com/Increase/increase-node/commit/2dc602f785e163767d16a44a0ba7e44cd6da1ef1))
+
 ## 0.78.0 (2024-08-15)
 
 Full Changelog: [v0.77.0...v0.78.0](https://github.com/Increase/increase-node/compare/v0.77.0...v0.78.0)
