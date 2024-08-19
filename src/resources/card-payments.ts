@@ -1282,6 +1282,11 @@ export namespace CardPayment {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
+       * Interchange assessed as a part of this transaciton.
+       */
+      interchange: CardRefund.Interchange | null;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
@@ -1347,6 +1352,36 @@ export namespace CardPayment {
     }
 
     export namespace CardRefund {
+      /**
+       * Interchange assessed as a part of this transaciton.
+       */
+      export interface Interchange {
+        /**
+         * The interchange amount given as a string containing a decimal number. The amount
+         * is a positive number if it is credited to Increase (e.g., settlements) and a
+         * negative number if it is debited (e.g., refunds).
+         */
+        amount: string;
+
+        /**
+         * The card network specific interchange code.
+         */
+        code: string | null;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+         * reimbursement.
+         *
+         * - `CAD` - Canadian Dollar (CAD)
+         * - `CHF` - Swiss Franc (CHF)
+         * - `EUR` - Euro (EUR)
+         * - `GBP` - British Pound (GBP)
+         * - `JPY` - Japanese Yen (JPY)
+         * - `USD` - US Dollar (USD)
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      }
+
       /**
        * Network-specific identifiers for this refund.
        */
@@ -2028,6 +2063,11 @@ export namespace CardPayment {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
+       * Interchange assessed as a part of this transaciton.
+       */
+      interchange: CardSettlement.Interchange | null;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
@@ -2098,6 +2138,36 @@ export namespace CardPayment {
     }
 
     export namespace CardSettlement {
+      /**
+       * Interchange assessed as a part of this transaciton.
+       */
+      export interface Interchange {
+        /**
+         * The interchange amount given as a string containing a decimal number. The amount
+         * is a positive number if it is credited to Increase (e.g., settlements) and a
+         * negative number if it is debited (e.g., refunds).
+         */
+        amount: string;
+
+        /**
+         * The card network specific interchange code.
+         */
+        code: string | null;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+         * reimbursement.
+         *
+         * - `CAD` - Canadian Dollar (CAD)
+         * - `CHF` - Swiss Franc (CHF)
+         * - `EUR` - Euro (EUR)
+         * - `GBP` - British Pound (GBP)
+         * - `JPY` - Japanese Yen (JPY)
+         * - `USD` - US Dollar (USD)
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      }
+
       /**
        * Network-specific identifiers for this refund.
        */
