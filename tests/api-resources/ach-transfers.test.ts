@@ -52,7 +52,6 @@ describe('resource achTransfers', () => {
       company_entry_description: 'x',
       company_name: 'x',
       destination_account_holder: 'business',
-      effective_date: '2019-12-27',
       external_account_id: 'external_account_id',
       funding: 'checking',
       individual_id: 'x',
