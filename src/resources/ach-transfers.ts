@@ -1040,12 +1040,6 @@ export interface ACHTransferCreateParams {
   destination_account_holder?: 'business' | 'individual' | 'unknown';
 
   /**
-   * The transfer effective date in
-   * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-   */
-  effective_date?: string;
-
-  /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
    * provided, `account_number`, `routing_number`, and `funding` must be absent.
    */
