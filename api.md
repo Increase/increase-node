@@ -665,6 +665,12 @@ Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inboundCheckDeposits.<a href="./src/resources/simulations/inbound-check-deposits.ts">create</a>({ ...params }) -> InboundCheckDeposit</code>
 
+## InboundMailItems
+
+Methods:
+
+- <code title="post /simulations/inbound_mail_items">client.simulations.inboundMailItems.<a href="./src/resources/simulations/inbound-mail-items.ts">create</a>({ ...params }) -> InboundMailItem</code>
+
 ## CheckDeposits
 
 Methods:

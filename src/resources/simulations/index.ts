@@ -33,6 +33,7 @@ export { DocumentCreateParams, Documents } from './documents';
 export { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 export { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
 export { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
+export { InboundMailItemCreateParams, InboundMailItems } from './inbound-mail-items';
 export {
   InboundRealTimePaymentsTransferCreateResponse,
   InboundRealTimePaymentsTransferCreateParams,
