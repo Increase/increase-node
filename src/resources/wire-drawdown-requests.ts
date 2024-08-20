@@ -83,7 +83,7 @@ export interface WireDrawdownRequest {
    * If the recipient fulfills the drawdown request by sending funds, then this will
    * be the identifier of the corresponding Transaction.
    */
-  fulfillment_transaction_id: string | null;
+  fulfillment_inbound_wire_transfer_id: string | null;
 
   /**
    * The idempotency key you chose for this object. This value is unique across
