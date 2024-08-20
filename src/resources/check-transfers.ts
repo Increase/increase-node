@@ -391,6 +391,11 @@ export namespace CheckTransfer {
      * blank, the check will be printed with 'No signature required'.
      */
     signature_text: string | null;
+
+    /**
+     * Tracking updates relating to the physical check's delivery.
+     */
+    tracking_updates: Array<PhysicalCheck.TrackingUpdate>;
   }
 
   export namespace PhysicalCheck {
@@ -462,6 +467,21 @@ export namespace CheckTransfer {
        * The state of the check's destination.
        */
       state: string | null;
+    }
+
+    export interface TrackingUpdate {
+      /**
+       * The type of tracking event.
+       *
+       * - `returned_to_sender` - Delivery failed and the check was returned to sender.
+       */
+      category: 'returned_to_sender';
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+       * the tracking event took place.
+       */
+      created_at: string;
     }
   }
 
