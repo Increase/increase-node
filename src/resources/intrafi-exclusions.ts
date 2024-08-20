@@ -25,7 +25,7 @@ export class IntrafiExclusions extends APIResource {
   }
 
   /**
-   * List IntraFi Exclusions.
+   * List IntraFi Exclusions
    */
   list(
     query?: IntrafiExclusionListParams,
