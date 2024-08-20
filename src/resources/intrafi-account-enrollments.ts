@@ -8,7 +8,7 @@ import { Page, type PageParams } from '../pagination';
 
 export class IntrafiAccountEnrollments extends APIResource {
   /**
-   * Enroll an account in the IntraFi deposit sweep network.
+   * Enroll an account in the IntraFi deposit sweep network
    */
   create(
     body: IntrafiAccountEnrollmentCreateParams,
@@ -51,7 +51,7 @@ export class IntrafiAccountEnrollments extends APIResource {
   }
 
   /**
-   * Unenroll an account from IntraFi.
+   * Unenroll an account from IntraFi
    */
   unenroll(
     intrafiAccountEnrollmentId: string,
