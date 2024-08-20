@@ -39,9 +39,6 @@ export class Simulations extends APIResource {
   checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
   inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
     new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
-  inboundMailItems: InboundMailItemsAPI.InboundMailItems = new InboundMailItemsAPI.InboundMailItems(
-    this._client,
-  );
   checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
   inboundWireTransfers: InboundWireTransfersAPI.InboundWireTransfers =
     new InboundWireTransfersAPI.InboundWireTransfers(this._client);
@@ -77,6 +74,9 @@ export class Simulations extends APIResource {
     this._client,
   );
   documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
+  inboundMailItems: InboundMailItemsAPI.InboundMailItems = new InboundMailItemsAPI.InboundMailItems(
+    this._client,
+  );
   programs: ProgramsAPI.Programs = new ProgramsAPI.Programs(this._client);
 }
 
@@ -90,8 +90,6 @@ export namespace Simulations {
   export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
   export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
   export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
-  export import InboundMailItems = InboundMailItemsAPI.InboundMailItems;
-  export import InboundMailItemCreateParams = InboundMailItemsAPI.InboundMailItemCreateParams;
   export import CheckDeposits = CheckDepositsAPI.CheckDeposits;
   export import InboundWireTransfers = InboundWireTransfersAPI.InboundWireTransfers;
   export import InboundWireTransferCreateParams = InboundWireTransfersAPI.InboundWireTransferCreateParams;
@@ -133,6 +131,8 @@ export namespace Simulations {
   export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
   export import Documents = DocumentsAPI.Documents;
   export import DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
+  export import InboundMailItems = InboundMailItemsAPI.InboundMailItems;
+  export import InboundMailItemCreateParams = InboundMailItemsAPI.InboundMailItemCreateParams;
   export import Programs = ProgramsAPI.Programs;
   export import ProgramCreateParams = ProgramsAPI.ProgramCreateParams;
 }
