@@ -248,6 +248,15 @@ export class MalformedRequestError extends BadRequestError {
 export class InvalidAPIKeyError extends AuthenticationError {
   detail: string | null;
 
+  /**
+   * - `deleted_credential` - deleted_credential
+   * - `expired_credential` - expired_credential
+   * - `no_credential` - no_credential
+   * - `no_header` - no_header
+   * - `wrong_environment` - wrong_environment
+   */
+  reason: 'deleted_credential' | 'expired_credential' | 'no_credential' | 'no_header' | 'wrong_environment';
+
   override status: 401;
 
   title: string;
@@ -264,6 +273,7 @@ export class InvalidAPIKeyError extends AuthenticationError {
     super(status, error, data?.['title'] || message, headers);
 
     this.detail = data?.['detail'];
+    this.reason = data?.['reason'];
     this.status = data?.['status'];
     this.title = data?.['title'];
     this.type = data?.['type'];
