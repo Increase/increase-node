@@ -188,7 +188,8 @@ export namespace AccountNumberCreateParams {
   export interface InboundACH {
     /**
      * Whether ACH debits are allowed against this Account Number. Note that ACH debits
-     * will be declined if this is `allowed` but the Account Number is not active.
+     * will be declined if this is `allowed` but the Account Number is not active. If
+     * you do not specify this field, the default is `allowed`.
      *
      * - `allowed` - ACH Debits are allowed.
      * - `blocked` - ACH Debits are blocked.
@@ -202,7 +203,8 @@ export namespace AccountNumberCreateParams {
    */
   export interface InboundChecks {
     /**
-     * How Increase should process checks with this account number printed on them.
+     * How Increase should process checks with this account number printed on them. If
+     * you do not specify this field, the default is `check_transfers_only`.
      *
      * - `allowed` - Checks with this Account Number will be processed even if they are
      *   not associated with a Check Transfer.
