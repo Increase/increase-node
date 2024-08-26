@@ -28,6 +28,12 @@ export interface InboundMailItemCreateParams {
    * The identifier of the Lockbox to simulate inbound mail to.
    */
   lockbox_id: string;
+
+  /**
+   * The file containing the PDF contents. If not present, a default check image file
+   * will be used.
+   */
+  contents_file_id?: string;
 }
 
 export namespace InboundMailItems {

@@ -303,6 +303,17 @@ Methods:
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">retrieve</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
 - <code title="get /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">list</a>({ ...params }) -> RealTimePaymentsTransfersPage</code>
 
+# InboundRealTimePaymentsTransfers
+
+Types:
+
+- <code><a href="./src/resources/inbound-real-time-payments-transfers.ts">InboundRealTimePaymentsTransfer</a></code>
+
+Methods:
+
+- <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">retrieve</a>(inboundRealTimePaymentsTransferId) -> InboundRealTimePaymentsTransfer</code>
+- <code title="get /inbound_real_time_payments_transfers">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">list</a>({ ...params }) -> InboundRealTimePaymentsTransfersPage</code>
+
 # CheckDeposits
 
 Types:
