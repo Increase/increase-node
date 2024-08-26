@@ -179,6 +179,8 @@ export class Increase extends Core.APIClient {
   checkTransfers: API.CheckTransfers = new API.CheckTransfers(this);
   inboundCheckDeposits: API.InboundCheckDeposits = new API.InboundCheckDeposits(this);
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
+  inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers =
+    new API.InboundRealTimePaymentsTransfers(this);
   checkDeposits: API.CheckDeposits = new API.CheckDeposits(this);
   lockboxes: API.Lockboxes = new API.Lockboxes(this);
   inboundMailItems: API.InboundMailItems = new API.InboundMailItems(this);
@@ -445,6 +447,11 @@ export namespace Increase {
   export import RealTimePaymentsTransfersPage = API.RealTimePaymentsTransfersPage;
   export import RealTimePaymentsTransferCreateParams = API.RealTimePaymentsTransferCreateParams;
   export import RealTimePaymentsTransferListParams = API.RealTimePaymentsTransferListParams;
+
+  export import InboundRealTimePaymentsTransfers = API.InboundRealTimePaymentsTransfers;
+  export import InboundRealTimePaymentsTransfer = API.InboundRealTimePaymentsTransfer;
+  export import InboundRealTimePaymentsTransfersPage = API.InboundRealTimePaymentsTransfersPage;
+  export import InboundRealTimePaymentsTransferListParams = API.InboundRealTimePaymentsTransferListParams;
 
   export import CheckDeposits = API.CheckDeposits;
   export import CheckDeposit = API.CheckDeposit;
