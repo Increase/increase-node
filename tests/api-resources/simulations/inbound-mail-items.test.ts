@@ -27,6 +27,7 @@ describe('resource inboundMailItems', () => {
     const response = await client.simulations.inboundMailItems.create({
       amount: 1000,
       lockbox_id: 'lockbox_3xt21ok13q19advds4t5',
+      contents_file_id: 'contents_file_id',
     });
   });
 });

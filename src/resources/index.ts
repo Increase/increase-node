@@ -189,6 +189,12 @@ export {
   InboundMailItems,
 } from './inbound-mail-items';
 export {
+  InboundRealTimePaymentsTransfer,
+  InboundRealTimePaymentsTransferListParams,
+  InboundRealTimePaymentsTransfersPage,
+  InboundRealTimePaymentsTransfers,
+} from './inbound-real-time-payments-transfers';
+export {
   InboundWireDrawdownRequest,
   InboundWireDrawdownRequestListParams,
   InboundWireDrawdownRequestsPage,
