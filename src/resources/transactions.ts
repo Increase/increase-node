@@ -2502,7 +2502,7 @@ export namespace Transaction {
       originator_company_name: string;
 
       /**
-       * The originator's identifier for the transfer receipient.
+       * The originator's identifier for the transfer recipient.
        */
       receiver_id_number: string | null;
 

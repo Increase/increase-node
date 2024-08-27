@@ -280,7 +280,7 @@ export namespace ExportCreateParams {
    */
   export interface BookkeepingAccountBalanceCsv {
     /**
-     * Filter exported Transactions to the specified BookkeepingAccount.
+     * Filter exported Transactions to the specified Bookkeeping Account.
      */
     bookkeeping_account_id?: string;
 
