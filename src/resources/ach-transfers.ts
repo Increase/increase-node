@@ -220,7 +220,7 @@ export interface ACHTransfer {
   /**
    * Configuration for how the effective date of the transfer will be set. This
    * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
    * must be set.
    */
   preferred_effective_date: ACHTransfer.PreferredEffectiveDate;
@@ -639,7 +639,7 @@ export namespace ACHTransfer {
   /**
    * Configuration for how the effective date of the transfer will be set. This
    * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
    * must be set.
    */
   export interface PreferredEffectiveDate {
@@ -650,7 +650,7 @@ export namespace ACHTransfer {
     date: string | null;
 
     /**
-     * A schedule by which Increase whill choose an effective date for the transfer.
+     * A schedule by which Increase will choose an effective date for the transfer.
      *
      * - `same_day` - The chosen effective date will be the same as the ACH processing
      *   date on which the transfer is submitted. This is necessary, but not sufficient
@@ -1067,7 +1067,7 @@ export interface ACHTransferCreateParams {
   /**
    * Configuration for how the effective date of the transfer will be set. This
    * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
    * must be set.
    */
   preferred_effective_date?: ACHTransferCreateParams.PreferredEffectiveDate;
@@ -1179,7 +1179,7 @@ export namespace ACHTransferCreateParams {
   /**
    * Configuration for how the effective date of the transfer will be set. This
    * determines same-day vs future-dated settlement timing. If not set, defaults to a
-   * `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+   * `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
    * must be set.
    */
   export interface PreferredEffectiveDate {
@@ -1190,7 +1190,7 @@ export namespace ACHTransferCreateParams {
     date?: string;
 
     /**
-     * A schedule by which Increase whill choose an effective date for the transfer.
+     * A schedule by which Increase will choose an effective date for the transfer.
      *
      * - `same_day` - The chosen effective date will be the same as the ACH processing
      *   date on which the transfer is submitted. This is necessary, but not sufficient
