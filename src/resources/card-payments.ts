@@ -1961,6 +1961,44 @@ export namespace CardPayment {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
+       * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+       * is transacting with.
+       */
+      merchant_acceptor_id: string;
+
+      /**
+       * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+       * card is transacting with.
+       */
+      merchant_category_code: string | null;
+
+      /**
+       * The city the merchant resides in.
+       */
+      merchant_city: string | null;
+
+      /**
+       * The country the merchant resides in.
+       */
+      merchant_country: string;
+
+      /**
+       * The merchant descriptor of the merchant the card is transacting with.
+       */
+      merchant_descriptor: string;
+
+      /**
+       * The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+       * ZIP code, where the first 5 and last 4 are separated by a dash.
+       */
+      merchant_postal_code: string | null;
+
+      /**
+       * The state the merchant resides in.
+       */
+      merchant_state: string | null;
+
+      /**
        * The card network used to process this card authorization.
        *
        * - `visa` - Visa
@@ -1982,6 +2020,24 @@ export namespace CardPayment {
        * dollars, for example, this is cents.
        */
       reversal_amount: number;
+
+      /**
+       * Why this reversal was initiated.
+       *
+       * - `reversed_by_customer` - The Card Reversal was initiated at the customer's
+       *   request.
+       * - `reversed_by_network_or_acquirer` - The Card Reversal was initiated by the
+       *   network or acquirer.
+       * - `reversed_by_point_of_sale` - The Card Reversal was initiated by the point of
+       *   sale device.
+       * - `partial_reversal` - The Card Reversal was a partial reversal, for any reason.
+       */
+      reversal_reason:
+        | 'reversed_by_customer'
+        | 'reversed_by_network_or_acquirer'
+        | 'reversed_by_point_of_sale'
+        | 'partial_reversal'
+        | null;
 
       /**
        * A constant representing the object's type. For this resource it will always be
