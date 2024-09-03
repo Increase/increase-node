@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.94.1 (2024-09-03)
+
+Full Changelog: [v0.94.0...v0.94.1](https://github.com/Increase/increase-node/compare/v0.94.0...v0.94.1)
+
+### Bug Fixes
+
+* **client:** correct File construction from node-fetch Responses ([#560](https://github.com/Increase/increase-node/issues/560)) ([437bdb7](https://github.com/Increase/increase-node/commit/437bdb7c7eb8466c3aa4781bf9cbf7b877f4134a))
+
+
+### Chores
+
+* **ci:** check for build errors ([#554](https://github.com/Increase/increase-node/issues/554)) ([ae7c962](https://github.com/Increase/increase-node/commit/ae7c962b424a484cafe882a2dc8f150da5a2baae))
+* **ci:** install deps via ./script/bootstrap ([#558](https://github.com/Increase/increase-node/issues/558)) ([a92a815](https://github.com/Increase/increase-node/commit/a92a815fafe57767f9419eb4048521839b1dc3ee))
+* fix repo names ([#559](https://github.com/Increase/increase-node/issues/559)) ([751bff4](https://github.com/Increase/increase-node/commit/751bff4946ab5207cd464efad40ea0f5364ac7d8))
+* **internal:** codegen related update ([#556](https://github.com/Increase/increase-node/issues/556)) ([9eee0d3](https://github.com/Increase/increase-node/commit/9eee0d314c31bb332dbf1ba82cc0dae354770acb))
+* run tsc as part of lint script ([#557](https://github.com/Increase/increase-node/issues/557)) ([c573359](https://github.com/Increase/increase-node/commit/c57335999006f17f7c3eda812d8896740063b259))
+
 ## 0.94.0 (2024-08-30)
 
 Full Changelog: [v0.93.0...v0.94.0](https://github.com/Increase/increase-node/compare/v0.93.0...v0.94.0)
