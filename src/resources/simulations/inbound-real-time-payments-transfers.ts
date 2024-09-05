@@ -2,9 +2,8 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
-import * as DeclinedTransactionsAPI from '../declined-transactions';
-import * as TransactionsAPI from '../transactions';
+import * as SimulationsInboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
+import * as InboundRealTimePaymentsTransfersAPI from '../inbound-real-time-payments-transfers';
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
   /**
@@ -14,35 +13,9 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
   create(
     body: InboundRealTimePaymentsTransferCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundRealTimePaymentsTransferCreateResponse> {
+  ): Core.APIPromise<InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer> {
     return this._client.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
-}
-
-/**
- * The results of an inbound Real-Time Payments Transfer simulation.
- */
-export interface InboundRealTimePaymentsTransferCreateResponse {
-  /**
-   * If the Real-Time Payments Transfer attempt fails, this will contain the
-   * resulting [Declined Transaction](#declined-transactions) object. The Declined
-   * Transaction's `source` will be of
-   * `category: inbound_real_time_payments_transfer_decline`.
-   */
-  declined_transaction: DeclinedTransactionsAPI.DeclinedTransaction | null;
-
-  /**
-   * If the Real-Time Payments Transfer attempt succeeds, this will contain the
-   * resulting [Transaction](#transactions) object. The Transaction's `source` will
-   * be of `category: inbound_real_time_payments_transfer_confirmation`.
-   */
-  transaction: TransactionsAPI.Transaction | null;
-
-  /**
-   * A constant representing the object's type. For this resource it will always be
-   * `inbound_real_time_payments_transfer_simulation_result`.
-   */
-  type: 'inbound_real_time_payments_transfer_simulation_result';
 }
 
 export interface InboundRealTimePaymentsTransferCreateParams {
@@ -84,6 +57,5 @@ export interface InboundRealTimePaymentsTransferCreateParams {
 }
 
 export namespace InboundRealTimePaymentsTransfers {
-  export import InboundRealTimePaymentsTransferCreateResponse = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateResponse;
-  export import InboundRealTimePaymentsTransferCreateParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
+  export import InboundRealTimePaymentsTransferCreateParams = SimulationsInboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
 }

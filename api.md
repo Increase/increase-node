@@ -698,13 +698,9 @@ Methods:
 
 ## InboundRealTimePaymentsTransfers
 
-Types:
-
-- <code><a href="./src/resources/simulations/inbound-real-time-payments-transfers.ts">InboundRealTimePaymentsTransferCreateResponse</a></code>
-
 Methods:
 
-- <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inboundRealTimePaymentsTransfers.<a href="./src/resources/simulations/inbound-real-time-payments-transfers.ts">create</a>({ ...params }) -> InboundRealTimePaymentsTransferCreateResponse</code>
+- <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inboundRealTimePaymentsTransfers.<a href="./src/resources/simulations/inbound-real-time-payments-transfers.ts">create</a>({ ...params }) -> InboundRealTimePaymentsTransfer</code>
 
 ## InboundFundsHolds
 

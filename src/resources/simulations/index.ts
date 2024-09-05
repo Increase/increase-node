@@ -35,7 +35,6 @@ export { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound
 export { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 export { InboundMailItemCreateParams, InboundMailItems } from './inbound-mail-items';
 export {
-  InboundRealTimePaymentsTransferCreateResponse,
   InboundRealTimePaymentsTransferCreateParams,
   InboundRealTimePaymentsTransfers,
 } from './inbound-real-time-payments-transfers';
