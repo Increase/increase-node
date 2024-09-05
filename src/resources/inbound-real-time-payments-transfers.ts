@@ -73,6 +73,11 @@ export interface InboundRealTimePaymentsTransfer {
   amount: number;
 
   /**
+   * If your transfer is confirmed, this will contain details of the confirmation.
+   */
+  confirmation: InboundRealTimePaymentsTransfer.Confirmation | null;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the transfer was created.
    */
@@ -112,6 +117,11 @@ export interface InboundRealTimePaymentsTransfer {
   debtor_routing_number: string;
 
   /**
+   * If your transfer is declined, this will contain details of the decline.
+   */
+  decline: InboundRealTimePaymentsTransfer.Decline | null;
+
+  /**
    * Additional information included with the transfer.
    */
   remittance_information: string | null;
@@ -136,6 +146,57 @@ export interface InboundRealTimePaymentsTransfer {
    * `inbound_real_time_payments_transfer`.
    */
   type: 'inbound_real_time_payments_transfer';
+}
+
+export namespace InboundRealTimePaymentsTransfer {
+  /**
+   * If your transfer is confirmed, this will contain details of the confirmation.
+   */
+  export interface Confirmation {
+    /**
+     * The time at which the transfer was confirmed.
+     */
+    confirmed_at: string;
+
+    /**
+     * The id of the transaction for the confirmed transfer.
+     */
+    transaction_id: string;
+  }
+
+  /**
+   * If your transfer is declined, this will contain details of the decline.
+   */
+  export interface Decline {
+    /**
+     * The time at which the transfer was declined.
+     */
+    declined_at: string;
+
+    /**
+     * The id of the transaction for the declined transfer.
+     */
+    declined_transaction_id: string;
+
+    /**
+     * The reason for the transfer decline.
+     *
+     * - `account_number_canceled` - The account number is canceled.
+     * - `account_number_disabled` - The account number is disabled.
+     * - `account_restricted` - Your account is restricted.
+     * - `group_locked` - Your account is inactive.
+     * - `entity_not_active` - The account's entity is not active.
+     * - `real_time_payments_not_enabled` - Your account is not enabled to receive
+     *   Real-Time Payments transfers.
+     */
+    reason:
+      | 'account_number_canceled'
+      | 'account_number_disabled'
+      | 'account_restricted'
+      | 'group_locked'
+      | 'entity_not_active'
+      | 'real_time_payments_not_enabled';
+  }
 }
 
 export interface InboundRealTimePaymentsTransferListParams extends PageParams {
