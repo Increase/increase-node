@@ -97,7 +97,6 @@ export namespace Simulations {
   export import InboundWireDrawdownRequests = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests;
   export import InboundWireDrawdownRequestCreateParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
   export import InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers;
-  export import InboundRealTimePaymentsTransferCreateResponse = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateResponse;
   export import InboundRealTimePaymentsTransferCreateParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
   export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
   export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
