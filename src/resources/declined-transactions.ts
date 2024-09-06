@@ -830,6 +830,11 @@ export namespace DeclinedTransaction {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
+       * The identifier of the associated declined transaction.
+       */
+      declined_transaction_id: string;
+
+      /**
        * Why the check deposit was rejected.
        *
        * - `incomplete_image` - The check's image is incomplete.
