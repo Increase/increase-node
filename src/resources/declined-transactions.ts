@@ -944,6 +944,11 @@ export namespace DeclinedTransaction {
        * The Real-Time Payments network identification of the declined transfer.
        */
       transaction_identification: string;
+
+      /**
+       * The identifier of the Real-Time Payments Transfer that led to this Transaction.
+       */
+      transfer_id: string;
     }
 
     /**
