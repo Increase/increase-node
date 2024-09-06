@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.98.1 (2024-09-06)
+
+Full Changelog: [v0.98.0...v0.98.1](https://github.com/Increase/increase-node/compare/v0.98.0...v0.98.1)
+
+### Bug Fixes
+
+* **uploads:** avoid making redundant memory copies ([#579](https://github.com/Increase/increase-node/issues/579)) ([cd2255c](https://github.com/Increase/increase-node/commit/cd2255c4a8dca086f1996c42e357918e71484a9f))
+
 ## 0.98.0 (2024-09-06)
 
 Full Changelog: [v0.97.0...v0.98.0](https://github.com/Increase/increase-node/compare/v0.97.0...v0.98.0)
