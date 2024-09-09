@@ -130,7 +130,7 @@ export interface InboundRealTimePaymentsTransfer {
    * The lifecycle status of the transfer.
    *
    * - `pending_confirmation` - The transfer is pending confirmation.
-   * - `timed_out` - Your webhook failed to respond to the transfer in time.
+   * - `timed_out` - The transfer was not responded to in time.
    * - `confirmed` - The transfer has been received successfully and is confirmed.
    * - `declined` - The transfer has been declined.
    */
