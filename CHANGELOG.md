@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.102.0 (2024-09-09)
+
+Full Changelog: [v0.101.0...v0.102.0](https://github.com/Increase/increase-node/compare/v0.101.0...v0.102.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#600](https://github.com/Increase/increase-node/issues/600)) ([b4c9ae6](https://github.com/Increase/increase-node/commit/b4c9ae636c00def5cdfe24f1d974b9b7f5816286))
+
+
+### Chores
+
+* better object fallback behaviour for casting errors ([#598](https://github.com/Increase/increase-node/issues/598)) ([b44cb2d](https://github.com/Increase/increase-node/commit/b44cb2dba22d6be09a3ca4702bf5d5f664d05676))
+
 ## 0.101.0 (2024-09-09)
 
 Full Changelog: [v0.100.1...v0.101.0](https://github.com/Increase/increase-node/compare/v0.100.1...v0.101.0)
