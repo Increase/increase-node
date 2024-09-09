@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.100.1 (2024-09-09)
+
+Full Changelog: [v0.100.0...v0.100.1](https://github.com/Increase/increase-node/compare/v0.100.0...v0.100.1)
+
+### Bug Fixes
+
+* **errors:** pass message through to APIConnectionError ([#592](https://github.com/Increase/increase-node/issues/592)) ([165d31c](https://github.com/Increase/increase-node/commit/165d31c745b135150d0e2b7e734a32f6675f049d))
+
+
+### Chores
+
+* **internal:** codegen related update ([#589](https://github.com/Increase/increase-node/issues/589)) ([c33e715](https://github.com/Increase/increase-node/commit/c33e715b256f9df33dae235cf590d84ce8fba120))
+* **internal:** codegen related update ([#591](https://github.com/Increase/increase-node/issues/591)) ([c05b991](https://github.com/Increase/increase-node/commit/c05b991b63db9d72b6fa21dccce6ae4f315700ce))
+
 ## 0.100.0 (2024-09-09)
 
 Full Changelog: [v0.99.0...v0.100.0](https://github.com/Increase/increase-node/compare/v0.99.0...v0.100.0)
