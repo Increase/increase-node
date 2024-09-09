@@ -242,8 +242,6 @@ export namespace Transaction {
      *   object.
      * - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
      *   `wire_transfer_intention` object.
-     * - `wire_transfer_rejection` - Wire Transfer Rejection: details will be under the
-     *   `wire_transfer_rejection` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -274,7 +272,6 @@ export namespace Transaction {
       | 'real_time_payments_transfer_acknowledgement'
       | 'sample_funds'
       | 'wire_transfer_intention'
-      | 'wire_transfer_rejection'
       | 'other';
 
     /**
@@ -369,12 +366,6 @@ export namespace Transaction {
      * response if and only if `category` is equal to `wire_transfer_intention`.
      */
     wire_transfer_intention: Source.WireTransferIntention | null;
-
-    /**
-     * A Wire Transfer Rejection object. This field will be present in the JSON
-     * response if and only if `category` is equal to `wire_transfer_rejection`.
-     */
-    wire_transfer_rejection: Source.WireTransferRejection | null;
   }
 
   export namespace Source {
@@ -3101,17 +3092,6 @@ export namespace Transaction {
        */
       transfer_id: string;
     }
-
-    /**
-     * A Wire Transfer Rejection object. This field will be present in the JSON
-     * response if and only if `category` is equal to `wire_transfer_rejection`.
-     */
-    export interface WireTransferRejection {
-      /**
-       * The identifier of the Wire Transfer that led to this Transaction.
-       */
-      transfer_id: string;
-    }
   }
 }
 
@@ -3166,7 +3146,6 @@ export namespace TransactionListParams {
       | 'real_time_payments_transfer_acknowledgement'
       | 'sample_funds'
       | 'wire_transfer_intention'
-      | 'wire_transfer_rejection'
       | 'other'
     >;
   }
