@@ -184,6 +184,12 @@ export namespace CardPayment {
      * the card payment element was created.
      */
     created_at: string;
+
+    /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    other: unknown | null;
   }
 
   export namespace Element {
