@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.103.0 (2024-09-09)
+
+Full Changelog: [v0.102.0...v0.103.0](https://github.com/Increase/increase-node/compare/v0.102.0...v0.103.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#602](https://github.com/Increase/increase-node/issues/602)) ([fcb9645](https://github.com/Increase/increase-node/commit/fcb9645238509706ddc911214b26a895bbcdfc05))
+
 ## 0.102.0 (2024-09-09)
 
 Full Changelog: [v0.101.0...v0.102.0](https://github.com/Increase/increase-node/compare/v0.101.0...v0.102.0)
