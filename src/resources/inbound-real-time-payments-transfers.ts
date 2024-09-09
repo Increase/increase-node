@@ -129,13 +129,12 @@ export interface InboundRealTimePaymentsTransfer {
   /**
    * The lifecycle status of the transfer.
    *
-   * - `pending_confirmation` - The transfer is pending confirmation.
    * - `pending_confirming` - The transfer is pending confirmation.
    * - `timed_out` - The transfer was not responded to in time.
    * - `confirmed` - The transfer has been received successfully and is confirmed.
    * - `declined` - The transfer has been declined.
    */
-  status: 'pending_confirmation' | 'pending_confirming' | 'timed_out' | 'confirmed' | 'declined';
+  status: 'pending_confirming' | 'timed_out' | 'confirmed' | 'declined';
 
   /**
    * The Real-Time Payments network identification of the transfer.
