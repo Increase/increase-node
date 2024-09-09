@@ -246,21 +246,9 @@ export namespace DeclinedTransaction {
        * - `ach_route_disabled` - The account number is disabled.
        * - `breaches_limit` - The transaction would cause an Increase limit to be
        *   exceeded.
-       * - `credit_entry_refused_by_receiver` - A credit was refused. This is a
-       *   reasonable default reason for decline of credits.
-       * - `duplicate_return` - A rare return reason. The return this message refers to
-       *   was a duplicate.
        * - `entity_not_active` - The account's entity is not active.
-       * - `field_error` - There was an error with one of the required fields.
        * - `group_locked` - Your account is inactive.
        * - `insufficient_funds` - Your account contains insufficient funds.
-       * - `misrouted_return` - A rare return reason. The return this message refers to
-       *   was misrouted.
-       * - `return_of_erroneous_or_reversing_debit` - The originating financial
-       *   institution made a mistake and this return corrects it.
-       * - `no_ach_route` - The account number that was debited does not exist.
-       * - `originator_request` - The originating financial institution asked for this
-       *   transfer to be returned.
        * - `transaction_not_allowed` - The transaction is not allowed per Increase's
        *   terms.
        * - `user_initiated` - Your integration declined this transfer via the API.
@@ -269,16 +257,9 @@ export namespace DeclinedTransaction {
         | 'ach_route_canceled'
         | 'ach_route_disabled'
         | 'breaches_limit'
-        | 'credit_entry_refused_by_receiver'
-        | 'duplicate_return'
         | 'entity_not_active'
-        | 'field_error'
         | 'group_locked'
         | 'insufficient_funds'
-        | 'misrouted_return'
-        | 'return_of_erroneous_or_reversing_debit'
-        | 'no_ach_route'
-        | 'originator_request'
         | 'transaction_not_allowed'
         | 'user_initiated';
 
