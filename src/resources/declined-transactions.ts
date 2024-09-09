@@ -185,6 +185,12 @@ export namespace DeclinedTransaction {
     inbound_real_time_payments_transfer_decline: Source.InboundRealTimePaymentsTransferDecline | null;
 
     /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    other: unknown | null;
+
+    /**
      * A Wire Decline object. This field will be present in the JSON response if and
      * only if `category` is equal to `wire_decline`.
      */
