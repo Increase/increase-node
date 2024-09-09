@@ -208,6 +208,12 @@ export namespace PendingTransaction {
     inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    other: unknown | null;
+
+    /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
