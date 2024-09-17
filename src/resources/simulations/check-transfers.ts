@@ -7,8 +7,9 @@ import * as CheckTransfersAPI from '../check-transfers';
 export class CheckTransfers extends APIResource {
   /**
    * Simulates the mailing of a [Check Transfer](#check-transfers), which happens
-   * once per weekday in production but can be sped up in sandbox. This transfer must
-   * first have a `status` of `pending_approval` or `pending_submission`.
+   * periodically throughout the day in production but can be sped up in sandbox.
+   * This transfer must first have a `status` of `pending_approval` or
+   * `pending_submission`.
    */
   mail(
     checkTransferId: string,
