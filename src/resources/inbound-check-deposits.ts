@@ -167,8 +167,10 @@ export interface InboundCheckDeposit {
    * - `accepted` - The Inbound Check Deposit was accepted.
    * - `declined` - The Inbound Check Deposit was rejected.
    * - `returned` - The Inbound Check Deposit was returned.
+   * - `requires_attention` - The Inbound Check Deposit requires attention from an
+   *   Increase operator.
    */
-  status: 'pending' | 'accepted' | 'declined' | 'returned';
+  status: 'pending' | 'accepted' | 'declined' | 'returned' | 'requires_attention';
 
   /**
    * If the deposit attempt has been accepted, the identifier of the Transaction
