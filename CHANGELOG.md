@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.107.1 (2024-09-19)
+
+Full Changelog: [v0.107.0...v0.107.1](https://github.com/Increase/increase-node/compare/v0.107.0...v0.107.1)
+
+### Bug Fixes
+
+* **types:** remove leftover polyfill usage ([#619](https://github.com/Increase/increase-node/issues/619)) ([e2909b0](https://github.com/Increase/increase-node/commit/e2909b0bbc1f84e16c017147d258073a84186d54))
+
+
+### Chores
+
+* **internal:** add dev dependency ([#616](https://github.com/Increase/increase-node/issues/616)) ([54a0f16](https://github.com/Increase/increase-node/commit/54a0f1650cefbc78293077e41b7e088881527a7e))
+* **internal:** fix some types ([#618](https://github.com/Increase/increase-node/issues/618)) ([a86cb00](https://github.com/Increase/increase-node/commit/a86cb00f5396d3039ae1f2e892e2025809bed2b8))
+
 ## 0.107.0 (2024-09-18)
 
 Full Changelog: [v0.106.0...v0.107.0](https://github.com/Increase/increase-node/compare/v0.106.0...v0.107.0)
