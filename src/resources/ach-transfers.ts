@@ -258,6 +258,8 @@ export interface ACHTransfer {
    * The lifecycle status of the transfer.
    *
    * - `pending_approval` - The transfer is pending approval.
+   * - `pending_transfer_session_confirmation` - The transfer belongs to a Transfer
+   *   Session that is pending confirmation.
    * - `canceled` - The transfer has been canceled.
    * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `pending_submission` - The transfer is pending submission to the Federal
@@ -270,6 +272,7 @@ export interface ACHTransfer {
    */
   status:
     | 'pending_approval'
+    | 'pending_transfer_session_confirmation'
     | 'canceled'
     | 'pending_reviewing'
     | 'pending_submission'
