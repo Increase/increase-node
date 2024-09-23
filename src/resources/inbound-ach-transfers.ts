@@ -49,8 +49,12 @@ export class InboundACHTransfers extends APIResource {
   /**
    * Decline an Inbound ACH Transfer
    */
-  decline(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
-    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, options);
+  decline(
+    inboundACHTransferId: string,
+    body: InboundACHTransferDeclineParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundACHTransfer> {
+    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, { body, ...options });
   }
 
   /**
@@ -327,10 +331,26 @@ export namespace InboundACHTransfer {
      *   exceeded.
      * - `entity_not_active` - The account's entity is not active.
      * - `group_locked` - Your account is inactive.
-     * - `insufficient_funds` - Your account contains insufficient funds.
      * - `transaction_not_allowed` - The transaction is not allowed per Increase's
      *   terms.
      * - `user_initiated` - Your integration declined this transfer via the API.
+     * - `insufficient_funds` - Your account contains insufficient funds.
+     * - `returned_per_odfi_request` - The originating financial institution asked for
+     *   this transfer to be returned. The receiving bank is complying with the
+     *   request.
+     * - `authorization_revoked_by_customer` - The customer no longer authorizes this
+     *   transaction.
+     * - `payment_stopped` - The customer asked for the payment to be stopped.
+     * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+     *   customer advises that the debit was unauthorized.
+     * - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+     *   payee is deceased.
+     * - `beneficiary_or_account_holder_deceased` - The account holder is deceased.
+     * - `credit_entry_refused_by_receiver` - The customer refused a credit entry.
+     * - `duplicate_entry` - The account holder identified this transaction as a
+     *   duplicate.
+     * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+     *   authorizes this transaction.
      */
     reason:
       | 'ach_route_canceled'
@@ -338,9 +358,18 @@ export namespace InboundACHTransfer {
       | 'breaches_limit'
       | 'entity_not_active'
       | 'group_locked'
-      | 'insufficient_funds'
       | 'transaction_not_allowed'
-      | 'user_initiated';
+      | 'user_initiated'
+      | 'insufficient_funds'
+      | 'returned_per_odfi_request'
+      | 'authorization_revoked_by_customer'
+      | 'payment_stopped'
+      | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
+      | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
+      | 'beneficiary_or_account_holder_deceased'
+      | 'credit_entry_refused_by_receiver'
+      | 'duplicate_entry'
+      | 'corporate_customer_advised_not_authorized';
   }
 
   /**
@@ -745,6 +774,48 @@ export interface InboundACHTransferCreateNotificationOfChangeParams {
   updated_routing_number?: string;
 }
 
+export interface InboundACHTransferDeclineParams {
+  /**
+   * The reason why this transfer will be returned. If this parameter is unset, the
+   * return codes will be `payment_stopped` for debits and
+   * `credit_entry_refused_by_receiver` for credits.
+   *
+   * - `insufficient_funds` - The customer's account has insufficient funds. This
+   *   reason is only allowed for debits. The Nacha return code is R01.
+   * - `returned_per_odfi_request` - The originating financial institution asked for
+   *   this transfer to be returned. The receiving bank is complying with the
+   *   request. The Nacha return code is R06.
+   * - `authorization_revoked_by_customer` - The customer no longer authorizes this
+   *   transaction. The Nacha return code is R07.
+   * - `payment_stopped` - The customer asked for the payment to be stopped. This
+   *   reason is only allowed for debits. The Nacha return code is R08.
+   * - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+   *   customer advises that the debit was unauthorized. The Nacha return code is
+   *   R10.
+   * - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+   *   payee is deceased. The Nacha return code is R14.
+   * - `beneficiary_or_account_holder_deceased` - The account holder is deceased. The
+   *   Nacha return code is R15.
+   * - `credit_entry_refused_by_receiver` - The customer refused a credit entry. This
+   *   reason is only allowed for credits. The Nacha return code is R23.
+   * - `duplicate_entry` - The account holder identified this transaction as a
+   *   duplicate. The Nacha return code is R24.
+   * - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+   *   authorizes this transaction. The Nacha return code is R29.
+   */
+  reason?:
+    | 'insufficient_funds'
+    | 'returned_per_odfi_request'
+    | 'authorization_revoked_by_customer'
+    | 'payment_stopped'
+    | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
+    | 'representative_payee_deceased_or_unable_to_continue_in_that_capacity'
+    | 'beneficiary_or_account_holder_deceased'
+    | 'credit_entry_refused_by_receiver'
+    | 'duplicate_entry'
+    | 'corporate_customer_advised_not_authorized';
+}
+
 export interface InboundACHTransferTransferReturnParams {
   /**
    * The reason why this transfer will be returned. The most usual return codes are
@@ -791,5 +862,6 @@ export namespace InboundACHTransfers {
   export import InboundACHTransfersPage = InboundACHTransfersAPI.InboundACHTransfersPage;
   export import InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
   export import InboundACHTransferCreateNotificationOfChangeParams = InboundACHTransfersAPI.InboundACHTransferCreateNotificationOfChangeParams;
+  export import InboundACHTransferDeclineParams = InboundACHTransfersAPI.InboundACHTransferDeclineParams;
   export import InboundACHTransferTransferReturnParams = InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
 }
