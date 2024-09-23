@@ -212,7 +212,7 @@ Methods:
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">retrieve</a>(inboundACHTransferId) -> InboundACHTransfer</code>
 - <code title="get /inbound_ach_transfers">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">list</a>({ ...params }) -> InboundACHTransfersPage</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">createNotificationOfChange</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
-- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">decline</a>(inboundACHTransferId) -> InboundACHTransfer</code>
+- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">decline</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inboundACHTransfers.<a href="./src/resources/inbound-ach-transfers.ts">transferReturn</a>(inboundACHTransferId, { ...params }) -> InboundACHTransfer</code>
 
 # WireTransfers

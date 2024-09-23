@@ -171,6 +171,7 @@ export {
   InboundACHTransfer,
   InboundACHTransferListParams,
   InboundACHTransferCreateNotificationOfChangeParams,
+  InboundACHTransferDeclineParams,
   InboundACHTransferTransferReturnParams,
   InboundACHTransfersPage,
   InboundACHTransfers,

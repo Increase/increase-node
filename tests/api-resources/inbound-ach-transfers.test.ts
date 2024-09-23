@@ -84,7 +84,10 @@ describe('resource inboundACHTransfers', () => {
   });
 
   test('decline', async () => {
-    const responsePromise = client.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev');
+    const responsePromise = client.inboundACHTransfers.decline(
+      'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+      {},
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -92,15 +95,6 @@ describe('resource inboundACHTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('decline: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.inboundACHTransfers.decline('inbound_ach_transfer_tdrwqr3fq9gnnq49odev', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('transferReturn: only required params', async () => {
