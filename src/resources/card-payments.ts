@@ -1986,7 +1986,7 @@ export namespace CardPayment {
       /**
        * The country the merchant resides in.
        */
-      merchant_country: string;
+      merchant_country: string | null;
 
       /**
        * The merchant descriptor of the merchant the card is transacting with.
