@@ -405,6 +405,7 @@ export namespace Increase {
   export import InboundACHTransfersPage = API.InboundACHTransfersPage;
   export import InboundACHTransferListParams = API.InboundACHTransferListParams;
   export import InboundACHTransferCreateNotificationOfChangeParams = API.InboundACHTransferCreateNotificationOfChangeParams;
+  export import InboundACHTransferDeclineParams = API.InboundACHTransferDeclineParams;
   export import InboundACHTransferTransferReturnParams = API.InboundACHTransferTransferReturnParams;
 
   export import WireTransfers = API.WireTransfers;
