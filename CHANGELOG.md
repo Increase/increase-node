@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.109.0 (2024-09-23)
+
+Full Changelog: [v0.108.0...v0.109.0](https://github.com/Increase/increase-node/compare/v0.108.0...v0.109.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#626](https://github.com/Increase/increase-node/issues/626)) ([111e904](https://github.com/Increase/increase-node/commit/111e904ebf0e20c1755b6e095073810b6d838b6a))
+* **client:** send retry count header ([#624](https://github.com/Increase/increase-node/issues/624)) ([2f7f6ae](https://github.com/Increase/increase-node/commit/2f7f6ae3fa4a19c803292a8b6075a4de8498fbc5))
+
 ## 0.108.0 (2024-09-19)
 
 Full Changelog: [v0.107.1...v0.108.0](https://github.com/Increase/increase-node/compare/v0.107.1...v0.108.0)
