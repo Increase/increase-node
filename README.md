@@ -29,7 +29,7 @@ async function main() {
   const account = await client.accounts.create({
     name: 'New Account!',
     entity_id: 'entity_n8y8tnk2p9339ti393yi',
-    program_id: 'program_i2v2os4mwza1oetokh9i',
+    program_id: 'program_i2v2os4mwza1oetokh8i',
   });
 
   console.log(account.id);
