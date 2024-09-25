@@ -27,6 +27,7 @@ describe('resource cardDisputes', () => {
     const response = await client.cardDisputes.create({
       disputed_transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
       explanation: 'Unauthorized recurring transaction.',
+      amount: 1,
     });
   });
 
