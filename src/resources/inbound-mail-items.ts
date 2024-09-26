@@ -76,11 +76,6 @@ export interface InboundMailItem {
   rejection_reason: 'no_matching_lockbox' | 'no_check' | 'lockbox_not_active' | null;
 
   /**
-   * The return address as written on the mail item.
-   */
-  return_address: InboundMailItem.ReturnAddress | null;
-
-  /**
    * If the mail item has been processed.
    *
    * - `pending` - The mail item is pending processing.
@@ -94,43 +89,6 @@ export interface InboundMailItem {
    * `inbound_mail_item`.
    */
   type: 'inbound_mail_item';
-}
-
-export namespace InboundMailItem {
-  /**
-   * The return address as written on the mail item.
-   */
-  export interface ReturnAddress {
-    /**
-     * The return address city.
-     */
-    city: string | null;
-
-    /**
-     * The return address line1.
-     */
-    line1: string | null;
-
-    /**
-     * The return address line2.
-     */
-    line2: string | null;
-
-    /**
-     * The return address name.
-     */
-    name: string | null;
-
-    /**
-     * The return address postal code.
-     */
-    postal_code: string | null;
-
-    /**
-     * The return address state.
-     */
-    state: string | null;
-  }
 }
 
 export interface InboundMailItemListParams extends PageParams {
