@@ -90,6 +90,12 @@ export interface InboundCheckDeposit {
   account_number_id: string | null;
 
   /**
+   * If the deposit or the return was adjusted by the sending institution, this will
+   * contain details of the adjustments.
+   */
+  adjustments: Array<InboundCheckDeposit.Adjustment>;
+
+  /**
    * The deposited amount in the minor unit of the destination account currency. For
    * dollars, for example, this is cents.
    */
@@ -186,6 +192,31 @@ export interface InboundCheckDeposit {
 }
 
 export namespace InboundCheckDeposit {
+  export interface Adjustment {
+    /**
+     * The time at which the return adjustment was received.
+     */
+    adjusted_at: string;
+
+    /**
+     * The amount of the adjustment.
+     */
+    amount: number;
+
+    /**
+     * The reason for the adjustment.
+     *
+     * - `late_return` - The return was initiated too late and the receiving
+     *   institution has responded with a Late Return Claim.
+     */
+    reason: 'late_return';
+
+    /**
+     * The id of the transaction for the adjustment.
+     */
+    transaction_id: string;
+  }
+
   /**
    * If you requested a return of this deposit, this will contain details of the
    * return.
