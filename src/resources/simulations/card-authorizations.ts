@@ -61,6 +61,50 @@ export interface CardAuthorizationCreateParams {
   card_id?: string;
 
   /**
+   * Forces a card decline with a specific reason. No real time decision will be
+   * sent.
+   *
+   * - `card_not_active` - The Card was not active.
+   * - `physical_card_not_active` - The Physical Card was not active.
+   * - `entity_not_active` - The account's entity was not active.
+   * - `group_locked` - The account was inactive.
+   * - `insufficient_funds` - The Card's Account did not have a sufficient available
+   *   balance.
+   * - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+   * - `card_expiration_mismatch` - The given expiration date did not match the
+   *   card's value. Only applies when a CVV2 is present.
+   * - `transaction_not_allowed` - The attempted card transaction is not allowed per
+   *   Increase's terms.
+   * - `breaches_limit` - The transaction was blocked by a Limit.
+   * - `webhook_declined` - Your application declined the transaction via webhook.
+   * - `webhook_timed_out` - Your application webhook did not respond without the
+   *   required timeout.
+   * - `declined_by_stand_in_processing` - Declined by stand-in processing.
+   * - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
+   *   authorization request cryptogram.
+   * - `missing_original_authorization` - The original card authorization for this
+   *   incremental authorization does not exist.
+   * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
+   *   reach out to support@increase.com for more information.
+   */
+  decline_reason?:
+    | 'card_not_active'
+    | 'physical_card_not_active'
+    | 'entity_not_active'
+    | 'group_locked'
+    | 'insufficient_funds'
+    | 'cvv2_mismatch'
+    | 'card_expiration_mismatch'
+    | 'transaction_not_allowed'
+    | 'breaches_limit'
+    | 'webhook_declined'
+    | 'webhook_timed_out'
+    | 'declined_by_stand_in_processing'
+    | 'invalid_physical_card'
+    | 'missing_original_authorization'
+    | 'suspected_fraud';
+
+  /**
    * The identifier of the Digital Wallet Token to be authorized.
    */
   digital_wallet_token_id?: string;
