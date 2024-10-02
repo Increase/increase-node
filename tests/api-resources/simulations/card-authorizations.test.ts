@@ -25,6 +25,7 @@ describe('resource cardAuthorizations', () => {
       amount: 1000,
       card_id: 'card_oubs0hwk5rn6knuecxg2',
       digital_wallet_token_id: 'digital_wallet_token_id',
+      direction: 'settlement',
       event_subscription_id: 'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
       merchant_acceptor_id: '5665270011000168',
       merchant_category_code: '5734',
