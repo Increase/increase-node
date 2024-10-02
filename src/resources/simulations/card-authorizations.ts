@@ -66,6 +66,17 @@ export interface CardAuthorizationCreateParams {
   digital_wallet_token_id?: string;
 
   /**
+   * The direction describes the direction the funds will move, either from the
+   * cardholder to the merchant or from the merchant to the cardholder.
+   *
+   * - `settlement` - A regular card authorization where funds are debited from the
+   *   cardholder.
+   * - `refund` - A refund card authorization, sometimes referred to as a credit
+   *   voucher authorization, where funds are credited to the cardholder.
+   */
+  direction?: 'settlement' | 'refund';
+
+  /**
    * The identifier of the Event Subscription to use. If provided, will override the
    * default real time event subscription. Because you can only create one real time
    * decision event subscription, you can use this field to route events to any
