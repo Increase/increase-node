@@ -208,8 +208,10 @@ export namespace InboundCheckDeposit {
      *
      * - `late_return` - The return was initiated too late and the receiving
      *   institution has responded with a Late Return Claim.
+     * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+     *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
      */
-    reason: 'late_return';
+    reason: 'late_return' | 'wrong_payee_credit';
 
     /**
      * The id of the transaction for the adjustment.
