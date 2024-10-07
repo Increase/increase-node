@@ -177,6 +177,8 @@ export interface Event {
    *   two-factor authentication.
    * - `real_time_decision.card_authentication_requested` - Occurs whenever a
    *   Real-Time Decision is created in response to 3DS authentication.
+   * - `real_time_decision.card_authentication_challenge_requested` - Occurs whenever
+   *   a Real-Time Decision is created in response to 3DS authentication challenges.
    * - `real_time_payments_transfer.created` - Occurs whenever a Real-Time Payments
    *   Transfer is created.
    * - `real_time_payments_transfer.updated` - Occurs whenever a Real-Time Payments
@@ -272,6 +274,7 @@ export interface Event {
     | 'real_time_decision.digital_wallet_token_requested'
     | 'real_time_decision.digital_wallet_authentication_requested'
     | 'real_time_decision.card_authentication_requested'
+    | 'real_time_decision.card_authentication_challenge_requested'
     | 'real_time_payments_transfer.created'
     | 'real_time_payments_transfer.updated'
     | 'real_time_payments_request_for_payment.created'
@@ -391,6 +394,7 @@ export namespace EventListParams {
       | 'real_time_decision.digital_wallet_token_requested'
       | 'real_time_decision.digital_wallet_authentication_requested'
       | 'real_time_decision.card_authentication_requested'
+      | 'real_time_decision.card_authentication_challenge_requested'
       | 'real_time_payments_transfer.created'
       | 'real_time_payments_transfer.updated'
       | 'real_time_payments_request_for_payment.created'
