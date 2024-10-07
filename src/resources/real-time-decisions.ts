@@ -42,6 +42,11 @@ export interface RealTimeDecision {
   card_authentication: RealTimeDecision.CardAuthentication | null;
 
   /**
+   * Fields related to a 3DS authentication attempt.
+   */
+  card_authentication_challenge: RealTimeDecision.CardAuthenticationChallenge | null;
+
+  /**
    * Fields related to a card authorization.
    */
   card_authorization: RealTimeDecision.CardAuthorization | null;
@@ -51,6 +56,8 @@ export interface RealTimeDecision {
    *
    * - `card_authorization_requested` - A card is being authorized.
    * - `card_authentication_requested` - 3DS authentication is requested.
+   * - `card_authentication_challenge_requested` - 3DS authentication challenge
+   *   requires cardholder involvement.
    * - `digital_wallet_token_requested` - A card is being loaded into a digital
    *   wallet.
    * - `digital_wallet_authentication_requested` - A card is being loaded into a
@@ -59,6 +66,7 @@ export interface RealTimeDecision {
   category:
     | 'card_authorization_requested'
     | 'card_authentication_requested'
+    | 'card_authentication_challenge_requested'
     | 'digital_wallet_token_requested'
     | 'digital_wallet_authentication_requested';
 
@@ -130,6 +138,42 @@ export namespace RealTimeDecision {
      * Available in the API once the card authentication has completed.
      */
     upcoming_card_payment_id: string;
+  }
+
+  /**
+   * Fields related to a 3DS authentication attempt.
+   */
+  export interface CardAuthenticationChallenge {
+    /**
+     * The identifier of the Account the card belongs to.
+     */
+    account_id: string;
+
+    /**
+     * The identifier of the Card that is being tokenized.
+     */
+    card_id: string;
+
+    /**
+     * The identifier of the Card Payment this authentication challenge attempt belongs
+     * to.
+     */
+    card_payment_id: string;
+
+    /**
+     * The one-time code delivered to the cardholder.
+     */
+    one_time_code: string;
+
+    /**
+     * Whether or not the challenge was delivered to the cardholder.
+     *
+     * - `success` - Your application successfully delivered the one-time code to the
+     *   cardholder.
+     * - `failure` - Your application was unable to deliver the one-time code to the
+     *   cardholder.
+     */
+    result: 'success' | 'failure' | null;
   }
 
   /**
@@ -650,6 +694,12 @@ export interface RealTimeDecisionActionParams {
   card_authentication?: RealTimeDecisionActionParams.CardAuthentication;
 
   /**
+   * If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+   * this object contains your response.
+   */
+  card_authentication_challenge?: RealTimeDecisionActionParams.CardAuthenticationChallenge;
+
+  /**
    * If the Real-Time Decision relates to a card authorization attempt, this object
    * contains your response to the authorization.
    */
@@ -683,6 +733,23 @@ export namespace RealTimeDecisionActionParams {
      * - `deny` - Deny the authentication attempt.
      */
     decision: 'approve' | 'challenge' | 'deny';
+  }
+
+  /**
+   * If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+   * this object contains your response.
+   */
+  export interface CardAuthenticationChallenge {
+    /**
+     * Whether the card authentication challenge was successfully delivered to the
+     * cardholder.
+     *
+     * - `success` - Your application successfully delivered the one-time code to the
+     *   cardholder.
+     * - `failure` - Your application was unable to deliver the one-time code to the
+     *   cardholder.
+     */
+    result: 'success' | 'failure';
   }
 
   /**
