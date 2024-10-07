@@ -37,6 +37,11 @@ export interface RealTimeDecision {
   id: string;
 
   /**
+   * Fields related to a 3DS authentication attempt.
+   */
+  card_authentication: RealTimeDecision.CardAuthentication | null;
+
+  /**
    * Fields related to a card authorization.
    */
   card_authorization: RealTimeDecision.CardAuthorization | null;
@@ -45,6 +50,7 @@ export interface RealTimeDecision {
    * The category of the Real-Time Decision.
    *
    * - `card_authorization_requested` - A card is being authorized.
+   * - `card_authentication_requested` - 3DS authentication is requested.
    * - `digital_wallet_token_requested` - A card is being loaded into a digital
    *   wallet.
    * - `digital_wallet_authentication_requested` - A card is being loaded into a
@@ -52,6 +58,7 @@ export interface RealTimeDecision {
    */
   category:
     | 'card_authorization_requested'
+    | 'card_authentication_requested'
     | 'digital_wallet_token_requested'
     | 'digital_wallet_authentication_requested';
 
@@ -94,6 +101,37 @@ export interface RealTimeDecision {
 }
 
 export namespace RealTimeDecision {
+  /**
+   * Fields related to a 3DS authentication attempt.
+   */
+  export interface CardAuthentication {
+    /**
+     * The identifier of the Account the card belongs to.
+     */
+    account_id: string;
+
+    /**
+     * The identifier of the Card that is being tokenized.
+     */
+    card_id: string;
+
+    /**
+     * Whether or not the authentication attempt was approved.
+     *
+     * - `approve` - Approve the authentication attempt without triggering a challenge.
+     * - `challenge` - Request further validation before approving the authentication
+     *   attempt.
+     * - `deny` - Deny the authentication attempt.
+     */
+    decision: 'approve' | 'challenge' | 'deny' | null;
+
+    /**
+     * The identifier of the Card Payment this authentication attempt will belong to.
+     * Available in the API once the card authentication has completed.
+     */
+    upcoming_card_payment_id: string;
+  }
+
   /**
    * Fields related to a card authorization.
    */
@@ -606,6 +644,12 @@ export namespace RealTimeDecision {
 
 export interface RealTimeDecisionActionParams {
   /**
+   * If the Real-Time Decision relates to a 3DS card authentication attempt, this
+   * object contains your response to the authentication.
+   */
+  card_authentication?: RealTimeDecisionActionParams.CardAuthentication;
+
+  /**
    * If the Real-Time Decision relates to a card authorization attempt, this object
    * contains your response to the authorization.
    */
@@ -625,6 +669,22 @@ export interface RealTimeDecisionActionParams {
 }
 
 export namespace RealTimeDecisionActionParams {
+  /**
+   * If the Real-Time Decision relates to a 3DS card authentication attempt, this
+   * object contains your response to the authentication.
+   */
+  export interface CardAuthentication {
+    /**
+     * Whether the card authentication attempt should be approved or declined.
+     *
+     * - `approve` - Approve the authentication attempt without triggering a challenge.
+     * - `challenge` - Request further validation before approving the authentication
+     *   attempt.
+     * - `deny` - Deny the authentication attempt.
+     */
+    decision: 'approve' | 'challenge' | 'deny';
+  }
+
   /**
    * If the Real-Time Decision relates to a card authorization attempt, this object
    * contains your response to the authorization.
