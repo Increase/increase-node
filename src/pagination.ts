@@ -36,7 +36,7 @@ export class Page<Item> extends AbstractPage<Item> implements PageResponse<Item>
     super(client, response, body, options);
 
     this.data = body.data || [];
-    this.next_cursor = body.next_cursor || '';
+    this.next_cursor = body.next_cursor || null;
   }
 
   getPaginatedItems(): Item[] {
