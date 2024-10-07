@@ -128,11 +128,13 @@ export interface ProofOfAuthorizationRequestSubmission {
    * - `pending_review` - The proof of authorization request submission is pending
    *   review.
    * - `rejected` - The proof of authorization request submission was rejected.
+   * - `canceled` - The proof of authorization request submission was canceled and
+   *   replaced with another.
    * - `pending_sending` - The proof of authorization request submission is pending
    *   sending.
    * - `sent` - The proof of authorization request submission was sent.
    */
-  status: 'pending_review' | 'rejected' | 'pending_sending' | 'sent';
+  status: 'pending_review' | 'rejected' | 'canceled' | 'pending_sending' | 'sent';
 
   /**
    * A constant representing the object's type. For this resource it will always be
