@@ -266,6 +266,11 @@ export interface AccountListParams extends PageParams {
   informational_entity_id?: string;
 
   /**
+   * Filter Accounts for those in a specific Program.
+   */
+  program_id?: string;
+
+  /**
    * Filter Accounts for those with the specified status.
    *
    * - `open` - Open Accounts that are ready to use.
