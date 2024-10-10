@@ -780,6 +780,23 @@ export namespace RealTimeDecisionActionParams {
      *   cardholder.
      */
     result: 'success' | 'failure';
+
+    success?: DigitalWalletAuthentication.Success;
+  }
+
+  export namespace DigitalWalletAuthentication {
+    export interface Success {
+      /**
+       * The email address that was used to verify the cardholder via one-time passcode.
+       */
+      email?: string;
+
+      /**
+       * The phone number that was used to verify the cardholder via one-time passcode
+       * over SMS.
+       */
+      phone?: string;
+    }
   }
 
   /**
