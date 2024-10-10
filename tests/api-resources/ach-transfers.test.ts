@@ -60,6 +60,7 @@ describe('resource achTransfers', () => {
       require_approval: true,
       routing_number: '101050001',
       standard_entry_class_code: 'corporate_credit_or_debit',
+      transaction_timing: 'synchronous',
     });
   });
 
