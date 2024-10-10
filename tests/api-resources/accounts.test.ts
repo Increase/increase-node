@@ -92,6 +92,7 @@ describe('resource accounts', () => {
           idempotency_key: 'x',
           informational_entity_id: 'informational_entity_id',
           limit: 1,
+          program_id: 'program_id',
           status: 'open',
         },
         { path: '/_stainless_unknown_path' },
