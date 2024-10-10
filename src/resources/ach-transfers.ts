@@ -1099,6 +1099,15 @@ export interface ACHTransferCreateParams {
     | 'corporate_trade_exchange'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
+
+  /**
+   * The timing of the transaction.
+   *
+   * - `synchronous` - A Transaction will be created immediately.
+   * - `asynchronous` - A Transaction will be created when the funds settle at the
+   *   Federal Reserve.
+   */
+  transaction_timing?: 'synchronous' | 'asynchronous';
 }
 
 export namespace ACHTransferCreateParams {
