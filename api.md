@@ -655,6 +655,7 @@ Methods:
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/acknowledge">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">acknowledge</a>(achTransferId) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">createNotificationOfChange</a>(achTransferId, { ...params }) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">return</a>(achTransferId, { ...params }) -> ACHTransfer</code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/settle">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">settle</a>(achTransferId) -> ACHTransfer</code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.achTransfers.<a href="./src/resources/simulations/ach-transfers.ts">submit</a>(achTransferId) -> ACHTransfer</code>
 
 ## CheckTransfers
