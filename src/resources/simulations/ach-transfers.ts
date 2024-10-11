@@ -50,6 +50,16 @@ export class ACHTransfers extends APIResource {
   }
 
   /**
+   * Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
+   * Reserve. This transfer must first have a `status` of `submitted`. Without this
+   * simulation the transfer will eventually settle on its own following the same
+   * Federal Reserve timeline as in production.
+   */
+  settle(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/settle`, options);
+  }
+
+  /**
    * Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
    * Reserve. This transfer must first have a `status` of `pending_approval` or
    * `pending_submission`. In production, Increase submits ACH Transfers to the
