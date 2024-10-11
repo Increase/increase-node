@@ -473,9 +473,12 @@ export namespace CheckTransfer {
       /**
        * The type of tracking event.
        *
+       * - `in_transit` - The check is in transit.
+       * - `processed_for_delivery` - The check has been processed for delivery.
+       * - `delivered` - The check has been delivered.
        * - `returned_to_sender` - Delivery failed and the check was returned to sender.
        */
-      category: 'returned_to_sender';
+      category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'returned_to_sender';
 
       /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
