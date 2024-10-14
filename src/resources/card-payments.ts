@@ -150,6 +150,8 @@ export namespace CardPayment {
      *
      * - `card_authorization` - Card Authorization: details will be under the
      *   `card_authorization` object.
+     * - `card_authentication` - Card Authentication: details will be under the
+     *   `card_authentication` object.
      * - `card_validation` - Card Validation: details will be under the
      *   `card_validation` object.
      * - `card_decline` - Card Decline: details will be under the `card_decline`
@@ -169,6 +171,7 @@ export namespace CardPayment {
      */
     category:
       | 'card_authorization'
+      | 'card_authentication'
       | 'card_validation'
       | 'card_decline'
       | 'card_reversal'
