@@ -236,6 +236,12 @@ export interface ACHTransfer {
   routing_number: string;
 
   /**
+   * A subhash containing information about when and how the transfer settled at the
+   * Federal Reserve.
+   */
+  settlement: ACHTransfer.Settlement | null;
+
+  /**
    * The Standard Entry Class (SEC) code to use for the transfer.
    *
    * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
@@ -922,6 +928,18 @@ export namespace ACHTransfer {
      * The identifier of the ACH Transfer associated with this return.
      */
     transfer_id: string;
+  }
+
+  /**
+   * A subhash containing information about when and how the transfer settled at the
+   * Federal Reserve.
+   */
+  export interface Settlement {
+    /**
+     * When the funds for this transfer have settled at the destination bank at the
+     * Federal Reserve.
+     */
+    settled_at: string;
   }
 
   /**
