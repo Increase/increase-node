@@ -255,6 +255,7 @@ export namespace CheckDeposit {
      *   field.
      * - `suspected_fraud` - This check is suspected to be fraudulent.
      * - `deposit_window_expired` - This check's deposit window has expired.
+     * - `requested_by_user` - The check was rejected at the user's request.
      * - `unknown` - The check was rejected for an unknown reason.
      */
     reason:
@@ -267,6 +268,7 @@ export namespace CheckDeposit {
       | 'missing_required_data_elements'
       | 'suspected_fraud'
       | 'deposit_window_expired'
+      | 'requested_by_user'
       | 'unknown';
 
     /**
