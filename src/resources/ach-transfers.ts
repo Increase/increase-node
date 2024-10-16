@@ -999,7 +999,7 @@ export interface ACHTransferCreateParams {
   account_id: string;
 
   /**
-   * The transfer amount in cents. A positive amount originates a credit transfer
+   * The transfer amount in USD cents. A positive amount originates a credit transfer
    * pushing funds to the receiving account. A negative amount originates a debit
    * transfer pulling funds from the receiving account.
    */
