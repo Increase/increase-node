@@ -202,6 +202,12 @@ export interface Entity {
   supplemental_documents: Array<SupplementalDocumentsAPI.EntitySupplementalDocument>;
 
   /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  third_party_verification: Entity.ThirdPartyVerification | null;
+
+  /**
    * Details of the trust entity. Will be present if `structure` is equal to `trust`.
    */
   trust: Entity.Trust | null;
@@ -677,6 +683,24 @@ export namespace Entity {
   }
 
   /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  export interface ThirdPartyVerification {
+    /**
+     * The reference identifier for the third party verification.
+     */
+    reference: string;
+
+    /**
+     * The vendor that was used to perform the verification.
+     *
+     * - `alloy` - Alloy
+     */
+    vendor: 'alloy';
+  }
+
+  /**
    * Details of the trust entity. Will be present if `structure` is equal to `trust`.
    */
   export interface Trust {
@@ -996,6 +1020,12 @@ export interface EntityCreateParams {
    * Additional documentation associated with the entity.
    */
   supplemental_documents?: Array<EntityCreateParams.SupplementalDocument>;
+
+  /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  third_party_verification?: EntityCreateParams.ThirdPartyVerification;
 
   /**
    * Details of the trust entity to create. Required if `structure` is equal to
@@ -1798,6 +1828,24 @@ export namespace EntityCreateParams {
      * The identifier of the File containing the document.
      */
     file_id: string;
+  }
+
+  /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  export interface ThirdPartyVerification {
+    /**
+     * The reference identifier for the third party verification.
+     */
+    reference: string;
+
+    /**
+     * The vendor that was used to perform the verification.
+     *
+     * - `alloy` - Alloy
+     */
+    vendor: 'alloy';
   }
 
   /**
