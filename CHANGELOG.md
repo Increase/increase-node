@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.129.0 (2024-10-16)
+
+Full Changelog: [v0.128.0...v0.129.0](https://github.com/Increase/increase-node/compare/v0.128.0...v0.129.0)
+
+### Features
+
+* **api:** api update ([#692](https://github.com/Increase/increase-node/issues/692)) ([237d1d3](https://github.com/Increase/increase-node/commit/237d1d3c16aae6d758ad49b41555ad0e58168d26))
+
 ## 0.128.0 (2024-10-16)
 
 Full Changelog: [v0.127.0...v0.128.0](https://github.com/Increase/increase-node/compare/v0.127.0...v0.128.0)
