@@ -209,8 +209,7 @@ export namespace DeclinedTransaction {
       id: string;
 
       /**
-       * The declined amount in the minor unit of the destination account currency. For
-       * dollars, for example, this is cents.
+       * The declined amount in USD cents.
        */
       amount: number;
 
@@ -744,8 +743,7 @@ export namespace DeclinedTransaction {
      */
     export interface CheckDecline {
       /**
-       * The declined amount in the minor unit of the destination account currency. For
-       * dollars, for example, this is cents.
+       * The declined amount in USD cents.
        */
       amount: number;
 

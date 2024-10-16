@@ -193,7 +193,7 @@ export interface WireDrawdownRequestCreateParams {
   account_number_id: string;
 
   /**
-   * The amount requested from the recipient, in cents.
+   * The amount requested from the recipient, in USD cents.
    */
   amount: number;
 

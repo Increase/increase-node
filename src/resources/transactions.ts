@@ -2290,8 +2290,7 @@ export namespace Transaction {
      */
     export interface CheckDepositReturn {
       /**
-       * The amount in the minor unit of the transaction's currency. For dollars, for
-       * example, this is cents.
+       * The returned amount in USD cents.
        */
       amount: number;
 
@@ -2481,8 +2480,7 @@ export namespace Transaction {
       addenda: InboundACHTransfer.Addenda | null;
 
       /**
-       * The amount in the minor unit of the destination account currency. For dollars,
-       * for example, this is cents.
+       * The transfer amount in USD cents.
        */
       amount: number;
 
