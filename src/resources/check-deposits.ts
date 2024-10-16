@@ -57,8 +57,7 @@ export interface CheckDeposit {
   account_id: string;
 
   /**
-   * The deposited amount in the minor unit of the destination account currency. For
-   * dollars, for example, this is cents.
+   * The deposited amount in USD cents.
    */
   amount: number;
 
@@ -283,8 +282,7 @@ export namespace CheckDeposit {
    */
   export interface DepositReturn {
     /**
-     * The amount in the minor unit of the transaction's currency. For dollars, for
-     * example, this is cents.
+     * The returned amount in USD cents.
      */
     amount: number;
 
@@ -485,8 +483,7 @@ export interface CheckDepositCreateParams {
   account_id: string;
 
   /**
-   * The deposit amount in the minor unit of the account currency. For dollars, for
-   * example, this is cents.
+   * The deposit amount in USD cents.
    */
   amount: number;
 

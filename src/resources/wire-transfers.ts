@@ -460,7 +460,7 @@ export interface WireTransferCreateParams {
   account_id: string;
 
   /**
-   * The transfer amount in cents.
+   * The transfer amount in USD cents.
    */
   amount: number;
 

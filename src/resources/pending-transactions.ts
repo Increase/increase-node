@@ -264,8 +264,7 @@ export namespace PendingTransaction {
      */
     export interface ACHTransferInstruction {
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The pending amount in USD cents.
        */
       amount: number;
 
@@ -678,8 +677,7 @@ export namespace PendingTransaction {
      */
     export interface CheckDepositInstruction {
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The pending amount in USD cents.
        */
       amount: number;
 
@@ -720,8 +718,7 @@ export namespace PendingTransaction {
      */
     export interface CheckTransferInstruction {
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The transfer amount in USD cents.
        */
       amount: number;
 
@@ -822,8 +819,7 @@ export namespace PendingTransaction {
      */
     export interface RealTimePaymentsTransferInstruction {
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The transfer amount in USD cents.
        */
       amount: number;
 
@@ -845,8 +841,7 @@ export namespace PendingTransaction {
       account_number: string;
 
       /**
-       * The pending amount in the minor unit of the transaction's currency. For dollars,
-       * for example, this is cents.
+       * The transfer amount in USD cents.
        */
       amount: number;
 

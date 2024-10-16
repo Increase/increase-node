@@ -96,8 +96,7 @@ export interface InboundCheckDeposit {
   adjustments: Array<InboundCheckDeposit.Adjustment>;
 
   /**
-   * The deposited amount in the minor unit of the destination account currency. For
-   * dollars, for example, this is cents.
+   * The deposited amount in USD cents.
    */
   amount: number;
 
