@@ -178,6 +178,7 @@ describe('resource entities', () => {
         confirmed_no_us_tax_id: true,
       },
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
+      third_party_verification: { reference: 'x', vendor: 'alloy' },
       trust: {
         address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
         category: 'revocable',
