@@ -56,6 +56,12 @@ export interface CardAuthorizationCreateParams {
   amount: number;
 
   /**
+   * The identifier of a Card Payment with a `card_authentication` if you want to
+   * simulate an authenticated authorization.
+   */
+  authenticated_card_payment_id?: string;
+
+  /**
    * The identifier of the Card to be authorized.
    */
   card_id?: string;
