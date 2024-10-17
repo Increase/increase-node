@@ -695,9 +695,10 @@ export namespace Entity {
     /**
      * The vendor that was used to perform the verification.
      *
-     * - `alloy` - Alloy
+     * - `alloy` - Alloy. See https://alloy.com for more information.
+     * - `middesk` - Middesk. See https://middesk.com for more information.
      */
-    vendor: 'alloy';
+    vendor: 'alloy' | 'middesk';
   }
 
   /**
@@ -1843,9 +1844,10 @@ export namespace EntityCreateParams {
     /**
      * The vendor that was used to perform the verification.
      *
-     * - `alloy` - Alloy
+     * - `alloy` - Alloy. See https://alloy.com for more information.
+     * - `middesk` - Middesk. See https://middesk.com for more information.
      */
-    vendor: 'alloy';
+    vendor: 'alloy' | 'middesk';
   }
 
   /**
