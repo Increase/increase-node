@@ -485,6 +485,11 @@ export namespace CheckTransfer {
        * the tracking event took place.
        */
       created_at: string;
+
+      /**
+       * The postal code where the event took place.
+       */
+      postal_code: string;
     }
   }
 
