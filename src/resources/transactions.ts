@@ -2467,6 +2467,11 @@ export namespace Transaction {
        * The start of this payment's fee period, usually the first day of a month.
        */
       fee_period_start: string;
+
+      /**
+       * The Program for which this fee was incurred.
+       */
+      program_id: string | null;
     }
 
     /**
