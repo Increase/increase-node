@@ -267,25 +267,25 @@ export interface ACHTransfer {
    * - `pending_transfer_session_confirmation` - The transfer belongs to a Transfer
    *   Session that is pending confirmation.
    * - `canceled` - The transfer has been canceled.
-   * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `pending_submission` - The transfer is pending submission to the Federal
    *   Reserve.
-   * - `submitted` - The transfer is complete.
-   * - `returned` - The transfer has been returned.
+   * - `pending_reviewing` - The transfer is pending review by Increase.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
    * - `rejected` - The transfer has been rejected.
+   * - `submitted` - The transfer is complete.
+   * - `returned` - The transfer has been returned.
    */
   status:
     | 'pending_approval'
     | 'pending_transfer_session_confirmation'
     | 'canceled'
-    | 'pending_reviewing'
     | 'pending_submission'
-    | 'submitted'
-    | 'returned'
+    | 'pending_reviewing'
     | 'requires_attention'
-    | 'rejected';
+    | 'rejected'
+    | 'submitted'
+    | 'returned';
 
   /**
    * After the transfer is submitted to FedACH, this will contain supplemental
