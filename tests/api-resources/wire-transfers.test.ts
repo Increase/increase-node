@@ -42,6 +42,7 @@ describe('resource wireTransfers', () => {
       originator_name: 'x',
       require_approval: true,
       routing_number: '101050001',
+      source_account_number_id: 'source_account_number_id',
     });
   });
 
