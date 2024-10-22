@@ -198,6 +198,11 @@ export interface WireTransfer {
   routing_number: string;
 
   /**
+   * The Account Number that was passed to the wire's recipient.
+   */
+  source_account_number_id: string | null;
+
+  /**
    * The lifecycle status of the transfer.
    *
    * - `pending_approval` - The transfer is pending approval.
@@ -534,6 +539,11 @@ export interface WireTransferCreateParams {
    * destination account.
    */
   routing_number?: string;
+
+  /**
+   * The ID of an Account Number that will be passed to the wire's recipient
+   */
+  source_account_number_id?: string;
 }
 
 export interface WireTransferListParams extends PageParams {
