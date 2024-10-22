@@ -191,27 +191,27 @@ export interface CheckTransfer {
    * The lifecycle status of the transfer.
    *
    * - `pending_approval` - The transfer is awaiting approval.
-   * - `pending_submission` - The transfer is pending submission.
-   * - `pending_mailing` - The check is queued for mailing.
-   * - `mailed` - The check has been mailed.
    * - `canceled` - The transfer has been canceled.
-   * - `deposited` - The check has been deposited.
-   * - `stopped` - A stop-payment was requested for this check.
-   * - `rejected` - The transfer has been rejected.
+   * - `pending_submission` - The transfer is pending submission.
    * - `requires_attention` - The transfer requires attention from an Increase
    *   operator.
+   * - `rejected` - The transfer has been rejected.
+   * - `pending_mailing` - The check is queued for mailing.
+   * - `mailed` - The check has been mailed.
+   * - `deposited` - The check has been deposited.
+   * - `stopped` - A stop-payment was requested for this check.
    * - `returned` - The transfer has been returned.
    */
   status:
     | 'pending_approval'
+    | 'canceled'
     | 'pending_submission'
+    | 'requires_attention'
+    | 'rejected'
     | 'pending_mailing'
     | 'mailed'
-    | 'canceled'
     | 'deposited'
     | 'stopped'
-    | 'rejected'
-    | 'requires_attention'
     | 'returned';
 
   /**
