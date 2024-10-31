@@ -7,8 +7,9 @@ import * as InboundRealTimePaymentsTransfersAPI from '../inbound-real-time-payme
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
   /**
-   * Simulates an inbound Real-Time Payments transfer to your account. Real-Time
-   * Payments are a beta feature.
+   * Simulates an
+   * [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+   * your account. Real-Time Payments are a beta feature.
    */
   create(
     body: InboundRealTimePaymentsTransferCreateParams,

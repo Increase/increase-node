@@ -7,9 +7,10 @@ import * as RealTimePaymentsTransfersAPI from '../real-time-payments-transfers';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
-   * Simulates submission of a Real-Time Payments transfer and handling the response
-   * from the destination financial institution. This transfer must first have a
-   * `status` of `pending_submission`.
+   * Simulates submission of a
+   * [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
+   * response from the destination financial institution. This transfer must first
+   * have a `status` of `pending_submission`.
    */
   complete(
     realTimePaymentsTransferId: string,
