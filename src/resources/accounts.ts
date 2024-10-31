@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as AccountsAPI from './accounts';
 import { Page, type PageParams } from '../pagination';
 
 export class Accounts extends APIResource {
@@ -314,12 +313,16 @@ export interface AccountBalanceParams {
   at_time?: string;
 }
 
-export namespace Accounts {
-  export import Account = AccountsAPI.Account;
-  export import BalanceLookup = AccountsAPI.BalanceLookup;
-  export import AccountsPage = AccountsAPI.AccountsPage;
-  export import AccountCreateParams = AccountsAPI.AccountCreateParams;
-  export import AccountUpdateParams = AccountsAPI.AccountUpdateParams;
-  export import AccountListParams = AccountsAPI.AccountListParams;
-  export import AccountBalanceParams = AccountsAPI.AccountBalanceParams;
+Accounts.AccountsPage = AccountsPage;
+
+export declare namespace Accounts {
+  export {
+    type Account as Account,
+    type BalanceLookup as BalanceLookup,
+    AccountsPage as AccountsPage,
+    type AccountCreateParams as AccountCreateParams,
+    type AccountUpdateParams as AccountUpdateParams,
+    type AccountListParams as AccountListParams,
+    type AccountBalanceParams as AccountBalanceParams,
+  };
 }

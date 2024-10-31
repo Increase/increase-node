@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class InboundACHTransfers extends APIResource {
@@ -857,11 +856,15 @@ export interface InboundACHTransferTransferReturnParams {
     | 'corporate_customer_advised_not_authorized';
 }
 
-export namespace InboundACHTransfers {
-  export import InboundACHTransfer = InboundACHTransfersAPI.InboundACHTransfer;
-  export import InboundACHTransfersPage = InboundACHTransfersAPI.InboundACHTransfersPage;
-  export import InboundACHTransferListParams = InboundACHTransfersAPI.InboundACHTransferListParams;
-  export import InboundACHTransferCreateNotificationOfChangeParams = InboundACHTransfersAPI.InboundACHTransferCreateNotificationOfChangeParams;
-  export import InboundACHTransferDeclineParams = InboundACHTransfersAPI.InboundACHTransferDeclineParams;
-  export import InboundACHTransferTransferReturnParams = InboundACHTransfersAPI.InboundACHTransferTransferReturnParams;
+InboundACHTransfers.InboundACHTransfersPage = InboundACHTransfersPage;
+
+export declare namespace InboundACHTransfers {
+  export {
+    type InboundACHTransfer as InboundACHTransfer,
+    InboundACHTransfersPage as InboundACHTransfersPage,
+    type InboundACHTransferListParams as InboundACHTransferListParams,
+    type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
+    type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,
+    type InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
+  };
 }

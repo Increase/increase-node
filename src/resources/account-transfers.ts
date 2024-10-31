@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as AccountTransfersAPI from './account-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class AccountTransfers extends APIResource {
@@ -342,9 +341,13 @@ export namespace AccountTransferListParams {
   }
 }
 
-export namespace AccountTransfers {
-  export import AccountTransfer = AccountTransfersAPI.AccountTransfer;
-  export import AccountTransfersPage = AccountTransfersAPI.AccountTransfersPage;
-  export import AccountTransferCreateParams = AccountTransfersAPI.AccountTransferCreateParams;
-  export import AccountTransferListParams = AccountTransfersAPI.AccountTransferListParams;
+AccountTransfers.AccountTransfersPage = AccountTransfersPage;
+
+export declare namespace AccountTransfers {
+  export {
+    type AccountTransfer as AccountTransfer,
+    AccountTransfersPage as AccountTransfersPage,
+    type AccountTransferCreateParams as AccountTransferCreateParams,
+    type AccountTransferListParams as AccountTransferListParams,
+  };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CheckTransfersAPI from './check-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class CheckTransfers extends APIResource {
@@ -782,10 +781,14 @@ export interface CheckTransferStopPaymentParams {
   reason?: 'mail_delivery_failed' | 'not_authorized' | 'unknown';
 }
 
-export namespace CheckTransfers {
-  export import CheckTransfer = CheckTransfersAPI.CheckTransfer;
-  export import CheckTransfersPage = CheckTransfersAPI.CheckTransfersPage;
-  export import CheckTransferCreateParams = CheckTransfersAPI.CheckTransferCreateParams;
-  export import CheckTransferListParams = CheckTransfersAPI.CheckTransferListParams;
-  export import CheckTransferStopPaymentParams = CheckTransfersAPI.CheckTransferStopPaymentParams;
+CheckTransfers.CheckTransfersPage = CheckTransfersPage;
+
+export declare namespace CheckTransfers {
+  export {
+    type CheckTransfer as CheckTransfer,
+    CheckTransfersPage as CheckTransfersPage,
+    type CheckTransferCreateParams as CheckTransferCreateParams,
+    type CheckTransferListParams as CheckTransferListParams,
+    type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,
+  };
 }

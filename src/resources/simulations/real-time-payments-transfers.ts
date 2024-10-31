@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsRealTimePaymentsTransfersAPI from './real-time-payments-transfers';
 import * as RealTimePaymentsTransfersAPI from '../real-time-payments-transfers';
 
 export class RealTimePaymentsTransfers extends APIResource {
@@ -113,6 +112,6 @@ export namespace RealTimePaymentsTransferCompleteParams {
   }
 }
 
-export namespace RealTimePaymentsTransfers {
-  export import RealTimePaymentsTransferCompleteParams = SimulationsRealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+export declare namespace RealTimePaymentsTransfers {
+  export { type RealTimePaymentsTransferCompleteParams as RealTimePaymentsTransferCompleteParams };
 }

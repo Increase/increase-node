@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ACHPrenotificationsAPI from './ach-prenotifications';
 import { Page, type PageParams } from '../pagination';
 
 export class ACHPrenotifications extends APIResource {
@@ -579,9 +578,13 @@ export namespace ACHPrenotificationListParams {
   }
 }
 
-export namespace ACHPrenotifications {
-  export import ACHPrenotification = ACHPrenotificationsAPI.ACHPrenotification;
-  export import ACHPrenotificationsPage = ACHPrenotificationsAPI.ACHPrenotificationsPage;
-  export import ACHPrenotificationCreateParams = ACHPrenotificationsAPI.ACHPrenotificationCreateParams;
-  export import ACHPrenotificationListParams = ACHPrenotificationsAPI.ACHPrenotificationListParams;
+ACHPrenotifications.ACHPrenotificationsPage = ACHPrenotificationsPage;
+
+export declare namespace ACHPrenotifications {
+  export {
+    type ACHPrenotification as ACHPrenotification,
+    ACHPrenotificationsPage as ACHPrenotificationsPage,
+    type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
+    type ACHPrenotificationListParams as ACHPrenotificationListParams,
+  };
 }

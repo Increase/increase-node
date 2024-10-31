@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardAuthorizationsAPI from './card-authorizations';
 import * as DeclinedTransactionsAPI from '../declined-transactions';
 import * as PendingTransactionsAPI from '../pending-transactions';
 
@@ -167,7 +166,9 @@ export interface CardAuthorizationCreateParams {
   physical_card_id?: string;
 }
 
-export namespace CardAuthorizations {
-  export import CardAuthorizationCreateResponse = CardAuthorizationsAPI.CardAuthorizationCreateResponse;
-  export import CardAuthorizationCreateParams = CardAuthorizationsAPI.CardAuthorizationCreateParams;
+export declare namespace CardAuthorizations {
+  export {
+    type CardAuthorizationCreateResponse as CardAuthorizationCreateResponse,
+    type CardAuthorizationCreateParams as CardAuthorizationCreateParams,
+  };
 }

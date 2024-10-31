@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
 import * as InboundRealTimePaymentsTransfersAPI from '../inbound-real-time-payments-transfers';
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
@@ -57,6 +56,6 @@ export interface InboundRealTimePaymentsTransferCreateParams {
   request_for_payment_id?: string;
 }
 
-export namespace InboundRealTimePaymentsTransfers {
-  export import InboundRealTimePaymentsTransferCreateParams = SimulationsInboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
+export declare namespace InboundRealTimePaymentsTransfers {
+  export { type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams };
 }

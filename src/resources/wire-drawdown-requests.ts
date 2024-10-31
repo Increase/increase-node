@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as WireDrawdownRequestsAPI from './wire-drawdown-requests';
 import { Page, type PageParams } from '../pagination';
 
 export class WireDrawdownRequests extends APIResource {
@@ -283,9 +282,13 @@ export interface WireDrawdownRequestListParams extends PageParams {
   status?: 'pending_submission' | 'pending_response' | 'fulfilled' | 'refused';
 }
 
-export namespace WireDrawdownRequests {
-  export import WireDrawdownRequest = WireDrawdownRequestsAPI.WireDrawdownRequest;
-  export import WireDrawdownRequestsPage = WireDrawdownRequestsAPI.WireDrawdownRequestsPage;
-  export import WireDrawdownRequestCreateParams = WireDrawdownRequestsAPI.WireDrawdownRequestCreateParams;
-  export import WireDrawdownRequestListParams = WireDrawdownRequestsAPI.WireDrawdownRequestListParams;
+WireDrawdownRequests.WireDrawdownRequestsPage = WireDrawdownRequestsPage;
+
+export declare namespace WireDrawdownRequests {
+  export {
+    type WireDrawdownRequest as WireDrawdownRequest,
+    WireDrawdownRequestsPage as WireDrawdownRequestsPage,
+    type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
+    type WireDrawdownRequestListParams as WireDrawdownRequestListParams,
+  };
 }

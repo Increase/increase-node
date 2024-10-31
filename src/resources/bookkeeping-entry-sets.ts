@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as BookkeepingEntrySetsAPI from './bookkeeping-entry-sets';
 import { Page, type PageParams } from '../pagination';
 
 export class BookkeepingEntrySets extends APIResource {
@@ -165,9 +164,13 @@ export interface BookkeepingEntrySetListParams extends PageParams {
   transaction_id?: string;
 }
 
-export namespace BookkeepingEntrySets {
-  export import BookkeepingEntrySet = BookkeepingEntrySetsAPI.BookkeepingEntrySet;
-  export import BookkeepingEntrySetsPage = BookkeepingEntrySetsAPI.BookkeepingEntrySetsPage;
-  export import BookkeepingEntrySetCreateParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetCreateParams;
-  export import BookkeepingEntrySetListParams = BookkeepingEntrySetsAPI.BookkeepingEntrySetListParams;
+BookkeepingEntrySets.BookkeepingEntrySetsPage = BookkeepingEntrySetsPage;
+
+export declare namespace BookkeepingEntrySets {
+  export {
+    type BookkeepingEntrySet as BookkeepingEntrySet,
+    BookkeepingEntrySetsPage as BookkeepingEntrySetsPage,
+    type BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams,
+    type BookkeepingEntrySetListParams as BookkeepingEntrySetListParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as SupplementalDocumentsAPI from './supplemental-documents';
 import { Page, type PageParams } from '../pagination';
 
 export class SupplementalDocuments extends APIResource {
@@ -94,9 +93,13 @@ export interface SupplementalDocumentListParams extends PageParams {
   idempotency_key?: string;
 }
 
-export namespace SupplementalDocuments {
-  export import EntitySupplementalDocument = SupplementalDocumentsAPI.EntitySupplementalDocument;
-  export import EntitySupplementalDocumentsPage = SupplementalDocumentsAPI.EntitySupplementalDocumentsPage;
-  export import SupplementalDocumentCreateParams = SupplementalDocumentsAPI.SupplementalDocumentCreateParams;
-  export import SupplementalDocumentListParams = SupplementalDocumentsAPI.SupplementalDocumentListParams;
+SupplementalDocuments.EntitySupplementalDocumentsPage = EntitySupplementalDocumentsPage;
+
+export declare namespace SupplementalDocuments {
+  export {
+    type EntitySupplementalDocument as EntitySupplementalDocument,
+    EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
+    type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
+    type SupplementalDocumentListParams as SupplementalDocumentListParams,
+  };
 }

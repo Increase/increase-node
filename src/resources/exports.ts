@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ExportsAPI from './exports';
 import { Page, type PageParams } from '../pagination';
 
 export class Exports extends APIResource {
@@ -466,9 +465,13 @@ export namespace ExportListParams {
   }
 }
 
-export namespace Exports {
-  export import Export = ExportsAPI.Export;
-  export import ExportsPage = ExportsAPI.ExportsPage;
-  export import ExportCreateParams = ExportsAPI.ExportCreateParams;
-  export import ExportListParams = ExportsAPI.ExportListParams;
+Exports.ExportsPage = ExportsPage;
+
+export declare namespace Exports {
+  export {
+    type Export as Export,
+    ExportsPage as ExportsPage,
+    type ExportCreateParams as ExportCreateParams,
+    type ExportListParams as ExportListParams,
+  };
 }

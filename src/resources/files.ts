@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as FilesAPI from './files';
 import { Page, type PageParams } from '../pagination';
 
 export class Files extends APIResource {
@@ -292,9 +291,13 @@ export namespace FileListParams {
   }
 }
 
-export namespace Files {
-  export import File = FilesAPI.File;
-  export import FilesPage = FilesAPI.FilesPage;
-  export import FileCreateParams = FilesAPI.FileCreateParams;
-  export import FileListParams = FilesAPI.FileListParams;
+Files.FilesPage = FilesPage;
+
+export declare namespace Files {
+  export {
+    type File as File,
+    FilesPage as FilesPage,
+    type FileCreateParams as FileCreateParams,
+    type FileListParams as FileListParams,
+  };
 }

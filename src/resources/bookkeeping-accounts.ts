@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as BookkeepingAccountsAPI from './bookkeeping-accounts';
 import { Page, type PageParams } from '../pagination';
 
 export class BookkeepingAccounts extends APIResource {
@@ -192,12 +191,16 @@ export interface BookkeepingAccountBalanceParams {
   at_time?: string;
 }
 
-export namespace BookkeepingAccounts {
-  export import BookkeepingAccount = BookkeepingAccountsAPI.BookkeepingAccount;
-  export import BookkeepingBalanceLookup = BookkeepingAccountsAPI.BookkeepingBalanceLookup;
-  export import BookkeepingAccountsPage = BookkeepingAccountsAPI.BookkeepingAccountsPage;
-  export import BookkeepingAccountCreateParams = BookkeepingAccountsAPI.BookkeepingAccountCreateParams;
-  export import BookkeepingAccountUpdateParams = BookkeepingAccountsAPI.BookkeepingAccountUpdateParams;
-  export import BookkeepingAccountListParams = BookkeepingAccountsAPI.BookkeepingAccountListParams;
-  export import BookkeepingAccountBalanceParams = BookkeepingAccountsAPI.BookkeepingAccountBalanceParams;
+BookkeepingAccounts.BookkeepingAccountsPage = BookkeepingAccountsPage;
+
+export declare namespace BookkeepingAccounts {
+  export {
+    type BookkeepingAccount as BookkeepingAccount,
+    type BookkeepingBalanceLookup as BookkeepingBalanceLookup,
+    BookkeepingAccountsPage as BookkeepingAccountsPage,
+    type BookkeepingAccountCreateParams as BookkeepingAccountCreateParams,
+    type BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams,
+    type BookkeepingAccountListParams as BookkeepingAccountListParams,
+    type BookkeepingAccountBalanceParams as BookkeepingAccountBalanceParams,
+  };
 }

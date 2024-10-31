@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as DigitalCardProfilesAPI from './digital-card-profiles';
 import { Page, type PageParams } from '../pagination';
 
 export class DigitalCardProfiles extends APIResource {
@@ -333,10 +332,14 @@ export namespace DigitalCardProfileCloneParams {
   }
 }
 
-export namespace DigitalCardProfiles {
-  export import DigitalCardProfile = DigitalCardProfilesAPI.DigitalCardProfile;
-  export import DigitalCardProfilesPage = DigitalCardProfilesAPI.DigitalCardProfilesPage;
-  export import DigitalCardProfileCreateParams = DigitalCardProfilesAPI.DigitalCardProfileCreateParams;
-  export import DigitalCardProfileListParams = DigitalCardProfilesAPI.DigitalCardProfileListParams;
-  export import DigitalCardProfileCloneParams = DigitalCardProfilesAPI.DigitalCardProfileCloneParams;
+DigitalCardProfiles.DigitalCardProfilesPage = DigitalCardProfilesPage;
+
+export declare namespace DigitalCardProfiles {
+  export {
+    type DigitalCardProfile as DigitalCardProfile,
+    DigitalCardProfilesPage as DigitalCardProfilesPage,
+    type DigitalCardProfileCreateParams as DigitalCardProfileCreateParams,
+    type DigitalCardProfileListParams as DigitalCardProfileListParams,
+    type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams,
+  };
 }

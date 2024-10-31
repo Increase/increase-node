@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as WireTransfersAPI from './wire-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class WireTransfers extends APIResource {
@@ -596,9 +595,13 @@ export namespace WireTransferListParams {
   }
 }
 
-export namespace WireTransfers {
-  export import WireTransfer = WireTransfersAPI.WireTransfer;
-  export import WireTransfersPage = WireTransfersAPI.WireTransfersPage;
-  export import WireTransferCreateParams = WireTransfersAPI.WireTransferCreateParams;
-  export import WireTransferListParams = WireTransfersAPI.WireTransferListParams;
+WireTransfers.WireTransfersPage = WireTransfersPage;
+
+export declare namespace WireTransfers {
+  export {
+    type WireTransfer as WireTransfer,
+    WireTransfersPage as WireTransfersPage,
+    type WireTransferCreateParams as WireTransferCreateParams,
+    type WireTransferListParams as WireTransferListParams,
+  };
 }

@@ -11,7 +11,7 @@
     "paths": {
       "increase/_shims/auto/*": ["src/_shims/auto/*-node"],
       "increase/*": ["src/*"],
-      "increase": ["src/index.ts"],
+      "increase": ["src/index.ts"]
     },
     "noEmit": true,
 

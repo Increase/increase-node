@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as DigitalWalletTokensAPI from './digital-wallet-tokens';
 import { Page, type PageParams } from '../pagination';
 
 export class DigitalWalletTokens extends APIResource {
@@ -122,8 +121,12 @@ export namespace DigitalWalletTokenListParams {
   }
 }
 
-export namespace DigitalWalletTokens {
-  export import DigitalWalletToken = DigitalWalletTokensAPI.DigitalWalletToken;
-  export import DigitalWalletTokensPage = DigitalWalletTokensAPI.DigitalWalletTokensPage;
-  export import DigitalWalletTokenListParams = DigitalWalletTokensAPI.DigitalWalletTokenListParams;
+DigitalWalletTokens.DigitalWalletTokensPage = DigitalWalletTokensPage;
+
+export declare namespace DigitalWalletTokens {
+  export {
+    type DigitalWalletToken as DigitalWalletToken,
+    DigitalWalletTokensPage as DigitalWalletTokensPage,
+    type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
+  };
 }

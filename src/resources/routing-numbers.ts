@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as RoutingNumbersAPI from './routing-numbers';
 import { Page, type PageParams } from '../pagination';
 
 export class RoutingNumbers extends APIResource {
@@ -74,8 +73,12 @@ export interface RoutingNumberListParams extends PageParams {
   routing_number: string;
 }
 
-export namespace RoutingNumbers {
-  export import RoutingNumberListResponse = RoutingNumbersAPI.RoutingNumberListResponse;
-  export import RoutingNumberListResponsesPage = RoutingNumbersAPI.RoutingNumberListResponsesPage;
-  export import RoutingNumberListParams = RoutingNumbersAPI.RoutingNumberListParams;
+RoutingNumbers.RoutingNumberListResponsesPage = RoutingNumberListResponsesPage;
+
+export declare namespace RoutingNumbers {
+  export {
+    type RoutingNumberListResponse as RoutingNumberListResponse,
+    RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
+    type RoutingNumberListParams as RoutingNumberListParams,
+  };
 }
