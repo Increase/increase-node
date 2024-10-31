@@ -30,108 +30,108 @@ import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
 import * as WireTransfersAPI from './wire-transfers';
 
 export class Simulations extends APIResource {
-  accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
+  interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
     this._client,
   );
-  inboundACHTransfers: InboundACHTransfersAPI.InboundACHTransfers =
-    new InboundACHTransfersAPI.InboundACHTransfers(this._client);
-  achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this._client);
-  checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
-  inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
-    new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
-  checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
-  inboundWireTransfers: InboundWireTransfersAPI.InboundWireTransfers =
-    new InboundWireTransfersAPI.InboundWireTransfers(this._client);
-  wireTransfers: WireTransfersAPI.WireTransfers = new WireTransfersAPI.WireTransfers(this._client);
-  inboundWireDrawdownRequests: InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests =
-    new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this._client);
-  inboundRealTimePaymentsTransfers: InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers =
-    new InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers(this._client);
-  inboundFundsHolds: InboundFundsHoldsAPI.InboundFundsHolds = new InboundFundsHoldsAPI.InboundFundsHolds(
-    this._client,
-  );
-  realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
-    new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
+  cardAuthorizationExpirations: CardAuthorizationExpirationsAPI.CardAuthorizationExpirations =
+    new CardAuthorizationExpirationsAPI.CardAuthorizationExpirations(this._client);
   cardSettlements: CardSettlementsAPI.CardSettlements = new CardSettlementsAPI.CardSettlements(this._client);
   cardReversals: CardReversalsAPI.CardReversals = new CardReversalsAPI.CardReversals(this._client);
   cardIncrements: CardIncrementsAPI.CardIncrements = new CardIncrementsAPI.CardIncrements(this._client);
-  cardAuthorizationExpirations: CardAuthorizationExpirationsAPI.CardAuthorizationExpirations =
-    new CardAuthorizationExpirationsAPI.CardAuthorizationExpirations(this._client);
   cardFuelConfirmations: CardFuelConfirmationsAPI.CardFuelConfirmations =
     new CardFuelConfirmationsAPI.CardFuelConfirmations(this._client);
   cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
   cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
+  physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
     new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this._client);
-  physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
-  interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
+  inboundFundsHolds: InboundFundsHoldsAPI.InboundFundsHolds = new InboundFundsHoldsAPI.InboundFundsHolds(
     this._client,
   );
-  accountStatements: AccountStatementsAPI.AccountStatements = new AccountStatementsAPI.AccountStatements(
+  accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
     this._client,
   );
-  documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
+  achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this._client);
+  inboundACHTransfers: InboundACHTransfersAPI.InboundACHTransfers =
+    new InboundACHTransfersAPI.InboundACHTransfers(this._client);
+  wireTransfers: WireTransfersAPI.WireTransfers = new WireTransfersAPI.WireTransfers(this._client);
+  inboundWireTransfers: InboundWireTransfersAPI.InboundWireTransfers =
+    new InboundWireTransfersAPI.InboundWireTransfers(this._client);
+  inboundWireDrawdownRequests: InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests =
+    new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this._client);
+  checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
+  inboundCheckDeposits: InboundCheckDepositsAPI.InboundCheckDeposits =
+    new InboundCheckDepositsAPI.InboundCheckDeposits(this._client);
+  realTimePaymentsTransfers: RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers =
+    new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
+  inboundRealTimePaymentsTransfers: InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers =
+    new InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers(this._client);
+  checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
   inboundMailItems: InboundMailItemsAPI.InboundMailItems = new InboundMailItemsAPI.InboundMailItems(
     this._client,
   );
   programs: ProgramsAPI.Programs = new ProgramsAPI.Programs(this._client);
+  accountStatements: AccountStatementsAPI.AccountStatements = new AccountStatementsAPI.AccountStatements(
+    this._client,
+  );
+  documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
 }
 
 export namespace Simulations {
-  export import AccountTransfers = AccountTransfersAPI.AccountTransfers;
-  export import InboundACHTransfers = InboundACHTransfersAPI.InboundACHTransfers;
-  export import InboundACHTransferCreateParams = InboundACHTransfersAPI.InboundACHTransferCreateParams;
-  export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
-  export import ACHTransferCreateNotificationOfChangeParams = ACHTransfersAPI.ACHTransferCreateNotificationOfChangeParams;
-  export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
-  export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
-  export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
-  export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
-  export import CheckDeposits = CheckDepositsAPI.CheckDeposits;
-  export import InboundWireTransfers = InboundWireTransfersAPI.InboundWireTransfers;
-  export import InboundWireTransferCreateParams = InboundWireTransfersAPI.InboundWireTransferCreateParams;
-  export import WireTransfers = WireTransfersAPI.WireTransfers;
-  export import InboundWireDrawdownRequests = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests;
-  export import InboundWireDrawdownRequestCreateParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
-  export import InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers;
-  export import InboundRealTimePaymentsTransferCreateParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
-  export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
-  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
-  export import RealTimePaymentsTransfers = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers;
-  export import RealTimePaymentsTransferCompleteParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export import InterestPayments = InterestPaymentsAPI.InterestPayments;
+  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
   export import CardAuthorizations = CardAuthorizationsAPI.CardAuthorizations;
   export import CardAuthorizationCreateResponse = CardAuthorizationsAPI.CardAuthorizationCreateResponse;
   export import CardAuthorizationCreateParams = CardAuthorizationsAPI.CardAuthorizationCreateParams;
+  export import CardAuthorizationExpirations = CardAuthorizationExpirationsAPI.CardAuthorizationExpirations;
+  export import CardAuthorizationExpirationCreateParams = CardAuthorizationExpirationsAPI.CardAuthorizationExpirationCreateParams;
   export import CardSettlements = CardSettlementsAPI.CardSettlements;
   export import CardSettlementCreateParams = CardSettlementsAPI.CardSettlementCreateParams;
   export import CardReversals = CardReversalsAPI.CardReversals;
   export import CardReversalCreateParams = CardReversalsAPI.CardReversalCreateParams;
   export import CardIncrements = CardIncrementsAPI.CardIncrements;
   export import CardIncrementCreateParams = CardIncrementsAPI.CardIncrementCreateParams;
-  export import CardAuthorizationExpirations = CardAuthorizationExpirationsAPI.CardAuthorizationExpirations;
-  export import CardAuthorizationExpirationCreateParams = CardAuthorizationExpirationsAPI.CardAuthorizationExpirationCreateParams;
   export import CardFuelConfirmations = CardFuelConfirmationsAPI.CardFuelConfirmations;
   export import CardFuelConfirmationCreateParams = CardFuelConfirmationsAPI.CardFuelConfirmationCreateParams;
   export import CardRefunds = CardRefundsAPI.CardRefunds;
   export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
   export import CardDisputes = CardDisputesAPI.CardDisputes;
   export import CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
+  export import PhysicalCards = PhysicalCardsAPI.PhysicalCards;
+  export import PhysicalCardAdvanceShipmentParams = PhysicalCardsAPI.PhysicalCardAdvanceShipmentParams;
   export import DigitalWalletTokenRequests = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests;
   export import DigitalWalletTokenRequestCreateResponse = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
   export import DigitalWalletTokenRequestCreateParams = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
-  export import PhysicalCards = PhysicalCardsAPI.PhysicalCards;
-  export import PhysicalCardAdvanceShipmentParams = PhysicalCardsAPI.PhysicalCardAdvanceShipmentParams;
-  export import InterestPayments = InterestPaymentsAPI.InterestPayments;
-  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
-  export import AccountStatements = AccountStatementsAPI.AccountStatements;
-  export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
-  export import Documents = DocumentsAPI.Documents;
-  export import DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
+  export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
+  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
+  export import AccountTransfers = AccountTransfersAPI.AccountTransfers;
+  export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
+  export import ACHTransferCreateNotificationOfChangeParams = ACHTransfersAPI.ACHTransferCreateNotificationOfChangeParams;
+  export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
+  export import InboundACHTransfers = InboundACHTransfersAPI.InboundACHTransfers;
+  export import InboundACHTransferCreateParams = InboundACHTransfersAPI.InboundACHTransferCreateParams;
+  export import WireTransfers = WireTransfersAPI.WireTransfers;
+  export import InboundWireTransfers = InboundWireTransfersAPI.InboundWireTransfers;
+  export import InboundWireTransferCreateParams = InboundWireTransfersAPI.InboundWireTransferCreateParams;
+  export import InboundWireDrawdownRequests = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests;
+  export import InboundWireDrawdownRequestCreateParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
+  export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
+  export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
+  export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
+  export import RealTimePaymentsTransfers = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers;
+  export import RealTimePaymentsTransferCompleteParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
+  export import InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers;
+  export import InboundRealTimePaymentsTransferCreateParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
+  export import CheckDeposits = CheckDepositsAPI.CheckDeposits;
   export import InboundMailItems = InboundMailItemsAPI.InboundMailItems;
   export import InboundMailItemCreateParams = InboundMailItemsAPI.InboundMailItemCreateParams;
   export import Programs = ProgramsAPI.Programs;
   export import ProgramCreateParams = ProgramsAPI.ProgramCreateParams;
+  export import AccountStatements = AccountStatementsAPI.AccountStatements;
+  export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
+  export import Documents = DocumentsAPI.Documents;
+  export import DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
 }
