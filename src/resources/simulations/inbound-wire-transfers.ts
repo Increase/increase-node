@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundWireTransfersAPI from './inbound-wire-transfers';
 import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
 
 export class InboundWireTransfers extends APIResource {
@@ -119,6 +118,6 @@ export interface InboundWireTransferCreateParams {
   sender_reference?: string;
 }
 
-export namespace InboundWireTransfers {
-  export import InboundWireTransferCreateParams = SimulationsInboundWireTransfersAPI.InboundWireTransferCreateParams;
+export declare namespace InboundWireTransfers {
+  export { type InboundWireTransferCreateParams as InboundWireTransferCreateParams };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as IntrafiAccountEnrollmentsAPI from './intrafi-account-enrollments';
 import { Page, type PageParams } from '../pagination';
 
 export class IntrafiAccountEnrollments extends APIResource {
@@ -160,9 +159,13 @@ export namespace IntrafiAccountEnrollmentListParams {
   }
 }
 
-export namespace IntrafiAccountEnrollments {
-  export import IntrafiAccountEnrollment = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollment;
-  export import IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentsPage;
-  export import IntrafiAccountEnrollmentCreateParams = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentCreateParams;
-  export import IntrafiAccountEnrollmentListParams = IntrafiAccountEnrollmentsAPI.IntrafiAccountEnrollmentListParams;
+IntrafiAccountEnrollments.IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsPage;
+
+export declare namespace IntrafiAccountEnrollments {
+  export {
+    type IntrafiAccountEnrollment as IntrafiAccountEnrollment,
+    IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
+    type IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
+    type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardReversalsAPI from './card-reversals';
 import * as CardPaymentsAPI from '../card-payments';
 
 export class CardReversals extends APIResource {
@@ -33,6 +32,6 @@ export interface CardReversalCreateParams {
   amount?: number;
 }
 
-export namespace CardReversals {
-  export import CardReversalCreateParams = CardReversalsAPI.CardReversalCreateParams;
+export declare namespace CardReversals {
+  export { type CardReversalCreateParams as CardReversalCreateParams };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ExternalAccountsAPI from './external-accounts';
 import { Page, type PageParams } from '../pagination';
 
 export class ExternalAccounts extends APIResource {
@@ -231,10 +230,14 @@ export namespace ExternalAccountListParams {
   }
 }
 
-export namespace ExternalAccounts {
-  export import ExternalAccount = ExternalAccountsAPI.ExternalAccount;
-  export import ExternalAccountsPage = ExternalAccountsAPI.ExternalAccountsPage;
-  export import ExternalAccountCreateParams = ExternalAccountsAPI.ExternalAccountCreateParams;
-  export import ExternalAccountUpdateParams = ExternalAccountsAPI.ExternalAccountUpdateParams;
-  export import ExternalAccountListParams = ExternalAccountsAPI.ExternalAccountListParams;
+ExternalAccounts.ExternalAccountsPage = ExternalAccountsPage;
+
+export declare namespace ExternalAccounts {
+  export {
+    type ExternalAccount as ExternalAccount,
+    ExternalAccountsPage as ExternalAccountsPage,
+    type ExternalAccountCreateParams as ExternalAccountCreateParams,
+    type ExternalAccountUpdateParams as ExternalAccountUpdateParams,
+    type ExternalAccountListParams as ExternalAccountListParams,
+  };
 }

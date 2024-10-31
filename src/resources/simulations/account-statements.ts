@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsAccountStatementsAPI from './account-statements';
 import * as AccountStatementsAPI from '../account-statements';
 
 export class AccountStatements extends APIResource {
@@ -25,6 +24,6 @@ export interface AccountStatementCreateParams {
   account_id: string;
 }
 
-export namespace AccountStatements {
-  export import AccountStatementCreateParams = SimulationsAccountStatementsAPI.AccountStatementCreateParams;
+export declare namespace AccountStatements {
+  export { type AccountStatementCreateParams as AccountStatementCreateParams };
 }

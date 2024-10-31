@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import { Page, type PageParams } from '../pagination';
 
 export class InboundCheckDeposits extends APIResource {
@@ -312,9 +311,13 @@ export interface InboundCheckDepositReturnParams {
     | 'endorsement_irregular';
 }
 
-export namespace InboundCheckDeposits {
-  export import InboundCheckDeposit = InboundCheckDepositsAPI.InboundCheckDeposit;
-  export import InboundCheckDepositsPage = InboundCheckDepositsAPI.InboundCheckDepositsPage;
-  export import InboundCheckDepositListParams = InboundCheckDepositsAPI.InboundCheckDepositListParams;
-  export import InboundCheckDepositReturnParams = InboundCheckDepositsAPI.InboundCheckDepositReturnParams;
+InboundCheckDeposits.InboundCheckDepositsPage = InboundCheckDepositsPage;
+
+export declare namespace InboundCheckDeposits {
+  export {
+    type InboundCheckDeposit as InboundCheckDeposit,
+    InboundCheckDepositsPage as InboundCheckDepositsPage,
+    type InboundCheckDepositListParams as InboundCheckDepositListParams,
+    type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams,
+  };
 }

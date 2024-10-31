@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ProofOfAuthorizationRequestsAPI from './proof-of-authorization-requests';
 import { Page, type PageParams } from '../pagination';
 
 export class ProofOfAuthorizationRequests extends APIResource {
@@ -120,8 +119,12 @@ export namespace ProofOfAuthorizationRequestListParams {
   }
 }
 
-export namespace ProofOfAuthorizationRequests {
-  export import ProofOfAuthorizationRequest = ProofOfAuthorizationRequestsAPI.ProofOfAuthorizationRequest;
-  export import ProofOfAuthorizationRequestsPage = ProofOfAuthorizationRequestsAPI.ProofOfAuthorizationRequestsPage;
-  export import ProofOfAuthorizationRequestListParams = ProofOfAuthorizationRequestsAPI.ProofOfAuthorizationRequestListParams;
+ProofOfAuthorizationRequests.ProofOfAuthorizationRequestsPage = ProofOfAuthorizationRequestsPage;
+
+export declare namespace ProofOfAuthorizationRequests {
+  export {
+    type ProofOfAuthorizationRequest as ProofOfAuthorizationRequest,
+    ProofOfAuthorizationRequestsPage as ProofOfAuthorizationRequestsPage,
+    type ProofOfAuthorizationRequestListParams as ProofOfAuthorizationRequestListParams,
+  };
 }

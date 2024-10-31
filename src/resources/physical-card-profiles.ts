@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as PhysicalCardProfilesAPI from './physical-card-profiles';
 import { Page, type PageParams } from '../pagination';
 
 export class PhysicalCardProfiles extends APIResource {
@@ -258,10 +257,14 @@ export namespace PhysicalCardProfileCloneParams {
   }
 }
 
-export namespace PhysicalCardProfiles {
-  export import PhysicalCardProfile = PhysicalCardProfilesAPI.PhysicalCardProfile;
-  export import PhysicalCardProfilesPage = PhysicalCardProfilesAPI.PhysicalCardProfilesPage;
-  export import PhysicalCardProfileCreateParams = PhysicalCardProfilesAPI.PhysicalCardProfileCreateParams;
-  export import PhysicalCardProfileListParams = PhysicalCardProfilesAPI.PhysicalCardProfileListParams;
-  export import PhysicalCardProfileCloneParams = PhysicalCardProfilesAPI.PhysicalCardProfileCloneParams;
+PhysicalCardProfiles.PhysicalCardProfilesPage = PhysicalCardProfilesPage;
+
+export declare namespace PhysicalCardProfiles {
+  export {
+    type PhysicalCardProfile as PhysicalCardProfile,
+    PhysicalCardProfilesPage as PhysicalCardProfilesPage,
+    type PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams,
+    type PhysicalCardProfileListParams as PhysicalCardProfileListParams,
+    type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams,
+  };
 }

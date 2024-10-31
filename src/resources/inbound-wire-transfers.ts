@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as InboundWireTransfersAPI from './inbound-wire-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class InboundWireTransfers extends APIResource {
@@ -230,8 +229,12 @@ export namespace InboundWireTransferListParams {
   }
 }
 
-export namespace InboundWireTransfers {
-  export import InboundWireTransfer = InboundWireTransfersAPI.InboundWireTransfer;
-  export import InboundWireTransfersPage = InboundWireTransfersAPI.InboundWireTransfersPage;
-  export import InboundWireTransferListParams = InboundWireTransfersAPI.InboundWireTransferListParams;
+InboundWireTransfers.InboundWireTransfersPage = InboundWireTransfersPage;
+
+export declare namespace InboundWireTransfers {
+  export {
+    type InboundWireTransfer as InboundWireTransfer,
+    InboundWireTransfersPage as InboundWireTransfersPage,
+    type InboundWireTransferListParams as InboundWireTransferListParams,
+  };
 }

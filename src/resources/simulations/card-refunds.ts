@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardRefundsAPI from './card-refunds';
 import * as TransactionsAPI from '../transactions';
 
 export class CardRefunds extends APIResource {
@@ -26,6 +25,6 @@ export interface CardRefundCreateParams {
   transaction_id: string;
 }
 
-export namespace CardRefunds {
-  export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
+export declare namespace CardRefunds {
+  export { type CardRefundCreateParams as CardRefundCreateParams };
 }

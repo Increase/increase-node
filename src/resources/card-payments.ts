@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CardPaymentsAPI from './card-payments';
 import { Page, type PageParams } from '../pagination';
 
 export class CardPayments extends APIResource {
@@ -3206,8 +3205,12 @@ export namespace CardPaymentListParams {
   }
 }
 
-export namespace CardPayments {
-  export import CardPayment = CardPaymentsAPI.CardPayment;
-  export import CardPaymentsPage = CardPaymentsAPI.CardPaymentsPage;
-  export import CardPaymentListParams = CardPaymentsAPI.CardPaymentListParams;
+CardPayments.CardPaymentsPage = CardPaymentsPage;
+
+export declare namespace CardPayments {
+  export {
+    type CardPayment as CardPayment,
+    CardPaymentsPage as CardPaymentsPage,
+    type CardPaymentListParams as CardPaymentListParams,
+  };
 }

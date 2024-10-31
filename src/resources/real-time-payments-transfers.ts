@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class RealTimePaymentsTransfers extends APIResource {
@@ -550,9 +549,13 @@ export namespace RealTimePaymentsTransferListParams {
   }
 }
 
-export namespace RealTimePaymentsTransfers {
-  export import RealTimePaymentsTransfer = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer;
-  export import RealTimePaymentsTransfersPage = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfersPage;
-  export import RealTimePaymentsTransferCreateParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCreateParams;
-  export import RealTimePaymentsTransferListParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferListParams;
+RealTimePaymentsTransfers.RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
+
+export declare namespace RealTimePaymentsTransfers {
+  export {
+    type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
+    RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
+    type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
+    type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
+  };
 }

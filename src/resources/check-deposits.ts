@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CheckDepositsAPI from './check-deposits';
 import { Page, type PageParams } from '../pagination';
 
 export class CheckDeposits extends APIResource {
@@ -550,9 +549,13 @@ export namespace CheckDepositListParams {
   }
 }
 
-export namespace CheckDeposits {
-  export import CheckDeposit = CheckDepositsAPI.CheckDeposit;
-  export import CheckDepositsPage = CheckDepositsAPI.CheckDepositsPage;
-  export import CheckDepositCreateParams = CheckDepositsAPI.CheckDepositCreateParams;
-  export import CheckDepositListParams = CheckDepositsAPI.CheckDepositListParams;
+CheckDeposits.CheckDepositsPage = CheckDepositsPage;
+
+export declare namespace CheckDeposits {
+  export {
+    type CheckDeposit as CheckDeposit,
+    CheckDepositsPage as CheckDepositsPage,
+    type CheckDepositCreateParams as CheckDepositCreateParams,
+    type CheckDepositListParams as CheckDepositListParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsCardDisputesAPI from './card-disputes';
 import * as CardDisputesAPI from '../card-disputes';
 
 export class CardDisputes extends APIResource {
@@ -41,6 +40,6 @@ export interface CardDisputeActionParams {
   explanation?: string;
 }
 
-export namespace CardDisputes {
-  export import CardDisputeActionParams = SimulationsCardDisputesAPI.CardDisputeActionParams;
+export declare namespace CardDisputes {
+  export { type CardDisputeActionParams as CardDisputeActionParams };
 }

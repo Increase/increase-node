@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundACHTransfersAPI from './inbound-ach-transfers';
 import * as InboundACHTransfersAPI from '../inbound-ach-transfers';
 
 export class InboundACHTransfers extends APIResource {
@@ -119,6 +118,6 @@ export interface InboundACHTransferCreateParams {
     | 'international_ach_transaction';
 }
 
-export namespace InboundACHTransfers {
-  export import InboundACHTransferCreateParams = SimulationsInboundACHTransfersAPI.InboundACHTransferCreateParams;
+export declare namespace InboundACHTransfers {
+  export { type InboundACHTransferCreateParams as InboundACHTransferCreateParams };
 }

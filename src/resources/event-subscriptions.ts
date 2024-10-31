@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as EventSubscriptionsAPI from './event-subscriptions';
 import { Page, type PageParams } from '../pagination';
 
 export class EventSubscriptions extends APIResource {
@@ -618,10 +617,14 @@ export interface EventSubscriptionListParams extends PageParams {
   idempotency_key?: string;
 }
 
-export namespace EventSubscriptions {
-  export import EventSubscription = EventSubscriptionsAPI.EventSubscription;
-  export import EventSubscriptionsPage = EventSubscriptionsAPI.EventSubscriptionsPage;
-  export import EventSubscriptionCreateParams = EventSubscriptionsAPI.EventSubscriptionCreateParams;
-  export import EventSubscriptionUpdateParams = EventSubscriptionsAPI.EventSubscriptionUpdateParams;
-  export import EventSubscriptionListParams = EventSubscriptionsAPI.EventSubscriptionListParams;
+EventSubscriptions.EventSubscriptionsPage = EventSubscriptionsPage;
+
+export declare namespace EventSubscriptions {
+  export {
+    type EventSubscription as EventSubscription,
+    EventSubscriptionsPage as EventSubscriptionsPage,
+    type EventSubscriptionCreateParams as EventSubscriptionCreateParams,
+    type EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
+    type EventSubscriptionListParams as EventSubscriptionListParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as InterestPaymentsAPI from './interest-payments';
 import * as TransactionsAPI from '../transactions';
 
 export class InterestPayments extends APIResource {
@@ -40,6 +39,6 @@ export interface InterestPaymentCreateParams {
   period_start?: string;
 }
 
-export namespace InterestPayments {
-  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
+export declare namespace InterestPayments {
+  export { type InterestPaymentCreateParams as InterestPaymentCreateParams };
 }

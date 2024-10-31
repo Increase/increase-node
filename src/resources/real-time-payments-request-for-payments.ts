@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as RealTimePaymentsRequestForPaymentsAPI from './real-time-payments-request-for-payments';
 import { Page, type PageParams } from '../pagination';
 
 export class RealTimePaymentsRequestForPayments extends APIResource {
@@ -457,9 +456,14 @@ export namespace RealTimePaymentsRequestForPaymentListParams {
   }
 }
 
-export namespace RealTimePaymentsRequestForPayments {
-  export import RealTimePaymentsRequestForPayment = RealTimePaymentsRequestForPaymentsAPI.RealTimePaymentsRequestForPayment;
-  export import RealTimePaymentsRequestForPaymentsPage = RealTimePaymentsRequestForPaymentsAPI.RealTimePaymentsRequestForPaymentsPage;
-  export import RealTimePaymentsRequestForPaymentCreateParams = RealTimePaymentsRequestForPaymentsAPI.RealTimePaymentsRequestForPaymentCreateParams;
-  export import RealTimePaymentsRequestForPaymentListParams = RealTimePaymentsRequestForPaymentsAPI.RealTimePaymentsRequestForPaymentListParams;
+RealTimePaymentsRequestForPayments.RealTimePaymentsRequestForPaymentsPage =
+  RealTimePaymentsRequestForPaymentsPage;
+
+export declare namespace RealTimePaymentsRequestForPayments {
+  export {
+    type RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
+    RealTimePaymentsRequestForPaymentsPage as RealTimePaymentsRequestForPaymentsPage,
+    type RealTimePaymentsRequestForPaymentCreateParams as RealTimePaymentsRequestForPaymentCreateParams,
+    type RealTimePaymentsRequestForPaymentListParams as RealTimePaymentsRequestForPaymentListParams,
+  };
 }

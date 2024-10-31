@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ProofOfAuthorizationRequestSubmissionsAPI from './proof-of-authorization-request-submissions';
 import { Page, type PageParams } from '../pagination';
 
 export class ProofOfAuthorizationRequestSubmissions extends APIResource {
@@ -235,9 +234,14 @@ export interface ProofOfAuthorizationRequestSubmissionListParams extends PagePar
   proof_of_authorization_request_id?: string;
 }
 
-export namespace ProofOfAuthorizationRequestSubmissions {
-  export import ProofOfAuthorizationRequestSubmission = ProofOfAuthorizationRequestSubmissionsAPI.ProofOfAuthorizationRequestSubmission;
-  export import ProofOfAuthorizationRequestSubmissionsPage = ProofOfAuthorizationRequestSubmissionsAPI.ProofOfAuthorizationRequestSubmissionsPage;
-  export import ProofOfAuthorizationRequestSubmissionCreateParams = ProofOfAuthorizationRequestSubmissionsAPI.ProofOfAuthorizationRequestSubmissionCreateParams;
-  export import ProofOfAuthorizationRequestSubmissionListParams = ProofOfAuthorizationRequestSubmissionsAPI.ProofOfAuthorizationRequestSubmissionListParams;
+ProofOfAuthorizationRequestSubmissions.ProofOfAuthorizationRequestSubmissionsPage =
+  ProofOfAuthorizationRequestSubmissionsPage;
+
+export declare namespace ProofOfAuthorizationRequestSubmissions {
+  export {
+    type ProofOfAuthorizationRequestSubmission as ProofOfAuthorizationRequestSubmission,
+    ProofOfAuthorizationRequestSubmissionsPage as ProofOfAuthorizationRequestSubmissionsPage,
+    type ProofOfAuthorizationRequestSubmissionCreateParams as ProofOfAuthorizationRequestSubmissionCreateParams,
+    type ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,
+  };
 }
