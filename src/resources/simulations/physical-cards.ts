@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsPhysicalCardsAPI from './physical-cards';
 import * as PhysicalCardsAPI from '../physical-cards';
 
 export class PhysicalCards extends APIResource {
@@ -49,6 +48,6 @@ export interface PhysicalCardAdvanceShipmentParams {
     | 'returned';
 }
 
-export namespace PhysicalCards {
-  export import PhysicalCardAdvanceShipmentParams = SimulationsPhysicalCardsAPI.PhysicalCardAdvanceShipmentParams;
+export declare namespace PhysicalCards {
+  export { type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CardPurchaseSupplementsAPI from './card-purchase-supplements';
 import { Page, type PageParams } from '../pagination';
 
 export class CardPurchaseSupplements extends APIResource {
@@ -330,8 +329,12 @@ export namespace CardPurchaseSupplementListParams {
   }
 }
 
-export namespace CardPurchaseSupplements {
-  export import CardPurchaseSupplement = CardPurchaseSupplementsAPI.CardPurchaseSupplement;
-  export import CardPurchaseSupplementsPage = CardPurchaseSupplementsAPI.CardPurchaseSupplementsPage;
-  export import CardPurchaseSupplementListParams = CardPurchaseSupplementsAPI.CardPurchaseSupplementListParams;
+CardPurchaseSupplements.CardPurchaseSupplementsPage = CardPurchaseSupplementsPage;
+
+export declare namespace CardPurchaseSupplements {
+  export {
+    type CardPurchaseSupplement as CardPurchaseSupplement,
+    CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
+    type CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
+  };
 }

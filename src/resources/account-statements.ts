@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as AccountStatementsAPI from './account-statements';
 import { Page, type PageParams } from '../pagination';
 
 export class AccountStatements extends APIResource {
@@ -128,8 +127,12 @@ export namespace AccountStatementListParams {
   }
 }
 
-export namespace AccountStatements {
-  export import AccountStatement = AccountStatementsAPI.AccountStatement;
-  export import AccountStatementsPage = AccountStatementsAPI.AccountStatementsPage;
-  export import AccountStatementListParams = AccountStatementsAPI.AccountStatementListParams;
+AccountStatements.AccountStatementsPage = AccountStatementsPage;
+
+export declare namespace AccountStatements {
+  export {
+    type AccountStatement as AccountStatement,
+    AccountStatementsPage as AccountStatementsPage,
+    type AccountStatementListParams as AccountStatementListParams,
+  };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as InboundMailItemsAPI from './inbound-mail-items';
 import { Page, type PageParams } from '../pagination';
 
 export class InboundMailItems extends APIResource {
@@ -128,8 +127,12 @@ export namespace InboundMailItemListParams {
   }
 }
 
-export namespace InboundMailItems {
-  export import InboundMailItem = InboundMailItemsAPI.InboundMailItem;
-  export import InboundMailItemsPage = InboundMailItemsAPI.InboundMailItemsPage;
-  export import InboundMailItemListParams = InboundMailItemsAPI.InboundMailItemListParams;
+InboundMailItems.InboundMailItemsPage = InboundMailItemsPage;
+
+export declare namespace InboundMailItems {
+  export {
+    type InboundMailItem as InboundMailItem,
+    InboundMailItemsPage as InboundMailItemsPage,
+    type InboundMailItemListParams as InboundMailItemListParams,
+  };
 }

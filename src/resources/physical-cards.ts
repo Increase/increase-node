@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as PhysicalCardsAPI from './physical-cards';
 import { Page, type PageParams } from '../pagination';
 
 export class PhysicalCards extends APIResource {
@@ -404,10 +403,14 @@ export namespace PhysicalCardListParams {
   }
 }
 
-export namespace PhysicalCards {
-  export import PhysicalCard = PhysicalCardsAPI.PhysicalCard;
-  export import PhysicalCardsPage = PhysicalCardsAPI.PhysicalCardsPage;
-  export import PhysicalCardCreateParams = PhysicalCardsAPI.PhysicalCardCreateParams;
-  export import PhysicalCardUpdateParams = PhysicalCardsAPI.PhysicalCardUpdateParams;
-  export import PhysicalCardListParams = PhysicalCardsAPI.PhysicalCardListParams;
+PhysicalCards.PhysicalCardsPage = PhysicalCardsPage;
+
+export declare namespace PhysicalCards {
+  export {
+    type PhysicalCard as PhysicalCard,
+    PhysicalCardsPage as PhysicalCardsPage,
+    type PhysicalCardCreateParams as PhysicalCardCreateParams,
+    type PhysicalCardUpdateParams as PhysicalCardUpdateParams,
+    type PhysicalCardListParams as PhysicalCardListParams,
+  };
 }

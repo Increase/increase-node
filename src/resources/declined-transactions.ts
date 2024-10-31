@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as DeclinedTransactionsAPI from './declined-transactions';
 import { Page, type PageParams } from '../pagination';
 
 export class DeclinedTransactions extends APIResource {
@@ -1066,8 +1065,12 @@ export namespace DeclinedTransactionListParams {
   }
 }
 
-export namespace DeclinedTransactions {
-  export import DeclinedTransaction = DeclinedTransactionsAPI.DeclinedTransaction;
-  export import DeclinedTransactionsPage = DeclinedTransactionsAPI.DeclinedTransactionsPage;
-  export import DeclinedTransactionListParams = DeclinedTransactionsAPI.DeclinedTransactionListParams;
+DeclinedTransactions.DeclinedTransactionsPage = DeclinedTransactionsPage;
+
+export declare namespace DeclinedTransactions {
+  export {
+    type DeclinedTransaction as DeclinedTransaction,
+    DeclinedTransactionsPage as DeclinedTransactionsPage,
+    type DeclinedTransactionListParams as DeclinedTransactionListParams,
+  };
 }

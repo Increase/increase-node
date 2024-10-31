@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsACHTransfersAPI from './ach-transfers';
 import * as ACHTransfersAPI from '../ach-transfers';
 
 export class ACHTransfers extends APIResource {
@@ -364,7 +363,9 @@ export interface ACHTransferReturnParams {
     | 'untimely_return';
 }
 
-export namespace ACHTransfers {
-  export import ACHTransferCreateNotificationOfChangeParams = SimulationsACHTransfersAPI.ACHTransferCreateNotificationOfChangeParams;
-  export import ACHTransferReturnParams = SimulationsACHTransfersAPI.ACHTransferReturnParams;
+export declare namespace ACHTransfers {
+  export {
+    type ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,
+    type ACHTransferReturnParams as ACHTransferReturnParams,
+  };
 }

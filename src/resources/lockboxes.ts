@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as LockboxesAPI from './lockboxes';
 import { Page, type PageParams } from '../pagination';
 
 export class Lockboxes extends APIResource {
@@ -236,10 +235,14 @@ export namespace LockboxListParams {
   }
 }
 
-export namespace Lockboxes {
-  export import Lockbox = LockboxesAPI.Lockbox;
-  export import LockboxesPage = LockboxesAPI.LockboxesPage;
-  export import LockboxCreateParams = LockboxesAPI.LockboxCreateParams;
-  export import LockboxUpdateParams = LockboxesAPI.LockboxUpdateParams;
-  export import LockboxListParams = LockboxesAPI.LockboxListParams;
+Lockboxes.LockboxesPage = LockboxesPage;
+
+export declare namespace Lockboxes {
+  export {
+    type Lockbox as Lockbox,
+    LockboxesPage as LockboxesPage,
+    type LockboxCreateParams as LockboxCreateParams,
+    type LockboxUpdateParams as LockboxUpdateParams,
+    type LockboxListParams as LockboxListParams,
+  };
 }

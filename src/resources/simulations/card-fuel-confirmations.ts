@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardFuelConfirmationsAPI from './card-fuel-confirmations';
 import * as CardPaymentsAPI from '../card-payments';
 
 export class CardFuelConfirmations extends APIResource {
@@ -32,6 +31,6 @@ export interface CardFuelConfirmationCreateParams {
   card_payment_id: string;
 }
 
-export namespace CardFuelConfirmations {
-  export import CardFuelConfirmationCreateParams = CardFuelConfirmationsAPI.CardFuelConfirmationCreateParams;
+export declare namespace CardFuelConfirmations {
+  export { type CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams };
 }

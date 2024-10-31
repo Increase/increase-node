@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CardsAPI from './cards';
 import { Page, type PageParams } from '../pagination';
 
 export class Cards extends APIResource {
@@ -456,11 +455,15 @@ export namespace CardListParams {
   }
 }
 
-export namespace Cards {
-  export import Card = CardsAPI.Card;
-  export import CardDetails = CardsAPI.CardDetails;
-  export import CardsPage = CardsAPI.CardsPage;
-  export import CardCreateParams = CardsAPI.CardCreateParams;
-  export import CardUpdateParams = CardsAPI.CardUpdateParams;
-  export import CardListParams = CardsAPI.CardListParams;
+Cards.CardsPage = CardsPage;
+
+export declare namespace Cards {
+  export {
+    type Card as Card,
+    type CardDetails as CardDetails,
+    CardsPage as CardsPage,
+    type CardCreateParams as CardCreateParams,
+    type CardUpdateParams as CardUpdateParams,
+    type CardListParams as CardListParams,
+  };
 }

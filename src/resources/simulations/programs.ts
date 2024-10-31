@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsProgramsAPI from './programs';
 import * as ProgramsAPI from '../programs';
 
 export class Programs extends APIResource {
@@ -24,6 +23,6 @@ export interface ProgramCreateParams {
   name: string;
 }
 
-export namespace Programs {
-  export import ProgramCreateParams = SimulationsProgramsAPI.ProgramCreateParams;
+export declare namespace Programs {
+  export { type ProgramCreateParams as ProgramCreateParams };
 }

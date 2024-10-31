@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardSettlementsAPI from './card-settlements';
 import * as TransactionsAPI from '../transactions';
 
 export class CardSettlements extends APIResource {
@@ -40,6 +39,6 @@ export interface CardSettlementCreateParams {
   amount?: number;
 }
 
-export namespace CardSettlements {
-  export import CardSettlementCreateParams = CardSettlementsAPI.CardSettlementCreateParams;
+export declare namespace CardSettlements {
+  export { type CardSettlementCreateParams as CardSettlementCreateParams };
 }

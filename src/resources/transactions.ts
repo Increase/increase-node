@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as TransactionsAPI from './transactions';
 import { Page, type PageParams } from '../pagination';
 
 export class Transactions extends APIResource {
@@ -3184,8 +3183,12 @@ export namespace TransactionListParams {
   }
 }
 
-export namespace Transactions {
-  export import Transaction = TransactionsAPI.Transaction;
-  export import TransactionsPage = TransactionsAPI.TransactionsPage;
-  export import TransactionListParams = TransactionsAPI.TransactionListParams;
+Transactions.TransactionsPage = TransactionsPage;
+
+export declare namespace Transactions {
+  export {
+    type Transaction as Transaction,
+    TransactionsPage as TransactionsPage,
+    type TransactionListParams as TransactionListParams,
+  };
 }

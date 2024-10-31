@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as OAuthConnectionsAPI from './oauth-connections';
 import { Page, type PageParams } from '../pagination';
 
 export class OAuthConnections extends APIResource {
@@ -93,8 +92,12 @@ export namespace OAuthConnectionListParams {
   }
 }
 
-export namespace OAuthConnections {
-  export import OAuthConnection = OAuthConnectionsAPI.OAuthConnection;
-  export import OAuthConnectionsPage = OAuthConnectionsAPI.OAuthConnectionsPage;
-  export import OAuthConnectionListParams = OAuthConnectionsAPI.OAuthConnectionListParams;
+OAuthConnections.OAuthConnectionsPage = OAuthConnectionsPage;
+
+export declare namespace OAuthConnections {
+  export {
+    type OAuthConnection as OAuthConnection,
+    OAuthConnectionsPage as OAuthConnectionsPage,
+    type OAuthConnectionListParams as OAuthConnectionListParams,
+  };
 }
