@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CardIncrementsAPI from './card-increments';
 import * as CardPaymentsAPI from '../card-payments';
 
 export class CardIncrements extends APIResource {
@@ -38,6 +37,6 @@ export interface CardIncrementCreateParams {
   event_subscription_id?: string;
 }
 
-export namespace CardIncrements {
-  export import CardIncrementCreateParams = CardIncrementsAPI.CardIncrementCreateParams;
+export declare namespace CardIncrements {
+  export { type CardIncrementCreateParams as CardIncrementCreateParams };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ACHTransfersAPI from './ach-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class ACHTransfers extends APIResource {
@@ -1284,9 +1283,13 @@ export namespace ACHTransferListParams {
   }
 }
 
-export namespace ACHTransfers {
-  export import ACHTransfer = ACHTransfersAPI.ACHTransfer;
-  export import ACHTransfersPage = ACHTransfersAPI.ACHTransfersPage;
-  export import ACHTransferCreateParams = ACHTransfersAPI.ACHTransferCreateParams;
-  export import ACHTransferListParams = ACHTransfersAPI.ACHTransferListParams;
+ACHTransfers.ACHTransfersPage = ACHTransfersPage;
+
+export declare namespace ACHTransfers {
+  export {
+    type ACHTransfer as ACHTransfer,
+    ACHTransfersPage as ACHTransfersPage,
+    type ACHTransferCreateParams as ACHTransferCreateParams,
+    type ACHTransferListParams as ACHTransferListParams,
+  };
 }

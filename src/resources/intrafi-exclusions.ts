@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as IntrafiExclusionsAPI from './intrafi-exclusions';
 import { Page, type PageParams } from '../pagination';
 
 export class IntrafiExclusions extends APIResource {
@@ -140,9 +139,13 @@ export interface IntrafiExclusionListParams extends PageParams {
   idempotency_key?: string;
 }
 
-export namespace IntrafiExclusions {
-  export import IntrafiExclusion = IntrafiExclusionsAPI.IntrafiExclusion;
-  export import IntrafiExclusionsPage = IntrafiExclusionsAPI.IntrafiExclusionsPage;
-  export import IntrafiExclusionCreateParams = IntrafiExclusionsAPI.IntrafiExclusionCreateParams;
-  export import IntrafiExclusionListParams = IntrafiExclusionsAPI.IntrafiExclusionListParams;
+IntrafiExclusions.IntrafiExclusionsPage = IntrafiExclusionsPage;
+
+export declare namespace IntrafiExclusions {
+  export {
+    type IntrafiExclusion as IntrafiExclusion,
+    IntrafiExclusionsPage as IntrafiExclusionsPage,
+    type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
+    type IntrafiExclusionListParams as IntrafiExclusionListParams,
+  };
 }

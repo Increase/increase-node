@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsDocumentsAPI from './documents';
 import * as DocumentsAPI from '../documents';
 
 export class Documents extends APIResource {
@@ -21,6 +20,6 @@ export interface DocumentCreateParams {
   account_id: string;
 }
 
-export namespace Documents {
-  export import DocumentCreateParams = SimulationsDocumentsAPI.DocumentCreateParams;
+export declare namespace Documents {
+  export { type DocumentCreateParams as DocumentCreateParams };
 }

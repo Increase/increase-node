@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as CardDisputesAPI from './card-disputes';
 import { Page, type PageParams } from '../pagination';
 
 export class CardDisputes extends APIResource {
@@ -289,9 +288,13 @@ export namespace CardDisputeListParams {
   }
 }
 
-export namespace CardDisputes {
-  export import CardDispute = CardDisputesAPI.CardDispute;
-  export import CardDisputesPage = CardDisputesAPI.CardDisputesPage;
-  export import CardDisputeCreateParams = CardDisputesAPI.CardDisputeCreateParams;
-  export import CardDisputeListParams = CardDisputesAPI.CardDisputeListParams;
+CardDisputes.CardDisputesPage = CardDisputesPage;
+
+export declare namespace CardDisputes {
+  export {
+    type CardDispute as CardDispute,
+    CardDisputesPage as CardDisputesPage,
+    type CardDisputeCreateParams as CardDisputeCreateParams,
+    type CardDisputeListParams as CardDisputeListParams,
+  };
 }

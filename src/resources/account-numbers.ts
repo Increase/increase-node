@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as AccountNumbersAPI from './account-numbers';
 import { Page, type PageParams } from '../pagination';
 
 export class AccountNumbers extends APIResource {
@@ -336,10 +335,14 @@ export namespace AccountNumberListParams {
   }
 }
 
-export namespace AccountNumbers {
-  export import AccountNumber = AccountNumbersAPI.AccountNumber;
-  export import AccountNumbersPage = AccountNumbersAPI.AccountNumbersPage;
-  export import AccountNumberCreateParams = AccountNumbersAPI.AccountNumberCreateParams;
-  export import AccountNumberUpdateParams = AccountNumbersAPI.AccountNumberUpdateParams;
-  export import AccountNumberListParams = AccountNumbersAPI.AccountNumberListParams;
+AccountNumbers.AccountNumbersPage = AccountNumbersPage;
+
+export declare namespace AccountNumbers {
+  export {
+    type AccountNumber as AccountNumber,
+    AccountNumbersPage as AccountNumbersPage,
+    type AccountNumberCreateParams as AccountNumberCreateParams,
+    type AccountNumberUpdateParams as AccountNumberUpdateParams,
+    type AccountNumberListParams as AccountNumberListParams,
+  };
 }

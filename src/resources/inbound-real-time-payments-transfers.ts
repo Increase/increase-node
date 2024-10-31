@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
 import { Page, type PageParams } from '../pagination';
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
@@ -243,8 +242,12 @@ export namespace InboundRealTimePaymentsTransferListParams {
   }
 }
 
-export namespace InboundRealTimePaymentsTransfers {
-  export import InboundRealTimePaymentsTransfer = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer;
-  export import InboundRealTimePaymentsTransfersPage = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfersPage;
-  export import InboundRealTimePaymentsTransferListParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferListParams;
+InboundRealTimePaymentsTransfers.InboundRealTimePaymentsTransfersPage = InboundRealTimePaymentsTransfersPage;
+
+export declare namespace InboundRealTimePaymentsTransfers {
+  export {
+    type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
+    InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
+    type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
+  };
 }

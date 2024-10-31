@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as InboundFundsHoldsAPI from './inbound-funds-holds';
 
 export class InboundFundsHolds extends APIResource {
   /**
@@ -88,6 +87,6 @@ export interface InboundFundsHoldReleaseResponse {
   type: 'inbound_funds_hold';
 }
 
-export namespace InboundFundsHolds {
-  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
+export declare namespace InboundFundsHolds {
+  export { type InboundFundsHoldReleaseResponse as InboundFundsHoldReleaseResponse };
 }

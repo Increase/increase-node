@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
 import * as InboundWireDrawdownRequestsAPI from '../inbound-wire-drawdown-requests';
 
 export class InboundWireDrawdownRequests extends APIResource {
@@ -126,6 +125,6 @@ export interface InboundWireDrawdownRequestCreateParams {
   originator_to_beneficiary_information_line4?: string;
 }
 
-export namespace InboundWireDrawdownRequests {
-  export import InboundWireDrawdownRequestCreateParams = SimulationsInboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
+export declare namespace InboundWireDrawdownRequests {
+  export { type InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams };
 }

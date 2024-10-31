@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundCheckDepositsAPI from './inbound-check-deposits';
 import * as InboundCheckDepositsAPI from '../inbound-check-deposits';
 
 export class InboundCheckDeposits extends APIResource {
@@ -39,6 +38,6 @@ export interface InboundCheckDepositCreateParams {
   check_number: string;
 }
 
-export namespace InboundCheckDeposits {
-  export import InboundCheckDepositCreateParams = SimulationsInboundCheckDepositsAPI.InboundCheckDepositCreateParams;
+export declare namespace InboundCheckDeposits {
+  export { type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams };
 }

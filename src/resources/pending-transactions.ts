@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as PendingTransactionsAPI from './pending-transactions';
 import { Page, type PageParams } from '../pagination';
 
 export class PendingTransactions extends APIResource {
@@ -942,8 +941,12 @@ export namespace PendingTransactionListParams {
   }
 }
 
-export namespace PendingTransactions {
-  export import PendingTransaction = PendingTransactionsAPI.PendingTransaction;
-  export import PendingTransactionsPage = PendingTransactionsAPI.PendingTransactionsPage;
-  export import PendingTransactionListParams = PendingTransactionsAPI.PendingTransactionListParams;
+PendingTransactions.PendingTransactionsPage = PendingTransactionsPage;
+
+export declare namespace PendingTransactions {
+  export {
+    type PendingTransaction as PendingTransaction,
+    PendingTransactionsPage as PendingTransactionsPage,
+    type PendingTransactionListParams as PendingTransactionListParams,
+  };
 }

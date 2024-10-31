@@ -2,32 +2,83 @@
 
 import { APIResource } from '../../resource';
 import * as AccountStatementsAPI from './account-statements';
+import { AccountStatementCreateParams, AccountStatements } from './account-statements';
 import * as AccountTransfersAPI from './account-transfers';
+import { AccountTransfers } from './account-transfers';
 import * as ACHTransfersAPI from './ach-transfers';
+import {
+  ACHTransferCreateNotificationOfChangeParams,
+  ACHTransferReturnParams,
+  ACHTransfers,
+} from './ach-transfers';
 import * as CardAuthorizationExpirationsAPI from './card-authorization-expirations';
+import {
+  CardAuthorizationExpirationCreateParams,
+  CardAuthorizationExpirations,
+} from './card-authorization-expirations';
 import * as CardAuthorizationsAPI from './card-authorizations';
+import {
+  CardAuthorizationCreateParams,
+  CardAuthorizationCreateResponse,
+  CardAuthorizations,
+} from './card-authorizations';
 import * as CardDisputesAPI from './card-disputes';
+import { CardDisputeActionParams, CardDisputes } from './card-disputes';
 import * as CardFuelConfirmationsAPI from './card-fuel-confirmations';
+import { CardFuelConfirmationCreateParams, CardFuelConfirmations } from './card-fuel-confirmations';
 import * as CardIncrementsAPI from './card-increments';
+import { CardIncrementCreateParams, CardIncrements } from './card-increments';
 import * as CardRefundsAPI from './card-refunds';
+import { CardRefundCreateParams, CardRefunds } from './card-refunds';
 import * as CardReversalsAPI from './card-reversals';
+import { CardReversalCreateParams, CardReversals } from './card-reversals';
 import * as CardSettlementsAPI from './card-settlements';
+import { CardSettlementCreateParams, CardSettlements } from './card-settlements';
 import * as CheckDepositsAPI from './check-deposits';
+import { CheckDeposits } from './check-deposits';
 import * as CheckTransfersAPI from './check-transfers';
+import { CheckTransfers } from './check-transfers';
 import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
+import {
+  DigitalWalletTokenRequestCreateParams,
+  DigitalWalletTokenRequestCreateResponse,
+  DigitalWalletTokenRequests,
+} from './digital-wallet-token-requests';
 import * as DocumentsAPI from './documents';
+import { DocumentCreateParams, Documents } from './documents';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
+import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
+import { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
 import * as InboundFundsHoldsAPI from './inbound-funds-holds';
+import { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 import * as InboundMailItemsAPI from './inbound-mail-items';
+import { InboundMailItemCreateParams, InboundMailItems } from './inbound-mail-items';
 import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
+import {
+  InboundRealTimePaymentsTransferCreateParams,
+  InboundRealTimePaymentsTransfers,
+} from './inbound-real-time-payments-transfers';
 import * as InboundWireDrawdownRequestsAPI from './inbound-wire-drawdown-requests';
+import {
+  InboundWireDrawdownRequestCreateParams,
+  InboundWireDrawdownRequests,
+} from './inbound-wire-drawdown-requests';
 import * as InboundWireTransfersAPI from './inbound-wire-transfers';
+import { InboundWireTransferCreateParams, InboundWireTransfers } from './inbound-wire-transfers';
 import * as InterestPaymentsAPI from './interest-payments';
+import { InterestPaymentCreateParams, InterestPayments } from './interest-payments';
 import * as PhysicalCardsAPI from './physical-cards';
+import { PhysicalCardAdvanceShipmentParams, PhysicalCards } from './physical-cards';
 import * as ProgramsAPI from './programs';
+import { ProgramCreateParams, Programs } from './programs';
 import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
+import {
+  RealTimePaymentsTransferCompleteParams,
+  RealTimePaymentsTransfers,
+} from './real-time-payments-transfers';
 import * as WireTransfersAPI from './wire-transfers';
+import { WireTransfers } from './wire-transfers';
 
 export class Simulations extends APIResource {
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
@@ -80,58 +131,140 @@ export class Simulations extends APIResource {
   documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
 }
 
-export namespace Simulations {
-  export import InterestPayments = InterestPaymentsAPI.InterestPayments;
-  export import InterestPaymentCreateParams = InterestPaymentsAPI.InterestPaymentCreateParams;
-  export import CardAuthorizations = CardAuthorizationsAPI.CardAuthorizations;
-  export import CardAuthorizationCreateResponse = CardAuthorizationsAPI.CardAuthorizationCreateResponse;
-  export import CardAuthorizationCreateParams = CardAuthorizationsAPI.CardAuthorizationCreateParams;
-  export import CardAuthorizationExpirations = CardAuthorizationExpirationsAPI.CardAuthorizationExpirations;
-  export import CardAuthorizationExpirationCreateParams = CardAuthorizationExpirationsAPI.CardAuthorizationExpirationCreateParams;
-  export import CardSettlements = CardSettlementsAPI.CardSettlements;
-  export import CardSettlementCreateParams = CardSettlementsAPI.CardSettlementCreateParams;
-  export import CardReversals = CardReversalsAPI.CardReversals;
-  export import CardReversalCreateParams = CardReversalsAPI.CardReversalCreateParams;
-  export import CardIncrements = CardIncrementsAPI.CardIncrements;
-  export import CardIncrementCreateParams = CardIncrementsAPI.CardIncrementCreateParams;
-  export import CardFuelConfirmations = CardFuelConfirmationsAPI.CardFuelConfirmations;
-  export import CardFuelConfirmationCreateParams = CardFuelConfirmationsAPI.CardFuelConfirmationCreateParams;
-  export import CardRefunds = CardRefundsAPI.CardRefunds;
-  export import CardRefundCreateParams = CardRefundsAPI.CardRefundCreateParams;
-  export import CardDisputes = CardDisputesAPI.CardDisputes;
-  export import CardDisputeActionParams = CardDisputesAPI.CardDisputeActionParams;
-  export import PhysicalCards = PhysicalCardsAPI.PhysicalCards;
-  export import PhysicalCardAdvanceShipmentParams = PhysicalCardsAPI.PhysicalCardAdvanceShipmentParams;
-  export import DigitalWalletTokenRequests = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests;
-  export import DigitalWalletTokenRequestCreateResponse = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
-  export import DigitalWalletTokenRequestCreateParams = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
-  export import InboundFundsHolds = InboundFundsHoldsAPI.InboundFundsHolds;
-  export import InboundFundsHoldReleaseResponse = InboundFundsHoldsAPI.InboundFundsHoldReleaseResponse;
-  export import AccountTransfers = AccountTransfersAPI.AccountTransfers;
-  export import ACHTransfers = ACHTransfersAPI.ACHTransfers;
-  export import ACHTransferCreateNotificationOfChangeParams = ACHTransfersAPI.ACHTransferCreateNotificationOfChangeParams;
-  export import ACHTransferReturnParams = ACHTransfersAPI.ACHTransferReturnParams;
-  export import InboundACHTransfers = InboundACHTransfersAPI.InboundACHTransfers;
-  export import InboundACHTransferCreateParams = InboundACHTransfersAPI.InboundACHTransferCreateParams;
-  export import WireTransfers = WireTransfersAPI.WireTransfers;
-  export import InboundWireTransfers = InboundWireTransfersAPI.InboundWireTransfers;
-  export import InboundWireTransferCreateParams = InboundWireTransfersAPI.InboundWireTransferCreateParams;
-  export import InboundWireDrawdownRequests = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests;
-  export import InboundWireDrawdownRequestCreateParams = InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequestCreateParams;
-  export import CheckTransfers = CheckTransfersAPI.CheckTransfers;
-  export import InboundCheckDeposits = InboundCheckDepositsAPI.InboundCheckDeposits;
-  export import InboundCheckDepositCreateParams = InboundCheckDepositsAPI.InboundCheckDepositCreateParams;
-  export import RealTimePaymentsTransfers = RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers;
-  export import RealTimePaymentsTransferCompleteParams = RealTimePaymentsTransfersAPI.RealTimePaymentsTransferCompleteParams;
-  export import InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers;
-  export import InboundRealTimePaymentsTransferCreateParams = InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransferCreateParams;
-  export import CheckDeposits = CheckDepositsAPI.CheckDeposits;
-  export import InboundMailItems = InboundMailItemsAPI.InboundMailItems;
-  export import InboundMailItemCreateParams = InboundMailItemsAPI.InboundMailItemCreateParams;
-  export import Programs = ProgramsAPI.Programs;
-  export import ProgramCreateParams = ProgramsAPI.ProgramCreateParams;
-  export import AccountStatements = AccountStatementsAPI.AccountStatements;
-  export import AccountStatementCreateParams = AccountStatementsAPI.AccountStatementCreateParams;
-  export import Documents = DocumentsAPI.Documents;
-  export import DocumentCreateParams = DocumentsAPI.DocumentCreateParams;
+Simulations.InterestPayments = InterestPayments;
+Simulations.CardAuthorizations = CardAuthorizations;
+Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
+Simulations.CardSettlements = CardSettlements;
+Simulations.CardReversals = CardReversals;
+Simulations.CardIncrements = CardIncrements;
+Simulations.CardFuelConfirmations = CardFuelConfirmations;
+Simulations.CardRefunds = CardRefunds;
+Simulations.CardDisputes = CardDisputes;
+Simulations.PhysicalCards = PhysicalCards;
+Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
+Simulations.InboundFundsHolds = InboundFundsHolds;
+Simulations.AccountTransfers = AccountTransfers;
+Simulations.ACHTransfers = ACHTransfers;
+Simulations.InboundACHTransfers = InboundACHTransfers;
+Simulations.WireTransfers = WireTransfers;
+Simulations.InboundWireTransfers = InboundWireTransfers;
+Simulations.InboundWireDrawdownRequests = InboundWireDrawdownRequests;
+Simulations.CheckTransfers = CheckTransfers;
+Simulations.InboundCheckDeposits = InboundCheckDeposits;
+Simulations.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
+Simulations.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
+Simulations.CheckDeposits = CheckDeposits;
+Simulations.InboundMailItems = InboundMailItems;
+Simulations.Programs = Programs;
+Simulations.AccountStatements = AccountStatements;
+Simulations.Documents = Documents;
+
+export declare namespace Simulations {
+  export {
+    InterestPayments as InterestPayments,
+    type InterestPaymentCreateParams as InterestPaymentCreateParams,
+  };
+
+  export {
+    CardAuthorizations as CardAuthorizations,
+    type CardAuthorizationCreateResponse as CardAuthorizationCreateResponse,
+    type CardAuthorizationCreateParams as CardAuthorizationCreateParams,
+  };
+
+  export {
+    CardAuthorizationExpirations as CardAuthorizationExpirations,
+    type CardAuthorizationExpirationCreateParams as CardAuthorizationExpirationCreateParams,
+  };
+
+  export {
+    CardSettlements as CardSettlements,
+    type CardSettlementCreateParams as CardSettlementCreateParams,
+  };
+
+  export { CardReversals as CardReversals, type CardReversalCreateParams as CardReversalCreateParams };
+
+  export { CardIncrements as CardIncrements, type CardIncrementCreateParams as CardIncrementCreateParams };
+
+  export {
+    CardFuelConfirmations as CardFuelConfirmations,
+    type CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams,
+  };
+
+  export { CardRefunds as CardRefunds, type CardRefundCreateParams as CardRefundCreateParams };
+
+  export { CardDisputes as CardDisputes, type CardDisputeActionParams as CardDisputeActionParams };
+
+  export {
+    PhysicalCards as PhysicalCards,
+    type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
+  };
+
+  export {
+    DigitalWalletTokenRequests as DigitalWalletTokenRequests,
+    type DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
+    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
+  };
+
+  export {
+    InboundFundsHolds as InboundFundsHolds,
+    type InboundFundsHoldReleaseResponse as InboundFundsHoldReleaseResponse,
+  };
+
+  export { AccountTransfers as AccountTransfers };
+
+  export {
+    ACHTransfers as ACHTransfers,
+    type ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,
+    type ACHTransferReturnParams as ACHTransferReturnParams,
+  };
+
+  export {
+    InboundACHTransfers as InboundACHTransfers,
+    type InboundACHTransferCreateParams as InboundACHTransferCreateParams,
+  };
+
+  export { WireTransfers as WireTransfers };
+
+  export {
+    InboundWireTransfers as InboundWireTransfers,
+    type InboundWireTransferCreateParams as InboundWireTransferCreateParams,
+  };
+
+  export {
+    InboundWireDrawdownRequests as InboundWireDrawdownRequests,
+    type InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams,
+  };
+
+  export { CheckTransfers as CheckTransfers };
+
+  export {
+    InboundCheckDeposits as InboundCheckDeposits,
+    type InboundCheckDepositCreateParams as InboundCheckDepositCreateParams,
+  };
+
+  export {
+    RealTimePaymentsTransfers as RealTimePaymentsTransfers,
+    type RealTimePaymentsTransferCompleteParams as RealTimePaymentsTransferCompleteParams,
+  };
+
+  export {
+    InboundRealTimePaymentsTransfers as InboundRealTimePaymentsTransfers,
+    type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams,
+  };
+
+  export { CheckDeposits as CheckDeposits };
+
+  export {
+    InboundMailItems as InboundMailItems,
+    type InboundMailItemCreateParams as InboundMailItemCreateParams,
+  };
+
+  export { Programs as Programs, type ProgramCreateParams as ProgramCreateParams };
+
+  export {
+    AccountStatements as AccountStatements,
+    type AccountStatementCreateParams as AccountStatementCreateParams,
+  };
+
+  export { Documents as Documents, type DocumentCreateParams as DocumentCreateParams };
 }

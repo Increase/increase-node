@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as IntrafiBalancesAPI from './intrafi-balances';
 
 export class IntrafiBalances extends APIResource {
   /**
@@ -109,6 +108,6 @@ export namespace IntrafiBalance {
   }
 }
 
-export namespace IntrafiBalances {
-  export import IntrafiBalance = IntrafiBalancesAPI.IntrafiBalance;
+export declare namespace IntrafiBalances {
+  export { type IntrafiBalance as IntrafiBalance };
 }

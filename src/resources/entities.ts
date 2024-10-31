@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as EntitiesAPI from './entities';
 import * as SupplementalDocumentsAPI from './supplemental-documents';
 import { Page, type PageParams } from '../pagination';
 
@@ -2747,15 +2746,19 @@ export interface EntityUpdateIndustryCodeParams {
   industry_code: string;
 }
 
-export namespace Entities {
-  export import Entity = EntitiesAPI.Entity;
-  export import EntitiesPage = EntitiesAPI.EntitiesPage;
-  export import EntityCreateParams = EntitiesAPI.EntityCreateParams;
-  export import EntityListParams = EntitiesAPI.EntityListParams;
-  export import EntityArchiveBeneficialOwnerParams = EntitiesAPI.EntityArchiveBeneficialOwnerParams;
-  export import EntityConfirmParams = EntitiesAPI.EntityConfirmParams;
-  export import EntityCreateBeneficialOwnerParams = EntitiesAPI.EntityCreateBeneficialOwnerParams;
-  export import EntityUpdateAddressParams = EntitiesAPI.EntityUpdateAddressParams;
-  export import EntityUpdateBeneficialOwnerAddressParams = EntitiesAPI.EntityUpdateBeneficialOwnerAddressParams;
-  export import EntityUpdateIndustryCodeParams = EntitiesAPI.EntityUpdateIndustryCodeParams;
+Entities.EntitiesPage = EntitiesPage;
+
+export declare namespace Entities {
+  export {
+    type Entity as Entity,
+    EntitiesPage as EntitiesPage,
+    type EntityCreateParams as EntityCreateParams,
+    type EntityListParams as EntityListParams,
+    type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
+    type EntityConfirmParams as EntityConfirmParams,
+    type EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
+    type EntityUpdateAddressParams as EntityUpdateAddressParams,
+    type EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
+    type EntityUpdateIndustryCodeParams as EntityUpdateIndustryCodeParams,
+  };
 }

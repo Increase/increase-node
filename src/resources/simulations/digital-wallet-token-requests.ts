@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as DigitalWalletTokenRequestsAPI from './digital-wallet-token-requests';
 
 export class DigitalWalletTokenRequests extends APIResource {
   /**
@@ -59,7 +58,9 @@ export interface DigitalWalletTokenRequestCreateParams {
   card_id: string;
 }
 
-export namespace DigitalWalletTokenRequests {
-  export import DigitalWalletTokenRequestCreateResponse = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateResponse;
-  export import DigitalWalletTokenRequestCreateParams = DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequestCreateParams;
+export declare namespace DigitalWalletTokenRequests {
+  export {
+    type DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
+    type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
+  };
 }

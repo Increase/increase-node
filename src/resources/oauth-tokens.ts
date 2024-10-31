@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as OAuthTokensAPI from './oauth-tokens';
 
 export class OAuthTokens extends APIResource {
   /**
@@ -73,7 +72,6 @@ export interface OAuthTokenCreateParams {
   production_token?: string;
 }
 
-export namespace OAuthTokens {
-  export import OAuthToken = OAuthTokensAPI.OAuthToken;
-  export import OAuthTokenCreateParams = OAuthTokensAPI.OAuthTokenCreateParams;
+export declare namespace OAuthTokens {
+  export { type OAuthToken as OAuthToken, type OAuthTokenCreateParams as OAuthTokenCreateParams };
 }

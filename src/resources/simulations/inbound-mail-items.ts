@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SimulationsInboundMailItemsAPI from './inbound-mail-items';
 import * as InboundMailItemsAPI from '../inbound-mail-items';
 
 export class InboundMailItems extends APIResource {
@@ -36,6 +35,6 @@ export interface InboundMailItemCreateParams {
   contents_file_id?: string;
 }
 
-export namespace InboundMailItems {
-  export import InboundMailItemCreateParams = SimulationsInboundMailItemsAPI.InboundMailItemCreateParams;
+export declare namespace InboundMailItems {
+  export { type InboundMailItemCreateParams as InboundMailItemCreateParams };
 }
