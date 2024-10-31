@@ -6,7 +6,7 @@ import * as InboundFundsHoldsAPI from './inbound-funds-holds';
 
 export class InboundFundsHolds extends APIResource {
   /**
-   * This endpoint simulates immediately releasing an inbound funds hold, which might
+   * This endpoint simulates immediately releasing an Inbound Funds Hold, which might
    * be created as a result of e.g., an ACH debit.
    */
   release(

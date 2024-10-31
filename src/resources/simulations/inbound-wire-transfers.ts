@@ -7,7 +7,7 @@ import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
 
 export class InboundWireTransfers extends APIResource {
   /**
-   * Simulates an inbound Wire Transfer to your account.
+   * Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
    */
   create(
     body: InboundWireTransferCreateParams,

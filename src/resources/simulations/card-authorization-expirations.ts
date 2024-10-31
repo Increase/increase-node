@@ -7,7 +7,7 @@ import * as CardPaymentsAPI from '../card-payments';
 
 export class CardAuthorizationExpirations extends APIResource {
   /**
-   * Simulates expiring a card authorization immediately.
+   * Simulates expiring a Card Authorization immediately.
    */
   create(
     body: CardAuthorizationExpirationCreateParams,
