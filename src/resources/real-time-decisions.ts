@@ -440,6 +440,34 @@ export namespace RealTimeDecision {
           | 'contactless_magnetic_stripe'
           | 'integrated_circuit_card_no_cvv'
           | null;
+
+        /**
+         * Only present when `actioner: network`. Describes why a card authorization was
+         * approved or declined by Visa through stand-in processing.
+         *
+         * - `issuer_error` - Increase failed to process the authorization in a timely
+         *   manner.
+         * - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
+         *   authorization request cryptogram.
+         * - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
+         *   authentication verification value was invalid.
+         * - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
+         *   code for certain expected occurrences as well, such as Application Transaction
+         *   Counter (ATC) replays.
+         * - `merchant_transaction_advisory_service_authentication_required` - The merchant
+         *   has enabled Visa's Transaction Advisory Service and requires further
+         *   authentication to perform the transaction. In practice this is often utilized
+         *   at fuel pumps to tell the cardholder to see the cashier.
+         * - `other` - An unspecific reason for stand-in processing.
+         */
+        stand_in_processing_reason:
+          | 'issuer_error'
+          | 'invalid_physical_card'
+          | 'invalid_cardholder_authentication_verification_value'
+          | 'internal_visa_error'
+          | 'merchant_transaction_advisory_service_authentication_required'
+          | 'other'
+          | null;
       }
     }
 
