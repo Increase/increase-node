@@ -583,30 +583,32 @@ export class Increase extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const IncreaseError = Errors.IncreaseError;
-export const APIError = Errors.APIError;
-export const APIConnectionError = Errors.APIConnectionError;
-export const APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
-export const APIUserAbortError = Errors.APIUserAbortError;
-export const NotFoundError = Errors.NotFoundError;
-export const ConflictError = Errors.ConflictError;
-export const RateLimitError = Errors.RateLimitError;
-export const BadRequestError = Errors.BadRequestError;
-export const RateLimitedError = Errors.RateLimitedError;
-export const InvalidAPIKeyError = Errors.InvalidAPIKeyError;
-export const AuthenticationError = Errors.AuthenticationError;
-export const InternalServerError = Errors.InternalServerError;
-export const ObjectNotFoundError = Errors.ObjectNotFoundError;
-export const PrivateFeatureError = Errors.PrivateFeatureError;
-export const PermissionDeniedError = Errors.PermissionDeniedError;
-export const InvalidOperationError = Errors.InvalidOperationError;
-export const MalformedRequestError = Errors.MalformedRequestError;
-export const APIMethodNotFoundError = Errors.APIMethodNotFoundError;
-export const InvalidParametersError = Errors.InvalidParametersError;
-export const UnprocessableEntityError = Errors.UnprocessableEntityError;
-export const EnvironmentMismatchError = Errors.EnvironmentMismatchError;
-export const InsufficientPermissionsError = Errors.InsufficientPermissionsError;
-export const IdempotencyKeyAlreadyUsedError = Errors.IdempotencyKeyAlreadyUsedError;
+export {
+  IncreaseError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  RateLimitedError,
+  InvalidAPIKeyError,
+  AuthenticationError,
+  InternalServerError,
+  ObjectNotFoundError,
+  PrivateFeatureError,
+  PermissionDeniedError,
+  InvalidOperationError,
+  MalformedRequestError,
+  APIMethodNotFoundError,
+  InvalidParametersError,
+  UnprocessableEntityError,
+  EnvironmentMismatchError,
+  InsufficientPermissionsError,
+  IdempotencyKeyAlreadyUsedError,
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
