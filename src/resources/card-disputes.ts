@@ -101,6 +101,8 @@ export interface CardDispute {
    * The results of the Dispute investigation.
    *
    * - `pending_reviewing` - The Card Dispute is pending review.
+   * - `pending_user_information` - Increase has requested more information related
+   *   to the Card Dispute from you.
    * - `accepted` - The Card Dispute has been accepted and your funds have been
    *   returned. The card dispute will eventually transition into `won` or `lost`
    *   depending on the outcome.
@@ -109,7 +111,7 @@ export interface CardDispute {
    *   acceptance have been debited.
    * - `won` - The Card Dispute has been won and no further action can be taken.
    */
-  status: 'pending_reviewing' | 'accepted' | 'rejected' | 'lost' | 'won';
+  status: 'pending_reviewing' | 'pending_user_information' | 'accepted' | 'rejected' | 'lost' | 'won';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -284,7 +286,7 @@ export namespace CardDisputeListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<'pending_reviewing' | 'accepted' | 'rejected' | 'lost' | 'won'>;
+    in?: Array<'pending_reviewing' | 'pending_user_information' | 'accepted' | 'rejected' | 'lost' | 'won'>;
   }
 }
 
