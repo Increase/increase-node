@@ -24,6 +24,8 @@ export interface CardDisputeActionParams {
   /**
    * The status to move the dispute to.
    *
+   * - `pending_user_information` - Increase has requested more information related
+   *   to the Card Dispute from you.
    * - `accepted` - The Card Dispute has been accepted and your funds have been
    *   returned. The card dispute will eventually transition into `won` or `lost`
    *   depending on the outcome.
@@ -32,7 +34,7 @@ export interface CardDisputeActionParams {
    *   acceptance have been debited.
    * - `won` - The Card Dispute has been won and no further action can be taken.
    */
-  status: 'accepted' | 'rejected' | 'lost' | 'won';
+  status: 'pending_user_information' | 'accepted' | 'rejected' | 'lost' | 'won';
 
   /**
    * Why the dispute was rejected. Not required for accepting disputes.
