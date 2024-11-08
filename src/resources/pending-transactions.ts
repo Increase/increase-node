@@ -452,6 +452,12 @@ export namespace PendingTransaction {
       real_time_decision_id: string | null;
 
       /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_authorization`.
        */
