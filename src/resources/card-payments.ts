@@ -371,6 +371,12 @@ export namespace CardPayment {
       real_time_decision_id: string | null;
 
       /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_authorization`.
        */
@@ -879,6 +885,12 @@ export namespace CardPayment {
         | 'invalid_physical_card'
         | 'missing_original_authorization'
         | 'suspected_fraud';
+
+      /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
 
       /**
        * Fields related to verification of cardholder-provided values.
@@ -2115,6 +2127,12 @@ export namespace CardPayment {
         | null;
 
       /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
+
+      /**
        * A constant representing the object's type. For this resource it will always be
        * `card_reversal`.
        */
@@ -2959,6 +2977,12 @@ export namespace CardPayment {
        * transaction.
        */
       real_time_decision_id: string | null;
+
+      /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
 
       /**
        * A constant representing the object's type. For this resource it will always be
