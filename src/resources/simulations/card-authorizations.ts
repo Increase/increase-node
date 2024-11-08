@@ -161,6 +161,11 @@ export interface CardAuthorizationCreateParams {
   merchant_descriptor?: string;
 
   /**
+   * The state the merchant resides in.
+   */
+  merchant_state?: string;
+
+  /**
    * The identifier of the Physical Card to be authorized.
    */
   physical_card_id?: string;
