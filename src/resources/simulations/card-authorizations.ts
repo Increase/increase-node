@@ -164,6 +164,12 @@ export interface CardAuthorizationCreateParams {
    * The identifier of the Physical Card to be authorized.
    */
   physical_card_id?: string;
+
+  /**
+   * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+   * is transacting with.
+   */
+  terminal_id?: string;
 }
 
 export declare namespace CardAuthorizations {

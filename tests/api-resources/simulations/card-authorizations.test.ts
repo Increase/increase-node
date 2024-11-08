@@ -35,6 +35,7 @@ describe('resource cardAuthorizations', () => {
       merchant_country: 'US',
       merchant_descriptor: 'AMAZON.COM',
       physical_card_id: 'physical_card_id',
+      terminal_id: 'x',
     });
   });
 });
