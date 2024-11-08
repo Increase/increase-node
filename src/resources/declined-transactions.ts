@@ -521,6 +521,12 @@ export namespace DeclinedTransaction {
         | 'suspected_fraud';
 
       /**
+       * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+       * is transacting with.
+       */
+      terminal_id: string | null;
+
+      /**
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardDecline.Verification;

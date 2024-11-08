@@ -330,6 +330,12 @@ export namespace RealTimeDecision {
     settlement_currency: string;
 
     /**
+     * The terminal identifier (commonly abbreviated as TID) of the terminal the card
+     * is transacting with.
+     */
+    terminal_id: string | null;
+
+    /**
      * The identifier of the Card Payment this authorization will belong to. Available
      * in the API once the card authorization has completed.
      */
