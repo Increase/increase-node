@@ -165,6 +165,18 @@ export interface InboundCheckDeposit {
   front_image_file_id: string | null;
 
   /**
+   * Whether the details on the check match the recipient name of the check transfer.
+   * This is an optional feature, contact sales to enable.
+   *
+   * - `name_matches` - The details on the check match the recipient name of the
+   *   check transfer.
+   * - `does_not_match` - The details on the check do not match the recipient name of
+   *   the check transfer.
+   * - `not_evaluated` - The payee name analysis was not evaluated.
+   */
+  payee_name_analysis: 'name_matches' | 'does_not_match' | 'not_evaluated';
+
+  /**
    * The status of the Inbound Check Deposit.
    *
    * - `pending` - The Inbound Check Deposit is pending.
