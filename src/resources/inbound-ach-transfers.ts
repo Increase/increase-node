@@ -127,6 +127,12 @@ export interface InboundACHTransfer {
   direction: 'credit' | 'debit';
 
   /**
+   * The effective date of the transfer. This is sent by the sending bank and is a
+   * factor in determining funds availability.
+   */
+  effective_date: string;
+
+  /**
    * The settlement schedule the transfer is expected to follow.
    *
    * - `same_day` - The transfer is expected to settle same-day.
