@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.144.0 (2024-11-11)
+
+Full Changelog: [v0.143.0...v0.144.0](https://github.com/Increase/increase-node/compare/v0.143.0...v0.144.0)
+
+### Features
+
+* platform-independent crypto (fixes https://github.com/Increase/increase-node/issues/383) ([#713](https://github.com/Increase/increase-node/issues/713)) ([2e39329](https://github.com/Increase/increase-node/commit/2e39329606ed62a7e5760beebaca4a72dc3be836))
+
 ## 0.143.0 (2024-11-11)
 
 Full Changelog: [v0.142.0...v0.143.0](https://github.com/Increase/increase-node/compare/v0.142.0...v0.143.0)
