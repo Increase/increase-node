@@ -2,8 +2,10 @@
 
 import { APIResource } from 'increase/resource';
 import { HeadersLike } from 'increase/core';
-import { createHmac } from 'crypto';
 import { getRequiredHeader } from 'increase/core';
+import { hmac } from '@noble/hashes/hmac';
+import { sha256 } from '@noble/hashes/sha2';
+import { bytesToHex } from '@noble/hashes/utils';
 
 export class Webhooks extends APIResource {
   /**
@@ -30,10 +32,7 @@ export class Webhooks extends APIResource {
   }
 
   private signPayload(payload: string, { timestamp, secret }: { timestamp: string; secret: string }) {
-    const hmac = createHmac('sha256', secret);
-    hmac.update(`${timestamp}.${payload}`);
-
-    return hmac.digest('hex');
+    return bytesToHex(hmac(sha256, secret, `${timestamp}.${payload}`));
   }
 
   /** Make an assertion, if not `true`, then throw. */
