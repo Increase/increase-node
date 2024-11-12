@@ -333,7 +333,6 @@ const environments = {
   sandbox: 'https://sandbox.increase.com',
 };
 type Environment = keyof typeof environments;
-
 export interface ClientOptions {
   /**
    * Defaults to process.env['INCREASE_API_KEY'].
@@ -583,36 +582,6 @@ export class Increase extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  IncreaseError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  RateLimitedError,
-  InvalidAPIKeyError,
-  AuthenticationError,
-  InternalServerError,
-  ObjectNotFoundError,
-  PrivateFeatureError,
-  PermissionDeniedError,
-  InvalidOperationError,
-  MalformedRequestError,
-  APIMethodNotFoundError,
-  InvalidParametersError,
-  UnprocessableEntityError,
-  EnvironmentMismatchError,
-  InsufficientPermissionsError,
-  IdempotencyKeyAlreadyUsedError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Increase.Accounts = Accounts;
 Increase.AccountsPage = AccountsPage;
 Increase.AccountNumbers = AccountNumbers;
@@ -714,7 +683,6 @@ Increase.IntrafiExclusionsPage = IntrafiExclusionsPage;
 Increase.RealTimePaymentsRequestForPayments = RealTimePaymentsRequestForPayments;
 Increase.RealTimePaymentsRequestForPaymentsPage = RealTimePaymentsRequestForPaymentsPage;
 Increase.Simulations = Simulations;
-
 export declare namespace Increase {
   export type RequestOptions = Core.RequestOptions;
 
@@ -1129,5 +1097,33 @@ export declare namespace Increase {
 
   export { Simulations as Simulations };
 }
+
+export { toFile, fileFromPath } from 'increase/uploads';
+export {
+  IncreaseError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  RateLimitedError,
+  InvalidAPIKeyError,
+  AuthenticationError,
+  InternalServerError,
+  ObjectNotFoundError,
+  PrivateFeatureError,
+  PermissionDeniedError,
+  InvalidOperationError,
+  MalformedRequestError,
+  APIMethodNotFoundError,
+  InvalidParametersError,
+  UnprocessableEntityError,
+  EnvironmentMismatchError,
+  InsufficientPermissionsError,
+  IdempotencyKeyAlreadyUsedError,
+} from 'increase/error';
 
 export default Increase;
