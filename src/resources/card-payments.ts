@@ -1400,6 +1400,11 @@ export namespace CardPayment {
       merchant_name: string;
 
       /**
+       * The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+       */
+      merchant_postal_code: string | null;
+
+      /**
        * The state the merchant resides in.
        */
       merchant_state: string | null;
@@ -2241,6 +2246,11 @@ export namespace CardPayment {
        * The name of the merchant.
        */
       merchant_name: string;
+
+      /**
+       * The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+       */
+      merchant_postal_code: string | null;
 
       /**
        * The state the merchant resides in.
