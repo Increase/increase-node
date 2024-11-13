@@ -278,7 +278,7 @@ export namespace CardPayment {
       /**
        * The city the merchant resides in.
        */
-      merchant_city: string;
+      merchant_city: string | null;
 
       /**
        * The country the merchant resides in.
@@ -756,7 +756,7 @@ export namespace CardPayment {
       /**
        * The city the merchant resides in.
        */
-      merchant_city: string;
+      merchant_city: string | null;
 
       /**
        * The country the merchant resides in.
@@ -2937,7 +2937,7 @@ export namespace CardPayment {
       /**
        * The city the merchant resides in.
        */
-      merchant_city: string;
+      merchant_city: string | null;
 
       /**
        * The country the merchant resides in.
