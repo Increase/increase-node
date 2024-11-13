@@ -354,7 +354,7 @@ export namespace PendingTransaction {
        * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
        * card is transacting with.
        */
-      merchant_category_code: string | null;
+      merchant_category_code: string;
 
       /**
        * The city the merchant resides in.
@@ -364,7 +364,7 @@ export namespace PendingTransaction {
       /**
        * The country the merchant resides in.
        */
-      merchant_country: string | null;
+      merchant_country: string;
 
       /**
        * The merchant descriptor of the merchant the card is transacting with.
