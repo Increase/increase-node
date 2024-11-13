@@ -823,7 +823,7 @@ export namespace Transaction {
       /**
        * The city the merchant resides in.
        */
-      merchant_city: string | null;
+      merchant_city: string;
 
       /**
        * The country the merchant resides in.
@@ -1559,7 +1559,7 @@ export namespace Transaction {
       /**
        * The city the merchant resides in.
        */
-      merchant_city: string | null;
+      merchant_city: string;
 
       /**
        * The country the merchant resides in.
