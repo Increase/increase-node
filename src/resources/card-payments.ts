@@ -1377,7 +1377,7 @@ export namespace CardPayment {
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
-      merchant_acceptor_id: string | null;
+      merchant_acceptor_id: string;
 
       /**
        * The 4-digit MCC describing the merchant's business.
@@ -1397,7 +1397,7 @@ export namespace CardPayment {
       /**
        * The name of the merchant.
        */
-      merchant_name: string | null;
+      merchant_name: string;
 
       /**
        * The state the merchant resides in.
@@ -2220,7 +2220,7 @@ export namespace CardPayment {
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
-      merchant_acceptor_id: string | null;
+      merchant_acceptor_id: string;
 
       /**
        * The 4-digit MCC describing the merchant's business.
@@ -2240,7 +2240,7 @@ export namespace CardPayment {
       /**
        * The name of the merchant.
        */
-      merchant_name: string | null;
+      merchant_name: string;
 
       /**
        * The state the merchant resides in.
