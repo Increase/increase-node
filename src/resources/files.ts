@@ -105,6 +105,8 @@ export interface File {
    * - `processed_check_image_back` - An image of the back of a deposited check after
    *   processing by Increase and submission to the Federal Reserve.
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
+   * - `check_voucher_image` - An image to be printed on the bottom or voucher of a
+   *   check that you've requested Increase print.
    * - `inbound_mail_item` - A scanned mail item sent to Increase.
    * - `form_1099_int` - IRS Form 1099-INT.
    * - `form_ss_4` - IRS Form SS-4.
@@ -137,6 +139,7 @@ export interface File {
     | 'processed_check_image_front'
     | 'processed_check_image_back'
     | 'mailed_check_image'
+    | 'check_voucher_image'
     | 'inbound_mail_item'
     | 'form_1099_int'
     | 'form_ss_4'
@@ -177,6 +180,8 @@ export interface FileCreateParams {
    *   deposits.
    * - `check_image_back` - An image of the back of a check, used for check deposits.
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
+   * - `check_voucher_image` - An image to be printed on the bottom or voucher of a
+   *   check that you've requested Increase print.
    * - `form_ss_4` - IRS Form SS-4.
    * - `identity_document` - An image of a government-issued ID.
    * - `other` - A file purpose not covered by any of the other cases.
@@ -200,6 +205,7 @@ export interface FileCreateParams {
     | 'check_image_front'
     | 'check_image_back'
     | 'mailed_check_image'
+    | 'check_voucher_image'
     | 'form_ss_4'
     | 'identity_document'
     | 'other'
@@ -270,6 +276,7 @@ export namespace FileListParams {
       | 'processed_check_image_front'
       | 'processed_check_image_back'
       | 'mailed_check_image'
+      | 'check_voucher_image'
       | 'inbound_mail_item'
       | 'form_1099_int'
       | 'form_ss_4'
