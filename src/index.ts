@@ -1098,7 +1098,7 @@ export declare namespace Increase {
   export { Simulations as Simulations };
 }
 
-export { toFile, fileFromPath } from 'increase/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   IncreaseError,
   APIError,
@@ -1124,6 +1124,6 @@ export {
   EnvironmentMismatchError,
   InsufficientPermissionsError,
   IdempotencyKeyAlreadyUsedError,
-} from 'increase/error';
+} from './error';
 
 export default Increase;
