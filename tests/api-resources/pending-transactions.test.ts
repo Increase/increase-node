@@ -53,9 +53,7 @@ describe('resource pendingTransactions', () => {
       client.pendingTransactions.list(
         {
           account_id: 'account_id',
-          category: {
-            in: ['account_transfer_instruction', 'ach_transfer_instruction', 'card_authorization'],
-          },
+          category: { in: ['account_transfer_instruction'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
@@ -65,7 +63,7 @@ describe('resource pendingTransactions', () => {
           cursor: 'cursor',
           limit: 1,
           route_id: 'route_id',
-          status: { in: ['pending', 'complete'] },
+          status: { in: ['pending'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
