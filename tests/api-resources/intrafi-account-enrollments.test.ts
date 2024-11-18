@@ -79,7 +79,7 @@ describe('resource intrafiAccountEnrollments', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['pending_enrolling', 'enrolled', 'pending_unenrolling'] },
+          status: { in: ['pending_enrolling'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

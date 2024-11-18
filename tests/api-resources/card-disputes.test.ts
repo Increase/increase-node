@@ -81,7 +81,7 @@ describe('resource cardDisputes', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['pending_reviewing', 'pending_user_information', 'accepted'] },
+          status: { in: ['pending_reviewing'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

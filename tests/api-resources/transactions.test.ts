@@ -51,9 +51,7 @@ describe('resource transactions', () => {
       client.transactions.list(
         {
           account_id: 'account_id',
-          category: {
-            in: ['account_transfer_intention', 'ach_transfer_intention', 'ach_transfer_rejection'],
-          },
+          category: { in: ['account_transfer_intention'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',

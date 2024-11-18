@@ -51,7 +51,7 @@ describe('resource exports', () => {
           on_or_before: '2019-12-27T18:11:19.117Z',
         },
       },
-      entity_csv: { status: { in: ['active', 'archived', 'disabled'] } },
+      entity_csv: { status: { in: ['active'] } },
       transaction_csv: {
         account_id: 'account_in71c4amph0vgo2qllky',
         created_at: {
@@ -107,7 +107,7 @@ describe('resource exports', () => {
     await expect(
       client.exports.list(
         {
-          category: { in: ['account_statement_ofx', 'transaction_csv', 'balance_csv'] },
+          category: { in: ['account_statement_ofx'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
@@ -117,7 +117,7 @@ describe('resource exports', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['pending', 'complete', 'failed'] },
+          status: { in: ['pending'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

@@ -51,7 +51,7 @@ describe('resource events', () => {
       client.events.list(
         {
           associated_object_id: 'associated_object_id',
-          category: { in: ['account.created', 'account.updated', 'account_number.created'] },
+          category: { in: ['account.created'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
