@@ -92,7 +92,7 @@ describe('resource externalAccounts', () => {
           idempotency_key: 'x',
           limit: 1,
           routing_number: 'xxxxxxxxx',
-          status: { in: ['active', 'archived'] },
+          status: { in: ['active'] },
         },
         { path: '/_stainless_unknown_path' },
       ),

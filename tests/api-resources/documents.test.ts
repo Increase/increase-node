@@ -50,7 +50,7 @@ describe('resource documents', () => {
     await expect(
       client.documents.list(
         {
-          category: { in: ['form_1099_int', 'proof_of_authorization', 'company_information'] },
+          category: { in: ['form_1099_int'] },
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
