@@ -70,7 +70,7 @@ describe('resource entities', () => {
       description: 'x',
       government_authority: {
         address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
-        authorized_persons: [{ name: 'x' }, { name: 'x' }, { name: 'x' }],
+        authorized_persons: [{ name: 'x' }],
         category: 'municipality',
         name: 'x',
         tax_identifier: 'x',
@@ -78,54 +78,6 @@ describe('resource entities', () => {
       },
       joint: {
         individuals: [
-          {
-            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
-            date_of_birth: '2019-12-27',
-            identification: {
-              method: 'social_security_number',
-              number: 'xxxx',
-              drivers_license: {
-                expiration_date: '2019-12-27',
-                file_id: 'file_id',
-                state: 'x',
-                back_file_id: 'back_file_id',
-              },
-              other: {
-                country: 'x',
-                description: 'x',
-                file_id: 'file_id',
-                back_file_id: 'back_file_id',
-                expiration_date: '2019-12-27',
-              },
-              passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-            },
-            name: 'x',
-            confirmed_no_us_tax_id: true,
-          },
-          {
-            address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
-            date_of_birth: '2019-12-27',
-            identification: {
-              method: 'social_security_number',
-              number: 'xxxx',
-              drivers_license: {
-                expiration_date: '2019-12-27',
-                file_id: 'file_id',
-                state: 'x',
-                back_file_id: 'back_file_id',
-              },
-              other: {
-                country: 'x',
-                description: 'x',
-                file_id: 'file_id',
-                back_file_id: 'back_file_id',
-                expiration_date: '2019-12-27',
-              },
-              passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-            },
-            name: 'x',
-            confirmed_no_us_tax_id: true,
-          },
           {
             address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
             date_of_birth: '2019-12-27',
@@ -184,60 +136,6 @@ describe('resource entities', () => {
         category: 'revocable',
         name: 'x',
         trustees: [
-          {
-            structure: 'individual',
-            individual: {
-              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
-              date_of_birth: '2019-12-27',
-              identification: {
-                method: 'social_security_number',
-                number: 'xxxx',
-                drivers_license: {
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                  back_file_id: 'back_file_id',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  file_id: 'file_id',
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-              },
-              name: 'x',
-              confirmed_no_us_tax_id: true,
-            },
-          },
-          {
-            structure: 'individual',
-            individual: {
-              address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
-              date_of_birth: '2019-12-27',
-              identification: {
-                method: 'social_security_number',
-                number: 'xxxx',
-                drivers_license: {
-                  expiration_date: '2019-12-27',
-                  file_id: 'file_id',
-                  state: 'x',
-                  back_file_id: 'back_file_id',
-                },
-                other: {
-                  country: 'x',
-                  description: 'x',
-                  file_id: 'file_id',
-                  back_file_id: 'back_file_id',
-                  expiration_date: '2019-12-27',
-                },
-                passport: { country: 'x', expiration_date: '2019-12-27', file_id: 'file_id' },
-              },
-              name: 'x',
-              confirmed_no_us_tax_id: true,
-            },
-          },
           {
             structure: 'individual',
             individual: {
@@ -347,7 +245,7 @@ describe('resource entities', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['active', 'archived', 'disabled'] },
+          status: { in: ['active'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
