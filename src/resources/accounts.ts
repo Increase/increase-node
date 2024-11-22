@@ -171,10 +171,10 @@ export interface Account {
   /**
    * The status of the Account.
    *
-   * - `open` - Open Accounts that are ready to use.
    * - `closed` - Closed Accounts on which no new activity can occur.
+   * - `open` - Open Accounts that are ready to use.
    */
-  status: 'open' | 'closed';
+  status: 'closed' | 'open';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -272,10 +272,10 @@ export interface AccountListParams extends PageParams {
   /**
    * Filter Accounts for those with the specified status.
    *
-   * - `open` - Open Accounts that are ready to use.
    * - `closed` - Closed Accounts on which no new activity can occur.
+   * - `open` - Open Accounts that are ready to use.
    */
-  status?: 'open' | 'closed';
+  status?: 'closed' | 'open';
 }
 
 export namespace AccountListParams {
