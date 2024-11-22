@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.156.0 (2024-11-22)
+
+Full Changelog: [v0.155.0...v0.156.0](https://github.com/Increase/increase-node/compare/v0.155.0...v0.156.0)
+
+### Features
+
+* **api:** api update ([#781](https://github.com/Increase/increase-node/issues/781)) ([06732f5](https://github.com/Increase/increase-node/commit/06732f5bd0223d8e12c4d6e57fd3db2ef2bddbb3))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#775](https://github.com/Increase/increase-node/issues/775)) ([7d49d5f](https://github.com/Increase/increase-node/commit/7d49d5fabcadf25b2a18bf6158b47a501e6cec12))
+* rebuild project due to codegen change ([#777](https://github.com/Increase/increase-node/issues/777)) ([2dbc35a](https://github.com/Increase/increase-node/commit/2dbc35ae83604b034616fe4d43a9d74a4a76b173))
+* rebuild project due to codegen change ([#778](https://github.com/Increase/increase-node/issues/778)) ([a48bc58](https://github.com/Increase/increase-node/commit/a48bc58690b97af70beb6eb6b00ae8b17813e708))
+* remove redundant word in comment ([#780](https://github.com/Increase/increase-node/issues/780)) ([ea77ee2](https://github.com/Increase/increase-node/commit/ea77ee25e66a230824ae646aa3e8a472ddc9ca2b))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#779](https://github.com/Increase/increase-node/issues/779)) ([fceb6bd](https://github.com/Increase/increase-node/commit/fceb6bd124872e5e71fbedcbbba33e36a558aa0a))
+
 ## 0.155.0 (2024-11-14)
 
 Full Changelog: [v0.154.0...v0.155.0](https://github.com/Increase/increase-node/compare/v0.154.0...v0.155.0)
