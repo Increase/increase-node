@@ -73,7 +73,12 @@ export interface BookkeepingEntry {
   type: 'bookkeeping_entry';
 }
 
-export interface BookkeepingEntryListParams extends PageParams {}
+export interface BookkeepingEntryListParams extends PageParams {
+  /**
+   * The identifier for the Bookkeeping Account to filter by.
+   */
+  account_id?: string;
+}
 
 BookkeepingEntries.BookkeepingEntriesPage = BookkeepingEntriesPage;
 
