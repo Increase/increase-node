@@ -4,17 +4,19 @@ import { castToError, Headers } from './core';
 
 export class IncreaseError extends Error {}
 
-export class APIError extends IncreaseError {
-  readonly status: number | undefined;
-  readonly headers: Headers | undefined;
-  readonly error: Object | undefined;
+export class APIError<
+  TStatus extends number | undefined = number | undefined,
+  THeaders extends Headers | undefined = Headers | undefined,
+  TError extends Object | undefined = Object | undefined,
+> extends IncreaseError {
+  /** HTTP status for the response that caused the error */
+  readonly status: TStatus;
+  /** HTTP headers for the response that caused the error */
+  readonly headers: THeaders;
+  /** JSON body of the response that caused the error */
+  readonly error: TError;
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: TStatus, error: TError, message: string | undefined, headers: THeaders) {
     super(`${APIError.makeMessage(status, error, message)}`);
     this.status = status;
     this.headers = headers;
@@ -48,7 +50,7 @@ export class APIError extends IncreaseError {
     message: string | undefined,
     headers: Headers | undefined,
   ): APIError {
-    if (!status) {
+    if (!status || !headers) {
       return new APIConnectionError({ message, cause: castToError(errorResponse) });
     }
 
@@ -56,51 +58,51 @@ export class APIError extends IncreaseError {
 
     const type = error?.['type'];
 
-    if (type === 'invalid_parameters_error') {
+    if (type === 'invalid_parameters_error' && status === 400) {
       return new InvalidParametersError(status, error, message, headers);
     }
 
-    if (type === 'malformed_request_error') {
+    if (type === 'malformed_request_error' && status === 400) {
       return new MalformedRequestError(status, error, message, headers);
     }
 
-    if (type === 'invalid_api_key_error') {
+    if (type === 'invalid_api_key_error' && status === 401) {
       return new InvalidAPIKeyError(status, error, message, headers);
     }
 
-    if (type === 'environment_mismatch_error') {
+    if (type === 'environment_mismatch_error' && status === 403) {
       return new EnvironmentMismatchError(status, error, message, headers);
     }
 
-    if (type === 'insufficient_permissions_error') {
+    if (type === 'insufficient_permissions_error' && status === 403) {
       return new InsufficientPermissionsError(status, error, message, headers);
     }
 
-    if (type === 'private_feature_error') {
+    if (type === 'private_feature_error' && status === 403) {
       return new PrivateFeatureError(status, error, message, headers);
     }
 
-    if (type === 'api_method_not_found_error') {
+    if (type === 'api_method_not_found_error' && status === 404) {
       return new APIMethodNotFoundError(status, error, message, headers);
     }
 
-    if (type === 'object_not_found_error') {
+    if (type === 'object_not_found_error' && status === 404) {
       return new ObjectNotFoundError(status, error, message, headers);
     }
 
-    if (type === 'idempotency_key_already_used_error') {
+    if (type === 'idempotency_key_already_used_error' && status === 409) {
       return new IdempotencyKeyAlreadyUsedError(status, error, message, headers);
     }
 
-    if (type === 'invalid_operation_error') {
+    if (type === 'invalid_operation_error' && status === 409) {
       return new InvalidOperationError(status, error, message, headers);
     }
 
-    if (type === 'rate_limited_error') {
+    if (type === 'rate_limited_error' && status === 429) {
       return new RateLimitedError(status, error, message, headers);
     }
 
-    if (type === 'internal_server_error') {
+    if (type === 'internal_server_error' && status === 500) {
       return new InternalServerError(status, error, message, headers);
     }
 
@@ -136,17 +138,13 @@ export class APIError extends IncreaseError {
   }
 }
 
-export class APIUserAbortError extends APIError {
-  override readonly status: undefined = undefined;
-
+export class APIUserAbortError extends APIError<undefined, undefined, undefined> {
   constructor({ message }: { message?: string } = {}) {
     super(undefined, undefined, message || 'Request was aborted.', undefined);
   }
 }
 
-export class APIConnectionError extends APIError {
-  override readonly status: undefined = undefined;
-
+export class APIConnectionError extends APIError<undefined, undefined, undefined> {
   constructor({ message, cause }: { message?: string | undefined; cause?: Error | undefined }) {
     super(undefined, undefined, message || 'Connection error.', undefined);
     // in some environments the 'cause' property is already declared
@@ -161,33 +159,19 @@ export class APIConnectionTimeoutError extends APIConnectionError {
   }
 }
 
-export class BadRequestError extends APIError {
-  override readonly status: 400 = 400;
-}
+export class BadRequestError extends APIError<400, Headers> {}
 
-export class AuthenticationError extends APIError {
-  override readonly status: 401 = 401;
-}
+export class AuthenticationError extends APIError<401, Headers> {}
 
-export class PermissionDeniedError extends APIError {
-  override readonly status: 403 = 403;
-}
+export class PermissionDeniedError extends APIError<403, Headers> {}
 
-export class NotFoundError extends APIError {
-  override readonly status: 404 = 404;
-}
+export class NotFoundError extends APIError<404, Headers> {}
 
-export class ConflictError extends APIError {
-  override readonly status: 409 = 409;
-}
+export class ConflictError extends APIError<409, Headers> {}
 
-export class UnprocessableEntityError extends APIError {
-  override readonly status: 422 = 422;
-}
+export class UnprocessableEntityError extends APIError<422, Headers> {}
 
-export class RateLimitError extends APIError {
-  override readonly status: 429 = 429;
-}
+export class RateLimitError extends APIError<429, Headers> {}
 
 export class InvalidParametersError extends BadRequestError {
   detail: string | null;
@@ -203,12 +187,7 @@ export class InvalidParametersError extends BadRequestError {
 
   type: 'invalid_parameters_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 400, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -229,12 +208,7 @@ export class MalformedRequestError extends BadRequestError {
 
   type: 'malformed_request_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 400, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -263,12 +237,7 @@ export class InvalidAPIKeyError extends AuthenticationError {
 
   type: 'invalid_api_key_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 401, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -289,12 +258,7 @@ export class EnvironmentMismatchError extends PermissionDeniedError {
 
   type: 'environment_mismatch_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -314,12 +278,7 @@ export class InsufficientPermissionsError extends PermissionDeniedError {
 
   type: 'insufficient_permissions_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -339,12 +298,7 @@ export class PrivateFeatureError extends PermissionDeniedError {
 
   type: 'private_feature_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 403, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -364,12 +318,7 @@ export class APIMethodNotFoundError extends NotFoundError {
 
   type: 'api_method_not_found_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 404, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -389,12 +338,7 @@ export class ObjectNotFoundError extends NotFoundError {
 
   type: 'object_not_found_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 404, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -416,12 +360,7 @@ export class IdempotencyKeyAlreadyUsedError extends ConflictError {
 
   type: 'idempotency_key_already_used_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 409, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -442,12 +381,7 @@ export class InvalidOperationError extends ConflictError {
 
   type: 'invalid_operation_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 409, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -469,12 +403,7 @@ export class RateLimitedError extends RateLimitError {
 
   retry_after?: number | null;
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 429, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
@@ -486,7 +415,7 @@ export class RateLimitedError extends RateLimitError {
   }
 }
 
-export class InternalServerError extends APIError {
+export class InternalServerError extends APIError<number, Headers> {
   detail: string | null;
 
   override status: 500;
@@ -495,12 +424,7 @@ export class InternalServerError extends APIError {
 
   type: 'internal_server_error';
 
-  constructor(
-    status: number | undefined,
-    error: Object | undefined,
-    message: string | undefined,
-    headers: Headers | undefined,
-  ) {
+  constructor(status: 500, error: Object, message: string | undefined, headers: Headers) {
     const data = error as Record<string, any>;
     super(status, error, data?.['title'] || message, headers);
 
