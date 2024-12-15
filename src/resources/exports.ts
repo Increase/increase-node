@@ -65,6 +65,8 @@ export interface Export {
    * - `entity_csv` - Export a CSV of entities with a given status.
    * - `vendor_csv` - Export a CSV of vendors added to the third-party risk
    *   management dashboard.
+   * - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+   *   This export cannot be created via the API.
    */
   category:
     | 'account_statement_ofx'
@@ -72,7 +74,8 @@ export interface Export {
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
     | 'entity_csv'
-    | 'vendor_csv';
+    | 'vendor_csv'
+    | 'dashboard_table_csv';
 
   /**
    * The time the Export was created.
@@ -426,6 +429,7 @@ export namespace ExportListParams {
       | 'bookkeeping_account_balance_csv'
       | 'entity_csv'
       | 'vendor_csv'
+      | 'dashboard_table_csv'
     >;
   }
 
