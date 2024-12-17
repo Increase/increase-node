@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.157.0 (2024-12-17)
+
+Full Changelog: [v0.156.0...v0.157.0](https://github.com/Increase/increase-node/compare/v0.156.0...v0.157.0)
+
+### Features
+
+* **api:** api update ([#784](https://github.com/Increase/increase-node/issues/784)) ([dc0e777](https://github.com/Increase/increase-node/commit/dc0e777919addeb9cd549fce4632637bd2954e97))
+* **api:** api update ([#788](https://github.com/Increase/increase-node/issues/788)) ([1710e02](https://github.com/Increase/increase-node/commit/1710e028d83c4a0288b784a9b858830cee33ae6e))
+* **api:** api update ([#792](https://github.com/Increase/increase-node/issues/792)) ([e994899](https://github.com/Increase/increase-node/commit/e99489914157c2d2fbacf30bd5865c73ff76b2a1))
+* **api:** api update ([#793](https://github.com/Increase/increase-node/issues/793)) ([e6288fa](https://github.com/Increase/increase-node/commit/e6288fac6029147f6da6076286c3fdccc50d8b15))
+
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#789](https://github.com/Increase/increase-node/issues/789)) ([3ca5233](https://github.com/Increase/increase-node/commit/3ca52333c14a8ffd44f4f763967069272642b014))
+* **internal:** fix some typos ([#794](https://github.com/Increase/increase-node/issues/794)) ([8cdcbab](https://github.com/Increase/increase-node/commit/8cdcbab81c7472c190ae1d865702e5a581a48e55))
+* **internal:** remove unnecessary getRequestClient function ([#787](https://github.com/Increase/increase-node/issues/787)) ([c43f83e](https://github.com/Increase/increase-node/commit/c43f83e769d404106356febf99ec5717f1bc23e3))
+* **internal:** update isAbsoluteURL ([#791](https://github.com/Increase/increase-node/issues/791)) ([d4f6c95](https://github.com/Increase/increase-node/commit/d4f6c955e8c2c66afe7b6e34f0873c9cd4bd2137))
+* **types:** nicer error class types + jsdocs ([#790](https://github.com/Increase/increase-node/issues/790)) ([dac03fc](https://github.com/Increase/increase-node/commit/dac03fcbe08300d1f320e61dd634d40ec9764a3e))
+
 ## 0.156.0 (2024-11-22)
 
 Full Changelog: [v0.155.0...v0.156.0](https://github.com/Increase/increase-node/compare/v0.155.0...v0.156.0)
