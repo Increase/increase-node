@@ -792,6 +792,12 @@ export namespace Transaction {
       card_payment_id: string;
 
       /**
+       * Cashback debited for this transaction, if eligible. Cashback is paid out in
+       * aggregate, monthly.
+       */
+      cashback: CardRefund.Cashback | null;
+
+      /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
@@ -880,6 +886,31 @@ export namespace Transaction {
     }
 
     export namespace CardRefund {
+      /**
+       * Cashback debited for this transaction, if eligible. Cashback is paid out in
+       * aggregate, monthly.
+       */
+      export interface Cashback {
+        /**
+         * The cashback amount given as a string containing a decimal number. The amount is
+         * a positive number if it will be credited to you (e.g., settlements) and a
+         * negative number if it will be debited (e.g., refunds).
+         */
+        amount: string;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+         *
+         * - `CAD` - Canadian Dollar (CAD)
+         * - `CHF` - Swiss Franc (CHF)
+         * - `EUR` - Euro (EUR)
+         * - `GBP` - British Pound (GBP)
+         * - `JPY` - Japanese Yen (JPY)
+         * - `USD` - US Dollar (USD)
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      }
+
       /**
        * Interchange assessed as a part of this transaciton.
        */
@@ -1528,6 +1559,12 @@ export namespace Transaction {
       card_payment_id: string;
 
       /**
+       * Cashback earned on this transaction, if eligible. Cashback is paid out in
+       * aggregate, monthly.
+       */
+      cashback: CardSettlement.Cashback | null;
+
+      /**
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
@@ -1621,6 +1658,31 @@ export namespace Transaction {
     }
 
     export namespace CardSettlement {
+      /**
+       * Cashback earned on this transaction, if eligible. Cashback is paid out in
+       * aggregate, monthly.
+       */
+      export interface Cashback {
+        /**
+         * The cashback amount given as a string containing a decimal number. The amount is
+         * a positive number if it will be credited to you (e.g., settlements) and a
+         * negative number if it will be debited (e.g., refunds).
+         */
+        amount: string;
+
+        /**
+         * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+         *
+         * - `CAD` - Canadian Dollar (CAD)
+         * - `CHF` - Swiss Franc (CHF)
+         * - `EUR` - Euro (EUR)
+         * - `GBP` - British Pound (GBP)
+         * - `JPY` - Japanese Yen (JPY)
+         * - `USD` - US Dollar (USD)
+         */
+        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      }
+
       /**
        * Interchange assessed as a part of this transaciton.
        */
