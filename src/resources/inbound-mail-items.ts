@@ -70,7 +70,7 @@ export interface InboundMailItem {
    *
    * - `no_matching_lockbox` - The mail item does not match any lockbox.
    * - `no_check` - The mail item does not contain a check.
-   * - `lockbox_not_active` - The Lockbox or its associataed Account is not active.
+   * - `lockbox_not_active` - The Lockbox or its associated Account is not active.
    */
   rejection_reason: 'no_matching_lockbox' | 'no_check' | 'lockbox_not_active' | null;
 
