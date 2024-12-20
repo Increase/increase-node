@@ -2280,7 +2280,7 @@ export namespace CardPayment {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       interchange: CardSettlement.Interchange | null;
 
@@ -2386,7 +2386,7 @@ export namespace CardPayment {
       }
 
       /**
-       * Interchange assessed as a part of this transaciton.
+       * Interchange assessed as a part of this transaction.
        */
       export interface Interchange {
         /**
