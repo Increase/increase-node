@@ -565,6 +565,17 @@ Methods:
 
 - <code title="get /groups/current">client.groups.<a href="./src/resources/groups.ts">retrieve</a>() -> Group</code>
 
+# OAuthApplications
+
+Types:
+
+- <code><a href="./src/resources/oauth-applications.ts">OAuthApplication</a></code>
+
+Methods:
+
+- <code title="get /oauth_applications/{oauth_application_id}">client.oauthApplications.<a href="./src/resources/oauth-applications.ts">retrieve</a>(oauthApplicationId) -> OAuthApplication</code>
+- <code title="get /oauth_applications">client.oauthApplications.<a href="./src/resources/oauth-applications.ts">list</a>({ ...params }) -> OAuthApplicationsPage</code>
+
 # OAuthConnections
 
 Types:

@@ -68,6 +68,12 @@ export interface RealTimePaymentsTransfer {
   account_id: string;
 
   /**
+   * If the transfer is acknowledged by the recipient bank, this will contain
+   * supplemental details.
+   */
+  acknowledgement: RealTimePaymentsTransfer.Acknowledgement | null;
+
+  /**
    * The transfer amount in USD cents.
    */
   amount: number;
@@ -223,6 +229,17 @@ export interface RealTimePaymentsTransfer {
 }
 
 export namespace RealTimePaymentsTransfer {
+  /**
+   * If the transfer is acknowledged by the recipient bank, this will contain
+   * supplemental details.
+   */
+  export interface Acknowledgement {
+    /**
+     * When the transfer was acknowledged.
+     */
+    acknowledged_at: string;
+  }
+
   /**
    * If your account requires approvals for transfers and the transfer was approved,
    * this will contain details of the approval.

@@ -51,7 +51,12 @@ describe('resource oauthConnections', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.oauthConnections.list(
-        { cursor: 'cursor', limit: 1, status: { in: ['active'] } },
+        {
+          cursor: 'cursor',
+          limit: 1,
+          oauth_application_id: 'oauth_application_id',
+          status: { in: ['active'] },
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Increase.NotFoundError);

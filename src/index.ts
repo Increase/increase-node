@@ -237,6 +237,12 @@ import {
   LockboxesPage,
 } from './resources/lockboxes';
 import {
+  OAuthApplication,
+  OAuthApplicationListParams,
+  OAuthApplications,
+  OAuthApplicationsPage,
+} from './resources/oauth-applications';
+import {
   OAuthConnection,
   OAuthConnectionListParams,
   OAuthConnections,
@@ -524,6 +530,7 @@ export class Increase extends Core.APIClient {
   bookkeepingEntrySets: API.BookkeepingEntrySets = new API.BookkeepingEntrySets(this);
   bookkeepingEntries: API.BookkeepingEntries = new API.BookkeepingEntries(this);
   groups: API.Groups = new API.Groups(this);
+  oauthApplications: API.OAuthApplications = new API.OAuthApplications(this);
   oauthConnections: API.OAuthConnections = new API.OAuthConnections(this);
   oauthTokens: API.OAuthTokens = new API.OAuthTokens(this);
   intrafiAccountEnrollments: API.IntrafiAccountEnrollments = new API.IntrafiAccountEnrollments(this);
@@ -674,6 +681,8 @@ Increase.BookkeepingEntrySetsPage = BookkeepingEntrySetsPage;
 Increase.BookkeepingEntries = BookkeepingEntries;
 Increase.BookkeepingEntriesPage = BookkeepingEntriesPage;
 Increase.Groups = Groups;
+Increase.OAuthApplications = OAuthApplications;
+Increase.OAuthApplicationsPage = OAuthApplicationsPage;
 Increase.OAuthConnections = OAuthConnections;
 Increase.OAuthConnectionsPage = OAuthConnectionsPage;
 Increase.OAuthTokens = OAuthTokens;
@@ -1057,6 +1066,13 @@ export declare namespace Increase {
   };
 
   export { Groups as Groups, type Group as Group };
+
+  export {
+    OAuthApplications as OAuthApplications,
+    type OAuthApplication as OAuthApplication,
+    OAuthApplicationsPage as OAuthApplicationsPage,
+    type OAuthApplicationListParams as OAuthApplicationListParams,
+  };
 
   export {
     OAuthConnections as OAuthConnections,

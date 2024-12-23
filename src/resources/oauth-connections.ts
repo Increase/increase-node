@@ -63,6 +63,11 @@ export interface OAuthConnection {
   group_id: string;
 
   /**
+   * The identifier of the OAuth application this connection is for.
+   */
+  oauth_application_id: string;
+
+  /**
    * Whether the connection is active.
    *
    * - `active` - The OAuth connection is active.
@@ -78,6 +83,12 @@ export interface OAuthConnection {
 }
 
 export interface OAuthConnectionListParams extends PageParams {
+  /**
+   * Filter results to only include OAuth Connections for a specific OAuth
+   * Application.
+   */
+  oauth_application_id?: string;
+
   status?: OAuthConnectionListParams.Status;
 }
 
