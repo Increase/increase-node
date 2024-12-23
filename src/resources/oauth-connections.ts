@@ -84,7 +84,8 @@ export interface OAuthConnection {
 
 export interface OAuthConnectionListParams extends PageParams {
   /**
-   * The identifier of the OAuth Application to filter by.
+   * Filter results to only include OAuth Connections for a specific OAuth
+   * Application.
    */
   oauth_application_id?: string;
 
