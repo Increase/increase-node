@@ -8,9 +8,9 @@ const client = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource oauthConnections', () => {
+describe('resource oauthApplications', () => {
   test('retrieve', async () => {
-    const responsePromise = client.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my');
+    const responsePromise = client.oauthApplications.retrieve('application_gj9ufmpgh5i56k4vyriy');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,14 +23,14 @@ describe('resource oauthConnections', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.oauthConnections.retrieve('connection_dauknoksyr4wilz4e6my', {
+      client.oauthApplications.retrieve('application_gj9ufmpgh5i56k4vyriy', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = client.oauthConnections.list();
+    const responsePromise = client.oauthApplications.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,7 +42,7 @@ describe('resource oauthConnections', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.oauthConnections.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.oauthApplications.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Increase.NotFoundError,
     );
   });
@@ -50,15 +50,7 @@ describe('resource oauthConnections', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.oauthConnections.list(
-        {
-          cursor: 'cursor',
-          limit: 1,
-          oauth_application_id: 'oauth_application_id',
-          status: { in: ['active'] },
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
+      client.oauthApplications.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

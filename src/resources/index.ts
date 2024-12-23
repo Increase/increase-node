@@ -236,6 +236,12 @@ export {
   type LockboxListParams,
 } from './lockboxes';
 export {
+  OAuthApplicationsPage,
+  OAuthApplications,
+  type OAuthApplication,
+  type OAuthApplicationListParams,
+} from './oauth-applications';
+export {
   OAuthConnectionsPage,
   OAuthConnections,
   type OAuthConnection,
