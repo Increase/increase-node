@@ -82,7 +82,47 @@ export interface OAuthApplication {
   type: 'oauth_application';
 }
 
-export interface OAuthApplicationListParams extends PageParams {}
+export interface OAuthApplicationListParams extends PageParams {
+  created_at?: OAuthApplicationListParams.CreatedAt;
+
+  status?: OAuthApplicationListParams.Status;
+}
+
+export namespace OAuthApplicationListParams {
+  export interface CreatedAt {
+    /**
+     * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    after?: string;
+
+    /**
+     * Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+     * timestamp.
+     */
+    before?: string;
+
+    /**
+     * Return results on or after this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_after?: string;
+
+    /**
+     * Return results on or before this
+     * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+     */
+    on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'active' | 'deleted'>;
+  }
+}
 
 OAuthApplications.OAuthApplicationsPage = OAuthApplicationsPage;
 
