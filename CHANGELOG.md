@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.157.0 (2025-01-02)
+
+Full Changelog: [v0.156.0...v0.157.0](https://github.com/Increase/increase-node/compare/v0.156.0...v0.157.0)
+
+### Features
+
+* **api:** api update ([#784](https://github.com/Increase/increase-node/issues/784)) ([dc0e777](https://github.com/Increase/increase-node/commit/dc0e777919addeb9cd549fce4632637bd2954e97))
+* **api:** api update ([#788](https://github.com/Increase/increase-node/issues/788)) ([1710e02](https://github.com/Increase/increase-node/commit/1710e028d83c4a0288b784a9b858830cee33ae6e))
+* **api:** api update ([#792](https://github.com/Increase/increase-node/issues/792)) ([e994899](https://github.com/Increase/increase-node/commit/e99489914157c2d2fbacf30bd5865c73ff76b2a1))
+* **api:** api update ([#793](https://github.com/Increase/increase-node/issues/793)) ([e6288fa](https://github.com/Increase/increase-node/commit/e6288fac6029147f6da6076286c3fdccc50d8b15))
+* **api:** api update ([#796](https://github.com/Increase/increase-node/issues/796)) ([f1d24d1](https://github.com/Increase/increase-node/commit/f1d24d131bba6acb6dc6afb042854b4454a2c380))
+* **api:** api update ([#798](https://github.com/Increase/increase-node/issues/798)) ([5830ec6](https://github.com/Increase/increase-node/commit/5830ec6df3c97e7a31f3c2aa438f04e14ccafb75))
+* **api:** api update ([#799](https://github.com/Increase/increase-node/issues/799)) ([7f7dff0](https://github.com/Increase/increase-node/commit/7f7dff05a96a23485e6ab0144971b82656938c8c))
+* **api:** api update ([#800](https://github.com/Increase/increase-node/issues/800)) ([146b9f7](https://github.com/Increase/increase-node/commit/146b9f7c75fa9da97a10d3645f88ef193d69ab3e))
+* **api:** api update ([#801](https://github.com/Increase/increase-node/issues/801)) ([2f0cc5a](https://github.com/Increase/increase-node/commit/2f0cc5afa068244f4adeb696d717bf39d986db1b))
+* **api:** api update ([#803](https://github.com/Increase/increase-node/issues/803)) ([770e217](https://github.com/Increase/increase-node/commit/770e217ca02e75dbcde6d8107e5b2442ae3d8d7b))
+* **api:** api update ([#804](https://github.com/Increase/increase-node/issues/804)) ([4d9019f](https://github.com/Increase/increase-node/commit/4d9019fdbe5cc132ee87b48b340e7c06f5bbf40c))
+
+
+### Bug Fixes
+
+* **client:** normalize method ([#795](https://github.com/Increase/increase-node/issues/795)) ([6212e0f](https://github.com/Increase/increase-node/commit/6212e0f5dcd444d70416b2beee7df48d53af7358))
+
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#789](https://github.com/Increase/increase-node/issues/789)) ([3ca5233](https://github.com/Increase/increase-node/commit/3ca52333c14a8ffd44f4f763967069272642b014))
+* **internal:** codegen related update ([#802](https://github.com/Increase/increase-node/issues/802)) ([9e30ba3](https://github.com/Increase/increase-node/commit/9e30ba3ea8cc088df62e0da45c0be1c846e9ce74))
+* **internal:** fix some typos ([#794](https://github.com/Increase/increase-node/issues/794)) ([8cdcbab](https://github.com/Increase/increase-node/commit/8cdcbab81c7472c190ae1d865702e5a581a48e55))
+* **internal:** remove unnecessary getRequestClient function ([#787](https://github.com/Increase/increase-node/issues/787)) ([c43f83e](https://github.com/Increase/increase-node/commit/c43f83e769d404106356febf99ec5717f1bc23e3))
+* **internal:** update isAbsoluteURL ([#791](https://github.com/Increase/increase-node/issues/791)) ([d4f6c95](https://github.com/Increase/increase-node/commit/d4f6c955e8c2c66afe7b6e34f0873c9cd4bd2137))
+* **types:** nicer error class types + jsdocs ([#790](https://github.com/Increase/increase-node/issues/790)) ([dac03fc](https://github.com/Increase/increase-node/commit/dac03fcbe08300d1f320e61dd634d40ec9764a3e))
+
+
+### Documentation
+
+* minor formatting changes ([#797](https://github.com/Increase/increase-node/issues/797)) ([bdfcf61](https://github.com/Increase/increase-node/commit/bdfcf615aa7aedad75015495d39742d1f0695b03))
+
 ## 0.156.0 (2024-11-22)
 
 Full Changelog: [v0.155.0...v0.156.0](https://github.com/Increase/increase-node/compare/v0.155.0...v0.156.0)
