@@ -3002,7 +3002,7 @@ export namespace Transaction {
       /**
        * The account on which the interest was accrued.
        */
-      accrued_on_account_id: string | null;
+      accrued_on_account_id: string;
 
       /**
        * The amount in the minor unit of the transaction's currency. For dollars, for
