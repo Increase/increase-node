@@ -340,6 +340,7 @@ const environments = {
   sandbox: 'https://sandbox.increase.com',
 };
 type Environment = keyof typeof environments;
+
 export interface ClientOptions {
   /**
    * Defaults to process.env['INCREASE_API_KEY'].
