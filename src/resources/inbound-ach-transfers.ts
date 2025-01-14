@@ -243,7 +243,10 @@ export interface InboundACHTransfer {
   status: 'pending' | 'declined' | 'accepted' | 'returned';
 
   /**
-   * The trace number of the transfer.
+   * A 15 digit number set by the sending bank and transmitted to the receiving bank.
+   * Along with the amount, date, and originating routing number, this can be used to
+   * identify the ACH transfer. ACH trace numbers are not unique, but are
+   * [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
    */
   trace_number: string;
 
