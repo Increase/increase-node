@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.158.0 (2025-01-14)
+
+Full Changelog: [v0.157.0...v0.158.0](https://github.com/Increase/increase-node/compare/v0.157.0...v0.158.0)
+
+### Features
+
+* **api:** api update ([#809](https://github.com/Increase/increase-node/issues/809)) ([d0852ab](https://github.com/Increase/increase-node/commit/d0852ab2720d0370274f27edcb6a8fa672bb19e8))
+
+
+### Chores
+
+* **internal:** change formatting ([#808](https://github.com/Increase/increase-node/issues/808)) ([34ff170](https://github.com/Increase/increase-node/commit/34ff1709aaa77ffb81fb534b7435aec836a9acae))
+* **internal:** codegen related update ([#806](https://github.com/Increase/increase-node/issues/806)) ([7620023](https://github.com/Increase/increase-node/commit/762002394f2dc072af354d7fca24ae46f0cd712d))
+
 ## 0.157.0 (2025-01-02)
 
 Full Changelog: [v0.156.0...v0.157.0](https://github.com/Increase/increase-node/compare/v0.156.0...v0.157.0)
