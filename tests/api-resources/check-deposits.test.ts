@@ -36,7 +36,7 @@ describe('resource checkDeposits', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = client.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8');
+    const responsePromise = client.checkDeposits.retrieve('check_deposit_f06n9gpg7sxn8t19lfc1');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -49,7 +49,7 @@ describe('resource checkDeposits', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.checkDeposits.retrieve('check_deposit_instruction_q2shv7x9qhevfm71kor8', {
+      client.checkDeposits.retrieve('check_deposit_f06n9gpg7sxn8t19lfc1', {
         path: '/_stainless_unknown_path',
       }),
     ).rejects.toThrow(Increase.NotFoundError);
