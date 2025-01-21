@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.159.0 (2025-01-21)
+
+Full Changelog: [v0.158.0...v0.159.0](https://github.com/Increase/increase-node/compare/v0.158.0...v0.159.0)
+
+### Features
+
+* **api:** api update ([#814](https://github.com/Increase/increase-node/issues/814)) ([a509fa8](https://github.com/Increase/increase-node/commit/a509fa843c6a257855f0b283bc2a0b219378c70a))
+
+
+### Chores
+
+* **internal:** add test ([#813](https://github.com/Increase/increase-node/issues/813)) ([fdc1f8f](https://github.com/Increase/increase-node/commit/fdc1f8f52ce4e2643497fa1a4f9b07e4aacfe563))
+* **types:** add `| undefined` to client options properties ([#811](https://github.com/Increase/increase-node/issues/811)) ([9655f1e](https://github.com/Increase/increase-node/commit/9655f1e7e38f26e14d09717c4c35d6791b9a07c0))
+
 ## 0.158.0 (2025-01-14)
 
 Full Changelog: [v0.157.0...v0.158.0](https://github.com/Increase/increase-node/compare/v0.157.0...v0.158.0)
