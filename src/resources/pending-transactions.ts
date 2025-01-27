@@ -586,6 +586,9 @@ export namespace PendingTransaction {
            *   has enabled Visa's Transaction Advisory Service and requires further
            *   authentication to perform the transaction. In practice this is often utilized
            *   at fuel pumps to tell the cardholder to see the cashier.
+           * - `payment_fraud_disruption_acquirer_block` - The transaction was blocked by
+           *   Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
+           *   such as card testing.
            * - `other` - An unspecific reason for stand-in processing.
            */
           stand_in_processing_reason:
@@ -594,6 +597,7 @@ export namespace PendingTransaction {
             | 'invalid_cardholder_authentication_verification_value'
             | 'internal_visa_error'
             | 'merchant_transaction_advisory_service_authentication_required'
+            | 'payment_fraud_disruption_acquirer_block'
             | 'other'
             | null;
         }
