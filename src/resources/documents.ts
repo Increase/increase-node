@@ -45,12 +45,13 @@ export interface Document {
    * The type of document.
    *
    * - `form_1099_int` - Internal Revenue Service Form 1099-INT.
+   * - `form_1099_misc` - Internal Revenue Service Form 1099-MISC.
    * - `proof_of_authorization` - A document submitted in response to a proof of
    *   authorization request for an ACH transfer.
    * - `company_information` - Company information, such a policies or procedures,
    *   typically submitted during our due diligence process.
    */
-  category: 'form_1099_int' | 'proof_of_authorization' | 'company_information';
+  category: 'form_1099_int' | 'form_1099_misc' | 'proof_of_authorization' | 'company_information';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
@@ -93,7 +94,7 @@ export namespace DocumentListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<'form_1099_int' | 'proof_of_authorization' | 'company_information'>;
+    in?: Array<'form_1099_int' | 'form_1099_misc' | 'proof_of_authorization' | 'company_information'>;
   }
 
   export interface CreatedAt {
