@@ -572,12 +572,6 @@ export interface CheckTransferCreateParams {
   amount: number;
 
   /**
-   * The identifier of the Account Number from which to send the transfer and print
-   * on the check.
-   */
-  source_account_number_id: string;
-
-  /**
    * Whether Increase will print and mail the check or if you will do it yourself.
    *
    * - `physical_check` - Increase will print and mail a physical check.
@@ -585,7 +579,13 @@ export interface CheckTransferCreateParams {
    *   printing and mailing a check with the provided account number, routing number,
    *   check number, and amount.
    */
-  fulfillment_method?: 'physical_check' | 'third_party';
+  fulfillment_method: 'physical_check' | 'third_party';
+
+  /**
+   * The identifier of the Account Number from which to send the transfer and print
+   * on the check.
+   */
+  source_account_number_id: string;
 
   /**
    * Details relating to the physical check that Increase will print and mail. This
