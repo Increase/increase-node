@@ -353,6 +353,11 @@ export namespace CheckTransfer {
      * the check was mailed.
      */
     mailed_at: string;
+
+    /**
+     * The tracking number of the shipment, if available for the shipping method.
+     */
+    tracking_number: string | null;
   }
 
   /**
