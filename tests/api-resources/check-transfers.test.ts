@@ -13,6 +13,7 @@ describe('resource checkTransfers', () => {
     const responsePromise = client.checkTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
+      fulfillment_method: 'physical_check',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -28,8 +29,8 @@ describe('resource checkTransfers', () => {
     const response = await client.checkTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
-      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       fulfillment_method: 'physical_check',
+      source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       physical_check: {
         mailing_address: {
           city: 'New York',
