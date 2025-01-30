@@ -391,6 +391,14 @@ export namespace CheckTransfer {
     return_address: PhysicalCheck.ReturnAddress | null;
 
     /**
+     * The shipping method for the check.
+     *
+     * - `usps_first_class` - USPS First Class
+     * - `fedex_overnight` - FedEx Overnight
+     */
+    shipping_method: 'usps_first_class' | 'fedex_overnight' | null;
+
+    /**
      * The text that will appear as the signature on the check in cursive font. If
      * blank, the check will be printed with 'No signature required'.
      */
