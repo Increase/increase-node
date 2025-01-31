@@ -307,6 +307,26 @@ export namespace Transaction {
     inbound_ach_transfer: Source.InboundACHTransfer | null;
 
     /**
+     * An Inbound ACH Transfer Return Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_ach_transfer_return_intention`.
+     */
+    inbound_ach_transfer_return_intention: Source.InboundACHTransferReturnIntention | null;
+
+    /**
+     * An Inbound Check Adjustment object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_check_adjustment`.
+     */
+    inbound_check_adjustment: Source.InboundCheckAdjustment | null;
+
+    /**
+     * An Inbound Check Deposit Return Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_check_deposit_return_intention`.
+     */
+    inbound_check_deposit_return_intention: Source.InboundCheckDepositReturnIntention | null;
+
+    /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
@@ -331,6 +351,13 @@ export namespace Transaction {
      * JSON response if and only if `category` is equal to `inbound_wire_transfer`.
      */
     inbound_wire_transfer: Source.InboundWireTransfer | null;
+
+    /**
+     * An Inbound Wire Transfer Reversal Intention object. This field will be present
+     * in the JSON response if and only if `category` is equal to
+     * `inbound_wire_transfer_reversal`.
+     */
+    inbound_wire_transfer_reversal: Source.InboundWireTransferReversal | null;
 
     /**
      * An Interest Payment object. This field will be present in the JSON response if
@@ -2653,6 +2680,63 @@ export namespace Transaction {
     }
 
     /**
+     * An Inbound ACH Transfer Return Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_ach_transfer_return_intention`.
+     */
+    export interface InboundACHTransferReturnIntention {
+      /**
+       * The ID of the Inbound ACH Transfer that is being returned.
+       */
+      inbound_ach_transfer_id: string;
+    }
+
+    /**
+     * An Inbound Check Adjustment object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_check_adjustment`.
+     */
+    export interface InboundCheckAdjustment {
+      /**
+       * The ID of the transaction that was adjusted.
+       */
+      adjusted_transaction_id: string;
+
+      /**
+       * The amount of the check adjustment.
+       */
+      amount: number;
+
+      /**
+       * The reason for the adjustment.
+       *
+       * - `late_return` - The return was initiated too late and the receiving
+       *   institution has responded with a Late Return Claim.
+       * - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+       *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
+       * - `adjusted_amount` - The check was deposited with a different amount than what
+       *   was written on the check.
+       */
+      reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount';
+    }
+
+    /**
+     * An Inbound Check Deposit Return Intention object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_check_deposit_return_intention`.
+     */
+    export interface InboundCheckDepositReturnIntention {
+      /**
+       * The ID of the Inbound Check Deposit that is being returned.
+       */
+      inbound_check_deposit_id: string;
+
+      /**
+       * The identifier of the Check Transfer object that was deposited.
+       */
+      transfer_id: string | null;
+    }
+
+    /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`.
@@ -2992,6 +3076,18 @@ export namespace Transaction {
        * The ID of the Inbound Wire Transfer object that resulted in this Transaction.
        */
       transfer_id: string;
+    }
+
+    /**
+     * An Inbound Wire Transfer Reversal Intention object. This field will be present
+     * in the JSON response if and only if `category` is equal to
+     * `inbound_wire_transfer_reversal`.
+     */
+    export interface InboundWireTransferReversal {
+      /**
+       * The ID of the Inbound Wire Transfer that is being reversed.
+       */
+      inbound_wire_transfer_id: string;
     }
 
     /**

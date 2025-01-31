@@ -90,6 +90,12 @@ export interface CardPayment {
 export namespace CardPayment {
   export interface Element {
     /**
+     * A Card Authentication object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authentication`.
+     */
+    card_authentication: Element.CardAuthentication | null;
+
+    /**
      * A Card Authorization object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_authorization`.
      */
@@ -195,6 +201,205 @@ export namespace CardPayment {
   }
 
   export namespace Element {
+    /**
+     * A Card Authentication object. This field will be present in the JSON response if
+     * and only if `category` is equal to `card_authentication`.
+     */
+    export interface CardAuthentication {
+      /**
+       * The Card Authentication identifier.
+       */
+      id: string;
+
+      /**
+       * The identifier of the Card.
+       */
+      card_id: string;
+
+      /**
+       * The ID of the Card Payment this transaction belongs to.
+       */
+      card_payment_id: string;
+
+      /**
+       * The category of the card authentication attempt.
+       *
+       * - `payment_authentication` - The authentication attempt is for a payment.
+       * - `non_payment_authentication` - The authentication attempt is not for a
+       *   payment.
+       */
+      category: 'payment_authentication' | 'non_payment_authentication' | null;
+
+      /**
+       * Details about the challenge, if one was requested.
+       */
+      challenge: CardAuthentication.Challenge | null;
+
+      /**
+       * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+       * Authentication was attempted.
+       */
+      created_at: string;
+
+      /**
+       * The reason why this authentication attempt was denied, if it was.
+       *
+       * - `group_locked` - The group was locked.
+       * - `card_not_active` - The card was not active.
+       * - `entity_not_active` - The entity was not active.
+       * - `transaction_not_allowed` - The transaction was not allowed.
+       * - `webhook_denied` - The webhook was denied.
+       * - `webhook_timed_out` - The webhook timed out.
+       */
+      deny_reason:
+        | 'group_locked'
+        | 'card_not_active'
+        | 'entity_not_active'
+        | 'transaction_not_allowed'
+        | 'webhook_denied'
+        | 'webhook_timed_out'
+        | null;
+
+      /**
+       * The device channel of the card authentication attempt.
+       *
+       * - `app` - The authentication attempt was made from an app.
+       * - `browser` - The authentication attempt was made from a browser.
+       * - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+       *   the 3DS Requestor.
+       */
+      device_channel: 'app' | 'browser' | 'three_ds_requestor_initiated' | null;
+
+      /**
+       * The merchant identifier (commonly abbreviated as MID) of the merchant the card
+       * is transacting with.
+       */
+      merchant_acceptor_id: string;
+
+      /**
+       * The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+       * card is transacting with.
+       */
+      merchant_category_code: string;
+
+      /**
+       * The country the merchant resides in.
+       */
+      merchant_country: string;
+
+      /**
+       * The name of the merchant.
+       */
+      merchant_name: string;
+
+      /**
+       * The purchase amount in minor units.
+       */
+      purchase_amount: number | null;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+       * authentication attempt's purchase currency.
+       */
+      purchase_currency: string | null;
+
+      /**
+       * The identifier of the Real-Time Decision sent to approve or decline this
+       * authentication attempt.
+       */
+      real_time_decision_id: string | null;
+
+      /**
+       * The status of the card authentication.
+       *
+       * - `denied` - The authentication attempt was denied.
+       * - `authenticated_with_challenge` - The authentication attempt was authenticated
+       *   with a challenge.
+       * - `authenticated_without_challenge` - The authentication attempt was
+       *   authenticated without a challenge.
+       * - `awaiting_challenge` - The authentication attempt is awaiting a challenge.
+       * - `validating_challenge` - The authentication attempt is validating a challenge.
+       * - `canceled` - The authentication attempt was canceled.
+       * - `timed_out_awaiting_challenge` - The authentication attempt timed out while
+       *   awaiting a challenge.
+       * - `errored` - The authentication attempt errored.
+       * - `exceeded_attempt_threshold` - The authentication attempt exceeded the attempt
+       *   threshold.
+       */
+      status:
+        | 'denied'
+        | 'authenticated_with_challenge'
+        | 'authenticated_without_challenge'
+        | 'awaiting_challenge'
+        | 'validating_challenge'
+        | 'canceled'
+        | 'timed_out_awaiting_challenge'
+        | 'errored'
+        | 'exceeded_attempt_threshold';
+
+      /**
+       * A constant representing the object's type. For this resource it will always be
+       * `card_authentication`.
+       */
+      type: 'card_authentication';
+    }
+
+    export namespace CardAuthentication {
+      /**
+       * Details about the challenge, if one was requested.
+       */
+      export interface Challenge {
+        /**
+         * Details about the challenge verification attempts, if any happened.
+         */
+        attempts: Array<Challenge.Attempt>;
+
+        /**
+         * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+         * Authentication Challenge was started.
+         */
+        created_at: string;
+
+        /**
+         * The one-time code used for the Card Authentication Challenge.
+         */
+        one_time_code: string;
+
+        /**
+         * The method used to verify the Card Authentication Challenge.
+         *
+         * - `text_message` - The one-time code was sent via text message.
+         * - `email` - The one-time code was sent via email.
+         * - `none_available` - The one-time code was not successfully delievered.
+         */
+        verification_method: 'text_message' | 'email' | 'none_available';
+
+        /**
+         * E.g., the email address or phone number used for the Card Authentication
+         * Challenge.
+         */
+        verification_value: string | null;
+      }
+
+      export namespace Challenge {
+        export interface Attempt {
+          /**
+           * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
+           * Authentication Challenge Attempt.
+           */
+          created_at: string;
+
+          /**
+           * The outcome of the Card Authentication Challenge Attempt.
+           *
+           * - `successful` - The attempt was successful.
+           * - `failed` - The attempt was unsuccessful.
+           */
+          outcome: 'successful' | 'failed';
+        }
+      }
+    }
+
     /**
      * A Card Authorization object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_authorization`.
