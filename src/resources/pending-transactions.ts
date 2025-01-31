@@ -149,7 +149,9 @@ export namespace PendingTransaction {
 
     /**
      * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`.
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
      */
     card_authorization: Source.CardAuthorization | null;
 
@@ -205,13 +207,17 @@ export namespace PendingTransaction {
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
-     * and only if `category` is equal to `inbound_funds_hold`.
+     * and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+     * certain transaction types to account for return windows where funds might still
+     * be clawed back by the sending institution.
      */
     inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
      * An Inbound Wire Transfer Reversal object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+     * An Inbound Wire Transfer Reversal is created when Increase has received a wire
+     * and the User requests that it be reversed.
      */
     inbound_wire_transfer_reversal: Source.InboundWireTransferReversal | null;
 
@@ -284,7 +290,9 @@ export namespace PendingTransaction {
 
     /**
      * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`.
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
      */
     export interface CardAuthorization {
       /**
@@ -789,7 +797,9 @@ export namespace PendingTransaction {
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
-     * and only if `category` is equal to `inbound_funds_hold`.
+     * and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+     * certain transaction types to account for return windows where funds might still
+     * be clawed back by the sending institution.
      */
     export interface InboundFundsHold {
       /**
@@ -861,6 +871,8 @@ export namespace PendingTransaction {
     /**
      * An Inbound Wire Transfer Reversal object. This field will be present in the JSON
      * response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+     * An Inbound Wire Transfer Reversal is created when Increase has received a wire
+     * and the User requests that it be reversed.
      */
     export interface InboundWireTransferReversal {
       /**
