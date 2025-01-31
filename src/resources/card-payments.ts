@@ -91,19 +91,24 @@ export namespace CardPayment {
   export interface Element {
     /**
      * A Card Authentication object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authentication`.
+     * and only if `category` is equal to `card_authentication`. Card Authentications
+     * are attempts to authenticate a transaction or a card with 3DS.
      */
     card_authentication: Element.CardAuthentication | null;
 
     /**
      * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`.
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
      */
     card_authorization: Element.CardAuthorization | null;
 
     /**
      * A Card Authorization Expiration object. This field will be present in the JSON
      * response if and only if `category` is equal to `card_authorization_expiration`.
+     * Card Authorization Expirations are cancellations of authorizations that were
+     * never settled by the acquirer.
      */
     card_authorization_expiration: Element.CardAuthorizationExpiration | null;
 
@@ -115,37 +120,49 @@ export namespace CardPayment {
 
     /**
      * A Card Fuel Confirmation object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_fuel_confirmation`.
+     * if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
+     * Confirmations update the amount of a Card Authorization after a fuel pump
+     * transaction is completed.
      */
     card_fuel_confirmation: Element.CardFuelConfirmation | null;
 
     /**
      * A Card Increment object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_increment`.
+     * only if `category` is equal to `card_increment`. Card Increments increase the
+     * pending amount of an authorized transaction.
      */
     card_increment: Element.CardIncrement | null;
 
     /**
      * A Card Refund object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_refund`.
+     * only if `category` is equal to `card_refund`. Card Refunds move money back to
+     * the cardholder. While they are usually connected to a Card Settlement an
+     * acquirer can also refund money directly to a card without relation to a
+     * transaction.
      */
     card_refund: Element.CardRefund | null;
 
     /**
      * A Card Reversal object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_reversal`.
+     * only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
+     * or the entirety of an existing Card Authorization.
      */
     card_reversal: Element.CardReversal | null;
 
     /**
      * A Card Settlement object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_settlement`.
+     * only if `category` is equal to `card_settlement`. Card Settlements are card
+     * transactions that have cleared and settled. While a settlement is usually
+     * preceded by an authorization, an acquirer can also directly clear a transaction
+     * without first authorizing it.
      */
     card_settlement: Element.CardSettlement | null;
 
     /**
      * A Card Validation object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_validation`.
+     * only if `category` is equal to `card_validation`. Card Validations are requests
+     * from a merchant to verify that a card number and optionally its address and/or
+     * Card Verification Value are valid.
      */
     card_validation: Element.CardValidation | null;
 
@@ -203,7 +220,8 @@ export namespace CardPayment {
   export namespace Element {
     /**
      * A Card Authentication object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authentication`.
+     * and only if `category` is equal to `card_authentication`. Card Authentications
+     * are attempts to authenticate a transaction or a card with 3DS.
      */
     export interface CardAuthentication {
       /**
@@ -402,7 +420,9 @@ export namespace CardPayment {
 
     /**
      * A Card Authorization object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_authorization`.
+     * and only if `category` is equal to `card_authorization`. Card Authorizations are
+     * temporary holds placed on a customers funds with the intent to later clear a
+     * transaction.
      */
     export interface CardAuthorization {
       /**
@@ -838,6 +858,8 @@ export namespace CardPayment {
     /**
      * A Card Authorization Expiration object. This field will be present in the JSON
      * response if and only if `category` is equal to `card_authorization_expiration`.
+     * Card Authorization Expirations are cancellations of authorizations that were
+     * never settled by the acquirer.
      */
     export interface CardAuthorizationExpiration {
       /**
@@ -1377,7 +1399,9 @@ export namespace CardPayment {
 
     /**
      * A Card Fuel Confirmation object. This field will be present in the JSON response
-     * if and only if `category` is equal to `card_fuel_confirmation`.
+     * if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
+     * Confirmations update the amount of a Card Authorization after a fuel pump
+     * transaction is completed.
      */
     export interface CardFuelConfirmation {
       /**
@@ -1462,7 +1486,8 @@ export namespace CardPayment {
 
     /**
      * A Card Increment object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_increment`.
+     * only if `category` is equal to `card_increment`. Card Increments increase the
+     * pending amount of an authorized transaction.
      */
     export interface CardIncrement {
       /**
@@ -1575,7 +1600,10 @@ export namespace CardPayment {
 
     /**
      * A Card Refund object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_refund`.
+     * only if `category` is equal to `card_refund`. Card Refunds move money back to
+     * the cardholder. While they are usually connected to a Card Settlement an
+     * acquirer can also refund money directly to a card without relation to a
+     * transaction.
      */
     export interface CardRefund {
       /**
@@ -2296,7 +2324,8 @@ export namespace CardPayment {
 
     /**
      * A Card Reversal object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_reversal`.
+     * only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
+     * or the entirety of an existing Card Authorization.
      */
     export interface CardReversal {
       /**
@@ -2448,7 +2477,10 @@ export namespace CardPayment {
 
     /**
      * A Card Settlement object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_settlement`.
+     * only if `category` is equal to `card_settlement`. Card Settlements are card
+     * transactions that have cleared and settled. While a settlement is usually
+     * preceded by an authorization, an acquirer can also directly clear a transaction
+     * without first authorizing it.
      */
     export interface CardSettlement {
       /**
@@ -3180,7 +3212,9 @@ export namespace CardPayment {
 
     /**
      * A Card Validation object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_validation`.
+     * only if `category` is equal to `card_validation`. Card Validations are requests
+     * from a merchant to verify that a card number and optionally its address and/or
+     * Card Verification Value are valid.
      */
     export interface CardValidation {
       /**
