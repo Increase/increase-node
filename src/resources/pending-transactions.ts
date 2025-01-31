@@ -210,6 +210,12 @@ export namespace PendingTransaction {
     inbound_funds_hold: Source.InboundFundsHold | null;
 
     /**
+     * An Inbound Wire Transfer Reversal object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+     */
+    inbound_wire_transfer_reversal: Source.InboundWireTransferReversal | null;
+
+    /**
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
@@ -850,6 +856,17 @@ export namespace PendingTransaction {
        * `inbound_funds_hold`.
        */
       type: 'inbound_funds_hold';
+    }
+
+    /**
+     * An Inbound Wire Transfer Reversal object. This field will be present in the JSON
+     * response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+     */
+    export interface InboundWireTransferReversal {
+      /**
+       * The ID of the Inbound Wire Transfer that is being reversed.
+       */
+      inbound_wire_transfer_id: string;
     }
 
     /**
