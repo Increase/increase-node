@@ -114,6 +114,12 @@ export interface InboundACHTransfer {
   automatically_resolves_at: string;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the inbound ACH transfer was created.
+   */
+  created_at: string;
+
+  /**
    * If your transfer is declined, this will contain details of the decline.
    */
   decline: InboundACHTransfer.Decline | null;
