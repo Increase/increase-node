@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.169.0 (2025-02-04)
+
+Full Changelog: [v0.168.0...v0.169.0](https://github.com/Increase/increase-node/compare/v0.168.0...v0.169.0)
+
+### Features
+
+* **api:** api update ([#845](https://github.com/Increase/increase-node/issues/845)) ([5423755](https://github.com/Increase/increase-node/commit/54237559b225b08d7cb80764bd459f911fc9cc4a))
+* **client:** send `X-Stainless-Timeout` header ([#843](https://github.com/Increase/increase-node/issues/843)) ([bbfd010](https://github.com/Increase/increase-node/commit/bbfd0103c4c06f15b33ae400a5c05dcb6d9c94c5))
+
 ## 0.168.0 (2025-02-03)
 
 Full Changelog: [v0.167.0...v0.168.0](https://github.com/Increase/increase-node/compare/v0.167.0...v0.168.0)
