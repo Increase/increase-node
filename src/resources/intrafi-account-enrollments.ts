@@ -83,6 +83,12 @@ export interface IntrafiAccountEnrollment {
   account_id: string;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the enrollment was created.
+   */
+  created_at: string;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
