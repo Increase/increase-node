@@ -91,6 +91,12 @@ export interface InboundWireTransfer {
   beneficiary_reference: string | null;
 
   /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+   * the inbound wire transfer was created.
+   */
+  created_at: string;
+
+  /**
    * An Increase-constructed description of the transfer.
    */
   description: string;

@@ -618,7 +618,7 @@ Types:
 
 Methods:
 
-- <code title="get /intrafi_balances/{account_id}">client.intrafiBalances.<a href="./src/resources/intrafi-balances.ts">retrieve</a>(accountId) -> IntrafiBalance</code>
+- <code title="get /accounts/{account_id}/intrafi_balance">client.intrafiBalances.<a href="./src/resources/intrafi-balances.ts">intrafiBalance</a>(accountId) -> IntrafiBalance</code>
 
 # IntrafiExclusions
 

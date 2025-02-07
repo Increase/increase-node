@@ -9,8 +9,8 @@ const client = new Increase({
 });
 
 describe('resource intrafiBalances', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.intrafiBalances.retrieve('account_in71c4amph0vgo2qllky');
+  test('intrafiBalance', async () => {
+    const responsePromise = client.intrafiBalances.intrafiBalance('account_in71c4amph0vgo2qllky');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,10 +20,12 @@ describe('resource intrafiBalances', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
+  test('intrafiBalance: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.intrafiBalances.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
+      client.intrafiBalances.intrafiBalance('account_in71c4amph0vgo2qllky', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

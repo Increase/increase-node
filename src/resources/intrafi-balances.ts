@@ -7,8 +7,8 @@ export class IntrafiBalances extends APIResource {
   /**
    * Get IntraFi balances by bank
    */
-  retrieve(accountId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiBalance> {
-    return this._client.get(`/intrafi_balances/${accountId}`, options);
+  intrafiBalance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiBalance> {
+    return this._client.get(`/accounts/${accountId}/intrafi_balance`, options);
   }
 }
 
