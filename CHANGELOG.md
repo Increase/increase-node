@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.174.1 (2025-02-19)
+
+Full Changelog: [v0.174.0...v0.174.1](https://github.com/Increase/increase-node/compare/v0.174.0...v0.174.1)
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#862](https://github.com/Increase/increase-node/issues/862)) ([b37e781](https://github.com/Increase/increase-node/commit/b37e7819b73ff0107170e19922018ed832ee539a))
+
 ## 0.174.0 (2025-02-19)
 
 Full Changelog: [v0.173.0...v0.174.0](https://github.com/Increase/increase-node/compare/v0.173.0...v0.174.0)
