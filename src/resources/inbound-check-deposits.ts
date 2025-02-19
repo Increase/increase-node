@@ -222,8 +222,10 @@ export namespace InboundCheckDeposit {
      *   depositing institution has reimbursed the funds with a Wrong Payee Credit.
      * - `adjusted_amount` - The check was deposited with a different amount than what
      *   was written on the check.
+     * - `non_conforming_item` - The recipient was not able to process the check. This
+     *   usually happens for e.g., low quality images.
      */
-    reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount';
+    reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item';
 
     /**
      * The id of the transaction for the adjustment.
