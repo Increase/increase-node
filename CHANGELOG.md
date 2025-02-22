@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.175.0 (2025-02-22)
+
+Full Changelog: [v0.174.1...v0.175.0](https://github.com/Increase/increase-node/compare/v0.174.1...v0.175.0)
+
+### Features
+
+* **api:** api update ([#867](https://github.com/Increase/increase-node/issues/867)) ([df92a32](https://github.com/Increase/increase-node/commit/df92a32d9ee38684313d618ddeb80fa7bbd4ac6a))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#865](https://github.com/Increase/increase-node/issues/865)) ([4aa2714](https://github.com/Increase/increase-node/commit/4aa27147c05f144a94b16a1307f17675e333a0c5))
+
 ## 0.174.1 (2025-02-19)
 
 Full Changelog: [v0.174.0...v0.174.1](https://github.com/Increase/increase-node/compare/v0.174.0...v0.174.1)
