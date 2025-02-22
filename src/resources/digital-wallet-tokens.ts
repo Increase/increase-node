@@ -52,7 +52,7 @@ export interface DigitalWalletToken {
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-   * the Card was created.
+   * the Digital Wallet Token was created.
    */
   created_at: string;
 
@@ -82,6 +82,32 @@ export interface DigitalWalletToken {
    * `digital_wallet_token`.
    */
   type: 'digital_wallet_token';
+
+  /**
+   * Updates to the Digital Wallet Token.
+   */
+  updates: Array<DigitalWalletToken.Update>;
+}
+
+export namespace DigitalWalletToken {
+  export interface Update {
+    /**
+     * The status the update changed this Digital Wallet Token to.
+     *
+     * - `active` - The digital wallet token is active.
+     * - `inactive` - The digital wallet token has been created but not successfully
+     *   activated via two-factor authentication yet.
+     * - `suspended` - The digital wallet token has been temporarily paused.
+     * - `deactivated` - The digital wallet token has been permanently canceled.
+     */
+    status: 'active' | 'inactive' | 'suspended' | 'deactivated';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the update happened.
+     */
+    timestamp: string;
+  }
 }
 
 export interface DigitalWalletTokenListParams extends PageParams {
