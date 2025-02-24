@@ -25,7 +25,7 @@ describe('resource cardAuthorizations', () => {
       amount: 1000,
       authenticated_card_payment_id: 'authenticated_card_payment_id',
       card_id: 'card_oubs0hwk5rn6knuecxg2',
-      decline_reason: 'card_not_active',
+      decline_reason: 'account_closed',
       digital_wallet_token_id: 'digital_wallet_token_id',
       direction: 'settlement',
       event_subscription_id: 'event_subscription_001dzz0r20rcdxgb013zqb8m04g',

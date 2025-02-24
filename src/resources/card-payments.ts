@@ -1103,6 +1103,7 @@ export namespace CardPayment {
       /**
        * Why the transaction was declined.
        *
+       * - `account_closed` - The account has been closed.
        * - `card_not_active` - The Card was not active.
        * - `physical_card_not_active` - The Physical Card was not active.
        * - `entity_not_active` - The account's entity was not active.
@@ -1127,6 +1128,7 @@ export namespace CardPayment {
        *   reach out to support@increase.com for more information.
        */
       reason:
+        | 'account_closed'
         | 'card_not_active'
         | 'physical_card_not_active'
         | 'entity_not_active'
