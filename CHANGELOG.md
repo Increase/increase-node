@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.178.0 (2025-02-28)
+
+Full Changelog: [v0.177.0...v0.178.0](https://github.com/Increase/increase-node/compare/v0.177.0...v0.178.0)
+
+### Features
+
+* **api:** api update ([#877](https://github.com/Increase/increase-node/issues/877)) ([d80a375](https://github.com/Increase/increase-node/commit/d80a375d001ec58fc2f2fe1df92f2934ce6fdb8e))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#875](https://github.com/Increase/increase-node/issues/875)) ([381288b](https://github.com/Increase/increase-node/commit/381288bd6afd5aa48b091185a48796082dd734d2))
+
 ## 0.177.0 (2025-02-26)
 
 Full Changelog: [v0.176.0...v0.177.0](https://github.com/Increase/increase-node/compare/v0.176.0...v0.177.0)
