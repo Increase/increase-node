@@ -270,13 +270,7 @@ export interface AccountListParams extends PageParams {
    */
   program_id?: string;
 
-  /**
-   * Filter Accounts for those with the specified status.
-   *
-   * - `closed` - Closed Accounts on which no new activity can occur.
-   * - `open` - Open Accounts that are ready to use.
-   */
-  status?: 'closed' | 'open';
+  status?: AccountListParams.Status;
 }
 
 export namespace AccountListParams {
@@ -304,6 +298,14 @@ export namespace AccountListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Accounts for those with the specified status. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'closed' | 'open'>;
   }
 }
 
