@@ -93,7 +93,7 @@ describe('resource accounts', () => {
           informational_entity_id: 'informational_entity_id',
           limit: 1,
           program_id: 'program_id',
-          status: 'closed',
+          status: { in: ['closed'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
