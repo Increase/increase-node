@@ -64,7 +64,7 @@ describe('resource inboundWireTransfers', () => {
           },
           cursor: 'cursor',
           limit: 1,
-          status: 'pending',
+          status: { in: ['pending'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
