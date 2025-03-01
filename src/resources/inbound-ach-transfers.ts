@@ -725,27 +725,18 @@ export namespace InboundACHTransfer {
 
 export interface InboundACHTransferListParams extends PageParams {
   /**
-   * Filter Inbound ACH Tranfers to ones belonging to the specified Account.
+   * Filter Inbound ACH Transfers to ones belonging to the specified Account.
    */
   account_id?: string;
 
   /**
-   * Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
+   * Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
    */
   account_number_id?: string;
 
   created_at?: InboundACHTransferListParams.CreatedAt;
 
-  /**
-   * Filter Inbound ACH Transfers to those with the specified status.
-   *
-   * - `pending` - The Inbound ACH Transfer is awaiting action, will transition
-   *   automatically if no action is taken.
-   * - `declined` - The Inbound ACH Transfer has been declined.
-   * - `accepted` - The Inbound ACH Transfer is accepted.
-   * - `returned` - The Inbound ACH Transfer has been returned.
-   */
-  status?: 'pending' | 'declined' | 'accepted' | 'returned';
+  status?: InboundACHTransferListParams.Status;
 }
 
 export namespace InboundACHTransferListParams {
@@ -773,6 +764,15 @@ export namespace InboundACHTransferListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Inbound ACH Transfers to those with the specified status. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<'pending' | 'declined' | 'accepted' | 'returned'>;
   }
 }
 
