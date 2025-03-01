@@ -279,13 +279,7 @@ export interface AccountNumberListParams extends PageParams {
    */
   account_id?: string;
 
-  /**
-   * The ACH Debit status to retrieve Account Numbers for.
-   *
-   * - `allowed` - ACH Debits are allowed.
-   * - `blocked` - ACH Debits are blocked.
-   */
-  ach_debit_status?: 'allowed' | 'blocked';
+  ach_debit_status?: AccountNumberListParams.ACHDebitStatus;
 
   created_at?: AccountNumberListParams.CreatedAt;
 
@@ -297,17 +291,18 @@ export interface AccountNumberListParams extends PageParams {
    */
   idempotency_key?: string;
 
-  /**
-   * The status to retrieve Account Numbers for.
-   *
-   * - `active` - The account number is active.
-   * - `disabled` - The account number is temporarily disabled.
-   * - `canceled` - The account number is permanently disabled.
-   */
-  status?: 'active' | 'disabled' | 'canceled';
+  status?: AccountNumberListParams.Status;
 }
 
 export namespace AccountNumberListParams {
+  export interface ACHDebitStatus {
+    /**
+     * The ACH Debit status to retrieve Account Numbers for. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'allowed' | 'blocked'>;
+  }
+
   export interface CreatedAt {
     /**
      * Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -332,6 +327,14 @@ export namespace AccountNumberListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * The status to retrieve Account Numbers for. For GET requests, this should be
+     * encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<'active' | 'disabled' | 'canceled'>;
   }
 }
 
