@@ -62,7 +62,7 @@ describe('resource inboundACHTransfers', () => {
           },
           cursor: 'cursor',
           limit: 1,
-          status: { in: ['pending'] },
+          status: 'pending',
         },
         { path: '/_stainless_unknown_path' },
       ),
