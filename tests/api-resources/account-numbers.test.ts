@@ -87,7 +87,7 @@ describe('resource accountNumbers', () => {
       client.accountNumbers.list(
         {
           account_id: 'account_id',
-          ach_debit_status: { in: ['allowed'] },
+          ach_debit_status: 'allowed',
           created_at: {
             after: '2019-12-27T18:11:19.117Z',
             before: '2019-12-27T18:11:19.117Z',
@@ -97,7 +97,7 @@ describe('resource accountNumbers', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          status: { in: ['active'] },
+          status: 'active',
         },
         { path: '/_stainless_unknown_path' },
       ),

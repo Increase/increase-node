@@ -275,18 +275,17 @@ export interface WireDrawdownRequestListParams extends PageParams {
    */
   idempotency_key?: string;
 
-  status?: WireDrawdownRequestListParams.Status;
-}
-
-export namespace WireDrawdownRequestListParams {
-  export interface Status {
-    /**
-     * Filter Wire Drawdown Requests for those with the specified status. For GET
-     * requests, this should be encoded as a comma-delimited string, such as
-     * `?in=one,two,three`.
-     */
-    in?: Array<'pending_submission' | 'pending_response' | 'fulfilled' | 'refused'>;
-  }
+  /**
+   * Filter Wire Drawdown Requests for those with the specified status.
+   *
+   * - `pending_submission` - The drawdown request is queued to be submitted to
+   *   Fedwire.
+   * - `pending_response` - The drawdown request has been sent and the recipient
+   *   should respond in some way.
+   * - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+   * - `refused` - The drawdown request has been refused by the recipient.
+   */
+  status?: 'pending_submission' | 'pending_response' | 'fulfilled' | 'refused';
 }
 
 WireDrawdownRequests.WireDrawdownRequestsPage = WireDrawdownRequestsPage;

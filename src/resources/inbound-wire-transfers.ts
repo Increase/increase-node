@@ -184,18 +184,27 @@ export interface InboundWireTransfer {
 
 export interface InboundWireTransferListParams extends PageParams {
   /**
-   * Filter Inbound Wire Transfers to ones belonging to the specified Account.
+   * Filter Inbound Wire Tranfers to ones belonging to the specified Account.
    */
   account_id?: string;
 
   /**
-   * Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
+   * Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
    */
   account_number_id?: string;
 
   created_at?: InboundWireTransferListParams.CreatedAt;
 
-  status?: InboundWireTransferListParams.Status;
+  /**
+   * Filter Inbound Wire Transfers to those with the specified status.
+   *
+   * - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+   *   automatically if no action is taken.
+   * - `accepted` - The Inbound Wire Transfer is accepted.
+   * - `declined` - The Inbound Wire Transfer was declined.
+   * - `reversed` - The Inbound Wire Transfer was reversed.
+   */
+  status?: 'pending' | 'accepted' | 'declined' | 'reversed';
 }
 
 export namespace InboundWireTransferListParams {
@@ -223,15 +232,6 @@ export namespace InboundWireTransferListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
-  }
-
-  export interface Status {
-    /**
-     * Filter Inbound Wire Transfers to those with the specified status. For GET
-     * requests, this should be encoded as a comma-delimited string, such as
-     * `?in=one,two,three`.
-     */
-    in?: Array<'pending' | 'accepted' | 'declined' | 'reversed'>;
   }
 }
 
