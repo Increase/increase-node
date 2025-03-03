@@ -92,6 +92,7 @@ describe('resource cards', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
+          status: { in: ['active'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
