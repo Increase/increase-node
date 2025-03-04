@@ -38,7 +38,6 @@ describe('resource checkTransfers', () => {
           postal_code: '10045',
           state: 'NY',
           line2: 'x',
-          name: 'Ian Crease',
         },
         memo: 'Check payment',
         recipient_name: 'Ian Crease',

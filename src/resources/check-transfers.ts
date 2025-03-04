@@ -677,12 +677,6 @@ export namespace CheckTransferCreateParams {
        * The second line of the address component of the check's destination address.
        */
       line2?: string;
-
-      /**
-       * The name component of the check's destination address. Defaults to the provided
-       * `recipient_name` parameter.
-       */
-      name?: string;
     }
 
     /**
