@@ -1105,6 +1105,7 @@ export namespace CardPayment {
        *
        * - `account_closed` - The account has been closed.
        * - `card_not_active` - The Card was not active.
+       * - `card_canceled` - The Card has been canceled.
        * - `physical_card_not_active` - The Physical Card was not active.
        * - `entity_not_active` - The account's entity was not active.
        * - `group_locked` - The account was inactive.
@@ -1130,6 +1131,7 @@ export namespace CardPayment {
       reason:
         | 'account_closed'
         | 'card_not_active'
+        | 'card_canceled'
         | 'physical_card_not_active'
         | 'entity_not_active'
         | 'group_locked'
