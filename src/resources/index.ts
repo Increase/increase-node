@@ -290,13 +290,6 @@ export {
   type RealTimeDecisionActionParams,
 } from './real-time-decisions';
 export {
-  RealTimePaymentsRequestForPaymentsPage,
-  RealTimePaymentsRequestForPayments,
-  type RealTimePaymentsRequestForPayment,
-  type RealTimePaymentsRequestForPaymentCreateParams,
-  type RealTimePaymentsRequestForPaymentListParams,
-} from './real-time-payments-request-for-payments';
-export {
   RealTimePaymentsTransfersPage,
   RealTimePaymentsTransfers,
   type RealTimePaymentsTransfer,

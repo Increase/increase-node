@@ -291,13 +291,6 @@ import {
   RealTimeDecisions,
 } from './resources/real-time-decisions';
 import {
-  RealTimePaymentsRequestForPayment,
-  RealTimePaymentsRequestForPaymentCreateParams,
-  RealTimePaymentsRequestForPaymentListParams,
-  RealTimePaymentsRequestForPayments,
-  RealTimePaymentsRequestForPaymentsPage,
-} from './resources/real-time-payments-request-for-payments';
-import {
   RealTimePaymentsTransfer,
   RealTimePaymentsTransferCreateParams,
   RealTimePaymentsTransferListParams,
@@ -535,8 +528,6 @@ export class Increase extends Core.APIClient {
   intrafiAccountEnrollments: API.IntrafiAccountEnrollments = new API.IntrafiAccountEnrollments(this);
   intrafiBalances: API.IntrafiBalances = new API.IntrafiBalances(this);
   intrafiExclusions: API.IntrafiExclusions = new API.IntrafiExclusions(this);
-  realTimePaymentsRequestForPayments: API.RealTimePaymentsRequestForPayments =
-    new API.RealTimePaymentsRequestForPayments(this);
   simulations: API.Simulations = new API.Simulations(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -690,8 +681,6 @@ Increase.IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsPage;
 Increase.IntrafiBalances = IntrafiBalances;
 Increase.IntrafiExclusions = IntrafiExclusions;
 Increase.IntrafiExclusionsPage = IntrafiExclusionsPage;
-Increase.RealTimePaymentsRequestForPayments = RealTimePaymentsRequestForPayments;
-Increase.RealTimePaymentsRequestForPaymentsPage = RealTimePaymentsRequestForPaymentsPage;
 Increase.Simulations = Simulations;
 export declare namespace Increase {
   export type RequestOptions = Core.RequestOptions;
@@ -1102,14 +1091,6 @@ export declare namespace Increase {
     IntrafiExclusionsPage as IntrafiExclusionsPage,
     type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
     type IntrafiExclusionListParams as IntrafiExclusionListParams,
-  };
-
-  export {
-    RealTimePaymentsRequestForPayments as RealTimePaymentsRequestForPayments,
-    type RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
-    RealTimePaymentsRequestForPaymentsPage as RealTimePaymentsRequestForPaymentsPage,
-    type RealTimePaymentsRequestForPaymentCreateParams as RealTimePaymentsRequestForPaymentCreateParams,
-    type RealTimePaymentsRequestForPaymentListParams as RealTimePaymentsRequestForPaymentListParams,
   };
 
   export { Simulations as Simulations };
