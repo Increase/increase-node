@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.186.0 (2025-03-11)
+
+Full Changelog: [v0.185.0...v0.186.0](https://github.com/Increase/increase-node/compare/v0.185.0...v0.186.0)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#903](https://github.com/Increase/increase-node/issues/903)) ([34f298f](https://github.com/Increase/increase-node/commit/34f298fe27048eee3f47e3dd86884d6407efd9fd))
+* **api:** api update ([#905](https://github.com/Increase/increase-node/issues/905)) ([5e694c0](https://github.com/Increase/increase-node/commit/5e694c066d85c2aad33358dd91aaeba67d64ecc1))
+* **client:** accept RFC6838 JSON content types ([#904](https://github.com/Increase/increase-node/issues/904)) ([de1c923](https://github.com/Increase/increase-node/commit/de1c923d2dfa3d2ceb19c5bfea8050bcab0a6a1e))
+
+
+### Chores
+
+* **internal:** codegen related update ([#901](https://github.com/Increase/increase-node/issues/901)) ([638889e](https://github.com/Increase/increase-node/commit/638889e225e85cab0bd687104f85f39f219429fc))
+
 ## 0.185.0 (2025-03-07)
 
 Full Changelog: [v0.184.0...v0.185.0](https://github.com/Increase/increase-node/compare/v0.184.0...v0.185.0)
