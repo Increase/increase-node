@@ -630,6 +630,13 @@ export namespace CheckTransferCreateParams {
     recipient_name: string;
 
     /**
+     * The check number Increase should print on the check. This should not contain
+     * leading zeroes and must be unique across the `source_account_number`. If this is
+     * omitted, Increase will generate a check number for you.
+     */
+    check_number?: string;
+
+    /**
      * The descriptor that will be printed on the letter included with the check.
      */
     note?: string;
