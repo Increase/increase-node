@@ -41,6 +41,7 @@ describe('resource checkTransfers', () => {
         },
         memo: 'Check payment',
         recipient_name: 'Ian Crease',
+        check_number: 'x',
         note: 'x',
         return_address: { city: 'x', line1: 'x', name: 'x', postal_code: 'x', state: 'x', line2: 'x' },
         signature_text: 'Ian Crease',
