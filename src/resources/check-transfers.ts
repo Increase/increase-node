@@ -754,6 +754,8 @@ export interface CheckTransferListParams extends PageParams {
    * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key?: string;
+
+  status?: CheckTransferListParams.Status;
 }
 
 export namespace CheckTransferListParams {
@@ -781,6 +783,26 @@ export namespace CheckTransferListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Filter Check Transfers to those that have the specified status. For GET
+     * requests, this should be encoded as a comma-delimited string, such as
+     * `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'pending_approval'
+      | 'canceled'
+      | 'pending_submission'
+      | 'requires_attention'
+      | 'rejected'
+      | 'pending_mailing'
+      | 'mailed'
+      | 'deposited'
+      | 'stopped'
+      | 'returned'
+    >;
   }
 }
 
