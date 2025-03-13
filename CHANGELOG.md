@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.188.1 (2025-03-13)
+
+Full Changelog: [v0.188.0...v0.188.1](https://github.com/Increase/increase-node/compare/v0.188.0...v0.188.1)
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#914](https://github.com/Increase/increase-node/issues/914)) ([8989eb9](https://github.com/Increase/increase-node/commit/8989eb9cb6764931e014cedbb7a8676f8d86627f))
+
 ## 0.188.0 (2025-03-13)
 
 Full Changelog: [v0.187.0...v0.188.0](https://github.com/Increase/increase-node/compare/v0.187.0...v0.188.0)
