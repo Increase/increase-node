@@ -27,6 +27,7 @@ describe('resource interestPayments', () => {
     const response = await client.simulations.interestPayments.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 1000,
+      accrued_on_account_id: 'accrued_on_account_id',
       period_end: '2019-12-27T18:11:19.117Z',
       period_start: '2019-12-27T18:11:19.117Z',
     });
