@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.188.0 (2025-03-13)
+
+Full Changelog: [v0.187.0...v0.188.0](https://github.com/Increase/increase-node/compare/v0.187.0...v0.188.0)
+
+### Features
+
+* **api:** api update ([#912](https://github.com/Increase/increase-node/issues/912)) ([4d15eac](https://github.com/Increase/increase-node/commit/4d15eacf2fce58bc67b7982e55747819a74a7d64))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#910](https://github.com/Increase/increase-node/issues/910)) ([d2b1d26](https://github.com/Increase/increase-node/commit/d2b1d26587f31e7dd524fe030775fb42e97eaf6e))
+
 ## 0.187.0 (2025-03-12)
 
 Full Changelog: [v0.186.0...v0.187.0](https://github.com/Increase/increase-node/compare/v0.186.0...v0.187.0)
