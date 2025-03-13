@@ -19,7 +19,7 @@ export class InterestPayments extends APIResource {
 
 export interface InterestPaymentCreateParams {
   /**
-   * The identifier of the Account Number the Interest Payment is for.
+   * The identifier of the Account the Interest Payment should be paid to is for.
    */
   account_id: string;
 
@@ -27,6 +27,11 @@ export interface InterestPaymentCreateParams {
    * The interest amount in cents. Must be positive.
    */
   amount: number;
+
+  /**
+   * The identifier of the Account the Interest accrued on. Defaults to `account_id`.
+   */
+  accrued_on_account_id?: string;
 
   /**
    * The end of the interest period. If not provided, defaults to the current time.
