@@ -135,6 +135,8 @@ export interface File {
    *   Report.
    * - `deposit_account_control_agreement` - A document granting another entity
    *   access to the funds into your account.
+   * - `proof_of_authorization_request_submission` - A file containing additional
+   *   evidence for a Proof of Authorization Request Submission.
    */
   purpose:
     | 'check_image_front'
@@ -161,7 +163,8 @@ export interface File {
     | 'entity_supplemental_document'
     | 'export'
     | 'unusual_activity_report_attachment'
-    | 'deposit_account_control_agreement';
+    | 'deposit_account_control_agreement'
+    | 'proof_of_authorization_request_submission';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -207,6 +210,8 @@ export interface FileCreateParams {
    *   Entity.
    * - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
    *   Report.
+   * - `proof_of_authorization_request_submission` - A file containing additional
+   *   evidence for a Proof of Authorization Request Submission.
    */
   purpose:
     | 'check_image_front'
@@ -224,7 +229,8 @@ export interface FileCreateParams {
     | 'physical_card_carrier'
     | 'document_request'
     | 'entity_supplemental_document'
-    | 'unusual_activity_report_attachment';
+    | 'unusual_activity_report_attachment'
+    | 'proof_of_authorization_request_submission';
 
   /**
    * The description you choose to give the File.
@@ -304,6 +310,7 @@ export namespace FileListParams {
       | 'export'
       | 'unusual_activity_report_attachment'
       | 'deposit_account_control_agreement'
+      | 'proof_of_authorization_request_submission'
     >;
   }
 }

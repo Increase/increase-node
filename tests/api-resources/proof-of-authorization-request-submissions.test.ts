@@ -41,6 +41,7 @@ describe('resource proofOfAuthorizationRequestSubmissions', () => {
       validated_account_ownership_via_credential: true,
       validated_account_ownership_with_account_statement: true,
       validated_account_ownership_with_microdeposit: true,
+      additional_evidence_file_id: 'file_makxrc67oh9l6sg7w9yc',
       authorizer_company: 'National Phonograph Company',
       authorizer_ip_address: 'x',
     });

@@ -70,6 +70,11 @@ export interface ProofOfAuthorizationRequestSubmission {
   id: string;
 
   /**
+   * File containing additional evidence.
+   */
+  additional_evidence_file_id: string | null;
+
+  /**
    * Terms of authorization.
    */
   authorization_terms: string;
@@ -207,6 +212,11 @@ export interface ProofOfAuthorizationRequestSubmissionCreateParams {
    * Whether the account ownership was validated with a microdeposit.
    */
   validated_account_ownership_with_microdeposit: boolean;
+
+  /**
+   * The File containing the check's front image.
+   */
+  additional_evidence_file_id?: string;
 
   /**
    * Company of the authorizer.
