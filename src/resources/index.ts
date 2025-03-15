@@ -170,6 +170,7 @@ export {
   type ExternalAccountUpdateParams,
   type ExternalAccountListParams,
 } from './external-accounts';
+export { FileLinks, type FileLink, type FileLinkCreateParams } from './file-links';
 export { FilesPage, Files, type File, type FileCreateParams, type FileListParams } from './files';
 export { Groups, type Group } from './groups';
 export {

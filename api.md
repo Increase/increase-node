@@ -460,6 +460,16 @@ Methods:
 - <code title="get /files/{file_id}">client.files.<a href="./src/resources/files.ts">retrieve</a>(fileId) -> File</code>
 - <code title="get /files">client.files.<a href="./src/resources/files.ts">list</a>({ ...params }) -> FilesPage</code>
 
+# FileLinks
+
+Types:
+
+- <code><a href="./src/resources/file-links.ts">FileLink</a></code>
+
+Methods:
+
+- <code title="post /file_links">client.fileLinks.<a href="./src/resources/file-links.ts">create</a>({ ...params }) -> FileLink</code>
+
 # Documents
 
 Types:
