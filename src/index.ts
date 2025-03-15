@@ -171,6 +171,13 @@ import {
   ExternalAccounts,
   ExternalAccountsPage,
 } from './resources/external-accounts';
+import {
+  FileLink,
+  FileLinkCreateParams,
+  FileLinkListParams,
+  FileLinks,
+  FileLinksPage,
+} from './resources/file-links';
 import { File, FileCreateParams, FileListParams, Files, FilesPage } from './resources/files';
 import { Group, Groups } from './resources/groups';
 import {
@@ -513,6 +520,7 @@ export class Increase extends Core.APIClient {
     new API.ProofOfAuthorizationRequestSubmissions(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   files: API.Files = new API.Files(this);
+  fileLinks: API.FileLinks = new API.FileLinks(this);
   documents: API.Documents = new API.Documents(this);
   exports: API.Exports = new API.Exports(this);
   events: API.Events = new API.Events(this);
@@ -655,6 +663,8 @@ Increase.AccountStatements = AccountStatements;
 Increase.AccountStatementsPage = AccountStatementsPage;
 Increase.Files = Files;
 Increase.FilesPage = FilesPage;
+Increase.FileLinks = FileLinks;
+Increase.FileLinksPage = FileLinksPage;
 Increase.Documents = Documents;
 Increase.DocumentsPage = DocumentsPage;
 Increase.Exports = Exports;
@@ -988,6 +998,14 @@ export declare namespace Increase {
     FilesPage as FilesPage,
     type FileCreateParams as FileCreateParams,
     type FileListParams as FileListParams,
+  };
+
+  export {
+    FileLinks as FileLinks,
+    type FileLink as FileLink,
+    FileLinksPage as FileLinksPage,
+    type FileLinkCreateParams as FileLinkCreateParams,
+    type FileLinkListParams as FileLinkListParams,
   };
 
   export {
