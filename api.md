@@ -469,8 +469,6 @@ Types:
 Methods:
 
 - <code title="post /file_links">client.fileLinks.<a href="./src/resources/file-links.ts">create</a>({ ...params }) -> FileLink</code>
-- <code title="get /file_links/{file_link_id}">client.fileLinks.<a href="./src/resources/file-links.ts">retrieve</a>(fileLinkId) -> FileLink</code>
-- <code title="get /file_links">client.fileLinks.<a href="./src/resources/file-links.ts">list</a>({ ...params }) -> FileLinksPage</code>
 
 # Documents
 
