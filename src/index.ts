@@ -171,13 +171,7 @@ import {
   ExternalAccounts,
   ExternalAccountsPage,
 } from './resources/external-accounts';
-import {
-  FileLink,
-  FileLinkCreateParams,
-  FileLinkListParams,
-  FileLinks,
-  FileLinksPage,
-} from './resources/file-links';
+import { FileLink, FileLinkCreateParams, FileLinks } from './resources/file-links';
 import { File, FileCreateParams, FileListParams, Files, FilesPage } from './resources/files';
 import { Group, Groups } from './resources/groups';
 import {
@@ -666,7 +660,6 @@ Increase.AccountStatementsPage = AccountStatementsPage;
 Increase.Files = Files;
 Increase.FilesPage = FilesPage;
 Increase.FileLinks = FileLinks;
-Increase.FileLinksPage = FileLinksPage;
 Increase.Documents = Documents;
 Increase.DocumentsPage = DocumentsPage;
 Increase.Exports = Exports;
@@ -1005,9 +998,7 @@ export declare namespace Increase {
   export {
     FileLinks as FileLinks,
     type FileLink as FileLink,
-    FileLinksPage as FileLinksPage,
     type FileLinkCreateParams as FileLinkCreateParams,
-    type FileLinkListParams as FileLinkListParams,
   };
 
   export {
