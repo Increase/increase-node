@@ -214,7 +214,7 @@ export interface ProofOfAuthorizationRequestSubmissionCreateParams {
   validated_account_ownership_with_microdeposit: boolean;
 
   /**
-   * The File containing the check's front image.
+   * File containing additional evidence.
    */
   additional_evidence_file_id?: string;
 
