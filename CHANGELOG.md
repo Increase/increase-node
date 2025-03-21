@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.191.1 (2025-03-21)
+
+Full Changelog: [v0.191.0...v0.191.1](https://github.com/Increase/increase-node/compare/v0.191.0...v0.191.1)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#930](https://github.com/Increase/increase-node/issues/930)) ([5ac5cf5](https://github.com/Increase/increase-node/commit/5ac5cf5da6e1191d84634121d83ba0a8b25d9f2f))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#927](https://github.com/Increase/increase-node/issues/927)) ([59efc34](https://github.com/Increase/increase-node/commit/59efc349d90cdfa73f5bc9869996f64d5274ec8f))
+* **exports:** stop using path fallbacks ([#929](https://github.com/Increase/increase-node/issues/929)) ([d335d61](https://github.com/Increase/increase-node/commit/d335d6180f827c682439f05196930217761e5517))
+
 ## 0.191.0 (2025-03-18)
 
 Full Changelog: [v0.190.0...v0.191.0](https://github.com/Increase/increase-node/compare/v0.190.0...v0.191.0)
