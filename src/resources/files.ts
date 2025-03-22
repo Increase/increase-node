@@ -102,8 +102,10 @@ export interface File {
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_voucher_image` - An image to be printed on the bottom or voucher of a
    *   check that you've requested Increase print.
-   * - `check_attachment_image` - An image to be printed on an additional page and
+   * - `check_attachment_image` - A document to be printed on an additional page and
    *   mailed with a check that you've requested Increase print.
+   * - `check_attachment` - A document to be printed on an additional page and mailed
+   *   with a check that you've requested Increase print.
    * - `inbound_mail_item` - A scanned mail item sent to Increase.
    * - `form_1099_int` - IRS Form 1099-INT.
    * - `form_1099_misc` - IRS Form 1099-MISC.
@@ -141,6 +143,7 @@ export interface File {
     | 'mailed_check_image'
     | 'check_voucher_image'
     | 'check_attachment_image'
+    | 'check_attachment'
     | 'inbound_mail_item'
     | 'form_1099_int'
     | 'form_1099_misc'
@@ -185,8 +188,10 @@ export interface FileCreateParams {
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_voucher_image` - An image to be printed on the bottom or voucher of a
    *   check that you've requested Increase print.
-   * - `check_attachment_image` - An image to be printed on an additional page and
+   * - `check_attachment_image` - A document to be printed on an additional page and
    *   mailed with a check that you've requested Increase print.
+   * - `check_attachment` - A document to be printed on an additional page and mailed
+   *   with a check that you've requested Increase print.
    * - `form_ss_4` - IRS Form SS-4.
    * - `identity_document` - An image of a government-issued ID.
    * - `other` - A file purpose not covered by any of the other cases.
@@ -214,6 +219,7 @@ export interface FileCreateParams {
     | 'mailed_check_image'
     | 'check_voucher_image'
     | 'check_attachment_image'
+    | 'check_attachment'
     | 'form_ss_4'
     | 'identity_document'
     | 'other'
@@ -287,6 +293,7 @@ export namespace FileListParams {
       | 'mailed_check_image'
       | 'check_voucher_image'
       | 'check_attachment_image'
+      | 'check_attachment'
       | 'inbound_mail_item'
       | 'form_1099_int'
       | 'form_1099_misc'
