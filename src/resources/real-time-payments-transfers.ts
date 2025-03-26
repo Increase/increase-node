@@ -536,6 +536,8 @@ export interface RealTimePaymentsTransferListParams extends PageParams {
    * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key?: string;
+
+  status?: RealTimePaymentsTransferListParams.Status;
 }
 
 export namespace RealTimePaymentsTransferListParams {
@@ -563,6 +565,23 @@ export namespace RealTimePaymentsTransferListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'pending_approval'
+      | 'canceled'
+      | 'pending_reviewing'
+      | 'requires_attention'
+      | 'rejected'
+      | 'pending_submission'
+      | 'submitted'
+      | 'complete'
+    >;
   }
 }
 
