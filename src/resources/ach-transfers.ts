@@ -1253,6 +1253,8 @@ export interface ACHTransferListParams extends PageParams {
    * [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key?: string;
+
+  status?: ACHTransferListParams.Status;
 }
 
 export namespace ACHTransferListParams {
@@ -1280,6 +1282,24 @@ export namespace ACHTransferListParams {
      * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
      */
     on_or_before?: string;
+  }
+
+  export interface Status {
+    /**
+     * Return results whose value is in the provided list. For GET requests, this
+     * should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+     */
+    in?: Array<
+      | 'pending_approval'
+      | 'pending_transfer_session_confirmation'
+      | 'canceled'
+      | 'pending_submission'
+      | 'pending_reviewing'
+      | 'requires_attention'
+      | 'rejected'
+      | 'submitted'
+      | 'returned'
+    >;
   }
 }
 
