@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.194.1 (2025-03-27)
+
+Full Changelog: [v0.194.0...v0.194.1](https://github.com/Increase/increase-node/compare/v0.194.0...v0.194.1)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#941](https://github.com/Increase/increase-node/issues/941)) ([c61d98f](https://github.com/Increase/increase-node/commit/c61d98feec0b2e55b3e88ca6f9e275baa87e8435))
+
 ## 0.194.0 (2025-03-26)
 
 Full Changelog: [v0.193.0...v0.194.0](https://github.com/Increase/increase-node/compare/v0.193.0...v0.194.0)
