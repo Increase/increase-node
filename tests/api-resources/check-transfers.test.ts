@@ -47,7 +47,7 @@ describe('resource checkTransfers', () => {
         signature_text: 'Ian Crease',
       },
       require_approval: true,
-      third_party: { check_number: 'x' },
+      third_party: { check_number: 'x', recipient_name: 'x' },
     });
   });
 
