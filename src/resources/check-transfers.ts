@@ -736,6 +736,13 @@ export namespace CheckTransferCreateParams {
      * should inspect the response and use that check number.
      */
     check_number?: string;
+
+    /**
+     * The pay-to name you will print on the check. If provided, this is used for
+     * [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+     * be unable to validate the payee name when the check is deposited.
+     */
+    recipient_name?: string;
   }
 }
 
