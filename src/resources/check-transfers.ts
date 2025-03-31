@@ -554,9 +554,14 @@ export namespace CheckTransfer {
    */
   export interface ThirdParty {
     /**
-     * The check number that will be printed on the check.
+     * The check number that you will print on the check.
      */
     check_number: string | null;
+
+    /**
+     * The name that you will print on the check.
+     */
+    recipient_name: string | null;
   }
 }
 
