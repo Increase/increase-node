@@ -354,9 +354,14 @@ export namespace Entity {
          */
         export interface Address {
           /**
-           * The city of the address.
+           * The city, district, town, or village of the address.
            */
-          city: string;
+          city: string | null;
+
+          /**
+           * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+           */
+          country: string;
 
           /**
            * The first line of the address.
@@ -369,15 +374,15 @@ export namespace Entity {
           line2: string | null;
 
           /**
-           * The two-letter United States Postal Service (USPS) abbreviation for the state of
-           * the address.
+           * The two-letter United States Postal Service (USPS) abbreviation for the US
+           * state, province, or region of the address.
            */
-          state: string;
+          state: string | null;
 
           /**
-           * The ZIP code of the address.
+           * The ZIP or postal code of the address.
            */
-          zip: string;
+          zip: string | null;
         }
 
         /**
@@ -1176,9 +1181,9 @@ export namespace EntityCreateParams {
          */
         export interface Address {
           /**
-           * The city of the address.
+           * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
            */
-          city: string;
+          country: string;
 
           /**
            * The first line of the address. This is usually the street number and street.
@@ -1186,20 +1191,26 @@ export namespace EntityCreateParams {
           line1: string;
 
           /**
-           * The two-letter United States Postal Service (USPS) abbreviation for the state of
-           * the address.
+           * The city, district, town, or village of the address. Required in certain
+           * countries.
            */
-          state: string;
-
-          /**
-           * The ZIP code of the address.
-           */
-          zip: string;
+          city?: string;
 
           /**
            * The second line of the address. This might be the floor or room number.
            */
           line2?: string;
+
+          /**
+           * The two-letter United States Postal Service (USPS) abbreviation for the US
+           * state, province, or region of the address. Required in certain countries.
+           */
+          state?: string;
+
+          /**
+           * The ZIP or postal code of the address. Required in certain countries.
+           */
+          zip?: string;
         }
 
         /**
@@ -2489,9 +2500,9 @@ export namespace EntityCreateBeneficialOwnerParams {
        */
       export interface Address {
         /**
-         * The city of the address.
+         * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
          */
-        city: string;
+        country: string;
 
         /**
          * The first line of the address. This is usually the street number and street.
@@ -2499,20 +2510,26 @@ export namespace EntityCreateBeneficialOwnerParams {
         line1: string;
 
         /**
-         * The two-letter United States Postal Service (USPS) abbreviation for the state of
-         * the address.
+         * The city, district, town, or village of the address. Required in certain
+         * countries.
          */
-        state: string;
-
-        /**
-         * The ZIP code of the address.
-         */
-        zip: string;
+        city?: string;
 
         /**
          * The second line of the address. This might be the floor or room number.
          */
         line2?: string;
+
+        /**
+         * The two-letter United States Postal Service (USPS) abbreviation for the US
+         * state, province, or region of the address. Required in certain countries.
+         */
+        state?: string;
+
+        /**
+         * The ZIP or postal code of the address. Required in certain countries.
+         */
+        zip?: string;
       }
 
       /**
@@ -2709,9 +2726,9 @@ export namespace EntityUpdateBeneficialOwnerAddressParams {
    */
   export interface Address {
     /**
-     * The city of the address.
+     * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
      */
-    city: string;
+    country: string;
 
     /**
      * The first line of the address. This is usually the street number and street.
@@ -2719,20 +2736,26 @@ export namespace EntityUpdateBeneficialOwnerAddressParams {
     line1: string;
 
     /**
-     * The two-letter United States Postal Service (USPS) abbreviation for the state of
-     * the address.
+     * The city, district, town, or village of the address. Required in certain
+     * countries.
      */
-    state: string;
-
-    /**
-     * The ZIP code of the address.
-     */
-    zip: string;
+    city?: string;
 
     /**
      * The second line of the address. This might be the floor or room number.
      */
     line2?: string;
+
+    /**
+     * The two-letter United States Postal Service (USPS) abbreviation for the US
+     * state, province, or region of the address. Required in certain countries.
+     */
+    state?: string;
+
+    /**
+     * The ZIP or postal code of the address. Required in certain countries.
+     */
+    zip?: string;
   }
 }
 
