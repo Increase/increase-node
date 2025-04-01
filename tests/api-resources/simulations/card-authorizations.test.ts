@@ -36,6 +36,7 @@ describe('resource cardAuthorizations', () => {
       merchant_descriptor: 'AMAZON.COM',
       merchant_state: 'NY',
       network_details: { visa: { stand_in_processing_reason: 'issuer_error' } },
+      network_risk_score: 0,
       physical_card_id: 'physical_card_id',
       terminal_id: 'x',
     });
