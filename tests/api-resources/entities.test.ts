@@ -29,11 +29,12 @@ describe('resource entities', () => {
           {
             individual: {
               address: {
-                city: 'New York',
+                country: 'x',
                 line1: '33 Liberty Street',
+                city: 'New York',
+                line2: 'x',
                 state: 'NY',
                 zip: '10045',
-                line2: 'x',
               },
               date_of_birth: '1970-01-31',
               identification: {
@@ -304,7 +305,7 @@ describe('resource entities', () => {
     const responsePromise = client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
         individual: {
-          address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
+          address: { country: 'US', line1: '33 Liberty Street' },
           date_of_birth: '1970-01-31',
           identification: { method: 'social_security_number', number: '078051120' },
           name: 'Ian Crease',
@@ -325,7 +326,14 @@ describe('resource entities', () => {
     const response = await client.entities.createBeneficialOwner('entity_n8y8tnk2p9339ti393yi', {
       beneficial_owner: {
         individual: {
-          address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'x' },
+          address: {
+            country: 'US',
+            line1: '33 Liberty Street',
+            city: 'New York',
+            line2: 'x',
+            state: 'NY',
+            zip: '10045',
+          },
           date_of_birth: '1970-01-31',
           identification: {
             method: 'social_security_number',
@@ -375,7 +383,7 @@ describe('resource entities', () => {
 
   test('updateBeneficialOwnerAddress: only required params', async () => {
     const responsePromise = client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045' },
+      address: { country: 'US', line1: '33 Liberty Street' },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -389,7 +397,14 @@ describe('resource entities', () => {
 
   test('updateBeneficialOwnerAddress: required and optional params', async () => {
     const response = await client.entities.updateBeneficialOwnerAddress('entity_n8y8tnk2p9339ti393yi', {
-      address: { city: 'New York', line1: '33 Liberty Street', state: 'NY', zip: '10045', line2: 'Unit 2' },
+      address: {
+        country: 'US',
+        line1: '33 Liberty Street',
+        city: 'New York',
+        line2: 'Unit 2',
+        state: 'NY',
+        zip: '10045',
+      },
       beneficial_owner_id: 'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
     });
   });
