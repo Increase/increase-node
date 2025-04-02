@@ -712,6 +712,11 @@ export namespace RealTimeDecision {
     decision: 'approve' | 'decline' | null;
 
     /**
+     * Device that is being used to provision the digital wallet token.
+     */
+    device: DigitalWalletToken.Device;
+
+    /**
      * The digital wallet app being used.
      *
      * - `apple_pay` - Apple Pay
@@ -720,6 +725,18 @@ export namespace RealTimeDecision {
      * - `unknown` - Unknown
      */
     digital_wallet: 'apple_pay' | 'google_pay' | 'samsung_pay' | 'unknown';
+  }
+
+  export namespace DigitalWalletToken {
+    /**
+     * Device that is being used to provision the digital wallet token.
+     */
+    export interface Device {
+      /**
+       * ID assigned to the device by the digital wallet provider.
+       */
+      identifier: string | null;
+    }
   }
 }
 
