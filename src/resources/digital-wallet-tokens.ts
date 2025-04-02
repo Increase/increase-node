@@ -51,10 +51,20 @@ export interface DigitalWalletToken {
   card_id: string;
 
   /**
+   * The cardholder information given when the Digital Wallet Token was created.
+   */
+  cardholder: DigitalWalletToken.Cardholder;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the Digital Wallet Token was created.
    */
   created_at: string;
+
+  /**
+   * The device that was used to create the Digital Wallet Token.
+   */
+  device: DigitalWalletToken.Device;
 
   /**
    * This indicates if payments can be made with the Digital Wallet Token.
@@ -90,6 +100,61 @@ export interface DigitalWalletToken {
 }
 
 export namespace DigitalWalletToken {
+  /**
+   * The cardholder information given when the Digital Wallet Token was created.
+   */
+  export interface Cardholder {
+    /**
+     * Name of the cardholder, for example "John Smith".
+     */
+    name: string | null;
+  }
+
+  /**
+   * The device that was used to create the Digital Wallet Token.
+   */
+  export interface Device {
+    /**
+     * Device type.
+     *
+     * - `unknown` - Unknown
+     * - `mobile_phone` - Mobile Phone
+     * - `tablet` - Tablet
+     * - `watch` - Watch
+     * - `mobilephone_or_tablet` - Mobile Phone or Tablet
+     * - `pc` - PC
+     * - `household_device` - Household Device
+     * - `wearable_device` - Wearable Device
+     * - `automobile_device` - Automobile Device
+     */
+    device_type:
+      | 'unknown'
+      | 'mobile_phone'
+      | 'tablet'
+      | 'watch'
+      | 'mobilephone_or_tablet'
+      | 'pc'
+      | 'household_device'
+      | 'wearable_device'
+      | 'automobile_device'
+      | null;
+
+    /**
+     * ID assigned to the device by the digital wallet provider.
+     */
+    identifier: string | null;
+
+    /**
+     * IP address of the device.
+     */
+    ip_address: string | null;
+
+    /**
+     * Name of the device, for example "My Work Phone".
+     */
+    name: string | null;
+  }
+
   export interface Update {
     /**
      * The status the update changed this Digital Wallet Token to.
