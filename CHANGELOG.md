@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.199.1 (2025-04-02)
+
+Full Changelog: [v0.199.0...v0.199.1](https://github.com/Increase/increase-node/compare/v0.199.0...v0.199.1)
+
+### Bug Fixes
+
+* **client:** send `X-Stainless-Timeout` in seconds ([#959](https://github.com/Increase/increase-node/issues/959)) ([a0cc5e0](https://github.com/Increase/increase-node/commit/a0cc5e02e5ba7ec12f1731fce25ea169061f76dc))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#961](https://github.com/Increase/increase-node/issues/961)) ([3e5d336](https://github.com/Increase/increase-node/commit/3e5d33629fee947b5560b733311d3fe10b3dfc83))
+
 ## 0.199.0 (2025-04-01)
 
 Full Changelog: [v0.198.0...v0.199.0](https://github.com/Increase/increase-node/compare/v0.198.0...v0.199.0)
