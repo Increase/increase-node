@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.200.1 (2025-04-03)
+
+Full Changelog: [v0.200.0...v0.200.1](https://github.com/Increase/increase-node/compare/v0.200.0...v0.200.1)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#966](https://github.com/Increase/increase-node/issues/966)) ([7f22167](https://github.com/Increase/increase-node/commit/7f22167d30b3d9286953348d6cf272418217340b))
+
 ## 0.200.0 (2025-04-02)
 
 Full Changelog: [v0.199.1...v0.200.0](https://github.com/Increase/increase-node/compare/v0.199.1...v0.200.0)
