@@ -783,7 +783,7 @@ export namespace DeclinedTransaction {
           /**
            * The address verification result returned to the card network.
            *
-           * - `not_checked` - No adress was provided in the authorization request.
+           * - `not_checked` - No address was provided in the authorization request.
            * - `postal_code_match_address_not_checked` - Postal code matches, but the street
            *   address was not verified.
            * - `postal_code_match_address_no_match` - Postal code matches, but the street
