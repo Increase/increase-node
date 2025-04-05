@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.201.1 (2025-04-05)
+
+Full Changelog: [v0.201.0...v0.201.1](https://github.com/Increase/increase-node/compare/v0.201.0...v0.201.1)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#972](https://github.com/Increase/increase-node/issues/972)) ([9b80c70](https://github.com/Increase/increase-node/commit/9b80c70db67bf1893753030b0038149d95dc63bf))
+
 ## 0.201.0 (2025-04-04)
 
 Full Changelog: [v0.200.1...v0.201.0](https://github.com/Increase/increase-node/compare/v0.200.1...v0.201.0)
