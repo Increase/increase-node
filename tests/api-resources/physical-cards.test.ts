@@ -76,7 +76,7 @@ describe('resource physicalCards', () => {
 
   test('update: only required params', async () => {
     const responsePromise = client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'active',
+      status: 'disabled',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -89,7 +89,7 @@ describe('resource physicalCards', () => {
 
   test('update: required and optional params', async () => {
     const response = await client.physicalCards.update('physical_card_ode8duyq5v2ynhjoharl', {
-      status: 'active',
+      status: 'disabled',
     });
   });
 
