@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.202.0 (2025-04-08)
+
+Full Changelog: [v0.201.1...v0.202.0](https://github.com/Increase/increase-node/compare/v0.201.1...v0.202.0)
+
+### Features
+
+* **api:** api update ([#977](https://github.com/Increase/increase-node/issues/977)) ([047efb7](https://github.com/Increase/increase-node/commit/047efb77b765256746dcb8c36b091d63bc5bf9ca))
+
+
+### Chores
+
+* **tests:** improve enum examples ([#975](https://github.com/Increase/increase-node/issues/975)) ([5b9933c](https://github.com/Increase/increase-node/commit/5b9933c4b0f9919930ba67536cee450d50aaf6d7))
+
 ## 0.201.1 (2025-04-05)
 
 Full Changelog: [v0.201.0...v0.201.1](https://github.com/Increase/increase-node/compare/v0.201.0...v0.201.1)
