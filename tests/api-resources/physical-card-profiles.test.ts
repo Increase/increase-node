@@ -15,6 +15,7 @@ describe('resource physicalCardProfiles', () => {
       contact_phone: '+16505046304',
       description: 'My Card Profile',
       front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
+      program_id: 'program_i2v2os4mwza1oetokh9i',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -31,6 +32,7 @@ describe('resource physicalCardProfiles', () => {
       contact_phone: '+16505046304',
       description: 'My Card Profile',
       front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
+      program_id: 'program_i2v2os4mwza1oetokh9i',
     });
   });
 
