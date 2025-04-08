@@ -58,7 +58,7 @@ describe('resource entities', () => {
               name: 'Ian Crease',
               confirmed_no_us_tax_id: true,
             },
-            prongs: ['ownership'],
+            prongs: ['control'],
             company_title: 'CEO',
           },
         ],
@@ -310,7 +310,7 @@ describe('resource entities', () => {
           identification: { method: 'social_security_number', number: '078051120' },
           name: 'Ian Crease',
         },
-        prongs: ['ownership'],
+        prongs: ['control'],
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -356,7 +356,7 @@ describe('resource entities', () => {
           name: 'Ian Crease',
           confirmed_no_us_tax_id: true,
         },
-        prongs: ['ownership'],
+        prongs: ['control'],
         company_title: 'CEO',
       },
     });

@@ -12,7 +12,7 @@ describe('resource physicalCards', () => {
   test('advanceShipment: only required params', async () => {
     const responsePromise = client.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
-      { shipment_status: 'pending' },
+      { shipment_status: 'shipped' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,7 +26,7 @@ describe('resource physicalCards', () => {
   test('advanceShipment: required and optional params', async () => {
     const response = await client.simulations.physicalCards.advanceShipment(
       'physical_card_ode8duyq5v2ynhjoharl',
-      { shipment_status: 'pending' },
+      { shipment_status: 'shipped' },
     );
   });
 });
