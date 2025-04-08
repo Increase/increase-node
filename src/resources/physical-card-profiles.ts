@@ -182,6 +182,11 @@ export interface PhysicalCardProfileCreateParams {
    * The identifier of the File containing the physical card's front image.
    */
   front_image_file_id: string;
+
+  /**
+   * The identifier for the Program that this Physical Card Profile falls under.
+   */
+  program_id: string;
 }
 
 export interface PhysicalCardProfileListParams extends PageParams {
