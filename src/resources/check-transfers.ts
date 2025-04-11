@@ -694,6 +694,13 @@ export namespace CheckTransferCreateParams {
     recipient_name: string;
 
     /**
+     * The ID of a File to be attached to the check. This must have
+     * `purpose: check_attachment`. For details on pricing and restrictions, see
+     * https://increase.com/documentation/originating-checks#printing-checks .
+     */
+    attachment_file_id?: string;
+
+    /**
      * The check number Increase should print on the check. This should not contain
      * leading zeroes and must be unique across the `source_account_number`. If this is
      * omitted, Increase will generate a check number for you.
@@ -711,6 +718,15 @@ export namespace CheckTransferCreateParams {
      * them.
      */
     return_address?: PhysicalCheck.ReturnAddress;
+
+    /**
+     * How to ship the check. For details on pricing, timing, and restrictions, see
+     * https://increase.com/documentation/originating-checks#printing-checks .
+     *
+     * - `usps_first_class` - USPS First Class
+     * - `fedex_overnight` - FedEx Overnight
+     */
+    shipping_method?: 'usps_first_class' | 'fedex_overnight';
 
     /**
      * The text that will appear as the signature on the check in cursive font. If not
