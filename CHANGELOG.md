@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.204.0 (2025-04-11)
+
+Full Changelog: [v0.203.0...v0.204.0](https://github.com/Increase/increase-node/compare/v0.203.0...v0.204.0)
+
+### Features
+
+* **api:** api update ([d17dbed](https://github.com/Increase/increase-node/commit/d17dbedd7143fa15d6ecc335346bd6324a76a624))
+
+
+### Chores
+
+* **internal:** reduce CI branch coverage ([cadaddb](https://github.com/Increase/increase-node/commit/cadaddbeb553f5f22011566cecd122366ae47d71))
+* **internal:** upload builds and expand CI branch coverage ([#980](https://github.com/Increase/increase-node/issues/980)) ([f08fc55](https://github.com/Increase/increase-node/commit/f08fc55bbc4cab59dc393f92c5bf1d1f42bffcbc))
+
 ## 0.203.0 (2025-04-08)
 
 Full Changelog: [v0.202.0...v0.203.0](https://github.com/Increase/increase-node/compare/v0.202.0...v0.203.0)
