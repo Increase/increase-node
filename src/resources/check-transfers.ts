@@ -366,6 +366,11 @@ export namespace CheckTransfer {
    */
   export interface PhysicalCheck {
     /**
+     * The ID of the file for the check attachment.
+     */
+    attachment_file_id: string | null;
+
+    /**
      * Details for where Increase will mail the check.
      */
     mailing_address: PhysicalCheck.MailingAddress;
