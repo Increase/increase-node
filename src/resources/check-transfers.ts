@@ -613,11 +613,6 @@ export namespace CheckTransfer {
    */
   export interface ThirdParty {
     /**
-     * The check number that you will print on the check.
-     */
-    check_number: string | null;
-
-    /**
      * The name that you will print on the check.
      */
     recipient_name: string | null;
@@ -810,13 +805,6 @@ export namespace CheckTransferCreateParams {
    * other `fulfillment_method` is provided.
    */
   export interface ThirdParty {
-    /**
-     * The check number you will print on the check. This should not contain leading
-     * zeroes. If this is omitted, Increase will generate a check number for you; you
-     * should inspect the response and use that check number.
-     */
-    check_number?: string;
-
     /**
      * The pay-to name you will print on the check. If provided, this is used for
      * [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
