@@ -135,6 +135,11 @@ export interface PhysicalCardProfile {
   is_default: boolean;
 
   /**
+   * The identifier for the Program this Physical Card Profile belongs to.
+   */
+  program_id: string;
+
+  /**
    * The status of the Physical Card Profile.
    *
    * - `pending_creating` - The Card Profile has not yet been processed by Increase.
