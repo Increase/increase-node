@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.205.0 (2025-04-14)
+
+Full Changelog: [v0.204.0...v0.205.0](https://github.com/Increase/increase-node/compare/v0.204.0...v0.205.0)
+
+### Features
+
+* **api:** api update ([4df82fa](https://github.com/Increase/increase-node/commit/4df82fa8d8ef4b4d3c3dac31d0b744fc8a25ebe5))
+* **api:** api update ([bbb0794](https://github.com/Increase/increase-node/commit/bbb07943bfd71bd0e8ad55beda79006379488dca))
+* **api:** api update ([1c9e255](https://github.com/Increase/increase-node/commit/1c9e255b80500feed90b9d42e8dde49c37c74747))
+* **api:** api update ([941766f](https://github.com/Increase/increase-node/commit/941766f3c435e8a5b63fbd40dc58fef2945032cd))
+* **api:** api update ([19c6790](https://github.com/Increase/increase-node/commit/19c67909656f2bfaccbb919e71bce1e920b94ef9))
+
+
+### Bug Fixes
+
+* **client:** correctly reuse idempotency key ([caba8d4](https://github.com/Increase/increase-node/commit/caba8d4fae6d0ea2541bdb287d041d2e3483adf6))
+
 ## 0.204.0 (2025-04-11)
 
 Full Changelog: [v0.203.0...v0.204.0](https://github.com/Increase/increase-node/compare/v0.203.0...v0.204.0)
