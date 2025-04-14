@@ -122,6 +122,11 @@ export interface ACHTransfer {
   company_entry_description: string | null;
 
   /**
+   * The company ID associated with the transfer.
+   */
+  company_id: string;
+
+  /**
    * The name by which the recipient knows you.
    */
   company_name: string | null;
