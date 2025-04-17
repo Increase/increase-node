@@ -70,9 +70,9 @@ export interface ProofOfAuthorizationRequestSubmission {
   id: string;
 
   /**
-   * File containing additional evidence.
+   * Files containing additional evidence.
    */
-  additional_evidence_file_id: string | null;
+  additional_evidence_files: Array<ProofOfAuthorizationRequestSubmission.AdditionalEvidenceFile>;
 
   /**
    * Terms of authorization.
@@ -165,6 +165,15 @@ export interface ProofOfAuthorizationRequestSubmission {
    * Whether account ownership was validated with microdeposit.
    */
   validated_account_ownership_with_microdeposit: boolean | null;
+}
+
+export namespace ProofOfAuthorizationRequestSubmission {
+  export interface AdditionalEvidenceFile {
+    /**
+     * The File identifier.
+     */
+    file_id: string;
+  }
 }
 
 export interface ProofOfAuthorizationRequestSubmissionCreateParams {
