@@ -91,6 +91,8 @@ export interface CardAuthorizationCreateParams {
    *   authorization request cryptogram.
    * - `missing_original_authorization` - The original card authorization for this
    *   incremental authorization does not exist.
+   * - `failed_3ds_authentication` - The transaction was declined because the 3DS
+   *   authentication failed.
    * - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
    *   reach out to support@increase.com for more information.
    */
@@ -111,6 +113,7 @@ export interface CardAuthorizationCreateParams {
     | 'declined_by_stand_in_processing'
     | 'invalid_physical_card'
     | 'missing_original_authorization'
+    | 'failed_3ds_authentication'
     | 'suspected_fraud';
 
   /**
