@@ -1052,8 +1052,9 @@ export namespace EntityCreateParams {
     address: Corporation.Address;
 
     /**
-     * The identifying details of anyone controlling or owning 25% or more of the
-     * corporation.
+     * The identifying details of each person who owns 25% or more of the business and
+     * one control person, like the CEO, CFO, or other executive. You can submit
+     * between 1 and 5 people to this list.
      */
     beneficial_owners: Array<Corporation.BeneficialOwner>;
 
@@ -1066,6 +1067,21 @@ export namespace EntityCreateParams {
      * The Employer Identification Number (EIN) for the corporation.
      */
     tax_identifier: string;
+
+    /**
+     * If the entity is exempt from the requirement to submit beneficial owners,
+     * provide the justification. If a reason is provided, you do not need to submit a
+     * list of beneficial owners.
+     *
+     * - `regulated_financial_institution` - A regulated financial institution.
+     * - `publicly_traded_company` - A publicly traded company.
+     * - `public_entity` - A public entity acting on behalf of the federal or a state
+     *   government.
+     */
+    beneficial_ownership_exemption_reason?:
+      | 'regulated_financial_institution'
+      | 'publicly_traded_company'
+      | 'public_entity';
 
     /**
      * The two-letter United States Postal Service (USPS) abbreviation for the
