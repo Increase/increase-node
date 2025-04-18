@@ -108,7 +108,7 @@ export interface InboundWireDrawdownRequest {
   /**
    * The drawdown request's originator's account number.
    */
-  originator_account_number: string;
+  originator_account_number: string | null;
 
   /**
    * Line 1 of the drawdown request's originator's address.
