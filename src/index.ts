@@ -274,19 +274,6 @@ import {
 } from './resources/physical-cards';
 import { Program, ProgramListParams, Programs, ProgramsPage } from './resources/programs';
 import {
-  ProofOfAuthorizationRequestSubmission,
-  ProofOfAuthorizationRequestSubmissionCreateParams,
-  ProofOfAuthorizationRequestSubmissionListParams,
-  ProofOfAuthorizationRequestSubmissions,
-  ProofOfAuthorizationRequestSubmissionsPage,
-} from './resources/proof-of-authorization-request-submissions';
-import {
-  ProofOfAuthorizationRequest,
-  ProofOfAuthorizationRequestListParams,
-  ProofOfAuthorizationRequests,
-  ProofOfAuthorizationRequestsPage,
-} from './resources/proof-of-authorization-requests';
-import {
   RealTimeDecision,
   RealTimeDecisionActionParams,
   RealTimeDecisions,
@@ -509,11 +496,10 @@ export class Increase extends Core.APIClient {
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
   entities: API.Entities = new API.Entities(this);
   supplementalDocuments: API.SupplementalDocuments = new API.SupplementalDocuments(this);
-  programs: API.Programs = new API.Programs(this);
-  proofOfAuthorizationRequests: API.ProofOfAuthorizationRequests = new API.ProofOfAuthorizationRequests(this);
-  proofOfAuthorizationRequestSubmissions: API.ProofOfAuthorizationRequestSubmissions =
-    new API.ProofOfAuthorizationRequestSubmissions(this);
-  webhooks: API.Webhooks = new API.Webhooks(this);
+  programs: API.Programs = new API.Programs(this);;
+;
+  webhooks: API.Webhooks = new API.Webhooks(this)
+;
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   files: API.Files = new API.Files(this);
   fileLinks: API.FileLinks = new API.FileLinks(this);
@@ -651,10 +637,6 @@ Increase.SupplementalDocuments = SupplementalDocuments;
 Increase.EntitySupplementalDocumentsPage = EntitySupplementalDocumentsPage;
 Increase.Programs = Programs;
 Increase.ProgramsPage = ProgramsPage;
-Increase.ProofOfAuthorizationRequests = ProofOfAuthorizationRequests;
-Increase.ProofOfAuthorizationRequestsPage = ProofOfAuthorizationRequestsPage;
-Increase.ProofOfAuthorizationRequestSubmissions = ProofOfAuthorizationRequestSubmissions;
-Increase.ProofOfAuthorizationRequestSubmissionsPage = ProofOfAuthorizationRequestSubmissionsPage;
 Increase.AccountStatements = AccountStatements;
 Increase.AccountStatementsPage = AccountStatementsPage;
 Increase.Files = Files;
@@ -963,21 +945,6 @@ export declare namespace Increase {
     type Program as Program,
     ProgramsPage as ProgramsPage,
     type ProgramListParams as ProgramListParams,
-  };
-
-  export {
-    ProofOfAuthorizationRequests as ProofOfAuthorizationRequests,
-    type ProofOfAuthorizationRequest as ProofOfAuthorizationRequest,
-    ProofOfAuthorizationRequestsPage as ProofOfAuthorizationRequestsPage,
-    type ProofOfAuthorizationRequestListParams as ProofOfAuthorizationRequestListParams,
-  };
-
-  export {
-    ProofOfAuthorizationRequestSubmissions as ProofOfAuthorizationRequestSubmissions,
-    type ProofOfAuthorizationRequestSubmission as ProofOfAuthorizationRequestSubmission,
-    ProofOfAuthorizationRequestSubmissionsPage as ProofOfAuthorizationRequestSubmissionsPage,
-    type ProofOfAuthorizationRequestSubmissionCreateParams as ProofOfAuthorizationRequestSubmissionCreateParams,
-    type ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,
   };
 
   export {
