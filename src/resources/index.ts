@@ -273,19 +273,6 @@ export {
 } from './physical-cards';
 export { ProgramsPage, Programs, type Program, type ProgramListParams } from './programs';
 export {
-  ProofOfAuthorizationRequestSubmissionsPage,
-  ProofOfAuthorizationRequestSubmissions,
-  type ProofOfAuthorizationRequestSubmission,
-  type ProofOfAuthorizationRequestSubmissionCreateParams,
-  type ProofOfAuthorizationRequestSubmissionListParams,
-} from './proof-of-authorization-request-submissions';
-export {
-  ProofOfAuthorizationRequestsPage,
-  ProofOfAuthorizationRequests,
-  type ProofOfAuthorizationRequest,
-  type ProofOfAuthorizationRequestListParams,
-} from './proof-of-authorization-requests';
-export {
   RealTimeDecisions,
   type RealTimeDecision,
   type RealTimeDecisionActionParams,
