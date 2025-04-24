@@ -264,6 +264,8 @@ export namespace Transaction {
      *   object.
      * - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
      *   `wire_transfer_intention` object.
+     * - `swift_transfer_intention` - Swift Transfer Intention: details will be under
+     *   the `swift_transfer_intention` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -295,6 +297,7 @@ export namespace Transaction {
       | 'real_time_payments_transfer_acknowledgement'
       | 'sample_funds'
       | 'wire_transfer_intention'
+      | 'swift_transfer_intention'
       | 'other';
 
     /**
@@ -443,6 +446,13 @@ export namespace Transaction {
      * purposes.
      */
     sample_funds: Source.SampleFunds | null;
+
+    /**
+     * A Swift Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `swift_transfer_intention`. A
+     * Swift Transfer initiated via Increase.
+     */
+    swift_transfer_intention: Source.SwiftTransferIntention | null;
 
     /**
      * A Wire Transfer Intention object. This field will be present in the JSON
@@ -3349,6 +3359,18 @@ export namespace Transaction {
     }
 
     /**
+     * A Swift Transfer Intention object. This field will be present in the JSON
+     * response if and only if `category` is equal to `swift_transfer_intention`. A
+     * Swift Transfer initiated via Increase.
+     */
+    export interface SwiftTransferIntention {
+      /**
+       * The identifier of the Swift Transfer that led to this Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * A Wire Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_intention`. A Wire
      * Transfer initiated via Increase and sent to a different bank.
@@ -3434,6 +3456,7 @@ export namespace TransactionListParams {
       | 'real_time_payments_transfer_acknowledgement'
       | 'sample_funds'
       | 'wire_transfer_intention'
+      | 'swift_transfer_intention'
       | 'other'
     >;
   }

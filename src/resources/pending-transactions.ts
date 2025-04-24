@@ -178,6 +178,8 @@ export namespace PendingTransaction {
      *   the `wire_transfer_instruction` object.
      * - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal: details
      *   will be under the `inbound_wire_transfer_reversal` object.
+     * - `swift_transfer_instruction` - Swift Transfer Instruction: details will be
+     *   under the `swift_transfer_instruction` object.
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -191,6 +193,7 @@ export namespace PendingTransaction {
       | 'real_time_payments_transfer_instruction'
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
+      | 'swift_transfer_instruction'
       | 'other';
 
     /**
@@ -233,6 +236,12 @@ export namespace PendingTransaction {
      * `real_time_payments_transfer_instruction`.
      */
     real_time_payments_transfer_instruction: Source.RealTimePaymentsTransferInstruction | null;
+
+    /**
+     * A Swift Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `swift_transfer_instruction`.
+     */
+    swift_transfer_instruction: Source.SwiftTransferInstruction | null;
 
     /**
      * A Wire Transfer Instruction object. This field will be present in the JSON
@@ -900,6 +909,17 @@ export namespace PendingTransaction {
     }
 
     /**
+     * A Swift Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `swift_transfer_instruction`.
+     */
+    export interface SwiftTransferInstruction {
+      /**
+       * The identifier of the Swift Transfer that led to this Pending Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * A Wire Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_instruction`.
      */
@@ -967,6 +987,7 @@ export namespace PendingTransactionListParams {
       | 'real_time_payments_transfer_instruction'
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
+      | 'swift_transfer_instruction'
       | 'other'
     >;
   }
