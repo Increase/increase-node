@@ -31,6 +31,7 @@ describe('resource checkTransfers', () => {
       amount: 1000,
       fulfillment_method: 'physical_check',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      check_number: 'x',
       physical_check: {
         mailing_address: {
           city: 'New York',
@@ -42,7 +43,6 @@ describe('resource checkTransfers', () => {
         memo: 'Check payment',
         recipient_name: 'Ian Crease',
         attachment_file_id: 'attachment_file_id',
-        check_number: 'x',
         note: 'x',
         return_address: { city: 'x', line1: 'x', name: 'x', postal_code: 'x', state: 'x', line2: 'x' },
         shipping_method: 'usps_first_class',
