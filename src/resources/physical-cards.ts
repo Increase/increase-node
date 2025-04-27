@@ -237,6 +237,37 @@ export namespace PhysicalCard {
        * carrier.
        */
       shipped_at: string;
+
+      /**
+       * Tracking updates relating to the physical card's delivery.
+       */
+      updates: Array<Tracking.Update>;
+    }
+
+    export namespace Tracking {
+      export interface Update {
+        /**
+         * The type of tracking event.
+         *
+         * - `in_transit` - The physical card is in transit.
+         * - `processed_for_delivery` - The physical card has been processed for delivery.
+         * - `delivered` - The physical card has been delivered.
+         * - `returned_to_sender` - Delivery failed and the physical card was returned to
+         *   sender.
+         */
+        category: 'in_transit' | 'processed_for_delivery' | 'delivered' | 'returned_to_sender';
+
+        /**
+         * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+         * the tracking event took place.
+         */
+        created_at: string;
+
+        /**
+         * The postal code where the event took place.
+         */
+        postal_code: string;
+      }
     }
   }
 }
