@@ -239,6 +239,7 @@ Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">retrieve</a>(inboundWireTransferId) -> InboundWireTransfer</code>
 - <code title="get /inbound_wire_transfers">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">list</a>({ ...params }) -> InboundWireTransfersPage</code>
+- <code title="post /inbound_wire_transfers/{inbound_wire_transfer_id}/reverse">client.inboundWireTransfers.<a href="./src/resources/inbound-wire-transfers.ts">reverse</a>(inboundWireTransferId, { ...params }) -> InboundWireTransfer</code>
 
 # WireDrawdownRequests
 
