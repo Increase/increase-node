@@ -70,4 +70,24 @@ describe('resource inboundWireTransfers', () => {
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('reverse: only required params', async () => {
+    const responsePromise = client.inboundWireTransfers.reverse(
+      'inbound_wire_transfer_f228m6bmhtcxjco9pwp0',
+      { reason: 'creditor_request' },
+    );
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('reverse: required and optional params', async () => {
+    const response = await client.inboundWireTransfers.reverse('inbound_wire_transfer_f228m6bmhtcxjco9pwp0', {
+      reason: 'creditor_request',
+    });
+  });
 });

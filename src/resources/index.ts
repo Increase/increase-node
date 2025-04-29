@@ -212,6 +212,7 @@ export {
   InboundWireTransfers,
   type InboundWireTransfer,
   type InboundWireTransferListParams,
+  type InboundWireTransferReverseParams,
 } from './inbound-wire-transfers';
 export {
   IntrafiAccountEnrollmentsPage,

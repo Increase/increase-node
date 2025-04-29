@@ -36,6 +36,20 @@ export class InboundWireTransfers extends APIResource {
       ...options,
     });
   }
+
+  /**
+   * Reverse an Inbound Wire Transfer
+   */
+  reverse(
+    inboundWireTransferId: string,
+    body: InboundWireTransferReverseParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundWireTransfer> {
+    return this._client.post(`/inbound_wire_transfers/${inboundWireTransferId}/reverse`, {
+      body,
+      ...options,
+    });
+  }
 }
 
 export class InboundWireTransfersPage extends Page<InboundWireTransfer> {}
@@ -160,6 +174,12 @@ export interface InboundWireTransfer {
   originator_to_beneficiary_information_line4: string | null;
 
   /**
+   * Information about the reversal of the inbound wire transfer if it has been
+   * reversed.
+   */
+  reversal: InboundWireTransfer.Reversal | null;
+
+  /**
    * The sending bank's reference number for the wire transfer.
    */
   sender_reference: string | null;
@@ -180,6 +200,29 @@ export interface InboundWireTransfer {
    * `inbound_wire_transfer`.
    */
   type: 'inbound_wire_transfer';
+}
+
+export namespace InboundWireTransfer {
+  /**
+   * Information about the reversal of the inbound wire transfer if it has been
+   * reversed.
+   */
+  export interface Reversal {
+    /**
+     * The reason for the reversal.
+     *
+     * - `duplicate` - The inbound wire transfer was a duplicate.
+     * - `creditor_request` - The recipient of the wire transfer requested the funds be
+     *   returned to the sender.
+     */
+    reason: 'duplicate' | 'creditor_request';
+
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+     * the transfer was reversed.
+     */
+    reversed_at: string;
+  }
 }
 
 export interface InboundWireTransferListParams extends PageParams {
@@ -235,6 +278,17 @@ export namespace InboundWireTransferListParams {
   }
 }
 
+export interface InboundWireTransferReverseParams {
+  /**
+   * Reason for the reversal.
+   *
+   * - `duplicate` - The inbound wire transfer was a duplicate.
+   * - `creditor_request` - The recipient of the wire transfer requested the funds be
+   *   returned to the sender.
+   */
+  reason: 'duplicate' | 'creditor_request';
+}
+
 InboundWireTransfers.InboundWireTransfersPage = InboundWireTransfersPage;
 
 export declare namespace InboundWireTransfers {
@@ -242,5 +296,6 @@ export declare namespace InboundWireTransfers {
     type InboundWireTransfer as InboundWireTransfer,
     InboundWireTransfersPage as InboundWireTransfersPage,
     type InboundWireTransferListParams as InboundWireTransferListParams,
+    type InboundWireTransferReverseParams as InboundWireTransferReverseParams,
   };
 }
