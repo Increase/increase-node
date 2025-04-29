@@ -211,6 +211,7 @@ import {
 import {
   InboundWireTransfer,
   InboundWireTransferListParams,
+  InboundWireTransferReverseParams,
   InboundWireTransfers,
   InboundWireTransfersPage,
 } from './resources/inbound-wire-transfers';
@@ -829,6 +830,7 @@ export declare namespace Increase {
     type InboundWireTransfer as InboundWireTransfer,
     InboundWireTransfersPage as InboundWireTransfersPage,
     type InboundWireTransferListParams as InboundWireTransferListParams,
+    type InboundWireTransferReverseParams as InboundWireTransferReverseParams,
   };
 
   export {
