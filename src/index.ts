@@ -497,10 +497,8 @@ export class Increase extends Core.APIClient {
   externalAccounts: API.ExternalAccounts = new API.ExternalAccounts(this);
   entities: API.Entities = new API.Entities(this);
   supplementalDocuments: API.SupplementalDocuments = new API.SupplementalDocuments(this);
-  programs: API.Programs = new API.Programs(this);;
-;
-  webhooks: API.Webhooks = new API.Webhooks(this)
-;
+  programs: API.Programs = new API.Programs(this);
+  webhooks: API.Webhooks = new API.Webhooks(this);
   accountStatements: API.AccountStatements = new API.AccountStatements(this);
   files: API.Files = new API.Files(this);
   fileLinks: API.FileLinks = new API.FileLinks(this);
