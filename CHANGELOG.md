@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.208.0 (2025-04-30)
+
+Full Changelog: [v0.207.0...v0.208.0](https://github.com/Increase/increase-node/compare/v0.207.0...v0.208.0)
+
+### Features
+
+* **api:** api update ([db333c7](https://github.com/Increase/increase-node/commit/db333c700855db92f9a47dae835655c2dcbd41d3))
+* **api:** api update ([e3d9178](https://github.com/Increase/increase-node/commit/e3d91786d601a01e026aa1c0fe609feac8feb4e5))
+* **api:** api update ([1a51b77](https://github.com/Increase/increase-node/commit/1a51b77d0d7c879c8b2385cd807d8978f27be3f9))
+* **api:** api update ([d777c4a](https://github.com/Increase/increase-node/commit/d777c4a9db9ffb4921b21ed3449c71447b860e00))
+* **api:** api update ([ce3cb91](https://github.com/Increase/increase-node/commit/ce3cb911401cdcf981682ced1314da7574b78b9b))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([8f023e0](https://github.com/Increase/increase-node/commit/8f023e0fa75aff4dbfb89f415e65d921ceb32897))
+* **ci:** only use depot for staging repos ([1dc450d](https://github.com/Increase/increase-node/commit/1dc450d920044c3805d499c8aa647e1ad03fce2d))
+* **ci:** run on more branches and use depot runners ([a832844](https://github.com/Increase/increase-node/commit/a83284440b281128ffdd48f560d86024821b28a7))
+* fix formatting ([d12c3c4](https://github.com/Increase/increase-node/commit/d12c3c46f6566dedc69fdb66adc744b50f87df90))
+
+
+### Documentation
+
+* **readme:** fix typo ([66eb3fe](https://github.com/Increase/increase-node/commit/66eb3fec522d812138d5ec8775b22b33a1f94feb))
+
 ## 0.207.0 (2025-04-18)
 
 Full Changelog: [v0.206.0...v0.207.0](https://github.com/Increase/increase-node/compare/v0.206.0...v0.207.0)
