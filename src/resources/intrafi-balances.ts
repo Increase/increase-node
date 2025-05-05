@@ -5,7 +5,9 @@ import * as Core from '../core';
 
 export class IntrafiBalances extends APIResource {
   /**
-   * Get IntraFi balances by bank
+   * Returns the IntraFi balance for the given account. IntraFi may sweep funds to
+   * multiple banks. This endpoint will include both the total balance and the amount
+   * swept to each institution.
    */
   intrafiBalance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiBalance> {
     return this._client.get(`/accounts/${accountId}/intrafi_balance`, options);
@@ -14,8 +16,8 @@ export class IntrafiBalances extends APIResource {
 
 /**
  * When using IntraFi, each account's balance over the standard FDIC insurance
- * amount are swept to various other institutions. Funds are rebalanced across
- * banks as needed once per business day.
+ * amount is swept to various other institutions. Funds are rebalanced across banks
+ * as needed once per business day.
  */
 export interface IntrafiBalance {
   /**
