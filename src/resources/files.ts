@@ -10,6 +10,14 @@ export class Files extends APIResource {
    * To upload a file to Increase, you'll need to send a request of Content-Type
    * `multipart/form-data`. The request should contain the file you would like to
    * upload, as well as the parameters for creating a file.
+   *
+   * @example
+   * ```ts
+   * const file = await client.files.create({
+   *   file: fs.createReadStream('path/to/file'),
+   *   purpose: 'check_image_front',
+   * });
+   * ```
    */
   create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
     return this._client.post('/files', Core.multipartFormRequestOptions({ body, ...options }));
@@ -17,6 +25,13 @@ export class Files extends APIResource {
 
   /**
    * Retrieve a File
+   *
+   * @example
+   * ```ts
+   * const file = await client.files.retrieve(
+   *   'file_makxrc67oh9l6sg7w9yc',
+   * );
+   * ```
    */
   retrieve(fileId: string, options?: Core.RequestOptions): Core.APIPromise<File> {
     return this._client.get(`/files/${fileId}`, options);
@@ -24,6 +39,14 @@ export class Files extends APIResource {
 
   /**
    * List Files
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const file of client.files.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;
   list(options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;

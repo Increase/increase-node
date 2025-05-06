@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class OAuthApplications extends APIResource {
   /**
    * Retrieve an OAuth Application
+   *
+   * @example
+   * ```ts
+   * const oauthApplication =
+   *   await client.oauthApplications.retrieve(
+   *     'application_gj9ufmpgh5i56k4vyriy',
+   *   );
+   * ```
    */
   retrieve(oauthApplicationId: string, options?: Core.RequestOptions): Core.APIPromise<OAuthApplication> {
     return this._client.get(`/oauth_applications/${oauthApplicationId}`, options);
@@ -15,6 +23,14 @@ export class OAuthApplications extends APIResource {
 
   /**
    * List OAuth Applications
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const oauthApplication of client.oauthApplications.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: OAuthApplicationListParams,

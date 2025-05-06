@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Documents extends APIResource {
   /**
    * Retrieve a Document
+   *
+   * @example
+   * ```ts
+   * const document = await client.documents.retrieve(
+   *   'document_qjtqc6s4c14ve2q89izm',
+   * );
+   * ```
    */
   retrieve(documentId: string, options?: Core.RequestOptions): Core.APIPromise<Document> {
     return this._client.get(`/documents/${documentId}`, options);
@@ -15,6 +22,14 @@ export class Documents extends APIResource {
 
   /**
    * List Documents
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const document of client.documents.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: DocumentListParams, options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;
   list(options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;

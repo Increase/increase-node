@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundWireDrawdownRequests extends APIResource {
   /**
    * Retrieve an Inbound Wire Drawdown Request
+   *
+   * @example
+   * ```ts
+   * const inboundWireDrawdownRequest =
+   *   await client.inboundWireDrawdownRequests.retrieve(
+   *     'inbound_wire_drawdown_request_u5a92ikqhz1ytphn799e',
+   *   );
+   * ```
    */
   retrieve(
     inboundWireDrawdownRequestId: string,
@@ -18,6 +26,14 @@ export class InboundWireDrawdownRequests extends APIResource {
 
   /**
    * List Inbound Wire Drawdown Requests
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundWireDrawdownRequest of client.inboundWireDrawdownRequests.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundWireDrawdownRequestListParams,

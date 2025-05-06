@@ -8,6 +8,15 @@ export class InterestPayments extends APIResource {
   /**
    * Simulates an interest payment to your account. In production, this happens
    * automatically on the first of each month.
+   *
+   * @example
+   * ```ts
+   * const transaction =
+   *   await client.simulations.interestPayments.create({
+   *     account_id: 'account_in71c4amph0vgo2qllky',
+   *     amount: 1000,
+   *   });
+   * ```
    */
   create(
     body: InterestPaymentCreateParams,

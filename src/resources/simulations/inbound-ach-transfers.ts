@@ -16,6 +16,16 @@ export class InboundACHTransfers extends APIResource {
    * contain either a [Transaction](#transactions) or a
    * [Declined Transaction](#declined-transactions) depending on whether or not the
    * transfer is allowed.
+   *
+   * @example
+   * ```ts
+   * const inboundACHTransfer =
+   *   await client.simulations.inboundACHTransfers.create({
+   *     account_number_id:
+   *       'account_number_v18nkfqm6afpsrvy82b2',
+   *     amount: 1000,
+   *   });
+   * ```
    */
   create(
     body: InboundACHTransferCreateParams,

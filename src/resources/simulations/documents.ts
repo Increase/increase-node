@@ -7,6 +7,13 @@ import * as DocumentsAPI from '../documents';
 export class Documents extends APIResource {
   /**
    * Simulates an tax document being created for an account.
+   *
+   * @example
+   * ```ts
+   * const document = await client.simulations.documents.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   * });
+   * ```
    */
   create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<DocumentsAPI.Document> {
     return this._client.post('/simulations/documents', { body, ...options });

@@ -10,6 +10,14 @@ export class CheckTransfers extends APIResource {
    * periodically throughout the day in production but can be sped up in sandbox.
    * This transfer must first have a `status` of `pending_approval` or
    * `pending_submission`.
+   *
+   * @example
+   * ```ts
+   * const checkTransfer =
+   *   await client.simulations.checkTransfers.mail(
+   *     'check_transfer_30b43acfu9vw8fyc4f5',
+   *   );
+   * ```
    */
   mail(
     checkTransferId: string,

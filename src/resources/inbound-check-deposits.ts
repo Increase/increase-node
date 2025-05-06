@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundCheckDeposits extends APIResource {
   /**
    * Retrieve an Inbound Check Deposit
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.inboundCheckDeposits.retrieve(
+   *     'inbound_check_deposit_zoshvqybq0cjjm31mra',
+   *   );
+   * ```
    */
   retrieve(
     inboundCheckDepositId: string,
@@ -18,6 +26,14 @@ export class InboundCheckDeposits extends APIResource {
 
   /**
    * List Inbound Check Deposits
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundCheckDeposit of client.inboundCheckDeposits.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundCheckDepositListParams,
@@ -39,6 +55,14 @@ export class InboundCheckDeposits extends APIResource {
 
   /**
    * Decline an Inbound Check Deposit
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.inboundCheckDeposits.decline(
+   *     'inbound_check_deposit_zoshvqybq0cjjm31mra',
+   *   );
+   * ```
    */
   decline(
     inboundCheckDepositId: string,
@@ -49,6 +73,15 @@ export class InboundCheckDeposits extends APIResource {
 
   /**
    * Return an Inbound Check Deposit
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.inboundCheckDeposits.return(
+   *     'inbound_check_deposit_zoshvqybq0cjjm31mra',
+   *     { reason: 'altered_or_fictitious' },
+   *   );
+   * ```
    */
   return(
     inboundCheckDepositId: string,

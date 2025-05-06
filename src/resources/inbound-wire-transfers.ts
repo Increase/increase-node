@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundWireTransfers extends APIResource {
   /**
    * Retrieve an Inbound Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundWireTransfer =
+   *   await client.inboundWireTransfers.retrieve(
+   *     'inbound_wire_transfer_f228m6bmhtcxjco9pwp0',
+   *   );
+   * ```
    */
   retrieve(
     inboundWireTransferId: string,
@@ -18,6 +26,14 @@ export class InboundWireTransfers extends APIResource {
 
   /**
    * List Inbound Wire Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundWireTransfer of client.inboundWireTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundWireTransferListParams,
@@ -39,6 +55,15 @@ export class InboundWireTransfers extends APIResource {
 
   /**
    * Reverse an Inbound Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundWireTransfer =
+   *   await client.inboundWireTransfers.reverse(
+   *     'inbound_wire_transfer_f228m6bmhtcxjco9pwp0',
+   *     { reason: 'creditor_request' },
+   *   );
+   * ```
    */
   reverse(
     inboundWireTransferId: string,

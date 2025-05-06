@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Events extends APIResource {
   /**
    * Retrieve an Event
+   *
+   * @example
+   * ```ts
+   * const event = await client.events.retrieve(
+   *   'event_001dzz0r20rzr4zrhrr1364hy80',
+   * );
+   * ```
    */
   retrieve(eventId: string, options?: Core.RequestOptions): Core.APIPromise<Event> {
     return this._client.get(`/events/${eventId}`, options);
@@ -15,6 +22,14 @@ export class Events extends APIResource {
 
   /**
    * List Events
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const event of client.events.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: EventListParams, options?: Core.RequestOptions): Core.PagePromise<EventsPage, Event>;
   list(options?: Core.RequestOptions): Core.PagePromise<EventsPage, Event>;

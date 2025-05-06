@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class EventSubscriptions extends APIResource {
   /**
    * Create an Event Subscription
+   *
+   * @example
+   * ```ts
+   * const eventSubscription =
+   *   await client.eventSubscriptions.create({
+   *     url: 'https://website.com/webhooks',
+   *   });
+   * ```
    */
   create(
     body: EventSubscriptionCreateParams,
@@ -18,6 +26,14 @@ export class EventSubscriptions extends APIResource {
 
   /**
    * Retrieve an Event Subscription
+   *
+   * @example
+   * ```ts
+   * const eventSubscription =
+   *   await client.eventSubscriptions.retrieve(
+   *     'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
+   *   );
+   * ```
    */
   retrieve(eventSubscriptionId: string, options?: Core.RequestOptions): Core.APIPromise<EventSubscription> {
     return this._client.get(`/event_subscriptions/${eventSubscriptionId}`, options);
@@ -25,6 +41,14 @@ export class EventSubscriptions extends APIResource {
 
   /**
    * Update an Event Subscription
+   *
+   * @example
+   * ```ts
+   * const eventSubscription =
+   *   await client.eventSubscriptions.update(
+   *     'event_subscription_001dzz0r20rcdxgb013zqb8m04g',
+   *   );
+   * ```
    */
   update(
     eventSubscriptionId: string,
@@ -36,6 +60,14 @@ export class EventSubscriptions extends APIResource {
 
   /**
    * List Event Subscriptions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const eventSubscription of client.eventSubscriptions.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: EventSubscriptionListParams,

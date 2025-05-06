@@ -8,6 +8,16 @@ import { Page, type PageParams } from '../pagination';
 export class ExternalAccounts extends APIResource {
   /**
    * Create an External Account
+   *
+   * @example
+   * ```ts
+   * const externalAccount =
+   *   await client.externalAccounts.create({
+   *     account_number: '987654321',
+   *     description: 'Landlord',
+   *     routing_number: '101050001',
+   *   });
+   * ```
    */
   create(body: ExternalAccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
     return this._client.post('/external_accounts', { body, ...options });
@@ -15,6 +25,14 @@ export class ExternalAccounts extends APIResource {
 
   /**
    * Retrieve an External Account
+   *
+   * @example
+   * ```ts
+   * const externalAccount =
+   *   await client.externalAccounts.retrieve(
+   *     'external_account_ukk55lr923a3ac0pp7iv',
+   *   );
+   * ```
    */
   retrieve(externalAccountId: string, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
     return this._client.get(`/external_accounts/${externalAccountId}`, options);
@@ -22,6 +40,14 @@ export class ExternalAccounts extends APIResource {
 
   /**
    * Update an External Account
+   *
+   * @example
+   * ```ts
+   * const externalAccount =
+   *   await client.externalAccounts.update(
+   *     'external_account_ukk55lr923a3ac0pp7iv',
+   *   );
+   * ```
    */
   update(
     externalAccountId: string,
@@ -33,6 +59,14 @@ export class ExternalAccounts extends APIResource {
 
   /**
    * List External Accounts
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const externalAccount of client.externalAccounts.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: ExternalAccountListParams,

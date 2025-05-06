@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class DeclinedTransactions extends APIResource {
   /**
    * Retrieve a Declined Transaction
+   *
+   * @example
+   * ```ts
+   * const declinedTransaction =
+   *   await client.declinedTransactions.retrieve(
+   *     'declined_transaction_17jbn0yyhvkt4v4ooym8',
+   *   );
+   * ```
    */
   retrieve(
     declinedTransactionId: string,
@@ -18,6 +26,14 @@ export class DeclinedTransactions extends APIResource {
 
   /**
    * List Declined Transactions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const declinedTransaction of client.declinedTransactions.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: DeclinedTransactionListParams,

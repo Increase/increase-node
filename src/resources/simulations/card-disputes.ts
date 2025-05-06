@@ -10,6 +10,15 @@ export class CardDisputes extends APIResource {
    * will be reviewed. Since no review happens in sandbox, this endpoint simulates
    * moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
    * be actioned one time and must have a status of `pending_reviewing`.
+   *
+   * @example
+   * ```ts
+   * const cardDispute =
+   *   await client.simulations.cardDisputes.action(
+   *     'card_dispute_h9sc95nbl1cgltpp7men',
+   *     { status: 'rejected' },
+   *   );
+   * ```
    */
   action(
     cardDisputeId: string,

@@ -10,6 +10,14 @@ export class CardReversals extends APIResource {
    * can be partially reversed multiple times, up until the total authorized amount.
    * Marks the pending transaction as complete if the authorization is fully
    * reversed.
+   *
+   * @example
+   * ```ts
+   * const cardPayment =
+   *   await client.simulations.cardReversals.create({
+   *     card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+   *   });
+   * ```
    */
   create(
     body: CardReversalCreateParams,

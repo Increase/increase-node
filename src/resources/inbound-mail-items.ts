@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundMailItems extends APIResource {
   /**
    * Retrieve an Inbound Mail Item
+   *
+   * @example
+   * ```ts
+   * const inboundMailItem =
+   *   await client.inboundMailItems.retrieve(
+   *     'inbound_mail_item_q6rrg7mmqpplx80zceev',
+   *   );
+   * ```
    */
   retrieve(inboundMailItemId: string, options?: Core.RequestOptions): Core.APIPromise<InboundMailItem> {
     return this._client.get(`/inbound_mail_items/${inboundMailItemId}`, options);
@@ -15,6 +23,14 @@ export class InboundMailItems extends APIResource {
 
   /**
    * List Inbound Mail Items
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundMailItem of client.inboundMailItems.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundMailItemListParams,

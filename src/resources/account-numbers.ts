@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class AccountNumbers extends APIResource {
   /**
    * Create an Account Number
+   *
+   * @example
+   * ```ts
+   * const accountNumber = await client.accountNumbers.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   name: 'Rent payments',
+   * });
+   * ```
    */
   create(body: AccountNumberCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
     return this._client.post('/account_numbers', { body, ...options });
@@ -15,6 +23,13 @@ export class AccountNumbers extends APIResource {
 
   /**
    * Retrieve an Account Number
+   *
+   * @example
+   * ```ts
+   * const accountNumber = await client.accountNumbers.retrieve(
+   *   'account_number_v18nkfqm6afpsrvy82b2',
+   * );
+   * ```
    */
   retrieve(accountNumberId: string, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
     return this._client.get(`/account_numbers/${accountNumberId}`, options);
@@ -22,6 +37,13 @@ export class AccountNumbers extends APIResource {
 
   /**
    * Update an Account Number
+   *
+   * @example
+   * ```ts
+   * const accountNumber = await client.accountNumbers.update(
+   *   'account_number_v18nkfqm6afpsrvy82b2',
+   * );
+   * ```
    */
   update(
     accountNumberId: string,
@@ -33,6 +55,14 @@ export class AccountNumbers extends APIResource {
 
   /**
    * List Account Numbers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const accountNumber of client.accountNumbers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: AccountNumberListParams,

@@ -6,6 +6,13 @@ import * as Core from '../core';
 export class FileLinks extends APIResource {
   /**
    * Create a File Link
+   *
+   * @example
+   * ```ts
+   * const fileLink = await client.fileLinks.create({
+   *   file_id: 'file_makxrc67oh9l6sg7w9yc',
+   * });
+   * ```
    */
   create(body: FileLinkCreateParams, options?: Core.RequestOptions): Core.APIPromise<FileLink> {
     return this._client.post('/file_links', { body, ...options });

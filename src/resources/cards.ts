@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Cards extends APIResource {
   /**
    * Create a Card
+   *
+   * @example
+   * ```ts
+   * const card = await client.cards.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   * });
+   * ```
    */
   create(body: CardCreateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this._client.post('/cards', { body, ...options });
@@ -15,6 +22,13 @@ export class Cards extends APIResource {
 
   /**
    * Retrieve a Card
+   *
+   * @example
+   * ```ts
+   * const card = await client.cards.retrieve(
+   *   'card_oubs0hwk5rn6knuecxg2',
+   * );
+   * ```
    */
   retrieve(cardId: string, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this._client.get(`/cards/${cardId}`, options);
@@ -22,6 +36,13 @@ export class Cards extends APIResource {
 
   /**
    * Update a Card
+   *
+   * @example
+   * ```ts
+   * const card = await client.cards.update(
+   *   'card_oubs0hwk5rn6knuecxg2',
+   * );
+   * ```
    */
   update(cardId: string, body: CardUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
     return this._client.patch(`/cards/${cardId}`, { body, ...options });
@@ -29,6 +50,14 @@ export class Cards extends APIResource {
 
   /**
    * List Cards
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const card of client.cards.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
   list(options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
@@ -44,6 +73,13 @@ export class Cards extends APIResource {
 
   /**
    * Retrieve sensitive details for a Card
+   *
+   * @example
+   * ```ts
+   * const cardDetails = await client.cards.details(
+   *   'card_oubs0hwk5rn6knuecxg2',
+   * );
+   * ```
    */
   details(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
     return this._client.get(`/cards/${cardId}/details`, options);

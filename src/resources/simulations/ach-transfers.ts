@@ -12,6 +12,14 @@ export class ACHTransfers extends APIResource {
    * within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
    * Reserve, this endpoint allows you to skip that delay and add the acknowledgment
    * subresource to the ACH Transfer.
+   *
+   * @example
+   * ```ts
+   * const achTransfer =
+   *   await client.simulations.achTransfers.acknowledge(
+   *     'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   *   );
+   * ```
    */
   acknowledge(
     achTransferId: string,
@@ -23,6 +31,18 @@ export class ACHTransfers extends APIResource {
   /**
    * Simulates receiving a Notification of Change for an
    * [ACH Transfer](#ach-transfers).
+   *
+   * @example
+   * ```ts
+   * const achTransfer =
+   *   await client.simulations.achTransfers.createNotificationOfChange(
+   *     'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   *     {
+   *       change_code: 'incorrect_routing_number',
+   *       corrected_data: '123456789',
+   *     },
+   *   );
+   * ```
    */
   createNotificationOfChange(
     achTransferId: string,
@@ -39,6 +59,14 @@ export class ACHTransfers extends APIResource {
    * Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
    * due to an error condition. This will also create a Transaction to account for
    * the returned funds. This transfer must first have a `status` of `submitted`.
+   *
+   * @example
+   * ```ts
+   * const achTransfer =
+   *   await client.simulations.achTransfers.return(
+   *     'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   *   );
+   * ```
    */
   return(
     achTransferId: string,
@@ -55,6 +83,14 @@ export class ACHTransfers extends APIResource {
    * `pending_submission`, the simulation will also submit the transfer. Without this
    * simulation the transfer will eventually settle on its own following the same
    * Federal Reserve timeline as in production.
+   *
+   * @example
+   * ```ts
+   * const achTransfer =
+   *   await client.simulations.achTransfers.settle(
+   *     'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   *   );
+   * ```
    */
   settle(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
     return this._client.post(`/simulations/ach_transfers/${achTransferId}/settle`, options);
@@ -67,6 +103,14 @@ export class ACHTransfers extends APIResource {
    * Federal Reserve three times per day on weekdays. Since sandbox ACH Transfers are
    * not submitted to the Federal Reserve, this endpoint allows you to skip that
    * delay and transition the ACH Transfer to a status of `submitted`.
+   *
+   * @example
+   * ```ts
+   * const achTransfer =
+   *   await client.simulations.achTransfers.submit(
+   *     'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   *   );
+   * ```
    */
   submit(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
     return this._client.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);

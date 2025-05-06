@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Programs extends APIResource {
   /**
    * Retrieve a Program
+   *
+   * @example
+   * ```ts
+   * const program = await client.programs.retrieve(
+   *   'program_i2v2os4mwza1oetokh9i',
+   * );
+   * ```
    */
   retrieve(programId: string, options?: Core.RequestOptions): Core.APIPromise<Program> {
     return this._client.get(`/programs/${programId}`, options);
@@ -15,6 +22,14 @@ export class Programs extends APIResource {
 
   /**
    * List Programs
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const program of client.programs.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: ProgramListParams, options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;
   list(options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;

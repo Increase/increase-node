@@ -6,6 +6,13 @@ import * as Core from '../core';
 export class OAuthTokens extends APIResource {
   /**
    * Create an OAuth Token
+   *
+   * @example
+   * ```ts
+   * const oauthToken = await client.oauthTokens.create({
+   *   grant_type: 'authorization_code',
+   * });
+   * ```
    */
   create(body: OAuthTokenCreateParams, options?: Core.RequestOptions): Core.APIPromise<OAuthToken> {
     return this._client.post('/oauth/tokens', { body, ...options });

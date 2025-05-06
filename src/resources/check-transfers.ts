@@ -8,6 +8,17 @@ import { Page, type PageParams } from '../pagination';
 export class CheckTransfers extends APIResource {
   /**
    * Create a Check Transfer
+   *
+   * @example
+   * ```ts
+   * const checkTransfer = await client.checkTransfers.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   amount: 1000,
+   *   fulfillment_method: 'physical_check',
+   *   source_account_number_id:
+   *     'account_number_v18nkfqm6afpsrvy82b2',
+   * });
+   * ```
    */
   create(body: CheckTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this._client.post('/check_transfers', { body, ...options });
@@ -15,6 +26,13 @@ export class CheckTransfers extends APIResource {
 
   /**
    * Retrieve a Check Transfer
+   *
+   * @example
+   * ```ts
+   * const checkTransfer = await client.checkTransfers.retrieve(
+   *   'check_transfer_30b43acfu9vw8fyc4f5',
+   * );
+   * ```
    */
   retrieve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this._client.get(`/check_transfers/${checkTransferId}`, options);
@@ -22,6 +40,14 @@ export class CheckTransfers extends APIResource {
 
   /**
    * List Check Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const checkTransfer of client.checkTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: CheckTransferListParams,
@@ -40,6 +66,13 @@ export class CheckTransfers extends APIResource {
 
   /**
    * Approve a Check Transfer
+   *
+   * @example
+   * ```ts
+   * const checkTransfer = await client.checkTransfers.approve(
+   *   'check_transfer_30b43acfu9vw8fyc4f5',
+   * );
+   * ```
    */
   approve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this._client.post(`/check_transfers/${checkTransferId}/approve`, options);
@@ -47,6 +80,13 @@ export class CheckTransfers extends APIResource {
 
   /**
    * Cancel a pending Check Transfer
+   *
+   * @example
+   * ```ts
+   * const checkTransfer = await client.checkTransfers.cancel(
+   *   'check_transfer_30b43acfu9vw8fyc4f5',
+   * );
+   * ```
    */
   cancel(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
     return this._client.post(`/check_transfers/${checkTransferId}/cancel`, options);
@@ -54,6 +94,14 @@ export class CheckTransfers extends APIResource {
 
   /**
    * Request a stop payment on a Check Transfer
+   *
+   * @example
+   * ```ts
+   * const checkTransfer =
+   *   await client.checkTransfers.stopPayment(
+   *     'check_transfer_30b43acfu9vw8fyc4f5',
+   *   );
+   * ```
    */
   stopPayment(
     checkTransferId: string,
