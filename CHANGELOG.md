@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.212.0 (2025-05-06)
+
+Full Changelog: [v0.211.0...v0.212.0](https://github.com/Increase/increase-node/compare/v0.211.0...v0.212.0)
+
+### Features
+
+* **api:** api update ([b381624](https://github.com/Increase/increase-node/commit/b381624c212c17bd846c8b62f6765233a9b93d64))
+* **api:** api update ([ac8b886](https://github.com/Increase/increase-node/commit/ac8b886d69d7f8004170b97cb49872150ec5049f))
+
+
+### Chores
+
+* **ci:** bump node version for release workflows ([f609333](https://github.com/Increase/increase-node/commit/f609333b95730d4569dbe18407119727365df80c))
+
+
+### Documentation
+
+* add examples to tsdocs ([2b9ad9d](https://github.com/Increase/increase-node/commit/2b9ad9d3ae8905a79a6ce2f85e33a5a09f0ff708))
+
 ## 0.211.0 (2025-05-05)
 
 Full Changelog: [v0.210.0...v0.211.0](https://github.com/Increase/increase-node/compare/v0.210.0...v0.211.0)
