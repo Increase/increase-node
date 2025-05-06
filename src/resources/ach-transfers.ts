@@ -8,6 +8,15 @@ import { Page, type PageParams } from '../pagination';
 export class ACHTransfers extends APIResource {
   /**
    * Create an ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const achTransfer = await client.achTransfers.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   amount: 100,
+   *   statement_descriptor: 'New ACH transfer',
+   * });
+   * ```
    */
   create(body: ACHTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this._client.post('/ach_transfers', { body, ...options });
@@ -15,6 +24,13 @@ export class ACHTransfers extends APIResource {
 
   /**
    * Retrieve an ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const achTransfer = await client.achTransfers.retrieve(
+   *   'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   * );
+   * ```
    */
   retrieve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this._client.get(`/ach_transfers/${achTransferId}`, options);
@@ -22,6 +38,14 @@ export class ACHTransfers extends APIResource {
 
   /**
    * List ACH Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const achTransfer of client.achTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: ACHTransferListParams,
@@ -40,6 +64,13 @@ export class ACHTransfers extends APIResource {
 
   /**
    * Approves an ACH Transfer in a pending_approval state.
+   *
+   * @example
+   * ```ts
+   * const achTransfer = await client.achTransfers.approve(
+   *   'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   * );
+   * ```
    */
   approve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this._client.post(`/ach_transfers/${achTransferId}/approve`, options);
@@ -47,6 +78,13 @@ export class ACHTransfers extends APIResource {
 
   /**
    * Cancels an ACH Transfer in a pending_approval state.
+   *
+   * @example
+   * ```ts
+   * const achTransfer = await client.achTransfers.cancel(
+   *   'ach_transfer_uoxatyh3lt5evrsdvo7q',
+   * );
+   * ```
    */
   cancel(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
     return this._client.post(`/ach_transfers/${achTransferId}/cancel`, options);

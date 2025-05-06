@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class PendingTransactions extends APIResource {
   /**
    * Retrieve a Pending Transaction
+   *
+   * @example
+   * ```ts
+   * const pendingTransaction =
+   *   await client.pendingTransactions.retrieve(
+   *     'pending_transaction_k1sfetcau2qbvjbzgju4',
+   *   );
+   * ```
    */
   retrieve(pendingTransactionId: string, options?: Core.RequestOptions): Core.APIPromise<PendingTransaction> {
     return this._client.get(`/pending_transactions/${pendingTransactionId}`, options);
@@ -15,6 +23,14 @@ export class PendingTransactions extends APIResource {
 
   /**
    * List Pending Transactions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const pendingTransaction of client.pendingTransactions.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: PendingTransactionListParams,

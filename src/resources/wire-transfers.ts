@@ -8,6 +8,16 @@ import { Page, type PageParams } from '../pagination';
 export class WireTransfers extends APIResource {
   /**
    * Create a Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const wireTransfer = await client.wireTransfers.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   amount: 100,
+   *   beneficiary_name: 'Ian Crease',
+   *   message_to_recipient: 'New account transfer',
+   * });
+   * ```
    */
   create(body: WireTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this._client.post('/wire_transfers', { body, ...options });
@@ -15,6 +25,13 @@ export class WireTransfers extends APIResource {
 
   /**
    * Retrieve a Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const wireTransfer = await client.wireTransfers.retrieve(
+   *   'wire_transfer_5akynk7dqsq25qwk9q2u',
+   * );
+   * ```
    */
   retrieve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this._client.get(`/wire_transfers/${wireTransferId}`, options);
@@ -22,6 +39,14 @@ export class WireTransfers extends APIResource {
 
   /**
    * List Wire Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const wireTransfer of client.wireTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: WireTransferListParams,
@@ -40,6 +65,13 @@ export class WireTransfers extends APIResource {
 
   /**
    * Approve a Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const wireTransfer = await client.wireTransfers.approve(
+   *   'wire_transfer_5akynk7dqsq25qwk9q2u',
+   * );
+   * ```
    */
   approve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this._client.post(`/wire_transfers/${wireTransferId}/approve`, options);
@@ -47,6 +79,13 @@ export class WireTransfers extends APIResource {
 
   /**
    * Cancel a pending Wire Transfer
+   *
+   * @example
+   * ```ts
+   * const wireTransfer = await client.wireTransfers.cancel(
+   *   'wire_transfer_5akynk7dqsq25qwk9q2u',
+   * );
+   * ```
    */
   cancel(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
     return this._client.post(`/wire_transfers/${wireTransferId}/cancel`, options);

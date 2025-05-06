@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Lockboxes extends APIResource {
   /**
    * Create a Lockbox
+   *
+   * @example
+   * ```ts
+   * const lockbox = await client.lockboxes.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   * });
+   * ```
    */
   create(body: LockboxCreateParams, options?: Core.RequestOptions): Core.APIPromise<Lockbox> {
     return this._client.post('/lockboxes', { body, ...options });
@@ -15,6 +22,13 @@ export class Lockboxes extends APIResource {
 
   /**
    * Retrieve a Lockbox
+   *
+   * @example
+   * ```ts
+   * const lockbox = await client.lockboxes.retrieve(
+   *   'lockbox_3xt21ok13q19advds4t5',
+   * );
+   * ```
    */
   retrieve(lockboxId: string, options?: Core.RequestOptions): Core.APIPromise<Lockbox> {
     return this._client.get(`/lockboxes/${lockboxId}`, options);
@@ -22,6 +36,13 @@ export class Lockboxes extends APIResource {
 
   /**
    * Update a Lockbox
+   *
+   * @example
+   * ```ts
+   * const lockbox = await client.lockboxes.update(
+   *   'lockbox_3xt21ok13q19advds4t5',
+   * );
+   * ```
    */
   update(
     lockboxId: string,
@@ -33,6 +54,14 @@ export class Lockboxes extends APIResource {
 
   /**
    * List Lockboxes
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const lockbox of client.lockboxes.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: LockboxListParams, options?: Core.RequestOptions): Core.PagePromise<LockboxesPage, Lockbox>;
   list(options?: Core.RequestOptions): Core.PagePromise<LockboxesPage, Lockbox>;

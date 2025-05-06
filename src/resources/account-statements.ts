@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class AccountStatements extends APIResource {
   /**
    * Retrieve an Account Statement
+   *
+   * @example
+   * ```ts
+   * const accountStatement =
+   *   await client.accountStatements.retrieve(
+   *     'account_statement_lkc03a4skm2k7f38vj15',
+   *   );
+   * ```
    */
   retrieve(accountStatementId: string, options?: Core.RequestOptions): Core.APIPromise<AccountStatement> {
     return this._client.get(`/account_statements/${accountStatementId}`, options);
@@ -15,6 +23,14 @@ export class AccountStatements extends APIResource {
 
   /**
    * List Account Statements
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const accountStatement of client.accountStatements.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: AccountStatementListParams,

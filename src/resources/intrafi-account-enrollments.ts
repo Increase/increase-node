@@ -8,6 +8,15 @@ import { Page, type PageParams } from '../pagination';
 export class IntrafiAccountEnrollments extends APIResource {
   /**
    * Enroll an account in the IntraFi deposit sweep network
+   *
+   * @example
+   * ```ts
+   * const intrafiAccountEnrollment =
+   *   await client.intrafiAccountEnrollments.create({
+   *     account_id: 'account_in71c4amph0vgo2qllky',
+   *     email_address: 'user@example.com',
+   *   });
+   * ```
    */
   create(
     body: IntrafiAccountEnrollmentCreateParams,
@@ -18,6 +27,14 @@ export class IntrafiAccountEnrollments extends APIResource {
 
   /**
    * Get an IntraFi Account Enrollment
+   *
+   * @example
+   * ```ts
+   * const intrafiAccountEnrollment =
+   *   await client.intrafiAccountEnrollments.retrieve(
+   *     'intrafi_account_enrollment_w8l97znzreopkwf2tg75',
+   *   );
+   * ```
    */
   retrieve(
     intrafiAccountEnrollmentId: string,
@@ -28,6 +45,14 @@ export class IntrafiAccountEnrollments extends APIResource {
 
   /**
    * List IntraFi Account Enrollments
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const intrafiAccountEnrollment of client.intrafiAccountEnrollments.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: IntrafiAccountEnrollmentListParams,
@@ -51,6 +76,14 @@ export class IntrafiAccountEnrollments extends APIResource {
 
   /**
    * Unenroll an account from IntraFi
+   *
+   * @example
+   * ```ts
+   * const intrafiAccountEnrollment =
+   *   await client.intrafiAccountEnrollments.unenroll(
+   *     'intrafi_account_enrollment_w8l97znzreopkwf2tg75',
+   *   );
+   * ```
    */
   unenroll(
     intrafiAccountEnrollmentId: string,

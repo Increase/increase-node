@@ -8,6 +8,15 @@ export class InboundMailItems extends APIResource {
   /**
    * Simulates an inbound mail item to your account, as if someone had mailed a
    * physical check to one of your account's Lockboxes.
+   *
+   * @example
+   * ```ts
+   * const inboundMailItem =
+   *   await client.simulations.inboundMailItems.create({
+   *     amount: 1000,
+   *     lockbox_id: 'lockbox_3xt21ok13q19advds4t5',
+   *   });
+   * ```
    */
   create(
     body: InboundMailItemCreateParams,

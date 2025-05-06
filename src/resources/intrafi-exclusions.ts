@@ -8,6 +8,15 @@ import { Page, type PageParams } from '../pagination';
 export class IntrafiExclusions extends APIResource {
   /**
    * Create an IntraFi Exclusion
+   *
+   * @example
+   * ```ts
+   * const intrafiExclusion =
+   *   await client.intrafiExclusions.create({
+   *     bank_name: 'Example Bank',
+   *     entity_id: 'entity_n8y8tnk2p9339ti393yi',
+   *   });
+   * ```
    */
   create(
     body: IntrafiExclusionCreateParams,
@@ -18,6 +27,14 @@ export class IntrafiExclusions extends APIResource {
 
   /**
    * Get an IntraFi Exclusion
+   *
+   * @example
+   * ```ts
+   * const intrafiExclusion =
+   *   await client.intrafiExclusions.retrieve(
+   *     'account_in71c4amph0vgo2qllky',
+   *   );
+   * ```
    */
   retrieve(intrafiExclusionId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiExclusion> {
     return this._client.get(`/intrafi_exclusions/${intrafiExclusionId}`, options);
@@ -25,6 +42,14 @@ export class IntrafiExclusions extends APIResource {
 
   /**
    * List IntraFi Exclusions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const intrafiExclusion of client.intrafiExclusions.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: IntrafiExclusionListParams,
@@ -43,6 +68,14 @@ export class IntrafiExclusions extends APIResource {
 
   /**
    * Archive an IntraFi Exclusion
+   *
+   * @example
+   * ```ts
+   * const intrafiExclusion =
+   *   await client.intrafiExclusions.archive(
+   *     'intrafi_exclusion_ygfqduuzpau3jqof6jyh',
+   *   );
+   * ```
    */
   archive(intrafiExclusionId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiExclusion> {
     return this._client.post(`/intrafi_exclusions/${intrafiExclusionId}/archive`, options);

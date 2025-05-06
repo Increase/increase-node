@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundACHTransfers extends APIResource {
   /**
    * Retrieve an Inbound ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundACHTransfer =
+   *   await client.inboundACHTransfers.retrieve(
+   *     'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+   *   );
+   * ```
    */
   retrieve(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
     return this._client.get(`/inbound_ach_transfers/${inboundACHTransferId}`, options);
@@ -15,6 +23,14 @@ export class InboundACHTransfers extends APIResource {
 
   /**
    * List Inbound ACH Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundACHTransfer of client.inboundACHTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundACHTransferListParams,
@@ -33,6 +49,14 @@ export class InboundACHTransfers extends APIResource {
 
   /**
    * Create a notification of change for an Inbound ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundACHTransfer =
+   *   await client.inboundACHTransfers.createNotificationOfChange(
+   *     'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+   *   );
+   * ```
    */
   createNotificationOfChange(
     inboundACHTransferId: string,
@@ -47,6 +71,14 @@ export class InboundACHTransfers extends APIResource {
 
   /**
    * Decline an Inbound ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundACHTransfer =
+   *   await client.inboundACHTransfers.decline(
+   *     'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+   *   );
+   * ```
    */
   decline(
     inboundACHTransferId: string,
@@ -58,6 +90,15 @@ export class InboundACHTransfers extends APIResource {
 
   /**
    * Return an Inbound ACH Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundACHTransfer =
+   *   await client.inboundACHTransfers.transferReturn(
+   *     'inbound_ach_transfer_tdrwqr3fq9gnnq49odev',
+   *     { reason: 'payment_stopped' },
+   *   );
+   * ```
    */
   transferReturn(
     inboundACHTransferId: string,

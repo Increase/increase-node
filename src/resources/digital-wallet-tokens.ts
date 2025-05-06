@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class DigitalWalletTokens extends APIResource {
   /**
    * Retrieve a Digital Wallet Token
+   *
+   * @example
+   * ```ts
+   * const digitalWalletToken =
+   *   await client.digitalWalletTokens.retrieve(
+   *     'digital_wallet_token_izi62go3h51p369jrie0',
+   *   );
+   * ```
    */
   retrieve(digitalWalletTokenId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalWalletToken> {
     return this._client.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
@@ -15,6 +23,14 @@ export class DigitalWalletTokens extends APIResource {
 
   /**
    * List Digital Wallet Tokens
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const digitalWalletToken of client.digitalWalletTokens.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: DigitalWalletTokenListParams,

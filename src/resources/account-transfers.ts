@@ -8,6 +8,17 @@ import { Page, type PageParams } from '../pagination';
 export class AccountTransfers extends APIResource {
   /**
    * Create an Account Transfer
+   *
+   * @example
+   * ```ts
+   * const accountTransfer =
+   *   await client.accountTransfers.create({
+   *     account_id: 'account_in71c4amph0vgo2qllky',
+   *     amount: 100,
+   *     description: 'Creating liquidity',
+   *     destination_account_id: 'account_uf16sut2ct5bevmq3eh',
+   *   });
+   * ```
    */
   create(body: AccountTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this._client.post('/account_transfers', { body, ...options });
@@ -15,6 +26,14 @@ export class AccountTransfers extends APIResource {
 
   /**
    * Retrieve an Account Transfer
+   *
+   * @example
+   * ```ts
+   * const accountTransfer =
+   *   await client.accountTransfers.retrieve(
+   *     'account_transfer_7k9qe1ysdgqztnt63l7n',
+   *   );
+   * ```
    */
   retrieve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this._client.get(`/account_transfers/${accountTransferId}`, options);
@@ -22,6 +41,14 @@ export class AccountTransfers extends APIResource {
 
   /**
    * List Account Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const accountTransfer of client.accountTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: AccountTransferListParams,
@@ -40,6 +67,14 @@ export class AccountTransfers extends APIResource {
 
   /**
    * Approve an Account Transfer
+   *
+   * @example
+   * ```ts
+   * const accountTransfer =
+   *   await client.accountTransfers.approve(
+   *     'account_transfer_7k9qe1ysdgqztnt63l7n',
+   *   );
+   * ```
    */
   approve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this._client.post(`/account_transfers/${accountTransferId}/approve`, options);
@@ -47,6 +82,14 @@ export class AccountTransfers extends APIResource {
 
   /**
    * Cancel an Account Transfer
+   *
+   * @example
+   * ```ts
+   * const accountTransfer =
+   *   await client.accountTransfers.cancel(
+   *     'account_transfer_7k9qe1ysdgqztnt63l7n',
+   *   );
+   * ```
    */
   cancel(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
     return this._client.post(`/account_transfers/${accountTransferId}/cancel`, options);

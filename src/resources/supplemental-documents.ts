@@ -7,6 +7,15 @@ import { Page, type PageParams } from '../pagination';
 export class SupplementalDocuments extends APIResource {
   /**
    * Create a supplemental document for an Entity
+   *
+   * @example
+   * ```ts
+   * const entitySupplementalDocument =
+   *   await client.supplementalDocuments.create({
+   *     entity_id: 'entity_n8y8tnk2p9339ti393yi',
+   *     file_id: 'file_makxrc67oh9l6sg7w9yc',
+   *   });
+   * ```
    */
   create(
     body: SupplementalDocumentCreateParams,
@@ -17,6 +26,16 @@ export class SupplementalDocuments extends APIResource {
 
   /**
    * List Entity Supplemental Document Submissions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const entitySupplementalDocument of client.supplementalDocuments.list(
+   *   { entity_id: 'entity_id' },
+   * )) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query: SupplementalDocumentListParams,

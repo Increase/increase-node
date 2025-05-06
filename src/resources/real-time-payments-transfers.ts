@@ -8,6 +8,18 @@ import { Page, type PageParams } from '../pagination';
 export class RealTimePaymentsTransfers extends APIResource {
   /**
    * Create a Real-Time Payments Transfer
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.realTimePaymentsTransfers.create({
+   *     amount: 100,
+   *     creditor_name: 'Ian Crease',
+   *     remittance_information: 'Invoice 29582',
+   *     source_account_number_id:
+   *       'account_number_v18nkfqm6afpsrvy82b2',
+   *   });
+   * ```
    */
   create(
     body: RealTimePaymentsTransferCreateParams,
@@ -18,6 +30,14 @@ export class RealTimePaymentsTransfers extends APIResource {
 
   /**
    * Retrieve a Real-Time Payments Transfer
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.realTimePaymentsTransfers.retrieve(
+   *     'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
+   *   );
+   * ```
    */
   retrieve(
     realTimePaymentsTransferId: string,
@@ -28,6 +48,14 @@ export class RealTimePaymentsTransfers extends APIResource {
 
   /**
    * List Real-Time Payments Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const realTimePaymentsTransfer of client.realTimePaymentsTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: RealTimePaymentsTransferListParams,

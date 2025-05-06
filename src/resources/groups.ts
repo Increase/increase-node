@@ -6,6 +6,11 @@ import * as Core from '../core';
 export class Groups extends APIResource {
   /**
    * Returns details for the currently authenticated Group.
+   *
+   * @example
+   * ```ts
+   * const group = await client.groups.retrieve();
+   * ```
    */
   retrieve(options?: Core.RequestOptions): Core.APIPromise<Group> {
     return this._client.get('/groups/current', options);

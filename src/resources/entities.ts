@@ -9,6 +9,13 @@ import { Page, type PageParams } from '../pagination';
 export class Entities extends APIResource {
   /**
    * Create an Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.create({
+   *   structure: 'corporation',
+   * });
+   * ```
    */
   create(body: EntityCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this._client.post('/entities', { body, ...options });
@@ -16,6 +23,13 @@ export class Entities extends APIResource {
 
   /**
    * Retrieve an Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.retrieve(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   * );
+   * ```
    */
   retrieve(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this._client.get(`/entities/${entityId}`, options);
@@ -23,6 +37,14 @@ export class Entities extends APIResource {
 
   /**
    * List Entities
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const entity of client.entities.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
   list(options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
@@ -38,6 +60,13 @@ export class Entities extends APIResource {
 
   /**
    * Archive an Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.archive(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   * );
+   * ```
    */
   archive(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
     return this._client.post(`/entities/${entityId}/archive`, options);
@@ -45,6 +74,17 @@ export class Entities extends APIResource {
 
   /**
    * Archive a beneficial owner for a corporate Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.archiveBeneficialOwner(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   *   {
+   *     beneficial_owner_id:
+   *       'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *   },
+   * );
+   * ```
    */
   archiveBeneficialOwner(
     entityId: string,
@@ -58,6 +98,13 @@ export class Entities extends APIResource {
    * Depending on your program, you may be required to re-confirm an Entity's details
    * on a recurring basis. After making any required updates, call this endpoint to
    * record that your user confirmed their details.
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.confirm(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   * );
+   * ```
    */
   confirm(
     entityId: string,
@@ -69,6 +116,30 @@ export class Entities extends APIResource {
 
   /**
    * Create a beneficial owner for a corporate Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.createBeneficialOwner(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   *   {
+   *     beneficial_owner: {
+   *       individual: {
+   *         address: {
+   *           country: 'US',
+   *           line1: '33 Liberty Street',
+   *         },
+   *         date_of_birth: '1970-01-31',
+   *         identification: {
+   *           method: 'social_security_number',
+   *           number: '078051120',
+   *         },
+   *         name: 'Ian Crease',
+   *       },
+   *       prongs: ['control'],
+   *     },
+   *   },
+   * );
+   * ```
    */
   createBeneficialOwner(
     entityId: string,
@@ -80,6 +151,21 @@ export class Entities extends APIResource {
 
   /**
    * Update a Natural Person or Corporation's address
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.updateAddress(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   *   {
+   *     address: {
+   *       city: 'New York',
+   *       line1: '33 Liberty Street',
+   *       state: 'NY',
+   *       zip: '10045',
+   *     },
+   *   },
+   * );
+   * ```
    */
   updateAddress(
     entityId: string,
@@ -91,6 +177,22 @@ export class Entities extends APIResource {
 
   /**
    * Update the address for a beneficial owner belonging to a corporate Entity
+   *
+   * @example
+   * ```ts
+   * const entity =
+   *   await client.entities.updateBeneficialOwnerAddress(
+   *     'entity_n8y8tnk2p9339ti393yi',
+   *     {
+   *       address: {
+   *         country: 'US',
+   *         line1: '33 Liberty Street',
+   *       },
+   *       beneficial_owner_id:
+   *         'entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7',
+   *     },
+   *   );
+   * ```
    */
   updateBeneficialOwnerAddress(
     entityId: string,
@@ -102,6 +204,14 @@ export class Entities extends APIResource {
 
   /**
    * Update the industry code for a corporate Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.updateIndustryCode(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   *   { industry_code: '5132' },
+   * );
+   * ```
    */
   updateIndustryCode(
     entityId: string,

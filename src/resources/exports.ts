@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Exports extends APIResource {
   /**
    * Create an Export
+   *
+   * @example
+   * ```ts
+   * const _export = await client.exports.create({
+   *   category: 'transaction_csv',
+   * });
+   * ```
    */
   create(body: ExportCreateParams, options?: Core.RequestOptions): Core.APIPromise<Export> {
     return this._client.post('/exports', { body, ...options });
@@ -15,6 +22,13 @@ export class Exports extends APIResource {
 
   /**
    * Retrieve an Export
+   *
+   * @example
+   * ```ts
+   * const _export = await client.exports.retrieve(
+   *   'export_8s4m48qz3bclzje0zwh9',
+   * );
+   * ```
    */
   retrieve(exportId: string, options?: Core.RequestOptions): Core.APIPromise<Export> {
     return this._client.get(`/exports/${exportId}`, options);
@@ -22,6 +36,14 @@ export class Exports extends APIResource {
 
   /**
    * List Exports
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const _export of client.exports.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: ExportListParams, options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;
   list(options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;

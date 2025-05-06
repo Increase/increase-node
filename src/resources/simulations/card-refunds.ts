@@ -8,6 +8,14 @@ export class CardRefunds extends APIResource {
   /**
    * Simulates refunding a card transaction. The full value of the original sandbox
    * transaction is refunded.
+   *
+   * @example
+   * ```ts
+   * const transaction =
+   *   await client.simulations.cardRefunds.create({
+   *     transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
+   *   });
+   * ```
    */
   create(
     body: CardRefundCreateParams,

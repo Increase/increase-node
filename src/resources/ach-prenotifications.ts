@@ -8,6 +8,16 @@ import { Page, type PageParams } from '../pagination';
 export class ACHPrenotifications extends APIResource {
   /**
    * Create an ACH Prenotification
+   *
+   * @example
+   * ```ts
+   * const achPrenotification =
+   *   await client.achPrenotifications.create({
+   *     account_id: 'account_in71c4amph0vgo2qllky',
+   *     account_number: '987654321',
+   *     routing_number: '101050001',
+   *   });
+   * ```
    */
   create(
     body: ACHPrenotificationCreateParams,
@@ -18,6 +28,14 @@ export class ACHPrenotifications extends APIResource {
 
   /**
    * Retrieve an ACH Prenotification
+   *
+   * @example
+   * ```ts
+   * const achPrenotification =
+   *   await client.achPrenotifications.retrieve(
+   *     'ach_prenotification_ubjf9qqsxl3obbcn1u34',
+   *   );
+   * ```
    */
   retrieve(achPrenotificationId: string, options?: Core.RequestOptions): Core.APIPromise<ACHPrenotification> {
     return this._client.get(`/ach_prenotifications/${achPrenotificationId}`, options);
@@ -25,6 +43,14 @@ export class ACHPrenotifications extends APIResource {
 
   /**
    * List ACH Prenotifications
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const achPrenotification of client.achPrenotifications.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: ACHPrenotificationListParams,

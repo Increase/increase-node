@@ -10,6 +10,16 @@ export class RoutingNumbers extends APIResource {
    * user is providing you with bank account details. Since routing numbers uniquely
    * identify a bank, this will always return 0 or 1 entry. In Sandbox, the only
    * valid routing number for this method is 110000000.
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const routingNumberListResponse of client.routingNumbers.list(
+   *   { routing_number: 'xxxxxxxxx' },
+   * )) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query: RoutingNumberListParams,

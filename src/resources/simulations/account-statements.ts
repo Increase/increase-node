@@ -8,6 +8,14 @@ export class AccountStatements extends APIResource {
   /**
    * Simulates an [Account Statement](#account-statements) being created for an
    * account. In production, Account Statements are generated once per month.
+   *
+   * @example
+   * ```ts
+   * const accountStatement =
+   *   await client.simulations.accountStatements.create({
+   *     account_id: 'account_in71c4amph0vgo2qllky',
+   *   });
+   * ```
    */
   create(
     body: AccountStatementCreateParams,

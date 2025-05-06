@@ -9,6 +9,15 @@ export class CardFuelConfirmations extends APIResource {
    * Simulates the fuel confirmation of an authorization by a card acquirer. This
    * happens asynchronously right after a fuel pump transaction is completed. A fuel
    * confirmation can only happen once per authorization.
+   *
+   * @example
+   * ```ts
+   * const cardPayment =
+   *   await client.simulations.cardFuelConfirmations.create({
+   *     amount: 5000,
+   *     card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+   *   });
+   * ```
    */
   create(
     body: CardFuelConfirmationCreateParams,

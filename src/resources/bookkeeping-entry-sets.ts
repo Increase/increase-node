@@ -8,6 +8,25 @@ import { Page, type PageParams } from '../pagination';
 export class BookkeepingEntrySets extends APIResource {
   /**
    * Create a Bookkeeping Entry Set
+   *
+   * @example
+   * ```ts
+   * const bookkeepingEntrySet =
+   *   await client.bookkeepingEntrySets.create({
+   *     entries: [
+   *       {
+   *         account_id:
+   *           'bookkeeping_account_9husfpw68pzmve9dvvc7',
+   *         amount: 100,
+   *       },
+   *       {
+   *         account_id:
+   *           'bookkeeping_account_t2obldz1rcu15zr54umg',
+   *         amount: -100,
+   *       },
+   *     ],
+   *   });
+   * ```
    */
   create(
     body: BookkeepingEntrySetCreateParams,
@@ -18,6 +37,14 @@ export class BookkeepingEntrySets extends APIResource {
 
   /**
    * Retrieve a Bookkeeping Entry Set
+   *
+   * @example
+   * ```ts
+   * const bookkeepingEntrySet =
+   *   await client.bookkeepingEntrySets.retrieve(
+   *     'bookkeeping_entry_set_n80c6wr2p8gtc6p4ingf',
+   *   );
+   * ```
    */
   retrieve(
     bookkeepingEntrySetId: string,
@@ -28,6 +55,14 @@ export class BookkeepingEntrySets extends APIResource {
 
   /**
    * List Bookkeeping Entry Sets
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const bookkeepingEntrySet of client.bookkeepingEntrySets.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: BookkeepingEntrySetListParams,

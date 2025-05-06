@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class BookkeepingEntries extends APIResource {
   /**
    * Retrieve a Bookkeeping Entry
+   *
+   * @example
+   * ```ts
+   * const bookkeepingEntry =
+   *   await client.bookkeepingEntries.retrieve(
+   *     'bookkeeping_entry_ctjpajsj3ks2blx10375',
+   *   );
+   * ```
    */
   retrieve(bookkeepingEntryId: string, options?: Core.RequestOptions): Core.APIPromise<BookkeepingEntry> {
     return this._client.get(`/bookkeeping_entries/${bookkeepingEntryId}`, options);
@@ -15,6 +23,14 @@ export class BookkeepingEntries extends APIResource {
 
   /**
    * List Bookkeeping Entries
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const bookkeepingEntry of client.bookkeepingEntries.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: BookkeepingEntryListParams,

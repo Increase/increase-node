@@ -7,6 +7,14 @@ export class DigitalWalletTokenRequests extends APIResource {
   /**
    * Simulates a user attempting add a [Card](#cards) to a digital wallet such as
    * Apple Pay.
+   *
+   * @example
+   * ```ts
+   * const digitalWalletTokenRequest =
+   *   await client.simulations.digitalWalletTokenRequests.create(
+   *     { card_id: 'card_oubs0hwk5rn6knuecxg2' },
+   *   );
+   * ```
    */
   create(
     body: DigitalWalletTokenRequestCreateParams,

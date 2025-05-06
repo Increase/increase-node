@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class InboundRealTimePaymentsTransfers extends APIResource {
   /**
    * Retrieve an Inbound Real-Time Payments Transfer
+   *
+   * @example
+   * ```ts
+   * const inboundRealTimePaymentsTransfer =
+   *   await client.inboundRealTimePaymentsTransfers.retrieve(
+   *     'inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr',
+   *   );
+   * ```
    */
   retrieve(
     inboundRealTimePaymentsTransferId: string,
@@ -21,6 +29,14 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
 
   /**
    * List Inbound Real-Time Payments Transfers
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const inboundRealTimePaymentsTransfer of client.inboundRealTimePaymentsTransfers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: InboundRealTimePaymentsTransferListParams,
