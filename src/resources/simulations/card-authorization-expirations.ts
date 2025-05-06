@@ -7,6 +7,16 @@ import * as CardPaymentsAPI from '../card-payments';
 export class CardAuthorizationExpirations extends APIResource {
   /**
    * Simulates expiring a Card Authorization immediately.
+   *
+   * @example
+   * ```ts
+   * const cardPayment =
+   *   await client.simulations.cardAuthorizationExpirations.create(
+   *     {
+   *       card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+   *     },
+   *   );
+   * ```
    */
   create(
     body: CardAuthorizationExpirationCreateParams,

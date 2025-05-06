@@ -10,6 +10,14 @@ export class WireTransfers extends APIResource {
    * Reserve due to error conditions. This will also create a
    * [Transaction](#transaction) to account for the returned funds. This Wire
    * Transfer must first have a `status` of `complete`.
+   *
+   * @example
+   * ```ts
+   * const wireTransfer =
+   *   await client.simulations.wireTransfers.reverse(
+   *     'wire_transfer_5akynk7dqsq25qwk9q2u',
+   *   );
+   * ```
    */
   reverse(
     wireTransferId: string,
@@ -22,6 +30,14 @@ export class WireTransfers extends APIResource {
    * Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
    * Reserve. This transfer must first have a `status` of `pending_approval` or
    * `pending_creating`.
+   *
+   * @example
+   * ```ts
+   * const wireTransfer =
+   *   await client.simulations.wireTransfers.submit(
+   *     'wire_transfer_5akynk7dqsq25qwk9q2u',
+   *   );
+   * ```
    */
   submit(
     wireTransferId: string,

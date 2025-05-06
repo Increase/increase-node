@@ -8,6 +8,18 @@ import { Page, type PageParams } from '../pagination';
 export class DigitalCardProfiles extends APIResource {
   /**
    * Create a Digital Card Profile
+   *
+   * @example
+   * ```ts
+   * const digitalCardProfile =
+   *   await client.digitalCardProfiles.create({
+   *     app_icon_file_id: 'file_8zxqkwlh43wo144u8yec',
+   *     background_image_file_id: 'file_1ai913suu1zfn1pdetru',
+   *     card_description: 'MyBank Signature Card',
+   *     description: 'My Card Profile',
+   *     issuer_name: 'MyBank',
+   *   });
+   * ```
    */
   create(
     body: DigitalCardProfileCreateParams,
@@ -18,6 +30,14 @@ export class DigitalCardProfiles extends APIResource {
 
   /**
    * Retrieve a Digital Card Profile
+   *
+   * @example
+   * ```ts
+   * const digitalCardProfile =
+   *   await client.digitalCardProfiles.retrieve(
+   *     'digital_card_profile_s3puplu90f04xhcwkiga',
+   *   );
+   * ```
    */
   retrieve(digitalCardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalCardProfile> {
     return this._client.get(`/digital_card_profiles/${digitalCardProfileId}`, options);
@@ -25,6 +45,14 @@ export class DigitalCardProfiles extends APIResource {
 
   /**
    * List Card Profiles
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const digitalCardProfile of client.digitalCardProfiles.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: DigitalCardProfileListParams,
@@ -43,6 +71,14 @@ export class DigitalCardProfiles extends APIResource {
 
   /**
    * Archive a Digital Card Profile
+   *
+   * @example
+   * ```ts
+   * const digitalCardProfile =
+   *   await client.digitalCardProfiles.archive(
+   *     'digital_card_profile_s3puplu90f04xhcwkiga',
+   *   );
+   * ```
    */
   archive(digitalCardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalCardProfile> {
     return this._client.post(`/digital_card_profiles/${digitalCardProfileId}/archive`, options);
@@ -50,6 +86,14 @@ export class DigitalCardProfiles extends APIResource {
 
   /**
    * Clones a Digital Card Profile
+   *
+   * @example
+   * ```ts
+   * const digitalCardProfile =
+   *   await client.digitalCardProfiles.clone(
+   *     'digital_card_profile_s3puplu90f04xhcwkiga',
+   *   );
+   * ```
    */
   clone(
     digitalCardProfileId: string,

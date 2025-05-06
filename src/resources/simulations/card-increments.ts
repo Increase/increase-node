@@ -8,6 +8,15 @@ export class CardIncrements extends APIResource {
   /**
    * Simulates the increment of an authorization by a card acquirer. An authorization
    * can be incremented multiple times.
+   *
+   * @example
+   * ```ts
+   * const cardPayment =
+   *   await client.simulations.cardIncrements.create({
+   *     amount: 500,
+   *     card_payment_id: 'card_payment_nd3k2kacrqjli8482ave',
+   *   });
+   * ```
    */
   create(
     body: CardIncrementCreateParams,

@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class CardPurchaseSupplements extends APIResource {
   /**
    * Retrieve a Card Purchase Supplement
+   *
+   * @example
+   * ```ts
+   * const cardPurchaseSupplement =
+   *   await client.cardPurchaseSupplements.retrieve(
+   *     'card_purchase_supplement_ijuc45iym4jchnh2sfk3',
+   *   );
+   * ```
    */
   retrieve(
     cardPurchaseSupplementId: string,
@@ -18,6 +26,14 @@ export class CardPurchaseSupplements extends APIResource {
 
   /**
    * List Card Purchase Supplements
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const cardPurchaseSupplement of client.cardPurchaseSupplements.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: CardPurchaseSupplementListParams,

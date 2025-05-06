@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Transactions extends APIResource {
   /**
    * Retrieve a Transaction
+   *
+   * @example
+   * ```ts
+   * const transaction = await client.transactions.retrieve(
+   *   'transaction_uyrp7fld2ium70oa7oi',
+   * );
+   * ```
    */
   retrieve(transactionId: string, options?: Core.RequestOptions): Core.APIPromise<Transaction> {
     return this._client.get(`/transactions/${transactionId}`, options);
@@ -15,6 +22,14 @@ export class Transactions extends APIResource {
 
   /**
    * List Transactions
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const transaction of client.transactions.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: TransactionListParams,

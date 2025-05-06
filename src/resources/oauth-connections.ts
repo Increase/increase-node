@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class OAuthConnections extends APIResource {
   /**
    * Retrieve an OAuth Connection
+   *
+   * @example
+   * ```ts
+   * const oauthConnection =
+   *   await client.oauthConnections.retrieve(
+   *     'connection_dauknoksyr4wilz4e6my',
+   *   );
+   * ```
    */
   retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OAuthConnection> {
     return this._client.get(`/oauth_connections/${oauthConnectionId}`, options);
@@ -15,6 +23,14 @@ export class OAuthConnections extends APIResource {
 
   /**
    * List OAuth Connections
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const oauthConnection of client.oauthConnections.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: OAuthConnectionListParams,

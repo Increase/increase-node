@@ -6,6 +6,14 @@ import * as Core from '../core';
 export class RealTimeDecisions extends APIResource {
   /**
    * Retrieve a Real-Time Decision
+   *
+   * @example
+   * ```ts
+   * const realTimeDecision =
+   *   await client.realTimeDecisions.retrieve(
+   *     'real_time_decision_j76n2e810ezcg3zh5qtn',
+   *   );
+   * ```
    */
   retrieve(realTimeDecisionId: string, options?: Core.RequestOptions): Core.APIPromise<RealTimeDecision> {
     return this._client.get(`/real_time_decisions/${realTimeDecisionId}`, options);
@@ -13,6 +21,14 @@ export class RealTimeDecisions extends APIResource {
 
   /**
    * Action a Real-Time Decision
+   *
+   * @example
+   * ```ts
+   * const realTimeDecision =
+   *   await client.realTimeDecisions.action(
+   *     'real_time_decision_j76n2e810ezcg3zh5qtn',
+   *   );
+   * ```
    */
   action(
     realTimeDecisionId: string,

@@ -8,6 +8,15 @@ import { Page, type PageParams } from '../pagination';
 export class CardDisputes extends APIResource {
   /**
    * Create a Card Dispute
+   *
+   * @example
+   * ```ts
+   * const cardDispute = await client.cardDisputes.create({
+   *   disputed_transaction_id:
+   *     'transaction_uyrp7fld2ium70oa7oi',
+   *   explanation: 'Unauthorized recurring transaction.',
+   * });
+   * ```
    */
   create(body: CardDisputeCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
     return this._client.post('/card_disputes', { body, ...options });
@@ -15,6 +24,13 @@ export class CardDisputes extends APIResource {
 
   /**
    * Retrieve a Card Dispute
+   *
+   * @example
+   * ```ts
+   * const cardDispute = await client.cardDisputes.retrieve(
+   *   'card_dispute_h9sc95nbl1cgltpp7men',
+   * );
+   * ```
    */
   retrieve(cardDisputeId: string, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
     return this._client.get(`/card_disputes/${cardDisputeId}`, options);
@@ -22,6 +38,14 @@ export class CardDisputes extends APIResource {
 
   /**
    * List Card Disputes
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const cardDispute of client.cardDisputes.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: CardDisputeListParams,

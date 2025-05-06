@@ -8,6 +8,18 @@ import { Page, type PageParams } from '../pagination';
 export class PhysicalCardProfiles extends APIResource {
   /**
    * Create a Physical Card Profile
+   *
+   * @example
+   * ```ts
+   * const physicalCardProfile =
+   *   await client.physicalCardProfiles.create({
+   *     carrier_image_file_id: 'file_h6v7mtipe119os47ehlu',
+   *     contact_phone: '+16505046304',
+   *     description: 'My Card Profile',
+   *     front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
+   *     program_id: 'program_i2v2os4mwza1oetokh9i',
+   *   });
+   * ```
    */
   create(
     body: PhysicalCardProfileCreateParams,
@@ -18,6 +30,14 @@ export class PhysicalCardProfiles extends APIResource {
 
   /**
    * Retrieve a Card Profile
+   *
+   * @example
+   * ```ts
+   * const physicalCardProfile =
+   *   await client.physicalCardProfiles.retrieve(
+   *     'physical_card_profile_m534d5rn9qyy9ufqxoec',
+   *   );
+   * ```
    */
   retrieve(
     physicalCardProfileId: string,
@@ -28,6 +48,14 @@ export class PhysicalCardProfiles extends APIResource {
 
   /**
    * List Physical Card Profiles
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const physicalCardProfile of client.physicalCardProfiles.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: PhysicalCardProfileListParams,
@@ -49,6 +77,14 @@ export class PhysicalCardProfiles extends APIResource {
 
   /**
    * Archive a Physical Card Profile
+   *
+   * @example
+   * ```ts
+   * const physicalCardProfile =
+   *   await client.physicalCardProfiles.archive(
+   *     'physical_card_profile_m534d5rn9qyy9ufqxoec',
+   *   );
+   * ```
    */
   archive(
     physicalCardProfileId: string,
@@ -59,6 +95,14 @@ export class PhysicalCardProfiles extends APIResource {
 
   /**
    * Clone a Physical Card Profile
+   *
+   * @example
+   * ```ts
+   * const physicalCardProfile =
+   *   await client.physicalCardProfiles.clone(
+   *     'physical_card_profile_m534d5rn9qyy9ufqxoec',
+   *   );
+   * ```
    */
   clone(
     physicalCardProfileId: string,

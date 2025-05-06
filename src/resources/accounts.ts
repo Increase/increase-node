@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class Accounts extends APIResource {
   /**
    * Create an Account
+   *
+   * @example
+   * ```ts
+   * const account = await client.accounts.create({
+   *   name: 'New Account!',
+   * });
+   * ```
    */
   create(body: AccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this._client.post('/accounts', { body, ...options });
@@ -15,6 +22,13 @@ export class Accounts extends APIResource {
 
   /**
    * Retrieve an Account
+   *
+   * @example
+   * ```ts
+   * const account = await client.accounts.retrieve(
+   *   'account_in71c4amph0vgo2qllky',
+   * );
+   * ```
    */
   retrieve(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this._client.get(`/accounts/${accountId}`, options);
@@ -22,6 +36,13 @@ export class Accounts extends APIResource {
 
   /**
    * Update an Account
+   *
+   * @example
+   * ```ts
+   * const account = await client.accounts.update(
+   *   'account_in71c4amph0vgo2qllky',
+   * );
+   * ```
    */
   update(
     accountId: string,
@@ -33,6 +54,14 @@ export class Accounts extends APIResource {
 
   /**
    * List Accounts
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const account of client.accounts.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
   list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
@@ -49,6 +78,13 @@ export class Accounts extends APIResource {
   /**
    * Retrieve the current and available balances for an account in minor units of the
    * account's currency. Learn more about [account balances](/documentation/balance).
+   *
+   * @example
+   * ```ts
+   * const balanceLookup = await client.accounts.balance(
+   *   'account_in71c4amph0vgo2qllky',
+   * );
+   * ```
    */
   balance(
     accountId: string,
@@ -69,6 +105,13 @@ export class Accounts extends APIResource {
 
   /**
    * Close an Account
+   *
+   * @example
+   * ```ts
+   * const account = await client.accounts.close(
+   *   'account_in71c4amph0vgo2qllky',
+   * );
+   * ```
    */
   close(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this._client.post(`/accounts/${accountId}/close`, options);

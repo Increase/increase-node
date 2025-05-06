@@ -8,6 +8,24 @@ import { Page, type PageParams } from '../pagination';
 export class PhysicalCards extends APIResource {
   /**
    * Create a Physical Card
+   *
+   * @example
+   * ```ts
+   * const physicalCard = await client.physicalCards.create({
+   *   card_id: 'card_oubs0hwk5rn6knuecxg2',
+   *   cardholder: { first_name: 'Ian', last_name: 'Crease' },
+   *   shipment: {
+   *     address: {
+   *       city: 'New York',
+   *       line1: '33 Liberty Street',
+   *       name: 'Ian Crease',
+   *       postal_code: '10045',
+   *       state: 'NY',
+   *     },
+   *     method: 'usps',
+   *   },
+   * });
+   * ```
    */
   create(body: PhysicalCardCreateParams, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
     return this._client.post('/physical_cards', { body, ...options });
@@ -15,6 +33,13 @@ export class PhysicalCards extends APIResource {
 
   /**
    * Retrieve a Physical Card
+   *
+   * @example
+   * ```ts
+   * const physicalCard = await client.physicalCards.retrieve(
+   *   'physical_card_ode8duyq5v2ynhjoharl',
+   * );
+   * ```
    */
   retrieve(physicalCardId: string, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
     return this._client.get(`/physical_cards/${physicalCardId}`, options);
@@ -22,6 +47,14 @@ export class PhysicalCards extends APIResource {
 
   /**
    * Update a Physical Card
+   *
+   * @example
+   * ```ts
+   * const physicalCard = await client.physicalCards.update(
+   *   'physical_card_ode8duyq5v2ynhjoharl',
+   *   { status: 'disabled' },
+   * );
+   * ```
    */
   update(
     physicalCardId: string,
@@ -33,6 +66,14 @@ export class PhysicalCards extends APIResource {
 
   /**
    * List Physical Cards
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const physicalCard of client.physicalCards.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: PhysicalCardListParams,

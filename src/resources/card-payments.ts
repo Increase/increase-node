@@ -8,6 +8,13 @@ import { Page, type PageParams } from '../pagination';
 export class CardPayments extends APIResource {
   /**
    * Retrieve a Card Payment
+   *
+   * @example
+   * ```ts
+   * const cardPayment = await client.cardPayments.retrieve(
+   *   'card_payment_nd3k2kacrqjli8482ave',
+   * );
+   * ```
    */
   retrieve(cardPaymentId: string, options?: Core.RequestOptions): Core.APIPromise<CardPayment> {
     return this._client.get(`/card_payments/${cardPaymentId}`, options);
@@ -15,6 +22,14 @@ export class CardPayments extends APIResource {
 
   /**
    * List Card Payments
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const cardPayment of client.cardPayments.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: CardPaymentListParams,

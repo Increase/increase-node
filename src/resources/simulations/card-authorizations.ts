@@ -14,6 +14,14 @@ export class CardAuthorizations extends APIResource {
    * `card_decline`. You can pass either a Card id or a
    * [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
    * ways purchases can be made.
+   *
+   * @example
+   * ```ts
+   * const cardAuthorization =
+   *   await client.simulations.cardAuthorizations.create({
+   *     amount: 1000,
+   *   });
+   * ```
    */
   create(
     body: CardAuthorizationCreateParams,

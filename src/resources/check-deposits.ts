@@ -8,6 +8,16 @@ import { Page, type PageParams } from '../pagination';
 export class CheckDeposits extends APIResource {
   /**
    * Create a Check Deposit
+   *
+   * @example
+   * ```ts
+   * const checkDeposit = await client.checkDeposits.create({
+   *   account_id: 'account_in71c4amph0vgo2qllky',
+   *   amount: 1000,
+   *   back_image_file_id: 'file_26khfk98mzfz90a11oqx',
+   *   front_image_file_id: 'file_hkv175ovmc2tb2v2zbrm',
+   * });
+   * ```
    */
   create(body: CheckDepositCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
     return this._client.post('/check_deposits', { body, ...options });
@@ -15,6 +25,13 @@ export class CheckDeposits extends APIResource {
 
   /**
    * Retrieve a Check Deposit
+   *
+   * @example
+   * ```ts
+   * const checkDeposit = await client.checkDeposits.retrieve(
+   *   'check_deposit_f06n9gpg7sxn8t19lfc1',
+   * );
+   * ```
    */
   retrieve(checkDepositId: string, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
     return this._client.get(`/check_deposits/${checkDepositId}`, options);
@@ -22,6 +39,14 @@ export class CheckDeposits extends APIResource {
 
   /**
    * List Check Deposits
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const checkDeposit of client.checkDeposits.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: CheckDepositListParams,

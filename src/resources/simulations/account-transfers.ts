@@ -10,6 +10,14 @@ export class AccountTransfers extends APIResource {
    * endpoint simulates the approval of an [Account Transfer](#account-transfers).
    * You can also approve sandbox Account Transfers in the dashboard. This transfer
    * must first have a `status` of `pending_approval`.
+   *
+   * @example
+   * ```ts
+   * const accountTransfer =
+   *   await client.simulations.accountTransfers.complete(
+   *     'account_transfer_7k9qe1ysdgqztnt63l7n',
+   *   );
+   * ```
    */
   complete(
     accountTransferId: string,

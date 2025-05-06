@@ -8,6 +8,14 @@ import { Page, type PageParams } from '../pagination';
 export class BookkeepingAccounts extends APIResource {
   /**
    * Create a Bookkeeping Account
+   *
+   * @example
+   * ```ts
+   * const bookkeepingAccount =
+   *   await client.bookkeepingAccounts.create({
+   *     name: 'New Account!',
+   *   });
+   * ```
    */
   create(
     body: BookkeepingAccountCreateParams,
@@ -18,6 +26,15 @@ export class BookkeepingAccounts extends APIResource {
 
   /**
    * Update a Bookkeeping Account
+   *
+   * @example
+   * ```ts
+   * const bookkeepingAccount =
+   *   await client.bookkeepingAccounts.update(
+   *     'bookkeeping_account_e37p1f1iuocw5intf35v',
+   *     { name: 'Deprecated Account' },
+   *   );
+   * ```
    */
   update(
     bookkeepingAccountId: string,
@@ -29,6 +46,14 @@ export class BookkeepingAccounts extends APIResource {
 
   /**
    * List Bookkeeping Accounts
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const bookkeepingAccount of client.bookkeepingAccounts.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: BookkeepingAccountListParams,
@@ -47,6 +72,14 @@ export class BookkeepingAccounts extends APIResource {
 
   /**
    * Retrieve a Bookkeeping Account Balance
+   *
+   * @example
+   * ```ts
+   * const bookkeepingBalanceLookup =
+   *   await client.bookkeepingAccounts.balance(
+   *     'bookkeeping_account_e37p1f1iuocw5intf35v',
+   *   );
+   * ```
    */
   balance(
     bookkeepingAccountId: string,

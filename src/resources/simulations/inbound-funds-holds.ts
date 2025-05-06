@@ -7,6 +7,14 @@ export class InboundFundsHolds extends APIResource {
   /**
    * This endpoint simulates immediately releasing an Inbound Funds Hold, which might
    * be created as a result of e.g., an ACH debit.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.simulations.inboundFundsHolds.release(
+   *     'inbound_funds_hold_9vuasmywdo7xb3zt4071',
+   *   );
+   * ```
    */
   release(
     inboundFundsHoldId: string,

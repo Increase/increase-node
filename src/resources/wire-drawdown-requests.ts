@@ -8,6 +8,20 @@ import { Page, type PageParams } from '../pagination';
 export class WireDrawdownRequests extends APIResource {
   /**
    * Create a Wire Drawdown Request
+   *
+   * @example
+   * ```ts
+   * const wireDrawdownRequest =
+   *   await client.wireDrawdownRequests.create({
+   *     account_number_id:
+   *       'account_number_v18nkfqm6afpsrvy82b2',
+   *     amount: 10000,
+   *     message_to_recipient: 'Invoice 29582',
+   *     recipient_account_number: '987654321',
+   *     recipient_name: 'Ian Crease',
+   *     recipient_routing_number: '101050001',
+   *   });
+   * ```
    */
   create(
     body: WireDrawdownRequestCreateParams,
@@ -18,6 +32,14 @@ export class WireDrawdownRequests extends APIResource {
 
   /**
    * Retrieve a Wire Drawdown Request
+   *
+   * @example
+   * ```ts
+   * const wireDrawdownRequest =
+   *   await client.wireDrawdownRequests.retrieve(
+   *     'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
+   *   );
+   * ```
    */
   retrieve(
     wireDrawdownRequestId: string,
@@ -28,6 +50,14 @@ export class WireDrawdownRequests extends APIResource {
 
   /**
    * List Wire Drawdown Requests
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const wireDrawdownRequest of client.wireDrawdownRequests.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query?: WireDrawdownRequestListParams,

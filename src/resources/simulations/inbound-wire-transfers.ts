@@ -7,6 +7,16 @@ import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
 export class InboundWireTransfers extends APIResource {
   /**
    * Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
+   *
+   * @example
+   * ```ts
+   * const inboundWireTransfer =
+   *   await client.simulations.inboundWireTransfers.create({
+   *     account_number_id:
+   *       'account_number_v18nkfqm6afpsrvy82b2',
+   *     amount: 1000,
+   *   });
+   * ```
    */
   create(
     body: InboundWireTransferCreateParams,

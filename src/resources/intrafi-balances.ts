@@ -8,6 +8,14 @@ export class IntrafiBalances extends APIResource {
    * Returns the IntraFi balance for the given account. IntraFi may sweep funds to
    * multiple banks. This endpoint will include both the total balance and the amount
    * swept to each institution.
+   *
+   * @example
+   * ```ts
+   * const intrafiBalance =
+   *   await client.intrafiBalances.intrafiBalance(
+   *     'account_in71c4amph0vgo2qllky',
+   *   );
+   * ```
    */
   intrafiBalance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiBalance> {
     return this._client.get(`/accounts/${accountId}/intrafi_balance`, options);

@@ -12,6 +12,17 @@ export class InboundCheckDeposits extends APIResource {
    * Deposit as we would in production and either create a Transaction or a Declined
    * Transaction as a result. You can inspect the resulting Inbound Check Deposit
    * object to see the result.
+   *
+   * @example
+   * ```ts
+   * const inboundCheckDeposit =
+   *   await client.simulations.inboundCheckDeposits.create({
+   *     account_number_id:
+   *       'account_number_v18nkfqm6afpsrvy82b2',
+   *     amount: 1000,
+   *     check_number: '1234567890',
+   *   });
+   * ```
    */
   create(
     body: InboundCheckDepositCreateParams,

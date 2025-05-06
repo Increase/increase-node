@@ -10,6 +10,14 @@ export class RealTimePaymentsTransfers extends APIResource {
    * [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
    * response from the destination financial institution. This transfer must first
    * have a `status` of `pending_submission`.
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.simulations.realTimePaymentsTransfers.complete(
+   *     'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
+   *   );
+   * ```
    */
   complete(
     realTimePaymentsTransferId: string,

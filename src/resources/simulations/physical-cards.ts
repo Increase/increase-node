@@ -9,6 +9,15 @@ export class PhysicalCards extends APIResource {
    * This endpoint allows you to simulate advancing the shipment status of a Physical
    * Card, to simulate e.g., that a physical card was attempted shipped but then
    * failed delivery.
+   *
+   * @example
+   * ```ts
+   * const physicalCard =
+   *   await client.simulations.physicalCards.advanceShipment(
+   *     'physical_card_ode8duyq5v2ynhjoharl',
+   *     { shipment_status: 'shipped' },
+   *   );
+   * ```
    */
   advanceShipment(
     physicalCardId: string,

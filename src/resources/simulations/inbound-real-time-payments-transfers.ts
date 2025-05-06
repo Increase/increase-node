@@ -9,6 +9,18 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    * Simulates an
    * [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
    * your account. Real-Time Payments are a beta feature.
+   *
+   * @example
+   * ```ts
+   * const inboundRealTimePaymentsTransfer =
+   *   await client.simulations.inboundRealTimePaymentsTransfers.create(
+   *     {
+   *       account_number_id:
+   *         'account_number_v18nkfqm6afpsrvy82b2',
+   *       amount: 1000,
+   *     },
+   *   );
+   * ```
    */
   create(
     body: InboundRealTimePaymentsTransferCreateParams,
