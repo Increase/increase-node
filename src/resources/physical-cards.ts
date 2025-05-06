@@ -247,6 +247,12 @@ export namespace PhysicalCard {
     export namespace Tracking {
       export interface Update {
         /**
+         * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
+         * carrier expects the card to be delivered.
+         */
+        carrier_estimated_delivery_at: string | null;
+
+        /**
          * The type of tracking event.
          *
          * - `in_transit` - The physical card is in transit.
