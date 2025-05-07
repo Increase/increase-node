@@ -335,34 +335,46 @@ export namespace CheckDeposit {
      * against.
      *
      * - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
-     * - `closed_account` - The account is closed.
-     * - `duplicate_submission` - The check has already been deposited.
-     * - `insufficient_funds` - Insufficient funds
-     * - `no_account` - No account was found matching the check details.
-     * - `not_authorized` - The check was not authorized.
-     * - `stale_dated` - The check is too old.
-     * - `stop_payment` - The payment has been stopped by the account holder.
+     * - `closed_account` - The account is closed. (Check21 return code `D`)
+     * - `duplicate_submission` - The check has already been deposited. (Check21 return
+     *   code `Y`)
+     * - `insufficient_funds` - Insufficient funds (Check21 return code `A`)
+     * - `no_account` - No account was found matching the check details. (Check21
+     *   return code `E`)
+     * - `not_authorized` - The check was not authorized. (Check21 return code `Q`)
+     * - `stale_dated` - The check is too old. (Check21 return code `G`)
+     * - `stop_payment` - The payment has been stopped by the account holder. (Check21
+     *   return code `C`)
      * - `unknown_reason` - The reason for the return is unknown.
      * - `unmatched_details` - The image doesn't match the details submitted.
-     * - `unreadable_image` - The image could not be read.
-     * - `endorsement_irregular` - The check endorsement was irregular.
+     * - `unreadable_image` - The image could not be read. (Check21 return code `U`)
+     * - `endorsement_irregular` - The check endorsement was irregular. (Check21 return
+     *   code `J`)
      * - `altered_or_fictitious_item` - The check present was either altered or fake.
+     *   (Check21 return code `N`)
      * - `frozen_or_blocked_account` - The account this check is drawn on is frozen.
-     * - `post_dated` - The check is post dated.
-     * - `endorsement_missing` - The endorsement was missing.
-     * - `signature_missing` - The check signature was missing.
+     *   (Check21 return code `F`)
+     * - `post_dated` - The check is post dated. (Check21 return code `H`)
+     * - `endorsement_missing` - The endorsement was missing. (Check21 return code `I`)
+     * - `signature_missing` - The check signature was missing. (Check21 return code
+     *   `K`)
      * - `stop_payment_suspect` - The bank suspects a stop payment will be placed.
-     * - `unusable_image` - The bank cannot read the image.
+     *   (Check21 return code `T`)
+     * - `unusable_image` - The bank cannot read the image. (Check21 return code `U`)
      * - `image_fails_security_check` - The check image fails the bank's security
-     *   check.
-     * - `cannot_determine_amount` - The bank cannot determine the amount.
+     *   check. (Check21 return code `V`)
+     * - `cannot_determine_amount` - The bank cannot determine the amount. (Check21
+     *   return code `W`)
      * - `signature_irregular` - The signature is inconsistent with prior signatures.
+     *   (Check21 return code `L`)
      * - `non_cash_item` - The check is a non-cash item and cannot be drawn against the
-     *   account.
-     * - `unable_to_process` - The bank is unable to process this check.
+     *   account. (Check21 return code `M`)
+     * - `unable_to_process` - The bank is unable to process this check. (Check21
+     *   return code `O`)
      * - `item_exceeds_dollar_limit` - The check exceeds the bank or customer's limit.
+     *   (Check21 return code `P`)
      * - `branch_or_account_sold` - The bank sold this account and no longer services
-     *   this customer.
+     *   this customer. (Check21 return code `R`)
      */
     return_reason:
       | 'ach_conversion_not_supported'
