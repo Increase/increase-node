@@ -33,6 +33,7 @@ describe('resource physicalCardProfiles', () => {
       description: 'My Card Profile',
       front_image_file_id: 'file_o6aex13wm1jcc36sgcj1',
       program_id: 'program_i2v2os4mwza1oetokh9i',
+      front_text: { line1: 'x', line2: 'x' },
     });
   });
 

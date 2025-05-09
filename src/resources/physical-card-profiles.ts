@@ -236,6 +236,32 @@ export interface PhysicalCardProfileCreateParams {
    * The identifier for the Program that this Physical Card Profile falls under.
    */
   program_id: string;
+
+  /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  front_text?: PhysicalCardProfileCreateParams.FrontText;
+}
+
+export namespace PhysicalCardProfileCreateParams {
+  /**
+   * Text printed on the front of the card. Reach out to
+   * [support@increase.com](mailto:support@increase.com) for more information.
+   */
+  export interface FrontText {
+    /**
+     * The first line of text on the front of the card.
+     */
+    line1: string;
+
+    /**
+     * The second line of text on the front of the card. Providing a second line moves
+     * the first line slightly higher and prints the second line in the spot where the
+     * first line would have otherwise been printed.
+     */
+    line2?: string;
+  }
 }
 
 export interface PhysicalCardProfileListParams extends PageParams {
