@@ -21,6 +21,9 @@ describe('resource programs', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.simulations.programs.create({ name: 'For Benefit Of' });
+    const response = await client.simulations.programs.create({
+      name: 'For Benefit Of',
+      reserve_account_id: 'reserve_account_id',
+    });
   });
 });
