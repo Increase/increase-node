@@ -227,9 +227,16 @@ export class InvalidAPIKeyError extends AuthenticationError {
    * - `expired_credential` - expired_credential
    * - `no_credential` - no_credential
    * - `no_header` - no_header
+   * - `no_api_access` - no_api_access
    * - `wrong_environment` - wrong_environment
    */
-  reason: 'deleted_credential' | 'expired_credential' | 'no_credential' | 'no_header' | 'wrong_environment';
+  reason:
+    | 'deleted_credential'
+    | 'expired_credential'
+    | 'no_credential'
+    | 'no_header'
+    | 'no_api_access'
+    | 'wrong_environment';
 
   override status: 401;
 
