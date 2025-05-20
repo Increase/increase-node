@@ -196,6 +196,9 @@ export namespace PendingTransaction {
      *   will be under the `inbound_wire_transfer_reversal` object.
      * - `swift_transfer_instruction` - Swift Transfer Instruction: details will be
      *   under the `swift_transfer_instruction` object.
+     * - `outbound_card_push_transfer_instruction` - Outbound Card Push Transfer
+     *   Instruction: details will be under the
+     *   `outbound_card_push_transfer_instruction` object.
      * - `other` - The Pending Transaction was made for an undocumented or deprecated
      *   reason.
      */
@@ -210,6 +213,7 @@ export namespace PendingTransaction {
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
       | 'swift_transfer_instruction'
+      | 'outbound_card_push_transfer_instruction'
       | 'other';
 
     /**
@@ -245,6 +249,13 @@ export namespace PendingTransaction {
      * contain an empty object, otherwise it will contain null.
      */
     other: unknown | null;
+
+    /**
+     * An Outbound Card Push Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `outbound_card_push_transfer_instruction`.
+     */
+    outbound_card_push_transfer_instruction: Source.OutboundCardPushTransferInstruction | null;
 
     /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
@@ -907,6 +918,24 @@ export namespace PendingTransaction {
     }
 
     /**
+     * An Outbound Card Push Transfer Instruction object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `outbound_card_push_transfer_instruction`.
+     */
+    export interface OutboundCardPushTransferInstruction {
+      /**
+       * The transfer amount in USD cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Outbound Card Push Transfer that led to this Pending
+       * Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
@@ -1004,6 +1033,7 @@ export namespace PendingTransactionListParams {
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
       | 'swift_transfer_instruction'
+      | 'outbound_card_push_transfer_instruction'
       | 'other'
     >;
   }
