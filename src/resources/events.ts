@@ -163,6 +163,10 @@ export interface Event {
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
+   * - `outbound_card_push_transfer.created` - Occurs whenever an Outbound Card Push
+   *   Transfer is created.
+   * - `outbound_card_push_transfer.updated` - Occurs whenever an Outbound Card Push
+   *   Transfer is updated.
    * - `pending_transaction.created` - Occurs whenever a Pending Transaction is
    *   created.
    * - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
@@ -270,6 +274,8 @@ export interface Event {
     | 'lockbox.updated'
     | 'oauth_connection.created'
     | 'oauth_connection.deactivated'
+    | 'outbound_card_push_transfer.created'
+    | 'outbound_card_push_transfer.updated'
     | 'pending_transaction.created'
     | 'pending_transaction.updated'
     | 'physical_card.created'
@@ -388,6 +394,8 @@ export namespace EventListParams {
       | 'lockbox.updated'
       | 'oauth_connection.created'
       | 'oauth_connection.deactivated'
+      | 'outbound_card_push_transfer.created'
+      | 'outbound_card_push_transfer.updated'
       | 'pending_transaction.created'
       | 'pending_transaction.updated'
       | 'physical_card.created'
