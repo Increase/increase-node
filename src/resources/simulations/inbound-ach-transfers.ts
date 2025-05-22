@@ -49,6 +49,11 @@ export interface InboundACHTransferCreateParams {
   amount: number;
 
   /**
+   * Additional information to include in the transfer.
+   */
+  addenda?: InboundACHTransferCreateParams.Addenda;
+
+  /**
    * The description of the date of the transfer.
    */
   company_descriptive_date?: string;
@@ -126,6 +131,47 @@ export interface InboundACHTransferCreateParams {
     | 'check_truncation'
     | 'destroyed_check'
     | 'international_ach_transaction';
+}
+
+export namespace InboundACHTransferCreateParams {
+  /**
+   * Additional information to include in the transfer.
+   */
+  export interface Addenda {
+    /**
+     * The type of addenda to simulate being sent with the transfer.
+     *
+     * - `freeform` - Unstructured `payment_related_information` passed through with
+     *   the transfer.
+     */
+    category: 'freeform';
+
+    /**
+     * Unstructured `payment_related_information` passed through with the transfer.
+     */
+    freeform?: Addenda.Freeform;
+  }
+
+  export namespace Addenda {
+    /**
+     * Unstructured `payment_related_information` passed through with the transfer.
+     */
+    export interface Freeform {
+      /**
+       * Each entry represents an addendum sent with the transfer.
+       */
+      entries: Array<Freeform.Entry>;
+    }
+
+    export namespace Freeform {
+      export interface Entry {
+        /**
+         * The payment related information passed in the addendum.
+         */
+        payment_related_information: string;
+      }
+    }
+  }
 }
 
 export declare namespace InboundACHTransfers {
