@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.219.0 (2025-05-22)
+
+Full Changelog: [v0.218.0...v0.219.0](https://github.com/Increase/increase-node/compare/v0.218.0...v0.219.0)
+
+### Features
+
+* **api:** api update ([cc4c45c](https://github.com/Increase/increase-node/commit/cc4c45cefb9ec235831f0679665682614c221e31))
+
+
+### Chores
+
+* **docs:** grammar improvements ([2f1f40e](https://github.com/Increase/increase-node/commit/2f1f40e7afd15592ebcf810e89f65564b52d42c3))
+
 ## 0.218.0 (2025-05-20)
 
 Full Changelog: [v0.217.0...v0.218.0](https://github.com/Increase/increase-node/compare/v0.217.0...v0.218.0)
