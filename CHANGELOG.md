@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.220.0 (2025-05-27)
+
+Full Changelog: [v0.219.0...v0.220.0](https://github.com/Increase/increase-node/compare/v0.219.0...v0.220.0)
+
+### Features
+
+* **api:** api update ([fcf5fc5](https://github.com/Increase/increase-node/commit/fcf5fc5986c0432c4b10431c300fab4a7f21e904))
+
+
+### Chores
+
+* improve publish-npm script --latest tag logic ([99a4b2d](https://github.com/Increase/increase-node/commit/99a4b2dfcc396022ad3a6373084182f70d7bd057))
+
 ## 0.219.0 (2025-05-22)
 
 Full Changelog: [v0.218.0...v0.219.0](https://github.com/Increase/increase-node/compare/v0.218.0...v0.219.0)
