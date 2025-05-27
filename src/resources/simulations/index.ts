@@ -44,7 +44,11 @@ export {
 } from './inbound-wire-drawdown-requests';
 export { InboundWireTransfers, type InboundWireTransferCreateParams } from './inbound-wire-transfers';
 export { InterestPayments, type InterestPaymentCreateParams } from './interest-payments';
-export { PhysicalCards, type PhysicalCardAdvanceShipmentParams } from './physical-cards';
+export {
+  PhysicalCards,
+  type PhysicalCardAdvanceShipmentParams,
+  type PhysicalCardTrackingUpdatesParams,
+} from './physical-cards';
 export { Programs, type ProgramCreateParams } from './programs';
 export {
   RealTimePaymentsTransfers,
