@@ -590,6 +590,8 @@ export namespace CardPayment {
        *   being known. They are followed by an advice message that updates the amount of
        *   the pending transaction.
        * - `bill_payment` - A transaction used to pay a bill.
+       * - `original_credit` - Original credit transactions are used to send money to a
+       *   cardholder.
        * - `purchase` - A regular purchase.
        * - `quasi_cash` - Quasi-cash transactions represent purchases of items which may
        *   be convertible to cash.
@@ -600,6 +602,7 @@ export namespace CardPayment {
         | 'account_funding'
         | 'automatic_fuel_dispenser'
         | 'bill_payment'
+        | 'original_credit'
         | 'purchase'
         | 'quasi_cash'
         | 'refund';
@@ -1069,6 +1072,8 @@ export namespace CardPayment {
        *   being known. They are followed by an advice message that updates the amount of
        *   the pending transaction.
        * - `bill_payment` - A transaction used to pay a bill.
+       * - `original_credit` - Original credit transactions are used to send money to a
+       *   cardholder.
        * - `purchase` - A regular purchase.
        * - `quasi_cash` - Quasi-cash transactions represent purchases of items which may
        *   be convertible to cash.
@@ -1079,6 +1084,7 @@ export namespace CardPayment {
         | 'account_funding'
         | 'automatic_fuel_dispenser'
         | 'bill_payment'
+        | 'original_credit'
         | 'purchase'
         | 'quasi_cash'
         | 'refund';
