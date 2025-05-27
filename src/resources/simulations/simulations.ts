@@ -69,7 +69,11 @@ import { InboundWireTransferCreateParams, InboundWireTransfers } from './inbound
 import * as InterestPaymentsAPI from './interest-payments';
 import { InterestPaymentCreateParams, InterestPayments } from './interest-payments';
 import * as PhysicalCardsAPI from './physical-cards';
-import { PhysicalCardAdvanceShipmentParams, PhysicalCards } from './physical-cards';
+import {
+  PhysicalCardAdvanceShipmentParams,
+  PhysicalCardTrackingUpdatesParams,
+  PhysicalCards,
+} from './physical-cards';
 import * as ProgramsAPI from './programs';
 import { ProgramCreateParams, Programs } from './programs';
 import * as RealTimePaymentsTransfersAPI from './real-time-payments-transfers';
@@ -197,6 +201,7 @@ export declare namespace Simulations {
   export {
     PhysicalCards as PhysicalCards,
     type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
+    type PhysicalCardTrackingUpdatesParams as PhysicalCardTrackingUpdatesParams,
   };
 
   export {

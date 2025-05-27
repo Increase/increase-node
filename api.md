@@ -694,6 +694,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/physical_cards/{physical_card_id}/advance_shipment">client.simulations.physicalCards.<a href="./src/resources/simulations/physical-cards.ts">advanceShipment</a>(physicalCardId, { ...params }) -> PhysicalCard</code>
+- <code title="post /simulations/physical_cards/{physical_card_id}/tracking_updates">client.simulations.physicalCards.<a href="./src/resources/simulations/physical-cards.ts">trackingUpdates</a>(physicalCardId, { ...params }) -> PhysicalCard</code>
 
 ## DigitalWalletTokenRequests
 
