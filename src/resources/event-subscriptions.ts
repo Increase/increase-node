@@ -218,6 +218,10 @@ export interface EventSubscription {
    *   Transfer is created.
    * - `outbound_card_push_transfer.updated` - Occurs whenever an Outbound Card Push
    *   Transfer is updated.
+   * - `outbound_card_validation.created` - Occurs whenever an Outbound Card
+   *   Validation is created.
+   * - `outbound_card_validation.updated` - Occurs whenever an Outbound Card
+   *   Validation is updated.
    * - `pending_transaction.created` - Occurs whenever a Pending Transaction is
    *   created.
    * - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
@@ -327,6 +331,8 @@ export interface EventSubscription {
     | 'oauth_connection.deactivated'
     | 'outbound_card_push_transfer.created'
     | 'outbound_card_push_transfer.updated'
+    | 'outbound_card_validation.created'
+    | 'outbound_card_validation.updated'
     | 'pending_transaction.created'
     | 'pending_transaction.updated'
     | 'physical_card.created'
@@ -487,6 +493,10 @@ export interface EventSubscriptionCreateParams {
    *   Transfer is created.
    * - `outbound_card_push_transfer.updated` - Occurs whenever an Outbound Card Push
    *   Transfer is updated.
+   * - `outbound_card_validation.created` - Occurs whenever an Outbound Card
+   *   Validation is created.
+   * - `outbound_card_validation.updated` - Occurs whenever an Outbound Card
+   *   Validation is updated.
    * - `pending_transaction.created` - Occurs whenever a Pending Transaction is
    *   created.
    * - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
@@ -596,6 +606,8 @@ export interface EventSubscriptionCreateParams {
     | 'oauth_connection.deactivated'
     | 'outbound_card_push_transfer.created'
     | 'outbound_card_push_transfer.updated'
+    | 'outbound_card_validation.created'
+    | 'outbound_card_validation.updated'
     | 'pending_transaction.created'
     | 'pending_transaction.updated'
     | 'physical_card.created'
