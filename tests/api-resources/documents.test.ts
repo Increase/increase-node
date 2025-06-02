@@ -59,6 +59,7 @@ describe('resource documents', () => {
           },
           cursor: 'cursor',
           entity_id: 'entity_id',
+          idempotency_key: 'x',
           limit: 1,
         },
         { path: '/_stainless_unknown_path' },
