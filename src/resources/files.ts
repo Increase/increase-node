@@ -153,6 +153,7 @@ export interface File {
    *   access to the funds into your account.
    * - `proof_of_authorization_request_submission` - A file containing additional
    *   evidence for a Proof of Authorization Request Submission.
+   * - `account_verification_letter` - An account verification letter.
    */
   purpose:
     | 'check_image_front'
@@ -179,7 +180,8 @@ export interface File {
     | 'export'
     | 'unusual_activity_report_attachment'
     | 'deposit_account_control_agreement'
-    | 'proof_of_authorization_request_submission';
+    | 'proof_of_authorization_request_submission'
+    | 'account_verification_letter';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -322,6 +324,7 @@ export namespace FileListParams {
       | 'unusual_activity_report_attachment'
       | 'deposit_account_control_agreement'
       | 'proof_of_authorization_request_submission'
+      | 'account_verification_letter'
     >;
   }
 }
