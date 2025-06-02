@@ -637,6 +637,12 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interestPayments.<a href="./src/resources/simulations/interest-payments.ts">create</a>({ ...params }) -> Transaction</code>
 
+## FeePayments
+
+Methods:
+
+- <code title="post /simulations/fee_payments">client.simulations.feePayments.<a href="./src/resources/simulations/fee-payments.ts">create</a>({ ...params }) -> Transaction</code>
+
 ## CardAuthorizations
 
 Types:
