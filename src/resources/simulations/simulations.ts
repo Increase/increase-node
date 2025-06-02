@@ -46,8 +46,6 @@ import {
 } from './digital-wallet-token-requests';
 import * as DocumentsAPI from './documents';
 import { DocumentCreateParams, Documents } from './documents';
-import * as FeePaymentsAPI from './fee-payments';
-import { FeePaymentCreateParams, FeePayments } from './fee-payments';
 import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
@@ -90,7 +88,6 @@ export class Simulations extends APIResource {
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
     this._client,
   );
-  feePayments: FeePaymentsAPI.FeePayments = new FeePaymentsAPI.FeePayments(this._client);
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
@@ -139,7 +136,6 @@ export class Simulations extends APIResource {
 }
 
 Simulations.InterestPayments = InterestPayments;
-Simulations.FeePayments = FeePayments;
 Simulations.CardAuthorizations = CardAuthorizations;
 Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
 Simulations.CardSettlements = CardSettlements;
@@ -172,8 +168,6 @@ export declare namespace Simulations {
     InterestPayments as InterestPayments,
     type InterestPaymentCreateParams as InterestPaymentCreateParams,
   };
-
-  export { FeePayments as FeePayments, type FeePaymentCreateParams as FeePaymentCreateParams };
 
   export {
     CardAuthorizations as CardAuthorizations,
