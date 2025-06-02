@@ -65,8 +65,14 @@ export interface Document {
    *   authorization request for an ACH transfer.
    * - `company_information` - Company information, such a policies or procedures,
    *   typically submitted during our due diligence process.
+   * - `account_verification_letter` - An account verification letter.
    */
-  category: 'form_1099_int' | 'form_1099_misc' | 'proof_of_authorization' | 'company_information';
+  category:
+    | 'form_1099_int'
+    | 'form_1099_misc'
+    | 'proof_of_authorization'
+    | 'company_information'
+    | 'account_verification_letter';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
@@ -85,6 +91,13 @@ export interface Document {
   file_id: string;
 
   /**
+   * The idempotency key you chose for this object. This value is unique across
+   * Increase and is used to ensure that a request is only processed once. Learn more
+   * about [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key: string | null;
+
+  /**
    * A constant representing the object's type. For this resource it will always be
    * `document`.
    */
@@ -100,6 +113,14 @@ export interface DocumentListParams extends PageParams {
    * Filter Documents to ones belonging to the specified Entity.
    */
   entity_id?: string;
+
+  /**
+   * Filter records to the one with the specified `idempotency_key` you chose for
+   * that object. This value is unique across Increase and is used to ensure that a
+   * request is only processed once. Learn more about
+   * [idempotency](https://increase.com/documentation/idempotency-keys).
+   */
+  idempotency_key?: string;
 }
 
 export namespace DocumentListParams {
@@ -109,7 +130,13 @@ export namespace DocumentListParams {
      * requests, this should be encoded as a comma-delimited string, such as
      * `?in=one,two,three`.
      */
-    in?: Array<'form_1099_int' | 'form_1099_misc' | 'proof_of_authorization' | 'company_information'>;
+    in?: Array<
+      | 'form_1099_int'
+      | 'form_1099_misc'
+      | 'proof_of_authorization'
+      | 'company_information'
+      | 'account_verification_letter'
+    >;
   }
 
   export interface CreatedAt {
