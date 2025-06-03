@@ -156,15 +156,6 @@ export interface ExternalAccount {
    * `external_account`.
    */
   type: 'external_account';
-
-  /**
-   * If you have verified ownership of the External Account.
-   *
-   * - `unverified` - The External Account has not been verified.
-   * - `pending` - The External Account is in the process of being verified.
-   * - `verified` - The External Account is verified.
-   */
-  verification_status: 'unverified' | 'pending' | 'verified';
 }
 
 export interface ExternalAccountCreateParams {
