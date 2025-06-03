@@ -25,17 +25,13 @@ const client = new Increase({
   environment: 'sandbox', // defaults to 'production'
 });
 
-async function main() {
-  const account = await client.accounts.create({
-    name: 'New Account!',
-    entity_id: 'entity_n8y8tnk2p9339ti393yi',
-    program_id: 'program_i2v2os4mwza1oetokh9i',
-  });
+const account = await client.accounts.create({
+  name: 'New Account!',
+  entity_id: 'entity_n8y8tnk2p9339ti393yi',
+  program_id: 'program_i2v2os4mwza1oetokh9i',
+});
 
-  console.log(account.id);
-}
-
-main();
+console.log(account.id);
 ```
 
 ### Request & Response types
@@ -51,16 +47,12 @@ const client = new Increase({
   environment: 'sandbox', // defaults to 'production'
 });
 
-async function main() {
-  const params: Increase.AccountCreateParams = {
-    name: 'New Account!',
-    entity_id: 'entity_n8y8tnk2p9339ti393yi',
-    program_id: 'program_i2v2os4mwza1oetokh9i',
-  };
-  const account: Increase.Account = await client.accounts.create(params);
-}
-
-main();
+const params: Increase.AccountCreateParams = {
+  name: 'New Account!',
+  entity_id: 'entity_n8y8tnk2p9339ti393yi',
+  program_id: 'program_i2v2os4mwza1oetokh9i',
+};
+const account: Increase.Account = await client.accounts.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -109,19 +101,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const account = await client.accounts.create({ name: 'New Account!' }).catch(async (err) => {
-    if (err instanceof Increase.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const account = await client.accounts.create({ name: 'New Account!' }).catch(async (err) => {
+  if (err instanceof Increase.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
