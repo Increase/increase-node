@@ -456,6 +456,7 @@ Types:
 
 Methods:
 
+- <code title="post /documents">client.documents.<a href="./src/resources/documents.ts">create</a>({ ...params }) -> Document</code>
 - <code title="get /documents/{document_id}">client.documents.<a href="./src/resources/documents.ts">retrieve</a>(documentId) -> Document</code>
 - <code title="get /documents">client.documents.<a href="./src/resources/documents.ts">list</a>({ ...params }) -> DocumentsPage</code>
 
