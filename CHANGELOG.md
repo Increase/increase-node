@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.223.0 (2025-06-03)
+
+Full Changelog: [v0.222.0...v0.223.0](https://github.com/Increase/increase-node/compare/v0.222.0...v0.223.0)
+
+### Features
+
+* **api:** api update ([4621b7f](https://github.com/Increase/increase-node/commit/4621b7fbd1ac426e478213bd5002875f01ece352))
+* **api:** api update ([dd83d57](https://github.com/Increase/increase-node/commit/dd83d5762fd6e5ddb1a5272ab0544a9ce519ff66))
+* **api:** api update ([4d65fec](https://github.com/Increase/increase-node/commit/4d65fec294df8a26858417072117456c07ab79b9))
+
+
+### Chores
+
+* **docs:** use top-level-await in example snippets ([2f8a48f](https://github.com/Increase/increase-node/commit/2f8a48f11cf84106a71996aead25b3bc8a164929))
+
 ## 0.222.0 (2025-06-02)
 
 Full Changelog: [v0.221.0...v0.222.0](https://github.com/Increase/increase-node/compare/v0.221.0...v0.222.0)
