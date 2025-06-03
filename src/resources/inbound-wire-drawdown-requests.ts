@@ -60,8 +60,8 @@ export class InboundWireDrawdownRequestsPage extends Page<InboundWireDrawdownReq
 
 /**
  * Inbound wire drawdown requests are requests from someone else to send them a
- * wire. This feature is in beta; reach out to
- * [support@increase.com](mailto:support@increase.com) to learn more.
+ * wire. For more information, see our
+ * [Wire Drawdown Requests documentation](/documentation/wire-drawdown-requests).
  */
 export interface InboundWireDrawdownRequest {
   /**
