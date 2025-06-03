@@ -139,7 +139,13 @@ import {
   DigitalWalletTokens,
   DigitalWalletTokensPage,
 } from './resources/digital-wallet-tokens';
-import { Document, DocumentListParams, Documents, DocumentsPage } from './resources/documents';
+import {
+  Document,
+  DocumentCreateParams,
+  DocumentListParams,
+  Documents,
+  DocumentsPage,
+} from './resources/documents';
 import {
   Entities,
   EntitiesPage,
@@ -972,6 +978,7 @@ export declare namespace Increase {
     Documents as Documents,
     type Document as Document,
     DocumentsPage as DocumentsPage,
+    type DocumentCreateParams as DocumentCreateParams,
     type DocumentListParams as DocumentListParams,
   };
 
