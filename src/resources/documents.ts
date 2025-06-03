@@ -7,6 +7,20 @@ import { Page, type PageParams } from '../pagination';
 
 export class Documents extends APIResource {
   /**
+   * Create a Document
+   *
+   * @example
+   * ```ts
+   * const document = await client.documents.create({
+   *   category: 'account_verification_letter',
+   * });
+   * ```
+   */
+  create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Document> {
+    return this._client.post('/documents', { body, ...options });
+  }
+
+  /**
    * Retrieve a Document
    *
    * @example
@@ -57,6 +71,11 @@ export interface Document {
   id: string;
 
   /**
+   * Properties of an account verification letter document.
+   */
+  account_verification_letter: Document.AccountVerificationLetter | null;
+
+  /**
    * The type of document.
    *
    * - `form_1099_int` - Internal Revenue Service Form 1099-INT.
@@ -102,6 +121,49 @@ export interface Document {
    * `document`.
    */
   type: 'document';
+}
+
+export namespace Document {
+  /**
+   * Properties of an account verification letter document.
+   */
+  export interface AccountVerificationLetter {
+    /**
+     * The identifier of the Account Number the document was generated for.
+     */
+    account_number_id: string;
+  }
+}
+
+export interface DocumentCreateParams {
+  /**
+   * The type of document to create.
+   *
+   * - `account_verification_letter` - An account verification letter.
+   */
+  category: 'account_verification_letter';
+
+  /**
+   * An account verification letter.
+   */
+  account_verification_letter?: DocumentCreateParams.AccountVerificationLetter;
+}
+
+export namespace DocumentCreateParams {
+  /**
+   * An account verification letter.
+   */
+  export interface AccountVerificationLetter {
+    /**
+     * The Account Number the bank letter should be generated for.
+     */
+    account_number_id: string;
+
+    /**
+     * If provided, the letter will include the Account's balance as of the date.
+     */
+    balance_date?: string;
+  }
 }
 
 export interface DocumentListParams extends PageParams {
@@ -172,6 +234,7 @@ export declare namespace Documents {
   export {
     type Document as Document,
     DocumentsPage as DocumentsPage,
+    type DocumentCreateParams as DocumentCreateParams,
     type DocumentListParams as DocumentListParams,
   };
 }

@@ -131,7 +131,13 @@ export {
   type DigitalWalletToken,
   type DigitalWalletTokenListParams,
 } from './digital-wallet-tokens';
-export { DocumentsPage, Documents, type Document, type DocumentListParams } from './documents';
+export {
+  DocumentsPage,
+  Documents,
+  type Document,
+  type DocumentCreateParams,
+  type DocumentListParams,
+} from './documents';
 export {
   EntitiesPage,
   Entities,

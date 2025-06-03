@@ -9,6 +9,27 @@ const client = new Increase({
 });
 
 describe('resource documents', () => {
+  test('create: only required params', async () => {
+    const responsePromise = client.documents.create({ category: 'account_verification_letter' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await client.documents.create({
+      category: 'account_verification_letter',
+      account_verification_letter: {
+        account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+        balance_date: '2024-12-31',
+      },
+    });
+  });
+
   test('retrieve', async () => {
     const responsePromise = client.documents.retrieve('document_qjtqc6s4c14ve2q89izm');
     const rawResponse = await responsePromise.asResponse();
