@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.224.0 (2025-06-05)
+
+Full Changelog: [v0.223.0...v0.224.0](https://github.com/Increase/increase-node/compare/v0.223.0...v0.224.0)
+
+### Features
+
+* **api:** api update ([12e0ff9](https://github.com/Increase/increase-node/commit/12e0ff9de0f60db084751c7284161b9f68cd854e))
+
+
+### Chores
+
+* fix idempotency header ([f161d54](https://github.com/Increase/increase-node/commit/f161d5461a10007e78bc0e9b1e438b6aaf8305e8))
+
 ## 0.223.0 (2025-06-03)
 
 Full Changelog: [v0.222.0...v0.223.0](https://github.com/Increase/increase-node/compare/v0.222.0...v0.223.0)
