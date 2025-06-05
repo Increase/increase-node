@@ -76,6 +76,42 @@ export class RealTimePaymentsTransfers extends APIResource {
       ...options,
     });
   }
+
+  /**
+   * Approves an Real-Time Payments Transfer in a pending_approval state.
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.realTimePaymentsTransfers.approve(
+   *     'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
+   *   );
+   * ```
+   */
+  approve(
+    realTimePaymentsTransferId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<RealTimePaymentsTransfer> {
+    return this._client.post(`/real_time_payments_transfers/${realTimePaymentsTransferId}/approve`, options);
+  }
+
+  /**
+   * Cancels an Real-Time Payments Transfer in a pending_approval state.
+   *
+   * @example
+   * ```ts
+   * const realTimePaymentsTransfer =
+   *   await client.realTimePaymentsTransfers.cancel(
+   *     'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
+   *   );
+   * ```
+   */
+  cancel(
+    realTimePaymentsTransferId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<RealTimePaymentsTransfer> {
+    return this._client.post(`/real_time_payments_transfers/${realTimePaymentsTransferId}/cancel`, options);
+  }
 }
 
 export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer> {}
