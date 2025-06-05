@@ -303,6 +303,8 @@ Methods:
 - <code title="post /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">create</a>({ ...params }) -> RealTimePaymentsTransfer</code>
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">retrieve</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
 - <code title="get /real_time_payments_transfers">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">list</a>({ ...params }) -> RealTimePaymentsTransfersPage</code>
+- <code title="post /real_time_payments_transfers/{real_time_payments_transfer_id}/approve">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">approve</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
+- <code title="post /real_time_payments_transfers/{real_time_payments_transfer_id}/cancel">client.realTimePaymentsTransfers.<a href="./src/resources/real-time-payments-transfers.ts">cancel</a>(realTimePaymentsTransferId) -> RealTimePaymentsTransfer</code>
 
 # InboundRealTimePaymentsTransfers
 
