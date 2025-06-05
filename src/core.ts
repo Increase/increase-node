@@ -228,7 +228,7 @@ export abstract class APIClient {
   protected validateHeaders(headers: Headers, customHeaders: Headers) {}
 
   protected defaultIdempotencyKey(): string {
-    return `stainless-node-retry-${uuid4()}`;
+    return `increase-node-retry-${uuid4()}`;
   }
 
   get<Req, Rsp>(path: string, opts?: PromiseOrValue<RequestOptions<Req>>): APIPromise<Rsp> {
