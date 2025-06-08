@@ -187,6 +187,8 @@ export namespace PendingTransaction {
      *   under the `check_transfer_instruction` object.
      * - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
      *   `inbound_funds_hold` object.
+     * - `group_initiated_hold` - Group Initiated Hold Source: details will be under
+     *   the `group_initiated_hold` object.
      * - `real_time_payments_transfer_instruction` - Real-Time Payments Transfer
      *   Instruction: details will be under the
      *   `real_time_payments_transfer_instruction` object.
@@ -209,6 +211,7 @@ export namespace PendingTransaction {
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
       | 'inbound_funds_hold'
+      | 'group_initiated_hold'
       | 'real_time_payments_transfer_instruction'
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
@@ -227,6 +230,12 @@ export namespace PendingTransaction {
      * response if and only if `category` is equal to `check_transfer_instruction`.
      */
     check_transfer_instruction: Source.CheckTransferInstruction | null;
+
+    /**
+     * A Group Initiated Hold Source object. This field will be present in the JSON
+     * response if and only if `category` is equal to `group_initiated_hold`.
+     */
+    group_initiated_hold: Source.GroupInitiatedHold | null;
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
@@ -835,6 +844,17 @@ export namespace PendingTransaction {
     }
 
     /**
+     * A Group Initiated Hold Source object. This field will be present in the JSON
+     * response if and only if `category` is equal to `group_initiated_hold`.
+     */
+    export interface GroupInitiatedHold {
+      /**
+       * The Group Initiated Hold identifier.
+       */
+      id: string;
+    }
+
+    /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
      * and only if `category` is equal to `inbound_funds_hold`. We hold funds for
      * certain transaction types to account for return windows where funds might still
@@ -1032,6 +1052,7 @@ export namespace PendingTransactionListParams {
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
       | 'inbound_funds_hold'
+      | 'group_initiated_hold'
       | 'real_time_payments_transfer_instruction'
       | 'wire_transfer_instruction'
       | 'inbound_wire_transfer_reversal'
