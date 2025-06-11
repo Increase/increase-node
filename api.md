@@ -147,8 +147,10 @@ Types:
 
 Methods:
 
+- <code title="post /pending_transactions">client.pendingTransactions.<a href="./src/resources/pending-transactions.ts">create</a>({ ...params }) -> PendingTransaction</code>
 - <code title="get /pending_transactions/{pending_transaction_id}">client.pendingTransactions.<a href="./src/resources/pending-transactions.ts">retrieve</a>(pendingTransactionId) -> PendingTransaction</code>
 - <code title="get /pending_transactions">client.pendingTransactions.<a href="./src/resources/pending-transactions.ts">list</a>({ ...params }) -> PendingTransactionsPage</code>
+- <code title="post /pending_transactions/{pending_transaction_id}/release">client.pendingTransactions.<a href="./src/resources/pending-transactions.ts">release</a>(pendingTransactionId) -> PendingTransaction</code>
 
 # DeclinedTransactions
 
