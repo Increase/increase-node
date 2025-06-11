@@ -259,6 +259,7 @@ import {
 import { OAuthToken, OAuthTokenCreateParams, OAuthTokens } from './resources/oauth-tokens';
 import {
   PendingTransaction,
+  PendingTransactionCreateParams,
   PendingTransactionListParams,
   PendingTransactions,
   PendingTransactionsPage,
@@ -777,6 +778,7 @@ export declare namespace Increase {
     PendingTransactions as PendingTransactions,
     type PendingTransaction as PendingTransaction,
     PendingTransactionsPage as PendingTransactionsPage,
+    type PendingTransactionCreateParams as PendingTransactionCreateParams,
     type PendingTransactionListParams as PendingTransactionListParams,
   };
 

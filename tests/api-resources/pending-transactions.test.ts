@@ -9,6 +9,28 @@ const client = new Increase({
 });
 
 describe('resource pendingTransactions', () => {
+  test('create: only required params', async () => {
+    const responsePromise = client.pendingTransactions.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: -1000,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('create: required and optional params', async () => {
+    const response = await client.pendingTransactions.create({
+      account_id: 'account_in71c4amph0vgo2qllky',
+      amount: -1000,
+      description: 'Hold for pending transaction',
+    });
+  });
+
   test('retrieve', async () => {
     const responsePromise = client.pendingTransactions.retrieve('pending_transaction_k1sfetcau2qbvjbzgju4');
     const rawResponse = await responsePromise.asResponse();
@@ -67,6 +89,26 @@ describe('resource pendingTransactions', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('release', async () => {
+    const responsePromise = client.pendingTransactions.release('pending_transaction_k1sfetcau2qbvjbzgju4');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('release: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.pendingTransactions.release('pending_transaction_k1sfetcau2qbvjbzgju4', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });
