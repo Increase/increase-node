@@ -260,6 +260,7 @@ export {
   PendingTransactionsPage,
   PendingTransactions,
   type PendingTransaction,
+  type PendingTransactionCreateParams,
   type PendingTransactionListParams,
 } from './pending-transactions';
 export {
