@@ -70,6 +70,8 @@ export interface PhysicalCardAdvanceShipmentParams {
    * - `shipped` - The physical card has been shipped.
    * - `returned` - The physical card shipment was returned to the sender and
    *   destroyed by the production facility.
+   * - `requires_attention` - The physical card shipment requires attention from
+   *   Increase before progressing.
    */
   shipment_status:
     | 'pending'
@@ -78,7 +80,8 @@ export interface PhysicalCardAdvanceShipmentParams {
     | 'acknowledged'
     | 'rejected'
     | 'shipped'
-    | 'returned';
+    | 'returned'
+    | 'requires_attention';
 }
 
 export interface PhysicalCardTrackingUpdatesParams {
