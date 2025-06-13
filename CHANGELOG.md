@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.228.1 (2025-06-13)
+
+Full Changelog: [v0.228.0...v0.228.1](https://github.com/Increase/increase-node/compare/v0.228.0...v0.228.1)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([23ba69e](https://github.com/Increase/increase-node/commit/23ba69e8d67b1ceb554d5b4fde02224c64511ca2))
+
 ## 0.228.0 (2025-06-13)
 
 Full Changelog: [v0.227.0...v0.228.0](https://github.com/Increase/increase-node/compare/v0.227.0...v0.228.0)
