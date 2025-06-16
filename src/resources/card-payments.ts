@@ -174,10 +174,10 @@ export namespace CardPayment {
     card_settlement: Element.CardSettlement | null;
 
     /**
-     * A Card Validation object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_validation`. Card Validations are requests
-     * from a merchant to verify that a card number and optionally its address and/or
-     * Card Verification Value are valid.
+     * An Inbound Card Validation object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_validation`. Inbound Card
+     * Validations are requests from a merchant to verify that a card number and
+     * optionally its address and/or Card Verification Value are valid.
      */
     card_validation: Element.CardValidation | null;
 
@@ -189,7 +189,7 @@ export namespace CardPayment {
      *   `card_authorization` object.
      * - `card_authentication` - Card Authentication: details will be under the
      *   `card_authentication` object.
-     * - `card_validation` - Card Validation: details will be under the
+     * - `card_validation` - Inbound Card Validation: details will be under the
      *   `card_validation` object.
      * - `card_decline` - Card Decline: details will be under the `card_decline`
      *   object.
@@ -3241,10 +3241,10 @@ export namespace CardPayment {
     }
 
     /**
-     * A Card Validation object. This field will be present in the JSON response if and
-     * only if `category` is equal to `card_validation`. Card Validations are requests
-     * from a merchant to verify that a card number and optionally its address and/or
-     * Card Verification Value are valid.
+     * An Inbound Card Validation object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_validation`. Inbound Card
+     * Validations are requests from a merchant to verify that a card number and
+     * optionally its address and/or Card Verification Value are valid.
      */
     export interface CardValidation {
       /**
@@ -3361,9 +3361,9 @@ export namespace CardPayment {
 
       /**
        * A constant representing the object's type. For this resource it will always be
-       * `card_validation`.
+       * `inbound_card_validation`.
        */
-      type: 'card_validation';
+      type: 'inbound_card_validation';
 
       /**
        * Fields related to verification of cardholder-provided values.

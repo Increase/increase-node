@@ -163,14 +163,20 @@ export interface Event {
    * - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
    * - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
    *   deactivated.
-   * - `outbound_card_push_transfer.created` - Occurs whenever an Outbound Card Push
-   *   Transfer is created.
-   * - `outbound_card_push_transfer.updated` - Occurs whenever an Outbound Card Push
-   *   Transfer is updated.
-   * - `outbound_card_validation.created` - Occurs whenever an Outbound Card
-   *   Validation is created.
-   * - `outbound_card_validation.updated` - Occurs whenever an Outbound Card
-   *   Validation is updated.
+   * - `outbound_card_push_transfer.created` - Occurs whenever a Card Push Transfer
+   *   is created.
+   * - `outbound_card_push_transfer.updated` - Occurs whenever a Card Push Transfer
+   *   is updated.
+   * - `outbound_card_validation.created` - Occurs whenever a Card Validation is
+   *   created.
+   * - `outbound_card_validation.updated` - Occurs whenever a Card Validation is
+   *   updated.
+   * - `card_push_transfer.created` - Occurs whenever a Card Push Transfer is
+   *   created.
+   * - `card_push_transfer.updated` - Occurs whenever a Card Push Transfer is
+   *   updated.
+   * - `card_validation.created` - Occurs whenever a Card Validation is created.
+   * - `card_validation.updated` - Occurs whenever a Card Validation is updated.
    * - `pending_transaction.created` - Occurs whenever a Pending Transaction is
    *   created.
    * - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
@@ -282,6 +288,10 @@ export interface Event {
     | 'outbound_card_push_transfer.updated'
     | 'outbound_card_validation.created'
     | 'outbound_card_validation.updated'
+    | 'card_push_transfer.created'
+    | 'card_push_transfer.updated'
+    | 'card_validation.created'
+    | 'card_validation.updated'
     | 'pending_transaction.created'
     | 'pending_transaction.updated'
     | 'physical_card.created'
@@ -404,6 +414,10 @@ export namespace EventListParams {
       | 'outbound_card_push_transfer.updated'
       | 'outbound_card_validation.created'
       | 'outbound_card_validation.updated'
+      | 'card_push_transfer.created'
+      | 'card_push_transfer.updated'
+      | 'card_validation.created'
+      | 'card_validation.updated'
       | 'pending_transaction.created'
       | 'pending_transaction.updated'
       | 'physical_card.created'

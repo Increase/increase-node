@@ -184,6 +184,14 @@ export namespace Transaction {
     card_dispute_loss: Source.CardDisputeLoss | null;
 
     /**
+     * A Card Push Transfer Acceptance object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_push_transfer_acceptance`.
+     * A Card Push Transfer Acceptance is created when an Outbound Card Push Transfer
+     * sent from Increase is accepted by the receiving bank.
+     */
+    card_push_transfer_acceptance: Source.CardPushTransferAcceptance | null;
+
+    /**
      * A Card Refund object. This field will be present in the JSON response if and
      * only if `category` is equal to `card_refund`. Card Refunds move money back to
      * the cardholder. While they are usually connected to a Card Settlement an
@@ -281,9 +289,8 @@ export namespace Transaction {
      *   `wire_transfer_intention` object.
      * - `swift_transfer_intention` - Swift Transfer Intention: details will be under
      *   the `swift_transfer_intention` object.
-     * - `outbound_card_push_transfer_acceptance` - Outbound Card Push Transfer
-     *   Acceptance: details will be under the `outbound_card_push_transfer_acceptance`
-     *   object.
+     * - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
+     *   be under the `card_push_transfer_acceptance` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -316,7 +323,7 @@ export namespace Transaction {
       | 'sample_funds'
       | 'wire_transfer_intention'
       | 'swift_transfer_intention'
-      | 'outbound_card_push_transfer_acceptance'
+      | 'card_push_transfer_acceptance'
       | 'other';
 
     /**
@@ -449,15 +456,6 @@ export namespace Transaction {
      * contain an empty object, otherwise it will contain null.
      */
     other: unknown | null;
-
-    /**
-     * An Outbound Card Push Transfer Acceptance object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `outbound_card_push_transfer_acceptance`. An Outbound Card Push Transfer
-     * Acceptance is created when an Outbound Card Push Transfer sent from Increase is
-     * accepted by the receiving bank.
-     */
-    outbound_card_push_transfer_acceptance: Source.OutboundCardPushTransferAcceptance | null;
 
     /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present
@@ -900,6 +898,24 @@ export namespace Transaction {
        * from your account.
        */
       transaction_id: string;
+    }
+
+    /**
+     * A Card Push Transfer Acceptance object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_push_transfer_acceptance`.
+     * A Card Push Transfer Acceptance is created when an Outbound Card Push Transfer
+     * sent from Increase is accepted by the receiving bank.
+     */
+    export interface CardPushTransferAcceptance {
+      /**
+       * The transfer amount in USD cents.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Card Push Transfer that led to this Transaction.
+       */
+      transfer_id: string;
     }
 
     /**
@@ -3353,25 +3369,6 @@ export namespace Transaction {
     }
 
     /**
-     * An Outbound Card Push Transfer Acceptance object. This field will be present in
-     * the JSON response if and only if `category` is equal to
-     * `outbound_card_push_transfer_acceptance`. An Outbound Card Push Transfer
-     * Acceptance is created when an Outbound Card Push Transfer sent from Increase is
-     * accepted by the receiving bank.
-     */
-    export interface OutboundCardPushTransferAcceptance {
-      /**
-       * The transfer amount in USD cents.
-       */
-      amount: number;
-
-      /**
-       * The identifier of the Outbound Card Push Transfer that led to this Transaction.
-       */
-      transfer_id: string;
-    }
-
-    /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present
      * in the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
@@ -3516,7 +3513,7 @@ export namespace TransactionListParams {
       | 'sample_funds'
       | 'wire_transfer_intention'
       | 'swift_transfer_intention'
-      | 'outbound_card_push_transfer_acceptance'
+      | 'card_push_transfer_acceptance'
       | 'other'
     >;
   }
