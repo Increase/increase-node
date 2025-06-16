@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.228.2 (2025-06-13)
+
+Full Changelog: [v0.228.1...v0.228.2](https://github.com/Increase/increase-node/compare/v0.228.1...v0.228.2)
+
+### Chores
+
+* **internal:** make base APIResource abstract ([8d31027](https://github.com/Increase/increase-node/commit/8d31027bd32ef73b631ea4691c30373697354a60))
+
 ## 0.228.1 (2025-06-13)
 
 Full Changelog: [v0.228.0...v0.228.1](https://github.com/Increase/increase-node/compare/v0.228.0...v0.228.1)
