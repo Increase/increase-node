@@ -60,6 +60,11 @@ export interface InboundMailItem {
   id: string;
 
   /**
+   * The checks in the mail item.
+   */
+  checks: Array<InboundMailItem.Check>;
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
    * Mail Item was created.
    */
@@ -104,6 +109,28 @@ export interface InboundMailItem {
    * `inbound_mail_item`.
    */
   type: 'inbound_mail_item';
+}
+
+export namespace InboundMailItem {
+  /**
+   * Inbound Mail Item Checks represent the checks in an Inbound Mail Item.
+   */
+  export interface Check {
+    /**
+     * The amount of the check.
+     */
+    amount: number;
+
+    /**
+     * The identifier for the File containing the back of the check.
+     */
+    back_file_id: string | null;
+
+    /**
+     * The identifier for the File containing the front of the check.
+     */
+    front_file_id: string | null;
+  }
 }
 
 export interface InboundMailItemListParams extends PageParams {
