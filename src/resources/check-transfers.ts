@@ -434,10 +434,10 @@ export namespace CheckTransfer {
     note: string | null;
 
     /**
-     * The payee of the check. This will be printed on the top-left portion of the
+     * The payer of the check. This will be printed on the top-left portion of the
      * check and defaults to the return address if unspecified.
      */
-    payee: Array<PhysicalCheck.Payee>;
+    payer: Array<PhysicalCheck.Payer>;
 
     /**
      * The name that will be printed on the check.
@@ -505,7 +505,7 @@ export namespace CheckTransfer {
       state: string | null;
     }
 
-    export interface Payee {
+    export interface Payer {
       /**
        * The contents of the line.
        */
@@ -774,11 +774,11 @@ export namespace CheckTransferCreateParams {
     note?: string;
 
     /**
-     * The payee of the check. This will be printed on the top-left portion of the
+     * The payer of the check. This will be printed on the top-left portion of the
      * check and defaults to the return address if unspecified. This should be an array
-     * of up to 4 elements, each of which represents a line of the payee.
+     * of up to 4 elements, each of which represents a line of the payer.
      */
-    payee?: Array<PhysicalCheck.Payee>;
+    payer?: Array<PhysicalCheck.Payer>;
 
     /**
      * The return address to be printed on the check. If omitted this will default to
@@ -834,7 +834,7 @@ export namespace CheckTransferCreateParams {
       line2?: string;
     }
 
-    export interface Payee {
+    export interface Payer {
       /**
        * The contents of the line.
        */
@@ -888,7 +888,7 @@ export namespace CheckTransferCreateParams {
     /**
      * The pay-to name you will print on the check. If provided, this is used for
      * [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
-     * be unable to validate the payee name when the check is deposited.
+     * be unable to validate the payer name when the check is deposited.
      */
     recipient_name?: string;
   }

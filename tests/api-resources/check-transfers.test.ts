@@ -44,7 +44,7 @@ describe('resource checkTransfers', () => {
         recipient_name: 'Ian Crease',
         attachment_file_id: 'attachment_file_id',
         note: 'x',
-        payee: [{ contents: 'x' }],
+        payer: [{ contents: 'x' }],
         return_address: { city: 'x', line1: 'x', name: 'x', postal_code: 'x', state: 'x', line2: 'x' },
         shipping_method: 'usps_first_class',
         signature_text: 'Ian Crease',
