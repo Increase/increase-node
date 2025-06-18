@@ -434,6 +434,12 @@ export namespace CheckTransfer {
     note: string | null;
 
     /**
+     * The payee of the check. This will be printed on the top-left portion of the
+     * check and defaults to the return address if unspecified.
+     */
+    payee: Array<PhysicalCheck.Payee>;
+
+    /**
      * The name that will be printed on the check.
      */
     recipient_name: string;
@@ -497,6 +503,13 @@ export namespace CheckTransfer {
        * The state of the check's destination.
        */
       state: string | null;
+    }
+
+    export interface Payee {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
     }
 
     /**
@@ -761,6 +774,12 @@ export namespace CheckTransferCreateParams {
     note?: string;
 
     /**
+     * The payee of the check. This will be printed on the top-left portion of the
+     * check and defaults to the return address if unspecified.
+     */
+    payee?: Array<PhysicalCheck.Payee>;
+
+    /**
      * The return address to be printed on the check. If omitted this will default to
      * an Increase-owned address that will mark checks as delivery failed and shred
      * them.
@@ -812,6 +831,13 @@ export namespace CheckTransferCreateParams {
        * The second line of the address component of the check's destination address.
        */
       line2?: string;
+    }
+
+    export interface Payee {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
     }
 
     /**
