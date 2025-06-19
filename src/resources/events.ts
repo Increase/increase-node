@@ -211,6 +211,8 @@ export interface Event {
    *   Payments Request for Payment is created.
    * - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
    *   Payments Request for Payment is updated.
+   * - `swift_transfer.created` - Occurs whenever a Swift Transfer is created.
+   * - `swift_transfer.updated` - Occurs whenever a Swift Transfer is updated.
    * - `transaction.created` - Occurs whenever a Transaction is created.
    * - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
    *   created.
@@ -309,6 +311,8 @@ export interface Event {
     | 'real_time_payments_transfer.updated'
     | 'real_time_payments_request_for_payment.created'
     | 'real_time_payments_request_for_payment.updated'
+    | 'swift_transfer.created'
+    | 'swift_transfer.updated'
     | 'transaction.created'
     | 'wire_drawdown_request.created'
     | 'wire_drawdown_request.updated'
@@ -435,6 +439,8 @@ export namespace EventListParams {
       | 'real_time_payments_transfer.updated'
       | 'real_time_payments_request_for_payment.created'
       | 'real_time_payments_request_for_payment.updated'
+      | 'swift_transfer.created'
+      | 'swift_transfer.updated'
       | 'transaction.created'
       | 'wire_drawdown_request.created'
       | 'wire_drawdown_request.updated'
