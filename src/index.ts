@@ -458,6 +458,7 @@ export class Increase extends Core.APIClient {
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURLOverridden: baseURL ? baseURL !== environments[options.environment || 'production'] : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -525,6 +526,13 @@ export class Increase extends Core.APIClient {
   intrafiBalances: API.IntrafiBalances = new API.IntrafiBalances(this);
   intrafiExclusions: API.IntrafiExclusions = new API.IntrafiExclusions(this);
   simulations: API.Simulations = new API.Simulations(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== environments[this._options.environment || 'production'];
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;

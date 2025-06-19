@@ -434,6 +434,12 @@ export namespace CheckTransfer {
     note: string | null;
 
     /**
+     * The payer of the check. This will be printed on the top-left portion of the
+     * check and defaults to the return address if unspecified.
+     */
+    payer: Array<PhysicalCheck.Payer>;
+
+    /**
      * The name that will be printed on the check.
      */
     recipient_name: string;
@@ -497,6 +503,13 @@ export namespace CheckTransfer {
        * The state of the check's destination.
        */
       state: string | null;
+    }
+
+    export interface Payer {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
     }
 
     /**
@@ -761,6 +774,13 @@ export namespace CheckTransferCreateParams {
     note?: string;
 
     /**
+     * The payer of the check. This will be printed on the top-left portion of the
+     * check and defaults to the return address if unspecified. This should be an array
+     * of up to 4 elements, each of which represents a line of the payer.
+     */
+    payer?: Array<PhysicalCheck.Payer>;
+
+    /**
      * The return address to be printed on the check. If omitted this will default to
      * an Increase-owned address that will mark checks as delivery failed and shred
      * them.
@@ -814,6 +834,13 @@ export namespace CheckTransferCreateParams {
       line2?: string;
     }
 
+    export interface Payer {
+      /**
+       * The contents of the line.
+       */
+      contents: string;
+    }
+
     /**
      * The return address to be printed on the check. If omitted this will default to
      * an Increase-owned address that will mark checks as delivery failed and shred
@@ -861,7 +888,7 @@ export namespace CheckTransferCreateParams {
     /**
      * The pay-to name you will print on the check. If provided, this is used for
      * [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
-     * be unable to validate the payee name when the check is deposited.
+     * be unable to validate the payer name when the check is deposited.
      */
     recipient_name?: string;
   }
