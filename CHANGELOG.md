@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.229.0 (2025-06-19)
+
+Full Changelog: [v0.228.2...v0.229.0](https://github.com/Increase/increase-node/compare/v0.228.2...v0.229.0)
+
+### Features
+
+* **api:** api update ([ac2b074](https://github.com/Increase/increase-node/commit/ac2b074bc81845b38a4ac0eca12644b027124c42))
+* **api:** api update ([83db757](https://github.com/Increase/increase-node/commit/83db75726ee8c497cb7c365531e86d345ff86dbb))
+* **api:** api update ([eba5747](https://github.com/Increase/increase-node/commit/eba57475d5f891c6472c3de807836f8f16d9c5d2))
+* **api:** api update ([f9fabc7](https://github.com/Increase/increase-node/commit/f9fabc730e514383cd6a8c4f1bafef486180ba58))
+* **api:** api update ([884f557](https://github.com/Increase/increase-node/commit/884f5579559f7b7bbc8121831c381a3d913ae967))
+* **api:** api update ([75c6c78](https://github.com/Increase/increase-node/commit/75c6c78141ff109dcc315144d4a023cf1cd13fd1))
+* **client:** add support for endpoint-specific base URLs ([2ba8f9e](https://github.com/Increase/increase-node/commit/2ba8f9ef185a2bdf589b8c745d5d92a64b93c640))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([3086fd7](https://github.com/Increase/increase-node/commit/3086fd7cd8276ab3c7cfd96c3d58f1f739ffa397))
+
 ## 0.228.2 (2025-06-13)
 
 Full Changelog: [v0.228.1...v0.228.2](https://github.com/Increase/increase-node/compare/v0.228.1...v0.228.2)
