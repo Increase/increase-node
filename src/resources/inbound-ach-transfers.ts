@@ -236,7 +236,7 @@ export interface InboundACHTransfer {
    * A subhash containing information about when and how the transfer settled at the
    * Federal Reserve.
    */
-  settlement: InboundACHTransfer.Settlement | null;
+  settlement: InboundACHTransfer.Settlement;
 
   /**
    * The Standard Entry Class (SEC) code of the transfer.
