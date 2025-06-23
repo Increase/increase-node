@@ -180,14 +180,6 @@ export interface InboundACHTransfer {
   effective_date: string;
 
   /**
-   * The settlement schedule the transfer is expected to follow.
-   *
-   * - `same_day` - The transfer is expected to settle same-day.
-   * - `future_dated` - The transfer is expected to settle on a future date.
-   */
-  expected_settlement_schedule: 'same_day' | 'future_dated';
-
-  /**
    * If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
    * contain fields pertaining to the International ACH Transaction.
    */
@@ -239,6 +231,12 @@ export interface InboundACHTransfer {
    * The name of the receiver of the transfer.
    */
   receiver_name: string | null;
+
+  /**
+   * A subhash containing information about when and how the transfer settled at the
+   * Federal Reserve.
+   */
+  settlement: InboundACHTransfer.Settlement | null;
 
   /**
    * The Standard Entry Class (SEC) code of the transfer.
@@ -708,6 +706,26 @@ export namespace InboundACHTransfer {
      * The new account number provided in the notification of change.
      */
     updated_routing_number: string | null;
+  }
+
+  /**
+   * A subhash containing information about when and how the transfer settled at the
+   * Federal Reserve.
+   */
+  export interface Settlement {
+    /**
+     * When the funds for this transfer settle at the recipient bank at the Federal
+     * Reserve.
+     */
+    settled_at: string;
+
+    /**
+     * The settlement schedule this transfer follows.
+     *
+     * - `same_day` - The transfer is expected to settle same-day.
+     * - `future_dated` - The transfer is expected to settle on a future date.
+     */
+    settlement_schedule: 'same_day' | 'future_dated';
   }
 
   /**
