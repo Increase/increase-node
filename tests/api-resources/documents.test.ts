@@ -27,6 +27,7 @@ describe('resource documents', () => {
         account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
         balance_date: '2024-12-31',
       },
+      funding_instructions: { account_number_id: 'account_number_id' },
     });
   });
 
