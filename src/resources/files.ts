@@ -154,6 +154,7 @@ export interface File {
    * - `proof_of_authorization_request_submission` - A file containing additional
    *   evidence for a Proof of Authorization Request Submission.
    * - `account_verification_letter` - An account verification letter.
+   * - `funding_instructions` - Funding instructions.
    */
   purpose:
     | 'check_image_front'
@@ -181,7 +182,8 @@ export interface File {
     | 'unusual_activity_report_attachment'
     | 'deposit_account_control_agreement'
     | 'proof_of_authorization_request_submission'
-    | 'account_verification_letter';
+    | 'account_verification_letter'
+    | 'funding_instructions';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -325,6 +327,7 @@ export namespace FileListParams {
       | 'deposit_account_control_agreement'
       | 'proof_of_authorization_request_submission'
       | 'account_verification_letter'
+      | 'funding_instructions'
     >;
   }
 }

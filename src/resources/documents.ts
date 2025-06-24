@@ -85,13 +85,15 @@ export interface Document {
    * - `company_information` - Company information, such a policies or procedures,
    *   typically submitted during our due diligence process.
    * - `account_verification_letter` - An account verification letter.
+   * - `funding_instructions` - Funding instructions.
    */
   category:
     | 'form_1099_int'
     | 'form_1099_misc'
     | 'proof_of_authorization'
     | 'company_information'
-    | 'account_verification_letter';
+    | 'account_verification_letter'
+    | 'funding_instructions';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
@@ -108,6 +110,11 @@ export interface Document {
    * The identifier of the File containing the Document's contents.
    */
   file_id: string;
+
+  /**
+   * Properties of a funding instructions document.
+   */
+  funding_instructions: Document.FundingInstructions | null;
 
   /**
    * The idempotency key you chose for this object. This value is unique across
@@ -133,6 +140,16 @@ export namespace Document {
      */
     account_number_id: string;
   }
+
+  /**
+   * Properties of a funding instructions document.
+   */
+  export interface FundingInstructions {
+    /**
+     * The identifier of the Account Number the document was generated for.
+     */
+    account_number_id: string;
+  }
 }
 
 export interface DocumentCreateParams {
@@ -140,13 +157,19 @@ export interface DocumentCreateParams {
    * The type of document to create.
    *
    * - `account_verification_letter` - An account verification letter.
+   * - `funding_instructions` - Funding instructions.
    */
-  category: 'account_verification_letter';
+  category: 'account_verification_letter' | 'funding_instructions';
 
   /**
    * An account verification letter.
    */
   account_verification_letter?: DocumentCreateParams.AccountVerificationLetter;
+
+  /**
+   * Funding instructions.
+   */
+  funding_instructions?: DocumentCreateParams.FundingInstructions;
 }
 
 export namespace DocumentCreateParams {
@@ -163,6 +186,16 @@ export namespace DocumentCreateParams {
      * If provided, the letter will include the Account's balance as of the date.
      */
     balance_date?: string;
+  }
+
+  /**
+   * Funding instructions.
+   */
+  export interface FundingInstructions {
+    /**
+     * The Account Number the funding instructions should be generated for.
+     */
+    account_number_id: string;
   }
 }
 
@@ -198,6 +231,7 @@ export namespace DocumentListParams {
       | 'proof_of_authorization'
       | 'company_information'
       | 'account_verification_letter'
+      | 'funding_instructions'
     >;
   }
 
