@@ -51,7 +51,8 @@ export class TransactionsPage extends Page<Transaction> {}
 
 /**
  * Transactions are the immutable additions and removals of money from your bank
- * account. They're the equivalent of line items on your bank statement.
+ * account. They're the equivalent of line items on your bank statement. To learn
+ * more, see [Transactions and Transfers](/documentation/transactions-transfers).
  */
 export interface Transaction {
   /**
