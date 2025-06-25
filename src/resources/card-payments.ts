@@ -597,6 +597,9 @@ export namespace CardPayment {
        *   be convertible to cash.
        * - `refund` - A refund card authorization, sometimes referred to as a credit
        *   voucher authorization, where funds are credited to the cardholder.
+       * - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
+       *   from an ATM or a point of sale.
+       * - `unknown` - The processing category is unknown.
        */
       processing_category:
         | 'account_funding'
@@ -605,7 +608,9 @@ export namespace CardPayment {
         | 'original_credit'
         | 'purchase'
         | 'quasi_cash'
-        | 'refund';
+        | 'refund'
+        | 'cash_disbursement'
+        | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
@@ -1079,6 +1084,9 @@ export namespace CardPayment {
        *   be convertible to cash.
        * - `refund` - A refund card authorization, sometimes referred to as a credit
        *   voucher authorization, where funds are credited to the cardholder.
+       * - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
+       *   from an ATM or a point of sale.
+       * - `unknown` - The processing category is unknown.
        */
       processing_category:
         | 'account_funding'
@@ -1087,7 +1095,9 @@ export namespace CardPayment {
         | 'original_credit'
         | 'purchase'
         | 'quasi_cash'
-        | 'refund';
+        | 'refund'
+        | 'cash_disbursement'
+        | 'unknown';
 
       /**
        * The identifier of the Real-Time Decision sent to approve or decline this
