@@ -1420,7 +1420,7 @@ export namespace EntityCreateParams {
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
-             * document.
+             * document (e.g., `US`).
              */
             country: string;
 
@@ -1452,7 +1452,8 @@ export namespace EntityCreateParams {
            */
           export interface Passport {
             /**
-             * The country that issued the passport.
+             * The two-character ISO 3166-1 code representing the country that issued the
+             * document (e.g., `US`).
              */
             country: string;
 
@@ -1712,7 +1713,7 @@ export namespace EntityCreateParams {
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
-           * document.
+           * document (e.g., `US`).
            */
           country: string;
 
@@ -1744,7 +1745,8 @@ export namespace EntityCreateParams {
          */
         export interface Passport {
           /**
-           * The country that issued the passport.
+           * The two-character ISO 3166-1 code representing the country that issued the
+           * passport (e.g., `US`).
            */
           country: string;
 
@@ -1912,7 +1914,7 @@ export namespace EntityCreateParams {
       export interface Other {
         /**
          * The two-character ISO 3166-1 code representing the country that issued the
-         * document.
+         * document (e.g., `US`).
          */
         country: string;
 
@@ -1944,7 +1946,8 @@ export namespace EntityCreateParams {
        */
       export interface Passport {
         /**
-         * The country that issued the passport.
+         * The two-character ISO 3166-1 code representing the country that issued the
+         * passport (e.g., `US`).
          */
         country: string;
 
@@ -2239,7 +2242,7 @@ export namespace EntityCreateParams {
           export interface Other {
             /**
              * The two-character ISO 3166-1 code representing the country that issued the
-             * document.
+             * document (e.g., `US`).
              */
             country: string;
 
@@ -2271,7 +2274,8 @@ export namespace EntityCreateParams {
            */
           export interface Passport {
             /**
-             * The country that issued the passport.
+             * The two-character ISO 3166-1 code representing the country that issued the
+             * passport (e.g., `US`).
              */
             country: string;
 
@@ -2436,7 +2440,7 @@ export namespace EntityCreateParams {
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
-           * document.
+           * document (e.g., `US`).
            */
           country: string;
 
@@ -2468,7 +2472,8 @@ export namespace EntityCreateParams {
          */
         export interface Passport {
           /**
-           * The country that issued the passport.
+           * The two-character ISO 3166-1 code representing the country that issued the
+           * passport (e.g., `US`).
            */
           country: string;
 
@@ -2740,7 +2745,7 @@ export namespace EntityCreateBeneficialOwnerParams {
         export interface Other {
           /**
            * The two-character ISO 3166-1 code representing the country that issued the
-           * document.
+           * document (e.g., `US`).
            */
           country: string;
 
@@ -2772,7 +2777,8 @@ export namespace EntityCreateBeneficialOwnerParams {
          */
         export interface Passport {
           /**
-           * The country that issued the passport.
+           * The two-character ISO 3166-1 code representing the country that issued the
+           * document (e.g., `US`).
            */
           country: string;
 
