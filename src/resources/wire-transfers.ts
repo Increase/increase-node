@@ -188,6 +188,12 @@ export interface WireTransfer {
   idempotency_key: string | null;
 
   /**
+   * The ID of an Inbound Wire Drawdown Request in response to which this transfer
+   * was sent.
+   */
+  inbound_wire_drawdown_request_id: string | null;
+
+  /**
    * The message that will show on the recipient's bank statement.
    */
   message_to_recipient: string | null;
@@ -542,6 +548,12 @@ export interface WireTransferCreateParams {
    * provided, `account_number` and `routing_number` must be absent.
    */
   external_account_id?: string;
+
+  /**
+   * The ID of an Inbound Wire Drawdown Request in response to which this transfer is
+   * being sent.
+   */
+  inbound_wire_drawdown_request_id?: string;
 
   /**
    * The originator's address line 1. This is only necessary if you're transferring
