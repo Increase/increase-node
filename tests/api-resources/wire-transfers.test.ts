@@ -36,6 +36,7 @@ describe('resource wireTransfers', () => {
       beneficiary_address_line2: 'New York',
       beneficiary_address_line3: 'NY 10045',
       external_account_id: 'external_account_id',
+      inbound_wire_drawdown_request_id: 'inbound_wire_drawdown_request_id',
       originator_address_line1: 'x',
       originator_address_line2: 'x',
       originator_address_line3: 'x',
