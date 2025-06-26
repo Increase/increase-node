@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.233.1 (2025-06-26)
+
+Full Changelog: [v0.233.0...v0.233.1](https://github.com/Increase/increase-node/compare/v0.233.0...v0.233.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([8ac8f8c](https://github.com/Increase/increase-node/commit/8ac8f8cd4da6d9ce71fc9c6b5ffc5f3cd9c65ede))
+
 ## 0.233.0 (2025-06-26)
 
 Full Changelog: [v0.232.0...v0.233.0](https://github.com/Increase/increase-node/compare/v0.232.0...v0.233.0)
