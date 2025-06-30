@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.233.2 (2025-06-27)
+
+Full Changelog: [v0.233.1...v0.233.2](https://github.com/Increase/increase-node/compare/v0.233.1...v0.233.2)
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([93f0520](https://github.com/Increase/increase-node/commit/93f0520f55c50066516e21f7f8ddd3e3ac9892a2))
+
 ## 0.233.1 (2025-06-26)
 
 Full Changelog: [v0.233.0...v0.233.1](https://github.com/Increase/increase-node/compare/v0.233.0...v0.233.1)
