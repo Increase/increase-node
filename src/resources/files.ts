@@ -155,6 +155,7 @@ export interface File {
    *   evidence for a Proof of Authorization Request Submission.
    * - `account_verification_letter` - An account verification letter.
    * - `funding_instructions` - Funding instructions.
+   * - `hold_harmless_letter` - A Hold Harmless Letter.
    */
   purpose:
     | 'check_image_front'
@@ -183,7 +184,8 @@ export interface File {
     | 'deposit_account_control_agreement'
     | 'proof_of_authorization_request_submission'
     | 'account_verification_letter'
-    | 'funding_instructions';
+    | 'funding_instructions'
+    | 'hold_harmless_letter';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -328,6 +330,7 @@ export namespace FileListParams {
       | 'proof_of_authorization_request_submission'
       | 'account_verification_letter'
       | 'funding_instructions'
+      | 'hold_harmless_letter'
     >;
   }
 }
