@@ -896,9 +896,6 @@ export interface InboundACHTransferTransferReturnParams {
    *
    * - `insufficient_funds` - The customer's account has insufficient funds. This
    *   reason is only allowed for debits. The Nacha return code is R01.
-   * - `returned_per_odfi_request` - The originating financial institution asked for
-   *   this transfer to be returned. The receiving bank is complying with the
-   *   request. The Nacha return code is R06.
    * - `authorization_revoked_by_customer` - The customer no longer authorizes this
    *   transaction. The Nacha return code is R07.
    * - `payment_stopped` - The customer asked for the payment to be stopped. This
@@ -919,7 +916,6 @@ export interface InboundACHTransferTransferReturnParams {
    */
   reason:
     | 'insufficient_funds'
-    | 'returned_per_odfi_request'
     | 'authorization_revoked_by_customer'
     | 'payment_stopped'
     | 'customer_advised_unauthorized_improper_ineligible_or_incomplete'
