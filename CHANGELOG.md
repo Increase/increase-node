@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.234.1 (2025-07-02)
+
+Full Changelog: [v0.234.0...v0.234.1](https://github.com/Increase/increase-node/compare/v0.234.0...v0.234.1)
+
+### Bug Fixes
+
+* **client:** don't send `Content-Type` for bodyless methods ([d04a9cc](https://github.com/Increase/increase-node/commit/d04a9cce5a115c5b3b4bac65117904799fb2b194))
+
+
+### Chores
+
+* mention unit type in timeout docs ([40c5ff1](https://github.com/Increase/increase-node/commit/40c5ff163ad050254aea8a1213caf7a0ee7df85c))
+
 ## 0.234.0 (2025-07-01)
 
 Full Changelog: [v0.233.2...v0.234.0](https://github.com/Increase/increase-node/compare/v0.233.2...v0.234.0)
