@@ -395,6 +395,22 @@ export namespace PhysicalCardCreateParams {
      * - `fedex_2_day` - FedEx 2-day.
      */
     method: 'usps' | 'fedex_priority_overnight' | 'fedex_2_day';
+
+    /**
+     * When this physical card should be produced by the card printer. The default
+     * timeline is the day after the card printer receives the order, except for
+     * `FEDEX_PRIORITY_OVERNIGHT` cards, which default to `SAME_DAY`. To use faster
+     * production methods, please reach out to
+     * [support@increase.com](mailto:support@increase.com).
+     *
+     * - `next_day` - The physical card will be shipped one business day after the
+     *   order is received by the card printer. A card that is submitted to Increase on
+     *   a Monday evening (Pacific Time) will ship out on Wednesday.
+     * - `same_day` - The physical card will be shipped on the same business day that
+     *   the order is received by the card printer. A card that is submitted to
+     *   Increase on a Monday evening (Pacific Time) will ship out on Tuesday.
+     */
+    schedule?: 'next_day' | 'same_day';
   }
 
   export namespace Shipment {
