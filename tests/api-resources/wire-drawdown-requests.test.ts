@@ -13,10 +13,13 @@ describe('resource wireDrawdownRequests', () => {
     const responsePromise = client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
-      message_to_recipient: 'Invoice 29582',
-      recipient_account_number: '987654321',
-      recipient_name: 'Ian Crease',
-      recipient_routing_number: '101050001',
+      creditor_address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+      creditor_name: 'National Phonograph Company',
+      debtor_account_number: '987654321',
+      debtor_address: { city: 'New York', country: 'US', line1: '33 Liberty Street' },
+      debtor_name: 'Ian Crease',
+      debtor_routing_number: '101050001',
+      unstructured_remittance_information: 'Invoice 29582',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -31,17 +34,27 @@ describe('resource wireDrawdownRequests', () => {
     const response = await client.wireDrawdownRequests.create({
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 10000,
-      message_to_recipient: 'Invoice 29582',
-      recipient_account_number: '987654321',
-      recipient_name: 'Ian Crease',
-      recipient_routing_number: '101050001',
-      originator_address_line1: 'x',
-      originator_address_line2: 'x',
-      originator_address_line3: 'x',
-      originator_name: 'x',
-      recipient_address_line1: '33 Liberty Street',
-      recipient_address_line2: 'New York, NY, 10045',
-      recipient_address_line3: 'x',
+      creditor_address: {
+        city: 'New York',
+        country: 'US',
+        line1: '33 Liberty Street',
+        line2: 'x',
+        postal_code: '10045',
+        state: 'NY',
+      },
+      creditor_name: 'National Phonograph Company',
+      debtor_account_number: '987654321',
+      debtor_address: {
+        city: 'New York',
+        country: 'US',
+        line1: '33 Liberty Street',
+        line2: 'x',
+        postal_code: '10045',
+        state: 'NY',
+      },
+      debtor_name: 'Ian Crease',
+      debtor_routing_number: '101050001',
+      unstructured_remittance_information: 'Invoice 29582',
     });
   });
 
