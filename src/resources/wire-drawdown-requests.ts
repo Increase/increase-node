@@ -16,10 +16,21 @@ export class WireDrawdownRequests extends APIResource {
    *     account_number_id:
    *       'account_number_v18nkfqm6afpsrvy82b2',
    *     amount: 10000,
-   *     message_to_recipient: 'Invoice 29582',
-   *     recipient_account_number: '987654321',
-   *     recipient_name: 'Ian Crease',
-   *     recipient_routing_number: '101050001',
+   *     creditor_address: {
+   *       city: 'New York',
+   *       country: 'US',
+   *       line1: '33 Liberty Street',
+   *     },
+   *     creditor_name: 'National Phonograph Company',
+   *     debtor_account_number: '987654321',
+   *     debtor_address: {
+   *       city: 'New York',
+   *       country: 'US',
+   *       line1: '33 Liberty Street',
+   *     },
+   *     debtor_name: 'Ian Crease',
+   *     debtor_routing_number: '101050001',
+   *     unstructured_remittance_information: 'Invoice 29582',
    *   });
    * ```
    */
@@ -95,8 +106,8 @@ export interface WireDrawdownRequest {
   id: string;
 
   /**
-   * The Account Number to which the recipient of this request is being requested to
-   * send funds.
+   * The Account Number to which the debtor—the recipient of this request—is being
+   * requested to send funds.
    */
   account_number_id: string;
 
@@ -112,10 +123,40 @@ export interface WireDrawdownRequest {
   created_at: string;
 
   /**
+   * The creditor's address.
+   */
+  creditor_address: WireDrawdownRequest.CreditorAddress;
+
+  /**
+   * The creditor's name.
+   */
+  creditor_name: string;
+
+  /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
    * requested. Will always be "USD".
    */
   currency: string;
+
+  /**
+   * The debtor's account number.
+   */
+  debtor_account_number: string;
+
+  /**
+   * The debtor's address.
+   */
+  debtor_address: WireDrawdownRequest.DebtorAddress;
+
+  /**
+   * The debtor's name.
+   */
+  debtor_name: string;
+
+  /**
+   * The debtor's routing number.
+   */
+  debtor_routing_number: string;
 
   /**
    * If the recipient fulfills the drawdown request by sending funds, then this will
@@ -129,61 +170,6 @@ export interface WireDrawdownRequest {
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key: string | null;
-
-  /**
-   * The message the recipient will see as part of the drawdown request.
-   */
-  message_to_recipient: string;
-
-  /**
-   * The originator's address line 1.
-   */
-  originator_address_line1: string | null;
-
-  /**
-   * The originator's address line 2.
-   */
-  originator_address_line2: string | null;
-
-  /**
-   * The originator's address line 3.
-   */
-  originator_address_line3: string | null;
-
-  /**
-   * The originator's name.
-   */
-  originator_name: string | null;
-
-  /**
-   * The drawdown request's recipient's account number.
-   */
-  recipient_account_number: string;
-
-  /**
-   * Line 1 of the drawdown request's recipient's address.
-   */
-  recipient_address_line1: string | null;
-
-  /**
-   * Line 2 of the drawdown request's recipient's address.
-   */
-  recipient_address_line2: string | null;
-
-  /**
-   * Line 3 of the drawdown request's recipient's address.
-   */
-  recipient_address_line3: string | null;
-
-  /**
-   * The drawdown request's recipient's name.
-   */
-  recipient_name: string | null;
-
-  /**
-   * The drawdown request's recipient's routing number.
-   */
-  recipient_routing_number: string;
 
   /**
    * The lifecycle status of the drawdown request.
@@ -208,9 +194,88 @@ export interface WireDrawdownRequest {
    * `wire_drawdown_request`.
    */
   type: 'wire_drawdown_request';
+
+  /**
+   * Remittance information the debtor will see as part of the drawdown request.
+   */
+  unstructured_remittance_information: string;
 }
 
 export namespace WireDrawdownRequest {
+  /**
+   * The creditor's address.
+   */
+  export interface CreditorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
+
+    /**
+     * The two-letter
+     * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+     * the country of the address.
+     */
+    country: string;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string;
+
+    /**
+     * The second line of the address.
+     */
+    line2: string | null;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code: string | null;
+
+    /**
+     * The address state.
+     */
+    state: string | null;
+  }
+
+  /**
+   * The debtor's address.
+   */
+  export interface DebtorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
+
+    /**
+     * The two-letter
+     * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+     * the country of the address.
+     */
+    country: string;
+
+    /**
+     * The first line of the address.
+     */
+    line1: string;
+
+    /**
+     * The second line of the address.
+     */
+    line2: string | null;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code: string | null;
+
+    /**
+     * The address state.
+     */
+    state: string | null;
+  }
+
   /**
    * After the drawdown request is submitted to Fedwire, this will contain
    * supplemental details.
@@ -226,77 +291,125 @@ export namespace WireDrawdownRequest {
 
 export interface WireDrawdownRequestCreateParams {
   /**
-   * The Account Number to which the recipient should send funds.
+   * The Account Number to which the debtor should send funds.
    */
   account_number_id: string;
 
   /**
-   * The amount requested from the recipient, in USD cents.
+   * The amount requested from the debtor, in USD cents.
    */
   amount: number;
 
   /**
-   * A message the recipient will see as part of the request.
+   * The creditor's address.
    */
-  message_to_recipient: string;
+  creditor_address: WireDrawdownRequestCreateParams.CreditorAddress;
 
   /**
-   * The drawdown request's recipient's account number.
+   * The creditor's name.
    */
-  recipient_account_number: string;
+  creditor_name: string;
 
   /**
-   * The drawdown request's recipient's name.
+   * The debtor's account number.
    */
-  recipient_name: string;
+  debtor_account_number: string;
 
   /**
-   * The drawdown request's recipient's routing number.
+   * The debtor's address.
    */
-  recipient_routing_number: string;
+  debtor_address: WireDrawdownRequestCreateParams.DebtorAddress;
 
   /**
-   * The drawdown request originator's address line 1. This is only necessary if
-   * you're requesting a payment to a commingled account. Otherwise, we'll use the
-   * associated entity's details.
+   * The debtor's name.
    */
-  originator_address_line1?: string;
+  debtor_name: string;
 
   /**
-   * The drawdown request originator's address line 2. This is only necessary if
-   * you're requesting a payment to a commingled account. Otherwise, we'll use the
-   * associated entity's details.
+   * The debtor's routing number.
    */
-  originator_address_line2?: string;
+  debtor_routing_number: string;
 
   /**
-   * The drawdown request originator's address line 3. This is only necessary if
-   * you're requesting a payment to a commingled account. Otherwise, we'll use the
-   * associated entity's details.
+   * Remittance information the debtor will see as part of the request.
    */
-  originator_address_line3?: string;
+  unstructured_remittance_information: string;
+}
+
+export namespace WireDrawdownRequestCreateParams {
+  /**
+   * The creditor's address.
+   */
+  export interface CreditorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
+
+    /**
+     * The two-letter
+     * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+     * the country of the address.
+     */
+    country: string;
+
+    /**
+     * The first line of the address. This is usually the street number and street.
+     */
+    line1: string;
+
+    /**
+     * The second line of the address. This might be the floor or room number.
+     */
+    line2?: string;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code?: string;
+
+    /**
+     * The address state.
+     */
+    state?: string;
+  }
 
   /**
-   * The drawdown request originator's name. This is only necessary if you're
-   * requesting a payment to a commingled account. Otherwise, we'll use the
-   * associated entity's details.
+   * The debtor's address.
    */
-  originator_name?: string;
+  export interface DebtorAddress {
+    /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
 
-  /**
-   * Line 1 of the drawdown request's recipient's address.
-   */
-  recipient_address_line1?: string;
+    /**
+     * The two-letter
+     * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+     * the country of the address.
+     */
+    country: string;
 
-  /**
-   * Line 2 of the drawdown request's recipient's address.
-   */
-  recipient_address_line2?: string;
+    /**
+     * The first line of the address. This is usually the street number and street.
+     */
+    line1: string;
 
-  /**
-   * Line 3 of the drawdown request's recipient's address.
-   */
-  recipient_address_line3?: string;
+    /**
+     * The second line of the address. This might be the floor or room number.
+     */
+    line2?: string;
+
+    /**
+     * The ZIP code of the address.
+     */
+    postal_code?: string;
+
+    /**
+     * The address state.
+     */
+    state?: string;
+  }
 }
 
 export interface WireDrawdownRequestListParams extends PageParams {
