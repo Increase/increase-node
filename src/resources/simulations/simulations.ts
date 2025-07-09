@@ -81,6 +81,8 @@ import {
   RealTimePaymentsTransferCompleteParams,
   RealTimePaymentsTransfers,
 } from './real-time-payments-transfers';
+import * as WireDrawdownRequestsAPI from './wire-drawdown-requests';
+import { WireDrawdownRequests } from './wire-drawdown-requests';
 import * as WireTransfersAPI from './wire-transfers';
 import { WireTransfers } from './wire-transfers';
 
@@ -115,6 +117,8 @@ export class Simulations extends APIResource {
   wireTransfers: WireTransfersAPI.WireTransfers = new WireTransfersAPI.WireTransfers(this._client);
   inboundWireTransfers: InboundWireTransfersAPI.InboundWireTransfers =
     new InboundWireTransfersAPI.InboundWireTransfers(this._client);
+  wireDrawdownRequests: WireDrawdownRequestsAPI.WireDrawdownRequests =
+    new WireDrawdownRequestsAPI.WireDrawdownRequests(this._client);
   inboundWireDrawdownRequests: InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests =
     new InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequests(this._client);
   checkTransfers: CheckTransfersAPI.CheckTransfers = new CheckTransfersAPI.CheckTransfers(this._client);
@@ -152,6 +156,7 @@ Simulations.ACHTransfers = ACHTransfers;
 Simulations.InboundACHTransfers = InboundACHTransfers;
 Simulations.WireTransfers = WireTransfers;
 Simulations.InboundWireTransfers = InboundWireTransfers;
+Simulations.WireDrawdownRequests = WireDrawdownRequests;
 Simulations.InboundWireDrawdownRequests = InboundWireDrawdownRequests;
 Simulations.CheckTransfers = CheckTransfers;
 Simulations.InboundCheckDeposits = InboundCheckDeposits;
@@ -234,6 +239,8 @@ export declare namespace Simulations {
     InboundWireTransfers as InboundWireTransfers,
     type InboundWireTransferCreateParams as InboundWireTransferCreateParams,
   };
+
+  export { WireDrawdownRequests as WireDrawdownRequests };
 
   export {
     InboundWireDrawdownRequests as InboundWireDrawdownRequests,
