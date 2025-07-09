@@ -756,6 +756,12 @@ Methods:
 
 - <code title="post /simulations/inbound_wire_transfers">client.simulations.inboundWireTransfers.<a href="./src/resources/simulations/inbound-wire-transfers.ts">create</a>({ ...params }) -> InboundWireTransfer</code>
 
+## WireDrawdownRequests
+
+Methods:
+
+- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">refuse</a>(wireDrawdownRequestId) -> WireDrawdownRequest</code>
+
 ## InboundWireDrawdownRequests
 
 Methods:

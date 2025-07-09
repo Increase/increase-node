@@ -264,6 +264,12 @@ export interface InboundWireTransferListParams extends PageParams {
   created_at?: InboundWireTransferListParams.CreatedAt;
 
   status?: InboundWireTransferListParams.Status;
+
+  /**
+   * Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
+   * Request.
+   */
+  wire_drawdown_request_id?: string;
 }
 
 export namespace InboundWireTransferListParams {
