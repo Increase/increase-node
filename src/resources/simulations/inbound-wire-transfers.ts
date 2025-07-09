@@ -126,6 +126,12 @@ export interface InboundWireTransferCreateParams {
    * value here.
    */
   sender_reference?: string;
+
+  /**
+   * The identifier of a Wire Drawdown Request the inbound Wire Transfer is
+   * fulfilling.
+   */
+  wire_drawdown_request_id?: string;
 }
 
 export declare namespace InboundWireTransfers {
