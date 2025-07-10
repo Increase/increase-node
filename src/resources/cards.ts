@@ -248,6 +248,11 @@ export interface CardDetails {
   expiration_year: number;
 
   /**
+   * The 4-digit PIN for the card, for use with ATMs.
+   */
+  pin: string;
+
+  /**
    * The card number.
    */
   primary_account_number: string;
