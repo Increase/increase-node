@@ -30,6 +30,22 @@ export interface ProgramCreateParams {
   name: string;
 
   /**
+   * The bank for the program's accounts, defaults to First Internet Bank.
+   *
+   * - `blue_ridge_bank` - Blue Ridge Bank, N.A.
+   * - `core_bank` - Core Bank
+   * - `first_internet_bank` - First Internet Bank of Indiana
+   * - `global_innovations_bank` - Global Innovations Bank
+   * - `grasshopper_bank` - Grasshopper Bank
+   */
+  bank?:
+    | 'blue_ridge_bank'
+    | 'core_bank'
+    | 'first_internet_bank'
+    | 'global_innovations_bank'
+    | 'grasshopper_bank';
+
+  /**
    * The identifier of the Account the Program should be added to is for.
    */
   reserve_account_id?: string;
