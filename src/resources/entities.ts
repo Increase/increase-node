@@ -1561,11 +1561,6 @@ export namespace EntityCreateParams {
      * The two individuals that share control of the entity.
      */
     individuals: Array<Joint.Individual>;
-
-    /**
-     * The name of the joint entity.
-     */
-    name?: string;
   }
 
   export namespace Joint {
