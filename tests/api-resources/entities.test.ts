@@ -105,7 +105,6 @@ describe('resource entities', () => {
             confirmed_no_us_tax_id: true,
           },
         ],
-        name: 'x',
       },
       natural_person: {
         address: { city: 'x', line1: 'x', state: 'x', zip: 'x', line2: 'x' },
