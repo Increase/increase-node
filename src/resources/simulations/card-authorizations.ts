@@ -135,17 +135,6 @@ export interface CardAuthorizationCreateParams {
   digital_wallet_token_id?: string;
 
   /**
-   * The direction describes the direction the funds will move, either from the
-   * cardholder to the merchant or from the merchant to the cardholder.
-   *
-   * - `settlement` - A regular card authorization where funds are debited from the
-   *   cardholder.
-   * - `refund` - A refund card authorization, sometimes referred to as a credit
-   *   voucher authorization, where funds are credited to the cardholder.
-   */
-  direction?: 'settlement' | 'refund';
-
-  /**
    * The identifier of the Event Subscription to use. If provided, will override the
    * default real time event subscription. Because you can only create one real time
    * decision event subscription, you can use this field to route events to any
@@ -202,6 +191,12 @@ export interface CardAuthorizationCreateParams {
   physical_card_id?: string;
 
   /**
+   * Fields specific to a specific type of authorization, such as Automatic Fuel
+   * Dispensers, Refund Authorizations, or Cash Disbursements.
+   */
+  processing_category?: CardAuthorizationCreateParams.ProcessingCategory;
+
+  /**
    * The terminal identifier (commonly abbreviated as TID) of the terminal the card
    * is transacting with.
    */
@@ -254,6 +249,43 @@ export namespace CardAuthorizationCreateParams {
         | 'payment_fraud_disruption_acquirer_block'
         | 'other';
     }
+  }
+
+  /**
+   * Fields specific to a specific type of authorization, such as Automatic Fuel
+   * Dispensers, Refund Authorizations, or Cash Disbursements.
+   */
+  export interface ProcessingCategory {
+    /**
+     * The processing category describes the intent behind the authorization, such as
+     * whether it was used for bill payments or an automatic fuel dispenser.
+     *
+     * - `account_funding` - Account funding transactions are transactions used to
+     *   e.g., fund an account or transfer funds between accounts.
+     * - `automatic_fuel_dispenser` - Automatic fuel dispenser authorizations occur
+     *   when a card is used at a gas pump, prior to the actual transaction amount
+     *   being known. They are followed by an advice message that updates the amount of
+     *   the pending transaction.
+     * - `bill_payment` - A transaction used to pay a bill.
+     * - `original_credit` - Original credit transactions are used to send money to a
+     *   cardholder.
+     * - `purchase` - A regular purchase.
+     * - `quasi_cash` - Quasi-cash transactions represent purchases of items which may
+     *   be convertible to cash.
+     * - `refund` - A refund card authorization, sometimes referred to as a credit
+     *   voucher authorization, where funds are credited to the cardholder.
+     * - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
+     *   from an ATM or a point of sale.
+     */
+    category:
+      | 'account_funding'
+      | 'automatic_fuel_dispenser'
+      | 'bill_payment'
+      | 'original_credit'
+      | 'purchase'
+      | 'quasi_cash'
+      | 'refund'
+      | 'cash_disbursement';
   }
 }
 
