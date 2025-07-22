@@ -44,6 +44,7 @@ describe('resource physicalCards', () => {
           name: 'Ian Crease',
           postal_code: '10045',
           state: 'NY',
+          country: 'x',
           line2: 'Unit 2',
           line3: 'x',
           phone_number: 'x',
