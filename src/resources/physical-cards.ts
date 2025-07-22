@@ -183,11 +183,12 @@ export namespace PhysicalCard {
     /**
      * The shipping method.
      *
-     * - `usps` - USPS Post with tracking.
+     * - `usps` - USPS Post.
      * - `fedex_priority_overnight` - FedEx Priority Overnight, no signature.
      * - `fedex_2_day` - FedEx 2-day.
+     * - `dhl_worldwide_express` - DHL Worldwide Express, international shipping only.
      */
-    method: 'usps' | 'fedex_priority_overnight' | 'fedex_2_day';
+    method: 'usps' | 'fedex_priority_overnight' | 'fedex_2_day' | 'dhl_worldwide_express';
 
     /**
      * When this physical card should be produced by the card printer. The default
@@ -249,6 +250,11 @@ export namespace PhysicalCard {
       city: string;
 
       /**
+       * The country of the shipping address.
+       */
+      country: string;
+
+      /**
        * The first line of the shipping address.
        */
       line1: string;
@@ -274,7 +280,7 @@ export namespace PhysicalCard {
       postal_code: string;
 
       /**
-       * The US state of the shipping address.
+       * The state of the shipping address.
        */
       state: string;
     }
@@ -406,11 +412,12 @@ export namespace PhysicalCardCreateParams {
     /**
      * The shipping method to use.
      *
-     * - `usps` - USPS Post with tracking.
+     * - `usps` - USPS Post.
      * - `fedex_priority_overnight` - FedEx Priority Overnight, no signature.
      * - `fedex_2_day` - FedEx 2-day.
+     * - `dhl_worldwide_express` - DHL Worldwide Express, international shipping only.
      */
-    method: 'usps' | 'fedex_priority_overnight' | 'fedex_2_day';
+    method: 'usps' | 'fedex_priority_overnight' | 'fedex_2_day' | 'dhl_worldwide_express';
 
     /**
      * When this physical card should be produced by the card printer. The default
@@ -455,9 +462,17 @@ export namespace PhysicalCardCreateParams {
       postal_code: string;
 
       /**
-       * The US state of the shipping address.
+       * The state of the shipping address.
        */
       state: string;
+
+      /**
+       * The two-character ISO 3166-1 code of the country where the card should be
+       * shipped (e.g., `US`). Please reach out to
+       * [support@increase.com](mailto:support@increase.com) to ship cards
+       * internationally.
+       */
+      country?: string;
 
       /**
        * The second line of the shipping address.
