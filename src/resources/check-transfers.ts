@@ -93,7 +93,7 @@ export class CheckTransfers extends APIResource {
   }
 
   /**
-   * Request a stop payment on a Check Transfer
+   * Stop payment on a Check Transfer
    *
    * @example
    * ```ts
