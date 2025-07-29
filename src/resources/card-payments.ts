@@ -1597,6 +1597,18 @@ export namespace CardPayment {
       pending_transaction_id: string | null;
 
       /**
+       * The amount of this increment in the minor unit of the transaction's presentment
+       * currency.
+       */
+      presentment_amount: number;
+
+      /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+       * transaction's presentment currency.
+       */
+      presentment_currency: string;
+
+      /**
        * The identifier of the Real-Time Decision sent to approve or decline this
        * incremental authorization.
        */
