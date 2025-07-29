@@ -2451,10 +2451,22 @@ export namespace CardPayment {
       pending_transaction_id: string | null;
 
       /**
+       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
+       * presentment currency.
+       */
+      presentment_currency: string;
+
+      /**
        * The amount of this reversal in the minor unit of the transaction's currency. For
        * dollars, for example, this is cents.
        */
       reversal_amount: number;
+
+      /**
+       * The amount of this reversal in the minor unit of the transaction's presentment
+       * currency. For dollars, for example, this is cents.
+       */
+      reversal_presentment_amount: number;
 
       /**
        * Why this reversal was initiated.
@@ -2491,6 +2503,12 @@ export namespace CardPayment {
        * transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+
+      /**
+       * The amount left pending on the Card Authorization in the minor unit of the
+       * transaction's presentment currency. For dollars, for example, this is cents.
+       */
+      updated_authorization_presentment_amount: number;
     }
 
     export namespace CardReversal {
