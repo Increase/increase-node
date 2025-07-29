@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.248.0 (2025-07-29)
+
+Full Changelog: [v0.247.0...v0.248.0](https://github.com/Increase/increase-node/compare/v0.247.0...v0.248.0)
+
+### Features
+
+* **api:** api update ([06e794e](https://github.com/Increase/increase-node/commit/06e794e3219d3f976e8379cb04fd8da1c14e3795))
+* **api:** api update ([b99c21c](https://github.com/Increase/increase-node/commit/b99c21cb7eda04b7eea126a8a10de6f89f907d18))
+
+
+### Chores
+
+* **internal:** remove redundant imports config ([9aaee9d](https://github.com/Increase/increase-node/commit/9aaee9d671b578aca75a4b7cd8627d9edc10a1f0))
+
 ## 0.247.0 (2025-07-23)
 
 Full Changelog: [v0.246.0...v0.247.0](https://github.com/Increase/increase-node/compare/v0.246.0...v0.247.0)
