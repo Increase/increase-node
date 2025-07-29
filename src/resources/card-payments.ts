@@ -457,6 +457,13 @@ export namespace CardPayment {
       actioner: 'user' | 'increase' | 'network';
 
       /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      additional_amounts: CardAuthorization.AdditionalAmounts;
+
+      /**
        * The pending amount in the minor unit of the transaction's currency. For dollars,
        * for example, this is cents.
        */
@@ -637,6 +644,204 @@ export namespace CardPayment {
     }
 
     export namespace CardAuthorization {
+      /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      export interface AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        clinic: AdditionalAmounts.Clinic | null;
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        dental: AdditionalAmounts.Dental | null;
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        prescription: AdditionalAmounts.Prescription | null;
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        surcharge: AdditionalAmounts.Surcharge | null;
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        total_cumulative: AdditionalAmounts.TotalCumulative | null;
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        total_healthcare: AdditionalAmounts.TotalHealthcare | null;
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        transit: AdditionalAmounts.Transit | null;
+
+        /**
+         * An unknown additional amount.
+         */
+        unknown: AdditionalAmounts.Unknown | null;
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        vision: AdditionalAmounts.Vision | null;
+      }
+
+      export namespace AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        export interface Clinic {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        export interface Dental {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        export interface Prescription {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        export interface Surcharge {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        export interface TotalCumulative {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        export interface TotalHealthcare {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        export interface Transit {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * An unknown additional amount.
+         */
+        export interface Unknown {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        export interface Vision {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+      }
+
       /**
        * Fields specific to the `network`.
        */
@@ -950,6 +1155,13 @@ export namespace CardPayment {
       actioner: 'user' | 'increase' | 'network';
 
       /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      additional_amounts: CardDecline.AdditionalAmounts;
+
+      /**
        * The declined amount in the minor unit of the destination account currency. For
        * dollars, for example, this is cents.
        */
@@ -1199,6 +1411,204 @@ export namespace CardPayment {
     }
 
     export namespace CardDecline {
+      /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      export interface AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        clinic: AdditionalAmounts.Clinic | null;
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        dental: AdditionalAmounts.Dental | null;
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        prescription: AdditionalAmounts.Prescription | null;
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        surcharge: AdditionalAmounts.Surcharge | null;
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        total_cumulative: AdditionalAmounts.TotalCumulative | null;
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        total_healthcare: AdditionalAmounts.TotalHealthcare | null;
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        transit: AdditionalAmounts.Transit | null;
+
+        /**
+         * An unknown additional amount.
+         */
+        unknown: AdditionalAmounts.Unknown | null;
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        vision: AdditionalAmounts.Vision | null;
+      }
+
+      export namespace AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        export interface Clinic {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        export interface Dental {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        export interface Prescription {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        export interface Surcharge {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        export interface TotalCumulative {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        export interface TotalHealthcare {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        export interface Transit {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * An unknown additional amount.
+         */
+        export interface Unknown {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        export interface Vision {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+      }
+
       /**
        * Fields specific to the `network`.
        */
@@ -1550,6 +1960,13 @@ export namespace CardPayment {
       actioner: 'user' | 'increase' | 'network';
 
       /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      additional_amounts: CardIncrement.AdditionalAmounts;
+
+      /**
        * The amount of this increment in the minor unit of the transaction's currency.
        * For dollars, for example, this is cents.
        */
@@ -1628,6 +2045,204 @@ export namespace CardPayment {
     }
 
     export namespace CardIncrement {
+      /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      export interface AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        clinic: AdditionalAmounts.Clinic | null;
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        dental: AdditionalAmounts.Dental | null;
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        prescription: AdditionalAmounts.Prescription | null;
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        surcharge: AdditionalAmounts.Surcharge | null;
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        total_cumulative: AdditionalAmounts.TotalCumulative | null;
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        total_healthcare: AdditionalAmounts.TotalHealthcare | null;
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        transit: AdditionalAmounts.Transit | null;
+
+        /**
+         * An unknown additional amount.
+         */
+        unknown: AdditionalAmounts.Unknown | null;
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        vision: AdditionalAmounts.Vision | null;
+      }
+
+      export namespace AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        export interface Clinic {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        export interface Dental {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        export interface Prescription {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        export interface Surcharge {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        export interface TotalCumulative {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        export interface TotalHealthcare {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        export interface Transit {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * An unknown additional amount.
+         */
+        export interface Unknown {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        export interface Vision {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+      }
+
       /**
        * Network-specific identifiers for a specific request or transaction.
        */
@@ -3309,6 +3924,13 @@ export namespace CardPayment {
       actioner: 'user' | 'increase' | 'network';
 
       /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      additional_amounts: CardValidation.AdditionalAmounts;
+
+      /**
        * The ID of the Card Payment this transaction belongs to.
        */
       card_payment_id: string;
@@ -3417,6 +4039,204 @@ export namespace CardPayment {
     }
 
     export namespace CardValidation {
+      /**
+       * Additional amounts associated with the card authorization, such as ATM
+       * surcharges fees. These are usually a subset of the `amount` field and are used
+       * to provide more detailed information about the transaction.
+       */
+      export interface AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        clinic: AdditionalAmounts.Clinic | null;
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        dental: AdditionalAmounts.Dental | null;
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        prescription: AdditionalAmounts.Prescription | null;
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        surcharge: AdditionalAmounts.Surcharge | null;
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        total_cumulative: AdditionalAmounts.TotalCumulative | null;
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        total_healthcare: AdditionalAmounts.TotalHealthcare | null;
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        transit: AdditionalAmounts.Transit | null;
+
+        /**
+         * An unknown additional amount.
+         */
+        unknown: AdditionalAmounts.Unknown | null;
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        vision: AdditionalAmounts.Vision | null;
+      }
+
+      export namespace AdditionalAmounts {
+        /**
+         * The part of this transaction amount that was for clinic-related services.
+         */
+        export interface Clinic {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for dental-related services.
+         */
+        export interface Dental {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for healthcare prescriptions.
+         */
+        export interface Prescription {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The surcharge amount charged for this transaction by the merchant.
+         */
+        export interface Surcharge {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of a series of incremental authorizations, optionally provided.
+         */
+        export interface TotalCumulative {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The total amount of healthcare-related additional amounts.
+         */
+        export interface TotalHealthcare {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for transit-related services.
+         */
+        export interface Transit {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * An unknown additional amount.
+         */
+        export interface Unknown {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The part of this transaction amount that was for vision-related services.
+         */
+        export interface Vision {
+          /**
+           * The amount in minor units of the `currency` field.
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+      }
+
       /**
        * Fields specific to the `network`.
        */
