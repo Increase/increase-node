@@ -1208,6 +1208,12 @@ export namespace CardPayment {
       direction: 'settlement' | 'refund';
 
       /**
+       * The identifier of the card authorization this request attempted to incrementally
+       * authorize.
+       */
+      incremented_card_authorization_id: string | null;
+
+      /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
        * is transacting with.
        */
