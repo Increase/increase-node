@@ -59,10 +59,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "increase": ".",
-    "increase/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {
