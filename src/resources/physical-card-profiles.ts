@@ -315,6 +315,11 @@ export interface PhysicalCardProfileCloneParams {
    * [support@increase.com](mailto:support@increase.com) for more information.
    */
   front_text?: PhysicalCardProfileCloneParams.FrontText;
+
+  /**
+   * The identifier of the Program to use for the cloned Physical Card Profile.
+   */
+  program_id?: string;
 }
 
 export namespace PhysicalCardProfileCloneParams {
