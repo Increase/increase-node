@@ -544,9 +544,12 @@ export namespace Entity {
     /**
      * The category of the government authority.
      *
-     * - `municipality` - The Public Entity is a Municipality.
+     * - `municipality` - A municipality.
+     * - `state_agency` - A state agency.
+     * - `state_government` - A state government.
+     * - `federal_agency` - A federal agency.
      */
-    category: 'municipality';
+    category: 'municipality' | 'state_agency' | 'state_government' | 'federal_agency';
 
     /**
      * The government authority's name.
@@ -1491,9 +1494,12 @@ export namespace EntityCreateParams {
     /**
      * The category of the government authority.
      *
-     * - `municipality` - The Public Entity is a Municipality.
+     * - `municipality` - A municipality.
+     * - `state_agency` - A state agency.
+     * - `state_government` - A state government.
+     * - `federal_agency` - A federal agency.
      */
-    category: 'municipality';
+    category: 'municipality' | 'state_agency' | 'state_government' | 'federal_agency';
 
     /**
      * The legal name of the government authority.
