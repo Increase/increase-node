@@ -930,23 +930,25 @@ export namespace Transaction {
          * The type of card dispute financial event.
          *
          * - `chargeback_submitted` - The user's chargeback was submitted.
-         * - `merchant_prearbitration_declined` - The user declined the merchant's request
-         *   for pre-arbitration.
-         * - `merchant_prearbitration_received` - The merchant's request for
+         * - `merchant_prearbitration_request_decline_submitted` - The user declined the
+         *   merchant's request for pre-arbitration.
+         * - `merchant_prearbitration_request_received` - The merchant's request for
          *   pre-arbitration was received.
          * - `represented` - The transaction was represented by the merchant.
-         * - `user_prearbitration_declined` - The user's request for pre-arbitration was
-         *   declined.
-         * - `user_prearbitration_submitted` - The user's request for pre-arbitration was
-         *   submitted.
+         * - `user_prearbitration_request_decline_received` - The user's request for
+         *   pre-arbitration was declined.
+         * - `user_prearbitration_request_submitted` - The user's request for
+         *   pre-arbitration was submitted.
+         * - `user_withdrawal_submitted` - The user withdrew from the dispute.
          */
         event_type:
           | 'chargeback_submitted'
-          | 'merchant_prearbitration_declined'
-          | 'merchant_prearbitration_received'
+          | 'merchant_prearbitration_request_decline_submitted'
+          | 'merchant_prearbitration_request_received'
           | 'represented'
-          | 'user_prearbitration_declined'
-          | 'user_prearbitration_submitted';
+          | 'user_prearbitration_request_decline_received'
+          | 'user_prearbitration_request_submitted'
+          | 'user_withdrawal_submitted';
       }
     }
 
