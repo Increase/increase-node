@@ -178,6 +178,13 @@ export namespace Transaction {
     card_dispute_acceptance: Source.CardDisputeAcceptance | null;
 
     /**
+     * A Card Dispute Financial object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_dispute_financial`. Financial event
+     * related to a Card Dispute.
+     */
+    card_dispute_financial: Source.CardDisputeFinancial | null;
+
+    /**
      * A Card Dispute Loss object. This field will be present in the JSON response if
      * and only if `category` is equal to `card_dispute_loss`. Contains the details of
      * a lost Card Dispute.
@@ -241,6 +248,8 @@ export namespace Transaction {
      *   `cashback_payment` object.
      * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
      *   `card_dispute_acceptance` object.
+     * - `card_dispute_financial` - Card Dispute Financial: details will be under the
+     *   `card_dispute_financial` object.
      * - `card_dispute_loss` - Card Dispute Loss: details will be under the
      *   `card_dispute_loss` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
@@ -301,6 +310,7 @@ export namespace Transaction {
       | 'ach_transfer_return'
       | 'cashback_payment'
       | 'card_dispute_acceptance'
+      | 'card_dispute_financial'
       | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
@@ -870,6 +880,74 @@ export namespace Transaction {
        * to your account.
        */
       transaction_id: string;
+    }
+
+    /**
+     * A Card Dispute Financial object. This field will be present in the JSON response
+     * if and only if `category` is equal to `card_dispute_financial`. Financial event
+     * related to a Card Dispute.
+     */
+    export interface CardDisputeFinancial {
+      /**
+       * The amount of the financial event.
+       */
+      amount: number;
+
+      /**
+       * The identifier of the Card Dispute the financial event is associated with.
+       */
+      card_dispute_id: string;
+
+      /**
+       * The network that the Card Dispute is associated with.
+       *
+       * - `visa` - Visa: details will be under the `visa` object.
+       */
+      network: 'visa';
+
+      /**
+       * The identifier of the Transaction that was created to credit or debit the
+       * disputed funds to or from your account.
+       */
+      transaction_id: string;
+
+      /**
+       * Information for events related to card dispute for card payments processed over
+       * Visa's network. This field will be present in the JSON response if and only if
+       * `network` is equal to `visa`.
+       */
+      visa: CardDisputeFinancial.Visa | null;
+    }
+
+    export namespace CardDisputeFinancial {
+      /**
+       * Information for events related to card dispute for card payments processed over
+       * Visa's network. This field will be present in the JSON response if and only if
+       * `network` is equal to `visa`.
+       */
+      export interface Visa {
+        /**
+         * The type of card dispute financial event.
+         *
+         * - `chargeback_submitted` - The user's chargeback was submitted.
+         * - `merchant_prearbitration_declined` - The user declined the merchant's request
+         *   for pre-arbitration.
+         * - `merchant_prearbitration_received` - The merchant's request for
+         *   pre-arbitration was received.
+         * - `represented` - The transaction was represented by the merchant.
+         * - `user_prearbitration_declined` - The user's request for pre-arbitration was
+         *   declined.
+         * - `user_prearbitration_submitted` - The user's request for pre-arbitration was
+         *   submitted.
+         */
+        event_type:
+          | 'chargeback_submitted'
+          | 'merchant_prearbitration_declined'
+          | 'merchant_prearbitration_received'
+          | 'represented'
+          | 'user_prearbitration_declined'
+          | 'user_prearbitration_submitted';
+      }
     }
 
     /**
@@ -3491,6 +3569,7 @@ export namespace TransactionListParams {
       | 'ach_transfer_return'
       | 'cashback_payment'
       | 'card_dispute_acceptance'
+      | 'card_dispute_financial'
       | 'card_dispute_loss'
       | 'card_refund'
       | 'card_settlement'
