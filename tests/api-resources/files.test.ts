@@ -81,7 +81,7 @@ describe('resource files', () => {
           cursor: 'cursor',
           idempotency_key: 'x',
           limit: 1,
-          purpose: { in: ['check_image_front'] },
+          purpose: { in: ['card_dispute_attachment'] },
         },
         { path: '/_stainless_unknown_path' },
       ),
