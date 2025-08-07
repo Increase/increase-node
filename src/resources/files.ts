@@ -115,6 +115,7 @@ export interface File {
    * enum over time; your application should be able to handle such additions
    * gracefully.
    *
+   * - `card_dispute_attachment` - A file to be attached to a Card Dispute.
    * - `check_image_front` - An image of the front of a check, used for check
    *   deposits.
    * - `check_image_back` - An image of the back of a check, used for check deposits.
@@ -158,6 +159,7 @@ export interface File {
    * - `hold_harmless_letter` - A Hold Harmless Letter.
    */
   purpose:
+    | 'card_dispute_attachment'
     | 'check_image_front'
     | 'check_image_back'
     | 'processed_check_image_front'
@@ -205,6 +207,7 @@ export interface FileCreateParams {
   /**
    * What the File will be used for in Increase's systems.
    *
+   * - `card_dispute_attachment` - A file to be attached to a Card Dispute.
    * - `check_image_front` - An image of the front of a check, used for check
    *   deposits.
    * - `check_image_back` - An image of the back of a check, used for check deposits.
@@ -233,6 +236,7 @@ export interface FileCreateParams {
    *   evidence for a Proof of Authorization Request Submission.
    */
   purpose:
+    | 'card_dispute_attachment'
     | 'check_image_front'
     | 'check_image_back'
     | 'mailed_check_image'
@@ -303,6 +307,7 @@ export namespace FileListParams {
      * this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
      */
     in?: Array<
+      | 'card_dispute_attachment'
       | 'check_image_front'
       | 'check_image_back'
       | 'processed_check_image_front'
