@@ -225,6 +225,11 @@ export interface InboundWireTransfer {
    * `inbound_wire_transfer`.
    */
   type: 'inbound_wire_transfer';
+
+  /**
+   * The wire drawdown request the inbound wire transfer is fulfilling.
+   */
+  wire_drawdown_request_id: string | null;
 }
 
 export namespace InboundWireTransfer {
