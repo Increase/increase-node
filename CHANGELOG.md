@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.257.0 (2025-08-11)
+
+Full Changelog: [v0.256.0...v0.257.0](https://github.com/Increase/increase-node/compare/v0.256.0...v0.257.0)
+
+### Features
+
+* **api:** api update ([7ddfa67](https://github.com/Increase/increase-node/commit/7ddfa673e8cb7068ba8afd354f0bb1a1429d50f5))
+
+
+### Chores
+
+* **internal:** update comment in script ([9a666a3](https://github.com/Increase/increase-node/commit/9a666a3ef6904a4d59a9b48e79eae049216eb410))
+* update @stainless-api/prism-cli to v5.15.0 ([7f6a620](https://github.com/Increase/increase-node/commit/7f6a620c0fe707eba4abf09a9485634ce9539121))
+
 ## 0.256.0 (2025-08-07)
 
 Full Changelog: [v0.255.0...v0.256.0](https://github.com/Increase/increase-node/compare/v0.255.0...v0.256.0)
