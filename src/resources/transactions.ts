@@ -3181,6 +3181,11 @@ export namespace Transaction {
       originator_routing_number: string | null;
 
       /**
+       * Additional information included in the wire reversal by the reversal originator.
+       */
+      originator_to_beneficiary_information: string | null;
+
+      /**
        * The Fedwire cycle date for the wire transfer that is being reversed by this
        * message.
        */
