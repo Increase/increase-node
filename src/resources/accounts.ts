@@ -167,7 +167,7 @@ export interface Account {
   /**
    * The identifier for the Entity the Account belongs to.
    */
-  entity_id: string | null;
+  entity_id: string;
 
   /**
    * The idempotency key you chose for this object. This value is unique across
