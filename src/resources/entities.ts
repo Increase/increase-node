@@ -125,6 +125,7 @@ export class Entities extends APIResource {
    *     beneficial_owner: {
    *       individual: {
    *         address: {
+   *           city: 'New York',
    *           country: 'US',
    *           line1: '33 Liberty Street',
    *         },
@@ -185,6 +186,7 @@ export class Entities extends APIResource {
    *     'entity_n8y8tnk2p9339ti393yi',
    *     {
    *       address: {
+   *         city: 'New York',
    *         country: 'US',
    *         line1: '33 Liberty Street',
    *       },
@@ -1311,6 +1313,11 @@ export namespace EntityCreateParams {
          */
         export interface Address {
           /**
+           * The city, district, town, or village of the address.
+           */
+          city: string;
+
+          /**
            * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
            */
           country: string;
@@ -1319,12 +1326,6 @@ export namespace EntityCreateParams {
            * The first line of the address. This is usually the street number and street.
            */
           line1: string;
-
-          /**
-           * The city, district, town, or village of the address. Required in certain
-           * countries.
-           */
-          city?: string;
 
           /**
            * The second line of the address. This might be the floor or room number.
@@ -2634,6 +2635,11 @@ export namespace EntityCreateBeneficialOwnerParams {
        */
       export interface Address {
         /**
+         * The city, district, town, or village of the address.
+         */
+        city: string;
+
+        /**
          * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
          */
         country: string;
@@ -2642,12 +2648,6 @@ export namespace EntityCreateBeneficialOwnerParams {
          * The first line of the address. This is usually the street number and street.
          */
         line1: string;
-
-        /**
-         * The city, district, town, or village of the address. Required in certain
-         * countries.
-         */
-        city?: string;
 
         /**
          * The second line of the address. This might be the floor or room number.
@@ -2861,6 +2861,11 @@ export namespace EntityUpdateBeneficialOwnerAddressParams {
    */
   export interface Address {
     /**
+     * The city, district, town, or village of the address.
+     */
+    city: string;
+
+    /**
      * The two-letter ISO 3166-1 alpha-2 code for the country of the address.
      */
     country: string;
@@ -2869,12 +2874,6 @@ export namespace EntityUpdateBeneficialOwnerAddressParams {
      * The first line of the address. This is usually the street number and street.
      */
     line1: string;
-
-    /**
-     * The city, district, town, or village of the address. Required in certain
-     * countries.
-     */
-    city?: string;
 
     /**
      * The second line of the address. This might be the floor or room number.
