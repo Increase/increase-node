@@ -626,13 +626,51 @@ Methods:
 - <code title="get /intrafi_exclusions">client.intrafiExclusions.<a href="./src/resources/intrafi-exclusions.ts">list</a>({ ...params }) -> IntrafiExclusionsPage</code>
 - <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafiExclusions.<a href="./src/resources/intrafi-exclusions.ts">archive</a>(intrafiExclusionId) -> IntrafiExclusion</code>
 
-
 # Webhooks
 
 Methods:
 
 - <code>client.webhooks.<a href="./src/resources/webhooks.ts">unwrap</a>(payload, headers, secret) -> Record&lt;string, unknown&gt;</code>
 - <code>client.webhooks.<a href="./src/resources/webhooks.ts">verifySignature</a>(payload, headers, secret) -> void</code>
+
+# CardTokens
+
+Types:
+
+- <code><a href="./src/resources/card-tokens.ts">CardToken</a></code>
+- <code><a href="./src/resources/card-tokens.ts">CardTokenCapabilities</a></code>
+
+Methods:
+
+- <code title="get /card_tokens/{card_token_id}">client.cardTokens.<a href="./src/resources/card-tokens.ts">retrieve</a>(cardTokenId) -> CardToken</code>
+- <code title="get /card_tokens">client.cardTokens.<a href="./src/resources/card-tokens.ts">list</a>({ ...params }) -> CardTokensPage</code>
+- <code title="get /card_tokens/{card_token_id}/capabilities">client.cardTokens.<a href="./src/resources/card-tokens.ts">capabilities</a>(cardTokenId) -> CardTokenCapabilities</code>
+
+# CardPushTransfers
+
+Types:
+
+- <code><a href="./src/resources/card-push-transfers.ts">CardPushTransfer</a></code>
+
+Methods:
+
+- <code title="post /card_push_transfers">client.cardPushTransfers.<a href="./src/resources/card-push-transfers.ts">create</a>({ ...params }) -> CardPushTransfer</code>
+- <code title="get /card_push_transfers/{card_push_transfer_id}">client.cardPushTransfers.<a href="./src/resources/card-push-transfers.ts">retrieve</a>(cardPushTransferId) -> CardPushTransfer</code>
+- <code title="get /card_push_transfers">client.cardPushTransfers.<a href="./src/resources/card-push-transfers.ts">list</a>({ ...params }) -> CardPushTransfersPage</code>
+- <code title="post /card_push_transfers/{card_push_transfer_id}/approve">client.cardPushTransfers.<a href="./src/resources/card-push-transfers.ts">approve</a>(cardPushTransferId) -> CardPushTransfer</code>
+- <code title="post /card_push_transfers/{card_push_transfer_id}/cancel">client.cardPushTransfers.<a href="./src/resources/card-push-transfers.ts">cancel</a>(cardPushTransferId) -> CardPushTransfer</code>
+
+# CardValidations
+
+Types:
+
+- <code><a href="./src/resources/card-validations.ts">CardValidation</a></code>
+
+Methods:
+
+- <code title="post /card_validations">client.cardValidations.<a href="./src/resources/card-validations.ts">create</a>({ ...params }) -> CardValidation</code>
+- <code title="get /card_validations/{card_validation_id}">client.cardValidations.<a href="./src/resources/card-validations.ts">retrieve</a>(cardValidationId) -> CardValidation</code>
+- <code title="get /card_validations">client.cardValidations.<a href="./src/resources/card-validations.ts">list</a>({ ...params }) -> CardValidationsPage</code>
 
 # Simulations
 
@@ -823,3 +861,9 @@ Methods:
 Methods:
 
 - <code title="post /simulations/documents">client.simulations.documents.<a href="./src/resources/simulations/documents.ts">create</a>({ ...params }) -> Document</code>
+
+## CardTokens
+
+Methods:
+
+- <code title="post /simulations/card_tokens">client.simulations.cardTokens.<a href="./src/resources/simulations/card-tokens.ts">create</a>({ ...params }) -> CardToken</code>

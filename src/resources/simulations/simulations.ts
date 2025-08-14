@@ -34,6 +34,8 @@ import * as CardReversalsAPI from './card-reversals';
 import { CardReversalCreateParams, CardReversals } from './card-reversals';
 import * as CardSettlementsAPI from './card-settlements';
 import { CardSettlementCreateParams, CardSettlements } from './card-settlements';
+import * as CardTokensAPI from './card-tokens';
+import { CardTokenCreateParams, CardTokens } from './card-tokens';
 import * as CheckDepositsAPI from './check-deposits';
 import { CheckDeposits } from './check-deposits';
 import * as CheckTransfersAPI from './check-transfers';
@@ -137,6 +139,7 @@ export class Simulations extends APIResource {
     this._client,
   );
   documents: DocumentsAPI.Documents = new DocumentsAPI.Documents(this._client);
+  cardTokens: CardTokensAPI.CardTokens = new CardTokensAPI.CardTokens(this._client);
 }
 
 Simulations.InterestPayments = InterestPayments;
@@ -167,6 +170,7 @@ Simulations.InboundMailItems = InboundMailItems;
 Simulations.Programs = Programs;
 Simulations.AccountStatements = AccountStatements;
 Simulations.Documents = Documents;
+Simulations.CardTokens = CardTokens;
 
 export declare namespace Simulations {
   export {
@@ -279,4 +283,6 @@ export declare namespace Simulations {
   };
 
   export { Documents as Documents, type DocumentCreateParams as DocumentCreateParams };
+
+  export { CardTokens as CardTokens, type CardTokenCreateParams as CardTokenCreateParams };
 }
