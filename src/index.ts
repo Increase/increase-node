@@ -96,6 +96,27 @@ import {
   CardPurchaseSupplementsPage,
 } from './resources/card-purchase-supplements';
 import {
+  CardPushTransfer,
+  CardPushTransferCreateParams,
+  CardPushTransferListParams,
+  CardPushTransfers,
+  CardPushTransfersPage,
+} from './resources/card-push-transfers';
+import {
+  CardToken,
+  CardTokenCapabilities,
+  CardTokenListParams,
+  CardTokens,
+  CardTokensPage,
+} from './resources/card-tokens';
+import {
+  CardValidation,
+  CardValidationCreateParams,
+  CardValidationListParams,
+  CardValidations,
+  CardValidationsPage,
+} from './resources/card-validations';
+import {
   Card,
   CardCreateParams,
   CardDetails,
@@ -527,6 +548,9 @@ export class Increase extends Core.APIClient {
   intrafiAccountEnrollments: API.IntrafiAccountEnrollments = new API.IntrafiAccountEnrollments(this);
   intrafiBalances: API.IntrafiBalances = new API.IntrafiBalances(this);
   intrafiExclusions: API.IntrafiExclusions = new API.IntrafiExclusions(this);
+  cardTokens: API.CardTokens = new API.CardTokens(this);
+  cardPushTransfers: API.CardPushTransfers = new API.CardPushTransfers(this);
+  cardValidations: API.CardValidations = new API.CardValidations(this);
   simulations: API.Simulations = new API.Simulations(this);
 
   /**
@@ -684,6 +708,12 @@ Increase.IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsPage;
 Increase.IntrafiBalances = IntrafiBalances;
 Increase.IntrafiExclusions = IntrafiExclusions;
 Increase.IntrafiExclusionsPage = IntrafiExclusionsPage;
+Increase.CardTokens = CardTokens;
+Increase.CardTokensPage = CardTokensPage;
+Increase.CardPushTransfers = CardPushTransfers;
+Increase.CardPushTransfersPage = CardPushTransfersPage;
+Increase.CardValidations = CardValidations;
+Increase.CardValidationsPage = CardValidationsPage;
 Increase.Simulations = Simulations;
 export declare namespace Increase {
   export type RequestOptions = Core.RequestOptions;
@@ -1088,6 +1118,30 @@ export declare namespace Increase {
     IntrafiExclusionsPage as IntrafiExclusionsPage,
     type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
     type IntrafiExclusionListParams as IntrafiExclusionListParams,
+  };
+
+  export {
+    CardTokens as CardTokens,
+    type CardToken as CardToken,
+    type CardTokenCapabilities as CardTokenCapabilities,
+    CardTokensPage as CardTokensPage,
+    type CardTokenListParams as CardTokenListParams,
+  };
+
+  export {
+    CardPushTransfers as CardPushTransfers,
+    type CardPushTransfer as CardPushTransfer,
+    CardPushTransfersPage as CardPushTransfersPage,
+    type CardPushTransferCreateParams as CardPushTransferCreateParams,
+    type CardPushTransferListParams as CardPushTransferListParams,
+  };
+
+  export {
+    CardValidations as CardValidations,
+    type CardValidation as CardValidation,
+    CardValidationsPage as CardValidationsPage,
+    type CardValidationCreateParams as CardValidationCreateParams,
+    type CardValidationListParams as CardValidationListParams,
   };
 
   export { Webhooks as Webhooks };
