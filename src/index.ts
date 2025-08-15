@@ -713,6 +713,7 @@ Increase.CardPushTransfersPage = CardPushTransfersPage;
 Increase.CardValidations = CardValidations;
 Increase.CardValidationsPage = CardValidationsPage;
 Increase.Simulations = Simulations;
+
 export declare namespace Increase {
   export type RequestOptions = Core.RequestOptions;
 
