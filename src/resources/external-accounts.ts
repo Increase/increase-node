@@ -126,9 +126,10 @@ export interface ExternalAccount {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `general_ledger` - A general ledger account.
    * - `other` - A different type of account.
    */
-  funding: 'checking' | 'savings' | 'other';
+  funding: 'checking' | 'savings' | 'general_ledger' | 'other';
 
   /**
    * The idempotency key you chose for this object. This value is unique across
@@ -189,9 +190,10 @@ export interface ExternalAccountCreateParams {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `general_ledger` - A general ledger account.
    * - `other` - A different type of account.
    */
-  funding?: 'checking' | 'savings' | 'other';
+  funding?: 'checking' | 'savings' | 'general_ledger' | 'other';
 }
 
 export interface ExternalAccountUpdateParams {
@@ -213,9 +215,10 @@ export interface ExternalAccountUpdateParams {
    *
    * - `checking` - A checking account.
    * - `savings` - A savings account.
+   * - `general_ledger` - A general ledger account.
    * - `other` - A different type of account.
    */
-  funding?: 'checking' | 'savings' | 'other';
+  funding?: 'checking' | 'savings' | 'general_ledger' | 'other';
 
   /**
    * The status of the External Account.
