@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.263.0 (2025-08-15)
+
+Full Changelog: [v0.262.0...v0.263.0](https://github.com/Increase/increase-node/compare/v0.262.0...v0.263.0)
+
+### Features
+
+* **api:** api update ([9b3300c](https://github.com/Increase/increase-node/commit/9b3300cd83ccbe1353274b976abe690c51956d64))
+
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([d5c6887](https://github.com/Increase/increase-node/commit/d5c688747ee4b2782bce36266f7b3ab98f335723))
+
 ## 0.262.0 (2025-08-14)
 
 Full Changelog: [v0.261.0...v0.262.0](https://github.com/Increase/increase-node/compare/v0.261.0...v0.262.0)
