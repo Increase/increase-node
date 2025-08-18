@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.264.0 (2025-08-18)
+
+Full Changelog: [v0.263.0...v0.264.0](https://github.com/Increase/increase-node/compare/v0.263.0...v0.264.0)
+
+### Features
+
+* **api:** api update ([5b2b749](https://github.com/Increase/increase-node/commit/5b2b749e83e711d786c5952bd2df62d29f9b0b39))
+
+
+### Chores
+
+* **internal:** formatting change ([cafeadd](https://github.com/Increase/increase-node/commit/cafeadd2247a7524f615e2078d7907bd022bd5cf))
+
 ## 0.263.0 (2025-08-15)
 
 Full Changelog: [v0.262.0...v0.263.0](https://github.com/Increase/increase-node/compare/v0.262.0...v0.263.0)
