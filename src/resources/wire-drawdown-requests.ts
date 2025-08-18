@@ -147,6 +147,11 @@ export interface WireDrawdownRequest {
   debtor_address: WireDrawdownRequest.DebtorAddress;
 
   /**
+   * The debtor's external account identifier.
+   */
+  debtor_external_account_id: string | null;
+
+  /**
    * The debtor's name.
    */
   debtor_name: string;
