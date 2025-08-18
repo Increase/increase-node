@@ -22,14 +22,12 @@ export class WireDrawdownRequests extends APIResource {
    *       line1: '33 Liberty Street',
    *     },
    *     creditor_name: 'National Phonograph Company',
-   *     debtor_account_number: '987654321',
    *     debtor_address: {
    *       city: 'New York',
    *       country: 'US',
    *       line1: '33 Liberty Street',
    *     },
    *     debtor_name: 'Ian Crease',
-   *     debtor_routing_number: '101050001',
    *     unstructured_remittance_information: 'Invoice 29582',
    *   });
    * ```
@@ -311,11 +309,6 @@ export interface WireDrawdownRequestCreateParams {
   creditor_name: string;
 
   /**
-   * The debtor's account number.
-   */
-  debtor_account_number: string;
-
-  /**
    * The debtor's address.
    */
   debtor_address: WireDrawdownRequestCreateParams.DebtorAddress;
@@ -326,14 +319,25 @@ export interface WireDrawdownRequestCreateParams {
   debtor_name: string;
 
   /**
-   * The debtor's routing number.
-   */
-  debtor_routing_number: string;
-
-  /**
    * Remittance information the debtor will see as part of the request.
    */
   unstructured_remittance_information: string;
+
+  /**
+   * The debtor's account number.
+   */
+  debtor_account_number?: string;
+
+  /**
+   * The ID of an External Account to initiate a transfer to. If this parameter is
+   * provided, `debtor_account_number` and `debtor_routing_number` must be absent.
+   */
+  debtor_external_account_id?: string;
+
+  /**
+   * The debtor's routing number.
+   */
+  debtor_routing_number?: string;
 }
 
 export namespace WireDrawdownRequestCreateParams {
