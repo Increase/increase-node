@@ -136,9 +136,54 @@ export interface InboundWireTransfer {
   created_at: string;
 
   /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line1: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line2: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line3: string | null;
+
+  /**
+   * A name set by the sender.
+   */
+  creditor_name: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  debtor_address_line1: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  debtor_address_line2: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  debtor_address_line3: string | null;
+
+  /**
+   * A name set by the sender.
+   */
+  debtor_name: string | null;
+
+  /**
    * An Increase-constructed description of the transfer.
    */
   description: string;
+
+  /**
+   * A free-form reference string set by the sender, to help identify the transfer.
+   */
+  end_to_end_identification: string | null;
 
   /**
    * A unique identifier available to the originating and receiving banks, commonly
@@ -146,6 +191,17 @@ export interface InboundWireTransfer {
    * service and is helpful when debugging wires with the originating bank.
    */
   input_message_accountability_data: string | null;
+
+  /**
+   * The American Banking Association (ABA) routing number of the bank that sent the
+   * wire.
+   */
+  instructing_agent_routing_number: string | null;
+
+  /**
+   * The sending bank's identifier for the wire transfer.
+   */
+  instruction_identification: string | null;
 
   /**
    * The address of the wire originator, set by the sending bank.
@@ -225,6 +281,18 @@ export interface InboundWireTransfer {
    * `inbound_wire_transfer`.
    */
   type: 'inbound_wire_transfer';
+
+  /**
+   * The Unique End-to-end Transaction Reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the transfer.
+   */
+  unique_end_to_end_transaction_reference: string | null;
+
+  /**
+   * A free-form message set by the sender.
+   */
+  unstructured_remittance_information: string | null;
 
   /**
    * The wire drawdown request the inbound wire transfer is fulfilling.
