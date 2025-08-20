@@ -81,6 +81,11 @@ export interface ACHPrenotification {
   id: string;
 
   /**
+   * The account that sent the ACH Prenotification.
+   */
+  account_id: string | null;
+
+  /**
    * The destination account number.
    */
   account_number: string;
@@ -137,6 +142,17 @@ export interface ACHPrenotification {
   idempotency_key: string | null;
 
   /**
+   * Your identifier for the recipient.
+   */
+  individual_id: string | null;
+
+  /**
+   * The name of the recipient. This value is informational and not verified by the
+   * recipient's bank.
+   */
+  individual_name: string | null;
+
+  /**
    * If the receiving bank notifies that future transfers should use different
    * details, this will contain those details.
    */
@@ -151,6 +167,21 @@ export interface ACHPrenotification {
    * The American Bankers' Association (ABA) Routing Transit Number (RTN).
    */
   routing_number: string;
+
+  /**
+   * The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+   *
+   * - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+   * - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
+   * - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+   * - `internet_initiated` - Internet Initiated (WEB).
+   */
+  standard_entry_class_code:
+    | 'corporate_credit_or_debit'
+    | 'corporate_trade_exchange'
+    | 'prearranged_payments_and_deposit'
+    | 'internet_initiated'
+    | null;
 
   /**
    * The lifecycle status of the ACH Prenotification.
@@ -484,7 +515,7 @@ export namespace ACHPrenotification {
 
 export interface ACHPrenotificationCreateParams {
   /**
-   * The Increase identifier for the account that will send the transfer.
+   * The Increase identifier for the account that will send the ACH Prenotification.
    */
   account_id: string;
 
@@ -505,17 +536,17 @@ export interface ACHPrenotificationCreateParams {
   addendum?: string;
 
   /**
-   * The description of the date of the transfer.
+   * The description of the date of the ACH Prenotification.
    */
   company_descriptive_date?: string;
 
   /**
-   * The data you choose to associate with the transfer.
+   * The data you choose to associate with the ACH Prenotification.
    */
   company_discretionary_data?: string;
 
   /**
-   * The description of the transfer you wish to be shown to the recipient.
+   * The description you wish to be shown to the recipient.
    */
   company_entry_description?: string;
 
@@ -533,19 +564,19 @@ export interface ACHPrenotificationCreateParams {
   credit_debit_indicator?: 'credit' | 'debit';
 
   /**
-   * The transfer effective date in
+   * The ACH Prenotification effective date in
    * [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
    */
   effective_date?: string;
 
   /**
-   * Your identifier for the transfer recipient.
+   * Your identifier for the recipient.
    */
   individual_id?: string;
 
   /**
-   * The name of the transfer recipient. This value is information and not verified
-   * by the recipient's bank.
+   * The name of therecipient. This value is informational and not verified by the
+   * recipient's bank.
    */
   individual_name?: string;
 
