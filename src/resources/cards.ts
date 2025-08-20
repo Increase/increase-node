@@ -72,7 +72,29 @@ export class Cards extends APIResource {
   }
 
   /**
-   * Retrieve sensitive details for a Card
+   * Create an iframe URL for a Card to display the card details. More details about
+   * styling and usage can be found in the
+   * [documentation](/documentation/embedded-card-component).
+   *
+   * @example
+   * ```ts
+   * const cardIframeURL =
+   *   await client.cards.createDetailsIframe(
+   *     'card_oubs0hwk5rn6knuecxg2',
+   *   );
+   * ```
+   */
+  createDetailsIframe(
+    cardId: string,
+    body: CardCreateDetailsIframeParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CardIframeURL> {
+    return this._client.post(`/cards/${cardId}/create_details_iframe`, { body, ...options });
+  }
+
+  /**
+   * Sensitive details for a Card include the primary account number, expiry, card
+   * verification code, and PIN.
    *
    * @example
    * ```ts
@@ -269,6 +291,27 @@ export interface CardDetails {
    * Identification (CID).
    */
   verification_code: string;
+}
+
+/**
+ * An object containing the iframe URL for a Card.
+ */
+export interface CardIframeURL {
+  /**
+   * The time the iframe URL will expire.
+   */
+  expires_at: string;
+
+  /**
+   * The iframe URL for the Card. Treat this as an opaque URL.
+   */
+  iframe_url: string;
+
+  /**
+   * A constant representing the object's type. For this resource it will always be
+   * `card_iframe_url`.
+   */
+  type: 'card_iframe_url';
 }
 
 export interface CardCreateParams {
@@ -506,15 +549,24 @@ export namespace CardListParams {
   }
 }
 
+export interface CardCreateDetailsIframeParams {
+  /**
+   * The identifier of the Physical Card to retrieve details for.
+   */
+  physical_card_id?: string;
+}
+
 Cards.CardsPage = CardsPage;
 
 export declare namespace Cards {
   export {
     type Card as Card,
     type CardDetails as CardDetails,
+    type CardIframeURL as CardIframeURL,
     CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,
+    type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
   };
 }

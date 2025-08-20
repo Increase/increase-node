@@ -113,9 +113,11 @@ export {
   Cards,
   type Card,
   type CardDetails,
+  type CardIframeURL,
   type CardCreateParams,
   type CardUpdateParams,
   type CardListParams,
+  type CardCreateDetailsIframeParams,
 } from './cards';
 export {
   CheckDepositsPage,
