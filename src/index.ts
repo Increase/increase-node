@@ -118,8 +118,10 @@ import {
 } from './resources/card-validations';
 import {
   Card,
+  CardCreateDetailsIframeParams,
   CardCreateParams,
   CardDetails,
+  CardIframeURL,
   CardListParams,
   CardUpdateParams,
   Cards,
@@ -746,10 +748,12 @@ export declare namespace Increase {
     Cards as Cards,
     type Card as Card,
     type CardDetails as CardDetails,
+    type CardIframeURL as CardIframeURL,
     CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,
+    type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
   };
 
   export {
