@@ -92,6 +92,11 @@ export interface CardValidation {
   account_id: string;
 
   /**
+   * The ID of the Card Token that was used to validate the card.
+   */
+  card_token_id: string;
+
+  /**
    * The cardholder's first name.
    */
   cardholder_first_name: string | null;
