@@ -79,6 +79,8 @@ export interface Export {
    *
    * - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
    *   transactions and balances for a given time range and Account.
+   * - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+   *   a given date and optional Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
@@ -92,6 +94,7 @@ export interface Export {
    */
   category:
     | 'account_statement_ofx'
+    | 'account_statement_bai2'
     | 'transaction_csv'
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
@@ -146,6 +149,8 @@ export interface ExportCreateParams {
    *
    * - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
    *   transactions and balances for a given time range and Account.
+   * - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+   *   a given date and optional Account.
    * - `transaction_csv` - Export a CSV of all transactions for a given time range.
    * - `balance_csv` - Export a CSV of account balances for the dates in a given
    *   range.
@@ -157,11 +162,18 @@ export interface ExportCreateParams {
    */
   category:
     | 'account_statement_ofx'
+    | 'account_statement_bai2'
     | 'transaction_csv'
     | 'balance_csv'
     | 'bookkeeping_account_balance_csv'
     | 'entity_csv'
     | 'vendor_csv';
+
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_statement_bai2`.
+   */
+  account_statement_bai2?: ExportCreateParams.AccountStatementBai2;
 
   /**
    * Options for the created export. Required if `category` is equal to
@@ -199,6 +211,26 @@ export interface ExportCreateParams {
 }
 
 export namespace ExportCreateParams {
+  /**
+   * Options for the created export. Required if `category` is equal to
+   * `account_statement_bai2`.
+   */
+  export interface AccountStatementBai2 {
+    /**
+     * The Account to create a BAI2 report for. If not provided, all open accounts will
+     * be included.
+     */
+    account_id?: string;
+
+    /**
+     * The date to create a BAI2 report for. If not provided, the current date will be
+     * used. The timezone is UTC. If the current date is used, the report will include
+     * intraday balances, otherwise it will include end-of-day balances for the
+     * provided date.
+     */
+    effective_date?: string;
+  }
+
   /**
    * Options for the created export. Required if `category` is equal to
    * `account_statement_ofx`.
@@ -446,6 +478,7 @@ export namespace ExportListParams {
      */
     in?: Array<
       | 'account_statement_ofx'
+      | 'account_statement_bai2'
       | 'transaction_csv'
       | 'balance_csv'
       | 'bookkeeping_account_balance_csv'
