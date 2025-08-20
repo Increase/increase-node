@@ -23,6 +23,7 @@ describe('resource exports', () => {
   test('create: required and optional params', async () => {
     const response = await client.exports.create({
       category: 'transaction_csv',
+      account_statement_bai2: { account_id: 'account_id', effective_date: '2019-12-27' },
       account_statement_ofx: {
         account_id: 'account_id',
         created_at: {
