@@ -152,6 +152,16 @@ export interface CheckTransfer {
   approved_inbound_check_deposit_id: string | null;
 
   /**
+   * How the account's available balance should be checked.
+   *
+   * - `full` - The available balance of the account must be at least the amount of
+   *   the check, and a Pending Transaction will be created for the full amount.
+   * - `none` - No balance check will performed; a zero-dollar Pending Transaction
+   *   will be created.
+   */
+  balance_check: 'full' | 'none' | null;
+
+  /**
    * If your account requires approvals for transfers and the transfer was not
    * approved, this will contain details of the cancellation.
    */

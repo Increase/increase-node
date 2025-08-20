@@ -122,6 +122,11 @@ export interface IntrafiAccountEnrollment {
   created_at: string;
 
   /**
+   * The contact email for the account owner, to be shared with IntraFi.
+   */
+  email_address: string | null;
+
+  /**
    * The idempotency key you chose for this object. This value is unique across
    * Increase and is used to ensure that a request is only processed once. Learn more
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
