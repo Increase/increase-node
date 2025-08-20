@@ -105,31 +105,6 @@ export interface InboundWireTransfer {
   amount: number;
 
   /**
-   * A free-form address field set by the sender.
-   */
-  beneficiary_address_line1: string | null;
-
-  /**
-   * A free-form address field set by the sender.
-   */
-  beneficiary_address_line2: string | null;
-
-  /**
-   * A free-form address field set by the sender.
-   */
-  beneficiary_address_line3: string | null;
-
-  /**
-   * A name set by the sender.
-   */
-  beneficiary_name: string | null;
-
-  /**
-   * A free-form reference string set by the sender, to help identify the transfer.
-   */
-  beneficiary_reference: string | null;
-
-  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the inbound wire transfer was created.
    */
@@ -204,66 +179,10 @@ export interface InboundWireTransfer {
   instruction_identification: string | null;
 
   /**
-   * The address of the wire originator, set by the sending bank.
-   */
-  originator_address_line1: string | null;
-
-  /**
-   * The address of the wire originator, set by the sending bank.
-   */
-  originator_address_line2: string | null;
-
-  /**
-   * The address of the wire originator, set by the sending bank.
-   */
-  originator_address_line3: string | null;
-
-  /**
-   * The originator of the wire, set by the sending bank.
-   */
-  originator_name: string | null;
-
-  /**
-   * The American Banking Association (ABA) routing number of the bank originating
-   * the transfer.
-   */
-  originator_routing_number: string | null;
-
-  /**
-   * An Increase-created concatenation of the Originator-to-Beneficiary lines.
-   */
-  originator_to_beneficiary_information: string | null;
-
-  /**
-   * A free-form message set by the wire originator.
-   */
-  originator_to_beneficiary_information_line1: string | null;
-
-  /**
-   * A free-form message set by the wire originator.
-   */
-  originator_to_beneficiary_information_line2: string | null;
-
-  /**
-   * A free-form message set by the wire originator.
-   */
-  originator_to_beneficiary_information_line3: string | null;
-
-  /**
-   * A free-form message set by the wire originator.
-   */
-  originator_to_beneficiary_information_line4: string | null;
-
-  /**
    * Information about the reversal of the inbound wire transfer if it has been
    * reversed.
    */
   reversal: InboundWireTransfer.Reversal | null;
-
-  /**
-   * The sending bank's reference number for the wire transfer.
-   */
-  sender_reference: string | null;
 
   /**
    * The status of the transfer.
