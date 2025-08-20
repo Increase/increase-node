@@ -78,7 +78,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   }
 
   /**
-   * Approves an Real-Time Payments Transfer in a pending_approval state.
+   * Approves a Real-Time Payments Transfer in a pending_approval state.
    *
    * @example
    * ```ts
@@ -96,7 +96,7 @@ export class RealTimePaymentsTransfers extends APIResource {
   }
 
   /**
-   * Cancels an Real-Time Payments Transfer in a pending_approval state.
+   * Cancels a Real-Time Payments Transfer in a pending_approval state.
    *
    * @example
    * ```ts
