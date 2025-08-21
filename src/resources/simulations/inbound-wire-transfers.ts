@@ -38,94 +38,82 @@ export interface InboundWireTransferCreateParams {
   amount: number;
 
   /**
-   * The sending bank will set beneficiary_address_line1 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line1?: string;
-
-  /**
-   * The sending bank will set beneficiary_address_line2 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line2?: string;
-
-  /**
-   * The sending bank will set beneficiary_address_line3 in production. You can
-   * simulate any value here.
-   */
-  beneficiary_address_line3?: string;
-
-  /**
-   * The sending bank will set beneficiary_name in production. You can simulate any
-   * value here.
-   */
-  beneficiary_name?: string;
-
-  /**
-   * The sending bank will set beneficiary_reference in production. You can simulate
+   * The sending bank will set creditor_address_line1 in production. You can simulate
    * any value here.
    */
-  beneficiary_reference?: string;
+  creditor_address_line1?: string;
 
   /**
-   * The sending bank will set originator_address_line1 in production. You can
-   * simulate any value here.
+   * The sending bank will set creditor_address_line2 in production. You can simulate
+   * any value here.
    */
-  originator_address_line1?: string;
+  creditor_address_line2?: string;
 
   /**
-   * The sending bank will set originator_address_line2 in production. You can
-   * simulate any value here.
+   * The sending bank will set creditor_address_line3 in production. You can simulate
+   * any value here.
    */
-  originator_address_line2?: string;
+  creditor_address_line3?: string;
 
   /**
-   * The sending bank will set originator_address_line3 in production. You can
-   * simulate any value here.
-   */
-  originator_address_line3?: string;
-
-  /**
-   * The sending bank will set originator_name in production. You can simulate any
+   * The sending bank will set creditor_name in production. You can simulate any
    * value here.
    */
-  originator_name?: string;
+  creditor_name?: string;
 
   /**
-   * The sending bank will set originator_routing_number in production. You can
+   * The sending bank will set debtor_address_line1 in production. You can simulate
+   * any value here.
+   */
+  debtor_address_line1?: string;
+
+  /**
+   * The sending bank will set debtor_address_line2 in production. You can simulate
+   * any value here.
+   */
+  debtor_address_line2?: string;
+
+  /**
+   * The sending bank will set debtor_address_line3 in production. You can simulate
+   * any value here.
+   */
+  debtor_address_line3?: string;
+
+  /**
+   * The sending bank will set debtor_name in production. You can simulate any value
+   * here.
+   */
+  debtor_name?: string;
+
+  /**
+   * The sending bank will set end_to_end_identification in production. You can
    * simulate any value here.
    */
-  originator_routing_number?: string;
+  end_to_end_identification?: string;
 
   /**
-   * The sending bank will set originator_to_beneficiary_information_line1 in
-   * production. You can simulate any value here.
+   * The sending bank will set instructing_agent_routing_number in production. You
+   * can simulate any value here.
    */
-  originator_to_beneficiary_information_line1?: string;
+  instructing_agent_routing_number?: string;
 
   /**
-   * The sending bank will set originator_to_beneficiary_information_line2 in
-   * production. You can simulate any value here.
+   * The sending bank will set instruction_identification in production. You can
+   * simulate any value here.
    */
-  originator_to_beneficiary_information_line2?: string;
+  instruction_identification?: string;
 
   /**
-   * The sending bank will set originator_to_beneficiary_information_line3 in
-   * production. You can simulate any value here.
+   * The sending bank will set unique_end_to_end_transaction_reference in production.
+   * You can simulate any value here.
    */
-  originator_to_beneficiary_information_line3?: string;
+  unique_end_to_end_transaction_reference?: string;
 
   /**
-   * The sending bank will set originator_to_beneficiary_information_line4 in
-   * production. You can simulate any value here.
+   * The sending bank will set unstructured_remittance_information in production. You
+   * can simulate any value here.
    */
-  originator_to_beneficiary_information_line4?: string;
-
-  /**
-   * The sending bank will set sender_reference in production. You can simulate any
-   * value here.
-   */
-  sender_reference?: string;
+  unstructured_remittance_information?: string;
 
   /**
    * The identifier of a Wire Drawdown Request the inbound Wire Transfer is
