@@ -3253,32 +3253,52 @@ export namespace Transaction {
       /**
        * A free-form address field set by the sender.
        */
-      beneficiary_address_line1: string | null;
+      creditor_address_line1: string | null;
 
       /**
        * A free-form address field set by the sender.
        */
-      beneficiary_address_line2: string | null;
+      creditor_address_line2: string | null;
 
       /**
        * A free-form address field set by the sender.
        */
-      beneficiary_address_line3: string | null;
+      creditor_address_line3: string | null;
 
       /**
        * A name set by the sender.
        */
-      beneficiary_name: string | null;
+      creditor_name: string | null;
 
       /**
-       * A free-form reference string set by the sender, to help identify the transfer.
+       * A free-form address field set by the sender.
        */
-      beneficiary_reference: string | null;
+      debtor_address_line1: string | null;
+
+      /**
+       * A free-form address field set by the sender.
+       */
+      debtor_address_line2: string | null;
+
+      /**
+       * A free-form address field set by the sender.
+       */
+      debtor_address_line3: string | null;
+
+      /**
+       * A name set by the sender.
+       */
+      debtor_name: string | null;
 
       /**
        * An Increase-constructed description of the transfer.
        */
       description: string;
+
+      /**
+       * A free-form reference string set by the sender, to help identify the transfer.
+       */
+      end_to_end_identification: string | null;
 
       /**
        * A unique identifier available to the originating and receiving banks, commonly
@@ -3288,60 +3308,32 @@ export namespace Transaction {
       input_message_accountability_data: string | null;
 
       /**
-       * The address of the wire originator, set by the sending bank.
+       * The American Banking Association (ABA) routing number of the bank that sent the
+       * wire.
        */
-      originator_address_line1: string | null;
+      instructing_agent_routing_number: string | null;
 
       /**
-       * The address of the wire originator, set by the sending bank.
+       * The sending bank's identifier for the wire transfer.
        */
-      originator_address_line2: string | null;
-
-      /**
-       * The address of the wire originator, set by the sending bank.
-       */
-      originator_address_line3: string | null;
-
-      /**
-       * The originator of the wire, set by the sending bank.
-       */
-      originator_name: string | null;
-
-      /**
-       * The American Banking Association (ABA) routing number of the bank originating
-       * the transfer.
-       */
-      originator_routing_number: string | null;
-
-      /**
-       * An Increase-created concatenation of the Originator-to-Beneficiary lines.
-       */
-      originator_to_beneficiary_information: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line1: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line2: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line3: string | null;
-
-      /**
-       * A free-form message set by the wire originator.
-       */
-      originator_to_beneficiary_information_line4: string | null;
+      instruction_identification: string | null;
 
       /**
        * The ID of the Inbound Wire Transfer object that resulted in this Transaction.
        */
       transfer_id: string;
+
+      /**
+       * The Unique End-to-end Transaction Reference
+       * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+       * of the transfer.
+       */
+      unique_end_to_end_transaction_reference: string | null;
+
+      /**
+       * A free-form message set by the sender.
+       */
+      unstructured_remittance_information: string | null;
     }
 
     /**
