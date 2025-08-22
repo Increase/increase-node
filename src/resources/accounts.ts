@@ -131,6 +131,13 @@ export interface Account {
   id: string;
 
   /**
+   * The account revenue rate currently being earned on the account, as a string
+   * containing a decimal number. For example, a 1% account revenue rate would be
+   * represented as "0.01".
+   */
+  account_revenue_rate: string | null;
+
+  /**
    * The bank the Account is with.
    *
    * - `core_bank` - Core Bank
@@ -195,7 +202,7 @@ export interface Account {
   interest_accrued_at: string | null;
 
   /**
-   * The Interest Rate currently being earned on the account, as a string containing
+   * The interest rate currently being earned on the account, as a string containing
    * a decimal number. For example, a 1% interest rate would be represented as
    * "0.01".
    */
