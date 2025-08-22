@@ -277,9 +277,6 @@ export namespace Transaction {
      * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
-     * - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
-     *   Transfer Decline: details will be under the
-     *   `inbound_real_time_payments_transfer_decline` object.
      * - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
      *   `inbound_wire_reversal` object.
      * - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
@@ -326,7 +323,6 @@ export namespace Transaction {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_real_time_payments_transfer_decline'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
       | 'inbound_wire_transfer_reversal'
@@ -416,13 +412,6 @@ export namespace Transaction {
      * initiated at another bank and received by Increase.
      */
     inbound_real_time_payments_transfer_confirmation: Source.InboundRealTimePaymentsTransferConfirmation | null;
-
-    /**
-     * An Inbound Real-Time Payments Transfer Decline object. This field will be
-     * present in the JSON response if and only if `category` is equal to
-     * `inbound_real_time_payments_transfer_decline`.
-     */
-    inbound_real_time_payments_transfer_decline: Source.InboundRealTimePaymentsTransferDecline | null;
 
     /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
@@ -3054,87 +3043,6 @@ export namespace Transaction {
     }
 
     /**
-     * An Inbound Real-Time Payments Transfer Decline object. This field will be
-     * present in the JSON response if and only if `category` is equal to
-     * `inbound_real_time_payments_transfer_decline`.
-     */
-    export interface InboundRealTimePaymentsTransferDecline {
-      /**
-       * The declined amount in the minor unit of the destination account currency. For
-       * dollars, for example, this is cents.
-       */
-      amount: number;
-
-      /**
-       * The name the sender of the transfer specified as the recipient of the transfer.
-       */
-      creditor_name: string;
-
-      /**
-       * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-       * transfer's currency. This will always be "USD" for a Real-Time Payments
-       * transfer.
-       *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
-       * - `USD` - US Dollar (USD)
-       */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
-
-      /**
-       * The account number of the account that sent the transfer.
-       */
-      debtor_account_number: string;
-
-      /**
-       * The name provided by the sender of the transfer.
-       */
-      debtor_name: string;
-
-      /**
-       * The routing number of the account that sent the transfer.
-       */
-      debtor_routing_number: string;
-
-      /**
-       * Why the transfer was declined.
-       *
-       * - `account_number_canceled` - The account number is canceled.
-       * - `account_number_disabled` - The account number is disabled.
-       * - `account_restricted` - Your account is restricted.
-       * - `group_locked` - Your account is inactive.
-       * - `entity_not_active` - The account's entity is not active.
-       * - `real_time_payments_not_enabled` - Your account is not enabled to receive
-       *   Real-Time Payments transfers.
-       */
-      reason:
-        | 'account_number_canceled'
-        | 'account_number_disabled'
-        | 'account_restricted'
-        | 'group_locked'
-        | 'entity_not_active'
-        | 'real_time_payments_not_enabled';
-
-      /**
-       * Additional information included with the transfer.
-       */
-      remittance_information: string | null;
-
-      /**
-       * The Real-Time Payments network identification of the declined transfer.
-       */
-      transaction_identification: string;
-
-      /**
-       * The identifier of the Real-Time Payments Transfer that led to this Transaction.
-       */
-      transfer_id: string;
-    }
-
-    /**
      * An Inbound Wire Reversal object. This field will be present in the JSON response
      * if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
      * Reversal represents a reversal of a wire transfer that was initiated via
@@ -3603,7 +3511,6 @@ export namespace TransactionListParams {
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
       | 'inbound_real_time_payments_transfer_confirmation'
-      | 'inbound_real_time_payments_transfer_decline'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
       | 'inbound_wire_transfer_reversal'
