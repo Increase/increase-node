@@ -22,4 +22,22 @@ export class WireDrawdownRequests extends APIResource {
   ): Core.APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
     return this._client.post(`/simulations/wire_drawdown_requests/${wireDrawdownRequestId}/refuse`, options);
   }
+
+  /**
+   * Simulates a Wire Drawdown Request being submitted to Fedwire.
+   *
+   * @example
+   * ```ts
+   * const wireDrawdownRequest =
+   *   await client.simulations.wireDrawdownRequests.submit(
+   *     'wire_drawdown_request_q6lmocus3glo0lr2bfv3',
+   *   );
+   * ```
+   */
+  submit(
+    wireDrawdownRequestId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
+    return this._client.post(`/simulations/wire_drawdown_requests/${wireDrawdownRequestId}/submit`, options);
+  }
 }
