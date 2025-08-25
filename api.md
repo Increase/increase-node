@@ -801,6 +801,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">refuse</a>(wireDrawdownRequestId) -> WireDrawdownRequest</code>
+- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit">client.simulations.wireDrawdownRequests.<a href="./src/resources/simulations/wire-drawdown-requests.ts">submit</a>(wireDrawdownRequestId) -> WireDrawdownRequest</code>
 
 ## InboundWireDrawdownRequests
 
