@@ -75,40 +75,40 @@ export interface InboundWireDrawdownRequest {
   amount: number;
 
   /**
-   * The drawdown request's beneficiary's account number.
-   */
-  beneficiary_account_number: string;
-
-  /**
-   * Line 1 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line1: string | null;
-
-  /**
-   * Line 2 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line2: string | null;
-
-  /**
-   * Line 3 of the drawdown request's beneficiary's address.
-   */
-  beneficiary_address_line3: string | null;
-
-  /**
-   * The drawdown request's beneficiary's name.
-   */
-  beneficiary_name: string | null;
-
-  /**
-   * The drawdown request's beneficiary's routing number.
-   */
-  beneficiary_routing_number: string;
-
-  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
    * the inbound wire drawdown requested was created.
    */
   created_at: string;
+
+  /**
+   * The creditor's account number.
+   */
+  creditor_account_number: string;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line1: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line2: string | null;
+
+  /**
+   * A free-form address field set by the sender.
+   */
+  creditor_address_line3: string | null;
+
+  /**
+   * A name set by the sender.
+   */
+  creditor_name: string | null;
+
+  /**
+   * The creditor's routing number.
+   */
+  creditor_routing_number: string;
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
@@ -117,63 +117,42 @@ export interface InboundWireDrawdownRequest {
   currency: string;
 
   /**
-   * A message from the drawdown request's originator.
+   * A free-form address field set by the sender.
    */
-  message_to_recipient: string | null;
+  debtor_address_line1: string | null;
 
   /**
-   * The drawdown request's originator's account number.
+   * A free-form address field set by the sender.
    */
-  originator_account_number: string | null;
+  debtor_address_line2: string | null;
 
   /**
-   * Line 1 of the drawdown request's originator's address.
+   * A free-form address field set by the sender.
    */
-  originator_address_line1: string | null;
+  debtor_address_line3: string | null;
 
   /**
-   * Line 2 of the drawdown request's originator's address.
+   * A name set by the sender.
    */
-  originator_address_line2: string | null;
+  debtor_name: string | null;
 
   /**
-   * Line 3 of the drawdown request's originator's address.
+   * A free-form reference string set by the sender, to help identify the drawdown
+   * request.
    */
-  originator_address_line3: string | null;
+  end_to_end_identification: string | null;
 
   /**
-   * The drawdown request's originator's name.
+   * A unique identifier available to the originating and receiving banks, commonly
+   * abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+   * service and is helpful when debugging wires with the originating bank.
    */
-  originator_name: string | null;
+  input_message_accountability_data: string | null;
 
   /**
-   * The drawdown request's originator's routing number.
+   * The sending bank's identifier for the drawdown request.
    */
-  originator_routing_number: string;
-
-  /**
-   * Line 1 of the information conveyed from the originator of the message to the
-   * beneficiary.
-   */
-  originator_to_beneficiary_information_line1: string | null;
-
-  /**
-   * Line 2 of the information conveyed from the originator of the message to the
-   * beneficiary.
-   */
-  originator_to_beneficiary_information_line2: string | null;
-
-  /**
-   * Line 3 of the information conveyed from the originator of the message to the
-   * beneficiary.
-   */
-  originator_to_beneficiary_information_line3: string | null;
-
-  /**
-   * Line 4 of the information conveyed from the originator of the message to the
-   * beneficiary.
-   */
-  originator_to_beneficiary_information_line4: string | null;
+  instruction_identification: string | null;
 
   /**
    * The Account Number from which the recipient of this request is being requested
@@ -186,6 +165,18 @@ export interface InboundWireDrawdownRequest {
    * `inbound_wire_drawdown_request`.
    */
   type: 'inbound_wire_drawdown_request';
+
+  /**
+   * The Unique End-to-end Transaction Reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the drawdown request.
+   */
+  unique_end_to_end_transaction_reference: string | null;
+
+  /**
+   * A free-form message set by the sender.
+   */
+  unstructured_remittance_information: string | null;
 }
 
 export interface InboundWireDrawdownRequestListParams extends PageParams {}
