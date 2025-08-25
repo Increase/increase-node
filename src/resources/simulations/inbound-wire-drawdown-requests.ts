@@ -15,12 +15,9 @@ export class InboundWireDrawdownRequests extends APIResource {
    *   await client.simulations.inboundWireDrawdownRequests.create(
    *     {
    *       amount: 10000,
-   *       beneficiary_account_number: '987654321',
-   *       beneficiary_routing_number: '101050001',
+   *       creditor_account_number: '987654321',
+   *       creditor_routing_number: '101050001',
    *       currency: 'USD',
-   *       message_to_recipient: 'Invoice 29582',
-   *       originator_account_number: '987654321',
-   *       originator_routing_number: '101050001',
    *       recipient_account_number_id:
    *         'account_number_v18nkfqm6afpsrvy82b2',
    *     },
@@ -42,14 +39,14 @@ export interface InboundWireDrawdownRequestCreateParams {
   amount: number;
 
   /**
-   * The drawdown request's beneficiary's account number.
+   * The creditor's account number.
    */
-  beneficiary_account_number: string;
+  creditor_account_number: string;
 
   /**
-   * The drawdown request's beneficiary's routing number.
+   * The creditor's routing number.
    */
-  beneficiary_routing_number: string;
+  creditor_routing_number: string;
 
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
@@ -58,89 +55,87 @@ export interface InboundWireDrawdownRequestCreateParams {
   currency: string;
 
   /**
-   * A message from the drawdown request's originator.
-   */
-  message_to_recipient: string;
-
-  /**
-   * The drawdown request's originator's account number.
-   */
-  originator_account_number: string;
-
-  /**
-   * The drawdown request's originator's routing number.
-   */
-  originator_routing_number: string;
-
-  /**
    * The Account Number to which the recipient of this request is being requested to
    * send funds from.
    */
   recipient_account_number_id: string;
 
   /**
-   * Line 1 of the drawdown request's beneficiary's address.
+   * A free-form address field set by the sender representing the first line of the
+   * creditor's address.
    */
-  beneficiary_address_line1?: string;
+  creditor_address_line1?: string;
 
   /**
-   * Line 2 of the drawdown request's beneficiary's address.
+   * A free-form address field set by the sender representing the second line of the
+   * creditor's address.
    */
-  beneficiary_address_line2?: string;
+  creditor_address_line2?: string;
 
   /**
-   * Line 3 of the drawdown request's beneficiary's address.
+   * A free-form address field set by the sender representing the third line of the
+   * creditor's address.
    */
-  beneficiary_address_line3?: string;
+  creditor_address_line3?: string;
 
   /**
-   * The drawdown request's beneficiary's name.
+   * A free-form name field set by the sender representing the creditor's name.
    */
-  beneficiary_name?: string;
+  creditor_name?: string;
 
   /**
-   * Line 1 of the drawdown request's originator's address.
+   * The debtor's account number.
    */
-  originator_address_line1?: string;
+  debtor_account_number?: string;
 
   /**
-   * Line 2 of the drawdown request's originator's address.
+   * A free-form address field set by the sender representing the first line of the
+   * debtor's address.
    */
-  originator_address_line2?: string;
+  debtor_address_line1?: string;
 
   /**
-   * Line 3 of the drawdown request's originator's address.
+   * A free-form address field set by the sender representing the second line of the
+   * debtor's address.
    */
-  originator_address_line3?: string;
+  debtor_address_line2?: string;
 
   /**
-   * The drawdown request's originator's name.
+   * A free-form address field set by the sender.
    */
-  originator_name?: string;
+  debtor_address_line3?: string;
 
   /**
-   * Line 1 of the information conveyed from the originator of the message to the
-   * beneficiary.
+   * A free-form name field set by the sender representing the debtor's name.
    */
-  originator_to_beneficiary_information_line1?: string;
+  debtor_name?: string;
 
   /**
-   * Line 2 of the information conveyed from the originator of the message to the
-   * beneficiary.
+   * The debtor's routing number.
    */
-  originator_to_beneficiary_information_line2?: string;
+  debtor_routing_number?: string;
 
   /**
-   * Line 3 of the information conveyed from the originator of the message to the
-   * beneficiary.
+   * A free-form reference string set by the sender, to help identify the transfer.
    */
-  originator_to_beneficiary_information_line3?: string;
+  end_to_end_identification?: string;
 
   /**
-   * Line 4 of the information conveyed from the originator of the message to the
-   * beneficiary.
+   * The sending bank's identifier for the wire transfer.
    */
-  originator_to_beneficiary_information_line4?: string;
+  instruction_identification?: string;
+
+  /**
+   * The Unique End-to-end Transaction Reference
+   * ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+   * of the transfer.
+   */
+  unique_end_to_end_transaction_reference?: string;
+
+  /**
+   * A free-form message set by the sender.
+   */
+  unstructured_remittance_information?: string;
 }
 
 export declare namespace InboundWireDrawdownRequests {
