@@ -3261,6 +3261,13 @@ export namespace CardPayment {
       merchant_state: string | null;
 
       /**
+       * The card network on which this transaction was processed.
+       *
+       * - `visa` - Visa
+       */
+      network: 'visa';
+
+      /**
        * Network-specific identifiers for this refund.
        */
       network_identifiers: CardSettlement.NetworkIdentifiers;
