@@ -751,15 +751,11 @@ Methods:
 
 - <code title="post /simulations/digital_wallet_token_requests">client.simulations.digitalWalletTokenRequests.<a href="./src/resources/simulations/digital-wallet-token-requests.ts">create</a>({ ...params }) -> DigitalWalletTokenRequestCreateResponse</code>
 
-## InboundFundsHolds
-
-Types:
-
-- <code><a href="./src/resources/simulations/inbound-funds-holds.ts">InboundFundsHoldReleaseResponse</a></code>
+## PendingTransactions
 
 Methods:
 
-- <code title="post /simulations/inbound_funds_holds/{inbound_funds_hold_id}/release">client.simulations.inboundFundsHolds.<a href="./src/resources/simulations/inbound-funds-holds.ts">release</a>(inboundFundsHoldId) -> InboundFundsHoldReleaseResponse</code>
+- <code title="post /simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold">client.simulations.pendingTransactions.<a href="./src/resources/simulations/pending-transactions.ts">releaseInboundFundsHold</a>(pendingTransactionId) -> PendingTransaction</code>
 
 ## AccountTransfers
 
