@@ -52,8 +52,6 @@ import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
-import * as InboundFundsHoldsAPI from './inbound-funds-holds';
-import { InboundFundsHoldReleaseResponse, InboundFundsHolds } from './inbound-funds-holds';
 import * as InboundMailItemsAPI from './inbound-mail-items';
 import { InboundMailItemCreateParams, InboundMailItems } from './inbound-mail-items';
 import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
@@ -70,6 +68,8 @@ import * as InboundWireTransfersAPI from './inbound-wire-transfers';
 import { InboundWireTransferCreateParams, InboundWireTransfers } from './inbound-wire-transfers';
 import * as InterestPaymentsAPI from './interest-payments';
 import { InterestPaymentCreateParams, InterestPayments } from './interest-payments';
+import * as PendingTransactionsAPI from './pending-transactions';
+import { PendingTransactions } from './pending-transactions';
 import * as PhysicalCardsAPI from './physical-cards';
 import {
   PhysicalCardAdvanceShipmentParams,
@@ -107,9 +107,8 @@ export class Simulations extends APIResource {
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
     new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this._client);
-  inboundFundsHolds: InboundFundsHoldsAPI.InboundFundsHolds = new InboundFundsHoldsAPI.InboundFundsHolds(
-    this._client,
-  );
+  pendingTransactions: PendingTransactionsAPI.PendingTransactions =
+    new PendingTransactionsAPI.PendingTransactions(this._client);
   accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
     this._client,
   );
@@ -153,7 +152,7 @@ Simulations.CardRefunds = CardRefunds;
 Simulations.CardDisputes = CardDisputes;
 Simulations.PhysicalCards = PhysicalCards;
 Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
-Simulations.InboundFundsHolds = InboundFundsHolds;
+Simulations.PendingTransactions = PendingTransactions;
 Simulations.AccountTransfers = AccountTransfers;
 Simulations.ACHTransfers = ACHTransfers;
 Simulations.InboundACHTransfers = InboundACHTransfers;
@@ -219,10 +218,7 @@ export declare namespace Simulations {
     type DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
   };
 
-  export {
-    InboundFundsHolds as InboundFundsHolds,
-    type InboundFundsHoldReleaseResponse as InboundFundsHoldReleaseResponse,
-  };
+  export { PendingTransactions as PendingTransactions };
 
   export { AccountTransfers as AccountTransfers };
 
