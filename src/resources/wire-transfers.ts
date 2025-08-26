@@ -451,12 +451,12 @@ export namespace WireTransfer {
      * The Fedwire cycle date for the wire transfer that is being reversed by this
      * message.
      */
-    previous_message_input_cycle_date: string;
+    previous_message_input_cycle_date: string | null;
 
     /**
      * The Fedwire transaction identifier for the wire transfer that was reversed.
      */
-    previous_message_input_message_accountability_data: string;
+    previous_message_input_message_accountability_data: string | null;
 
     /**
      * The Fedwire sequence number for the wire transfer that was reversed.
@@ -466,7 +466,7 @@ export namespace WireTransfer {
     /**
      * The Fedwire input source identifier for the wire transfer that was reversed.
      */
-    previous_message_input_source: string;
+    previous_message_input_source: string | null;
 
     /**
      * Information included in the wire reversal for the receiving financial
