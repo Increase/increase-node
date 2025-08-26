@@ -8,10 +8,10 @@ const client = new Increase({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inboundFundsHolds', () => {
-  test('release', async () => {
-    const responsePromise = client.simulations.inboundFundsHolds.release(
-      'inbound_funds_hold_9vuasmywdo7xb3zt4071',
+describe('resource pendingTransactions', () => {
+  test('releaseInboundFundsHold', async () => {
+    const responsePromise = client.simulations.pendingTransactions.releaseInboundFundsHold(
+      'pending_transaction_k1sfetcau2qbvjbzgju4',
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -22,12 +22,13 @@ describe('resource inboundFundsHolds', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('release: request options instead of params are passed correctly', async () => {
+  test('releaseInboundFundsHold: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.simulations.inboundFundsHolds.release('inbound_funds_hold_9vuasmywdo7xb3zt4071', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.simulations.pendingTransactions.releaseInboundFundsHold(
+        'pending_transaction_k1sfetcau2qbvjbzgju4',
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
 });

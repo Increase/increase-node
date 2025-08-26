@@ -33,7 +33,6 @@ export {
 export { Documents, type DocumentCreateParams } from './documents';
 export { InboundACHTransfers, type InboundACHTransferCreateParams } from './inbound-ach-transfers';
 export { InboundCheckDeposits, type InboundCheckDepositCreateParams } from './inbound-check-deposits';
-export { InboundFundsHolds, type InboundFundsHoldReleaseResponse } from './inbound-funds-holds';
 export { InboundMailItems, type InboundMailItemCreateParams } from './inbound-mail-items';
 export {
   InboundRealTimePaymentsTransfers,
@@ -45,6 +44,7 @@ export {
 } from './inbound-wire-drawdown-requests';
 export { InboundWireTransfers, type InboundWireTransferCreateParams } from './inbound-wire-transfers';
 export { InterestPayments, type InterestPaymentCreateParams } from './interest-payments';
+export { PendingTransactions } from './pending-transactions';
 export {
   PhysicalCards,
   type PhysicalCardAdvanceShipmentParams,
