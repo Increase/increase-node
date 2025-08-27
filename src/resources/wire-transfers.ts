@@ -406,14 +406,14 @@ export namespace WireTransfer {
     created_at: string;
 
     /**
+     * The debtor's routing number.
+     */
+    debtor_routing_number: string | null;
+
+    /**
      * The description on the reversal message from Fedwire, set by the reversing bank.
      */
     description: string;
-
-    /**
-     * Additional financial institution information included in the wire reversal.
-     */
-    financial_institution_to_financial_institution_information: string | null;
 
     /**
      * The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
@@ -437,47 +437,14 @@ export namespace WireTransfer {
     input_source: string;
 
     /**
-     * The American Banking Association (ABA) routing number of the bank originating
-     * the transfer.
+     * The sending bank's identifier for the reversal.
      */
-    originator_routing_number: string | null;
+    instruction_identification: string | null;
 
     /**
-     * Additional information included in the wire reversal by the reversal originator.
+     * Additional information about the reason for the reversal.
      */
-    originator_to_beneficiary_information: string | null;
-
-    /**
-     * The Fedwire cycle date for the wire transfer that is being reversed by this
-     * message.
-     */
-    previous_message_input_cycle_date: string | null;
-
-    /**
-     * The Fedwire transaction identifier for the wire transfer that was reversed.
-     */
-    previous_message_input_message_accountability_data: string | null;
-
-    /**
-     * The Fedwire sequence number for the wire transfer that was reversed.
-     */
-    previous_message_input_sequence_number: string;
-
-    /**
-     * The Fedwire input source identifier for the wire transfer that was reversed.
-     */
-    previous_message_input_source: string | null;
-
-    /**
-     * Information included in the wire reversal for the receiving financial
-     * institution.
-     */
-    receiver_financial_institution_information: string | null;
-
-    /**
-     * The sending bank's reference number for the wire reversal.
-     */
-    sender_reference: string | null;
+    return_reason_additional_information: string | null;
 
     /**
      * The ID for the Transaction associated with the transfer reversal.
