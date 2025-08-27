@@ -137,6 +137,14 @@ export namespace Transaction {
    */
   export interface Source {
     /**
+     * An Account Revenue Payment object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_revenue_payment`. A
+     * Account Revenue Payment represents a payment made to an account from the bank.
+     * Account revenue is a type of non-interest income.
+     */
+    account_revenue_payment: Source.AccountRevenuePayment | null;
+
+    /**
      * An Account Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `account_transfer_intention`. Two
      * Account Transfer Intentions are created from each Account Transfer. One
@@ -300,6 +308,8 @@ export namespace Transaction {
      *   `swift_transfer_return` object.
      * - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
      *   be under the `card_push_transfer_acceptance` object.
+     * - `account_revenue_payment` - Account Revenue Payment: details will be under the
+     *   `account_revenue_payment` object.
      * - `other` - The Transaction was made for an undocumented or deprecated reason.
      */
     category:
@@ -334,6 +344,7 @@ export namespace Transaction {
       | 'swift_transfer_intention'
       | 'swift_transfer_return'
       | 'card_push_transfer_acceptance'
+      | 'account_revenue_payment'
       | 'other';
 
     /**
@@ -499,6 +510,29 @@ export namespace Transaction {
   }
 
   export namespace Source {
+    /**
+     * An Account Revenue Payment object. This field will be present in the JSON
+     * response if and only if `category` is equal to `account_revenue_payment`. A
+     * Account Revenue Payment represents a payment made to an account from the bank.
+     * Account revenue is a type of non-interest income.
+     */
+    export interface AccountRevenuePayment {
+      /**
+       * The account on which the account revenue was accrued.
+       */
+      accrued_on_account_id: string;
+
+      /**
+       * The end of the period for which this transaction paid account revenue.
+       */
+      period_end: string;
+
+      /**
+       * The start of the period for which this transaction paid account revenue.
+       */
+      period_start: string;
+    }
+
     /**
      * An Account Transfer Intention object. This field will be present in the JSON
      * response if and only if `category` is equal to `account_transfer_intention`. Two
@@ -3496,6 +3530,7 @@ export namespace TransactionListParams {
       | 'swift_transfer_intention'
       | 'swift_transfer_return'
       | 'card_push_transfer_acceptance'
+      | 'account_revenue_payment'
       | 'other'
     >;
   }
