@@ -9,6 +9,7 @@ import * as ACHTransfersAPI from './ach-transfers';
 import {
   ACHTransferCreateNotificationOfChangeParams,
   ACHTransferReturnParams,
+  ACHTransferSettleParams,
   ACHTransfers,
 } from './ach-transfers';
 import * as CardAuthorizationExpirationsAPI from './card-authorization-expirations';
@@ -226,6 +227,7 @@ export declare namespace Simulations {
     ACHTransfers as ACHTransfers,
     type ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,
     type ACHTransferReturnParams as ACHTransferReturnParams,
+    type ACHTransferSettleParams as ACHTransferSettleParams,
   };
 
   export {
