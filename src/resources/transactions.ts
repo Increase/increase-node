@@ -3352,6 +3352,7 @@ export namespace Transaction {
        * - `negative_balance_forgiveness` - Negative balance forgiveness
        * - `sample_funds` - Sample funds
        * - `sample_funds_return` - Sample funds return
+       * - `account_revenue_payment_distribution` - Account revenue payment distribution
        */
       reason:
         | 'account_closure'
@@ -3368,7 +3369,8 @@ export namespace Transaction {
         | 'interest'
         | 'negative_balance_forgiveness'
         | 'sample_funds'
-        | 'sample_funds_return';
+        | 'sample_funds_return'
+        | 'account_revenue_payment_distribution';
     }
 
     /**
