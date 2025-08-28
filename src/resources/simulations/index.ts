@@ -4,6 +4,7 @@ export {
   ACHTransfers,
   type ACHTransferCreateNotificationOfChangeParams,
   type ACHTransferReturnParams,
+  type ACHTransferSettleParams,
 } from './ach-transfers';
 export { AccountStatements, type AccountStatementCreateParams } from './account-statements';
 export { AccountTransfers } from './account-transfers';
