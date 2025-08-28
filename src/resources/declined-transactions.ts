@@ -1109,6 +1109,7 @@ export namespace DeclinedTransaction {
        * - `refer_to_image` - The check is not readable. Please refer to the image.
        * - `unable_to_process` - The check cannot be processed. This is rare: please
        *   contact support.
+       * - `unusable_image` - The check image is unusable.
        * - `user_initiated` - Your integration declined this check via the API.
        */
       reason:
@@ -1128,6 +1129,7 @@ export namespace DeclinedTransaction {
         | 'no_account_number_found'
         | 'refer_to_image'
         | 'unable_to_process'
+        | 'unusable_image'
         | 'user_initiated';
     }
 
