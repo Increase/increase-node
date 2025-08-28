@@ -62,7 +62,7 @@ describe('resource achTransfers', () => {
   });
 
   test('settle', async () => {
-    const responsePromise = client.simulations.achTransfers.settle('ach_transfer_uoxatyh3lt5evrsdvo7q');
+    const responsePromise = client.simulations.achTransfers.settle('ach_transfer_uoxatyh3lt5evrsdvo7q', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -70,15 +70,6 @@ describe('resource achTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('settle: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.simulations.achTransfers.settle('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('submit', async () => {

@@ -82,7 +82,10 @@ export class ACHTransfers extends APIResource {
    * `submitted`. For convenience, if the transfer is in `status`:
    * `pending_submission`, the simulation will also submit the transfer. Without this
    * simulation the transfer will eventually settle on its own following the same
-   * Federal Reserve timeline as in production.
+   * Federal Reserve timeline as in production. Additionally, you can specify the
+   * behavior of the inbound funds hold that is created when the ACH Transfer is
+   * settled. If no behavior is specified, the inbound funds hold will be released
+   * immediately in order for the funds to be available for use.
    *
    * @example
    * ```ts
@@ -92,8 +95,12 @@ export class ACHTransfers extends APIResource {
    *   );
    * ```
    */
-  settle(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/settle`, options);
+  settle(
+    achTransferId: string,
+    body: ACHTransferSettleParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(`/simulations/ach_transfers/${achTransferId}/settle`, { body, ...options });
   }
 
   /**
@@ -409,9 +416,23 @@ export interface ACHTransferReturnParams {
     | 'untimely_return';
 }
 
+export interface ACHTransferSettleParams {
+  /**
+   * The behavior of the inbound funds hold that is created when the ACH Transfer is
+   * settled. If no behavior is specified, the inbound funds hold will be released
+   * immediately in order for the funds to be available for use.
+   *
+   * - `release_immediately` - Release the inbound funds hold immediately.
+   * - `release_on_default_schedule` - Release the inbound funds hold on the default
+   *   schedule.
+   */
+  inbound_funds_hold_behavior?: 'release_immediately' | 'release_on_default_schedule';
+}
+
 export declare namespace ACHTransfers {
   export {
     type ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,
     type ACHTransferReturnParams as ACHTransferReturnParams,
+    type ACHTransferSettleParams as ACHTransferSettleParams,
   };
 }
