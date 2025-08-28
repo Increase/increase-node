@@ -138,7 +138,7 @@ export namespace Transaction {
   export interface Source {
     /**
      * An Account Revenue Payment object. This field will be present in the JSON
-     * response if and only if `category` is equal to `account_revenue_payment`. A
+     * response if and only if `category` is equal to `account_revenue_payment`. An
      * Account Revenue Payment represents a payment made to an account from the bank.
      * Account revenue is a type of non-interest income.
      */
@@ -512,7 +512,7 @@ export namespace Transaction {
   export namespace Source {
     /**
      * An Account Revenue Payment object. This field will be present in the JSON
-     * response if and only if `category` is equal to `account_revenue_payment`. A
+     * response if and only if `category` is equal to `account_revenue_payment`. An
      * Account Revenue Payment represents a payment made to an account from the bank.
      * Account revenue is a type of non-interest income.
      */
