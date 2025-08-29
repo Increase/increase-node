@@ -1186,12 +1186,14 @@ export namespace ACHTransferCreateParams {
 
     /**
      * Unstructured `payment_related_information` passed through with the transfer.
+     * Required if and only if `category` is `freeform`.
      */
     freeform?: Addenda.Freeform;
 
     /**
      * Structured ASC X12 820 remittance advice records. Please reach out to
      * [support@increase.com](mailto:support@increase.com) for more information.
+     * Required if and only if `category` is `payment_order_remittance_advice`.
      */
     payment_order_remittance_advice?: Addenda.PaymentOrderRemittanceAdvice;
   }
@@ -1199,6 +1201,7 @@ export namespace ACHTransferCreateParams {
   export namespace Addenda {
     /**
      * Unstructured `payment_related_information` passed through with the transfer.
+     * Required if and only if `category` is `freeform`.
      */
     export interface Freeform {
       /**
@@ -1223,6 +1226,7 @@ export namespace ACHTransferCreateParams {
     /**
      * Structured ASC X12 820 remittance advice records. Please reach out to
      * [support@increase.com](mailto:support@increase.com) for more information.
+     * Required if and only if `category` is `payment_order_remittance_advice`.
      */
     export interface PaymentOrderRemittanceAdvice {
       /**

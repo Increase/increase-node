@@ -1119,7 +1119,7 @@ export interface EntityCreateParams {
 
   /**
    * Details of the Government Authority entity to create. Required if `structure` is
-   * equal to `Government Authority`.
+   * equal to `government_authority`.
    */
   government_authority?: EntityCreateParams.GovernmentAuthority;
 
@@ -1478,7 +1478,7 @@ export namespace EntityCreateParams {
 
   /**
    * Details of the Government Authority entity to create. Required if `structure` is
-   * equal to `Government Authority`.
+   * equal to `government_authority`.
    */
   export interface GovernmentAuthority {
     /**
@@ -2089,16 +2089,16 @@ export namespace EntityCreateParams {
       structure: 'individual';
 
       /**
-       * Details of the individual trustee. Required when the trustee `structure` is
-       * equal to `individual`.
+       * Details of the individual trustee. Within the trustee object, this is required
+       * if `structure` is equal to `individual`.
        */
       individual?: Trustee.Individual;
     }
 
     export namespace Trustee {
       /**
-       * Details of the individual trustee. Required when the trustee `structure` is
-       * equal to `individual`.
+       * Details of the individual trustee. Within the trustee object, this is required
+       * if `structure` is equal to `individual`.
        */
       export interface Individual {
         /**

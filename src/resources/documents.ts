@@ -162,19 +162,22 @@ export interface DocumentCreateParams {
   category: 'account_verification_letter' | 'funding_instructions';
 
   /**
-   * An account verification letter.
+   * An account verification letter. Required if and only if `category` is
+   * `account_verification_letter`.
    */
   account_verification_letter?: DocumentCreateParams.AccountVerificationLetter;
 
   /**
-   * Funding instructions.
+   * Funding instructions. Required if and only if `category` is
+   * `funding_instructions`.
    */
   funding_instructions?: DocumentCreateParams.FundingInstructions;
 }
 
 export namespace DocumentCreateParams {
   /**
-   * An account verification letter.
+   * An account verification letter. Required if and only if `category` is
+   * `account_verification_letter`.
    */
   export interface AccountVerificationLetter {
     /**
@@ -189,7 +192,8 @@ export namespace DocumentCreateParams {
   }
 
   /**
-   * Funding instructions.
+   * Funding instructions. Required if and only if `category` is
+   * `funding_instructions`.
    */
   export interface FundingInstructions {
     /**
