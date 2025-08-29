@@ -47,6 +47,19 @@ export interface InboundCheckDepositCreateParams {
    * The check number on the check to be deposited.
    */
   check_number: string;
+
+  /**
+   * Simulate the outcome of
+   * [payee name checking](https://increase.com/documentation/positive-pay#payee-name-mismatches).
+   * Defaults to `not_evaluated`.
+   *
+   * - `name_matches` - The details on the check match the recipient name of the
+   *   check transfer.
+   * - `does_not_match` - The details on the check do not match the recipient name of
+   *   the check transfer.
+   * - `not_evaluated` - The payee name analysis was not evaluated.
+   */
+  payee_name_analysis?: 'name_matches' | 'does_not_match' | 'not_evaluated';
 }
 
 export declare namespace InboundCheckDeposits {
