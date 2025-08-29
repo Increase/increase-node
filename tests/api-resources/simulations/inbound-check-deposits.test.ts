@@ -29,6 +29,7 @@ describe('resource inboundCheckDeposits', () => {
       account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
       amount: 1000,
       check_number: '1234567890',
+      payee_name_analysis: 'name_matches',
     });
   });
 });
