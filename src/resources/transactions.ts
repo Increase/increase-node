@@ -3144,6 +3144,18 @@ export namespace Transaction {
       return_reason_additional_information: string | null;
 
       /**
+       * A code provided by the sending bank giving a reason for the reversal. It will
+       * generally be one of the codes defined in the ISO20022
+       * `ExternalReturnReason1Code` code set, but this is not enforced by the network.
+       */
+      return_reason_code: string | null;
+
+      /**
+       * An Increase-generated description of the `return_reason_code`.
+       */
+      return_reason_code_description: string | null;
+
+      /**
        * The ID for the Transaction associated with the transfer reversal.
        */
       transaction_id: string;
