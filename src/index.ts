@@ -181,6 +181,7 @@ import {
   EntityUpdateAddressParams,
   EntityUpdateBeneficialOwnerAddressParams,
   EntityUpdateIndustryCodeParams,
+  EntityUpdateParams,
 } from './resources/entities';
 import {
   EventSubscription,
@@ -976,6 +977,7 @@ export declare namespace Increase {
     type Entity as Entity,
     EntitiesPage as EntitiesPage,
     type EntityCreateParams as EntityCreateParams,
+    type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
     type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
     type EntityConfirmParams as EntityConfirmParams,

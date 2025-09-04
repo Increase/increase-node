@@ -130,6 +130,7 @@ describe('resource entities', () => {
         name: 'x',
         confirmed_no_us_tax_id: true,
       },
+      risk_rating: { rated_at: '2019-12-27T18:11:19.117Z', rating: 'low' },
       supplemental_documents: [{ file_id: 'file_makxrc67oh9l6sg7w9yc' }],
       third_party_verification: { reference: 'x', vendor: 'alloy' },
       trust: {
@@ -212,6 +213,17 @@ describe('resource entities', () => {
     await expect(
       client.entities.retrieve('entity_n8y8tnk2p9339ti393yi', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Increase.NotFoundError);
+  });
+
+  test('update', async () => {
+    const responsePromise = client.entities.update('entity_n8y8tnk2p9339ti393yi', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
   });
 
   test('list', async () => {

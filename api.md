@@ -390,6 +390,7 @@ Methods:
 
 - <code title="post /entities">client.entities.<a href="./src/resources/entities.ts">create</a>({ ...params }) -> Entity</code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/resources/entities.ts">retrieve</a>(entityId) -> Entity</code>
+- <code title="patch /entities/{entity_id}">client.entities.<a href="./src/resources/entities.ts">update</a>(entityId, { ...params }) -> Entity</code>
 - <code title="get /entities">client.entities.<a href="./src/resources/entities.ts">list</a>({ ...params }) -> EntitiesPage</code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/resources/entities.ts">archive</a>(entityId) -> Entity</code>
 - <code title="post /entities/{entity_id}/archive_beneficial_owner">client.entities.<a href="./src/resources/entities.ts">archiveBeneficialOwner</a>(entityId, { ...params }) -> Entity</code>
