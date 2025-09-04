@@ -2568,6 +2568,12 @@ export interface EntityUpdateParams {
    * such as money laundering.
    */
   risk_rating?: EntityUpdateParams.RiskRating;
+
+  /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  third_party_verification?: EntityUpdateParams.ThirdPartyVerification;
 }
 
 export namespace EntityUpdateParams {
@@ -2590,6 +2596,26 @@ export namespace EntityUpdateParams {
      * - `high` - High
      */
     rating: 'low' | 'medium' | 'high';
+  }
+
+  /**
+   * A reference to data stored in a third-party verification service. Your
+   * integration may or may not use this field.
+   */
+  export interface ThirdPartyVerification {
+    /**
+     * The reference identifier for the third party verification.
+     */
+    reference: string;
+
+    /**
+     * The vendor that was used to perform the verification.
+     *
+     * - `alloy` - Alloy. See https://alloy.com for more information.
+     * - `middesk` - Middesk. See https://middesk.com for more information.
+     * - `oscilar` - Oscilar. See https://oscilar.com for more information.
+     */
+    vendor: 'alloy' | 'middesk' | 'oscilar';
   }
 }
 
