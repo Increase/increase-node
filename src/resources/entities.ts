@@ -36,6 +36,20 @@ export class Entities extends APIResource {
   }
 
   /**
+   * Update an Entity
+   *
+   * @example
+   * ```ts
+   * const entity = await client.entities.update(
+   *   'entity_n8y8tnk2p9339ti393yi',
+   * );
+   * ```
+   */
+  update(entityId: string, body: EntityUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
+    return this._client.patch(`/entities/${entityId}`, { body, ...options });
+  }
+
+  /**
    * List Entities
    *
    * @example
@@ -282,6 +296,12 @@ export interface Entity {
    * `natural_person`.
    */
   natural_person: Entity.NaturalPerson | null;
+
+  /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  risk_rating: Entity.RiskRating | null;
 
   /**
    * The status of the entity.
@@ -802,6 +822,27 @@ export namespace Entity {
   }
 
   /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  export interface RiskRating {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
+     * rating was performed.
+     */
+    rated_at: string;
+
+    /**
+     * The rating given to this entity.
+     *
+     * - `low` - Low
+     * - `medium` - Medium
+     * - `high` - High
+     */
+    rating: 'low' | 'medium' | 'high';
+  }
+
+  /**
    * A reference to data stored in a third-party verification service. Your
    * integration may or may not use this field.
    */
@@ -1136,6 +1177,12 @@ export interface EntityCreateParams {
    * identification methods.
    */
   natural_person?: EntityCreateParams.NaturalPerson;
+
+  /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  risk_rating?: EntityCreateParams.RiskRating;
 
   /**
    * Additional documentation associated with the entity.
@@ -1966,6 +2013,27 @@ export namespace EntityCreateParams {
     }
   }
 
+  /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  export interface RiskRating {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
+     * rating was performed.
+     */
+    rated_at: string;
+
+    /**
+     * The rating given to this entity.
+     *
+     * - `low` - Low
+     * - `medium` - Medium
+     * - `high` - High
+     */
+    rating: 'low' | 'medium' | 'high';
+  }
+
   export interface SupplementalDocument {
     /**
      * The identifier of the File containing the document.
@@ -2494,6 +2562,37 @@ export namespace EntityCreateParams {
   }
 }
 
+export interface EntityUpdateParams {
+  /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  risk_rating?: EntityUpdateParams.RiskRating;
+}
+
+export namespace EntityUpdateParams {
+  /**
+   * An assessment of the entity’s potential risk of involvement in financial crimes,
+   * such as money laundering.
+   */
+  export interface RiskRating {
+    /**
+     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
+     * rating was performed.
+     */
+    rated_at: string;
+
+    /**
+     * The rating given to this entity.
+     *
+     * - `low` - Low
+     * - `medium` - Medium
+     * - `high` - High
+     */
+    rating: 'low' | 'medium' | 'high';
+  }
+}
+
 export interface EntityListParams extends PageParams {
   created_at?: EntityListParams.CreatedAt;
 
@@ -2910,6 +3009,7 @@ export declare namespace Entities {
     type Entity as Entity,
     EntitiesPage as EntitiesPage,
     type EntityCreateParams as EntityCreateParams,
+    type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,
     type EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
     type EntityConfirmParams as EntityConfirmParams,
