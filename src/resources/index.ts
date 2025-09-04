@@ -166,6 +166,7 @@ export {
   Entities,
   type Entity,
   type EntityCreateParams,
+  type EntityUpdateParams,
   type EntityListParams,
   type EntityArchiveBeneficialOwnerParams,
   type EntityConfirmParams,
