@@ -238,6 +238,18 @@ export interface PhysicalCardProfileCreateParams {
   program_id: string;
 
   /**
+   * A reference ID provided by the fulfillment provider for the card stock used.
+   * Only used if you've ordered card stock separately.
+   */
+  card_stock_reference?: string;
+
+  /**
+   * A reference ID provided by the fulfillment provider for the carrier stock used.
+   * Only used if you've ordered carrier stock separately.
+   */
+  carrier_stock_reference?: string;
+
+  /**
    * Text printed on the front of the card. Reach out to
    * [support@increase.com](mailto:support@increase.com) for more information.
    */
