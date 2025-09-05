@@ -27,6 +27,20 @@ Methods:
 - <code title="patch /account_numbers/{account_number_id}">client.accountNumbers.<a href="./src/resources/account-numbers.ts">update</a>(accountNumberId, { ...params }) -> AccountNumber</code>
 - <code title="get /account_numbers">client.accountNumbers.<a href="./src/resources/account-numbers.ts">list</a>({ ...params }) -> AccountNumbersPage</code>
 
+# AccountTransfers
+
+Types:
+
+- <code><a href="./src/resources/account-transfers.ts">AccountTransfer</a></code>
+
+Methods:
+
+- <code title="post /account_transfers">client.accountTransfers.<a href="./src/resources/account-transfers.ts">create</a>({ ...params }) -> AccountTransfer</code>
+- <code title="get /account_transfers/{account_transfer_id}">client.accountTransfers.<a href="./src/resources/account-transfers.ts">retrieve</a>(accountTransferId) -> AccountTransfer</code>
+- <code title="get /account_transfers">client.accountTransfers.<a href="./src/resources/account-transfers.ts">list</a>({ ...params }) -> AccountTransfersPage</code>
+- <code title="post /account_transfers/{account_transfer_id}/approve">client.accountTransfers.<a href="./src/resources/account-transfers.ts">approve</a>(accountTransferId) -> AccountTransfer</code>
+- <code title="post /account_transfers/{account_transfer_id}/cancel">client.accountTransfers.<a href="./src/resources/account-transfers.ts">cancel</a>(accountTransferId) -> AccountTransfer</code>
+
 # Cards
 
 Types:
@@ -164,20 +178,6 @@ Methods:
 
 - <code title="get /declined_transactions/{declined_transaction_id}">client.declinedTransactions.<a href="./src/resources/declined-transactions.ts">retrieve</a>(declinedTransactionId) -> DeclinedTransaction</code>
 - <code title="get /declined_transactions">client.declinedTransactions.<a href="./src/resources/declined-transactions.ts">list</a>({ ...params }) -> DeclinedTransactionsPage</code>
-
-# AccountTransfers
-
-Types:
-
-- <code><a href="./src/resources/account-transfers.ts">AccountTransfer</a></code>
-
-Methods:
-
-- <code title="post /account_transfers">client.accountTransfers.<a href="./src/resources/account-transfers.ts">create</a>({ ...params }) -> AccountTransfer</code>
-- <code title="get /account_transfers/{account_transfer_id}">client.accountTransfers.<a href="./src/resources/account-transfers.ts">retrieve</a>(accountTransferId) -> AccountTransfer</code>
-- <code title="get /account_transfers">client.accountTransfers.<a href="./src/resources/account-transfers.ts">list</a>({ ...params }) -> AccountTransfersPage</code>
-- <code title="post /account_transfers/{account_transfer_id}/approve">client.accountTransfers.<a href="./src/resources/account-transfers.ts">approve</a>(accountTransferId) -> AccountTransfer</code>
-- <code title="post /account_transfers/{account_transfer_id}/cancel">client.accountTransfers.<a href="./src/resources/account-transfers.ts">cancel</a>(accountTransferId) -> AccountTransfer</code>
 
 # ACHTransfers
 
@@ -683,6 +683,12 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interestPayments.<a href="./src/resources/simulations/interest-payments.ts">create</a>({ ...params }) -> Transaction</code>
 
+## AccountTransfers
+
+Methods:
+
+- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./src/resources/simulations/account-transfers.ts">complete</a>(accountTransferId) -> AccountTransfer</code>
+
 ## CardAuthorizations
 
 Types:
@@ -757,12 +763,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold">client.simulations.pendingTransactions.<a href="./src/resources/simulations/pending-transactions.ts">releaseInboundFundsHold</a>(pendingTransactionId) -> PendingTransaction</code>
-
-## AccountTransfers
-
-Methods:
-
-- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.accountTransfers.<a href="./src/resources/simulations/account-transfers.ts">complete</a>(accountTransferId) -> AccountTransfer</code>
 
 ## ACHTransfers
 

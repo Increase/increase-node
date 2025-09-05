@@ -93,6 +93,9 @@ export class Simulations extends APIResource {
   interestPayments: InterestPaymentsAPI.InterestPayments = new InterestPaymentsAPI.InterestPayments(
     this._client,
   );
+  accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
+    this._client,
+  );
   cardAuthorizations: CardAuthorizationsAPI.CardAuthorizations = new CardAuthorizationsAPI.CardAuthorizations(
     this._client,
   );
@@ -110,9 +113,6 @@ export class Simulations extends APIResource {
     new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this._client);
   pendingTransactions: PendingTransactionsAPI.PendingTransactions =
     new PendingTransactionsAPI.PendingTransactions(this._client);
-  accountTransfers: AccountTransfersAPI.AccountTransfers = new AccountTransfersAPI.AccountTransfers(
-    this._client,
-  );
   achTransfers: ACHTransfersAPI.ACHTransfers = new ACHTransfersAPI.ACHTransfers(this._client);
   inboundACHTransfers: InboundACHTransfersAPI.InboundACHTransfers =
     new InboundACHTransfersAPI.InboundACHTransfers(this._client);
@@ -143,6 +143,7 @@ export class Simulations extends APIResource {
 }
 
 Simulations.InterestPayments = InterestPayments;
+Simulations.AccountTransfers = AccountTransfers;
 Simulations.CardAuthorizations = CardAuthorizations;
 Simulations.CardAuthorizationExpirations = CardAuthorizationExpirations;
 Simulations.CardSettlements = CardSettlements;
@@ -154,7 +155,6 @@ Simulations.CardDisputes = CardDisputes;
 Simulations.PhysicalCards = PhysicalCards;
 Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
 Simulations.PendingTransactions = PendingTransactions;
-Simulations.AccountTransfers = AccountTransfers;
 Simulations.ACHTransfers = ACHTransfers;
 Simulations.InboundACHTransfers = InboundACHTransfers;
 Simulations.WireTransfers = WireTransfers;
@@ -177,6 +177,8 @@ export declare namespace Simulations {
     InterestPayments as InterestPayments,
     type InterestPaymentCreateParams as InterestPaymentCreateParams,
   };
+
+  export { AccountTransfers as AccountTransfers };
 
   export {
     CardAuthorizations as CardAuthorizations,
@@ -220,8 +222,6 @@ export declare namespace Simulations {
   };
 
   export { PendingTransactions as PendingTransactions };
-
-  export { AccountTransfers as AccountTransfers };
 
   export {
     ACHTransfers as ACHTransfers,
