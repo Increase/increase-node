@@ -2564,6 +2564,21 @@ export namespace EntityCreateParams {
 
 export interface EntityUpdateParams {
   /**
+   * Details of the corporation entity to update.
+   */
+  corporation?: EntityUpdateParams.Corporation;
+
+  /**
+   * Details of the government authority entity to update.
+   */
+  government_authority?: EntityUpdateParams.GovernmentAuthority;
+
+  /**
+   * Details of the natural person entity to update.
+   */
+  natural_person?: EntityUpdateParams.NaturalPerson;
+
+  /**
    * An assessment of the entity’s potential risk of involvement in financial crimes,
    * such as money laundering.
    */
@@ -2574,9 +2589,44 @@ export interface EntityUpdateParams {
    * integration may or may not use this field.
    */
   third_party_verification?: EntityUpdateParams.ThirdPartyVerification;
+
+  /**
+   * Details of the trust entity to update.
+   */
+  trust?: EntityUpdateParams.Trust;
 }
 
 export namespace EntityUpdateParams {
+  /**
+   * Details of the corporation entity to update.
+   */
+  export interface Corporation {
+    /**
+     * The legal name of the corporation.
+     */
+    name?: string;
+  }
+
+  /**
+   * Details of the government authority entity to update.
+   */
+  export interface GovernmentAuthority {
+    /**
+     * The legal name of the government authority.
+     */
+    name?: string;
+  }
+
+  /**
+   * Details of the natural person entity to update.
+   */
+  export interface NaturalPerson {
+    /**
+     * The legal name of the natural person.
+     */
+    name?: string;
+  }
+
   /**
    * An assessment of the entity’s potential risk of involvement in financial crimes,
    * such as money laundering.
@@ -2616,6 +2666,16 @@ export namespace EntityUpdateParams {
      * - `oscilar` - Oscilar. See https://oscilar.com for more information.
      */
     vendor: 'alloy' | 'middesk' | 'oscilar';
+  }
+
+  /**
+   * Details of the trust entity to update.
+   */
+  export interface Trust {
+    /**
+     * The legal name of the trust.
+     */
+    name?: string;
   }
 }
 
