@@ -2564,17 +2564,20 @@ export namespace EntityCreateParams {
 
 export interface EntityUpdateParams {
   /**
-   * Details of the corporation entity to update.
+   * Details of the corporation entity to update. If you specify this parameter and
+   * the entity is not a corporation, the request will fail.
    */
   corporation?: EntityUpdateParams.Corporation;
 
   /**
-   * Details of the government authority entity to update.
+   * Details of the government authority entity to update. If you specify this
+   * parameter and the entity is not a government authority, the request will fail.
    */
   government_authority?: EntityUpdateParams.GovernmentAuthority;
 
   /**
-   * Details of the natural person entity to update.
+   * Details of the natural person entity to update. If you specify this parameter
+   * and the entity is not a natural person, the request will fail.
    */
   natural_person?: EntityUpdateParams.NaturalPerson;
 
@@ -2591,14 +2594,16 @@ export interface EntityUpdateParams {
   third_party_verification?: EntityUpdateParams.ThirdPartyVerification;
 
   /**
-   * Details of the trust entity to update.
+   * Details of the trust entity to update. If you specify this parameter and the
+   * entity is not a trust, the request will fail.
    */
   trust?: EntityUpdateParams.Trust;
 }
 
 export namespace EntityUpdateParams {
   /**
-   * Details of the corporation entity to update.
+   * Details of the corporation entity to update. If you specify this parameter and
+   * the entity is not a corporation, the request will fail.
    */
   export interface Corporation {
     /**
@@ -2608,7 +2613,8 @@ export namespace EntityUpdateParams {
   }
 
   /**
-   * Details of the government authority entity to update.
+   * Details of the government authority entity to update. If you specify this
+   * parameter and the entity is not a government authority, the request will fail.
    */
   export interface GovernmentAuthority {
     /**
@@ -2618,7 +2624,8 @@ export namespace EntityUpdateParams {
   }
 
   /**
-   * Details of the natural person entity to update.
+   * Details of the natural person entity to update. If you specify this parameter
+   * and the entity is not a natural person, the request will fail.
    */
   export interface NaturalPerson {
     /**
@@ -2669,7 +2676,8 @@ export namespace EntityUpdateParams {
   }
 
   /**
-   * Details of the trust entity to update.
+   * Details of the trust entity to update. If you specify this parameter and the
+   * entity is not a trust, the request will fail.
    */
   export interface Trust {
     /**
