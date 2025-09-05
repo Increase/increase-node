@@ -499,6 +499,7 @@ export class Increase extends Core.APIClient {
 
   accounts: API.Accounts = new API.Accounts(this);
   accountNumbers: API.AccountNumbers = new API.AccountNumbers(this);
+  accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
   cards: API.Cards = new API.Cards(this);
   cardPayments: API.CardPayments = new API.CardPayments(this);
   cardPurchaseSupplements: API.CardPurchaseSupplements = new API.CardPurchaseSupplements(this);
@@ -510,7 +511,6 @@ export class Increase extends Core.APIClient {
   transactions: API.Transactions = new API.Transactions(this);
   pendingTransactions: API.PendingTransactions = new API.PendingTransactions(this);
   declinedTransactions: API.DeclinedTransactions = new API.DeclinedTransactions(this);
-  accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
   achTransfers: API.ACHTransfers = new API.ACHTransfers(this);
   achPrenotifications: API.ACHPrenotifications = new API.ACHPrenotifications(this);
   inboundACHTransfers: API.InboundACHTransfers = new API.InboundACHTransfers(this);
@@ -616,6 +616,8 @@ Increase.Accounts = Accounts;
 Increase.AccountsPage = AccountsPage;
 Increase.AccountNumbers = AccountNumbers;
 Increase.AccountNumbersPage = AccountNumbersPage;
+Increase.AccountTransfers = AccountTransfers;
+Increase.AccountTransfersPage = AccountTransfersPage;
 Increase.Cards = Cards;
 Increase.CardsPage = CardsPage;
 Increase.CardPayments = CardPayments;
@@ -638,8 +640,6 @@ Increase.PendingTransactions = PendingTransactions;
 Increase.PendingTransactionsPage = PendingTransactionsPage;
 Increase.DeclinedTransactions = DeclinedTransactions;
 Increase.DeclinedTransactionsPage = DeclinedTransactionsPage;
-Increase.AccountTransfers = AccountTransfers;
-Increase.AccountTransfersPage = AccountTransfersPage;
 Increase.ACHTransfers = ACHTransfers;
 Increase.ACHTransfersPage = ACHTransfersPage;
 Increase.ACHPrenotifications = ACHPrenotifications;
@@ -744,6 +744,14 @@ export declare namespace Increase {
   };
 
   export {
+    AccountTransfers as AccountTransfers,
+    type AccountTransfer as AccountTransfer,
+    AccountTransfersPage as AccountTransfersPage,
+    type AccountTransferCreateParams as AccountTransferCreateParams,
+    type AccountTransferListParams as AccountTransferListParams,
+  };
+
+  export {
     Cards as Cards,
     type Card as Card,
     type CardDetails as CardDetails,
@@ -831,14 +839,6 @@ export declare namespace Increase {
     type DeclinedTransaction as DeclinedTransaction,
     DeclinedTransactionsPage as DeclinedTransactionsPage,
     type DeclinedTransactionListParams as DeclinedTransactionListParams,
-  };
-
-  export {
-    AccountTransfers as AccountTransfers,
-    type AccountTransfer as AccountTransfer,
-    AccountTransfersPage as AccountTransfersPage,
-    type AccountTransferCreateParams as AccountTransferCreateParams,
-    type AccountTransferListParams as AccountTransferListParams,
   };
 
   export {
