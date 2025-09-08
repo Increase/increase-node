@@ -333,8 +333,9 @@ export interface Entity {
   supplemental_documents: Array<SupplementalDocumentsAPI.EntitySupplementalDocument>;
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   third_party_verification: Entity.ThirdPartyVerification | null;
 
@@ -835,16 +836,17 @@ export namespace Entity {
     /**
      * The rating given to this entity.
      *
-     * - `low` - Low
-     * - `medium` - Medium
-     * - `high` - High
+     * - `low` - Minimal risk of involvement in financial crime.
+     * - `medium` - Moderate risk of involvement in financial crime.
+     * - `high` - Elevated risk of involvement in financial crime.
      */
     rating: 'low' | 'medium' | 'high';
   }
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   export interface ThirdPartyVerification {
     /**
@@ -1190,8 +1192,9 @@ export interface EntityCreateParams {
   supplemental_documents?: Array<EntityCreateParams.SupplementalDocument>;
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   third_party_verification?: EntityCreateParams.ThirdPartyVerification;
 
@@ -2027,9 +2030,9 @@ export namespace EntityCreateParams {
     /**
      * The rating given to this entity.
      *
-     * - `low` - Low
-     * - `medium` - Medium
-     * - `high` - High
+     * - `low` - Minimal risk of involvement in financial crime.
+     * - `medium` - Moderate risk of involvement in financial crime.
+     * - `high` - Elevated risk of involvement in financial crime.
      */
     rating: 'low' | 'medium' | 'high';
   }
@@ -2042,8 +2045,9 @@ export namespace EntityCreateParams {
   }
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   export interface ThirdPartyVerification {
     /**
@@ -2588,8 +2592,9 @@ export interface EntityUpdateParams {
   risk_rating?: EntityUpdateParams.RiskRating;
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   third_party_verification?: EntityUpdateParams.ThirdPartyVerification;
 
@@ -2776,16 +2781,17 @@ export namespace EntityUpdateParams {
     /**
      * The rating given to this entity.
      *
-     * - `low` - Low
-     * - `medium` - Medium
-     * - `high` - High
+     * - `low` - Minimal risk of involvement in financial crime.
+     * - `medium` - Moderate risk of involvement in financial crime.
+     * - `high` - Elevated risk of involvement in financial crime.
      */
     rating: 'low' | 'medium' | 'high';
   }
 
   /**
-   * A reference to data stored in a third-party verification service. Your
-   * integration may or may not use this field.
+   * If you are using a third-party service for identity verification, you can use
+   * this field to associate this Entity with the identifier that represents them in
+   * that service.
    */
   export interface ThirdPartyVerification {
     /**
