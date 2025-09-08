@@ -2574,6 +2574,13 @@ export interface EntityUpdateParams {
   corporation?: EntityUpdateParams.Corporation;
 
   /**
+   * When your user last confirmed the Entity's details. Depending on your program,
+   * you may be required to affirmatively confirm details with your users on an
+   * annual basis.
+   */
+  details_confirmed_at?: string;
+
+  /**
    * Details of the government authority entity to update. If you specify this
    * parameter and the entity is not a government authority, the request will fail.
    */
