@@ -2607,9 +2607,49 @@ export namespace EntityUpdateParams {
    */
   export interface Corporation {
     /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    address?: Corporation.Address;
+
+    /**
      * The legal name of the corporation.
      */
     name?: string;
+  }
+
+  export namespace Corporation {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
   }
 
   /**
@@ -2618,9 +2658,49 @@ export namespace EntityUpdateParams {
    */
   export interface GovernmentAuthority {
     /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    address?: GovernmentAuthority.Address;
+
+    /**
      * The legal name of the government authority.
      */
     name?: string;
+  }
+
+  export namespace GovernmentAuthority {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
   }
 
   /**
@@ -2629,9 +2709,49 @@ export namespace EntityUpdateParams {
    */
   export interface NaturalPerson {
     /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    address?: NaturalPerson.Address;
+
+    /**
      * The legal name of the natural person.
      */
     name?: string;
+  }
+
+  export namespace NaturalPerson {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
   }
 
   /**
@@ -2681,9 +2801,49 @@ export namespace EntityUpdateParams {
    */
   export interface Trust {
     /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    address?: Trust.Address;
+
+    /**
      * The legal name of the trust.
      */
     name?: string;
+  }
+
+  export namespace Trust {
+    /**
+     * The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+     * are disallowed.
+     */
+    export interface Address {
+      /**
+       * The city of the address.
+       */
+      city: string;
+
+      /**
+       * The first line of the address. This is usually the street number and street.
+       */
+      line1: string;
+
+      /**
+       * The two-letter United States Postal Service (USPS) abbreviation for the state of
+       * the address.
+       */
+      state: string;
+
+      /**
+       * The ZIP code of the address.
+       */
+      zip: string;
+
+      /**
+       * The second line of the address. This might be the floor or room number.
+       */
+      line2?: string;
+    }
   }
 }
 
