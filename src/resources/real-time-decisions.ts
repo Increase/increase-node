@@ -221,6 +221,12 @@ export namespace RealTimeDecision {
     decision: 'approve' | 'decline' | null;
 
     /**
+     * Present if and only if `decision` is `decline`. Contains information related to
+     * the reason the authorization was declined.
+     */
+    decline: CardAuthorization.Decline | null;
+
+    /**
      * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
      * purchase), the identifier of the token that was used.
      */
@@ -578,6 +584,17 @@ export namespace RealTimeDecision {
     }
 
     /**
+     * Present if and only if `decision` is `decline`. Contains information related to
+     * the reason the authorization was declined.
+     */
+    export interface Decline {
+      /**
+       * The reason the authorization was declined.
+       */
+      reason: string;
+    }
+
+    /**
      * Fields specific to the `network`.
      */
     export interface NetworkDetails {
@@ -840,23 +857,24 @@ export namespace RealTimeDecision {
         /**
          * The address verification result returned to the card network.
          *
-         * - `not_checked` - No address was provided in the authorization request.
-         * - `postal_code_match_address_not_checked` - Postal code matches, but the street
-         *   address was not verified.
+         * - `not_checked` - No address information was provided in the authorization
+         *   request.
          * - `postal_code_match_address_no_match` - Postal code matches, but the street
-         *   address does not match.
+         *   address does not match or was not provided.
          * - `postal_code_no_match_address_match` - Postal code does not match, but the
-         *   street address matches.
+         *   street address matches or was not provided.
          * - `match` - Postal code and street address match.
          * - `no_match` - Postal code and street address do not match.
+         * - `postal_code_match_address_not_checked` - Postal code matches, but the street
+         *   address was not verified. (deprecated)
          */
         result:
           | 'not_checked'
-          | 'postal_code_match_address_not_checked'
           | 'postal_code_match_address_no_match'
           | 'postal_code_no_match_address_match'
           | 'match'
-          | 'no_match';
+          | 'no_match'
+          | 'postal_code_match_address_not_checked';
       }
     }
   }
@@ -1049,8 +1067,24 @@ export namespace RealTimeDecisionActionParams {
     decision: 'approve' | 'decline';
 
     /**
+     * If your application approves the authorization, this contains metadata about
+     * your decision to approve. Your response here is advisory to the acquiring bank.
+     * The bank may choose to reverse the authorization if you approve the transaction
+     * but indicate the address does not match.
+     */
+    approval?: CardAuthorization.Approval;
+
+    /**
+     * If your application declines the authorization, this contains details about the
+     * decline.
+     */
+    decline?: CardAuthorization.Decline;
+
+    /**
      * The reason the card authorization was declined. This translates to a specific
-     * decline code that is sent to the card network.
+     * decline code that is sent to the card network. This field is deprecated, please
+     * transition to using the `decline` object as this field will be removed in a
+     * future release.
      *
      * - `insufficient_funds` - The cardholder does not have sufficient funds to cover
      *   the transaction. The merchant may attempt to process the transaction again.
@@ -1074,6 +1108,99 @@ export namespace RealTimeDecisionActionParams {
       | 'other';
   }
 
+  export namespace CardAuthorization {
+    /**
+     * If your application approves the authorization, this contains metadata about
+     * your decision to approve. Your response here is advisory to the acquiring bank.
+     * The bank may choose to reverse the authorization if you approve the transaction
+     * but indicate the address does not match.
+     */
+    export interface Approval {
+      /**
+       * Your decisions on whether or not each provided address component is a match.
+       * Your response here is evaluated against the customer's provided `postal_code`
+       * and `line1`, and an appropriate network response is generated. For example, if
+       * you would like to approve all transactions for a given card, you can submit
+       * `match` for both `postal_code` and `line1` and Increase will generate an
+       * approval with an Address Verification System (AVS) code that will match all of
+       * the available address information, or will report that no check was performed if
+       * no address information is available. If you do not provide a response, the
+       * address verification result will be calculated by Increase using the available
+       * address information available on the card. If none is available, Increase will
+       * report that no check was performed.
+       */
+      cardholder_address_verification_result?: Approval.CardholderAddressVerificationResult;
+    }
+
+    export namespace Approval {
+      /**
+       * Your decisions on whether or not each provided address component is a match.
+       * Your response here is evaluated against the customer's provided `postal_code`
+       * and `line1`, and an appropriate network response is generated. For example, if
+       * you would like to approve all transactions for a given card, you can submit
+       * `match` for both `postal_code` and `line1` and Increase will generate an
+       * approval with an Address Verification System (AVS) code that will match all of
+       * the available address information, or will report that no check was performed if
+       * no address information is available. If you do not provide a response, the
+       * address verification result will be calculated by Increase using the available
+       * address information available on the card. If none is available, Increase will
+       * report that no check was performed.
+       */
+      export interface CardholderAddressVerificationResult {
+        /**
+         * Your decision on the address line of the provided address.
+         *
+         * - `match` - The cardholder address verification result matches the address
+         *   provided by the merchant.
+         * - `no_match` - The cardholder address verification result does not match the
+         *   address provided by the merchant.
+         */
+        line1: 'match' | 'no_match';
+
+        /**
+         * Your decision on the postal code of the provided address.
+         *
+         * - `match` - The cardholder address verification result matches the address
+         *   provided by the merchant.
+         * - `no_match` - The cardholder address verification result does not match the
+         *   address provided by the merchant.
+         */
+        postal_code: 'match' | 'no_match';
+      }
+    }
+
+    /**
+     * If your application declines the authorization, this contains details about the
+     * decline.
+     */
+    export interface Decline {
+      /**
+       * The reason the card authorization was declined. This translates to a specific
+       * decline code that is sent to the card network.
+       *
+       * - `insufficient_funds` - The cardholder does not have sufficient funds to cover
+       *   the transaction. The merchant may attempt to process the transaction again.
+       * - `transaction_never_allowed` - This type of transaction is not allowed for this
+       *   card. This transaction should not be retried.
+       * - `exceeds_approval_limit` - The transaction amount exceeds the cardholder's
+       *   approval limit. The merchant may attempt to process the transaction again.
+       * - `card_temporarily_disabled` - The card has been temporarily disabled or not
+       *   yet activated. The merchant may attempt to process the transaction again.
+       * - `suspected_fraud` - The transaction is suspected to be fraudulent. The
+       *   merchant may attempt to process the transaction again.
+       * - `other` - The transaction was declined for another reason. The merchant may
+       *   attempt to process the transaction again. This should be used sparingly.
+       */
+      reason:
+        | 'insufficient_funds'
+        | 'transaction_never_allowed'
+        | 'exceeds_approval_limit'
+        | 'card_temporarily_disabled'
+        | 'suspected_fraud'
+        | 'other';
+    }
+  }
+
   /**
    * If the Real-Time Decision relates to a digital wallet authentication attempt,
    * this object contains your response to the authentication.
@@ -1089,10 +1216,18 @@ export namespace RealTimeDecisionActionParams {
      */
     result: 'success' | 'failure';
 
+    /**
+     * If your application was able to deliver the one-time passcode, this contains
+     * metadata about the delivery. Exactly one of `phone` or `email` must be provided.
+     */
     success?: DigitalWalletAuthentication.Success;
   }
 
   export namespace DigitalWalletAuthentication {
+    /**
+     * If your application was able to deliver the one-time passcode, this contains
+     * metadata about the delivery. Exactly one of `phone` or `email` must be provided.
+     */
     export interface Success {
       /**
        * The email address that was used to verify the cardholder via one-time passcode.
