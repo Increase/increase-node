@@ -1079,33 +1079,6 @@ export namespace RealTimeDecisionActionParams {
      * decline.
      */
     decline?: CardAuthorization.Decline;
-
-    /**
-     * The reason the card authorization was declined. This translates to a specific
-     * decline code that is sent to the card network. This field is deprecated, please
-     * transition to using the `decline` object as this field will be removed in a
-     * future release.
-     *
-     * - `insufficient_funds` - The cardholder does not have sufficient funds to cover
-     *   the transaction. The merchant may attempt to process the transaction again.
-     * - `transaction_never_allowed` - This type of transaction is not allowed for this
-     *   card. This transaction should not be retried.
-     * - `exceeds_approval_limit` - The transaction amount exceeds the cardholder's
-     *   approval limit. The merchant may attempt to process the transaction again.
-     * - `card_temporarily_disabled` - The card has been temporarily disabled or not
-     *   yet activated. The merchant may attempt to process the transaction again.
-     * - `suspected_fraud` - The transaction is suspected to be fraudulent. The
-     *   merchant may attempt to process the transaction again.
-     * - `other` - The transaction was declined for another reason. The merchant may
-     *   attempt to process the transaction again. This should be used sparingly.
-     */
-    decline_reason?:
-      | 'insufficient_funds'
-      | 'transaction_never_allowed'
-      | 'exceeds_approval_limit'
-      | 'card_temporarily_disabled'
-      | 'suspected_fraud'
-      | 'other';
   }
 
   export namespace CardAuthorization {
