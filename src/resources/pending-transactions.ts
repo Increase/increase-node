@@ -244,6 +244,8 @@ export namespace PendingTransaction {
      *   the `check_deposit_instruction` object.
      * - `check_transfer_instruction` - Check Transfer Instruction: details will be
      *   under the `check_transfer_instruction` object.
+     * - `fed_now_transfer_instruction` - FedNow Transfer Instruction: details will be
+     *   under the `fed_now_transfer_instruction` object.
      * - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
      *   `inbound_funds_hold` object.
      * - `user_initiated_hold` - User Initiated Hold: details will be under the
@@ -268,6 +270,7 @@ export namespace PendingTransaction {
       | 'card_authorization'
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
+      | 'fed_now_transfer_instruction'
       | 'inbound_funds_hold'
       | 'user_initiated_hold'
       | 'real_time_payments_transfer_instruction'
@@ -288,6 +291,12 @@ export namespace PendingTransaction {
      * response if and only if `category` is equal to `check_transfer_instruction`.
      */
     check_transfer_instruction: Source.CheckTransferInstruction | null;
+
+    /**
+     * A FedNow Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `fed_now_transfer_instruction`.
+     */
+    fed_now_transfer_instruction: Source.FedNowTransferInstruction | null;
 
     /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
@@ -1123,6 +1132,17 @@ export namespace PendingTransaction {
     }
 
     /**
+     * A FedNow Transfer Instruction object. This field will be present in the JSON
+     * response if and only if `category` is equal to `fed_now_transfer_instruction`.
+     */
+    export interface FedNowTransferInstruction {
+      /**
+       * The identifier of the FedNow Transfer that led to this Pending Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * An Inbound Funds Hold object. This field will be present in the JSON response if
      * and only if `category` is equal to `inbound_funds_hold`. We hold funds for
      * certain transaction types to account for return windows where funds might still
@@ -1315,6 +1335,7 @@ export namespace PendingTransactionListParams {
       | 'card_authorization'
       | 'check_deposit_instruction'
       | 'check_transfer_instruction'
+      | 'fed_now_transfer_instruction'
       | 'inbound_funds_hold'
       | 'user_initiated_hold'
       | 'real_time_payments_transfer_instruction'
