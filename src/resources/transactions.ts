@@ -269,6 +269,8 @@ export namespace Transaction {
      *   the `check_deposit_acceptance` object.
      * - `check_deposit_return` - Check Deposit Return: details will be under the
      *   `check_deposit_return` object.
+     * - `fed_now_transfer_acknowledgement` - FedNow Transfer Acknowledgement: details
+     *   will be under the `fed_now_transfer_acknowledgement` object.
      * - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
      *   `check_transfer_deposit` object.
      * - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
@@ -326,6 +328,7 @@ export namespace Transaction {
       | 'card_revenue_payment'
       | 'check_deposit_acceptance'
       | 'check_deposit_return'
+      | 'fed_now_transfer_acknowledgement'
       | 'check_transfer_deposit'
       | 'fee_payment'
       | 'inbound_ach_transfer'
@@ -373,6 +376,14 @@ export namespace Transaction {
      * bank account. These types of checks are not pre-registered.
      */
     check_transfer_deposit: Source.CheckTransferDeposit | null;
+
+    /**
+     * A FedNow Transfer Acknowledgement object. This field will be present in the JSON
+     * response if and only if `category` is equal to
+     * `fed_now_transfer_acknowledgement`. A FedNow Transfer Acknowledgement is created
+     * when a FedNow Transfer sent from Increase is acknowledged by the receiving bank.
+     */
+    fed_now_transfer_acknowledgement: Source.FedNowTransferAcknowledgement | null;
 
     /**
      * A Fee Payment object. This field will be present in the JSON response if and
@@ -2811,6 +2822,19 @@ export namespace Transaction {
     }
 
     /**
+     * A FedNow Transfer Acknowledgement object. This field will be present in the JSON
+     * response if and only if `category` is equal to
+     * `fed_now_transfer_acknowledgement`. A FedNow Transfer Acknowledgement is created
+     * when a FedNow Transfer sent from Increase is acknowledged by the receiving bank.
+     */
+    export interface FedNowTransferAcknowledgement {
+      /**
+       * The identifier of the FedNow Transfer that led to this Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * A Fee Payment object. This field will be present in the JSON response if and
      * only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
      * made to Increase.
@@ -3526,6 +3550,7 @@ export namespace TransactionListParams {
       | 'card_revenue_payment'
       | 'check_deposit_acceptance'
       | 'check_deposit_return'
+      | 'fed_now_transfer_acknowledgement'
       | 'check_transfer_deposit'
       | 'fee_payment'
       | 'inbound_ach_transfer'
