@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.304.0 (2025-09-12)
+
+Full Changelog: [v0.303.0...v0.304.0](https://github.com/Increase/increase-node/compare/v0.303.0...v0.304.0)
+
+### Features
+
+* **api:** api update ([e4623f0](https://github.com/Increase/increase-node/commit/e4623f012f48d2fd72ca4777e6341c82e256a213))
+
+
+### Chores
+
+* ci build action ([52a7523](https://github.com/Increase/increase-node/commit/52a75231e35839f4cb49401c876298fae92894c6))
+* **internal:** codegen related update ([942e835](https://github.com/Increase/increase-node/commit/942e835dee53fe0675fc294deec84c298e720981))
+
 ## 0.303.0 (2025-09-09)
 
 Full Changelog: [v0.302.0...v0.303.0](https://github.com/Increase/increase-node/compare/v0.302.0...v0.303.0)
