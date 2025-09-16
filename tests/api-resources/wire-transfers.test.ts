@@ -14,7 +14,6 @@ describe('resource wireTransfers', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       beneficiary_name: 'Ian Crease',
-      message_to_recipient: 'New account transfer',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -30,7 +29,6 @@ describe('resource wireTransfers', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
       beneficiary_name: 'Ian Crease',
-      message_to_recipient: 'New account transfer',
       account_number: '987654321',
       beneficiary_address_line1: '33 Liberty Street',
       beneficiary_address_line2: 'New York',
@@ -41,6 +39,11 @@ describe('resource wireTransfers', () => {
       originator_address_line2: 'x',
       originator_address_line3: 'x',
       originator_name: 'x',
+      remittance: {
+        category: 'unstructured',
+        tax: { date: '2019-12-27', identification_number: 'xxxxxxxxx', type_code: 'xxxxx' },
+        unstructured: { message: 'New account transfer' },
+      },
       require_approval: true,
       routing_number: '101050001',
       source_account_number_id: 'source_account_number_id',

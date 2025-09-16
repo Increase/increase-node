@@ -15,7 +15,6 @@ export class WireTransfers extends APIResource {
    *   account_id: 'account_in71c4amph0vgo2qllky',
    *   amount: 100,
    *   beneficiary_name: 'Ian Crease',
-   *   message_to_recipient: 'New account transfer',
    * });
    * ```
    */
@@ -196,7 +195,7 @@ export interface WireTransfer {
   /**
    * The message that will show on the recipient's bank statement.
    */
-  message_to_recipient: string | null;
+  message_to_recipient: string;
 
   /**
    * The transfer's network.
@@ -230,6 +229,11 @@ export interface WireTransfer {
    * by someone else in your organization.
    */
   pending_transaction_id: string | null;
+
+  /**
+   * Remittance information sent with the wire transfer.
+   */
+  remittance: WireTransfer.Remittance | null;
 
   /**
    * If your transfer is reversed, this will contain details of the reversal.
@@ -391,6 +395,69 @@ export namespace WireTransfer {
   }
 
   /**
+   * Remittance information sent with the wire transfer.
+   */
+  export interface Remittance {
+    /**
+     * The type of remittance information being passed.
+     *
+     * - `unstructured` - The wire transfer contains unstructured remittance
+     *   information.
+     * - `tax` - The wire transfer is for tax payment purposes to the Internal Revenue
+     *   Service (IRS).
+     */
+    category: 'unstructured' | 'tax';
+
+    /**
+     * Internal Revenue Service (IRS) tax repayment information. Required if `category`
+     * is equal to `tax`.
+     */
+    tax: Remittance.Tax | null;
+
+    /**
+     * Unstructured remittance information. Required if `category` is equal to
+     * `unstructured`.
+     */
+    unstructured: Remittance.Unstructured | null;
+  }
+
+  export namespace Remittance {
+    /**
+     * Internal Revenue Service (IRS) tax repayment information. Required if `category`
+     * is equal to `tax`.
+     */
+    export interface Tax {
+      /**
+       * The month and year the tax payment is for, in YYYY-MM-DD format. The day is
+       * ignored.
+       */
+      date: string;
+
+      /**
+       * The 9-digit Tax Identification Number (TIN) or Employer Identification Number
+       * (EIN).
+       */
+      identification_number: string;
+
+      /**
+       * The 5-character tax type code.
+       */
+      type_code: string;
+    }
+
+    /**
+     * Unstructured remittance information. Required if `category` is equal to
+     * `unstructured`.
+     */
+    export interface Unstructured {
+      /**
+       * The message to the beneficiary.
+       */
+      message: string;
+    }
+  }
+
+  /**
    * If your transfer is reversed, this will contain details of the reversal.
    */
   export interface Reversal {
@@ -503,11 +570,6 @@ export interface WireTransferCreateParams {
   beneficiary_name: string;
 
   /**
-   * The message that will show on the recipient's bank statement.
-   */
-  message_to_recipient: string;
-
-  /**
    * The account number for the destination account.
    */
   account_number?: string;
@@ -564,6 +626,11 @@ export interface WireTransferCreateParams {
   originator_name?: string;
 
   /**
+   * Additional remittance information related to the wire transfer.
+   */
+  remittance?: WireTransferCreateParams.Remittance;
+
+  /**
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
@@ -578,6 +645,71 @@ export interface WireTransferCreateParams {
    * The ID of an Account Number that will be passed to the wire's recipient
    */
   source_account_number_id?: string;
+}
+
+export namespace WireTransferCreateParams {
+  /**
+   * Additional remittance information related to the wire transfer.
+   */
+  export interface Remittance {
+    /**
+     * The type of remittance information being passed.
+     *
+     * - `unstructured` - The wire transfer contains unstructured remittance
+     *   information.
+     * - `tax` - The wire transfer is for tax payment purposes to the Internal Revenue
+     *   Service (IRS).
+     */
+    category: 'unstructured' | 'tax';
+
+    /**
+     * Internal Revenue Service (IRS) tax repayment information. Required if `category`
+     * is equal to `tax`.
+     */
+    tax?: Remittance.Tax;
+
+    /**
+     * Unstructured remittance information. Required if `category` is equal to
+     * `unstructured`.
+     */
+    unstructured?: Remittance.Unstructured;
+  }
+
+  export namespace Remittance {
+    /**
+     * Internal Revenue Service (IRS) tax repayment information. Required if `category`
+     * is equal to `tax`.
+     */
+    export interface Tax {
+      /**
+       * The month and year the tax payment is for, in YYYY-MM-DD format. The day is
+       * ignored.
+       */
+      date: string;
+
+      /**
+       * The 9-digit Tax Identification Number (TIN) or Employer Identification Number
+       * (EIN).
+       */
+      identification_number: string;
+
+      /**
+       * The 5-character tax type code.
+       */
+      type_code: string;
+    }
+
+    /**
+     * Unstructured remittance information. Required if `category` is equal to
+     * `unstructured`.
+     */
+    export interface Unstructured {
+      /**
+       * The message to the beneficiary.
+       */
+      message: string;
+    }
+  }
 }
 
 export interface WireTransferListParams extends PageParams {
