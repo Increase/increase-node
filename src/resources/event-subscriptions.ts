@@ -175,6 +175,8 @@ export interface EventSubscription {
    * - `export.updated` - Occurs whenever an Export is updated.
    * - `external_account.created` - Occurs whenever an External Account is created.
    * - `external_account.updated` - Occurs whenever an External Account is updated.
+   * - `fednow_transfer.created` - Occurs whenever a FedNow Transfer is created.
+   * - `fednow_transfer.updated` - Occurs whenever a FedNow Transfer is updated.
    * - `file.created` - Occurs whenever a File is created.
    * - `group.updated` - Occurs whenever a Group is updated.
    * - `group.heartbeat` - Increase may send webhooks with this category to see if a
@@ -319,6 +321,8 @@ export interface EventSubscription {
     | 'export.updated'
     | 'external_account.created'
     | 'external_account.updated'
+    | 'fednow_transfer.created'
+    | 'fednow_transfer.updated'
     | 'file.created'
     | 'group.updated'
     | 'group.heartbeat'
@@ -474,6 +478,8 @@ export interface EventSubscriptionCreateParams {
    * - `export.updated` - Occurs whenever an Export is updated.
    * - `external_account.created` - Occurs whenever an External Account is created.
    * - `external_account.updated` - Occurs whenever an External Account is updated.
+   * - `fednow_transfer.created` - Occurs whenever a FedNow Transfer is created.
+   * - `fednow_transfer.updated` - Occurs whenever a FedNow Transfer is updated.
    * - `file.created` - Occurs whenever a File is created.
    * - `group.updated` - Occurs whenever a Group is updated.
    * - `group.heartbeat` - Increase may send webhooks with this category to see if a
@@ -618,6 +624,8 @@ export interface EventSubscriptionCreateParams {
     | 'export.updated'
     | 'external_account.created'
     | 'external_account.updated'
+    | 'fednow_transfer.created'
+    | 'fednow_transfer.updated'
     | 'file.created'
     | 'group.updated'
     | 'group.heartbeat'
