@@ -284,6 +284,8 @@ export namespace Transaction {
      *   object.
      * - `inbound_check_adjustment` - Inbound Check Adjustment: details will be under
      *   the `inbound_check_adjustment` object.
+     * - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
+     *   details will be under the `inbound_fednow_transfer_confirmation` object.
      * - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
      *   Payments Transfer Confirmation: details will be under the
      *   `inbound_real_time_payments_transfer_confirmation` object.
@@ -335,6 +337,7 @@ export namespace Transaction {
       | 'inbound_ach_transfer_return_intention'
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
+      | 'inbound_fednow_transfer_confirmation'
       | 'inbound_real_time_payments_transfer_confirmation'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
@@ -425,6 +428,15 @@ export namespace Transaction {
      * requests that it be returned.
      */
     inbound_check_deposit_return_intention: Source.InboundCheckDepositReturnIntention | null;
+
+    /**
+     * An Inbound FedNow Transfer Confirmation object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_confirmation`. An Inbound FedNow Transfer Confirmation
+     * is created when a FedNow transfer is initiated at another bank and received by
+     * Increase.
+     */
+    inbound_fednow_transfer_confirmation: Source.InboundFednowTransferConfirmation | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
@@ -3045,6 +3057,20 @@ export namespace Transaction {
     }
 
     /**
+     * An Inbound FedNow Transfer Confirmation object. This field will be present in
+     * the JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_confirmation`. An Inbound FedNow Transfer Confirmation
+     * is created when a FedNow transfer is initiated at another bank and received by
+     * Increase.
+     */
+    export interface InboundFednowTransferConfirmation {
+      /**
+       * The identifier of the FedNow Transfer that led to this Transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * An Inbound Real-Time Payments Transfer Confirmation object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
@@ -3557,6 +3583,7 @@ export namespace TransactionListParams {
       | 'inbound_ach_transfer_return_intention'
       | 'inbound_check_deposit_return_intention'
       | 'inbound_check_adjustment'
+      | 'inbound_fednow_transfer_confirmation'
       | 'inbound_real_time_payments_transfer_confirmation'
       | 'inbound_wire_reversal'
       | 'inbound_wire_transfer'
