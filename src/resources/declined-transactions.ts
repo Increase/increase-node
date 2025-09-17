@@ -164,6 +164,8 @@ export namespace DeclinedTransaction {
      * - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
      *   Transfer Decline: details will be under the
      *   `inbound_real_time_payments_transfer_decline` object.
+     * - `inbound_fednow_transfer_decline` - Inbound FedNow Transfer Decline: details
+     *   will be under the `inbound_fednow_transfer_decline` object.
      * - `wire_decline` - Wire Decline: details will be under the `wire_decline`
      *   object.
      * - `check_deposit_rejection` - Check Deposit Rejection: details will be under the
@@ -176,6 +178,7 @@ export namespace DeclinedTransaction {
       | 'card_decline'
       | 'check_decline'
       | 'inbound_real_time_payments_transfer_decline'
+      | 'inbound_fednow_transfer_decline'
       | 'wire_decline'
       | 'check_deposit_rejection'
       | 'other';
@@ -191,6 +194,13 @@ export namespace DeclinedTransaction {
      * response if and only if `category` is equal to `check_deposit_rejection`.
      */
     check_deposit_rejection: Source.CheckDepositRejection | null;
+
+    /**
+     * An Inbound FedNow Transfer Decline object. This field will be present in the
+     * JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_decline`.
+     */
+    inbound_fednow_transfer_decline: Source.InboundFednowTransferDecline | null;
 
     /**
      * An Inbound Real-Time Payments Transfer Decline object. This field will be
@@ -1207,6 +1217,37 @@ export namespace DeclinedTransaction {
     }
 
     /**
+     * An Inbound FedNow Transfer Decline object. This field will be present in the
+     * JSON response if and only if `category` is equal to
+     * `inbound_fednow_transfer_decline`.
+     */
+    export interface InboundFednowTransferDecline {
+      /**
+       * Why the transfer was declined.
+       *
+       * - `account_number_canceled` - The account number is canceled.
+       * - `account_number_disabled` - The account number is disabled.
+       * - `account_restricted` - Your account is restricted.
+       * - `group_locked` - Your account is inactive.
+       * - `entity_not_active` - The account's entity is not active.
+       * - `fednow_not_enabled` - Your account is not enabled to receive FedNow
+       *   transfers.
+       */
+      reason:
+        | 'account_number_canceled'
+        | 'account_number_disabled'
+        | 'account_restricted'
+        | 'group_locked'
+        | 'entity_not_active'
+        | 'fednow_not_enabled';
+
+      /**
+       * The identifier of the FedNow Transfer that led to this declined transaction.
+       */
+      transfer_id: string;
+    }
+
+    /**
      * An Inbound Real-Time Payments Transfer Decline object. This field will be
      * present in the JSON response if and only if `category` is equal to
      * `inbound_real_time_payments_transfer_decline`.
@@ -1346,6 +1387,7 @@ export namespace DeclinedTransactionListParams {
       | 'card_decline'
       | 'check_decline'
       | 'inbound_real_time_payments_transfer_decline'
+      | 'inbound_fednow_transfer_decline'
       | 'wire_decline'
       | 'check_deposit_rejection'
       | 'other'
