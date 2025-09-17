@@ -142,6 +142,10 @@ export interface Event {
    *   created.
    * - `inbound_check_deposit.updated` - Occurs whenever an Inbound Check Deposit is
    *   updated.
+   * - `inbound_fednow_transfer.created` - Occurs whenever an Inbound FedNow Transfer
+   *   is created.
+   * - `inbound_fednow_transfer.updated` - Occurs whenever an Inbound FedNow Transfer
+   *   is updated.
    * - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
    * - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
    * - `inbound_real_time_payments_transfer.created` - Occurs whenever an Inbound
@@ -281,6 +285,8 @@ export interface Event {
     | 'inbound_ach_transfer_return.updated'
     | 'inbound_check_deposit.created'
     | 'inbound_check_deposit.updated'
+    | 'inbound_fednow_transfer.created'
+    | 'inbound_fednow_transfer.updated'
     | 'inbound_mail_item.created'
     | 'inbound_mail_item.updated'
     | 'inbound_real_time_payments_transfer.created'
@@ -415,6 +421,8 @@ export namespace EventListParams {
       | 'inbound_ach_transfer_return.updated'
       | 'inbound_check_deposit.created'
       | 'inbound_check_deposit.updated'
+      | 'inbound_fednow_transfer.created'
+      | 'inbound_fednow_transfer.updated'
       | 'inbound_mail_item.created'
       | 'inbound_mail_item.updated'
       | 'inbound_real_time_payments_transfer.created'
