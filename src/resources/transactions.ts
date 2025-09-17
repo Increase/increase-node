@@ -927,11 +927,6 @@ export namespace Transaction {
       accepted_at: string;
 
       /**
-       * The identifier of the Card Dispute that was accepted.
-       */
-      card_dispute_id: string;
-
-      /**
        * The identifier of the Transaction that was created to return the disputed funds
        * to your account.
        */
@@ -948,11 +943,6 @@ export namespace Transaction {
        * The amount of the financial event.
        */
       amount: number;
-
-      /**
-       * The identifier of the Card Dispute the financial event is associated with.
-       */
-      card_dispute_id: string;
 
       /**
        * The network that the Card Dispute is associated with.
@@ -1013,11 +1003,6 @@ export namespace Transaction {
      * a lost Card Dispute.
      */
     export interface CardDisputeLoss {
-      /**
-       * The identifier of the Card Dispute that was lost.
-       */
-      card_dispute_id: string;
-
       /**
        * Why the Card Dispute was lost.
        */

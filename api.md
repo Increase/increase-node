@@ -80,18 +80,6 @@ Methods:
 - <code title="get /card_purchase_supplements/{card_purchase_supplement_id}">client.cardPurchaseSupplements.<a href="./src/resources/card-purchase-supplements.ts">retrieve</a>(cardPurchaseSupplementId) -> CardPurchaseSupplement</code>
 - <code title="get /card_purchase_supplements">client.cardPurchaseSupplements.<a href="./src/resources/card-purchase-supplements.ts">list</a>({ ...params }) -> CardPurchaseSupplementsPage</code>
 
-# CardDisputes
-
-Types:
-
-- <code><a href="./src/resources/card-disputes.ts">CardDispute</a></code>
-
-Methods:
-
-- <code title="post /card_disputes">client.cardDisputes.<a href="./src/resources/card-disputes.ts">create</a>({ ...params }) -> CardDispute</code>
-- <code title="get /card_disputes/{card_dispute_id}">client.cardDisputes.<a href="./src/resources/card-disputes.ts">retrieve</a>(cardDisputeId) -> CardDispute</code>
-- <code title="get /card_disputes">client.cardDisputes.<a href="./src/resources/card-disputes.ts">list</a>({ ...params }) -> CardDisputesPage</code>
-
 # PhysicalCards
 
 Types:
@@ -734,12 +722,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/card_refunds">client.simulations.cardRefunds.<a href="./src/resources/simulations/card-refunds.ts">create</a>({ ...params }) -> Transaction</code>
-
-## CardDisputes
-
-Methods:
-
-- <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.cardDisputes.<a href="./src/resources/simulations/card-disputes.ts">action</a>(cardDisputeId, { ...params }) -> CardDispute</code>
 
 ## PhysicalCards
 

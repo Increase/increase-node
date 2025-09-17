@@ -77,13 +77,6 @@ import {
   BookkeepingEntrySetsPage,
 } from './resources/bookkeeping-entry-sets';
 import {
-  CardDispute,
-  CardDisputeCreateParams,
-  CardDisputeListParams,
-  CardDisputes,
-  CardDisputesPage,
-} from './resources/card-disputes';
-import {
   CardPayment,
   CardPaymentListParams,
   CardPayments,
@@ -504,7 +497,6 @@ export class Increase extends Core.APIClient {
   cards: API.Cards = new API.Cards(this);
   cardPayments: API.CardPayments = new API.CardPayments(this);
   cardPurchaseSupplements: API.CardPurchaseSupplements = new API.CardPurchaseSupplements(this);
-  cardDisputes: API.CardDisputes = new API.CardDisputes(this);
   physicalCards: API.PhysicalCards = new API.PhysicalCards(this);
   digitalCardProfiles: API.DigitalCardProfiles = new API.DigitalCardProfiles(this);
   physicalCardProfiles: API.PhysicalCardProfiles = new API.PhysicalCardProfiles(this);
@@ -626,8 +618,6 @@ Increase.CardPayments = CardPayments;
 Increase.CardPaymentsPage = CardPaymentsPage;
 Increase.CardPurchaseSupplements = CardPurchaseSupplements;
 Increase.CardPurchaseSupplementsPage = CardPurchaseSupplementsPage;
-Increase.CardDisputes = CardDisputes;
-Increase.CardDisputesPage = CardDisputesPage;
 Increase.PhysicalCards = PhysicalCards;
 Increase.PhysicalCardsPage = PhysicalCardsPage;
 Increase.DigitalCardProfiles = DigitalCardProfiles;
@@ -777,14 +767,6 @@ export declare namespace Increase {
     type CardPurchaseSupplement as CardPurchaseSupplement,
     CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
     type CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
-  };
-
-  export {
-    CardDisputes as CardDisputes,
-    type CardDispute as CardDispute,
-    CardDisputesPage as CardDisputesPage,
-    type CardDisputeCreateParams as CardDisputeCreateParams,
-    type CardDisputeListParams as CardDisputeListParams,
   };
 
   export {
