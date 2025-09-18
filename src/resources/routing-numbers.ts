@@ -44,6 +44,14 @@ export interface RoutingNumberListResponse {
   ach_transfers: 'supported' | 'not_supported';
 
   /**
+   * This routing number's support for FedNow Transfers.
+   *
+   * - `supported` - The routing number can receive this transfer type.
+   * - `not_supported` - The routing number cannot receive this transfer type.
+   */
+  fednow_transfers: 'supported' | 'not_supported';
+
+  /**
    * The name of the financial institution belonging to a routing number.
    */
   name: string;
