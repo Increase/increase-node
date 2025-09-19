@@ -47,8 +47,8 @@ export { InterestPayments, type InterestPaymentCreateParams } from './interest-p
 export { PendingTransactions } from './pending-transactions';
 export {
   PhysicalCards,
+  type PhysicalCardCreateParams,
   type PhysicalCardAdvanceShipmentParams,
-  type PhysicalCardTrackingUpdatesParams,
 } from './physical-cards';
 export { Programs, type ProgramCreateParams } from './programs';
 export {
