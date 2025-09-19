@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.312.0 (2025-09-19)
+
+Full Changelog: [v0.311.0...v0.312.0](https://github.com/Increase/increase-node/compare/v0.311.0...v0.312.0)
+
+### Features
+
+* **api:** api update ([89bfbb7](https://github.com/Increase/increase-node/commit/89bfbb7e4f2836cf4834de7356aef12b82d990f6))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([88563bd](https://github.com/Increase/increase-node/commit/88563bd43115540194df497003436b4279a6ec4b))
+
 ## 0.311.0 (2025-09-19)
 
 Full Changelog: [v0.310.0...v0.311.0](https://github.com/Increase/increase-node/compare/v0.310.0...v0.311.0)
