@@ -6,6 +6,30 @@ import * as PhysicalCardsAPI from '../physical-cards';
 
 export class PhysicalCards extends APIResource {
   /**
+   * This endpoint allows you to simulate receiving a tracking update for a Physical
+   * Card, to simulate the progress of a shipment.
+   *
+   * @example
+   * ```ts
+   * const physicalCard =
+   *   await client.simulations.physicalCards.create(
+   *     'physical_card_ode8duyq5v2ynhjoharl',
+   *     { category: 'delivered' },
+   *   );
+   * ```
+   */
+  create(
+    physicalCardId: string,
+    body: PhysicalCardCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(`/simulations/physical_cards/${physicalCardId}/tracking_updates`, {
+      body,
+      ...options,
+    });
+  }
+
+  /**
    * This endpoint allows you to simulate advancing the shipment status of a Physical
    * Card, to simulate e.g., that a physical card was attempted shipped but then
    * failed delivery.
@@ -29,62 +53,9 @@ export class PhysicalCards extends APIResource {
       ...options,
     });
   }
-
-  /**
-   * This endpoint allows you to simulate receiving a tracking update for a Physical
-   * Card, to simulate the progress of a shipment.
-   *
-   * @example
-   * ```ts
-   * const physicalCard =
-   *   await client.simulations.physicalCards.trackingUpdates(
-   *     'physical_card_ode8duyq5v2ynhjoharl',
-   *     { category: 'delivered' },
-   *   );
-   * ```
-   */
-  trackingUpdates(
-    physicalCardId: string,
-    body: PhysicalCardTrackingUpdatesParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(`/simulations/physical_cards/${physicalCardId}/tracking_updates`, {
-      body,
-      ...options,
-    });
-  }
 }
 
-export interface PhysicalCardAdvanceShipmentParams {
-  /**
-   * The shipment status to move the Physical Card to.
-   *
-   * - `pending` - The physical card has not yet been shipped.
-   * - `canceled` - The physical card shipment was canceled prior to submission.
-   * - `submitted` - The physical card shipment has been submitted to the card
-   *   fulfillment provider.
-   * - `acknowledged` - The physical card shipment has been acknowledged by the card
-   *   fulfillment provider and will be processed in their next batch.
-   * - `rejected` - The physical card shipment was rejected by the card printer due
-   *   to an error.
-   * - `shipped` - The physical card has been shipped.
-   * - `returned` - The physical card shipment was returned to the sender and
-   *   destroyed by the production facility.
-   * - `requires_attention` - The physical card shipment requires attention from
-   *   Increase before progressing.
-   */
-  shipment_status:
-    | 'pending'
-    | 'canceled'
-    | 'submitted'
-    | 'acknowledged'
-    | 'rejected'
-    | 'shipped'
-    | 'returned'
-    | 'requires_attention';
-}
-
-export interface PhysicalCardTrackingUpdatesParams {
+export interface PhysicalCardCreateParams {
   /**
    * The type of tracking event.
    *
@@ -118,9 +89,38 @@ export interface PhysicalCardTrackingUpdatesParams {
   state?: string;
 }
 
+export interface PhysicalCardAdvanceShipmentParams {
+  /**
+   * The shipment status to move the Physical Card to.
+   *
+   * - `pending` - The physical card has not yet been shipped.
+   * - `canceled` - The physical card shipment was canceled prior to submission.
+   * - `submitted` - The physical card shipment has been submitted to the card
+   *   fulfillment provider.
+   * - `acknowledged` - The physical card shipment has been acknowledged by the card
+   *   fulfillment provider and will be processed in their next batch.
+   * - `rejected` - The physical card shipment was rejected by the card printer due
+   *   to an error.
+   * - `shipped` - The physical card has been shipped.
+   * - `returned` - The physical card shipment was returned to the sender and
+   *   destroyed by the production facility.
+   * - `requires_attention` - The physical card shipment requires attention from
+   *   Increase before progressing.
+   */
+  shipment_status:
+    | 'pending'
+    | 'canceled'
+    | 'submitted'
+    | 'acknowledged'
+    | 'rejected'
+    | 'shipped'
+    | 'returned'
+    | 'requires_attention';
+}
+
 export declare namespace PhysicalCards {
   export {
+    type PhysicalCardCreateParams as PhysicalCardCreateParams,
     type PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
-    type PhysicalCardTrackingUpdatesParams as PhysicalCardTrackingUpdatesParams,
   };
 }

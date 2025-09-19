@@ -69,6 +69,12 @@ export {
   type BookkeepingEntrySetListParams,
 } from './bookkeeping-entry-sets';
 export {
+  CardDetails,
+  type CardIframeURL,
+  type CardDetailUpdateParams,
+  type CardDetailCreateDetailsIframeParams,
+} from './card-details';
+export {
   CardPaymentsPage,
   CardPayments,
   type CardPayment,
@@ -105,12 +111,9 @@ export {
   CardsPage,
   Cards,
   type Card,
-  type CardDetails,
-  type CardIframeURL,
   type CardCreateParams,
   type CardUpdateParams,
   type CardListParams,
-  type CardCreateDetailsIframeParams,
 } from './cards';
 export {
   CheckDepositsPage,
