@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class CardDetails extends APIResource {
   /**
-   * Update a Card's Details
+   * Update a Card's PIN
    *
    * @example
    * ```ts
@@ -61,7 +61,11 @@ export class CardDetails extends APIResource {
 }
 
 /**
- * An object containing the sensitive details (card number, CVC, etc) for a Card.
+ * An object containing the sensitive details (card number, CVC, PIN, etc) for a
+ * Card. These details are not included in the Card object. If you'd prefer to
+ * never access these details directly, you can use the
+ * [embedded iframe](/documentation/embedded-card-component) to display the
+ * information to your users.
  */
 export interface CardDetails {
   /**
