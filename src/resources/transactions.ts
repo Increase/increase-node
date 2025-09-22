@@ -1930,6 +1930,13 @@ export namespace Transaction {
       purchase_details: CardSettlement.PurchaseDetails | null;
 
       /**
+       * Surcharge amount details, if applicable. The amounts positive if the surcharge
+       * is added to to the overall transaction amount (surcharge), and negative if the
+       * surcharge is deducted from the overall transaction amount (discount).
+       */
+      surcharge: CardSettlement.Surcharge | null;
+
+      /**
        * The identifier of the Transaction associated with this Transaction.
        */
       transaction_id: string;
@@ -2545,6 +2552,24 @@ export namespace Transaction {
             stop_over_code: 'none' | 'stop_over_allowed' | 'stop_over_not_allowed' | null;
           }
         }
+      }
+
+      /**
+       * Surcharge amount details, if applicable. The amounts positive if the surcharge
+       * is added to to the overall transaction amount (surcharge), and negative if the
+       * surcharge is deducted from the overall transaction amount (discount).
+       */
+      export interface Surcharge {
+        /**
+         * The surcharge amount in the minor unit of the transaction's settlement currency.
+         */
+        amount: number;
+
+        /**
+         * The surcharge amount in the minor unit of the transaction's presentment
+         * currency.
+         */
+        presentment_amount: number;
       }
     }
 
