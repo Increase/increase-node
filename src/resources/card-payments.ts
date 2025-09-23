@@ -3297,7 +3297,7 @@ export namespace CardPayment {
       purchase_details: CardSettlement.PurchaseDetails | null;
 
       /**
-       * Surcharge amount details, if applicable. The amounts positive if the surcharge
+       * Surcharge amount details, if applicable. The amount is positive if the surcharge
        * is added to to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
@@ -3922,7 +3922,7 @@ export namespace CardPayment {
       }
 
       /**
-       * Surcharge amount details, if applicable. The amounts positive if the surcharge
+       * Surcharge amount details, if applicable. The amount is positive if the surcharge
        * is added to to the overall transaction amount (surcharge), and negative if the
        * surcharge is deducted from the overall transaction amount (discount).
        */
