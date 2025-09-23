@@ -676,7 +676,9 @@ export namespace DeclinedTransaction {
          */
         export interface Clinic {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -692,7 +694,9 @@ export namespace DeclinedTransaction {
          */
         export interface Dental {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -708,7 +712,9 @@ export namespace DeclinedTransaction {
          */
         export interface Prescription {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -724,7 +730,9 @@ export namespace DeclinedTransaction {
          */
         export interface Surcharge {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -740,7 +748,9 @@ export namespace DeclinedTransaction {
          */
         export interface TotalCumulative {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -756,7 +766,9 @@ export namespace DeclinedTransaction {
          */
         export interface TotalHealthcare {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -772,7 +784,9 @@ export namespace DeclinedTransaction {
          */
         export interface Transit {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -788,7 +802,9 @@ export namespace DeclinedTransaction {
          */
         export interface Unknown {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
@@ -804,7 +820,9 @@ export namespace DeclinedTransaction {
          */
         export interface Vision {
           /**
-           * The amount in minor units of the `currency` field.
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
            */
           amount: number;
 
