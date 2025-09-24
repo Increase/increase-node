@@ -77,12 +77,6 @@ import {
   BookkeepingEntrySetsPage,
 } from './resources/bookkeeping-entry-sets';
 import {
-  CardDetailCreateDetailsIframeParams,
-  CardDetailUpdateParams,
-  CardDetails,
-  CardIframeURL,
-} from './resources/card-details';
-import {
   CardPayment,
   CardPaymentListParams,
   CardPayments,
@@ -117,9 +111,13 @@ import {
 } from './resources/card-validations';
 import {
   Card,
+  CardCreateDetailsIframeParams,
   CardCreateParams,
+  CardDetails,
+  CardIframeURL,
   CardListParams,
   CardUpdateParams,
+  CardUpdatePinParams,
   Cards,
   CardsPage,
 } from './resources/cards';
@@ -498,7 +496,6 @@ export class Increase extends Core.APIClient {
   accountNumbers: API.AccountNumbers = new API.AccountNumbers(this);
   accountTransfers: API.AccountTransfers = new API.AccountTransfers(this);
   cards: API.Cards = new API.Cards(this);
-  cardDetails: API.CardDetails = new API.CardDetails(this);
   cardPayments: API.CardPayments = new API.CardPayments(this);
   cardPurchaseSupplements: API.CardPurchaseSupplements = new API.CardPurchaseSupplements(this);
   physicalCards: API.PhysicalCards = new API.PhysicalCards(this);
@@ -750,17 +747,14 @@ export declare namespace Increase {
   export {
     Cards as Cards,
     type Card as Card,
+    type CardDetails as CardDetails,
+    type CardIframeURL as CardIframeURL,
     CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,
-  };
-
-  export {
-    type CardDetails as CardDetails,
-    type CardIframeURL as CardIframeURL,
-    type CardDetailUpdateParams as CardDetailUpdateParams,
-    type CardDetailCreateDetailsIframeParams as CardDetailCreateDetailsIframeParams,
+    type CardCreateDetailsIframeParams as CardCreateDetailsIframeParams,
+    type CardUpdatePinParams as CardUpdatePinParams,
   };
 
   export {
