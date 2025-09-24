@@ -46,6 +46,8 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/cards.ts">Card</a></code>
+- <code><a href="./src/resources/cards.ts">CardDetails</a></code>
+- <code><a href="./src/resources/cards.ts">CardIframeURL</a></code>
 
 Methods:
 
@@ -53,19 +55,9 @@ Methods:
 - <code title="get /cards/{card_id}">client.cards.<a href="./src/resources/cards.ts">retrieve</a>(cardId) -> Card</code>
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/resources/cards.ts">update</a>(cardId, { ...params }) -> Card</code>
 - <code title="get /cards">client.cards.<a href="./src/resources/cards.ts">list</a>({ ...params }) -> CardsPage</code>
-
-# CardDetails
-
-Types:
-
-- <code><a href="./src/resources/card-details.ts">CardDetails</a></code>
-- <code><a href="./src/resources/card-details.ts">CardIframeURL</a></code>
-
-Methods:
-
-- <code title="patch /cards/{card_id}/details">client.cardDetails.<a href="./src/resources/card-details.ts">update</a>(cardId, { ...params }) -> CardDetails</code>
-- <code title="post /cards/{card_id}/create_details_iframe">client.cardDetails.<a href="./src/resources/card-details.ts">createDetailsIframe</a>(cardId, { ...params }) -> CardIframeURL</code>
-- <code title="get /cards/{card_id}/details">client.cardDetails.<a href="./src/resources/card-details.ts">details</a>(cardId) -> CardDetails</code>
+- <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/resources/cards.ts">createDetailsIframe</a>(cardId, { ...params }) -> CardIframeURL</code>
+- <code title="get /cards/{card_id}/details">client.cards.<a href="./src/resources/cards.ts">details</a>(cardId) -> CardDetails</code>
+- <code title="post /cards/{card_id}/update_pin">client.cards.<a href="./src/resources/cards.ts">updatePin</a>(cardId, { ...params }) -> CardDetails</code>
 
 # CardPayments
 
