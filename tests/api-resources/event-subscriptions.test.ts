@@ -26,6 +26,7 @@ describe('resource eventSubscriptions', () => {
       oauth_connection_id: 'x',
       selected_event_category: 'account.created',
       shared_secret: 'x',
+      status: 'active',
     });
   });
 
