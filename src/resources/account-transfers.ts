@@ -66,7 +66,7 @@ export class AccountTransfers extends APIResource {
   }
 
   /**
-   * Approve an Account Transfer
+   * Approves an Account Transfer in status `pending_approval`.
    *
    * @example
    * ```ts
@@ -81,7 +81,7 @@ export class AccountTransfers extends APIResource {
   }
 
   /**
-   * Cancel an Account Transfer
+   * Cancels an Account Transfer in status `pending_approval`.
    *
    * @example
    * ```ts
@@ -99,22 +99,27 @@ export class AccountTransfers extends APIResource {
 export class AccountTransfersPage extends Page<AccountTransfer> {}
 
 /**
- * Account transfers move funds between your own accounts at Increase.
+ * Account transfers move funds between your own accounts at Increase (accounting
+ * systems often refer to these as Book Transfers). Account Transfers are free and
+ * synchronous. Upon creation they create two Transactions, one negative on the
+ * originating account and one positive on the destination account (unless the
+ * transfer requires approval, in which case the Transactions will be created when
+ * the transfer is approved).
  */
 export interface AccountTransfer {
   /**
-   * The account transfer's identifier.
+   * The Account Transfer's identifier.
    */
   id: string;
 
   /**
-   * The Account to which the transfer belongs.
+   * The Account from which the transfer originated.
    */
   account_id: string;
 
   /**
-   * The transfer amount in the minor unit of the destination account currency. For
-   * dollars, for example, this is cents.
+   * The transfer amount in cents. This will always be positive and indicates the
+   * amount of money leaving the originating account.
    */
   amount: number;
 
@@ -142,8 +147,8 @@ export interface AccountTransfer {
   created_by: AccountTransfer.CreatedBy | null;
 
   /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-   * account currency.
+   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+   * currency.
    *
    * - `CAD` - Canadian Dollar (CAD)
    * - `CHF` - Swiss Franc (CHF)
@@ -155,17 +160,19 @@ export interface AccountTransfer {
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
   /**
-   * The description that will show on the transactions.
+   * An internal-facing description for the transfer for display in the API and
+   * dashboard. This will also show in the description of the created Transactions.
    */
   description: string;
 
   /**
-   * The destination account's identifier.
+   * The destination Account's identifier.
    */
   destination_account_id: string;
 
   /**
-   * The ID for the transaction receiving the transfer.
+   * The identifier of the Transaction on the destination Account representing the
+   * received funds.
    */
   destination_transaction_id: string | null;
 
@@ -175,11 +182,6 @@ export interface AccountTransfer {
    * about [idempotency](https://increase.com/documentation/idempotency-keys).
    */
   idempotency_key: string | null;
-
-  /**
-   * The transfer's network.
-   */
-  network: 'account';
 
   /**
    * The ID for the pending transaction representing the transfer. A pending
@@ -192,14 +194,16 @@ export interface AccountTransfer {
   /**
    * The lifecycle status of the transfer.
    *
-   * - `pending_approval` - The transfer is pending approval.
-   * - `canceled` - The transfer has been canceled.
+   * - `pending_approval` - The transfer is pending approval from your team.
+   * - `canceled` - The transfer was pending approval from your team and has been
+   *   canceled.
    * - `complete` - The transfer has been completed.
    */
   status: 'pending_approval' | 'canceled' | 'complete';
 
   /**
-   * The ID for the transaction funding the transfer.
+   * The identifier of the Transaction on the originating account representing the
+   * transferred funds.
    */
   transaction_id: string | null;
 
@@ -313,7 +317,7 @@ export namespace AccountTransfer {
 
 export interface AccountTransferCreateParams {
   /**
-   * The identifier for the account that will send the transfer.
+   * The identifier for the originating Account that will send the transfer.
    */
   account_id: string;
 
@@ -324,17 +328,20 @@ export interface AccountTransferCreateParams {
   amount: number;
 
   /**
-   * The description you choose to give the transfer.
+   * An internal-facing description for the transfer for display in the API and
+   * dashboard. This will also show in the description of the created Transactions.
    */
   description: string;
 
   /**
-   * The identifier for the account that will receive the transfer.
+   * The identifier for the destination Account that will receive the transfer.
    */
   destination_account_id: string;
 
   /**
-   * Whether the transfer requires explicit approval via the dashboard or API.
+   * Whether the transfer should require explicit approval via the dashboard or API.
+   * For more information, see
+   * [Transfer Approvals](/documentation/transfer-approvals).
    */
   require_approval?: boolean;
 }
