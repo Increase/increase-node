@@ -238,34 +238,6 @@ export interface PhysicalCardProfileCreateParams {
   program_id: string;
 
   /**
-   * The color of the text on the back of the card. Defaults to "black".
-   *
-   * - `black` - Black personalization color.
-   * - `white` - White personalization color.
-   */
-  back_color?: 'black' | 'white';
-
-  /**
-   * A reference ID provided by the fulfillment provider for the card stock used.
-   * Only used if you've ordered card stock separately.
-   */
-  card_stock_reference?: string;
-
-  /**
-   * A reference ID provided by the fulfillment provider for the carrier stock used.
-   * Only used if you've ordered carrier stock separately.
-   */
-  carrier_stock_reference?: string;
-
-  /**
-   * The color of the design on the front of the card. Defaults to "black".
-   *
-   * - `black` - Black personalization color.
-   * - `white` - White personalization color.
-   */
-  front_color?: 'black' | 'white';
-
-  /**
    * Text printed on the front of the card. Reach out to
    * [support@increase.com](mailto:support@increase.com) for more information.
    */
