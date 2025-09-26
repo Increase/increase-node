@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.320.0 (2025-09-26)
+
+Full Changelog: [v0.319.0...v0.320.0](https://github.com/Increase/increase-node/compare/v0.319.0...v0.320.0)
+
+### Features
+
+* **api:** api update ([8ab5fb2](https://github.com/Increase/increase-node/commit/8ab5fb27322a5422aa39f2dd715dd528d7de91b6))
+
+
+### Performance Improvements
+
+* faster formatting ([78f8ff4](https://github.com/Increase/increase-node/commit/78f8ff4a347dd297911976128e30653cf04d2e55))
+
+
+### Chores
+
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([1cfcd8e](https://github.com/Increase/increase-node/commit/1cfcd8e065228bb44165ab61aa5c5483e91e3c40))
+
 ## 0.319.0 (2025-09-24)
 
 Full Changelog: [v0.318.0...v0.319.0](https://github.com/Increase/increase-node/compare/v0.318.0...v0.319.0)
