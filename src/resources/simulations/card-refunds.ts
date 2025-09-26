@@ -12,9 +12,7 @@ export class CardRefunds extends APIResource {
    * @example
    * ```ts
    * const transaction =
-   *   await client.simulations.cardRefunds.create({
-   *     transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
-   *   });
+   *   await client.simulations.cardRefunds.create();
    * ```
    */
   create(
@@ -27,10 +25,17 @@ export class CardRefunds extends APIResource {
 
 export interface CardRefundCreateParams {
   /**
+   * The identifier of the Pending Transaction for the refund authorization. If this
+   * is provided, `transaction` must not be provided as a refund with a refund
+   * authorized can not be linked to a regular transaction.
+   */
+  pending_transaction_id?: string;
+
+  /**
    * The identifier for the Transaction to refund. The Transaction's source must have
    * a category of card_settlement.
    */
-  transaction_id: string;
+  transaction_id?: string;
 }
 
 export declare namespace CardRefunds {
