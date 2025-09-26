@@ -290,9 +290,9 @@ export namespace PhysicalCard {
      */
     export interface Tracking {
       /**
-       * The tracking number.
+       * The tracking number. Not available for USPS shipments.
        */
-      number: string;
+      number: string | null;
 
       /**
        * For returned shipments, the tracking number of the return shipment.
