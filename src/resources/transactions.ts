@@ -1503,7 +1503,7 @@ export namespace Transaction {
            *   3-D Secure program.
            * - `non_authenticated_security_transaction` - Non-authenticated security
            *   transaction: Use to identify an electronic commerce transaction that uses data
-           *   encryption for security however , cardholder authentication is not performed
+           *   encryption for security however, cardholder authentication is not performed
            *   using 3-D Secure.
            * - `non_secure_transaction` - Non-secure transaction: Use to identify an
            *   electronic commerce transaction that has no data protection.
