@@ -9,10 +9,8 @@ const client = new Increase({
 });
 
 describe('resource cardRefunds', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.simulations.cardRefunds.create({
-      transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
-    });
+  test('create', async () => {
+    const responsePromise = client.simulations.cardRefunds.create({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,11 +18,5 @@ describe('resource cardRefunds', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('create: required and optional params', async () => {
-    const response = await client.simulations.cardRefunds.create({
-      transaction_id: 'transaction_uyrp7fld2ium70oa7oi',
-    });
   });
 });
