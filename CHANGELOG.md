@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.321.0 (2025-09-29)
+
+Full Changelog: [v0.320.0...v0.321.0](https://github.com/Increase/increase-node/compare/v0.320.0...v0.321.0)
+
+### Features
+
+* **api:** api update ([938320e](https://github.com/Increase/increase-node/commit/938320e053ea49e3c036bcaf18ae1fe41b878414))
+
+
+### Chores
+
+* **internal:** codegen related update ([af0b1f7](https://github.com/Increase/increase-node/commit/af0b1f7e4b3c3d5fdf56c302fde6681f40510217))
+* **internal:** fix incremental formatting in some cases ([8ea97e6](https://github.com/Increase/increase-node/commit/8ea97e64774e83914657a383141868508ae7d90c))
+
 ## 0.320.0 (2025-09-26)
 
 Full Changelog: [v0.319.0...v0.320.0](https://github.com/Increase/increase-node/compare/v0.319.0...v0.320.0)
