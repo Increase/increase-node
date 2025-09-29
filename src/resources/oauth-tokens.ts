@@ -59,7 +59,7 @@ export interface OAuthTokenCreateParams {
   client_id?: string;
 
   /**
-   * The secret that confirms you own the application. This is redundent given that
+   * The secret that confirms you own the application. This is redundant given that
    * the request is made with your API key but it's a required component of OAuth
    * 2.0.
    */
