@@ -182,7 +182,7 @@ export interface BookkeepingAccountCreateParams {
   name: string;
 
   /**
-   * The entity, if `compliance_category` is `commingled_cash`.
+   * The account, if `compliance_category` is `commingled_cash`.
    */
   account_id?: string;
 
