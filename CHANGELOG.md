@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.322.0 (2025-10-01)
+
+Full Changelog: [v0.321.0...v0.322.0](https://github.com/Increase/increase-node/compare/v0.321.0...v0.322.0)
+
+### Features
+
+* **api:** api update ([e37fc7f](https://github.com/Increase/increase-node/commit/e37fc7f49a462bb29459a9e8d25f3e69c875c434))
+* **api:** api update ([65a5389](https://github.com/Increase/increase-node/commit/65a5389deb7785a8b9743e68dc2a4e4ee7f7d2dd))
+* **api:** api update ([1d14500](https://github.com/Increase/increase-node/commit/1d14500f1350a7a35d6aada4d09a2d6793bcf8b9))
+* **api:** api update ([208384b](https://github.com/Increase/increase-node/commit/208384bbbc901dc7ce744d22616fdb5844515bf8))
+* **api:** api update ([f715728](https://github.com/Increase/increase-node/commit/f7157281512d56e312b9eb65713215b53bc0454f))
+
+
+### Chores
+
+* **internal:** ignore .eslintcache ([5140ab8](https://github.com/Increase/increase-node/commit/5140ab86350d4dae2f153e97d4add837bbf7d023))
+
 ## 0.321.0 (2025-09-29)
 
 Full Changelog: [v0.320.0...v0.321.0](https://github.com/Increase/increase-node/compare/v0.320.0...v0.321.0)
