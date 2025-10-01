@@ -179,7 +179,7 @@ export namespace Transaction {
     ach_transfer_return: Source.ACHTransferReturn | null;
 
     /**
-     * A Card Dispute Acceptance object. This field will be present in the JSON
+     * A Legacy Card Dispute Acceptance object. This field will be present in the JSON
      * response if and only if `category` is equal to `card_dispute_acceptance`.
      * Contains the details of a successful Card Dispute.
      */
@@ -193,9 +193,9 @@ export namespace Transaction {
     card_dispute_financial: Source.CardDisputeFinancial | null;
 
     /**
-     * A Card Dispute Loss object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_dispute_loss`. Contains the details of
-     * a lost Card Dispute.
+     * A Legacy Card Dispute Loss object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_dispute_loss`. Contains the
+     * details of a lost Card Dispute.
      */
     card_dispute_loss: Source.CardDisputeLoss | null;
 
@@ -261,11 +261,11 @@ export namespace Transaction {
      *   `ach_transfer_return` object.
      * - `cashback_payment` - Cashback Payment: details will be under the
      *   `cashback_payment` object.
-     * - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
-     *   `card_dispute_acceptance` object.
+     * - `card_dispute_acceptance` - Legacy Card Dispute Acceptance: details will be
+     *   under the `card_dispute_acceptance` object.
      * - `card_dispute_financial` - Card Dispute Financial: details will be under the
      *   `card_dispute_financial` object.
-     * - `card_dispute_loss` - Card Dispute Loss: details will be under the
+     * - `card_dispute_loss` - Legacy Card Dispute Loss: details will be under the
      *   `card_dispute_loss` object.
      * - `card_refund` - Card Refund: details will be under the `card_refund` object.
      * - `card_settlement` - Card Settlement: details will be under the
@@ -925,7 +925,7 @@ export namespace Transaction {
     }
 
     /**
-     * A Card Dispute Acceptance object. This field will be present in the JSON
+     * A Legacy Card Dispute Acceptance object. This field will be present in the JSON
      * response if and only if `category` is equal to `card_dispute_acceptance`.
      * Contains the details of a successful Card Dispute.
      */
@@ -1008,9 +1008,9 @@ export namespace Transaction {
     }
 
     /**
-     * A Card Dispute Loss object. This field will be present in the JSON response if
-     * and only if `category` is equal to `card_dispute_loss`. Contains the details of
-     * a lost Card Dispute.
+     * A Legacy Card Dispute Loss object. This field will be present in the JSON
+     * response if and only if `category` is equal to `card_dispute_loss`. Contains the
+     * details of a lost Card Dispute.
      */
     export interface CardDisputeLoss {
       /**
