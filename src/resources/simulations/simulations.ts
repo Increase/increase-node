@@ -23,6 +23,8 @@ import {
   CardAuthorizationCreateResponse,
   CardAuthorizations,
 } from './card-authorizations';
+import * as CardDisputesAPI from './card-disputes';
+import { CardDisputeActionParams, CardDisputes } from './card-disputes';
 import * as CardFuelConfirmationsAPI from './card-fuel-confirmations';
 import { CardFuelConfirmationCreateParams, CardFuelConfirmations } from './card-fuel-confirmations';
 import * as CardIncrementsAPI from './card-increments';
@@ -101,6 +103,7 @@ export class Simulations extends APIResource {
   cardFuelConfirmations: CardFuelConfirmationsAPI.CardFuelConfirmations =
     new CardFuelConfirmationsAPI.CardFuelConfirmations(this._client);
   cardRefunds: CardRefundsAPI.CardRefunds = new CardRefundsAPI.CardRefunds(this._client);
+  cardDisputes: CardDisputesAPI.CardDisputes = new CardDisputesAPI.CardDisputes(this._client);
   physicalCards: PhysicalCardsAPI.PhysicalCards = new PhysicalCardsAPI.PhysicalCards(this._client);
   digitalWalletTokenRequests: DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests =
     new DigitalWalletTokenRequestsAPI.DigitalWalletTokenRequests(this._client);
@@ -144,6 +147,7 @@ Simulations.CardReversals = CardReversals;
 Simulations.CardIncrements = CardIncrements;
 Simulations.CardFuelConfirmations = CardFuelConfirmations;
 Simulations.CardRefunds = CardRefunds;
+Simulations.CardDisputes = CardDisputes;
 Simulations.PhysicalCards = PhysicalCards;
 Simulations.DigitalWalletTokenRequests = DigitalWalletTokenRequests;
 Simulations.PendingTransactions = PendingTransactions;
@@ -198,6 +202,8 @@ export declare namespace Simulations {
   };
 
   export { CardRefunds as CardRefunds, type CardRefundCreateParams as CardRefundCreateParams };
+
+  export { CardDisputes as CardDisputes, type CardDisputeActionParams as CardDisputeActionParams };
 
   export {
     PhysicalCards as PhysicalCards,

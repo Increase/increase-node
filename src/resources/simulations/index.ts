@@ -17,6 +17,7 @@ export {
   type CardAuthorizationCreateResponse,
   type CardAuthorizationCreateParams,
 } from './card-authorizations';
+export { CardDisputes, type CardDisputeActionParams } from './card-disputes';
 export { CardFuelConfirmations, type CardFuelConfirmationCreateParams } from './card-fuel-confirmations';
 export { CardIncrements, type CardIncrementCreateParams } from './card-increments';
 export { CardRefunds, type CardRefundCreateParams } from './card-refunds';

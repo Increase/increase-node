@@ -69,6 +69,14 @@ export {
   type BookkeepingEntrySetListParams,
 } from './bookkeeping-entry-sets';
 export {
+  CardDisputesPage,
+  CardDisputes,
+  type CardDispute,
+  type CardDisputeCreateParams,
+  type CardDisputeListParams,
+  type CardDisputeSubmitUserSubmissionParams,
+} from './card-disputes';
+export {
   CardPaymentsPage,
   CardPayments,
   type CardPayment,
