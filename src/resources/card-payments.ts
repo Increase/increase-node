@@ -4615,14 +4615,20 @@ export namespace CardPayment {
     incremented_amount: number;
 
     /**
+     * The total refunded amount in the minor unit of the transaction's currency. For
+     * dollars, for example, this is cents.
+     */
+    refunded_amount: number;
+
+    /**
      * The total reversed amount in the minor unit of the transaction's currency. For
      * dollars, for example, this is cents.
      */
     reversed_amount: number;
 
     /**
-     * The total settled or refunded amount in the minor unit of the transaction's
-     * currency. For dollars, for example, this is cents.
+     * The total settled amount in the minor unit of the transaction's currency. For
+     * dollars, for example, this is cents.
      */
     settled_amount: number;
   }
