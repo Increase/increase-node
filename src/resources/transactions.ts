@@ -3296,7 +3296,8 @@ export namespace Transaction {
      */
     export interface CheckDepositAcceptance {
       /**
-       * The account number printed on the check.
+       * The account number printed on the check. This is an account at the bank that
+       * issued the check.
        */
       account_number: string;
 
@@ -3331,7 +3332,8 @@ export namespace Transaction {
       currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
       /**
-       * The routing number printed on the check.
+       * The routing number printed on the check. This is a routing number for the bank
+       * that issued the check.
        */
       routing_number: string;
 

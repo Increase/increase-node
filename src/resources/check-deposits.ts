@@ -97,7 +97,7 @@ export interface CheckDeposit {
   created_at: string;
 
   /**
-   * If your deposit is successfully parsed and accepted by Increase, this will
+   * Once your deposit is successfully parsed and accepted by Increase, this will
    * contain details of the parsed check.
    */
   deposit_acceptance: CheckDeposit.DepositAcceptance | null;
@@ -179,12 +179,13 @@ export interface CheckDeposit {
 
 export namespace CheckDeposit {
   /**
-   * If your deposit is successfully parsed and accepted by Increase, this will
+   * Once your deposit is successfully parsed and accepted by Increase, this will
    * contain details of the parsed check.
    */
   export interface DepositAcceptance {
     /**
-     * The account number printed on the check.
+     * The account number printed on the check. This is an account at the bank that
+     * issued the check.
      */
     account_number: string;
 
@@ -219,7 +220,8 @@ export namespace CheckDeposit {
     currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
 
     /**
-     * The routing number printed on the check.
+     * The routing number printed on the check. This is a routing number for the bank
+     * that issued the check.
      */
     routing_number: string;
 
