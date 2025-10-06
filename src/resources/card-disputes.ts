@@ -744,7 +744,7 @@ export namespace CardDispute {
          * Non-fiat currency or non-fungible token as described details. Present if and
          * only if `reason` is `non_fiat_currency_or_non_fungible_token_as_described`.
          */
-        non_fiat_currency_or_non_fungible_token_as_described: Represented.NonFiatCurrencyOrNonFungibleTokenAsDescribed | null;
+        non_fiat_currency_or_non_fungible_token_as_described: unknown | null;
 
         /**
          * Non-fiat currency or non-fungible token received details. Present if and only if
@@ -935,12 +935,6 @@ export namespace CardDispute {
             | 'terms_of_service_not_misrepresented'
             | 'transaction_code_correct';
         }
-
-        /**
-         * Non-fiat currency or non-fungible token as described details. Present if and
-         * only if `reason` is `non_fiat_currency_or_non_fungible_token_as_described`.
-         */
-        export interface NonFiatCurrencyOrNonFungibleTokenAsDescribed {}
 
         /**
          * Non-fiat currency or non-fungible token received details. Present if and only if
@@ -1208,7 +1202,7 @@ export namespace CardDispute {
          * Non-receipt of cash. Present if and only if `category` is
          * `consumer_non_receipt_of_cash`.
          */
-        consumer_non_receipt_of_cash: Chargeback.ConsumerNonReceiptOfCash | null;
+        consumer_non_receipt_of_cash: unknown | null;
 
         /**
          * Original Credit Transaction (OCT) not accepted. Present if and only if
@@ -2175,12 +2169,6 @@ export namespace CardDispute {
             canceled_at: string;
           }
         }
-
-        /**
-         * Non-receipt of cash. Present if and only if `category` is
-         * `consumer_non_receipt_of_cash`.
-         */
-        export interface ConsumerNonReceiptOfCash {}
 
         /**
          * Original Credit Transaction (OCT) not accepted. Present if and only if
