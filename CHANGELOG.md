@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.325.1 (2025-10-06)
+
+Full Changelog: [v0.325.0...v0.325.1](https://github.com/Increase/increase-node/compare/v0.325.0...v0.325.1)
+
+### Bug Fixes
+
+* **client:** handle some Dispute objects as empty rather than unknown ([e5c1ce1](https://github.com/Increase/increase-node/commit/e5c1ce1f4c2b00dbe77bb98a10335ea6d53c0dfe))
+
 ## 0.325.0 (2025-10-03)
 
 Full Changelog: [v0.324.0...v0.325.0](https://github.com/Increase/increase-node/compare/v0.324.0...v0.325.0)
