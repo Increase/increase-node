@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.328.0 (2025-10-07)
+
+Full Changelog: [v0.327.0...v0.328.0](https://github.com/Increase/increase-node/compare/v0.327.0...v0.328.0)
+
+### Features
+
+* **api:** api update ([787006b](https://github.com/Increase/increase-node/commit/787006b1d3a4784e63d4d2a269d66e9861c061af))
+
+
+### Chores
+
+* **internal:** use npm pack for build uploads ([cb54698](https://github.com/Increase/increase-node/commit/cb54698e38e1f7f64c456729a71c3f60375d1c12))
+
 ## 0.327.0 (2025-10-06)
 
 Full Changelog: [v0.326.0...v0.327.0](https://github.com/Increase/increase-node/compare/v0.326.0...v0.327.0)
