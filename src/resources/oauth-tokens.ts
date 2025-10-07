@@ -32,6 +32,11 @@ export interface OAuthToken {
   access_token: string;
 
   /**
+   * The Group's identifier. A Group is the top-level organization in Increase.
+   */
+  group_id: string;
+
+  /**
    * The type of OAuth token.
    */
   token_type: 'bearer';
