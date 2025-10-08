@@ -4084,12 +4084,14 @@ export namespace Transaction {
        * reason for the transaction.
        *
        * - `account_closure` - Account closure
+       * - `account_revenue_payment_distribution` - Account revenue payment distribution
        * - `bank_drawn_check` - Bank-drawn check
        * - `bank_drawn_check_credit` - Bank-drawn check credit
        * - `bank_migration` - Bank migration
        * - `check_adjustment` - Check adjustment
        * - `collection_payment` - Collection payment
        * - `collection_receivable` - Collection receivable
+       * - `dishonored_ach_return` - Dishonored ACH return
        * - `empyreal_adjustment` - Empyreal adjustment
        * - `error` - Error
        * - `error_correction` - Error correction
@@ -4098,16 +4100,17 @@ export namespace Transaction {
        * - `negative_balance_forgiveness` - Negative balance forgiveness
        * - `sample_funds` - Sample funds
        * - `sample_funds_return` - Sample funds return
-       * - `account_revenue_payment_distribution` - Account revenue payment distribution
        */
       reason:
         | 'account_closure'
+        | 'account_revenue_payment_distribution'
         | 'bank_drawn_check'
         | 'bank_drawn_check_credit'
         | 'bank_migration'
         | 'check_adjustment'
         | 'collection_payment'
         | 'collection_receivable'
+        | 'dishonored_ach_return'
         | 'empyreal_adjustment'
         | 'error'
         | 'error_correction'
@@ -4115,8 +4118,7 @@ export namespace Transaction {
         | 'interest'
         | 'negative_balance_forgiveness'
         | 'sample_funds'
-        | 'sample_funds_return'
-        | 'account_revenue_payment_distribution';
+        | 'sample_funds_return';
     }
 
     /**
