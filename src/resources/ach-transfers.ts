@@ -996,7 +996,7 @@ export namespace ACHTransfer {
      * than the opening of business on the second banking day following the Settlement
      * Date of the original entry.".
      */
-    administrative_returns_expected_by: string | null;
+    administrative_returns_expected_by: string;
 
     /**
      * The ACH transfer's effective date as sent to the Federal Reserve. If a specific
