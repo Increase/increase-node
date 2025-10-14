@@ -1596,6 +1596,12 @@ export namespace Transaction {
        */
       export interface NetworkIdentifiers {
         /**
+         * The randomly generated 6-character Authorization Identification Response code
+         * sent back to the acquirer in an approved response.
+         */
+        authorization_identification_response: string | null;
+
+        /**
          * A life-cycle identifier used across e.g., an authorization and a reversal.
          * Expected to be unique per acquirer within a window of time. For some card
          * networks the retrieval reference number includes the trace counter.
@@ -1907,6 +1913,12 @@ export namespace Transaction {
          * A globally unique identifier for this settlement.
          */
         acquirer_reference_number: string;
+
+        /**
+         * The randomly generated 6-character Authorization Identification Response code
+         * sent back to the acquirer in an approved response.
+         */
+        authorization_identification_response: string | null;
 
         /**
          * A globally unique transaction identifier provided by the card network, used
@@ -2699,6 +2711,12 @@ export namespace Transaction {
          * A globally unique identifier for this settlement.
          */
         acquirer_reference_number: string;
+
+        /**
+         * The randomly generated 6-character Authorization Identification Response code
+         * sent back to the acquirer in an approved response.
+         */
+        authorization_identification_response: string | null;
 
         /**
          * A globally unique transaction identifier provided by the card network, used
