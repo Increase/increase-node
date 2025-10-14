@@ -958,8 +958,9 @@ export namespace Transaction {
        * The network that the Card Dispute is associated with.
        *
        * - `visa` - Visa: details will be under the `visa` object.
+       * - `pulse` - Pulse: details will be under the `pulse` object.
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * The identifier of the Transaction that was created to credit or debit the
@@ -1459,8 +1460,14 @@ export namespace Transaction {
          * The payment network used to process this card authorization.
          *
          * - `visa` - Visa
+         * - `pulse` - Pulse
          */
-        category: 'visa';
+        category: 'visa' | 'pulse';
+
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        pulse: unknown | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -2571,8 +2578,9 @@ export namespace Transaction {
        * The card network on which this transaction was processed.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * Network-specific identifiers for this refund.

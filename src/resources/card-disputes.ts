@@ -147,8 +147,9 @@ export interface CardDispute {
    * The network that the Card Dispute is associated with.
    *
    * - `visa` - Visa: details will be under the `visa` object.
+   * - `pulse` - Pulse: details will be under the `pulse` object.
    */
-  network: 'visa';
+  network: 'visa' | 'pulse';
 
   /**
    * The status of the Card Dispute.
