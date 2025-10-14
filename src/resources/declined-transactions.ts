@@ -978,6 +978,12 @@ export namespace DeclinedTransaction {
        */
       export interface NetworkIdentifiers {
         /**
+         * The randomly generated 6-character Authorization Identification Response code
+         * sent back to the acquirer in an approved response.
+         */
+        authorization_identification_response: string | null;
+
+        /**
          * A life-cycle identifier used across e.g., an authorization and a reversal.
          * Expected to be unique per acquirer within a window of time. For some card
          * networks the retrieval reference number includes the trace counter.
