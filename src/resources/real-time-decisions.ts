@@ -620,8 +620,14 @@ export namespace RealTimeDecision {
        * The payment network used to process this card authorization.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      category: 'visa';
+      category: 'visa' | 'pulse';
+
+      /**
+       * Fields specific to the `pulse` network.
+       */
+      pulse: unknown | null;
 
       /**
        * Fields specific to the `visa` network.
