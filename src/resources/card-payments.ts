@@ -868,8 +868,14 @@ export namespace CardPayment {
          * The payment network used to process this card authorization.
          *
          * - `visa` - Visa
+         * - `pulse` - Pulse
          */
-        category: 'visa';
+        category: 'visa' | 'pulse';
+
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        pulse: unknown | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -1142,8 +1148,9 @@ export namespace CardPayment {
        * The card network used to process this card authorization.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * A constant representing the object's type. For this resource it will always be
@@ -1660,8 +1667,14 @@ export namespace CardPayment {
          * The payment network used to process this card authorization.
          *
          * - `visa` - Visa
+         * - `pulse` - Pulse
          */
-        category: 'visa';
+        category: 'visa' | 'pulse';
+
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        pulse: unknown | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -1928,8 +1941,9 @@ export namespace CardPayment {
        * The card network used to process this card authorization.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * Network-specific identifiers for a specific request or transaction.
@@ -2038,8 +2052,9 @@ export namespace CardPayment {
        * The card network used to process this card authorization.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * Network-specific identifiers for a specific request or transaction.
@@ -3126,8 +3141,9 @@ export namespace CardPayment {
        * The card network used to process this card authorization.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * Network-specific identifiers for a specific request or transaction.
@@ -3320,8 +3336,9 @@ export namespace CardPayment {
        * The card network on which this transaction was processed.
        *
        * - `visa` - Visa
+       * - `pulse` - Pulse
        */
-      network: 'visa';
+      network: 'visa' | 'pulse';
 
       /**
        * Network-specific identifiers for this refund.
@@ -4357,8 +4374,14 @@ export namespace CardPayment {
          * The payment network used to process this card authorization.
          *
          * - `visa` - Visa
+         * - `pulse` - Pulse
          */
-        category: 'visa';
+        category: 'visa' | 'pulse';
+
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        pulse: unknown | null;
 
         /**
          * Fields specific to the `visa` network.
