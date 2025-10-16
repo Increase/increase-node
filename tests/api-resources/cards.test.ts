@@ -25,7 +25,11 @@ describe('resource cards', () => {
       account_id: 'account_in71c4amph0vgo2qllky',
       billing_address: { city: 'x', line1: 'x', postal_code: 'x', state: 'x', line2: 'x' },
       description: 'Card for Ian Crease',
-      digital_wallet: { digital_card_profile_id: 'digital_card_profile_id', email: 'x', phone: 'x' },
+      digital_wallet: {
+        digital_card_profile_id: 'digital_card_profile_id',
+        email: 'dev@stainless.com',
+        phone: 'x',
+      },
       entity_id: 'entity_id',
     });
   });
