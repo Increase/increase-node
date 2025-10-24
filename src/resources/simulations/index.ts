@@ -34,6 +34,7 @@ export {
 export { Documents, type DocumentCreateParams } from './documents';
 export { InboundACHTransfers, type InboundACHTransferCreateParams } from './inbound-ach-transfers';
 export { InboundCheckDeposits, type InboundCheckDepositCreateParams } from './inbound-check-deposits';
+export { InboundFednowTransfers, type InboundFednowTransferCreateParams } from './inbound-fednow-transfers';
 export { InboundMailItems, type InboundMailItemCreateParams } from './inbound-mail-items';
 export {
   InboundRealTimePaymentsTransfers,

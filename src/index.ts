@@ -203,6 +203,13 @@ import {
   ExternalAccounts,
   ExternalAccountsPage,
 } from './resources/external-accounts';
+import {
+  FednowTransfer,
+  FednowTransferCreateParams,
+  FednowTransferListParams,
+  FednowTransfers,
+  FednowTransfersPage,
+} from './resources/fednow-transfers';
 import { FileLink, FileLinkCreateParams, FileLinks } from './resources/file-links';
 import { File, FileCreateParams, FileListParams, Files, FilesPage } from './resources/files';
 import { Group, Groups } from './resources/groups';
@@ -222,6 +229,12 @@ import {
   InboundCheckDeposits,
   InboundCheckDepositsPage,
 } from './resources/inbound-check-deposits';
+import {
+  InboundFednowTransfer,
+  InboundFednowTransferListParams,
+  InboundFednowTransfers,
+  InboundFednowTransfersPage,
+} from './resources/inbound-fednow-transfers';
 import {
   InboundMailItem,
   InboundMailItemListParams,
@@ -526,6 +539,8 @@ export class Increase extends Core.APIClient {
   realTimePaymentsTransfers: API.RealTimePaymentsTransfers = new API.RealTimePaymentsTransfers(this);
   inboundRealTimePaymentsTransfers: API.InboundRealTimePaymentsTransfers =
     new API.InboundRealTimePaymentsTransfers(this);
+  fednowTransfers: API.FednowTransfers = new API.FednowTransfers(this);
+  inboundFednowTransfers: API.InboundFednowTransfers = new API.InboundFednowTransfers(this);
   checkDeposits: API.CheckDeposits = new API.CheckDeposits(this);
   lockboxes: API.Lockboxes = new API.Lockboxes(this);
   inboundMailItems: API.InboundMailItems = new API.InboundMailItems(this);
@@ -666,6 +681,10 @@ Increase.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Increase.RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
 Increase.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
 Increase.InboundRealTimePaymentsTransfersPage = InboundRealTimePaymentsTransfersPage;
+Increase.FednowTransfers = FednowTransfers;
+Increase.FednowTransfersPage = FednowTransfersPage;
+Increase.InboundFednowTransfers = InboundFednowTransfers;
+Increase.InboundFednowTransfersPage = InboundFednowTransfersPage;
 Increase.CheckDeposits = CheckDeposits;
 Increase.CheckDepositsPage = CheckDepositsPage;
 Increase.Lockboxes = Lockboxes;
@@ -934,6 +953,21 @@ export declare namespace Increase {
     type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
     InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
     type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
+  };
+
+  export {
+    FednowTransfers as FednowTransfers,
+    type FednowTransfer as FednowTransfer,
+    FednowTransfersPage as FednowTransfersPage,
+    type FednowTransferCreateParams as FednowTransferCreateParams,
+    type FednowTransferListParams as FednowTransferListParams,
+  };
+
+  export {
+    InboundFednowTransfers as InboundFednowTransfers,
+    type InboundFednowTransfer as InboundFednowTransfer,
+    InboundFednowTransfersPage as InboundFednowTransfersPage,
+    type InboundFednowTransferListParams as InboundFednowTransferListParams,
   };
 
   export {
