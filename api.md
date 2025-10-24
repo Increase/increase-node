@@ -324,6 +324,31 @@ Methods:
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">retrieve</a>(inboundRealTimePaymentsTransferId) -> InboundRealTimePaymentsTransfer</code>
 - <code title="get /inbound_real_time_payments_transfers">client.inboundRealTimePaymentsTransfers.<a href="./src/resources/inbound-real-time-payments-transfers.ts">list</a>({ ...params }) -> InboundRealTimePaymentsTransfersPage</code>
 
+# FednowTransfers
+
+Types:
+
+- <code><a href="./src/resources/fednow-transfers.ts">FednowTransfer</a></code>
+
+Methods:
+
+- <code title="post /fednow_transfers">client.fednowTransfers.<a href="./src/resources/fednow-transfers.ts">create</a>({ ...params }) -> FednowTransfer</code>
+- <code title="get /fednow_transfers/{fednow_transfer_id}">client.fednowTransfers.<a href="./src/resources/fednow-transfers.ts">retrieve</a>(fednowTransferId) -> FednowTransfer</code>
+- <code title="get /fednow_transfers">client.fednowTransfers.<a href="./src/resources/fednow-transfers.ts">list</a>({ ...params }) -> FednowTransfersPage</code>
+- <code title="post /fednow_transfers/{fednow_transfer_id}/approve">client.fednowTransfers.<a href="./src/resources/fednow-transfers.ts">approve</a>(fednowTransferId) -> FednowTransfer</code>
+- <code title="post /fednow_transfers/{fednow_transfer_id}/cancel">client.fednowTransfers.<a href="./src/resources/fednow-transfers.ts">cancel</a>(fednowTransferId) -> FednowTransfer</code>
+
+# InboundFednowTransfers
+
+Types:
+
+- <code><a href="./src/resources/inbound-fednow-transfers.ts">InboundFednowTransfer</a></code>
+
+Methods:
+
+- <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inboundFednowTransfers.<a href="./src/resources/inbound-fednow-transfers.ts">retrieve</a>(inboundFednowTransferId) -> InboundFednowTransfer</code>
+- <code title="get /inbound_fednow_transfers">client.inboundFednowTransfers.<a href="./src/resources/inbound-fednow-transfers.ts">list</a>({ ...params }) -> InboundFednowTransfersPage</code>
+
 # CheckDeposits
 
 Types:
@@ -832,6 +857,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inboundRealTimePaymentsTransfers.<a href="./src/resources/simulations/inbound-real-time-payments-transfers.ts">create</a>({ ...params }) -> InboundRealTimePaymentsTransfer</code>
+
+## InboundFednowTransfers
+
+Methods:
+
+- <code title="post /simulations/inbound_fednow_transfers">client.simulations.inboundFednowTransfers.<a href="./src/resources/simulations/inbound-fednow-transfers.ts">create</a>({ ...params }) -> InboundFednowTransfer</code>
 
 ## CheckDeposits
 
