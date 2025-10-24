@@ -53,6 +53,8 @@ import * as InboundACHTransfersAPI from './inbound-ach-transfers';
 import { InboundACHTransferCreateParams, InboundACHTransfers } from './inbound-ach-transfers';
 import * as InboundCheckDepositsAPI from './inbound-check-deposits';
 import { InboundCheckDepositCreateParams, InboundCheckDeposits } from './inbound-check-deposits';
+import * as InboundFednowTransfersAPI from './inbound-fednow-transfers';
+import { InboundFednowTransferCreateParams, InboundFednowTransfers } from './inbound-fednow-transfers';
 import * as InboundMailItemsAPI from './inbound-mail-items';
 import { InboundMailItemCreateParams, InboundMailItems } from './inbound-mail-items';
 import * as InboundRealTimePaymentsTransfersAPI from './inbound-real-time-payments-transfers';
@@ -126,6 +128,8 @@ export class Simulations extends APIResource {
     new RealTimePaymentsTransfersAPI.RealTimePaymentsTransfers(this._client);
   inboundRealTimePaymentsTransfers: InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers =
     new InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfers(this._client);
+  inboundFednowTransfers: InboundFednowTransfersAPI.InboundFednowTransfers =
+    new InboundFednowTransfersAPI.InboundFednowTransfers(this._client);
   checkDeposits: CheckDepositsAPI.CheckDeposits = new CheckDepositsAPI.CheckDeposits(this._client);
   inboundMailItems: InboundMailItemsAPI.InboundMailItems = new InboundMailItemsAPI.InboundMailItems(
     this._client,
@@ -161,6 +165,7 @@ Simulations.CheckTransfers = CheckTransfers;
 Simulations.InboundCheckDeposits = InboundCheckDeposits;
 Simulations.RealTimePaymentsTransfers = RealTimePaymentsTransfers;
 Simulations.InboundRealTimePaymentsTransfers = InboundRealTimePaymentsTransfers;
+Simulations.InboundFednowTransfers = InboundFednowTransfers;
 Simulations.CheckDeposits = CheckDeposits;
 Simulations.InboundMailItems = InboundMailItems;
 Simulations.Programs = Programs;
@@ -260,6 +265,11 @@ export declare namespace Simulations {
   export {
     InboundRealTimePaymentsTransfers as InboundRealTimePaymentsTransfers,
     type InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams,
+  };
+
+  export {
+    InboundFednowTransfers as InboundFednowTransfers,
+    type InboundFednowTransferCreateParams as InboundFednowTransferCreateParams,
   };
 
   export { CheckDeposits as CheckDeposits };

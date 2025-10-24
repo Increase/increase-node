@@ -202,6 +202,13 @@ export {
   type ExternalAccountUpdateParams,
   type ExternalAccountListParams,
 } from './external-accounts';
+export {
+  FednowTransfersPage,
+  FednowTransfers,
+  type FednowTransfer,
+  type FednowTransferCreateParams,
+  type FednowTransferListParams,
+} from './fednow-transfers';
 export { FileLinks, type FileLink, type FileLinkCreateParams } from './file-links';
 export { FilesPage, Files, type File, type FileCreateParams, type FileListParams } from './files';
 export { Groups, type Group } from './groups';
@@ -221,6 +228,12 @@ export {
   type InboundCheckDepositListParams,
   type InboundCheckDepositReturnParams,
 } from './inbound-check-deposits';
+export {
+  InboundFednowTransfersPage,
+  InboundFednowTransfers,
+  type InboundFednowTransfer,
+  type InboundFednowTransferListParams,
+} from './inbound-fednow-transfers';
 export {
   InboundMailItemsPage,
   InboundMailItems,
