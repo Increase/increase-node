@@ -623,6 +623,11 @@ export namespace PendingTransaction {
         dental: AdditionalAmounts.Dental | null;
 
         /**
+         * The original pre-authorized amount.
+         */
+        original: AdditionalAmounts.Original | null;
+
+        /**
          * The part of this transaction amount that was for healthcare prescriptions.
          */
         prescription: AdditionalAmounts.Prescription | null;
@@ -681,6 +686,24 @@ export namespace PendingTransaction {
          * The part of this transaction amount that was for dental-related services.
          */
         export interface Dental {
+          /**
+           * The amount in minor units of the `currency` field. The amount is positive if it
+           * is added to the amount (such as an ATM surcharge fee) and negative if it is
+           * subtracted from the amount (such as a discount).
+           */
+          amount: number;
+
+          /**
+           * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+           * amount's currency.
+           */
+          currency: string;
+        }
+
+        /**
+         * The original pre-authorized amount.
+         */
+        export interface Original {
           /**
            * The amount in minor units of the `currency` field. The amount is positive if it
            * is added to the amount (such as an ATM surcharge fee) and negative if it is
