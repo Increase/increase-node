@@ -286,6 +286,23 @@ export namespace CardAuthorizationCreateParams {
       | 'quasi_cash'
       | 'refund'
       | 'cash_disbursement';
+
+    /**
+     * Details related to refund authorizations.
+     */
+    refund?: ProcessingCategory.Refund;
+  }
+
+  export namespace ProcessingCategory {
+    /**
+     * Details related to refund authorizations.
+     */
+    export interface Refund {
+      /**
+       * The card payment to link this refund to.
+       */
+      original_card_payment_id?: string;
+    }
   }
 }
 

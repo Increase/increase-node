@@ -37,7 +37,10 @@ describe('resource cardAuthorizations', () => {
       network_details: { visa: { stand_in_processing_reason: 'issuer_error' } },
       network_risk_score: 0,
       physical_card_id: 'physical_card_id',
-      processing_category: { category: 'account_funding' },
+      processing_category: {
+        category: 'account_funding',
+        refund: { original_card_payment_id: 'original_card_payment_id' },
+      },
       terminal_id: 'x',
     });
   });
