@@ -25,6 +25,12 @@ export class CardRefunds extends APIResource {
 
 export interface CardRefundCreateParams {
   /**
+   * The refund amount in cents. Pulled off the `pending_transaction` or the
+   * `transaction` if not provided.
+   */
+  amount?: number;
+
+  /**
    * The identifier of the Pending Transaction for the refund authorization. If this
    * is provided, `transaction` must not be provided as a refund with a refund
    * authorized can not be linked to a regular transaction.
