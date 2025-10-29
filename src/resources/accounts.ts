@@ -277,7 +277,7 @@ export interface AccountCreateParams {
 
   /**
    * The identifier of an Entity that, while not owning the Account, is associated
-   * with its activity. Its relationship to your group must be `informational`.
+   * with its activity. This is generally the beneficiary of the funds.
    */
   informational_entity_id?: string;
 
