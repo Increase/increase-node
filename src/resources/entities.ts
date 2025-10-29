@@ -1243,11 +1243,15 @@ export namespace EntityCreateParams {
      * - `publicly_traded_company` - A publicly traded company.
      * - `public_entity` - A public entity acting on behalf of the federal or a state
      *   government.
+     * - `other` - Any other reason why this entity is exempt from the requirement to
+     *   submit beneficial owners. You can only use this exemption after approval from
+     *   your bank partner.
      */
     beneficial_ownership_exemption_reason?:
       | 'regulated_financial_institution'
       | 'publicly_traded_company'
-      | 'public_entity';
+      | 'public_entity'
+      | 'other';
 
     /**
      * The two-letter United States Postal Service (USPS) abbreviation for the
