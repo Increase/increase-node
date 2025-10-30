@@ -332,6 +332,8 @@ export interface CardPushTransfer {
    * `card_push_transfer`.
    */
   type: 'card_push_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace CardPushTransfer {

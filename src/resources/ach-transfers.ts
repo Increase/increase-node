@@ -349,6 +349,8 @@ export interface ACHTransfer {
    * `ach_transfer`.
    */
   type: 'ach_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace ACHTransfer {
@@ -604,6 +606,8 @@ export namespace ACHTransfer {
      * `inbound_funds_hold`.
      */
     type: 'inbound_funds_hold';
+
+    [k: string]: unknown;
   }
 
   export interface NotificationsOfChange {
@@ -966,6 +970,8 @@ export namespace ACHTransfer {
      * The identifier of the ACH Transfer associated with this return.
      */
     transfer_id: string;
+
+    [k: string]: unknown;
   }
 
   /**

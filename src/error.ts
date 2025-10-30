@@ -179,7 +179,7 @@ export class InvalidParametersError extends BadRequestError {
   /**
    * All errors related to parsing the request parameters.
    */
-  errors: Array<unknown>;
+  errors: Array<{ [key: string]: unknown }>;
 
   override status: 400;
 

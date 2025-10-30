@@ -198,6 +198,8 @@ export interface CardValidation {
    * `card_validation`.
    */
   type: 'card_validation';
+
+  [k: string]: unknown;
 }
 
 export namespace CardValidation {

@@ -195,6 +195,8 @@ export interface PendingTransaction {
    * `pending_transaction`.
    */
   type: 'pending_transaction';
+
+  [k: string]: unknown;
 }
 
 export namespace PendingTransaction {
@@ -338,13 +340,15 @@ export namespace PendingTransaction {
      * if and only if `category` is equal to `user_initiated_hold`. Created when a user
      * initiates a hold on funds in their account.
      */
-    user_initiated_hold: unknown | null;
+    user_initiated_hold: { [key: string]: unknown } | null;
 
     /**
      * A Wire Transfer Instruction object. This field will be present in the JSON
      * response if and only if `category` is equal to `wire_transfer_instruction`.
      */
     wire_transfer_instruction: Source.WireTransferInstruction | null;
+
+    [k: string]: unknown;
   }
 
   export namespace Source {
@@ -376,6 +380,8 @@ export namespace PendingTransaction {
        * The identifier of the Account Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -392,6 +398,8 @@ export namespace PendingTransaction {
        * The identifier of the ACH Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -603,6 +611,8 @@ export namespace PendingTransaction {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardAuthorization.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardAuthorization {
@@ -1154,6 +1164,8 @@ export namespace PendingTransaction {
        * was deposited.
        */
       front_image_file_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1183,6 +1195,8 @@ export namespace PendingTransaction {
        * The identifier of the Check Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1194,6 +1208,8 @@ export namespace PendingTransaction {
        * The identifier of the FedNow Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1262,6 +1278,8 @@ export namespace PendingTransaction {
        * `inbound_funds_hold`.
        */
       type: 'inbound_funds_hold';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1275,6 +1293,8 @@ export namespace PendingTransaction {
        * The ID of the Inbound Wire Transfer that is being reversed.
        */
       inbound_wire_transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1304,6 +1324,8 @@ export namespace PendingTransaction {
        * The identifier of the Swift Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1336,6 +1358,8 @@ export namespace PendingTransaction {
        * The identifier of the Wire Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
   }
 }

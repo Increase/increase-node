@@ -91,6 +91,8 @@ export interface CardPurchaseSupplement {
    * `card_purchase_supplement`.
    */
   type: 'card_purchase_supplement';
+
+  [k: string]: unknown;
 }
 
 export namespace CardPurchaseSupplement {

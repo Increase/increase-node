@@ -169,6 +169,8 @@ export namespace InboundFednowTransfer {
      * The identifier of the FedNow Transfer that led to this Transaction.
      */
     transfer_id: string;
+
+    [k: string]: unknown;
   }
 
   /**
@@ -198,6 +200,8 @@ export namespace InboundFednowTransfer {
      * The identifier of the FedNow Transfer that led to this declined transaction.
      */
     transfer_id: string;
+
+    [k: string]: unknown;
   }
 }
 

@@ -383,6 +383,8 @@ export namespace RealTimeDecision {
      * Fields related to verification of cardholder-provided values.
      */
     verification: CardAuthorization.Verification;
+
+    [k: string]: unknown;
   }
 
   export namespace CardAuthorization {

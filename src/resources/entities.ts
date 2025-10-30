@@ -544,6 +544,8 @@ export namespace Entity {
            * individual's identity.
            */
           number_last4: string;
+
+          [k: string]: unknown;
         }
       }
     }
@@ -731,6 +733,8 @@ export namespace Entity {
          * individual's identity.
          */
         number_last4: string;
+
+        [k: string]: unknown;
       }
     }
   }
@@ -819,6 +823,8 @@ export namespace Entity {
        * individual's identity.
        */
       number_last4: string;
+
+      [k: string]: unknown;
     }
   }
 
@@ -1028,6 +1034,8 @@ export namespace Entity {
          * individual's identity.
          */
         number_last4: string;
+
+        [k: string]: unknown;
       }
     }
 
@@ -1131,6 +1139,8 @@ export namespace Entity {
            * individual's identity.
            */
           number_last4: string;
+
+          [k: string]: unknown;
         }
       }
     }

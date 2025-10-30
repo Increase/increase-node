@@ -126,6 +126,8 @@ export interface Transaction {
    * `transaction`.
    */
   type: 'transaction';
+
+  [k: string]: unknown;
 }
 
 export namespace Transaction {
@@ -540,6 +542,8 @@ export namespace Transaction {
      * Transfer initiated via Increase and sent to a different bank.
      */
     wire_transfer_intention: Source.WireTransferIntention | null;
+
+    [k: string]: unknown;
   }
 
   export namespace Source {
@@ -564,6 +568,8 @@ export namespace Transaction {
        * The start of the period for which this transaction paid account revenue.
        */
       period_start: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -611,6 +617,8 @@ export namespace Transaction {
        * The identifier of the Account Transfer that led to this Pending Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -646,6 +654,8 @@ export namespace Transaction {
        * The identifier of the ACH Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -659,6 +669,8 @@ export namespace Transaction {
        * The identifier of the ACH Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -922,6 +934,8 @@ export namespace Transaction {
        * The identifier of the ACH Transfer associated with this return.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -941,6 +955,8 @@ export namespace Transaction {
        * to your account.
        */
       transaction_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -974,6 +990,8 @@ export namespace Transaction {
        * `network` is equal to `visa`.
        */
       visa: CardDisputeFinancial.Visa | null;
+
+      [k: string]: unknown;
     }
 
     export namespace CardDisputeFinancial {
@@ -1030,6 +1048,8 @@ export namespace Transaction {
        * from your account.
        */
       transaction_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1234,6 +1254,8 @@ export namespace Transaction {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardFinancial.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardFinancial {
@@ -1746,6 +1768,8 @@ export namespace Transaction {
        * The identifier of the Card Push Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1864,6 +1888,8 @@ export namespace Transaction {
        * `card_refund`.
        */
       type: 'card_refund';
+
+      [k: string]: unknown;
     }
 
     export namespace CardRefund {
@@ -2518,6 +2544,8 @@ export namespace Transaction {
        * The account the card belonged to.
        */
       transacted_on_account_id: string | null;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -2662,6 +2690,8 @@ export namespace Transaction {
        * `card_settlement`.
        */
       type: 'card_settlement';
+
+      [k: string]: unknown;
     }
 
     export namespace CardSettlement {
@@ -3335,6 +3365,8 @@ export namespace Transaction {
        * The start of the period for which this transaction paid cashback.
        */
       period_start: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3392,6 +3424,8 @@ export namespace Transaction {
        * the serial number is usually in the `auxiliary_on_us` field.
        */
       serial_number: string | null;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3511,6 +3545,8 @@ export namespace Transaction {
        * transaction.
        */
       transaction_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3565,6 +3601,8 @@ export namespace Transaction {
        * `check_transfer_deposit`.
        */
       type: 'check_transfer_deposit';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3578,6 +3616,8 @@ export namespace Transaction {
        * The identifier of the FedNow Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3614,6 +3654,8 @@ export namespace Transaction {
        * The Program for which this fee was incurred.
        */
       program_id: string | null;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3683,6 +3725,8 @@ export namespace Transaction {
        * The Inbound ACH Transfer's identifier.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     export namespace InboundACHTransfer {
@@ -3737,6 +3781,8 @@ export namespace Transaction {
        * The ID of the Inbound ACH Transfer that is being returned.
        */
       inbound_ach_transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3769,6 +3815,8 @@ export namespace Transaction {
        *   usually happens for e.g., low quality images.
        */
       reason: 'late_return' | 'wrong_payee_credit' | 'adjusted_amount' | 'non_conforming_item';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3788,6 +3836,8 @@ export namespace Transaction {
        * The identifier of the Check Transfer object that was deposited.
        */
       transfer_id: string | null;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3802,6 +3852,8 @@ export namespace Transaction {
        * The identifier of the FedNow Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3865,6 +3917,8 @@ export namespace Transaction {
        * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -3948,6 +4002,8 @@ export namespace Transaction {
        * The ID for the Wire Transfer that is being reversed.
        */
       wire_transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4046,6 +4102,8 @@ export namespace Transaction {
        * A free-form message set by the sender.
        */
       unstructured_remittance_information: string | null;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4060,6 +4118,8 @@ export namespace Transaction {
        * The ID of the Inbound Wire Transfer that is being reversed.
        */
       inbound_wire_transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4102,6 +4162,8 @@ export namespace Transaction {
        * The start of the period for which this transaction paid interest.
        */
       period_start: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4169,6 +4231,8 @@ export namespace Transaction {
         | 'negative_balance_forgiveness'
         | 'sample_funds'
         | 'sample_funds_return';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4203,6 +4267,8 @@ export namespace Transaction {
        * The identifier of the Real-Time Payments Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4215,6 +4281,8 @@ export namespace Transaction {
        * Where the sample funds came from.
        */
       originator: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4227,6 +4295,8 @@ export namespace Transaction {
        * The identifier of the Swift Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4239,6 +4309,8 @@ export namespace Transaction {
        * The identifier of the Swift Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -4271,6 +4343,8 @@ export namespace Transaction {
        * The identifier of the Wire Transfer that led to this Transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
   }
 }

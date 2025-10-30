@@ -109,6 +109,8 @@ export interface InboundMailItem {
    * `inbound_mail_item`.
    */
   type: 'inbound_mail_item';
+
+  [k: string]: unknown;
 }
 
 export namespace InboundMailItem {
