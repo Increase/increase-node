@@ -13,7 +13,8 @@ describe('resource wireTransfers', () => {
     const responsePromise = client.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
-      beneficiary_name: 'Ian Crease',
+      creditor: { name: 'Ian Crease' },
+      remittance: { category: 'unstructured' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,22 +29,19 @@ describe('resource wireTransfers', () => {
     const response = await client.wireTransfers.create({
       account_id: 'account_in71c4amph0vgo2qllky',
       amount: 100,
-      beneficiary_name: 'Ian Crease',
-      account_number: '987654321',
-      beneficiary_address_line1: '33 Liberty Street',
-      beneficiary_address_line2: 'New York',
-      beneficiary_address_line3: 'NY 10045',
-      external_account_id: 'external_account_id',
-      inbound_wire_drawdown_request_id: 'inbound_wire_drawdown_request_id',
-      originator_address_line1: 'x',
-      originator_address_line2: 'x',
-      originator_address_line3: 'x',
-      originator_name: 'x',
+      creditor: {
+        name: 'Ian Crease',
+        address: { unstructured: { line1: '33 Liberty Street', line2: 'New York', line3: 'NY 10045' } },
+      },
       remittance: {
         category: 'unstructured',
         tax: { date: '2019-12-27', identification_number: 'xxxxxxxxx', type_code: 'xxxxx' },
         unstructured: { message: 'New account transfer' },
       },
+      account_number: '987654321',
+      debtor: { name: 'x', address: { unstructured: { line1: 'x', line2: 'x', line3: 'x' } } },
+      external_account_id: 'external_account_id',
+      inbound_wire_drawdown_request_id: 'inbound_wire_drawdown_request_id',
       require_approval: true,
       routing_number: '101050001',
       source_account_number_id: 'source_account_number_id',
