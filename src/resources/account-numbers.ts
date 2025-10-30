@@ -153,6 +153,8 @@ export interface AccountNumber {
    * `account_number`.
    */
   type: 'account_number';
+
+  [k: string]: unknown;
 }
 
 export namespace AccountNumber {

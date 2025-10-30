@@ -177,6 +177,8 @@ export interface InboundWireDrawdownRequest {
    * A free-form message set by the sender.
    */
   unstructured_remittance_information: string | null;
+
+  [k: string]: unknown;
 }
 
 export interface InboundWireDrawdownRequestListParams extends PageParams {}

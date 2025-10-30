@@ -217,6 +217,8 @@ export interface InboundWireTransfer {
    * The wire drawdown request the inbound wire transfer is fulfilling.
    */
   wire_drawdown_request_id: string | null;
+
+  [k: string]: unknown;
 }
 
 export namespace InboundWireTransfer {

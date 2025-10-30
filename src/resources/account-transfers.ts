@@ -212,6 +212,8 @@ export interface AccountTransfer {
    * `account_transfer`.
    */
   type: 'account_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace AccountTransfer {

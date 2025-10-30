@@ -210,6 +210,8 @@ export interface Card {
    * `card`.
    */
   type: 'card';
+
+  [k: string]: unknown;
 }
 
 export namespace Card {
