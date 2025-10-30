@@ -129,6 +129,8 @@ export interface DeclinedTransaction {
    * `declined_transaction`.
    */
   type: 'declined_transaction';
+
+  [k: string]: unknown;
 }
 
 export namespace DeclinedTransaction {
@@ -220,6 +222,8 @@ export namespace DeclinedTransaction {
      * only if `category` is equal to `wire_decline`.
      */
     wire_decline: Source.WireDecline | null;
+
+    [k: string]: unknown;
   }
 
   export namespace Source {
@@ -332,6 +336,8 @@ export namespace DeclinedTransaction {
        * `ach_decline`.
        */
       type: 'ach_decline';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -616,6 +622,8 @@ export namespace DeclinedTransaction {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardDecline.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardDecline {
@@ -1196,6 +1204,8 @@ export namespace DeclinedTransaction {
         | 'unable_to_process'
         | 'unusable_image'
         | 'user_initiated';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1268,6 +1278,8 @@ export namespace DeclinedTransaction {
        * the check deposit was rejected.
        */
       rejected_at: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1299,6 +1311,8 @@ export namespace DeclinedTransaction {
        * The identifier of the FedNow Transfer that led to this declined transaction.
        */
       transfer_id: string;
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1410,6 +1424,8 @@ export namespace DeclinedTransaction {
         | 'group_locked'
         | 'no_account_number'
         | 'transaction_not_allowed';
+
+      [k: string]: unknown;
     }
   }
 }

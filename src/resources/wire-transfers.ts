@@ -258,6 +258,8 @@ export interface WireTransfer {
    * `wire_transfer`.
    */
   type: 'wire_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace WireTransfer {
@@ -598,6 +600,8 @@ export namespace WireTransfer {
      * The ID for the Wire Transfer that is being reversed.
      */
     wire_transfer_id: string;
+
+    [k: string]: unknown;
   }
 
   /**

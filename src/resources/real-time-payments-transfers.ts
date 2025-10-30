@@ -290,6 +290,8 @@ export interface RealTimePaymentsTransfer {
    * sent on behalf of someone who is not the account holder at Increase.
    */
   ultimate_debtor_name: string | null;
+
+  [k: string]: unknown;
 }
 
 export namespace RealTimePaymentsTransfer {

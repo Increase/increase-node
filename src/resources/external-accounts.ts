@@ -157,6 +157,8 @@ export interface ExternalAccount {
    * `external_account`.
    */
   type: 'external_account';
+
+  [k: string]: unknown;
 }
 
 export interface ExternalAccountCreateParams {

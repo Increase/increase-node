@@ -194,6 +194,8 @@ export interface File {
    * `file`.
    */
   type: 'file';
+
+  [k: string]: unknown;
 }
 
 export interface FileCreateParams {

@@ -294,6 +294,8 @@ export interface CheckTransfer {
    * `check_transfer`.
    */
   type: 'check_transfer';
+
+  [k: string]: unknown;
 }
 
 export namespace CheckTransfer {
@@ -478,6 +480,8 @@ export namespace CheckTransfer {
      * Tracking updates relating to the physical check's delivery.
      */
     tracking_updates: Array<PhysicalCheck.TrackingUpdate>;
+
+    [k: string]: unknown;
   }
 
   export namespace PhysicalCheck {
@@ -613,6 +617,8 @@ export namespace CheckTransfer {
      * `check_transfer_stop_payment_request`.
      */
     type: 'check_transfer_stop_payment_request';
+
+    [k: string]: unknown;
   }
 
   /**
@@ -644,6 +650,8 @@ export namespace CheckTransfer {
      * When this check transfer was submitted to our check printer.
      */
     submitted_at: string;
+
+    [k: string]: unknown;
   }
 
   export namespace Submission {
@@ -693,6 +701,8 @@ export namespace CheckTransfer {
      * The name that you will print on the check.
      */
     recipient_name: string | null;
+
+    [k: string]: unknown;
   }
 }
 

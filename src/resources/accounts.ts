@@ -233,6 +233,8 @@ export interface Account {
    * `account`.
    */
   type: 'account';
+
+  [k: string]: unknown;
 }
 
 /**

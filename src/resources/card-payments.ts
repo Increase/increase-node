@@ -385,6 +385,8 @@ export namespace CardPayment {
        * `card_authentication`.
        */
       type: 'card_authentication';
+
+      [k: string]: unknown;
     }
 
     export namespace CardAuthentication {
@@ -652,6 +654,8 @@ export namespace CardPayment {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardAuthorization.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardAuthorization {
@@ -1197,6 +1201,8 @@ export namespace CardPayment {
        * `card_authorization_expiration`.
        */
       type: 'card_authorization_expiration';
+
+      [k: string]: unknown;
     }
 
     /**
@@ -1481,6 +1487,8 @@ export namespace CardPayment {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardDecline.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardDecline {
@@ -2179,6 +2187,8 @@ export namespace CardPayment {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardFinancial.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardFinancial {
@@ -2735,6 +2745,8 @@ export namespace CardPayment {
        * of the transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+
+      [k: string]: unknown;
     }
 
     export namespace CardFuelConfirmation {
@@ -2875,6 +2887,8 @@ export namespace CardPayment {
        * transaction's currency. For dollars, for example, this is cents.
        */
       updated_authorization_amount: number;
+
+      [k: string]: unknown;
     }
 
     export namespace CardIncrement {
@@ -3264,6 +3278,8 @@ export namespace CardPayment {
        * `card_refund`.
        */
       type: 'card_refund';
+
+      [k: string]: unknown;
     }
 
     export namespace CardRefund {
@@ -4023,6 +4039,8 @@ export namespace CardPayment {
        * transaction's presentment currency. For dollars, for example, this is cents.
        */
       updated_authorization_presentment_amount: number;
+
+      [k: string]: unknown;
     }
 
     export namespace CardReversal {
@@ -4199,6 +4217,8 @@ export namespace CardPayment {
        * `card_settlement`.
        */
       type: 'card_settlement';
+
+      [k: string]: unknown;
     }
 
     export namespace CardSettlement {
@@ -4969,6 +4989,8 @@ export namespace CardPayment {
        * Fields related to verification of cardholder-provided values.
        */
       verification: CardValidation.Verification;
+
+      [k: string]: unknown;
     }
 
     export namespace CardValidation {

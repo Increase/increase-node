@@ -175,6 +175,8 @@ export interface CheckDeposit {
    * `check_deposit`.
    */
   type: 'check_deposit';
+
+  [k: string]: unknown;
 }
 
 export namespace CheckDeposit {
@@ -230,6 +232,8 @@ export namespace CheckDeposit {
      * the serial number is usually in the `auxiliary_on_us` field.
      */
     serial_number: string | null;
+
+    [k: string]: unknown;
   }
 
   /**
@@ -302,6 +306,8 @@ export namespace CheckDeposit {
      * the check deposit was rejected.
      */
     rejected_at: string;
+
+    [k: string]: unknown;
   }
 
   /**
@@ -417,6 +423,8 @@ export namespace CheckDeposit {
      * transaction.
      */
     transaction_id: string;
+
+    [k: string]: unknown;
   }
 
   /**
@@ -508,6 +516,8 @@ export namespace CheckDeposit {
      * `inbound_funds_hold`.
      */
     type: 'inbound_funds_hold';
+
+    [k: string]: unknown;
   }
 }
 

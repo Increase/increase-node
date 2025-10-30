@@ -209,6 +209,8 @@ export interface PhysicalCardProfile {
    * `physical_card_profile`.
    */
   type: 'physical_card_profile';
+
+  [k: string]: unknown;
 }
 
 export interface PhysicalCardProfileCreateParams {
