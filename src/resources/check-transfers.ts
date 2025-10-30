@@ -734,6 +734,18 @@ export interface CheckTransferCreateParams {
   source_account_number_id: string;
 
   /**
+   * How the account's available balance should be checked. Please contact
+   * [support@increase.com](mailto:support@increase.com) to enable this parameter.
+   *
+   * - `full` - The available balance of the account must be at least the amount of
+   *   the check, and a Pending Transaction will be created for the full amount.
+   * - `none` - No balance check will performed when the check transfer is initiated.
+   *   A zero-dollar Pending Transaction will be created. The balance will still be
+   *   checked when the Inbound Check Deposit is created.
+   */
+  balance_check?: 'full' | 'none';
+
+  /**
    * The check number Increase should use for the check. This should not contain
    * leading zeroes and must be unique across the `source_account_number`. If this is
    * omitted, Increase will generate a check number for you.
