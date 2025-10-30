@@ -31,6 +31,7 @@ describe('resource checkTransfers', () => {
       amount: 1000,
       fulfillment_method: 'physical_check',
       source_account_number_id: 'account_number_v18nkfqm6afpsrvy82b2',
+      balance_check: 'full',
       check_number: 'x',
       physical_check: {
         mailing_address: {
