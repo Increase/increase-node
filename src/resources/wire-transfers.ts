@@ -14,7 +14,8 @@ export class WireTransfers extends APIResource {
    * const wireTransfer = await client.wireTransfers.create({
    *   account_id: 'account_in71c4amph0vgo2qllky',
    *   amount: 100,
-   *   beneficiary_name: 'Ian Crease',
+   *   creditor: { name: 'Ian Crease' },
+   *   remittance: { category: 'unstructured' },
    * });
    * ```
    */
@@ -125,26 +126,6 @@ export interface WireTransfer {
   approval: WireTransfer.Approval | null;
 
   /**
-   * The beneficiary's address line 1.
-   */
-  beneficiary_address_line1: string | null;
-
-  /**
-   * The beneficiary's address line 2.
-   */
-  beneficiary_address_line2: string | null;
-
-  /**
-   * The beneficiary's address line 3.
-   */
-  beneficiary_address_line3: string | null;
-
-  /**
-   * The beneficiary's name.
-   */
-  beneficiary_name: string | null;
-
-  /**
    * If your account requires approvals for transfers and the transfer was not
    * approved, this will contain details of the cancellation.
    */
@@ -162,6 +143,11 @@ export interface WireTransfer {
   created_by: WireTransfer.CreatedBy | null;
 
   /**
+   * The person or business that is receiving the funds from the transfer.
+   */
+  creditor: WireTransfer.Creditor | null;
+
+  /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For wire transfers this is always equal to `usd`.
    *
@@ -173,6 +159,11 @@ export interface WireTransfer {
    * - `USD` - US Dollar (USD)
    */
   currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+
+  /**
+   * The person or business whose funds are being transferred.
+   */
+  debtor: WireTransfer.Debtor | null;
 
   /**
    * The identifier of the External Account the transfer was made to, if any.
@@ -193,34 +184,9 @@ export interface WireTransfer {
   inbound_wire_drawdown_request_id: string | null;
 
   /**
-   * The message that will show on the recipient's bank statement.
-   */
-  message_to_recipient: string;
-
-  /**
    * The transfer's network.
    */
   network: 'wire';
-
-  /**
-   * The originator's address line 1.
-   */
-  originator_address_line1: string | null;
-
-  /**
-   * The originator's address line 2.
-   */
-  originator_address_line2: string | null;
-
-  /**
-   * The originator's address line 3.
-   */
-  originator_address_line3: string | null;
-
-  /**
-   * The originator's name.
-   */
-  originator_name: string | null;
 
   /**
    * The ID for the pending transaction representing the transfer. A pending
@@ -395,6 +361,104 @@ export namespace WireTransfer {
   }
 
   /**
+   * The person or business that is receiving the funds from the transfer.
+   */
+  export interface Creditor {
+    /**
+     * The person or business's address.
+     */
+    address: Creditor.Address | null;
+
+    /**
+     * The person or business's name.
+     */
+    name: string | null;
+  }
+
+  export namespace Creditor {
+    /**
+     * The person or business's address.
+     */
+    export interface Address {
+      /**
+       * Unstructured address lines.
+       */
+      unstructured: Address.Unstructured | null;
+    }
+
+    export namespace Address {
+      /**
+       * Unstructured address lines.
+       */
+      export interface Unstructured {
+        /**
+         * The first line.
+         */
+        line1: string | null;
+
+        /**
+         * The second line.
+         */
+        line2: string | null;
+
+        /**
+         * The third line.
+         */
+        line3: string | null;
+      }
+    }
+  }
+
+  /**
+   * The person or business whose funds are being transferred.
+   */
+  export interface Debtor {
+    /**
+     * The person or business's address.
+     */
+    address: Debtor.Address | null;
+
+    /**
+     * The person or business's name.
+     */
+    name: string | null;
+  }
+
+  export namespace Debtor {
+    /**
+     * The person or business's address.
+     */
+    export interface Address {
+      /**
+       * Unstructured address lines.
+       */
+      unstructured: Address.Unstructured | null;
+    }
+
+    export namespace Address {
+      /**
+       * Unstructured address lines.
+       */
+      export interface Unstructured {
+        /**
+         * The first line.
+         */
+        line1: string | null;
+
+        /**
+         * The second line.
+         */
+        line2: string | null;
+
+        /**
+         * The third line.
+         */
+        line3: string | null;
+      }
+    }
+  }
+
+  /**
    * Remittance information sent with the wire transfer.
    */
   export interface Remittance {
@@ -565,9 +629,14 @@ export interface WireTransferCreateParams {
   amount: number;
 
   /**
-   * The beneficiary's name.
+   * The person or business that is receiving the funds from the transfer.
    */
-  beneficiary_name: string;
+  creditor: WireTransferCreateParams.Creditor;
+
+  /**
+   * Additional remittance information related to the wire transfer.
+   */
+  remittance: WireTransferCreateParams.Remittance;
 
   /**
    * The account number for the destination account.
@@ -575,19 +644,11 @@ export interface WireTransferCreateParams {
   account_number?: string;
 
   /**
-   * The beneficiary's address line 1.
+   * The person or business whose funds are being transferred. This is only necessary
+   * if you're transferring from a commingled account. Otherwise, we'll use the
+   * associated entity's details.
    */
-  beneficiary_address_line1?: string;
-
-  /**
-   * The beneficiary's address line 2.
-   */
-  beneficiary_address_line2?: string;
-
-  /**
-   * The beneficiary's address line 3.
-   */
-  beneficiary_address_line3?: string;
+  debtor?: WireTransferCreateParams.Debtor;
 
   /**
    * The ID of an External Account to initiate a transfer to. If this parameter is
@@ -600,35 +661,6 @@ export interface WireTransferCreateParams {
    * being sent.
    */
   inbound_wire_drawdown_request_id?: string;
-
-  /**
-   * The originator's address line 1. This is only necessary if you're transferring
-   * from a commingled account. Otherwise, we'll use the associated entity's details.
-   */
-  originator_address_line1?: string;
-
-  /**
-   * The originator's address line 2. This is only necessary if you're transferring
-   * from a commingled account. Otherwise, we'll use the associated entity's details.
-   */
-  originator_address_line2?: string;
-
-  /**
-   * The originator's address line 3. This is only necessary if you're transferring
-   * from a commingled account. Otherwise, we'll use the associated entity's details.
-   */
-  originator_address_line3?: string;
-
-  /**
-   * The originator's name. This is only necessary if you're transferring from a
-   * commingled account. Otherwise, we'll use the associated entity's details.
-   */
-  originator_name?: string;
-
-  /**
-   * Additional remittance information related to the wire transfer.
-   */
-  remittance?: WireTransferCreateParams.Remittance;
 
   /**
    * Whether the transfer requires explicit approval via the dashboard or API.
@@ -648,6 +680,55 @@ export interface WireTransferCreateParams {
 }
 
 export namespace WireTransferCreateParams {
+  /**
+   * The person or business that is receiving the funds from the transfer.
+   */
+  export interface Creditor {
+    /**
+     * The person or business's name.
+     */
+    name: string;
+
+    /**
+     * The person or business's address.
+     */
+    address?: Creditor.Address;
+  }
+
+  export namespace Creditor {
+    /**
+     * The person or business's address.
+     */
+    export interface Address {
+      /**
+       * Unstructured address lines.
+       */
+      unstructured: Address.Unstructured;
+    }
+
+    export namespace Address {
+      /**
+       * Unstructured address lines.
+       */
+      export interface Unstructured {
+        /**
+         * The address line 1.
+         */
+        line1: string;
+
+        /**
+         * The address line 2.
+         */
+        line2?: string;
+
+        /**
+         * The address line 3.
+         */
+        line3?: string;
+      }
+    }
+  }
+
   /**
    * Additional remittance information related to the wire transfer.
    */
@@ -705,9 +786,60 @@ export namespace WireTransferCreateParams {
      */
     export interface Unstructured {
       /**
-       * The message to the beneficiary.
+       * The information.
        */
       message: string;
+    }
+  }
+
+  /**
+   * The person or business whose funds are being transferred. This is only necessary
+   * if you're transferring from a commingled account. Otherwise, we'll use the
+   * associated entity's details.
+   */
+  export interface Debtor {
+    /**
+     * The person or business's name.
+     */
+    name: string;
+
+    /**
+     * The person or business's address.
+     */
+    address?: Debtor.Address;
+  }
+
+  export namespace Debtor {
+    /**
+     * The person or business's address.
+     */
+    export interface Address {
+      /**
+       * Unstructured address lines.
+       */
+      unstructured: Address.Unstructured;
+    }
+
+    export namespace Address {
+      /**
+       * Unstructured address lines.
+       */
+      export interface Unstructured {
+        /**
+         * The address line 1.
+         */
+        line1: string;
+
+        /**
+         * The address line 2.
+         */
+        line2?: string;
+
+        /**
+         * The address line 3.
+         */
+        line3?: string;
+      }
     }
   }
 }
