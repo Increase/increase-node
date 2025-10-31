@@ -1213,6 +1213,8 @@ export interface EntityCreateParams {
    * `trust`.
    */
   trust?: EntityCreateParams.Trust;
+
+  [k: string]: unknown;
 }
 
 export namespace EntityCreateParams {
@@ -1333,6 +1335,8 @@ export namespace EntityCreateParams {
        * This person's role or title within the entity.
        */
       company_title?: string;
+
+      [k: string]: unknown;
     }
 
     export namespace BeneficialOwner {
@@ -1452,6 +1456,8 @@ export namespace EntityCreateParams {
            * equal to `passport`.
            */
           passport?: Identification.Passport;
+
+          [k: string]: unknown;
         }
 
         export namespace Identification {
@@ -1743,6 +1749,8 @@ export namespace EntityCreateParams {
          * equal to `passport`.
          */
         passport?: Identification.Passport;
+
+        [k: string]: unknown;
       }
 
       export namespace Identification {
@@ -1944,6 +1952,8 @@ export namespace EntityCreateParams {
        * equal to `passport`.
        */
       passport?: Identification.Passport;
+
+      [k: string]: unknown;
     }
 
     export namespace Identification {
@@ -2294,6 +2304,8 @@ export namespace EntityCreateParams {
            * equal to `passport`.
            */
           passport?: Identification.Passport;
+
+          [k: string]: unknown;
         }
 
         export namespace Identification {
@@ -2492,6 +2504,8 @@ export namespace EntityCreateParams {
          * equal to `passport`.
          */
         passport?: Identification.Passport;
+
+        [k: string]: unknown;
       }
 
       export namespace Identification {
@@ -2979,6 +2993,8 @@ export namespace EntityCreateBeneficialOwnerParams {
      * This person's role or title within the entity.
      */
     company_title?: string;
+
+    [k: string]: unknown;
   }
 
   export namespace BeneficialOwner {
@@ -3098,6 +3114,8 @@ export namespace EntityCreateBeneficialOwnerParams {
          * equal to `passport`.
          */
         passport?: Identification.Passport;
+
+        [k: string]: unknown;
       }
 
       export namespace Identification {

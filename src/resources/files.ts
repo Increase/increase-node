@@ -260,6 +260,8 @@ export interface FileCreateParams {
    * The description you choose to give the File.
    */
   description?: string;
+
+  [k: string]: unknown;
 }
 
 export interface FileListParams extends PageParams {

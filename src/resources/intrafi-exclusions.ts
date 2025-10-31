@@ -161,6 +161,8 @@ export interface IntrafiExclusionCreateParams {
    * The identifier of the Entity whose deposits will be excluded.
    */
   entity_id: string;
+
+  [k: string]: unknown;
 }
 
 export interface IntrafiExclusionListParams extends PageParams {

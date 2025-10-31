@@ -244,6 +244,8 @@ export interface PhysicalCardProfileCreateParams {
    * [support@increase.com](mailto:support@increase.com) for more information.
    */
   front_text?: PhysicalCardProfileCreateParams.FrontText;
+
+  [k: string]: unknown;
 }
 
 export namespace PhysicalCardProfileCreateParams {
@@ -322,6 +324,8 @@ export interface PhysicalCardProfileCloneParams {
    * The identifier of the Program to use for the cloned Physical Card Profile.
    */
   program_id?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace PhysicalCardProfileCloneParams {

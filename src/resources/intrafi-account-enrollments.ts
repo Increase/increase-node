@@ -171,6 +171,8 @@ export interface IntrafiAccountEnrollmentCreateParams {
    * The contact email for the account owner, to be shared with IntraFi.
    */
   email_address: string;
+
+  [k: string]: unknown;
 }
 
 export interface IntrafiAccountEnrollmentListParams extends PageParams {

@@ -653,7 +653,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to the `pulse` network.
        */
-      pulse: unknown | null;
+      pulse: NetworkDetails.Pulse | null;
 
       /**
        * Fields specific to the `visa` network.
@@ -662,6 +662,11 @@ export namespace RealTimeDecision {
     }
 
     export namespace NetworkDetails {
+      /**
+       * Fields specific to the `pulse` network.
+       */
+      export interface Pulse {}
+
       /**
        * Fields specific to the `visa` network.
        */
@@ -829,7 +834,7 @@ export namespace RealTimeDecision {
       /**
        * Fields specific to the category `initial_authorization`.
        */
-      initial_authorization: unknown | null;
+      initial_authorization: RequestDetails.InitialAuthorization | null;
     }
 
     export namespace RequestDetails {
@@ -848,6 +853,11 @@ export namespace RealTimeDecision {
          */
         original_card_authorization_id: string;
       }
+
+      /**
+       * Fields specific to the category `initial_authorization`.
+       */
+      export interface InitialAuthorization {}
     }
 
     /**
@@ -1128,6 +1138,8 @@ export namespace RealTimeDecisionActionParams {
      * decline.
      */
     decline?: CardAuthorization.Decline;
+
+    [k: string]: unknown;
   }
 
   export namespace CardAuthorization {

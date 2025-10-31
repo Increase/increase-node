@@ -215,7 +215,7 @@ export namespace DeclinedTransaction {
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: unknown | null;
+    other: Source.Other | null;
 
     /**
      * A Wire Decline object. This field will be present in the JSON response if and
@@ -881,7 +881,7 @@ export namespace DeclinedTransaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -890,6 +890,11 @@ export namespace DeclinedTransaction {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -1395,6 +1400,12 @@ export namespace DeclinedTransaction {
        */
       transfer_id: string;
     }
+
+    /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    export interface Other {}
 
     /**
      * A Wire Decline object. This field will be present in the JSON response if and

@@ -579,6 +579,8 @@ export interface RealTimePaymentsTransferCreateParams {
    * sent on behalf of someone who is not the account holder at Increase.
    */
   ultimate_debtor_name?: string;
+
+  [k: string]: unknown;
 }
 
 export interface RealTimePaymentsTransferListParams extends PageParams {

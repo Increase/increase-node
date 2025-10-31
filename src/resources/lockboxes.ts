@@ -195,6 +195,8 @@ export interface LockboxCreateParams {
    * The name of the recipient that will receive mail at this location.
    */
   recipient_name?: string;
+
+  [k: string]: unknown;
 }
 
 export interface LockboxUpdateParams {

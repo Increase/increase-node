@@ -689,6 +689,8 @@ export interface EventSubscriptionCreateParams {
    *   delivered.
    */
   status?: 'active' | 'disabled';
+
+  [k: string]: unknown;
 }
 
 export interface EventSubscriptionUpdateParams {

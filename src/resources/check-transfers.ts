@@ -772,6 +772,8 @@ export interface CheckTransferCreateParams {
    * other `fulfillment_method` is provided.
    */
   third_party?: CheckTransferCreateParams.ThirdParty;
+
+  [k: string]: unknown;
 }
 
 export namespace CheckTransferCreateParams {
@@ -836,6 +838,8 @@ export namespace CheckTransferCreateParams {
      * provided, the check will be printed with 'No signature required'.
      */
     signature_text?: string;
+
+    [k: string]: unknown;
   }
 
   export namespace PhysicalCheck {
@@ -926,6 +930,8 @@ export namespace CheckTransferCreateParams {
      * be unable to validate the payer name when the check is deposited.
      */
     recipient_name?: string;
+
+    [k: string]: unknown;
   }
 }
 

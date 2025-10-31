@@ -210,6 +210,8 @@ export interface AccountNumberCreateParams {
    * withdrawals.
    */
   inbound_checks?: AccountNumberCreateParams.InboundChecks;
+
+  [k: string]: unknown;
 }
 
 export namespace AccountNumberCreateParams {

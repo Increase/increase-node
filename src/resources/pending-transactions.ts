@@ -316,7 +316,7 @@ export namespace PendingTransaction {
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: unknown | null;
+    other: Source.Other | null;
 
     /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
@@ -866,7 +866,7 @@ export namespace PendingTransaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -875,6 +875,11 @@ export namespace PendingTransaction {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -1294,6 +1299,12 @@ export namespace PendingTransaction {
     }
 
     /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    export interface Other {}
+
+    /**
      * A Real-Time Payments Transfer Instruction object. This field will be present in
      * the JSON response if and only if `category` is equal to
      * `real_time_payments_transfer_instruction`.
@@ -1377,6 +1388,8 @@ export interface PendingTransactionCreateParams {
    * The description you choose to give the hold.
    */
   description?: string;
+
+  [k: string]: unknown;
 }
 
 export interface PendingTransactionListParams extends PageParams {

@@ -207,7 +207,9 @@ export interface ExportCreateParams {
   /**
    * Options for the created export. Required if `category` is equal to `vendor_csv`.
    */
-  vendor_csv?: unknown;
+  vendor_csv?: ExportCreateParams.VendorCsv;
+
+  [k: string]: unknown;
 }
 
 export namespace ExportCreateParams {
@@ -457,6 +459,11 @@ export namespace ExportCreateParams {
       on_or_before?: string;
     }
   }
+
+  /**
+   * Options for the created export. Required if `category` is equal to `vendor_csv`.
+   */
+  export interface VendorCsv {}
 }
 
 export interface ExportListParams extends PageParams {

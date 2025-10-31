@@ -343,6 +343,8 @@ export interface WireDrawdownRequestCreateParams {
    * The debtor's routing number.
    */
   debtor_routing_number?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace WireDrawdownRequestCreateParams {

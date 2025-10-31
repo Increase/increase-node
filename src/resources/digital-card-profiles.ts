@@ -260,6 +260,8 @@ export interface DigitalCardProfileCreateParams {
    * The Card's text color, specified as an RGB triple. The default is white.
    */
   text_color?: DigitalCardProfileCreateParams.TextColor;
+
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfileCreateParams {
@@ -352,6 +354,8 @@ export interface DigitalCardProfileCloneParams {
    * The Card's text color, specified as an RGB triple. The default is white.
    */
   text_color?: DigitalCardProfileCloneParams.TextColor;
+
+  [k: string]: unknown;
 }
 
 export namespace DigitalCardProfileCloneParams {

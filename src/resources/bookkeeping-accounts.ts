@@ -198,6 +198,8 @@ export interface BookkeepingAccountCreateParams {
    * The entity, if `compliance_category` is `customer_balance`.
    */
   entity_id?: string;
+
+  [k: string]: unknown;
 }
 
 export interface BookkeepingAccountUpdateParams {
