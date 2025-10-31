@@ -172,6 +172,8 @@ export interface DocumentCreateParams {
    * `funding_instructions`.
    */
   funding_instructions?: DocumentCreateParams.FundingInstructions;
+
+  [k: string]: unknown;
 }
 
 export namespace DocumentCreateParams {

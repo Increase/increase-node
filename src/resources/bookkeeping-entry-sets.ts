@@ -166,6 +166,8 @@ export interface BookkeepingEntrySetCreateParams {
    * The identifier of the Transaction related to this entry set, if any.
    */
   transaction_id?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace BookkeepingEntrySetCreateParams {

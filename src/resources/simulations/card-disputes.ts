@@ -94,31 +94,31 @@ export namespace CardDisputeActionParams {
      * The parameters for accepting the chargeback. Required if and only if `action` is
      * `accept_chargeback`.
      */
-    accept_chargeback?: unknown;
+    accept_chargeback?: Visa.AcceptChargeback;
 
     /**
      * The parameters for accepting the user submission. Required if and only if
      * `action` is `accept_user_submission`.
      */
-    accept_user_submission?: unknown;
+    accept_user_submission?: Visa.AcceptUserSubmission;
 
     /**
      * The parameters for declining the prearbitration. Required if and only if
      * `action` is `decline_user_prearbitration`.
      */
-    decline_user_prearbitration?: unknown;
+    decline_user_prearbitration?: Visa.DeclineUserPrearbitration;
 
     /**
      * The parameters for receiving the prearbitration. Required if and only if
      * `action` is `receive_merchant_prearbitration`.
      */
-    receive_merchant_prearbitration?: unknown;
+    receive_merchant_prearbitration?: Visa.ReceiveMerchantPrearbitration;
 
     /**
      * The parameters for re-presenting the dispute. Required if and only if `action`
      * is `represent`.
      */
-    represent?: unknown;
+    represent?: Visa.Represent;
 
     /**
      * The parameters for requesting further information from the user. Required if and
@@ -130,28 +130,58 @@ export namespace CardDisputeActionParams {
      * The parameters for timing out the chargeback. Required if and only if `action`
      * is `time_out_chargeback`.
      */
-    time_out_chargeback?: unknown;
+    time_out_chargeback?: Visa.TimeOutChargeback;
 
     /**
      * The parameters for timing out the merchant prearbitration. Required if and only
      * if `action` is `time_out_merchant_prearbitration`.
      */
-    time_out_merchant_prearbitration?: unknown;
+    time_out_merchant_prearbitration?: Visa.TimeOutMerchantPrearbitration;
 
     /**
      * The parameters for timing out the re-presentment. Required if and only if
      * `action` is `time_out_representment`.
      */
-    time_out_representment?: unknown;
+    time_out_representment?: Visa.TimeOutRepresentment;
 
     /**
      * The parameters for timing out the user prearbitration. Required if and only if
      * `action` is `time_out_user_prearbitration`.
      */
-    time_out_user_prearbitration?: unknown;
+    time_out_user_prearbitration?: Visa.TimeOutUserPrearbitration;
   }
 
   export namespace Visa {
+    /**
+     * The parameters for accepting the chargeback. Required if and only if `action` is
+     * `accept_chargeback`.
+     */
+    export interface AcceptChargeback {}
+
+    /**
+     * The parameters for accepting the user submission. Required if and only if
+     * `action` is `accept_user_submission`.
+     */
+    export interface AcceptUserSubmission {}
+
+    /**
+     * The parameters for declining the prearbitration. Required if and only if
+     * `action` is `decline_user_prearbitration`.
+     */
+    export interface DeclineUserPrearbitration {}
+
+    /**
+     * The parameters for receiving the prearbitration. Required if and only if
+     * `action` is `receive_merchant_prearbitration`.
+     */
+    export interface ReceiveMerchantPrearbitration {}
+
+    /**
+     * The parameters for re-presenting the dispute. Required if and only if `action`
+     * is `represent`.
+     */
+    export interface Represent {}
+
     /**
      * The parameters for requesting further information from the user. Required if and
      * only if `action` is `request_further_information`.
@@ -162,6 +192,30 @@ export namespace CardDisputeActionParams {
        */
       reason: string;
     }
+
+    /**
+     * The parameters for timing out the chargeback. Required if and only if `action`
+     * is `time_out_chargeback`.
+     */
+    export interface TimeOutChargeback {}
+
+    /**
+     * The parameters for timing out the merchant prearbitration. Required if and only
+     * if `action` is `time_out_merchant_prearbitration`.
+     */
+    export interface TimeOutMerchantPrearbitration {}
+
+    /**
+     * The parameters for timing out the re-presentment. Required if and only if
+     * `action` is `time_out_representment`.
+     */
+    export interface TimeOutRepresentment {}
+
+    /**
+     * The parameters for timing out the user prearbitration. Required if and only if
+     * `action` is `time_out_user_prearbitration`.
+     */
+    export interface TimeOutUserPrearbitration {}
   }
 }
 

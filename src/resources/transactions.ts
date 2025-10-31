@@ -504,7 +504,7 @@ export namespace Transaction {
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: unknown | null;
+    other: Source.Other | null;
 
     /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present
@@ -1513,7 +1513,7 @@ export namespace Transaction {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -1522,6 +1522,11 @@ export namespace Transaction {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -4234,6 +4239,12 @@ export namespace Transaction {
 
       [k: string]: unknown;
     }
+
+    /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    export interface Other {}
 
     /**
      * A Real-Time Payments Transfer Acknowledgement object. This field will be present

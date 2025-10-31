@@ -681,6 +681,8 @@ export interface WireTransferCreateParams {
    * The ID of an Account Number that will be passed to the wire's recipient
    */
   source_account_number_id?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace WireTransferCreateParams {

@@ -581,6 +581,8 @@ export interface CardValidationCreateParams {
    * The cardholder's street address.
    */
   cardholder_street_address?: string;
+
+  [k: string]: unknown;
 }
 
 export interface CardValidationListParams extends PageParams {

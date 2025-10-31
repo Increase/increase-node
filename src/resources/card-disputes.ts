@@ -327,7 +327,7 @@ export namespace CardDispute {
        * Visa Card Dispute Network Event, which represents that a chargeback has been
        * accepted by the merchant.
        */
-      chargeback_accepted: unknown | null;
+      chargeback_accepted: NetworkEvent.ChargebackAccepted | null;
 
       /**
        * A Card Dispute Chargeback Submitted Visa Network Event object. This field will
@@ -336,7 +336,7 @@ export namespace CardDispute {
        * Visa Card Dispute Network Event, which represents that a chargeback has been
        * submitted to the network.
        */
-      chargeback_submitted: unknown | null;
+      chargeback_submitted: NetworkEvent.ChargebackSubmitted | null;
 
       /**
        * A Card Dispute Chargeback Timed Out Visa Network Event object. This field will
@@ -345,7 +345,7 @@ export namespace CardDispute {
        * Visa Card Dispute Network Event, which represents that the chargeback has timed
        * out in the user's favor.
        */
-      chargeback_timed_out: unknown | null;
+      chargeback_timed_out: NetworkEvent.ChargebackTimedOut | null;
 
       /**
        * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -366,7 +366,7 @@ export namespace CardDispute {
        * Dispute Network Event, which represents that the user has declined the
        * merchant's request for a prearbitration request decision in their favor.
        */
-      merchant_prearbitration_decline_submitted: unknown | null;
+      merchant_prearbitration_decline_submitted: NetworkEvent.MerchantPrearbitrationDeclineSubmitted | null;
 
       /**
        * A Card Dispute Merchant Pre-Arbitration Received Visa Network Event object. This
@@ -385,7 +385,7 @@ export namespace CardDispute {
        * represents that the user has timed out responding to the merchant's
        * prearbitration request.
        */
-      merchant_prearbitration_timed_out: unknown | null;
+      merchant_prearbitration_timed_out: NetworkEvent.MerchantPrearbitrationTimedOut | null;
 
       /**
        * A Card Dispute Re-presented Visa Network Event object. This field will be
@@ -403,7 +403,7 @@ export namespace CardDispute {
        * time-out Visa Card Dispute Network Event, which represents that the user did not
        * respond to the re-presentment by the merchant within the time limit.
        */
-      representment_timed_out: unknown | null;
+      representment_timed_out: NetworkEvent.RepresentmentTimedOut | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Accepted Visa Network Event object. This
@@ -412,7 +412,7 @@ export namespace CardDispute {
        * prearbitration accepted Visa Card Dispute Network Event, which represents that
        * the merchant has accepted the user's prearbitration request in the user's favor.
        */
-      user_prearbitration_accepted: unknown | null;
+      user_prearbitration_accepted: NetworkEvent.UserPrearbitrationAccepted | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Declined Visa Network Event object. This
@@ -421,7 +421,7 @@ export namespace CardDispute {
        * prearbitration declined Visa Card Dispute Network Event, which represents that
        * the merchant has declined the user's prearbitration request.
        */
-      user_prearbitration_declined: unknown | null;
+      user_prearbitration_declined: NetworkEvent.UserPrearbitrationDeclined | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Submitted Visa Network Event object. This
@@ -430,7 +430,7 @@ export namespace CardDispute {
        * prearbitration submitted Visa Card Dispute Network Event, which represents that
        * the user's request for prearbitration has been submitted to the network.
        */
-      user_prearbitration_submitted: unknown | null;
+      user_prearbitration_submitted: NetworkEvent.UserPrearbitrationSubmitted | null;
 
       /**
        * A Card Dispute User Pre-Arbitration Timed Out Visa Network Event object. This
@@ -439,7 +439,7 @@ export namespace CardDispute {
        * prearbitration timed out Visa Card Dispute Network Event, which represents that
        * the merchant has timed out responding to the user's prearbitration request.
        */
-      user_prearbitration_timed_out: unknown | null;
+      user_prearbitration_timed_out: NetworkEvent.UserPrearbitrationTimedOut | null;
 
       /**
        * A Card Dispute User Withdrawal Submitted Visa Network Event object. This field
@@ -448,7 +448,7 @@ export namespace CardDispute {
        * submitted Visa Card Dispute Network Event, which represents that the user's
        * request to withdraw the dispute has been submitted to the network.
        */
-      user_withdrawal_submitted: unknown | null;
+      user_withdrawal_submitted: NetworkEvent.UserWithdrawalSubmitted | null;
     }
 
     export namespace NetworkEvent {
@@ -458,6 +458,43 @@ export namespace CardDispute {
          */
         file_id: string;
       }
+
+      /**
+       * A Card Dispute Chargeback Accepted Visa Network Event object. This field will be
+       * present in the JSON response if and only if `category` is equal to
+       * `chargeback_accepted`. Contains the details specific to a chargeback accepted
+       * Visa Card Dispute Network Event, which represents that a chargeback has been
+       * accepted by the merchant.
+       */
+      export interface ChargebackAccepted {}
+
+      /**
+       * A Card Dispute Chargeback Submitted Visa Network Event object. This field will
+       * be present in the JSON response if and only if `category` is equal to
+       * `chargeback_submitted`. Contains the details specific to a chargeback submitted
+       * Visa Card Dispute Network Event, which represents that a chargeback has been
+       * submitted to the network.
+       */
+      export interface ChargebackSubmitted {}
+
+      /**
+       * A Card Dispute Chargeback Timed Out Visa Network Event object. This field will
+       * be present in the JSON response if and only if `category` is equal to
+       * `chargeback_timed_out`. Contains the details specific to a chargeback timed out
+       * Visa Card Dispute Network Event, which represents that the chargeback has timed
+       * out in the user's favor.
+       */
+      export interface ChargebackTimedOut {}
+
+      /**
+       * A Card Dispute Merchant Pre-Arbitration Decline Submitted Visa Network Event
+       * object. This field will be present in the JSON response if and only if
+       * `category` is equal to `merchant_prearbitration_decline_submitted`. Contains the
+       * details specific to a merchant prearbitration decline submitted Visa Card
+       * Dispute Network Event, which represents that the user has declined the
+       * merchant's request for a prearbitration request decision in their favor.
+       */
+      export interface MerchantPrearbitrationDeclineSubmitted {}
 
       /**
        * A Card Dispute Merchant Pre-Arbitration Received Visa Network Event object. This
@@ -717,6 +754,16 @@ export namespace CardDispute {
       }
 
       /**
+       * A Card Dispute Merchant Pre-Arbitration Timed Out Visa Network Event object.
+       * This field will be present in the JSON response if and only if `category` is
+       * equal to `merchant_prearbitration_timed_out`. Contains the details specific to a
+       * merchant prearbitration timed out Visa Card Dispute Network Event, which
+       * represents that the user has timed out responding to the merchant's
+       * prearbitration request.
+       */
+      export interface MerchantPrearbitrationTimedOut {}
+
+      /**
        * A Card Dispute Re-presented Visa Network Event object. This field will be
        * present in the JSON response if and only if `category` is equal to
        * `represented`. Contains the details specific to a re-presented Visa Card Dispute
@@ -745,7 +792,7 @@ export namespace CardDispute {
          * Non-fiat currency or non-fungible token as described details. Present if and
          * only if `reason` is `non_fiat_currency_or_non_fungible_token_as_described`.
          */
-        non_fiat_currency_or_non_fungible_token_as_described: unknown | null;
+        non_fiat_currency_or_non_fungible_token_as_described: Represented.NonFiatCurrencyOrNonFungibleTokenAsDescribed | null;
 
         /**
          * Non-fiat currency or non-fungible token received details. Present if and only if
@@ -938,6 +985,12 @@ export namespace CardDispute {
         }
 
         /**
+         * Non-fiat currency or non-fungible token as described details. Present if and
+         * only if `reason` is `non_fiat_currency_or_non_fungible_token_as_described`.
+         */
+        export interface NonFiatCurrencyOrNonFungibleTokenAsDescribed {}
+
+        /**
          * Non-fiat currency or non-fungible token received details. Present if and only if
          * `reason` is `non_fiat_currency_or_non_fungible_token_received`.
          */
@@ -981,6 +1034,60 @@ export namespace CardDispute {
           explanation: string | null;
         }
       }
+
+      /**
+       * A Card Dispute Re-presentment Timed Out Visa Network Event object. This field
+       * will be present in the JSON response if and only if `category` is equal to
+       * `representment_timed_out`. Contains the details specific to a re-presentment
+       * time-out Visa Card Dispute Network Event, which represents that the user did not
+       * respond to the re-presentment by the merchant within the time limit.
+       */
+      export interface RepresentmentTimedOut {}
+
+      /**
+       * A Card Dispute User Pre-Arbitration Accepted Visa Network Event object. This
+       * field will be present in the JSON response if and only if `category` is equal to
+       * `user_prearbitration_accepted`. Contains the details specific to a user
+       * prearbitration accepted Visa Card Dispute Network Event, which represents that
+       * the merchant has accepted the user's prearbitration request in the user's favor.
+       */
+      export interface UserPrearbitrationAccepted {}
+
+      /**
+       * A Card Dispute User Pre-Arbitration Declined Visa Network Event object. This
+       * field will be present in the JSON response if and only if `category` is equal to
+       * `user_prearbitration_declined`. Contains the details specific to a user
+       * prearbitration declined Visa Card Dispute Network Event, which represents that
+       * the merchant has declined the user's prearbitration request.
+       */
+      export interface UserPrearbitrationDeclined {}
+
+      /**
+       * A Card Dispute User Pre-Arbitration Submitted Visa Network Event object. This
+       * field will be present in the JSON response if and only if `category` is equal to
+       * `user_prearbitration_submitted`. Contains the details specific to a user
+       * prearbitration submitted Visa Card Dispute Network Event, which represents that
+       * the user's request for prearbitration has been submitted to the network.
+       */
+      export interface UserPrearbitrationSubmitted {}
+
+      /**
+       * A Card Dispute User Pre-Arbitration Timed Out Visa Network Event object. This
+       * field will be present in the JSON response if and only if `category` is equal to
+       * `user_prearbitration_timed_out`. Contains the details specific to a user
+       * prearbitration timed out Visa Card Dispute Network Event, which represents that
+       * the merchant has timed out responding to the user's prearbitration request.
+       */
+      export interface UserPrearbitrationTimedOut {}
+
+      /**
+       * A Card Dispute User Withdrawal Submitted Visa Network Event object. This field
+       * will be present in the JSON response if and only if `category` is equal to
+       * `user_withdrawal_submitted`. Contains the details specific to a user withdrawal
+       * submitted Visa Card Dispute Network Event, which represents that the user's
+       * request to withdraw the dispute has been submitted to the network.
+       */
+      export interface UserWithdrawalSubmitted {}
     }
 
     export interface UserSubmission {
@@ -1203,7 +1310,7 @@ export namespace CardDispute {
          * Non-receipt of cash. Present if and only if `category` is
          * `consumer_non_receipt_of_cash`.
          */
-        consumer_non_receipt_of_cash: unknown | null;
+        consumer_non_receipt_of_cash: Chargeback.ConsumerNonReceiptOfCash | null;
 
         /**
          * Original Credit Transaction (OCT) not accepted. Present if and only if
@@ -1288,7 +1395,7 @@ export namespace CardDispute {
           /**
            * Not returned. Present if and only if `return_outcome` is `not_returned`.
            */
-          not_returned: unknown | null;
+          not_returned: ConsumerCanceledMerchandise.NotReturned | null;
 
           /**
            * Purchase explanation.
@@ -1351,6 +1458,11 @@ export namespace CardDispute {
              */
             reason: string;
           }
+
+          /**
+           * Not returned. Present if and only if `return_outcome` is `not_returned`.
+           */
+          export interface NotReturned {}
 
           /**
            * Return attempted. Present if and only if `return_outcome` is `return_attempted`.
@@ -1525,7 +1637,7 @@ export namespace CardDispute {
            * Other service type explanation. Present if and only if `service_type` is
            * `other`.
            */
-          other: unknown | null;
+          other: ConsumerCanceledServices.Other | null;
 
           /**
            * Purchase explanation.
@@ -1544,7 +1656,7 @@ export namespace CardDispute {
           /**
            * Timeshare explanation. Present if and only if `service_type` is `timeshare`.
            */
-          timeshare: unknown | null;
+          timeshare: ConsumerCanceledServices.Timeshare | null;
         }
 
         export namespace ConsumerCanceledServices {
@@ -1589,6 +1701,17 @@ export namespace CardDispute {
               | 'cardholder_cancellation_attempt_within_24_hours_of_confirmation'
               | 'merchant_billed_no_show';
           }
+
+          /**
+           * Other service type explanation. Present if and only if `service_type` is
+           * `other`.
+           */
+          export interface Other {}
+
+          /**
+           * Timeshare explanation. Present if and only if `service_type` is `timeshare`.
+           */
+          export interface Timeshare {}
         }
 
         /**
@@ -1649,7 +1772,7 @@ export namespace CardDispute {
           /**
            * Not returned. Present if and only if `return_outcome` is `not_returned`.
            */
-          not_returned: unknown | null;
+          not_returned: ConsumerDamagedOrDefectiveMerchandise.NotReturned | null;
 
           /**
            * Order and issue explanation.
@@ -1682,6 +1805,11 @@ export namespace CardDispute {
         }
 
         export namespace ConsumerDamagedOrDefectiveMerchandise {
+          /**
+           * Not returned. Present if and only if `return_outcome` is `not_returned`.
+           */
+          export interface NotReturned {}
+
           /**
            * Return attempted. Present if and only if `return_outcome` is `return_attempted`.
            */
@@ -1777,7 +1905,7 @@ export namespace CardDispute {
           /**
            * Not returned. Present if and only if `return_outcome` is `not_returned`.
            */
-          not_returned: unknown | null;
+          not_returned: ConsumerMerchandiseMisrepresentation.NotReturned | null;
 
           /**
            * Purchase explanation.
@@ -1810,6 +1938,11 @@ export namespace CardDispute {
         }
 
         export namespace ConsumerMerchandiseMisrepresentation {
+          /**
+           * Not returned. Present if and only if `return_outcome` is `not_returned`.
+           */
+          export interface NotReturned {}
+
           /**
            * Return attempted. Present if and only if `return_outcome` is `return_attempted`.
            */
@@ -2062,7 +2195,7 @@ export namespace CardDispute {
            * No cancellation. Present if and only if `cancellation_outcome` is
            * `no_cancellation`.
            */
-          no_cancellation: unknown | null;
+          no_cancellation: ConsumerMerchandiseNotReceived.NoCancellation | null;
 
           /**
            * Purchase information and explanation.
@@ -2099,7 +2232,7 @@ export namespace CardDispute {
             /**
              * Not returned. Present if and only if `return_outcome` is `not_returned`.
              */
-            not_returned: unknown | null;
+            not_returned: Delayed.NotReturned | null;
 
             /**
              * Return attempted. Present if and only if `return_outcome` is `return_attempted`.
@@ -2122,6 +2255,11 @@ export namespace CardDispute {
           }
 
           export namespace Delayed {
+            /**
+             * Not returned. Present if and only if `return_outcome` is `not_returned`.
+             */
+            export interface NotReturned {}
+
             /**
              * Return attempted. Present if and only if `return_outcome` is `return_attempted`.
              */
@@ -2169,7 +2307,19 @@ export namespace CardDispute {
              */
             canceled_at: string;
           }
+
+          /**
+           * No cancellation. Present if and only if `cancellation_outcome` is
+           * `no_cancellation`.
+           */
+          export interface NoCancellation {}
         }
+
+        /**
+         * Non-receipt of cash. Present if and only if `category` is
+         * `consumer_non_receipt_of_cash`.
+         */
+        export interface ConsumerNonReceiptOfCash {}
 
         /**
          * Original Credit Transaction (OCT) not accepted. Present if and only if
@@ -2212,7 +2362,7 @@ export namespace CardDispute {
           /**
            * Not returned. Present if and only if `return_outcome` is `not_returned`.
            */
-          not_returned: unknown | null;
+          not_returned: ConsumerQualityMerchandise.NotReturned | null;
 
           /**
            * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
@@ -2250,6 +2400,11 @@ export namespace CardDispute {
         }
 
         export namespace ConsumerQualityMerchandise {
+          /**
+           * Not returned. Present if and only if `return_outcome` is `not_returned`.
+           */
+          export interface NotReturned {}
+
           /**
            * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
            */
@@ -2604,7 +2759,7 @@ export namespace CardDispute {
            * No cancellation. Present if and only if `cancellation_outcome` is
            * `no_cancellation`.
            */
-          no_cancellation: unknown | null;
+          no_cancellation: ConsumerServicesNotReceived.NoCancellation | null;
 
           /**
            * Purchase information and explanation.
@@ -2639,6 +2794,12 @@ export namespace CardDispute {
              */
             canceled_at: string;
           }
+
+          /**
+           * No cancellation. Present if and only if `cancellation_outcome` is
+           * `no_cancellation`.
+           */
+          export interface NoCancellation {}
         }
 
         /**
@@ -2907,6 +3068,8 @@ export interface CardDisputeCreateParams {
    * is `visa`.
    */
   visa?: CardDisputeCreateParams.Visa;
+
+  [k: string]: unknown;
 }
 
 export namespace CardDisputeCreateParams {
@@ -3035,7 +3198,7 @@ export namespace CardDisputeCreateParams {
      * Non-receipt of cash. Required if and only if `category` is
      * `consumer_non_receipt_of_cash`.
      */
-    consumer_non_receipt_of_cash?: unknown;
+    consumer_non_receipt_of_cash?: Visa.ConsumerNonReceiptOfCash;
 
     /**
      * Original Credit Transaction (OCT) not accepted. Required if and only if
@@ -3139,7 +3302,7 @@ export namespace CardDisputeCreateParams {
       /**
        * Not returned. Required if and only if `return_outcome` is `not_returned`.
        */
-      not_returned?: unknown;
+      not_returned?: ConsumerCanceledMerchandise.NotReturned;
 
       /**
        * Return attempted. Required if and only if `return_outcome` is
@@ -3184,6 +3347,11 @@ export namespace CardDisputeCreateParams {
          */
         reason: string;
       }
+
+      /**
+       * Not returned. Required if and only if `return_outcome` is `not_returned`.
+       */
+      export interface NotReturned {}
 
       /**
        * Return attempted. Required if and only if `return_outcome` is
@@ -3373,12 +3541,12 @@ export namespace CardDisputeCreateParams {
        * Other service type explanation. Required if and only if `service_type` is
        * `other`.
        */
-      other?: unknown;
+      other?: ConsumerCanceledServices.Other;
 
       /**
        * Timeshare explanation. Required if and only if `service_type` is `timeshare`.
        */
-      timeshare?: unknown;
+      timeshare?: ConsumerCanceledServices.Timeshare;
     }
 
     export namespace ConsumerCanceledServices {
@@ -3423,6 +3591,17 @@ export namespace CardDisputeCreateParams {
           | 'cardholder_cancellation_attempt_within_24_hours_of_confirmation'
           | 'merchant_billed_no_show';
       }
+
+      /**
+       * Other service type explanation. Required if and only if `service_type` is
+       * `other`.
+       */
+      export interface Other {}
+
+      /**
+       * Timeshare explanation. Required if and only if `service_type` is `timeshare`.
+       */
+      export interface Timeshare {}
     }
 
     /**
@@ -3502,7 +3681,7 @@ export namespace CardDisputeCreateParams {
       /**
        * Not returned. Required if and only if `return_outcome` is `not_returned`.
        */
-      not_returned?: unknown;
+      not_returned?: ConsumerDamagedOrDefectiveMerchandise.NotReturned;
 
       /**
        * Return attempted. Required if and only if `return_outcome` is
@@ -3517,6 +3696,11 @@ export namespace CardDisputeCreateParams {
     }
 
     export namespace ConsumerDamagedOrDefectiveMerchandise {
+      /**
+       * Not returned. Required if and only if `return_outcome` is `not_returned`.
+       */
+      export interface NotReturned {}
+
       /**
        * Return attempted. Required if and only if `return_outcome` is
        * `return_attempted`.
@@ -3632,7 +3816,7 @@ export namespace CardDisputeCreateParams {
       /**
        * Not returned. Required if and only if `return_outcome` is `not_returned`.
        */
-      not_returned?: unknown;
+      not_returned?: ConsumerMerchandiseMisrepresentation.NotReturned;
 
       /**
        * Return attempted. Required if and only if `return_outcome` is
@@ -3647,6 +3831,11 @@ export namespace CardDisputeCreateParams {
     }
 
     export namespace ConsumerMerchandiseMisrepresentation {
+      /**
+       * Not returned. Required if and only if `return_outcome` is `not_returned`.
+       */
+      export interface NotReturned {}
+
       /**
        * Return attempted. Required if and only if `return_outcome` is
        * `return_attempted`.
@@ -3907,7 +4096,7 @@ export namespace CardDisputeCreateParams {
        * No cancellation. Required if and only if `cancellation_outcome` is
        * `no_cancellation`.
        */
-      no_cancellation?: unknown;
+      no_cancellation?: ConsumerMerchandiseNotReceived.NoCancellation;
     }
 
     export namespace ConsumerMerchandiseNotReceived {
@@ -3948,7 +4137,7 @@ export namespace CardDisputeCreateParams {
         /**
          * Not returned. Required if and only if `return_outcome` is `not_returned`.
          */
-        not_returned?: unknown;
+        not_returned?: Delayed.NotReturned;
 
         /**
          * Return attempted. Required if and only if `return_outcome` is
@@ -3963,6 +4152,11 @@ export namespace CardDisputeCreateParams {
       }
 
       export namespace Delayed {
+        /**
+         * Not returned. Required if and only if `return_outcome` is `not_returned`.
+         */
+        export interface NotReturned {}
+
         /**
          * Return attempted. Required if and only if `return_outcome` is
          * `return_attempted`.
@@ -4011,7 +4205,19 @@ export namespace CardDisputeCreateParams {
          */
         canceled_at: string;
       }
+
+      /**
+       * No cancellation. Required if and only if `cancellation_outcome` is
+       * `no_cancellation`.
+       */
+      export interface NoCancellation {}
     }
+
+    /**
+     * Non-receipt of cash. Required if and only if `category` is
+     * `consumer_non_receipt_of_cash`.
+     */
+    export interface ConsumerNonReceiptOfCash {}
 
     /**
      * Original Credit Transaction (OCT) not accepted. Required if and only if
@@ -4073,7 +4279,7 @@ export namespace CardDisputeCreateParams {
       /**
        * Not returned. Required if and only if `return_outcome` is `not_returned`.
        */
-      not_returned?: unknown;
+      not_returned?: ConsumerQualityMerchandise.NotReturned;
 
       /**
        * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
@@ -4093,6 +4299,11 @@ export namespace CardDisputeCreateParams {
     }
 
     export namespace ConsumerQualityMerchandise {
+      /**
+       * Not returned. Required if and only if `return_outcome` is `not_returned`.
+       */
+      export interface NotReturned {}
+
       /**
        * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
        */
@@ -4448,7 +4659,7 @@ export namespace CardDisputeCreateParams {
        * No cancellation. Required if and only if `cancellation_outcome` is
        * `no_cancellation`.
        */
-      no_cancellation?: unknown;
+      no_cancellation?: ConsumerServicesNotReceived.NoCancellation;
     }
 
     export namespace ConsumerServicesNotReceived {
@@ -4478,6 +4689,12 @@ export namespace CardDisputeCreateParams {
          */
         canceled_at: string;
       }
+
+      /**
+       * No cancellation. Required if and only if `cancellation_outcome` is
+       * `no_cancellation`.
+       */
+      export interface NoCancellation {}
     }
 
     /**
@@ -4692,6 +4909,8 @@ export interface CardDisputeSubmitUserSubmissionParams {
    * is `visa`.
    */
   visa?: CardDisputeSubmitUserSubmissionParams.Visa;
+
+  [k: string]: unknown;
 }
 
 export namespace CardDisputeSubmitUserSubmissionParams {
@@ -4855,7 +5074,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
        * Non-receipt of cash. Required if and only if `category` is
        * `consumer_non_receipt_of_cash`.
        */
-      consumer_non_receipt_of_cash?: unknown;
+      consumer_non_receipt_of_cash?: Chargeback.ConsumerNonReceiptOfCash;
 
       /**
        * Original Credit Transaction (OCT) not accepted. Required if and only if
@@ -4959,7 +5178,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
         /**
          * Not returned. Required if and only if `return_outcome` is `not_returned`.
          */
-        not_returned?: unknown;
+        not_returned?: ConsumerCanceledMerchandise.NotReturned;
 
         /**
          * Return attempted. Required if and only if `return_outcome` is
@@ -5004,6 +5223,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
            */
           reason: string;
         }
+
+        /**
+         * Not returned. Required if and only if `return_outcome` is `not_returned`.
+         */
+        export interface NotReturned {}
 
         /**
          * Return attempted. Required if and only if `return_outcome` is
@@ -5193,12 +5417,12 @@ export namespace CardDisputeSubmitUserSubmissionParams {
          * Other service type explanation. Required if and only if `service_type` is
          * `other`.
          */
-        other?: unknown;
+        other?: ConsumerCanceledServices.Other;
 
         /**
          * Timeshare explanation. Required if and only if `service_type` is `timeshare`.
          */
-        timeshare?: unknown;
+        timeshare?: ConsumerCanceledServices.Timeshare;
       }
 
       export namespace ConsumerCanceledServices {
@@ -5243,6 +5467,17 @@ export namespace CardDisputeSubmitUserSubmissionParams {
             | 'cardholder_cancellation_attempt_within_24_hours_of_confirmation'
             | 'merchant_billed_no_show';
         }
+
+        /**
+         * Other service type explanation. Required if and only if `service_type` is
+         * `other`.
+         */
+        export interface Other {}
+
+        /**
+         * Timeshare explanation. Required if and only if `service_type` is `timeshare`.
+         */
+        export interface Timeshare {}
       }
 
       /**
@@ -5322,7 +5557,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
         /**
          * Not returned. Required if and only if `return_outcome` is `not_returned`.
          */
-        not_returned?: unknown;
+        not_returned?: ConsumerDamagedOrDefectiveMerchandise.NotReturned;
 
         /**
          * Return attempted. Required if and only if `return_outcome` is
@@ -5337,6 +5572,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
       }
 
       export namespace ConsumerDamagedOrDefectiveMerchandise {
+        /**
+         * Not returned. Required if and only if `return_outcome` is `not_returned`.
+         */
+        export interface NotReturned {}
+
         /**
          * Return attempted. Required if and only if `return_outcome` is
          * `return_attempted`.
@@ -5452,7 +5692,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
         /**
          * Not returned. Required if and only if `return_outcome` is `not_returned`.
          */
-        not_returned?: unknown;
+        not_returned?: ConsumerMerchandiseMisrepresentation.NotReturned;
 
         /**
          * Return attempted. Required if and only if `return_outcome` is
@@ -5467,6 +5707,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
       }
 
       export namespace ConsumerMerchandiseMisrepresentation {
+        /**
+         * Not returned. Required if and only if `return_outcome` is `not_returned`.
+         */
+        export interface NotReturned {}
+
         /**
          * Return attempted. Required if and only if `return_outcome` is
          * `return_attempted`.
@@ -5727,7 +5972,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
          * No cancellation. Required if and only if `cancellation_outcome` is
          * `no_cancellation`.
          */
-        no_cancellation?: unknown;
+        no_cancellation?: ConsumerMerchandiseNotReceived.NoCancellation;
       }
 
       export namespace ConsumerMerchandiseNotReceived {
@@ -5768,7 +6013,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
           /**
            * Not returned. Required if and only if `return_outcome` is `not_returned`.
            */
-          not_returned?: unknown;
+          not_returned?: Delayed.NotReturned;
 
           /**
            * Return attempted. Required if and only if `return_outcome` is
@@ -5783,6 +6028,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
         }
 
         export namespace Delayed {
+          /**
+           * Not returned. Required if and only if `return_outcome` is `not_returned`.
+           */
+          export interface NotReturned {}
+
           /**
            * Return attempted. Required if and only if `return_outcome` is
            * `return_attempted`.
@@ -5831,7 +6081,19 @@ export namespace CardDisputeSubmitUserSubmissionParams {
            */
           canceled_at: string;
         }
+
+        /**
+         * No cancellation. Required if and only if `cancellation_outcome` is
+         * `no_cancellation`.
+         */
+        export interface NoCancellation {}
       }
+
+      /**
+       * Non-receipt of cash. Required if and only if `category` is
+       * `consumer_non_receipt_of_cash`.
+       */
+      export interface ConsumerNonReceiptOfCash {}
 
       /**
        * Original Credit Transaction (OCT) not accepted. Required if and only if
@@ -5893,7 +6155,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
         /**
          * Not returned. Required if and only if `return_outcome` is `not_returned`.
          */
-        not_returned?: unknown;
+        not_returned?: ConsumerQualityMerchandise.NotReturned;
 
         /**
          * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
@@ -5913,6 +6175,11 @@ export namespace CardDisputeSubmitUserSubmissionParams {
       }
 
       export namespace ConsumerQualityMerchandise {
+        /**
+         * Not returned. Required if and only if `return_outcome` is `not_returned`.
+         */
+        export interface NotReturned {}
+
         /**
          * Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations.
          */
@@ -6270,7 +6537,7 @@ export namespace CardDisputeSubmitUserSubmissionParams {
          * No cancellation. Required if and only if `cancellation_outcome` is
          * `no_cancellation`.
          */
-        no_cancellation?: unknown;
+        no_cancellation?: ConsumerServicesNotReceived.NoCancellation;
       }
 
       export namespace ConsumerServicesNotReceived {
@@ -6300,6 +6567,12 @@ export namespace CardDisputeSubmitUserSubmissionParams {
            */
           canceled_at: string;
         }
+
+        /**
+         * No cancellation. Required if and only if `cancellation_outcome` is
+         * `no_cancellation`.
+         */
+        export interface NoCancellation {}
       }
 
       /**

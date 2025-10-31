@@ -546,6 +546,8 @@ export interface CheckDepositCreateParams {
    * The description you choose to give the Check Deposit, for display purposes only.
    */
   description?: string;
+
+  [k: string]: unknown;
 }
 
 export interface CheckDepositListParams extends PageParams {
