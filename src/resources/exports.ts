@@ -229,6 +229,12 @@ export namespace ExportCreateParams {
      * provided date.
      */
     effective_date?: string;
+
+    /**
+     * The Program to create a BAI2 report for. If not provided, all open accounts will
+     * be included.
+     */
+    program_id?: string;
   }
 
   /**
