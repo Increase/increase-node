@@ -114,17 +114,6 @@ export interface PendingTransaction {
   amount: number;
 
   /**
-   * How the Pending Transaction affects the balance of its Account while its status
-   * is `pending`.
-   *
-   * - `affects_available_balance` - This Pending Transaction will decrement the
-   *   available balance on the Account while its status is `pending`.
-   * - `none` - This Pending Transaction does not affect the available balance on the
-   *   Account.
-   */
-  balance_impact: 'affects_available_balance' | 'none';
-
-  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
    * Transaction was completed.
    */
@@ -156,6 +145,13 @@ export interface PendingTransaction {
    * the vendor provides.
    */
   description: string;
+
+  /**
+   * The amount that this Pending Transaction decrements the available balance of its
+   * Account. This is usually the same as `amount`, but will differ if the amount is
+   * positive.
+   */
+  held_amount: number;
 
   /**
    * The identifier for the route this Pending Transaction came through. Routes are
