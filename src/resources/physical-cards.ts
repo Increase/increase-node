@@ -382,6 +382,8 @@ export interface PhysicalCardCreateParams {
    * physical card profile will be used if not provided.
    */
   physical_card_profile_id?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace PhysicalCardCreateParams {

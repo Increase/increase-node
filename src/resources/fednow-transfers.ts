@@ -477,6 +477,8 @@ export interface FednowTransferCreateParams {
    * The creditor's bank account routing number.
    */
   routing_number?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace FednowTransferCreateParams {

@@ -1181,6 +1181,8 @@ export interface ACHTransferCreateParams {
    *   Federal Reserve.
    */
   transaction_timing?: 'synchronous' | 'asynchronous';
+
+  [k: string]: unknown;
 }
 
 export namespace ACHTransferCreateParams {

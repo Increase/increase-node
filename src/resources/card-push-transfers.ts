@@ -758,6 +758,8 @@ export interface CardPushTransferCreateParams {
    * Whether the transfer requires explicit approval via the dashboard or API.
    */
   require_approval?: boolean;
+
+  [k: string]: unknown;
 }
 
 export interface CardPushTransferListParams extends PageParams {

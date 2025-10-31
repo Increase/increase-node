@@ -288,6 +288,8 @@ export interface AccountCreateParams {
    * operate more than one Program.
    */
   program_id?: string;
+
+  [k: string]: unknown;
 }
 
 export interface AccountUpdateParams {

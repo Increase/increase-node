@@ -77,6 +77,8 @@ export interface FileLinkCreateParams {
    * of the request. The maxiumum is 1 day from the time of the request.
    */
   expires_at?: string;
+
+  [k: string]: unknown;
 }
 
 export declare namespace FileLinks {

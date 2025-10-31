@@ -593,6 +593,8 @@ export interface ACHPrenotificationCreateParams {
     | 'corporate_trade_exchange'
     | 'prearranged_payments_and_deposit'
     | 'internet_initiated';
+
+  [k: string]: unknown;
 }
 
 export interface ACHPrenotificationListParams extends PageParams {

@@ -369,6 +369,8 @@ export interface CardCreateParams {
    * when the card is not for the Account holder.
    */
   entity_id?: string;
+
+  [k: string]: unknown;
 }
 
 export namespace CardCreateParams {

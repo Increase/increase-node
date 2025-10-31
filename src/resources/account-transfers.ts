@@ -346,6 +346,8 @@ export interface AccountTransferCreateParams {
    * [Transfer Approvals](/documentation/transfer-approvals).
    */
   require_approval?: boolean;
+
+  [k: string]: unknown;
 }
 
 export interface AccountTransferListParams extends PageParams {

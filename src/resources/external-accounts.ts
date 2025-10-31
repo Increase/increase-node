@@ -196,6 +196,8 @@ export interface ExternalAccountCreateParams {
    * - `other` - A different type of account.
    */
   funding?: 'checking' | 'savings' | 'general_ledger' | 'other';
+
+  [k: string]: unknown;
 }
 
 export interface ExternalAccountUpdateParams {

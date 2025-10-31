@@ -239,7 +239,7 @@ export namespace CardPayment {
      * If the category of this Transaction source is equal to `other`, this field will
      * contain an empty object, otherwise it will contain null.
      */
-    other: unknown | null;
+    other: Element.Other | null;
   }
 
   export namespace Element {
@@ -913,7 +913,7 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -922,6 +922,11 @@ export namespace CardPayment {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -1746,7 +1751,7 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -1755,6 +1760,11 @@ export namespace CardPayment {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -2446,7 +2456,7 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -2455,6 +2465,11 @@ export namespace CardPayment {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -5248,7 +5263,7 @@ export namespace CardPayment {
         /**
          * Fields specific to the `pulse` network.
          */
-        pulse: unknown | null;
+        pulse: NetworkDetails.Pulse | null;
 
         /**
          * Fields specific to the `visa` network.
@@ -5257,6 +5272,11 @@ export namespace CardPayment {
       }
 
       export namespace NetworkDetails {
+        /**
+         * Fields specific to the `pulse` network.
+         */
+        export interface Pulse {}
+
         /**
          * Fields specific to the `visa` network.
          */
@@ -5486,6 +5506,12 @@ export namespace CardPayment {
         }
       }
     }
+
+    /**
+     * If the category of this Transaction source is equal to `other`, this field will
+     * contain an empty object, otherwise it will contain null.
+     */
+    export interface Other {}
   }
 
   /**

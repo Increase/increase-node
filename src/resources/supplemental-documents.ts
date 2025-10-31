@@ -95,6 +95,8 @@ export interface SupplementalDocumentCreateParams {
    * The identifier of the File containing the document.
    */
   file_id: string;
+
+  [k: string]: unknown;
 }
 
 export interface SupplementalDocumentListParams extends PageParams {

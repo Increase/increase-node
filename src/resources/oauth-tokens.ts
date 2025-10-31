@@ -82,6 +82,8 @@ export interface OAuthTokenCreateParams {
    * parameter.
    */
   production_token?: string;
+
+  [k: string]: unknown;
 }
 
 export declare namespace OAuthTokens {
