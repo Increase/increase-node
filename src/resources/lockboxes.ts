@@ -100,6 +100,14 @@ export interface Lockbox {
   address: Lockbox.Address;
 
   /**
+   * Indicates if checks mailed to this lockbox will be deposited.
+   *
+   * - `enabled` - Checks mailed to this Lockbox will be deposited.
+   * - `disabled` - Checks mailed to this Lockbox will not be deposited.
+   */
+  check_deposit_behavior: 'enabled' | 'disabled';
+
+  /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
    * was created.
    */
@@ -121,16 +129,6 @@ export interface Lockbox {
    * The recipient name you choose for the Lockbox.
    */
   recipient_name: string | null;
-
-  /**
-   * This indicates if mail can be sent to this address.
-   *
-   * - `active` - This Lockbox is active. Checks mailed to it will be deposited
-   *   automatically.
-   * - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
-   *   deposited.
-   */
-  status: 'active' | 'inactive';
 
   /**
    * A constant representing the object's type. For this resource it will always be
@@ -201,6 +199,14 @@ export interface LockboxCreateParams {
 
 export interface LockboxUpdateParams {
   /**
+   * This indicates if checks mailed to this lockbox will be deposited.
+   *
+   * - `enabled` - Checks mailed to this Lockbox will be deposited.
+   * - `disabled` - Checks mailed to this Lockbox will not be deposited.
+   */
+  check_deposit_behavior?: 'enabled' | 'disabled';
+
+  /**
    * The description you choose for the Lockbox.
    */
   description?: string;
@@ -209,16 +215,6 @@ export interface LockboxUpdateParams {
    * The recipient name you choose for the Lockbox.
    */
   recipient_name?: string;
-
-  /**
-   * This indicates if checks can be sent to the Lockbox.
-   *
-   * - `active` - This Lockbox is active. Checks mailed to it will be deposited
-   *   automatically.
-   * - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
-   *   deposited.
-   */
-  status?: 'active' | 'inactive';
 }
 
 export interface LockboxListParams extends PageParams {
