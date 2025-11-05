@@ -86,14 +86,9 @@ export interface DeclinedTransaction {
    * Transaction's currency. This will match the currency on the Declined
    * Transaction's Account.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * This is the description the vendor provides.
@@ -383,14 +378,9 @@ export namespace DeclinedTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the declined transaction created for this Card Decline.
@@ -1233,14 +1223,9 @@ export namespace DeclinedTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the associated declined transaction.
@@ -1342,14 +1327,9 @@ export namespace DeclinedTransaction {
        * transfer's currency. This will always be "USD" for a Real-Time Payments
        * transfer.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The account number of the account that sent the transfer.

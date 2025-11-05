@@ -184,14 +184,9 @@ export interface ACHTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For ACH transfers this is always equal to `usd`.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * The type of entity that owns the account to which the ACH Transfer is being
@@ -569,14 +564,9 @@ export namespace ACHTransfer {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
      * currency.
      *
-     * - `CAD` - Canadian Dollar (CAD)
-     * - `CHF` - Swiss Franc (CHF)
-     * - `EUR` - Euro (EUR)
-     * - `GBP` - British Pound (GBP)
-     * - `JPY` - Japanese Yen (JPY)
      * - `USD` - US Dollar (USD)
      */
-    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+    currency: 'USD';
 
     /**
      * The ID of the Transaction for which funds were held.

@@ -212,14 +212,9 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
      *
-     * - `CAD` - Canadian Dollar (CAD)
-     * - `CHF` - Swiss Franc (CHF)
-     * - `EUR` - Euro (EUR)
-     * - `GBP` - British Pound (GBP)
-     * - `JPY` - Japanese Yen (JPY)
      * - `USD` - US Dollar (USD)
      */
-    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+    currency: 'USD';
 
     /**
      * The routing number printed on the check. This is a routing number for the bank
@@ -256,14 +251,9 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
      * currency.
      *
-     * - `CAD` - Canadian Dollar (CAD)
-     * - `CHF` - Swiss Franc (CHF)
-     * - `EUR` - Euro (EUR)
-     * - `GBP` - British Pound (GBP)
-     * - `JPY` - Japanese Yen (JPY)
      * - `USD` - US Dollar (USD)
      */
-    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+    currency: 'USD';
 
     /**
      * The identifier of the associated declined transaction.
@@ -329,14 +319,9 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
      * transaction's currency.
      *
-     * - `CAD` - Canadian Dollar (CAD)
-     * - `CHF` - Swiss Franc (CHF)
-     * - `EUR` - Euro (EUR)
-     * - `GBP` - British Pound (GBP)
-     * - `JPY` - Japanese Yen (JPY)
      * - `USD` - US Dollar (USD)
      */
-    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+    currency: 'USD';
 
     /**
      * Why this check was returned by the bank holding the account it was drawn
@@ -479,14 +464,9 @@ export namespace CheckDeposit {
      * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
      * currency.
      *
-     * - `CAD` - Canadian Dollar (CAD)
-     * - `CHF` - Swiss Franc (CHF)
-     * - `EUR` - Euro (EUR)
-     * - `GBP` - British Pound (GBP)
-     * - `JPY` - Japanese Yen (JPY)
      * - `USD` - US Dollar (USD)
      */
-    currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+    currency: 'USD';
 
     /**
      * The ID of the Transaction for which funds were held.
