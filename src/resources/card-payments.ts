@@ -490,14 +490,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -1178,14 +1173,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The amount of this authorization expiration in the minor unit of the
@@ -1253,14 +1243,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the declined transaction created for this Card Decline.
@@ -2039,14 +2024,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -2721,14 +2701,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The card network used to process this card authorization.
@@ -2840,14 +2815,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The card network used to process this card authorization.
@@ -3211,14 +3181,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * Interchange assessed as a part of this transaciton.
@@ -3313,14 +3278,9 @@ export namespace CardPayment {
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -3344,14 +3304,9 @@ export namespace CardPayment {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
          * reimbursement.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -3930,14 +3885,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -4130,14 +4080,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * Interchange assessed as a part of this transaction.
@@ -4252,14 +4197,9 @@ export namespace CardPayment {
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -4283,14 +4223,9 @@ export namespace CardPayment {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
          * reimbursement.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -4906,14 +4841,9 @@ export namespace CardPayment {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay

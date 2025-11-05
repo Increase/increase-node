@@ -203,14 +203,9 @@ export interface CardPushTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * If the transfer is rejected by the card network or the destination financial
