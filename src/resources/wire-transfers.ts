@@ -151,14 +151,9 @@ export interface WireTransfer {
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
    * currency. For wire transfers this is always equal to `usd`.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * The person or business whose funds are being transferred.

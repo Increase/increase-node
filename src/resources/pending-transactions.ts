@@ -130,14 +130,9 @@ export interface PendingTransaction {
    * Transaction's currency. This will match the currency on the Pending
    * Transaction's Account.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * For a Pending Transaction related to a transfer, this is the description you
@@ -363,14 +358,9 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the Account Transfer that led to this Pending Transaction.
@@ -443,14 +433,9 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -1151,14 +1136,9 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the File containing the image of the front of the check that
@@ -1183,14 +1163,9 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The identifier of the Check Transfer that led to this Pending Transaction.
@@ -1242,14 +1217,9 @@ export namespace PendingTransaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The ID of the Transaction for which funds were held.

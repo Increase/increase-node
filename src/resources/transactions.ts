@@ -82,14 +82,9 @@ export interface Transaction {
    * Transaction's currency. This will match the currency on the Transaction's
    * Account.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * An informational message describing this transaction. Use the fields in `source`
@@ -589,14 +584,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
        * account currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The description you chose to give the transfer.
@@ -1096,14 +1086,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -1811,14 +1796,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * Interchange assessed as a part of this transaciton.
@@ -1913,14 +1893,9 @@ export namespace Transaction {
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -1944,14 +1919,9 @@ export namespace Transaction {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
          * reimbursement.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -2526,14 +2496,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The end of the period for which this transaction paid interest.
@@ -2593,14 +2558,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's settlement currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * Interchange assessed as a part of this transaction.
@@ -2715,14 +2675,9 @@ export namespace Transaction {
         /**
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -2746,14 +2701,9 @@ export namespace Transaction {
          * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
          * reimbursement.
          *
-         * - `CAD` - Canadian Dollar (CAD)
-         * - `CHF` - Swiss Franc (CHF)
-         * - `EUR` - Euro (EUR)
-         * - `GBP` - British Pound (GBP)
-         * - `JPY` - Japanese Yen (JPY)
          * - `USD` - US Dollar (USD)
          */
-        currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+        currency: 'USD';
       }
 
       /**
@@ -3352,14 +3302,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The end of the period for which this transaction paid cashback.
@@ -3409,14 +3354,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The routing number printed on the check. This is a routing number for the bank
@@ -3456,14 +3396,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
        * transaction's currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * Why this check was returned by the bank holding the account it was drawn
@@ -3641,14 +3576,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The start of this payment's fee period, usually the first day of a month.
@@ -3884,14 +3814,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
        * currency. This will always be "USD" for a Real-Time Payments transfer.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The account number of the account that sent the transfer.
@@ -4149,14 +4074,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * The end of the period for which this transaction paid interest.
@@ -4187,14 +4107,9 @@ export namespace Transaction {
        * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
        * currency.
        *
-       * - `CAD` - Canadian Dollar (CAD)
-       * - `CHF` - Swiss Franc (CHF)
-       * - `EUR` - Euro (EUR)
-       * - `GBP` - British Pound (GBP)
-       * - `JPY` - Japanese Yen (JPY)
        * - `USD` - US Dollar (USD)
        */
-      currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+      currency: 'USD';
 
       /**
        * An Internal Source is a transaction between you and Increase. This describes the

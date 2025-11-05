@@ -164,14 +164,9 @@ export interface InboundCheckDeposit {
   /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
    *
-   * - `CAD` - Canadian Dollar (CAD)
-   * - `CHF` - Swiss Franc (CHF)
-   * - `EUR` - Euro (EUR)
-   * - `GBP` - British Pound (GBP)
-   * - `JPY` - Japanese Yen (JPY)
    * - `USD` - US Dollar (USD)
    */
-  currency: 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'JPY' | 'USD';
+  currency: 'USD';
 
   /**
    * If the Inbound Check Deposit was declined, the
