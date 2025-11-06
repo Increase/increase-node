@@ -291,6 +291,13 @@ export interface CheckTransfer {
    */
   type: 'check_transfer';
 
+  /**
+   * If set, the check will be valid on or before this date. After this date, the
+   * check transfer will be stopped and deposits will not be accepted. For checks
+   * printed by Increase, this date is included on the check as its expiry.
+   */
+  valid_until_date: string | null;
+
   [k: string]: unknown;
 }
 
@@ -767,6 +774,13 @@ export interface CheckTransferCreateParams {
    * other `fulfillment_method` is provided.
    */
   third_party?: CheckTransferCreateParams.ThirdParty;
+
+  /**
+   * If provided, the check will be valid on or before this date. After this date,
+   * the check transfer will be stopped and deposits will not be accepted. For checks
+   * printed by Increase, this date is included on the check as its expiry.
+   */
+  valid_until_date?: string;
 
   [k: string]: unknown;
 }
