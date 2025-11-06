@@ -129,6 +129,11 @@ export namespace InboundMailItem {
     back_file_id: string | null;
 
     /**
+     * The identifier of the Check Deposit if this check was deposited.
+     */
+    check_deposit_id: string | null;
+
+    /**
      * The identifier for the File containing the front of the check.
      */
     front_file_id: string | null;
