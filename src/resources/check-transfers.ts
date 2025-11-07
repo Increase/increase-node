@@ -79,7 +79,8 @@ export class CheckTransfers extends APIResource {
   }
 
   /**
-   * Cancel a pending Check Transfer
+   * Cancel a Check Transfer with the `pending_approval` status. See
+   * [Transfer Approvals](/documentation/transfer-approvals) for more information.
    *
    * @example
    * ```ts
