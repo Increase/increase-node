@@ -296,8 +296,9 @@ export interface CheckTransfer {
 
   /**
    * If set, the check will be valid on or before this date. After this date, the
-   * check transfer will be stopped and deposits will not be accepted. For checks
-   * printed by Increase, this date is included on the check as its expiry.
+   * check transfer will be automatically stopped and deposits will not be accepted.
+   * For checks printed by Increase, this date is included on the check as its
+   * expiry.
    */
   valid_until_date: string | null;
 
@@ -604,9 +605,16 @@ export namespace CheckTransfer {
      * - `rejected_by_increase` - The check was canceled by an Increase operator who
      *   will provide details out-of-band.
      * - `not_authorized` - The check was not authorized.
+     * - `valid_until_date_passed` - The check was stopped for `valid_until_date` being
+     *   in the past.
      * - `unknown` - The check was stopped for another reason.
      */
-    reason: 'mail_delivery_failed' | 'rejected_by_increase' | 'not_authorized' | 'unknown';
+    reason:
+      | 'mail_delivery_failed'
+      | 'rejected_by_increase'
+      | 'not_authorized'
+      | 'valid_until_date_passed'
+      | 'unknown';
 
     /**
      * The time the stop-payment was requested.
@@ -780,8 +788,9 @@ export interface CheckTransferCreateParams {
 
   /**
    * If provided, the check will be valid on or before this date. After this date,
-   * the check transfer will be stopped and deposits will not be accepted. For checks
-   * printed by Increase, this date is included on the check as its expiry.
+   * the check transfer will be automatically stopped and deposits will not be
+   * accepted. For checks printed by Increase, this date is included on the check as
+   * its expiry.
    */
   valid_until_date?: string;
 
@@ -1021,9 +1030,11 @@ export interface CheckTransferStopPaymentParams {
    *
    * - `mail_delivery_failed` - The check could not be delivered.
    * - `not_authorized` - The check was not authorized.
+   * - `valid_until_date_passed` - The check was stopped for `valid_until_date` being
+   *   in the past.
    * - `unknown` - The check was stopped for another reason.
    */
-  reason?: 'mail_delivery_failed' | 'not_authorized' | 'unknown';
+  reason?: 'mail_delivery_failed' | 'not_authorized' | 'valid_until_date_passed' | 'unknown';
 }
 
 CheckTransfers.CheckTransfersPage = CheckTransfersPage;
