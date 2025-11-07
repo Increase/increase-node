@@ -137,6 +137,15 @@ export namespace InboundMailItem {
      * The identifier for the File containing the front of the check.
      */
     front_file_id: string | null;
+
+    /**
+     * The status of the Inbound Mail Item Check.
+     *
+     * - `pending` - The check is pending processing.
+     * - `deposited` - The check has been deposited.
+     * - `ignored` - The check has been ignored.
+     */
+    status: 'pending' | 'deposited' | 'ignored' | null;
   }
 }
 
