@@ -52,7 +52,7 @@ describe('resource checkTransfers', () => {
       },
       require_approval: true,
       third_party: { recipient_name: 'x' },
-      valid_until_date: '2019-12-27',
+      valid_until_date: '2025-12-31',
     });
   });
 
