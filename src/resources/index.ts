@@ -239,6 +239,7 @@ export {
   InboundMailItems,
   type InboundMailItem,
   type InboundMailItemListParams,
+  type InboundMailItemActionParams,
 } from './inbound-mail-items';
 export {
   InboundRealTimePaymentsTransfersPage,

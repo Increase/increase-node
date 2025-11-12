@@ -237,6 +237,7 @@ import {
 } from './resources/inbound-fednow-transfers';
 import {
   InboundMailItem,
+  InboundMailItemActionParams,
   InboundMailItemListParams,
   InboundMailItems,
   InboundMailItemsPage,
@@ -992,6 +993,7 @@ export declare namespace Increase {
     type InboundMailItem as InboundMailItem,
     InboundMailItemsPage as InboundMailItemsPage,
     type InboundMailItemListParams as InboundMailItemListParams,
+    type InboundMailItemActionParams as InboundMailItemActionParams,
   };
 
   export {
