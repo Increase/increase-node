@@ -66,4 +66,26 @@ describe('resource inboundMailItems', () => {
       ),
     ).rejects.toThrow(Increase.NotFoundError);
   });
+
+  test('action: only required params', async () => {
+    const responsePromise = client.inboundMailItems.action('inbound_mail_item_q6rrg7mmqpplx80zceev', {
+      checks: [{ action: 'deposit' }, { action: 'ignore' }],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('action: required and optional params', async () => {
+    const response = await client.inboundMailItems.action('inbound_mail_item_q6rrg7mmqpplx80zceev', {
+      checks: [
+        { action: 'deposit', account: 'account_in71c4amph0vgo2qllky' },
+        { action: 'ignore', account: 'account' },
+      ],
+    });
+  });
 });

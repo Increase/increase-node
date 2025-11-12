@@ -104,8 +104,10 @@ export interface Lockbox {
    *
    * - `enabled` - Checks mailed to this Lockbox will be deposited.
    * - `disabled` - Checks mailed to this Lockbox will not be deposited.
+   * - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
+   *   actioned.
    */
-  check_deposit_behavior: 'enabled' | 'disabled';
+  check_deposit_behavior: 'enabled' | 'disabled' | 'pend_for_processing';
 
   /**
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
@@ -203,8 +205,10 @@ export interface LockboxUpdateParams {
    *
    * - `enabled` - Checks mailed to this Lockbox will be deposited.
    * - `disabled` - Checks mailed to this Lockbox will not be deposited.
+   * - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
+   *   actioned.
    */
-  check_deposit_behavior?: 'enabled' | 'disabled';
+  check_deposit_behavior?: 'enabled' | 'disabled' | 'pend_for_processing';
 
   /**
    * The description you choose for the Lockbox.
