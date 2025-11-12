@@ -46,6 +46,28 @@ export class InboundMailItems extends APIResource {
     }
     return this._client.getAPIList('/inbound_mail_items', InboundMailItemsPage, { query, ...options });
   }
+
+  /**
+   * Action a Inbound Mail Item
+   *
+   * @example
+   * ```ts
+   * const inboundMailItem =
+   *   await client.inboundMailItems.action(
+   *     'inbound_mail_item_q6rrg7mmqpplx80zceev',
+   *     {
+   *       checks: [{ action: 'deposit' }, { action: 'ignore' }],
+   *     },
+   *   );
+   * ```
+   */
+  action(
+    inboundMailItemId: string,
+    body: InboundMailItemActionParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<InboundMailItem> {
+    return this._client.post(`/inbound_mail_items/${inboundMailItemId}/action`, { body, ...options });
+  }
 }
 
 export class InboundMailItemsPage extends Page<InboundMailItem> {}
@@ -186,6 +208,31 @@ export namespace InboundMailItemListParams {
   }
 }
 
+export interface InboundMailItemActionParams {
+  /**
+   * The actions to perform on the Inbound Mail Item.
+   */
+  checks: Array<InboundMailItemActionParams.Check>;
+}
+
+export namespace InboundMailItemActionParams {
+  export interface Check {
+    /**
+     * The action to perform on the Inbound Mail Item.
+     *
+     * - `deposit` - The check will be deposited.
+     * - `ignore` - The check will be ignored.
+     */
+    action: 'deposit' | 'ignore';
+
+    /**
+     * The identifier of the Account to deposit the check into. If not provided, the
+     * check will be deposited into the Account associated with the Lockbox.
+     */
+    account?: string;
+  }
+}
+
 InboundMailItems.InboundMailItemsPage = InboundMailItemsPage;
 
 export declare namespace InboundMailItems {
@@ -193,5 +240,6 @@ export declare namespace InboundMailItems {
     type InboundMailItem as InboundMailItem,
     InboundMailItemsPage as InboundMailItemsPage,
     type InboundMailItemListParams as InboundMailItemListParams,
+    type InboundMailItemActionParams as InboundMailItemActionParams,
   };
 }

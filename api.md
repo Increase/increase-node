@@ -384,6 +384,7 @@ Methods:
 
 - <code title="get /inbound_mail_items/{inbound_mail_item_id}">client.inboundMailItems.<a href="./src/resources/inbound-mail-items.ts">retrieve</a>(inboundMailItemId) -> InboundMailItem</code>
 - <code title="get /inbound_mail_items">client.inboundMailItems.<a href="./src/resources/inbound-mail-items.ts">list</a>({ ...params }) -> InboundMailItemsPage</code>
+- <code title="post /inbound_mail_items/{inbound_mail_item_id}/action">client.inboundMailItems.<a href="./src/resources/inbound-mail-items.ts">action</a>(inboundMailItemId, { ...params }) -> InboundMailItem</code>
 
 # RoutingNumbers
 
