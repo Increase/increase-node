@@ -127,12 +127,14 @@ export interface PhysicalCardProfile {
   id: string;
 
   /**
-   * The identifier of the File containing the physical card's back image.
+   * The identifier of the File containing the physical card's back image. This will
+   * be missing until the image has been post-processed.
    */
   back_image_file_id: string | null;
 
   /**
-   * The identifier of the File containing the physical card's carrier image.
+   * The identifier of the File containing the physical card's carrier image. This
+   * will be missing until the image has been post-processed.
    */
   carrier_image_file_id: string | null;
 
@@ -161,7 +163,8 @@ export interface PhysicalCardProfile {
   description: string;
 
   /**
-   * The identifier of the File containing the physical card's front image.
+   * The identifier of the File containing the physical card's front image. This will
+   * be missing until the image has been post-processed.
    */
   front_image_file_id: string | null;
 
