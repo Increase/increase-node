@@ -1752,7 +1752,7 @@ export namespace Transaction {
       /**
        * The transfer amount in USD cents.
        */
-      amount: number;
+      settlement_amount: number;
 
       /**
        * The identifier of the Card Push Transfer that led to this Transaction.
