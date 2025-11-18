@@ -11,7 +11,6 @@ const client = new Increase({
 describe('resource cardPushTransfers', () => {
   test('create: only required params', async () => {
     const responsePromise = client.cardPushTransfers.create({
-      amount: 100,
       business_application_identifier: 'funds_disbursement',
       card_token_id: 'outbound_card_token_zlt0ml6youq3q7vcdlg0',
       merchant_category_code: '1234',
@@ -20,6 +19,7 @@ describe('resource cardPushTransfers', () => {
       merchant_name_prefix: 'Acme',
       merchant_postal_code: '10045',
       merchant_state: 'NY',
+      presentment_amount: { currency: 'USD', value: '1234.56' },
       recipient_name: 'Ian Crease',
       sender_address_city: 'New York',
       sender_address_line1: '33 Liberty Street',
@@ -39,7 +39,6 @@ describe('resource cardPushTransfers', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.cardPushTransfers.create({
-      amount: 100,
       business_application_identifier: 'funds_disbursement',
       card_token_id: 'outbound_card_token_zlt0ml6youq3q7vcdlg0',
       merchant_category_code: '1234',
@@ -48,6 +47,7 @@ describe('resource cardPushTransfers', () => {
       merchant_name_prefix: 'Acme',
       merchant_postal_code: '10045',
       merchant_state: 'NY',
+      presentment_amount: { currency: 'USD', value: '1234.56' },
       recipient_name: 'Ian Crease',
       sender_address_city: 'New York',
       sender_address_line1: '33 Liberty Street',
