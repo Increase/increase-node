@@ -515,6 +515,12 @@ export namespace CheckTransfer {
       name: string | null;
 
       /**
+       * The phone number to be used in case of delivery issues at the check's mailing
+       * address. Only used for FedEx overnight shipping.
+       */
+      phone: string | null;
+
+      /**
        * The postal code of the check's destination.
        */
       postal_code: string | null;
@@ -896,6 +902,13 @@ export namespace CheckTransferCreateParams {
        * `recipient_name` parameter if `name` is not provided.
        */
       name?: string;
+
+      /**
+       * The phone number to associate with the check's destination address. Will be
+       * supplied to FedEx as the contact phone number for the recipient to be used in
+       * case of delivery issues.
+       */
+      phone?: string;
     }
 
     export interface Payer {
