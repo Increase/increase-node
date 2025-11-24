@@ -46,6 +46,7 @@ describe('resource checkTransfers', () => {
         memo: 'Check payment',
         recipient_name: 'Ian Crease',
         attachment_file_id: 'attachment_file_id',
+        check_voucher_image_file_id: 'check_voucher_image_file_id',
         note: 'x',
         payer: [{ contents: 'x' }],
         return_address: { city: 'x', line1: 'x', name: 'x', postal_code: 'x', state: 'x', line2: 'x' },

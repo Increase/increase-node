@@ -126,6 +126,9 @@ export interface File {
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_attachment` - A document to be printed on an additional page and mailed
    *   with a check that you've requested Increase print.
+   * - `check_voucher_image` - An image to be used as the check voucher image, which
+   *   is printed in the middle of the trifold area of a check. This must be a
+   *   2550x1100 pixel PNG.
    * - `inbound_mail_item` - A scanned mail item sent to Increase.
    * - `form_1099_int` - IRS Form 1099-INT.
    * - `form_1099_misc` - IRS Form 1099-MISC.
@@ -168,6 +171,7 @@ export interface File {
     | 'processed_check_image_back'
     | 'mailed_check_image'
     | 'check_attachment'
+    | 'check_voucher_image'
     | 'inbound_mail_item'
     | 'form_1099_int'
     | 'form_1099_misc'
@@ -219,6 +223,9 @@ export interface FileCreateParams {
    * - `mailed_check_image` - An image of a check that was mailed to a recipient.
    * - `check_attachment` - A document to be printed on an additional page and mailed
    *   with a check that you've requested Increase print.
+   * - `check_voucher_image` - An image to be used as the check voucher image, which
+   *   is printed in the middle of the trifold area of a check. This must be a
+   *   2550x1100 pixel PNG.
    * - `form_ss_4` - IRS Form SS-4.
    * - `identity_document` - An image of a government-issued ID.
    * - `loan_application_supplemental_document` - A supplemental document for a Loan
@@ -248,6 +255,7 @@ export interface FileCreateParams {
     | 'check_image_back'
     | 'mailed_check_image'
     | 'check_attachment'
+    | 'check_voucher_image'
     | 'form_ss_4'
     | 'identity_document'
     | 'loan_application_supplemental_document'
@@ -324,6 +332,7 @@ export namespace FileListParams {
       | 'processed_check_image_back'
       | 'mailed_check_image'
       | 'check_attachment'
+      | 'check_voucher_image'
       | 'inbound_mail_item'
       | 'form_1099_int'
       | 'form_1099_misc'
