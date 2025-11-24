@@ -634,8 +634,27 @@ export namespace RealTimeDecision {
     export interface Decline {
       /**
        * The reason the authorization was declined.
+       *
+       * - `insufficient_funds` - The cardholder does not have sufficient funds to cover
+       *   the transaction. The merchant may attempt to process the transaction again.
+       * - `transaction_never_allowed` - This type of transaction is not allowed for this
+       *   card. This transaction should not be retried.
+       * - `exceeds_approval_limit` - The transaction amount exceeds the cardholder's
+       *   approval limit. The merchant may attempt to process the transaction again.
+       * - `card_temporarily_disabled` - The card has been temporarily disabled or not
+       *   yet activated. The merchant may attempt to process the transaction again.
+       * - `suspected_fraud` - The transaction is suspected to be fraudulent. The
+       *   merchant may attempt to process the transaction again.
+       * - `other` - The transaction was declined for another reason. The merchant may
+       *   attempt to process the transaction again. This should be used sparingly.
        */
-      reason: string;
+      reason:
+        | 'insufficient_funds'
+        | 'transaction_never_allowed'
+        | 'exceeds_approval_limit'
+        | 'card_temporarily_disabled'
+        | 'suspected_fraud'
+        | 'other';
     }
 
     /**
