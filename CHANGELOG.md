@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.375.0 (2025-11-24)
+
+Full Changelog: [v0.374.0...v0.375.0](https://github.com/Increase/increase-node/compare/v0.374.0...v0.375.0)
+
+### Features
+
+* **api:** api update ([06529a3](https://github.com/Increase/increase-node/commit/06529a386f31ae74a11797628f1a0899071f51fe))
+
 ## 0.374.0 (2025-11-21)
 
 Full Changelog: [v0.373.0...v0.374.0](https://github.com/Increase/increase-node/compare/v0.373.0...v0.374.0)
