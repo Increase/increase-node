@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundRealTimePaymentsTransfersAPI from '../inbound-real-time-payments-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
   /**
@@ -24,8 +25,8 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    */
   create(
     body: InboundRealTimePaymentsTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<InboundRealTimePaymentsTransfersAPI.InboundRealTimePaymentsTransfer> {
     return this._client.post('/simulations/inbound_real_time_payments_transfers', { body, ...options });
   }
 }

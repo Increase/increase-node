@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class WireTransfers extends APIResource {
   /**
@@ -19,7 +20,7 @@ export class WireTransfers extends APIResource {
    * });
    * ```
    */
-  create(body: WireTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
+  create(body: WireTransferCreateParams, options?: RequestOptions): APIPromise<WireTransfer> {
     return this._client.post('/wire_transfers', { body, ...options });
   }
 
@@ -33,8 +34,8 @@ export class WireTransfers extends APIResource {
    * );
    * ```
    */
-  retrieve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this._client.get(`/wire_transfers/${wireTransferId}`, options);
+  retrieve(wireTransferID: string, options?: RequestOptions): APIPromise<WireTransfer> {
+    return this._client.get(path`/wire_transfers/${wireTransferID}`, options);
   }
 
   /**
@@ -49,18 +50,10 @@ export class WireTransfers extends APIResource {
    * ```
    */
   list(
-    query?: WireTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<WireTransfersPage, WireTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<WireTransfersPage, WireTransfer>;
-  list(
-    query: WireTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<WireTransfersPage, WireTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/wire_transfers', WireTransfersPage, { query, ...options });
+    query: WireTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<WireTransfersPage, WireTransfer> {
+    return this._client.getAPIList('/wire_transfers', Page<WireTransfer>, { query, ...options });
   }
 
   /**
@@ -73,8 +66,8 @@ export class WireTransfers extends APIResource {
    * );
    * ```
    */
-  approve(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this._client.post(`/wire_transfers/${wireTransferId}/approve`, options);
+  approve(wireTransferID: string, options?: RequestOptions): APIPromise<WireTransfer> {
+    return this._client.post(path`/wire_transfers/${wireTransferID}/approve`, options);
   }
 
   /**
@@ -87,12 +80,12 @@ export class WireTransfers extends APIResource {
    * );
    * ```
    */
-  cancel(wireTransferId: string, options?: Core.RequestOptions): Core.APIPromise<WireTransfer> {
-    return this._client.post(`/wire_transfers/${wireTransferId}/cancel`, options);
+  cancel(wireTransferID: string, options?: RequestOptions): APIPromise<WireTransfer> {
+    return this._client.post(path`/wire_transfers/${wireTransferID}/cancel`, options);
   }
 }
 
-export class WireTransfersPage extends Page<WireTransfer> {}
+export type WireTransfersPage = Page<WireTransfer>;
 
 /**
  * Wire transfers move funds between your Increase account and any other account
@@ -895,12 +888,10 @@ export namespace WireTransferListParams {
   }
 }
 
-WireTransfers.WireTransfersPage = WireTransfersPage;
-
 export declare namespace WireTransfers {
   export {
     type WireTransfer as WireTransfer,
-    WireTransfersPage as WireTransfersPage,
+    type WireTransfersPage as WireTransfersPage,
     type WireTransferCreateParams as WireTransferCreateParams,
     type WireTransferListParams as WireTransferListParams,
   };

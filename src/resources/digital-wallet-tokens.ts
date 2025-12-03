@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class DigitalWalletTokens extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class DigitalWalletTokens extends APIResource {
    *   );
    * ```
    */
-  retrieve(digitalWalletTokenId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalWalletToken> {
-    return this._client.get(`/digital_wallet_tokens/${digitalWalletTokenId}`, options);
+  retrieve(digitalWalletTokenID: string, options?: RequestOptions): APIPromise<DigitalWalletToken> {
+    return this._client.get(path`/digital_wallet_tokens/${digitalWalletTokenID}`, options);
   }
 
   /**
@@ -33,22 +34,14 @@ export class DigitalWalletTokens extends APIResource {
    * ```
    */
   list(
-    query?: DigitalWalletTokenListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken>;
-  list(
-    query: DigitalWalletTokenListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/digital_wallet_tokens', DigitalWalletTokensPage, { query, ...options });
+    query: DigitalWalletTokenListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DigitalWalletTokensPage, DigitalWalletToken> {
+    return this._client.getAPIList('/digital_wallet_tokens', Page<DigitalWalletToken>, { query, ...options });
   }
 }
 
-export class DigitalWalletTokensPage extends Page<DigitalWalletToken> {}
+export type DigitalWalletTokensPage = Page<DigitalWalletToken>;
 
 /**
  * A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
@@ -228,12 +221,10 @@ export namespace DigitalWalletTokenListParams {
   }
 }
 
-DigitalWalletTokens.DigitalWalletTokensPage = DigitalWalletTokensPage;
-
 export declare namespace DigitalWalletTokens {
   export {
     type DigitalWalletToken as DigitalWalletToken,
-    DigitalWalletTokensPage as DigitalWalletTokensPage,
+    type DigitalWalletTokensPage as DigitalWalletTokensPage,
     type DigitalWalletTokenListParams as DigitalWalletTokenListParams,
   };
 }

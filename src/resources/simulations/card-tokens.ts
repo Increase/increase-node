@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CardTokensAPI from '../card-tokens';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class CardTokens extends APIResource {
   /**
@@ -14,10 +15,7 @@ export class CardTokens extends APIResource {
    *   await client.simulations.cardTokens.create();
    * ```
    */
-  create(
-    body: CardTokenCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardTokensAPI.CardToken> {
+  create(body: CardTokenCreateParams, options?: RequestOptions): APIPromise<CardTokensAPI.CardToken> {
     return this._client.post('/simulations/card_tokens', { body, ...options });
   }
 }

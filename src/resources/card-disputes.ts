@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardDisputes extends APIResource {
   /**
@@ -18,7 +19,7 @@ export class CardDisputes extends APIResource {
    * });
    * ```
    */
-  create(body: CardDisputeCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
+  create(body: CardDisputeCreateParams, options?: RequestOptions): APIPromise<CardDispute> {
     return this._client.post('/card_disputes', { body, ...options });
   }
 
@@ -32,8 +33,8 @@ export class CardDisputes extends APIResource {
    * );
    * ```
    */
-  retrieve(cardDisputeId: string, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
-    return this._client.get(`/card_disputes/${cardDisputeId}`, options);
+  retrieve(cardDisputeID: string, options?: RequestOptions): APIPromise<CardDispute> {
+    return this._client.get(path`/card_disputes/${cardDisputeID}`, options);
   }
 
   /**
@@ -48,18 +49,10 @@ export class CardDisputes extends APIResource {
    * ```
    */
   list(
-    query?: CardDisputeListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardDisputesPage, CardDispute>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardDisputesPage, CardDispute>;
-  list(
-    query: CardDisputeListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardDisputesPage, CardDispute> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_disputes', CardDisputesPage, { query, ...options });
+    query: CardDisputeListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardDisputesPage, CardDispute> {
+    return this._client.getAPIList('/card_disputes', Page<CardDispute>, { query, ...options });
   }
 
   /**
@@ -75,11 +68,14 @@ export class CardDisputes extends APIResource {
    * ```
    */
   submitUserSubmission(
-    cardDisputeId: string,
+    cardDisputeID: string,
     body: CardDisputeSubmitUserSubmissionParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardDispute> {
-    return this._client.post(`/card_disputes/${cardDisputeId}/submit_user_submission`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<CardDispute> {
+    return this._client.post(path`/card_disputes/${cardDisputeID}/submit_user_submission`, {
+      body,
+      ...options,
+    });
   }
 
   /**
@@ -92,12 +88,12 @@ export class CardDisputes extends APIResource {
    * );
    * ```
    */
-  withdraw(cardDisputeId: string, options?: Core.RequestOptions): Core.APIPromise<CardDispute> {
-    return this._client.post(`/card_disputes/${cardDisputeId}/withdraw`, options);
+  withdraw(cardDisputeID: string, options?: RequestOptions): APIPromise<CardDispute> {
+    return this._client.post(path`/card_disputes/${cardDisputeID}/withdraw`, options);
   }
 }
 
-export class CardDisputesPage extends Page<CardDispute> {}
+export type CardDisputesPage = Page<CardDispute>;
 
 /**
  * If unauthorized activity occurs on a card, you can create a Card Dispute and
@@ -6792,12 +6788,10 @@ export namespace CardDisputeSubmitUserSubmissionParams {
   }
 }
 
-CardDisputes.CardDisputesPage = CardDisputesPage;
-
 export declare namespace CardDisputes {
   export {
     type CardDispute as CardDispute,
-    CardDisputesPage as CardDisputesPage,
+    type CardDisputesPage as CardDisputesPage,
     type CardDisputeCreateParams as CardDisputeCreateParams,
     type CardDisputeListParams as CardDisputeListParams,
     type CardDisputeSubmitUserSubmissionParams as CardDisputeSubmitUserSubmissionParams,

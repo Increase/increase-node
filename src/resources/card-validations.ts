@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardValidations extends APIResource {
   /**
@@ -22,7 +23,7 @@ export class CardValidations extends APIResource {
    * });
    * ```
    */
-  create(body: CardValidationCreateParams, options?: Core.RequestOptions): Core.APIPromise<CardValidation> {
+  create(body: CardValidationCreateParams, options?: RequestOptions): APIPromise<CardValidation> {
     return this._client.post('/card_validations', { body, ...options });
   }
 
@@ -37,8 +38,8 @@ export class CardValidations extends APIResource {
    *   );
    * ```
    */
-  retrieve(cardValidationId: string, options?: Core.RequestOptions): Core.APIPromise<CardValidation> {
-    return this._client.get(`/card_validations/${cardValidationId}`, options);
+  retrieve(cardValidationID: string, options?: RequestOptions): APIPromise<CardValidation> {
+    return this._client.get(path`/card_validations/${cardValidationID}`, options);
   }
 
   /**
@@ -53,22 +54,14 @@ export class CardValidations extends APIResource {
    * ```
    */
   list(
-    query?: CardValidationListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardValidationsPage, CardValidation>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardValidationsPage, CardValidation>;
-  list(
-    query: CardValidationListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardValidationsPage, CardValidation> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_validations', CardValidationsPage, { query, ...options });
+    query: CardValidationListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardValidationsPage, CardValidation> {
+    return this._client.getAPIList('/card_validations', Page<CardValidation>, { query, ...options });
   }
 }
 
-export class CardValidationsPage extends Page<CardValidation> {}
+export type CardValidationsPage = Page<CardValidation>;
 
 /**
  * Card Validations are used to validate a card and its cardholder before sending
@@ -640,12 +633,10 @@ export namespace CardValidationListParams {
   }
 }
 
-CardValidations.CardValidationsPage = CardValidationsPage;
-
 export declare namespace CardValidations {
   export {
     type CardValidation as CardValidation,
-    CardValidationsPage as CardValidationsPage,
+    type CardValidationsPage as CardValidationsPage,
     type CardValidationCreateParams as CardValidationCreateParams,
     type CardValidationListParams as CardValidationListParams,
   };

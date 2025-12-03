@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Cards extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Cards extends APIResource {
    * });
    * ```
    */
-  create(body: CardCreateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
+  create(body: CardCreateParams, options?: RequestOptions): APIPromise<Card> {
     return this._client.post('/cards', { body, ...options });
   }
 
@@ -30,8 +31,8 @@ export class Cards extends APIResource {
    * );
    * ```
    */
-  retrieve(cardId: string, options?: Core.RequestOptions): Core.APIPromise<Card> {
-    return this._client.get(`/cards/${cardId}`, options);
+  retrieve(cardID: string, options?: RequestOptions): APIPromise<Card> {
+    return this._client.get(path`/cards/${cardID}`, options);
   }
 
   /**
@@ -44,8 +45,8 @@ export class Cards extends APIResource {
    * );
    * ```
    */
-  update(cardId: string, body: CardUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Card> {
-    return this._client.patch(`/cards/${cardId}`, { body, ...options });
+  update(cardID: string, body: CardUpdateParams, options?: RequestOptions): APIPromise<Card> {
+    return this._client.patch(path`/cards/${cardID}`, { body, ...options });
   }
 
   /**
@@ -59,16 +60,11 @@ export class Cards extends APIResource {
    * }
    * ```
    */
-  list(query?: CardListParams, options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardsPage, Card>;
   list(
-    query: CardListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardsPage, Card> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/cards', CardsPage, { query, ...options });
+    query: CardListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardsPage, Card> {
+    return this._client.getAPIList('/cards', Page<Card>, { query, ...options });
   }
 
   /**
@@ -85,11 +81,11 @@ export class Cards extends APIResource {
    * ```
    */
   createDetailsIframe(
-    cardId: string,
+    cardID: string,
     body: CardCreateDetailsIframeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardIframeURL> {
-    return this._client.post(`/cards/${cardId}/create_details_iframe`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<CardIframeURL> {
+    return this._client.post(path`/cards/${cardID}/create_details_iframe`, { body, ...options });
   }
 
   /**
@@ -103,8 +99,8 @@ export class Cards extends APIResource {
    * );
    * ```
    */
-  details(cardId: string, options?: Core.RequestOptions): Core.APIPromise<CardDetails> {
-    return this._client.get(`/cards/${cardId}/details`, options);
+  details(cardID: string, options?: RequestOptions): APIPromise<CardDetails> {
+    return this._client.get(path`/cards/${cardID}/details`, options);
   }
 
   /**
@@ -118,16 +114,12 @@ export class Cards extends APIResource {
    * );
    * ```
    */
-  updatePin(
-    cardId: string,
-    body: CardUpdatePinParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardDetails> {
-    return this._client.post(`/cards/${cardId}/update_pin`, { body, ...options });
+  updatePin(cardID: string, body: CardUpdatePinParams, options?: RequestOptions): APIPromise<CardDetails> {
+    return this._client.post(path`/cards/${cardID}/update_pin`, { body, ...options });
   }
 }
 
-export class CardsPage extends Page<Card> {}
+export type CardsPage = Page<Card>;
 
 /**
  * Cards are commercial credit cards. They'll immediately work for online purchases
@@ -591,14 +583,12 @@ export interface CardUpdatePinParams {
   pin: string;
 }
 
-Cards.CardsPage = CardsPage;
-
 export declare namespace Cards {
   export {
     type Card as Card,
     type CardDetails as CardDetails,
     type CardIframeURL as CardIframeURL,
-    CardsPage as CardsPage,
+    type CardsPage as CardsPage,
     type CardCreateParams as CardCreateParams,
     type CardUpdateParams as CardUpdateParams,
     type CardListParams as CardListParams,

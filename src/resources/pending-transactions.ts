@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class PendingTransactions extends APIResource {
   /**
@@ -21,10 +22,7 @@ export class PendingTransactions extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: PendingTransactionCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PendingTransaction> {
+  create(body: PendingTransactionCreateParams, options?: RequestOptions): APIPromise<PendingTransaction> {
     return this._client.post('/pending_transactions', { body, ...options });
   }
 
@@ -39,8 +37,8 @@ export class PendingTransactions extends APIResource {
    *   );
    * ```
    */
-  retrieve(pendingTransactionId: string, options?: Core.RequestOptions): Core.APIPromise<PendingTransaction> {
-    return this._client.get(`/pending_transactions/${pendingTransactionId}`, options);
+  retrieve(pendingTransactionID: string, options?: RequestOptions): APIPromise<PendingTransaction> {
+    return this._client.get(path`/pending_transactions/${pendingTransactionID}`, options);
   }
 
   /**
@@ -55,18 +53,10 @@ export class PendingTransactions extends APIResource {
    * ```
    */
   list(
-    query?: PendingTransactionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PendingTransactionsPage, PendingTransaction>;
-  list(options?: Core.RequestOptions): Core.PagePromise<PendingTransactionsPage, PendingTransaction>;
-  list(
-    query: PendingTransactionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PendingTransactionsPage, PendingTransaction> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/pending_transactions', PendingTransactionsPage, { query, ...options });
+    query: PendingTransactionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<PendingTransactionsPage, PendingTransaction> {
+    return this._client.getAPIList('/pending_transactions', Page<PendingTransaction>, { query, ...options });
   }
 
   /**
@@ -83,12 +73,12 @@ export class PendingTransactions extends APIResource {
    *   );
    * ```
    */
-  release(pendingTransactionId: string, options?: Core.RequestOptions): Core.APIPromise<PendingTransaction> {
-    return this._client.post(`/pending_transactions/${pendingTransactionId}/release`, options);
+  release(pendingTransactionID: string, options?: RequestOptions): APIPromise<PendingTransaction> {
+    return this._client.post(path`/pending_transactions/${pendingTransactionID}/release`, options);
   }
 }
 
-export class PendingTransactionsPage extends Page<PendingTransaction> {}
+export type PendingTransactionsPage = Page<PendingTransaction>;
 
 /**
  * Pending Transactions are potential future additions and removals of money from
@@ -1441,12 +1431,10 @@ export namespace PendingTransactionListParams {
   }
 }
 
-PendingTransactions.PendingTransactionsPage = PendingTransactionsPage;
-
 export declare namespace PendingTransactions {
   export {
     type PendingTransaction as PendingTransaction,
-    PendingTransactionsPage as PendingTransactionsPage,
+    type PendingTransactionsPage as PendingTransactionsPage,
     type PendingTransactionCreateParams as PendingTransactionCreateParams,
     type PendingTransactionListParams as PendingTransactionListParams,
   };

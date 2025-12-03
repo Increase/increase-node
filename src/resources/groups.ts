@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
 
 export class Groups extends APIResource {
   /**
@@ -12,7 +13,7 @@ export class Groups extends APIResource {
    * const group = await client.groups.retrieve();
    * ```
    */
-  retrieve(options?: Core.RequestOptions): Core.APIPromise<Group> {
+  retrieve(options?: RequestOptions): APIPromise<Group> {
     return this._client.get('/groups/current', options);
   }
 }

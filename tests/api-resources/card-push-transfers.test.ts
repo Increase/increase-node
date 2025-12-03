@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -72,15 +71,6 @@ describe('resource cardPushTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cardPushTransfers.retrieve('outbound_card_push_transfer_e0z9rdpamraczh4tvwye', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.cardPushTransfers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -90,13 +80,6 @@ describe('resource cardPushTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.cardPushTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -134,15 +117,6 @@ describe('resource cardPushTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('approve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cardPushTransfers.approve('outbound_card_push_transfer_e0z9rdpamraczh4tvwye', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('cancel', async () => {
     const responsePromise = client.cardPushTransfers.cancel(
       'outbound_card_push_transfer_e0z9rdpamraczh4tvwye',
@@ -154,14 +128,5 @@ describe('resource cardPushTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cardPushTransfers.cancel('outbound_card_push_transfer_e0z9rdpamraczh4tvwye', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

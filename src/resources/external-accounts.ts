@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class ExternalAccounts extends APIResource {
   /**
@@ -19,7 +20,7 @@ export class ExternalAccounts extends APIResource {
    *   });
    * ```
    */
-  create(body: ExternalAccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
+  create(body: ExternalAccountCreateParams, options?: RequestOptions): APIPromise<ExternalAccount> {
     return this._client.post('/external_accounts', { body, ...options });
   }
 
@@ -34,8 +35,8 @@ export class ExternalAccounts extends APIResource {
    *   );
    * ```
    */
-  retrieve(externalAccountId: string, options?: Core.RequestOptions): Core.APIPromise<ExternalAccount> {
-    return this._client.get(`/external_accounts/${externalAccountId}`, options);
+  retrieve(externalAccountID: string, options?: RequestOptions): APIPromise<ExternalAccount> {
+    return this._client.get(path`/external_accounts/${externalAccountID}`, options);
   }
 
   /**
@@ -50,11 +51,11 @@ export class ExternalAccounts extends APIResource {
    * ```
    */
   update(
-    externalAccountId: string,
+    externalAccountID: string,
     body: ExternalAccountUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ExternalAccount> {
-    return this._client.patch(`/external_accounts/${externalAccountId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<ExternalAccount> {
+    return this._client.patch(path`/external_accounts/${externalAccountID}`, { body, ...options });
   }
 
   /**
@@ -69,22 +70,14 @@ export class ExternalAccounts extends APIResource {
    * ```
    */
   list(
-    query?: ExternalAccountListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ExternalAccountsPage, ExternalAccount>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ExternalAccountsPage, ExternalAccount>;
-  list(
-    query: ExternalAccountListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ExternalAccountsPage, ExternalAccount> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/external_accounts', ExternalAccountsPage, { query, ...options });
+    query: ExternalAccountListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ExternalAccountsPage, ExternalAccount> {
+    return this._client.getAPIList('/external_accounts', Page<ExternalAccount>, { query, ...options });
   }
 }
 
-export class ExternalAccountsPage extends Page<ExternalAccount> {}
+export type ExternalAccountsPage = Page<ExternalAccount>;
 
 /**
  * External Accounts represent accounts at financial institutions other than
@@ -262,12 +255,10 @@ export namespace ExternalAccountListParams {
   }
 }
 
-ExternalAccounts.ExternalAccountsPage = ExternalAccountsPage;
-
 export declare namespace ExternalAccounts {
   export {
     type ExternalAccount as ExternalAccount,
-    ExternalAccountsPage as ExternalAccountsPage,
+    type ExternalAccountsPage as ExternalAccountsPage,
     type ExternalAccountCreateParams as ExternalAccountCreateParams,
     type ExternalAccountUpdateParams as ExternalAccountUpdateParams,
     type ExternalAccountListParams as ExternalAccountListParams,

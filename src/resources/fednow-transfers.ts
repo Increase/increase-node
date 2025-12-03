@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class FednowTransfers extends APIResource {
   /**
@@ -22,7 +23,7 @@ export class FednowTransfers extends APIResource {
    * });
    * ```
    */
-  create(body: FednowTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<FednowTransfer> {
+  create(body: FednowTransferCreateParams, options?: RequestOptions): APIPromise<FednowTransfer> {
     return this._client.post('/fednow_transfers', { body, ...options });
   }
 
@@ -37,8 +38,8 @@ export class FednowTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(fednowTransferId: string, options?: Core.RequestOptions): Core.APIPromise<FednowTransfer> {
-    return this._client.get(`/fednow_transfers/${fednowTransferId}`, options);
+  retrieve(fednowTransferID: string, options?: RequestOptions): APIPromise<FednowTransfer> {
+    return this._client.get(path`/fednow_transfers/${fednowTransferID}`, options);
   }
 
   /**
@@ -53,18 +54,10 @@ export class FednowTransfers extends APIResource {
    * ```
    */
   list(
-    query?: FednowTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<FednowTransfersPage, FednowTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<FednowTransfersPage, FednowTransfer>;
-  list(
-    query: FednowTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<FednowTransfersPage, FednowTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/fednow_transfers', FednowTransfersPage, { query, ...options });
+    query: FednowTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<FednowTransfersPage, FednowTransfer> {
+    return this._client.getAPIList('/fednow_transfers', Page<FednowTransfer>, { query, ...options });
   }
 
   /**
@@ -77,8 +70,8 @@ export class FednowTransfers extends APIResource {
    * );
    * ```
    */
-  approve(fednowTransferId: string, options?: Core.RequestOptions): Core.APIPromise<FednowTransfer> {
-    return this._client.post(`/fednow_transfers/${fednowTransferId}/approve`, options);
+  approve(fednowTransferID: string, options?: RequestOptions): APIPromise<FednowTransfer> {
+    return this._client.post(path`/fednow_transfers/${fednowTransferID}/approve`, options);
   }
 
   /**
@@ -91,12 +84,12 @@ export class FednowTransfers extends APIResource {
    * );
    * ```
    */
-  cancel(fednowTransferId: string, options?: Core.RequestOptions): Core.APIPromise<FednowTransfer> {
-    return this._client.post(`/fednow_transfers/${fednowTransferId}/cancel`, options);
+  cancel(fednowTransferID: string, options?: RequestOptions): APIPromise<FednowTransfer> {
+    return this._client.post(path`/fednow_transfers/${fednowTransferID}/cancel`, options);
   }
 }
 
-export class FednowTransfersPage extends Page<FednowTransfer> {}
+export type FednowTransfersPage = Page<FednowTransfer>;
 
 /**
  * FedNow transfers move funds, within seconds, between your Increase account and
@@ -598,12 +591,10 @@ export namespace FednowTransferListParams {
   }
 }
 
-FednowTransfers.FednowTransfersPage = FednowTransfersPage;
-
 export declare namespace FednowTransfers {
   export {
     type FednowTransfer as FednowTransfer,
-    FednowTransfersPage as FednowTransfersPage,
+    type FednowTransfersPage as FednowTransfersPage,
     type FednowTransferCreateParams as FednowTransferCreateParams,
     type FednowTransferListParams as FednowTransferListParams,
   };

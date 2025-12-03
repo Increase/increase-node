@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class OAuthApplications extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class OAuthApplications extends APIResource {
    *   );
    * ```
    */
-  retrieve(oauthApplicationId: string, options?: Core.RequestOptions): Core.APIPromise<OAuthApplication> {
-    return this._client.get(`/oauth_applications/${oauthApplicationId}`, options);
+  retrieve(oauthApplicationID: string, options?: RequestOptions): APIPromise<OAuthApplication> {
+    return this._client.get(path`/oauth_applications/${oauthApplicationID}`, options);
   }
 
   /**
@@ -33,22 +34,14 @@ export class OAuthApplications extends APIResource {
    * ```
    */
   list(
-    query?: OAuthApplicationListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthApplicationsPage, OAuthApplication>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OAuthApplicationsPage, OAuthApplication>;
-  list(
-    query: OAuthApplicationListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthApplicationsPage, OAuthApplication> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/oauth_applications', OAuthApplicationsPage, { query, ...options });
+    query: OAuthApplicationListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<OAuthApplicationsPage, OAuthApplication> {
+    return this._client.getAPIList('/oauth_applications', Page<OAuthApplication>, { query, ...options });
   }
 }
 
-export class OAuthApplicationsPage extends Page<OAuthApplication> {}
+export type OAuthApplicationsPage = Page<OAuthApplication>;
 
 /**
  * An OAuth Application lets you build an application for others to use with their
@@ -142,12 +135,10 @@ export namespace OAuthApplicationListParams {
   }
 }
 
-OAuthApplications.OAuthApplicationsPage = OAuthApplicationsPage;
-
 export declare namespace OAuthApplications {
   export {
     type OAuthApplication as OAuthApplication,
-    OAuthApplicationsPage as OAuthApplicationsPage,
+    type OAuthApplicationsPage as OAuthApplicationsPage,
     type OAuthApplicationListParams as OAuthApplicationListParams,
   };
 }

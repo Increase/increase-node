@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundFednowTransfers extends APIResource {
   /**
@@ -17,11 +18,8 @@ export class InboundFednowTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    inboundFednowTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundFednowTransfer> {
-    return this._client.get(`/inbound_fednow_transfers/${inboundFednowTransferId}`, options);
+  retrieve(inboundFednowTransferID: string, options?: RequestOptions): APIPromise<InboundFednowTransfer> {
+    return this._client.get(path`/inbound_fednow_transfers/${inboundFednowTransferID}`, options);
   }
 
   /**
@@ -36,25 +34,17 @@ export class InboundFednowTransfers extends APIResource {
    * ```
    */
   list(
-    query?: InboundFednowTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundFednowTransfersPage, InboundFednowTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundFednowTransfersPage, InboundFednowTransfer>;
-  list(
-    query: InboundFednowTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundFednowTransfersPage, InboundFednowTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_fednow_transfers', InboundFednowTransfersPage, {
+    query: InboundFednowTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundFednowTransfersPage, InboundFednowTransfer> {
+    return this._client.getAPIList('/inbound_fednow_transfers', Page<InboundFednowTransfer>, {
       query,
       ...options,
     });
   }
 }
 
-export class InboundFednowTransfersPage extends Page<InboundFednowTransfer> {}
+export type InboundFednowTransfersPage = Page<InboundFednowTransfer>;
 
 /**
  * An Inbound FedNow Transfer is a FedNow transfer initiated outside of Increase to
@@ -243,12 +233,10 @@ export namespace InboundFednowTransferListParams {
   }
 }
 
-InboundFednowTransfers.InboundFednowTransfersPage = InboundFednowTransfersPage;
-
 export declare namespace InboundFednowTransfers {
   export {
     type InboundFednowTransfer as InboundFednowTransfer,
-    InboundFednowTransfersPage as InboundFednowTransfersPage,
+    type InboundFednowTransfersPage as InboundFednowTransfersPage,
     type InboundFednowTransferListParams as InboundFednowTransferListParams,
   };
 }

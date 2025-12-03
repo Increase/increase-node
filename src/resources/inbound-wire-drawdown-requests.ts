@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
@@ -18,10 +19,10 @@ export class InboundWireDrawdownRequests extends APIResource {
    * ```
    */
   retrieve(
-    inboundWireDrawdownRequestId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireDrawdownRequest> {
-    return this._client.get(`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestId}`, options);
+    inboundWireDrawdownRequestID: string,
+    options?: RequestOptions,
+  ): APIPromise<InboundWireDrawdownRequest> {
+    return this._client.get(path`/inbound_wire_drawdown_requests/${inboundWireDrawdownRequestID}`, options);
   }
 
   /**
@@ -36,27 +37,17 @@ export class InboundWireDrawdownRequests extends APIResource {
    * ```
    */
   list(
-    query?: InboundWireDrawdownRequestListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest>;
-  list(
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest>;
-  list(
-    query: InboundWireDrawdownRequestListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_wire_drawdown_requests', InboundWireDrawdownRequestsPage, {
+    query: InboundWireDrawdownRequestListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundWireDrawdownRequestsPage, InboundWireDrawdownRequest> {
+    return this._client.getAPIList('/inbound_wire_drawdown_requests', Page<InboundWireDrawdownRequest>, {
       query,
       ...options,
     });
   }
 }
 
-export class InboundWireDrawdownRequestsPage extends Page<InboundWireDrawdownRequest> {}
+export type InboundWireDrawdownRequestsPage = Page<InboundWireDrawdownRequest>;
 
 /**
  * Inbound wire drawdown requests are requests from someone else to send them a
@@ -183,12 +174,10 @@ export interface InboundWireDrawdownRequest {
 
 export interface InboundWireDrawdownRequestListParams extends PageParams {}
 
-InboundWireDrawdownRequests.InboundWireDrawdownRequestsPage = InboundWireDrawdownRequestsPage;
-
 export declare namespace InboundWireDrawdownRequests {
   export {
     type InboundWireDrawdownRequest as InboundWireDrawdownRequest,
-    InboundWireDrawdownRequestsPage as InboundWireDrawdownRequestsPage,
+    type InboundWireDrawdownRequestsPage as InboundWireDrawdownRequestsPage,
     type InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
   };
 }

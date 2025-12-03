@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class IntrafiBalances extends APIResource {
   /**
@@ -17,8 +19,8 @@ export class IntrafiBalances extends APIResource {
    *   );
    * ```
    */
-  intrafiBalance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiBalance> {
-    return this._client.get(`/accounts/${accountId}/intrafi_balance`, options);
+  intrafiBalance(accountID: string, options?: RequestOptions): APIPromise<IntrafiBalance> {
+    return this._client.get(path`/accounts/${accountID}/intrafi_balance`, options);
   }
 }
 

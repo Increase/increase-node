@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardPayments extends APIResource {
   /**
@@ -16,8 +17,8 @@ export class CardPayments extends APIResource {
    * );
    * ```
    */
-  retrieve(cardPaymentId: string, options?: Core.RequestOptions): Core.APIPromise<CardPayment> {
-    return this._client.get(`/card_payments/${cardPaymentId}`, options);
+  retrieve(cardPaymentID: string, options?: RequestOptions): APIPromise<CardPayment> {
+    return this._client.get(path`/card_payments/${cardPaymentID}`, options);
   }
 
   /**
@@ -32,22 +33,14 @@ export class CardPayments extends APIResource {
    * ```
    */
   list(
-    query?: CardPaymentListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPaymentsPage, CardPayment>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardPaymentsPage, CardPayment>;
-  list(
-    query: CardPaymentListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPaymentsPage, CardPayment> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_payments', CardPaymentsPage, { query, ...options });
+    query: CardPaymentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardPaymentsPage, CardPayment> {
+    return this._client.getAPIList('/card_payments', Page<CardPayment>, { query, ...options });
   }
 }
 
-export class CardPaymentsPage extends Page<CardPayment> {}
+export type CardPaymentsPage = Page<CardPayment>;
 
 /**
  * Card Payments group together interactions related to a single card payment, such
@@ -5534,12 +5527,10 @@ export namespace CardPaymentListParams {
   }
 }
 
-CardPayments.CardPaymentsPage = CardPaymentsPage;
-
 export declare namespace CardPayments {
   export {
     type CardPayment as CardPayment,
-    CardPaymentsPage as CardPaymentsPage,
+    type CardPaymentsPage as CardPaymentsPage,
     type CardPaymentListParams as CardPaymentListParams,
   };
 }

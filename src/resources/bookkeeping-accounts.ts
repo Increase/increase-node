@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class BookkeepingAccounts extends APIResource {
   /**
@@ -17,10 +18,7 @@ export class BookkeepingAccounts extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: BookkeepingAccountCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingAccount> {
+  create(body: BookkeepingAccountCreateParams, options?: RequestOptions): APIPromise<BookkeepingAccount> {
     return this._client.post('/bookkeeping_accounts', { body, ...options });
   }
 
@@ -37,11 +35,11 @@ export class BookkeepingAccounts extends APIResource {
    * ```
    */
   update(
-    bookkeepingAccountId: string,
+    bookkeepingAccountID: string,
     body: BookkeepingAccountUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingAccount> {
-    return this._client.patch(`/bookkeeping_accounts/${bookkeepingAccountId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<BookkeepingAccount> {
+    return this._client.patch(path`/bookkeeping_accounts/${bookkeepingAccountID}`, { body, ...options });
   }
 
   /**
@@ -56,18 +54,10 @@ export class BookkeepingAccounts extends APIResource {
    * ```
    */
   list(
-    query?: BookkeepingAccountListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount>;
-  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount>;
-  list(
-    query: BookkeepingAccountListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingAccountsPage, BookkeepingAccount> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/bookkeeping_accounts', BookkeepingAccountsPage, { query, ...options });
+    query: BookkeepingAccountListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<BookkeepingAccountsPage, BookkeepingAccount> {
+    return this._client.getAPIList('/bookkeeping_accounts', Page<BookkeepingAccount>, { query, ...options });
   }
 
   /**
@@ -82,27 +72,18 @@ export class BookkeepingAccounts extends APIResource {
    * ```
    */
   balance(
-    bookkeepingAccountId: string,
-    query?: BookkeepingAccountBalanceParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingBalanceLookup>;
-  balance(
-    bookkeepingAccountId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingBalanceLookup>;
-  balance(
-    bookkeepingAccountId: string,
-    query: BookkeepingAccountBalanceParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingBalanceLookup> {
-    if (isRequestOptions(query)) {
-      return this.balance(bookkeepingAccountId, {}, query);
-    }
-    return this._client.get(`/bookkeeping_accounts/${bookkeepingAccountId}/balance`, { query, ...options });
+    bookkeepingAccountID: string,
+    query: BookkeepingAccountBalanceParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<BookkeepingBalanceLookup> {
+    return this._client.get(path`/bookkeeping_accounts/${bookkeepingAccountID}/balance`, {
+      query,
+      ...options,
+    });
   }
 }
 
-export class BookkeepingAccountsPage extends Page<BookkeepingAccount> {}
+export type BookkeepingAccountsPage = Page<BookkeepingAccount>;
 
 /**
  * Accounts are T-accounts. They can store accounting entries. Your compliance
@@ -226,13 +207,11 @@ export interface BookkeepingAccountBalanceParams {
   at_time?: string;
 }
 
-BookkeepingAccounts.BookkeepingAccountsPage = BookkeepingAccountsPage;
-
 export declare namespace BookkeepingAccounts {
   export {
     type BookkeepingAccount as BookkeepingAccount,
     type BookkeepingBalanceLookup as BookkeepingBalanceLookup,
-    BookkeepingAccountsPage as BookkeepingAccountsPage,
+    type BookkeepingAccountsPage as BookkeepingAccountsPage,
     type BookkeepingAccountCreateParams as BookkeepingAccountCreateParams,
     type BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams,
     type BookkeepingAccountListParams as BookkeepingAccountListParams,

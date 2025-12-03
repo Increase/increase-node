@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardPurchaseSupplements extends APIResource {
   /**
@@ -17,11 +18,8 @@ export class CardPurchaseSupplements extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    cardPurchaseSupplementId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardPurchaseSupplement> {
-    return this._client.get(`/card_purchase_supplements/${cardPurchaseSupplementId}`, options);
+  retrieve(cardPurchaseSupplementID: string, options?: RequestOptions): APIPromise<CardPurchaseSupplement> {
+    return this._client.get(path`/card_purchase_supplements/${cardPurchaseSupplementID}`, options);
   }
 
   /**
@@ -36,25 +34,17 @@ export class CardPurchaseSupplements extends APIResource {
    * ```
    */
   list(
-    query?: CardPurchaseSupplementListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement>;
-  list(
-    query: CardPurchaseSupplementListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_purchase_supplements', CardPurchaseSupplementsPage, {
+    query: CardPurchaseSupplementListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardPurchaseSupplementsPage, CardPurchaseSupplement> {
+    return this._client.getAPIList('/card_purchase_supplements', Page<CardPurchaseSupplement>, {
       query,
       ...options,
     });
   }
 }
 
-export class CardPurchaseSupplementsPage extends Page<CardPurchaseSupplement> {}
+export type CardPurchaseSupplementsPage = Page<CardPurchaseSupplement>;
 
 /**
  * Additional information about a card purchase (e.g., settlement or refund), such
@@ -347,12 +337,10 @@ export namespace CardPurchaseSupplementListParams {
   }
 }
 
-CardPurchaseSupplements.CardPurchaseSupplementsPage = CardPurchaseSupplementsPage;
-
 export declare namespace CardPurchaseSupplements {
   export {
     type CardPurchaseSupplement as CardPurchaseSupplement,
-    CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
+    type CardPurchaseSupplementsPage as CardPurchaseSupplementsPage,
     type CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
   };
 }

@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
 
 export class SupplementalDocuments extends APIResource {
   /**
@@ -19,8 +20,8 @@ export class SupplementalDocuments extends APIResource {
    */
   create(
     body: SupplementalDocumentCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<EntitySupplementalDocument> {
+    options?: RequestOptions,
+  ): APIPromise<EntitySupplementalDocument> {
     return this._client.post('/entity_supplemental_documents', { body, ...options });
   }
 
@@ -39,16 +40,16 @@ export class SupplementalDocuments extends APIResource {
    */
   list(
     query: SupplementalDocumentListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<EntitySupplementalDocumentsPage, EntitySupplementalDocument> {
-    return this._client.getAPIList('/entity_supplemental_documents', EntitySupplementalDocumentsPage, {
+    options?: RequestOptions,
+  ): PagePromise<EntitySupplementalDocumentsPage, EntitySupplementalDocument> {
+    return this._client.getAPIList('/entity_supplemental_documents', Page<EntitySupplementalDocument>, {
       query,
       ...options,
     });
   }
 }
 
-export class EntitySupplementalDocumentsPage extends Page<EntitySupplementalDocument> {}
+export type EntitySupplementalDocumentsPage = Page<EntitySupplementalDocument>;
 
 /**
  * Supplemental Documents are uploaded files connected to an Entity during
@@ -114,12 +115,10 @@ export interface SupplementalDocumentListParams extends PageParams {
   idempotency_key?: string;
 }
 
-SupplementalDocuments.EntitySupplementalDocumentsPage = EntitySupplementalDocumentsPage;
-
 export declare namespace SupplementalDocuments {
   export {
     type EntitySupplementalDocument as EntitySupplementalDocument,
-    EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
+    type EntitySupplementalDocumentsPage as EntitySupplementalDocumentsPage,
     type SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
     type SupplementalDocumentListParams as SupplementalDocumentListParams,
   };

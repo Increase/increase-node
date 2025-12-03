@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class DeclinedTransactions extends APIResource {
   /**
@@ -17,11 +18,8 @@ export class DeclinedTransactions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    declinedTransactionId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DeclinedTransaction> {
-    return this._client.get(`/declined_transactions/${declinedTransactionId}`, options);
+  retrieve(declinedTransactionID: string, options?: RequestOptions): APIPromise<DeclinedTransaction> {
+    return this._client.get(path`/declined_transactions/${declinedTransactionID}`, options);
   }
 
   /**
@@ -36,22 +34,17 @@ export class DeclinedTransactions extends APIResource {
    * ```
    */
   list(
-    query?: DeclinedTransactionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction>;
-  list(
-    query: DeclinedTransactionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DeclinedTransactionsPage, DeclinedTransaction> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/declined_transactions', DeclinedTransactionsPage, { query, ...options });
+    query: DeclinedTransactionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DeclinedTransactionsPage, DeclinedTransaction> {
+    return this._client.getAPIList('/declined_transactions', Page<DeclinedTransaction>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export class DeclinedTransactionsPage extends Page<DeclinedTransaction> {}
+export type DeclinedTransactionsPage = Page<DeclinedTransaction>;
 
 /**
  * Declined Transactions are refused additions and removals of money from your bank
@@ -1482,12 +1475,10 @@ export namespace DeclinedTransactionListParams {
   }
 }
 
-DeclinedTransactions.DeclinedTransactionsPage = DeclinedTransactionsPage;
-
 export declare namespace DeclinedTransactions {
   export {
     type DeclinedTransaction as DeclinedTransaction,
-    DeclinedTransactionsPage as DeclinedTransactionsPage,
+    type DeclinedTransactionsPage as DeclinedTransactionsPage,
     type DeclinedTransactionListParams as DeclinedTransactionListParams,
   };
 }

@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as RealTimePaymentsTransfersAPI from '../real-time-payments-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -20,12 +22,12 @@ export class RealTimePaymentsTransfers extends APIResource {
    * ```
    */
   complete(
-    realTimePaymentsTransferId: string,
+    realTimePaymentsTransferID: string,
     body: RealTimePaymentsTransferCompleteParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfersAPI.RealTimePaymentsTransfer> {
     return this._client.post(
-      `/simulations/real_time_payments_transfers/${realTimePaymentsTransferId}/complete`,
+      path`/simulations/real_time_payments_transfers/${realTimePaymentsTransferID}/complete`,
       { body, ...options },
     );
   }

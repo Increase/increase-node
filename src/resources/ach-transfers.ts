@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -18,7 +19,7 @@ export class ACHTransfers extends APIResource {
    * });
    * ```
    */
-  create(body: ACHTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
+  create(body: ACHTransferCreateParams, options?: RequestOptions): APIPromise<ACHTransfer> {
     return this._client.post('/ach_transfers', { body, ...options });
   }
 
@@ -32,8 +33,8 @@ export class ACHTransfers extends APIResource {
    * );
    * ```
    */
-  retrieve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this._client.get(`/ach_transfers/${achTransferId}`, options);
+  retrieve(achTransferID: string, options?: RequestOptions): APIPromise<ACHTransfer> {
+    return this._client.get(path`/ach_transfers/${achTransferID}`, options);
   }
 
   /**
@@ -48,18 +49,10 @@ export class ACHTransfers extends APIResource {
    * ```
    */
   list(
-    query?: ACHTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHTransfersPage, ACHTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ACHTransfersPage, ACHTransfer>;
-  list(
-    query: ACHTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHTransfersPage, ACHTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/ach_transfers', ACHTransfersPage, { query, ...options });
+    query: ACHTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ACHTransfersPage, ACHTransfer> {
+    return this._client.getAPIList('/ach_transfers', Page<ACHTransfer>, { query, ...options });
   }
 
   /**
@@ -72,8 +65,8 @@ export class ACHTransfers extends APIResource {
    * );
    * ```
    */
-  approve(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this._client.post(`/ach_transfers/${achTransferId}/approve`, options);
+  approve(achTransferID: string, options?: RequestOptions): APIPromise<ACHTransfer> {
+    return this._client.post(path`/ach_transfers/${achTransferID}/approve`, options);
   }
 
   /**
@@ -86,12 +79,12 @@ export class ACHTransfers extends APIResource {
    * );
    * ```
    */
-  cancel(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfer> {
-    return this._client.post(`/ach_transfers/${achTransferId}/cancel`, options);
+  cancel(achTransferID: string, options?: RequestOptions): APIPromise<ACHTransfer> {
+    return this._client.post(path`/ach_transfers/${achTransferID}/cancel`, options);
   }
 }
 
-export class ACHTransfersPage extends Page<ACHTransfer> {}
+export type ACHTransfersPage = Page<ACHTransfer>;
 
 /**
  * ACH transfers move funds between your Increase account and any other account
@@ -1357,12 +1350,10 @@ export namespace ACHTransferListParams {
   }
 }
 
-ACHTransfers.ACHTransfersPage = ACHTransfersPage;
-
 export declare namespace ACHTransfers {
   export {
     type ACHTransfer as ACHTransfer,
-    ACHTransfersPage as ACHTransfersPage,
+    type ACHTransfersPage as ACHTransfersPage,
     type ACHTransferCreateParams as ACHTransferCreateParams,
     type ACHTransferListParams as ACHTransferListParams,
   };

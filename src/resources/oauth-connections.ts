@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class OAuthConnections extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class OAuthConnections extends APIResource {
    *   );
    * ```
    */
-  retrieve(oauthConnectionId: string, options?: Core.RequestOptions): Core.APIPromise<OAuthConnection> {
-    return this._client.get(`/oauth_connections/${oauthConnectionId}`, options);
+  retrieve(oauthConnectionID: string, options?: RequestOptions): APIPromise<OAuthConnection> {
+    return this._client.get(path`/oauth_connections/${oauthConnectionID}`, options);
   }
 
   /**
@@ -33,22 +34,14 @@ export class OAuthConnections extends APIResource {
    * ```
    */
   list(
-    query?: OAuthConnectionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthConnectionsPage, OAuthConnection>;
-  list(options?: Core.RequestOptions): Core.PagePromise<OAuthConnectionsPage, OAuthConnection>;
-  list(
-    query: OAuthConnectionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<OAuthConnectionsPage, OAuthConnection> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/oauth_connections', OAuthConnectionsPage, { query, ...options });
+    query: OAuthConnectionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<OAuthConnectionsPage, OAuthConnection> {
+    return this._client.getAPIList('/oauth_connections', Page<OAuthConnection>, { query, ...options });
   }
 }
 
-export class OAuthConnectionsPage extends Page<OAuthConnection> {}
+export type OAuthConnectionsPage = Page<OAuthConnection>;
 
 /**
  * When a user authorizes your OAuth application, an OAuth Connection object is
@@ -119,12 +112,10 @@ export namespace OAuthConnectionListParams {
   }
 }
 
-OAuthConnections.OAuthConnectionsPage = OAuthConnectionsPage;
-
 export declare namespace OAuthConnections {
   export {
     type OAuthConnection as OAuthConnection,
-    OAuthConnectionsPage as OAuthConnectionsPage,
+    type OAuthConnectionsPage as OAuthConnectionsPage,
     type OAuthConnectionListParams as OAuthConnectionListParams,
   };
 }

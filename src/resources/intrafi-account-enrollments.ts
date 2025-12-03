@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class IntrafiAccountEnrollments extends APIResource {
   /**
@@ -20,8 +21,8 @@ export class IntrafiAccountEnrollments extends APIResource {
    */
   create(
     body: IntrafiAccountEnrollmentCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<IntrafiAccountEnrollment> {
+    options?: RequestOptions,
+  ): APIPromise<IntrafiAccountEnrollment> {
     return this._client.post('/intrafi_account_enrollments', { body, ...options });
   }
 
@@ -37,10 +38,10 @@ export class IntrafiAccountEnrollments extends APIResource {
    * ```
    */
   retrieve(
-    intrafiAccountEnrollmentId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<IntrafiAccountEnrollment> {
-    return this._client.get(`/intrafi_account_enrollments/${intrafiAccountEnrollmentId}`, options);
+    intrafiAccountEnrollmentID: string,
+    options?: RequestOptions,
+  ): APIPromise<IntrafiAccountEnrollment> {
+    return this._client.get(path`/intrafi_account_enrollments/${intrafiAccountEnrollmentID}`, options);
   }
 
   /**
@@ -55,20 +56,10 @@ export class IntrafiAccountEnrollments extends APIResource {
    * ```
    */
   list(
-    query?: IntrafiAccountEnrollmentListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment>;
-  list(
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment>;
-  list(
-    query: IntrafiAccountEnrollmentListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/intrafi_account_enrollments', IntrafiAccountEnrollmentsPage, {
+    query: IntrafiAccountEnrollmentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<IntrafiAccountEnrollmentsPage, IntrafiAccountEnrollment> {
+    return this._client.getAPIList('/intrafi_account_enrollments', Page<IntrafiAccountEnrollment>, {
       query,
       ...options,
     });
@@ -86,14 +77,17 @@ export class IntrafiAccountEnrollments extends APIResource {
    * ```
    */
   unenroll(
-    intrafiAccountEnrollmentId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<IntrafiAccountEnrollment> {
-    return this._client.post(`/intrafi_account_enrollments/${intrafiAccountEnrollmentId}/unenroll`, options);
+    intrafiAccountEnrollmentID: string,
+    options?: RequestOptions,
+  ): APIPromise<IntrafiAccountEnrollment> {
+    return this._client.post(
+      path`/intrafi_account_enrollments/${intrafiAccountEnrollmentID}/unenroll`,
+      options,
+    );
   }
 }
 
-export class IntrafiAccountEnrollmentsPage extends Page<IntrafiAccountEnrollment> {}
+export type IntrafiAccountEnrollmentsPage = Page<IntrafiAccountEnrollment>;
 
 /**
  * IntraFi is a
@@ -205,12 +199,10 @@ export namespace IntrafiAccountEnrollmentListParams {
   }
 }
 
-IntrafiAccountEnrollments.IntrafiAccountEnrollmentsPage = IntrafiAccountEnrollmentsPage;
-
 export declare namespace IntrafiAccountEnrollments {
   export {
     type IntrafiAccountEnrollment as IntrafiAccountEnrollment,
-    IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
+    type IntrafiAccountEnrollmentsPage as IntrafiAccountEnrollmentsPage,
     type IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,
     type IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
   };

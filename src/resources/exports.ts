@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Exports extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Exports extends APIResource {
    * });
    * ```
    */
-  create(body: ExportCreateParams, options?: Core.RequestOptions): Core.APIPromise<Export> {
+  create(body: ExportCreateParams, options?: RequestOptions): APIPromise<Export> {
     return this._client.post('/exports', { body, ...options });
   }
 
@@ -30,8 +31,8 @@ export class Exports extends APIResource {
    * );
    * ```
    */
-  retrieve(exportId: string, options?: Core.RequestOptions): Core.APIPromise<Export> {
-    return this._client.get(`/exports/${exportId}`, options);
+  retrieve(exportID: string, options?: RequestOptions): APIPromise<Export> {
+    return this._client.get(path`/exports/${exportID}`, options);
   }
 
   /**
@@ -45,20 +46,15 @@ export class Exports extends APIResource {
    * }
    * ```
    */
-  list(query?: ExportListParams, options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ExportsPage, Export>;
   list(
-    query: ExportListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ExportsPage, Export> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/exports', ExportsPage, { query, ...options });
+    query: ExportListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ExportsPage, Export> {
+    return this._client.getAPIList('/exports', Page<Export>, { query, ...options });
   }
 }
 
-export class ExportsPage extends Page<Export> {}
+export type ExportsPage = Page<Export>;
 
 /**
  * Exports are batch summaries of your Increase data. You can make them from the
@@ -537,12 +533,10 @@ export namespace ExportListParams {
   }
 }
 
-Exports.ExportsPage = ExportsPage;
-
 export declare namespace Exports {
   export {
     type Export as Export,
-    ExportsPage as ExportsPage,
+    type ExportsPage as ExportsPage,
     type ExportCreateParams as ExportCreateParams,
     type ExportListParams as ExportListParams,
   };

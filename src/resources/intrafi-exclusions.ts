@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class IntrafiExclusions extends APIResource {
   /**
@@ -18,10 +19,7 @@ export class IntrafiExclusions extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: IntrafiExclusionCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<IntrafiExclusion> {
+  create(body: IntrafiExclusionCreateParams, options?: RequestOptions): APIPromise<IntrafiExclusion> {
     return this._client.post('/intrafi_exclusions', { body, ...options });
   }
 
@@ -36,8 +34,8 @@ export class IntrafiExclusions extends APIResource {
    *   );
    * ```
    */
-  retrieve(intrafiExclusionId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiExclusion> {
-    return this._client.get(`/intrafi_exclusions/${intrafiExclusionId}`, options);
+  retrieve(intrafiExclusionID: string, options?: RequestOptions): APIPromise<IntrafiExclusion> {
+    return this._client.get(path`/intrafi_exclusions/${intrafiExclusionID}`, options);
   }
 
   /**
@@ -52,18 +50,10 @@ export class IntrafiExclusions extends APIResource {
    * ```
    */
   list(
-    query?: IntrafiExclusionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion>;
-  list(options?: Core.RequestOptions): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion>;
-  list(
-    query: IntrafiExclusionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<IntrafiExclusionsPage, IntrafiExclusion> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/intrafi_exclusions', IntrafiExclusionsPage, { query, ...options });
+    query: IntrafiExclusionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<IntrafiExclusionsPage, IntrafiExclusion> {
+    return this._client.getAPIList('/intrafi_exclusions', Page<IntrafiExclusion>, { query, ...options });
   }
 
   /**
@@ -77,12 +67,12 @@ export class IntrafiExclusions extends APIResource {
    *   );
    * ```
    */
-  archive(intrafiExclusionId: string, options?: Core.RequestOptions): Core.APIPromise<IntrafiExclusion> {
-    return this._client.post(`/intrafi_exclusions/${intrafiExclusionId}/archive`, options);
+  archive(intrafiExclusionID: string, options?: RequestOptions): APIPromise<IntrafiExclusion> {
+    return this._client.post(path`/intrafi_exclusions/${intrafiExclusionID}/archive`, options);
   }
 }
 
-export class IntrafiExclusionsPage extends Page<IntrafiExclusion> {}
+export type IntrafiExclusionsPage = Page<IntrafiExclusion>;
 
 /**
  * Certain institutions may be excluded per Entity when sweeping funds into the
@@ -180,12 +170,10 @@ export interface IntrafiExclusionListParams extends PageParams {
   idempotency_key?: string;
 }
 
-IntrafiExclusions.IntrafiExclusionsPage = IntrafiExclusionsPage;
-
 export declare namespace IntrafiExclusions {
   export {
     type IntrafiExclusion as IntrafiExclusion,
-    IntrafiExclusionsPage as IntrafiExclusionsPage,
+    type IntrafiExclusionsPage as IntrafiExclusionsPage,
     type IntrafiExclusionCreateParams as IntrafiExclusionCreateParams,
     type IntrafiExclusionListParams as IntrafiExclusionListParams,
   };

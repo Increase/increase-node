@@ -1,10 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIResource } from '../core/resource';
 import * as SupplementalDocumentsAPI from './supplemental-documents';
-import { Page, type PageParams } from '../pagination';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Entities extends APIResource {
   /**
@@ -17,7 +18,7 @@ export class Entities extends APIResource {
    * });
    * ```
    */
-  create(body: EntityCreateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
+  create(body: EntityCreateParams, options?: RequestOptions): APIPromise<Entity> {
     return this._client.post('/entities', { body, ...options });
   }
 
@@ -31,8 +32,8 @@ export class Entities extends APIResource {
    * );
    * ```
    */
-  retrieve(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this._client.get(`/entities/${entityId}`, options);
+  retrieve(entityID: string, options?: RequestOptions): APIPromise<Entity> {
+    return this._client.get(path`/entities/${entityID}`, options);
   }
 
   /**
@@ -45,8 +46,8 @@ export class Entities extends APIResource {
    * );
    * ```
    */
-  update(entityId: string, body: EntityUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this._client.patch(`/entities/${entityId}`, { body, ...options });
+  update(entityID: string, body: EntityUpdateParams, options?: RequestOptions): APIPromise<Entity> {
+    return this._client.patch(path`/entities/${entityID}`, { body, ...options });
   }
 
   /**
@@ -60,16 +61,11 @@ export class Entities extends APIResource {
    * }
    * ```
    */
-  list(query?: EntityListParams, options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
-  list(options?: Core.RequestOptions): Core.PagePromise<EntitiesPage, Entity>;
   list(
-    query: EntityListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<EntitiesPage, Entity> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/entities', EntitiesPage, { query, ...options });
+    query: EntityListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<EntitiesPage, Entity> {
+    return this._client.getAPIList('/entities', Page<Entity>, { query, ...options });
   }
 
   /**
@@ -82,8 +78,8 @@ export class Entities extends APIResource {
    * );
    * ```
    */
-  archive(entityId: string, options?: Core.RequestOptions): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/archive`, options);
+  archive(entityID: string, options?: RequestOptions): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/archive`, options);
   }
 
   /**
@@ -101,11 +97,11 @@ export class Entities extends APIResource {
    * ```
    */
   archiveBeneficialOwner(
-    entityId: string,
+    entityID: string,
     body: EntityArchiveBeneficialOwnerParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/archive_beneficial_owner`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/archive_beneficial_owner`, { body, ...options });
   }
 
   /**
@@ -120,12 +116,8 @@ export class Entities extends APIResource {
    * );
    * ```
    */
-  confirm(
-    entityId: string,
-    body: EntityConfirmParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/confirm`, { body, ...options });
+  confirm(entityID: string, body: EntityConfirmParams, options?: RequestOptions): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/confirm`, { body, ...options });
   }
 
   /**
@@ -157,11 +149,11 @@ export class Entities extends APIResource {
    * ```
    */
   createBeneficialOwner(
-    entityId: string,
+    entityID: string,
     body: EntityCreateBeneficialOwnerParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/create_beneficial_owner`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/create_beneficial_owner`, { body, ...options });
   }
 
   /**
@@ -183,11 +175,11 @@ export class Entities extends APIResource {
    * ```
    */
   updateAddress(
-    entityId: string,
+    entityID: string,
     body: EntityUpdateAddressParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/update_address`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/update_address`, { body, ...options });
   }
 
   /**
@@ -211,11 +203,14 @@ export class Entities extends APIResource {
    * ```
    */
   updateBeneficialOwnerAddress(
-    entityId: string,
+    entityID: string,
     body: EntityUpdateBeneficialOwnerAddressParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/update_beneficial_owner_address`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/update_beneficial_owner_address`, {
+      body,
+      ...options,
+    });
   }
 
   /**
@@ -230,15 +225,15 @@ export class Entities extends APIResource {
    * ```
    */
   updateIndustryCode(
-    entityId: string,
+    entityID: string,
     body: EntityUpdateIndustryCodeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Entity> {
-    return this._client.post(`/entities/${entityId}/update_industry_code`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<Entity> {
+    return this._client.post(path`/entities/${entityID}/update_industry_code`, { body, ...options });
   }
 }
 
-export class EntitiesPage extends Page<Entity> {}
+export type EntitiesPage = Page<Entity>;
 
 /**
  * Entities are the legal entities that own accounts. They can be people,
@@ -3309,12 +3304,10 @@ export interface EntityUpdateIndustryCodeParams {
   industry_code: string;
 }
 
-Entities.EntitiesPage = EntitiesPage;
-
 export declare namespace Entities {
   export {
     type Entity as Entity,
-    EntitiesPage as EntitiesPage,
+    type EntitiesPage as EntitiesPage,
     type EntityCreateParams as EntityCreateParams,
     type EntityUpdateParams as EntityUpdateParams,
     type EntityListParams as EntityListParams,

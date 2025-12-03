@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Lockboxes extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Lockboxes extends APIResource {
    * });
    * ```
    */
-  create(body: LockboxCreateParams, options?: Core.RequestOptions): Core.APIPromise<Lockbox> {
+  create(body: LockboxCreateParams, options?: RequestOptions): APIPromise<Lockbox> {
     return this._client.post('/lockboxes', { body, ...options });
   }
 
@@ -30,8 +31,8 @@ export class Lockboxes extends APIResource {
    * );
    * ```
    */
-  retrieve(lockboxId: string, options?: Core.RequestOptions): Core.APIPromise<Lockbox> {
-    return this._client.get(`/lockboxes/${lockboxId}`, options);
+  retrieve(lockboxID: string, options?: RequestOptions): APIPromise<Lockbox> {
+    return this._client.get(path`/lockboxes/${lockboxID}`, options);
   }
 
   /**
@@ -44,12 +45,8 @@ export class Lockboxes extends APIResource {
    * );
    * ```
    */
-  update(
-    lockboxId: string,
-    body: LockboxUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Lockbox> {
-    return this._client.patch(`/lockboxes/${lockboxId}`, { body, ...options });
+  update(lockboxID: string, body: LockboxUpdateParams, options?: RequestOptions): APIPromise<Lockbox> {
+    return this._client.patch(path`/lockboxes/${lockboxID}`, { body, ...options });
   }
 
   /**
@@ -63,20 +60,15 @@ export class Lockboxes extends APIResource {
    * }
    * ```
    */
-  list(query?: LockboxListParams, options?: Core.RequestOptions): Core.PagePromise<LockboxesPage, Lockbox>;
-  list(options?: Core.RequestOptions): Core.PagePromise<LockboxesPage, Lockbox>;
   list(
-    query: LockboxListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<LockboxesPage, Lockbox> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/lockboxes', LockboxesPage, { query, ...options });
+    query: LockboxListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<LockboxesPage, Lockbox> {
+    return this._client.getAPIList('/lockboxes', Page<Lockbox>, { query, ...options });
   }
 }
 
-export class LockboxesPage extends Page<Lockbox> {}
+export type LockboxesPage = Page<Lockbox>;
 
 /**
  * Lockboxes are physical locations that can receive mail containing paper checks.
@@ -266,12 +258,10 @@ export namespace LockboxListParams {
   }
 }
 
-Lockboxes.LockboxesPage = LockboxesPage;
-
 export declare namespace Lockboxes {
   export {
     type Lockbox as Lockbox,
-    LockboxesPage as LockboxesPage,
+    type LockboxesPage as LockboxesPage,
     type LockboxCreateParams as LockboxCreateParams,
     type LockboxUpdateParams as LockboxUpdateParams,
     type LockboxListParams as LockboxListParams,
