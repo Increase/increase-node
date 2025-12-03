@@ -1,6 +1,6 @@
 {
   "pkg": "increase",
-  "githubRepo": "https://github.com/stainless-sdks/increase-typescript",
+  "githubRepo": "https://github.com/Increase/increase-typescript",
   "clientClass": "Increase",
   "methods": []
 }
