@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class PhysicalCards extends APIResource {
   /**
@@ -27,7 +28,7 @@ export class PhysicalCards extends APIResource {
    * });
    * ```
    */
-  create(body: PhysicalCardCreateParams, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
+  create(body: PhysicalCardCreateParams, options?: RequestOptions): APIPromise<PhysicalCard> {
     return this._client.post('/physical_cards', { body, ...options });
   }
 
@@ -41,8 +42,8 @@ export class PhysicalCards extends APIResource {
    * );
    * ```
    */
-  retrieve(physicalCardId: string, options?: Core.RequestOptions): Core.APIPromise<PhysicalCard> {
-    return this._client.get(`/physical_cards/${physicalCardId}`, options);
+  retrieve(physicalCardID: string, options?: RequestOptions): APIPromise<PhysicalCard> {
+    return this._client.get(path`/physical_cards/${physicalCardID}`, options);
   }
 
   /**
@@ -57,11 +58,11 @@ export class PhysicalCards extends APIResource {
    * ```
    */
   update(
-    physicalCardId: string,
+    physicalCardID: string,
     body: PhysicalCardUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCard> {
-    return this._client.patch(`/physical_cards/${physicalCardId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<PhysicalCard> {
+    return this._client.patch(path`/physical_cards/${physicalCardID}`, { body, ...options });
   }
 
   /**
@@ -76,22 +77,14 @@ export class PhysicalCards extends APIResource {
    * ```
    */
   list(
-    query?: PhysicalCardListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PhysicalCardsPage, PhysicalCard>;
-  list(options?: Core.RequestOptions): Core.PagePromise<PhysicalCardsPage, PhysicalCard>;
-  list(
-    query: PhysicalCardListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PhysicalCardsPage, PhysicalCard> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/physical_cards', PhysicalCardsPage, { query, ...options });
+    query: PhysicalCardListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<PhysicalCardsPage, PhysicalCard> {
+    return this._client.getAPIList('/physical_cards', Page<PhysicalCard>, { query, ...options });
   }
 }
 
-export class PhysicalCardsPage extends Page<PhysicalCard> {}
+export type PhysicalCardsPage = Page<PhysicalCard>;
 
 /**
  * Custom physical Visa cards that are shipped to your customers. The artwork is
@@ -550,12 +543,10 @@ export namespace PhysicalCardListParams {
   }
 }
 
-PhysicalCards.PhysicalCardsPage = PhysicalCardsPage;
-
 export declare namespace PhysicalCards {
   export {
     type PhysicalCard as PhysicalCard,
-    PhysicalCardsPage as PhysicalCardsPage,
+    type PhysicalCardsPage as PhysicalCardsPage,
     type PhysicalCardCreateParams as PhysicalCardCreateParams,
     type PhysicalCardUpdateParams as PhysicalCardUpdateParams,
     type PhysicalCardListParams as PhysicalCardListParams,

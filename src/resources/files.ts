@@ -1,9 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { type Uploadable } from '../core/uploads';
+import { RequestOptions } from '../internal/request-options';
+import { multipartFormRequestOptions } from '../internal/uploads';
+import { path } from '../internal/utils/path';
 
 export class Files extends APIResource {
   /**
@@ -19,8 +22,8 @@ export class Files extends APIResource {
    * });
    * ```
    */
-  create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
-    return this._client.post('/files', Core.multipartFormRequestOptions({ body, ...options }));
+  create(body: FileCreateParams, options?: RequestOptions): APIPromise<File> {
+    return this._client.post('/files', multipartFormRequestOptions({ body, ...options }, this._client));
   }
 
   /**
@@ -33,8 +36,8 @@ export class Files extends APIResource {
    * );
    * ```
    */
-  retrieve(fileId: string, options?: Core.RequestOptions): Core.APIPromise<File> {
-    return this._client.get(`/files/${fileId}`, options);
+  retrieve(fileID: string, options?: RequestOptions): APIPromise<File> {
+    return this._client.get(path`/files/${fileID}`, options);
   }
 
   /**
@@ -48,20 +51,15 @@ export class Files extends APIResource {
    * }
    * ```
    */
-  list(query?: FileListParams, options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;
-  list(options?: Core.RequestOptions): Core.PagePromise<FilesPage, File>;
   list(
-    query: FileListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<FilesPage, File> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/files', FilesPage, { query, ...options });
+    query: FileListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<FilesPage, File> {
+    return this._client.getAPIList('/files', Page<File>, { query, ...options });
   }
 }
 
-export class FilesPage extends Page<File> {}
+export type FilesPage = Page<File>;
 
 /**
  * Files are objects that represent a file hosted on Increase's servers. The file
@@ -211,7 +209,7 @@ export interface FileCreateParams {
    * [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
    * transfers for the multipart/form-data protocol.
    */
-  file: Core.Uploadable;
+  file: Uploadable;
 
   /**
    * What the File will be used for in Increase's systems.
@@ -360,12 +358,10 @@ export namespace FileListParams {
   }
 }
 
-Files.FilesPage = FilesPage;
-
 export declare namespace Files {
   export {
     type File as File,
-    FilesPage as FilesPage,
+    type FilesPage as FilesPage,
     type FileCreateParams as FileCreateParams,
     type FileListParams as FileListParams,
   };

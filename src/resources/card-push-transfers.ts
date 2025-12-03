@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardPushTransfers extends APIResource {
   /**
@@ -37,10 +38,7 @@ export class CardPushTransfers extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: CardPushTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardPushTransfer> {
+  create(body: CardPushTransferCreateParams, options?: RequestOptions): APIPromise<CardPushTransfer> {
     return this._client.post('/card_push_transfers', { body, ...options });
   }
 
@@ -55,8 +53,8 @@ export class CardPushTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(cardPushTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CardPushTransfer> {
-    return this._client.get(`/card_push_transfers/${cardPushTransferId}`, options);
+  retrieve(cardPushTransferID: string, options?: RequestOptions): APIPromise<CardPushTransfer> {
+    return this._client.get(path`/card_push_transfers/${cardPushTransferID}`, options);
   }
 
   /**
@@ -71,18 +69,10 @@ export class CardPushTransfers extends APIResource {
    * ```
    */
   list(
-    query?: CardPushTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPushTransfersPage, CardPushTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardPushTransfersPage, CardPushTransfer>;
-  list(
-    query: CardPushTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardPushTransfersPage, CardPushTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_push_transfers', CardPushTransfersPage, { query, ...options });
+    query: CardPushTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardPushTransfersPage, CardPushTransfer> {
+    return this._client.getAPIList('/card_push_transfers', Page<CardPushTransfer>, { query, ...options });
   }
 
   /**
@@ -96,8 +86,8 @@ export class CardPushTransfers extends APIResource {
    *   );
    * ```
    */
-  approve(cardPushTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CardPushTransfer> {
-    return this._client.post(`/card_push_transfers/${cardPushTransferId}/approve`, options);
+  approve(cardPushTransferID: string, options?: RequestOptions): APIPromise<CardPushTransfer> {
+    return this._client.post(path`/card_push_transfers/${cardPushTransferID}/approve`, options);
   }
 
   /**
@@ -111,12 +101,12 @@ export class CardPushTransfers extends APIResource {
    *   );
    * ```
    */
-  cancel(cardPushTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CardPushTransfer> {
-    return this._client.post(`/card_push_transfers/${cardPushTransferId}/cancel`, options);
+  cancel(cardPushTransferID: string, options?: RequestOptions): APIPromise<CardPushTransfer> {
+    return this._client.post(path`/card_push_transfers/${cardPushTransferID}/cancel`, options);
   }
 }
 
-export class CardPushTransfersPage extends Page<CardPushTransfer> {}
+export type CardPushTransfersPage = Page<CardPushTransfer>;
 
 /**
  * Card Push Transfers send funds to a recipient's payment card in real-time.
@@ -1508,12 +1498,10 @@ export namespace CardPushTransferListParams {
   }
 }
 
-CardPushTransfers.CardPushTransfersPage = CardPushTransfersPage;
-
 export declare namespace CardPushTransfers {
   export {
     type CardPushTransfer as CardPushTransfer,
-    CardPushTransfersPage as CardPushTransfersPage,
+    type CardPushTransfersPage as CardPushTransfersPage,
     type CardPushTransferCreateParams as CardPushTransferCreateParams,
     type CardPushTransferListParams as CardPushTransferListParams,
   };

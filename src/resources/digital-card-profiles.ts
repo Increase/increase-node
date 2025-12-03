@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class DigitalCardProfiles extends APIResource {
   /**
@@ -21,10 +22,7 @@ export class DigitalCardProfiles extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: DigitalCardProfileCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DigitalCardProfile> {
+  create(body: DigitalCardProfileCreateParams, options?: RequestOptions): APIPromise<DigitalCardProfile> {
     return this._client.post('/digital_card_profiles', { body, ...options });
   }
 
@@ -39,8 +37,8 @@ export class DigitalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  retrieve(digitalCardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalCardProfile> {
-    return this._client.get(`/digital_card_profiles/${digitalCardProfileId}`, options);
+  retrieve(digitalCardProfileID: string, options?: RequestOptions): APIPromise<DigitalCardProfile> {
+    return this._client.get(path`/digital_card_profiles/${digitalCardProfileID}`, options);
   }
 
   /**
@@ -55,18 +53,10 @@ export class DigitalCardProfiles extends APIResource {
    * ```
    */
   list(
-    query?: DigitalCardProfileListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalCardProfilesPage, DigitalCardProfile>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DigitalCardProfilesPage, DigitalCardProfile>;
-  list(
-    query: DigitalCardProfileListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DigitalCardProfilesPage, DigitalCardProfile> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/digital_card_profiles', DigitalCardProfilesPage, { query, ...options });
+    query: DigitalCardProfileListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DigitalCardProfilesPage, DigitalCardProfile> {
+    return this._client.getAPIList('/digital_card_profiles', Page<DigitalCardProfile>, { query, ...options });
   }
 
   /**
@@ -80,8 +70,8 @@ export class DigitalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  archive(digitalCardProfileId: string, options?: Core.RequestOptions): Core.APIPromise<DigitalCardProfile> {
-    return this._client.post(`/digital_card_profiles/${digitalCardProfileId}/archive`, options);
+  archive(digitalCardProfileID: string, options?: RequestOptions): APIPromise<DigitalCardProfile> {
+    return this._client.post(path`/digital_card_profiles/${digitalCardProfileID}/archive`, options);
   }
 
   /**
@@ -96,15 +86,18 @@ export class DigitalCardProfiles extends APIResource {
    * ```
    */
   clone(
-    digitalCardProfileId: string,
+    digitalCardProfileID: string,
     body: DigitalCardProfileCloneParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DigitalCardProfile> {
-    return this._client.post(`/digital_card_profiles/${digitalCardProfileId}/clone`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<DigitalCardProfile> {
+    return this._client.post(path`/digital_card_profiles/${digitalCardProfileID}/clone`, {
+      body,
+      ...options,
+    });
   }
 }
 
-export class DigitalCardProfilesPage extends Page<DigitalCardProfile> {}
+export type DigitalCardProfilesPage = Page<DigitalCardProfile>;
 
 /**
  * This contains artwork and metadata relating to a Card's appearance in digital
@@ -380,12 +373,10 @@ export namespace DigitalCardProfileCloneParams {
   }
 }
 
-DigitalCardProfiles.DigitalCardProfilesPage = DigitalCardProfilesPage;
-
 export declare namespace DigitalCardProfiles {
   export {
     type DigitalCardProfile as DigitalCardProfile,
-    DigitalCardProfilesPage as DigitalCardProfilesPage,
+    type DigitalCardProfilesPage as DigitalCardProfilesPage,
     type DigitalCardProfileCreateParams as DigitalCardProfileCreateParams,
     type DigitalCardProfileListParams as DigitalCardProfileListParams,
     type DigitalCardProfileCloneParams as DigitalCardProfileCloneParams,

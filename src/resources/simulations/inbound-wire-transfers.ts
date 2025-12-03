@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundWireTransfersAPI from '../inbound-wire-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundWireTransfers extends APIResource {
   /**
@@ -20,8 +21,8 @@ export class InboundWireTransfers extends APIResource {
    */
   create(
     body: InboundWireTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<InboundWireTransfersAPI.InboundWireTransfer> {
     return this._client.post('/simulations/inbound_wire_transfers', { body, ...options });
   }
 }

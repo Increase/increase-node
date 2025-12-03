@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundWireDrawdownRequestsAPI from '../inbound-wire-drawdown-requests';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundWireDrawdownRequests extends APIResource {
   /**
@@ -26,8 +27,8 @@ export class InboundWireDrawdownRequests extends APIResource {
    */
   create(
     body: InboundWireDrawdownRequestCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
+    options?: RequestOptions,
+  ): APIPromise<InboundWireDrawdownRequestsAPI.InboundWireDrawdownRequest> {
     return this._client.post('/simulations/inbound_wire_drawdown_requests', { body, ...options });
   }
 }

@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CardDisputesAPI from '../card-disputes';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class CardDisputes extends APIResource {
   /**
@@ -21,11 +23,11 @@ export class CardDisputes extends APIResource {
    * ```
    */
   action(
-    cardDisputeId: string,
+    cardDisputeID: string,
     body: CardDisputeActionParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardDisputesAPI.CardDispute> {
-    return this._client.post(`/simulations/card_disputes/${cardDisputeId}/action`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<CardDisputesAPI.CardDispute> {
+    return this._client.post(path`/simulations/card_disputes/${cardDisputeID}/action`, { body, ...options });
   }
 }
 

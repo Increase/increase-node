@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class RealTimeDecisions extends APIResource {
   /**
@@ -15,8 +17,8 @@ export class RealTimeDecisions extends APIResource {
    *   );
    * ```
    */
-  retrieve(realTimeDecisionId: string, options?: Core.RequestOptions): Core.APIPromise<RealTimeDecision> {
-    return this._client.get(`/real_time_decisions/${realTimeDecisionId}`, options);
+  retrieve(realTimeDecisionID: string, options?: RequestOptions): APIPromise<RealTimeDecision> {
+    return this._client.get(path`/real_time_decisions/${realTimeDecisionID}`, options);
   }
 
   /**
@@ -31,11 +33,11 @@ export class RealTimeDecisions extends APIResource {
    * ```
    */
   action(
-    realTimeDecisionId: string,
+    realTimeDecisionID: string,
     body: RealTimeDecisionActionParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimeDecision> {
-    return this._client.post(`/real_time_decisions/${realTimeDecisionId}/action`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<RealTimeDecision> {
+    return this._client.post(path`/real_time_decisions/${realTimeDecisionID}/action`, { body, ...options });
   }
 }
 

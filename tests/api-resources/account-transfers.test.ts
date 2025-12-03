@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -46,15 +45,6 @@ describe('resource accountTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.accountTransfers.retrieve('account_transfer_7k9qe1ysdgqztnt63l7n', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.accountTransfers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -64,13 +54,6 @@ describe('resource accountTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.accountTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -105,15 +88,6 @@ describe('resource accountTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('approve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.accountTransfers.approve('account_transfer_7k9qe1ysdgqztnt63l7n', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('cancel', async () => {
     const responsePromise = client.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n');
     const rawResponse = await responsePromise.asResponse();
@@ -123,14 +97,5 @@ describe('resource accountTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.accountTransfers.cancel('account_transfer_7k9qe1ysdgqztnt63l7n', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

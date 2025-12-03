@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundWireTransfers extends APIResource {
   /**
@@ -17,11 +18,8 @@ export class InboundWireTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    inboundWireTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireTransfer> {
-    return this._client.get(`/inbound_wire_transfers/${inboundWireTransferId}`, options);
+  retrieve(inboundWireTransferID: string, options?: RequestOptions): APIPromise<InboundWireTransfer> {
+    return this._client.get(path`/inbound_wire_transfers/${inboundWireTransferID}`, options);
   }
 
   /**
@@ -36,18 +34,10 @@ export class InboundWireTransfers extends APIResource {
    * ```
    */
   list(
-    query?: InboundWireTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer>;
-  list(
-    query: InboundWireTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundWireTransfersPage, InboundWireTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_wire_transfers', InboundWireTransfersPage, {
+    query: InboundWireTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundWireTransfersPage, InboundWireTransfer> {
+    return this._client.getAPIList('/inbound_wire_transfers', Page<InboundWireTransfer>, {
       query,
       ...options,
     });
@@ -66,18 +56,18 @@ export class InboundWireTransfers extends APIResource {
    * ```
    */
   reverse(
-    inboundWireTransferId: string,
+    inboundWireTransferID: string,
     body: InboundWireTransferReverseParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundWireTransfer> {
-    return this._client.post(`/inbound_wire_transfers/${inboundWireTransferId}/reverse`, {
+    options?: RequestOptions,
+  ): APIPromise<InboundWireTransfer> {
+    return this._client.post(path`/inbound_wire_transfers/${inboundWireTransferID}/reverse`, {
       body,
       ...options,
     });
   }
 }
 
-export class InboundWireTransfersPage extends Page<InboundWireTransfer> {}
+export type InboundWireTransfersPage = Page<InboundWireTransfer>;
 
 /**
  * An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
@@ -314,12 +304,10 @@ export interface InboundWireTransferReverseParams {
   reason: 'duplicate' | 'creditor_request';
 }
 
-InboundWireTransfers.InboundWireTransfersPage = InboundWireTransfersPage;
-
 export declare namespace InboundWireTransfers {
   export {
     type InboundWireTransfer as InboundWireTransfer,
-    InboundWireTransfersPage as InboundWireTransfersPage,
+    type InboundWireTransfersPage as InboundWireTransfersPage,
     type InboundWireTransferListParams as InboundWireTransferListParams,
     type InboundWireTransferReverseParams as InboundWireTransferReverseParams,
   };

@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundRealTimePaymentsTransfers extends APIResource {
   /**
@@ -18,11 +19,11 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    * ```
    */
   retrieve(
-    inboundRealTimePaymentsTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundRealTimePaymentsTransfer> {
+    inboundRealTimePaymentsTransferID: string,
+    options?: RequestOptions,
+  ): APIPromise<InboundRealTimePaymentsTransfer> {
     return this._client.get(
-      `/inbound_real_time_payments_transfers/${inboundRealTimePaymentsTransferId}`,
+      path`/inbound_real_time_payments_transfers/${inboundRealTimePaymentsTransferID}`,
       options,
     );
   }
@@ -39,28 +40,18 @@ export class InboundRealTimePaymentsTransfers extends APIResource {
    * ```
    */
   list(
-    query?: InboundRealTimePaymentsTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer>;
-  list(
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer>;
-  list(
-    query: InboundRealTimePaymentsTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: InboundRealTimePaymentsTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundRealTimePaymentsTransfersPage, InboundRealTimePaymentsTransfer> {
     return this._client.getAPIList(
       '/inbound_real_time_payments_transfers',
-      InboundRealTimePaymentsTransfersPage,
+      Page<InboundRealTimePaymentsTransfer>,
       { query, ...options },
     );
   }
 }
 
-export class InboundRealTimePaymentsTransfersPage extends Page<InboundRealTimePaymentsTransfer> {}
+export type InboundRealTimePaymentsTransfersPage = Page<InboundRealTimePaymentsTransfer>;
 
 /**
  * An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
@@ -253,12 +244,10 @@ export namespace InboundRealTimePaymentsTransferListParams {
   }
 }
 
-InboundRealTimePaymentsTransfers.InboundRealTimePaymentsTransfersPage = InboundRealTimePaymentsTransfersPage;
-
 export declare namespace InboundRealTimePaymentsTransfers {
   export {
     type InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer,
-    InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
+    type InboundRealTimePaymentsTransfersPage as InboundRealTimePaymentsTransfersPage,
     type InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
   };
 }

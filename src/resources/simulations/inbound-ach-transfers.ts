@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundACHTransfersAPI from '../inbound-ach-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundACHTransfers extends APIResource {
   /**
@@ -29,8 +30,8 @@ export class InboundACHTransfers extends APIResource {
    */
   create(
     body: InboundACHTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfersAPI.InboundACHTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<InboundACHTransfersAPI.InboundACHTransfer> {
     return this._client.post('/simulations/inbound_ach_transfers', { body, ...options });
   }
 }

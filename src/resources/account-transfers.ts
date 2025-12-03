@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class AccountTransfers extends APIResource {
   /**
@@ -20,7 +21,7 @@ export class AccountTransfers extends APIResource {
    *   });
    * ```
    */
-  create(body: AccountTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
+  create(body: AccountTransferCreateParams, options?: RequestOptions): APIPromise<AccountTransfer> {
     return this._client.post('/account_transfers', { body, ...options });
   }
 
@@ -35,8 +36,8 @@ export class AccountTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this._client.get(`/account_transfers/${accountTransferId}`, options);
+  retrieve(accountTransferID: string, options?: RequestOptions): APIPromise<AccountTransfer> {
+    return this._client.get(path`/account_transfers/${accountTransferID}`, options);
   }
 
   /**
@@ -51,18 +52,10 @@ export class AccountTransfers extends APIResource {
    * ```
    */
   list(
-    query?: AccountTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountTransfersPage, AccountTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountTransfersPage, AccountTransfer>;
-  list(
-    query: AccountTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountTransfersPage, AccountTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/account_transfers', AccountTransfersPage, { query, ...options });
+    query: AccountTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountTransfersPage, AccountTransfer> {
+    return this._client.getAPIList('/account_transfers', Page<AccountTransfer>, { query, ...options });
   }
 
   /**
@@ -76,8 +69,8 @@ export class AccountTransfers extends APIResource {
    *   );
    * ```
    */
-  approve(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this._client.post(`/account_transfers/${accountTransferId}/approve`, options);
+  approve(accountTransferID: string, options?: RequestOptions): APIPromise<AccountTransfer> {
+    return this._client.post(path`/account_transfers/${accountTransferID}/approve`, options);
   }
 
   /**
@@ -91,12 +84,12 @@ export class AccountTransfers extends APIResource {
    *   );
    * ```
    */
-  cancel(accountTransferId: string, options?: Core.RequestOptions): Core.APIPromise<AccountTransfer> {
-    return this._client.post(`/account_transfers/${accountTransferId}/cancel`, options);
+  cancel(accountTransferID: string, options?: RequestOptions): APIPromise<AccountTransfer> {
+    return this._client.post(path`/account_transfers/${accountTransferID}/cancel`, options);
   }
 }
 
-export class AccountTransfersPage extends Page<AccountTransfer> {}
+export type AccountTransfersPage = Page<AccountTransfer>;
 
 /**
  * Account transfers move funds between your own accounts at Increase (accounting
@@ -390,12 +383,10 @@ export namespace AccountTransferListParams {
   }
 }
 
-AccountTransfers.AccountTransfersPage = AccountTransfersPage;
-
 export declare namespace AccountTransfers {
   export {
     type AccountTransfer as AccountTransfer,
-    AccountTransfersPage as AccountTransfersPage,
+    type AccountTransfersPage as AccountTransfersPage,
     type AccountTransferCreateParams as AccountTransferCreateParams,
     type AccountTransferListParams as AccountTransferListParams,
   };

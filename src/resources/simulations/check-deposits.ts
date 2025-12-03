@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CheckDepositsAPI from '../check-deposits';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class CheckDeposits extends APIResource {
   /**
@@ -18,11 +20,8 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  reject(
-    checkDepositId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(`/simulations/check_deposits/${checkDepositId}/reject`, options);
+  reject(checkDepositID: string, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/reject`, options);
   }
 
   /**
@@ -37,11 +36,8 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  return(
-    checkDepositId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(`/simulations/check_deposits/${checkDepositId}/return`, options);
+  return(checkDepositID: string, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/return`, options);
   }
 
   /**
@@ -56,10 +52,7 @@ export class CheckDeposits extends APIResource {
    *   );
    * ```
    */
-  submit(
-    checkDepositId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckDepositsAPI.CheckDeposit> {
-    return this._client.post(`/simulations/check_deposits/${checkDepositId}/submit`, options);
+  submit(checkDepositID: string, options?: RequestOptions): APIPromise<CheckDepositsAPI.CheckDeposit> {
+    return this._client.post(path`/simulations/check_deposits/${checkDepositID}/submit`, options);
   }
 }

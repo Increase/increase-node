@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as TransactionsAPI from '../transactions';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class CardRefunds extends APIResource {
   /**
@@ -15,10 +16,7 @@ export class CardRefunds extends APIResource {
    *   await client.simulations.cardRefunds.create();
    * ```
    */
-  create(
-    body: CardRefundCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TransactionsAPI.Transaction> {
+  create(body: CardRefundCreateParams, options?: RequestOptions): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/card_refunds', { body, ...options });
   }
 }

@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -55,15 +54,6 @@ describe('resource fednowTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.fednowTransfers.retrieve('fednow_transfer_4i0mptrdu1mueg1196bg', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.fednowTransfers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -73,13 +63,6 @@ describe('resource fednowTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.fednowTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -116,15 +99,6 @@ describe('resource fednowTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('approve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.fednowTransfers.approve('fednow_transfer_4i0mptrdu1mueg1196bg', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('cancel', async () => {
     const responsePromise = client.fednowTransfers.cancel('fednow_transfer_4i0mptrdu1mueg1196bg');
     const rawResponse = await responsePromise.asResponse();
@@ -134,14 +108,5 @@ describe('resource fednowTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.fednowTransfers.cancel('fednow_transfer_4i0mptrdu1mueg1196bg', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

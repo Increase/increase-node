@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
 
 export class OAuthTokens extends APIResource {
   /**
@@ -14,7 +15,7 @@ export class OAuthTokens extends APIResource {
    * });
    * ```
    */
-  create(body: OAuthTokenCreateParams, options?: Core.RequestOptions): Core.APIPromise<OAuthToken> {
+  create(body: OAuthTokenCreateParams, options?: RequestOptions): APIPromise<OAuthToken> {
     return this._client.post('/oauth/tokens', { body, ...options });
   }
 }

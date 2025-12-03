@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundCheckDeposits extends APIResource {
   /**
@@ -17,11 +18,8 @@ export class InboundCheckDeposits extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    inboundCheckDepositId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundCheckDeposit> {
-    return this._client.get(`/inbound_check_deposits/${inboundCheckDepositId}`, options);
+  retrieve(inboundCheckDepositID: string, options?: RequestOptions): APIPromise<InboundCheckDeposit> {
+    return this._client.get(path`/inbound_check_deposits/${inboundCheckDepositID}`, options);
   }
 
   /**
@@ -36,18 +34,10 @@ export class InboundCheckDeposits extends APIResource {
    * ```
    */
   list(
-    query?: InboundCheckDepositListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundCheckDepositsPage, InboundCheckDeposit>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundCheckDepositsPage, InboundCheckDeposit>;
-  list(
-    query: InboundCheckDepositListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundCheckDepositsPage, InboundCheckDeposit> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_check_deposits', InboundCheckDepositsPage, {
+    query: InboundCheckDepositListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundCheckDepositsPage, InboundCheckDeposit> {
+    return this._client.getAPIList('/inbound_check_deposits', Page<InboundCheckDeposit>, {
       query,
       ...options,
     });
@@ -64,11 +54,8 @@ export class InboundCheckDeposits extends APIResource {
    *   );
    * ```
    */
-  decline(
-    inboundCheckDepositId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundCheckDeposit> {
-    return this._client.post(`/inbound_check_deposits/${inboundCheckDepositId}/decline`, options);
+  decline(inboundCheckDepositID: string, options?: RequestOptions): APIPromise<InboundCheckDeposit> {
+    return this._client.post(path`/inbound_check_deposits/${inboundCheckDepositID}/decline`, options);
   }
 
   /**
@@ -84,15 +71,18 @@ export class InboundCheckDeposits extends APIResource {
    * ```
    */
   return(
-    inboundCheckDepositId: string,
+    inboundCheckDepositID: string,
     body: InboundCheckDepositReturnParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundCheckDeposit> {
-    return this._client.post(`/inbound_check_deposits/${inboundCheckDepositId}/return`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDeposit> {
+    return this._client.post(path`/inbound_check_deposits/${inboundCheckDepositID}/return`, {
+      body,
+      ...options,
+    });
   }
 }
 
-export class InboundCheckDepositsPage extends Page<InboundCheckDeposit> {}
+export type InboundCheckDepositsPage = Page<InboundCheckDeposit>;
 
 /**
  * Inbound Check Deposits are records of third-parties attempting to deposit checks
@@ -357,12 +347,10 @@ export interface InboundCheckDepositReturnParams {
     | 'endorsement_irregular';
 }
 
-InboundCheckDeposits.InboundCheckDepositsPage = InboundCheckDepositsPage;
-
 export declare namespace InboundCheckDeposits {
   export {
     type InboundCheckDeposit as InboundCheckDeposit,
-    InboundCheckDepositsPage as InboundCheckDepositsPage,
+    type InboundCheckDepositsPage as InboundCheckDepositsPage,
     type InboundCheckDepositListParams as InboundCheckDepositListParams,
     type InboundCheckDepositReturnParams as InboundCheckDepositReturnParams,
   };

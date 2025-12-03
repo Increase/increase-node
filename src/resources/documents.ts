@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Documents extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Documents extends APIResource {
    * });
    * ```
    */
-  create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Document> {
+  create(body: DocumentCreateParams, options?: RequestOptions): APIPromise<Document> {
     return this._client.post('/documents', { body, ...options });
   }
 
@@ -30,8 +31,8 @@ export class Documents extends APIResource {
    * );
    * ```
    */
-  retrieve(documentId: string, options?: Core.RequestOptions): Core.APIPromise<Document> {
-    return this._client.get(`/documents/${documentId}`, options);
+  retrieve(documentID: string, options?: RequestOptions): APIPromise<Document> {
+    return this._client.get(path`/documents/${documentID}`, options);
   }
 
   /**
@@ -45,20 +46,15 @@ export class Documents extends APIResource {
    * }
    * ```
    */
-  list(query?: DocumentListParams, options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;
-  list(options?: Core.RequestOptions): Core.PagePromise<DocumentsPage, Document>;
   list(
-    query: DocumentListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<DocumentsPage, Document> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/documents', DocumentsPage, { query, ...options });
+    query: DocumentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<DocumentsPage, Document> {
+    return this._client.getAPIList('/documents', Page<Document>, { query, ...options });
   }
 }
 
-export class DocumentsPage extends Page<Document> {}
+export type DocumentsPage = Page<Document>;
 
 /**
  * Increase generates certain documents / forms automatically for your application;
@@ -268,12 +264,10 @@ export namespace DocumentListParams {
   }
 }
 
-Documents.DocumentsPage = DocumentsPage;
-
 export declare namespace Documents {
   export {
     type Document as Document,
-    DocumentsPage as DocumentsPage,
+    type DocumentsPage as DocumentsPage,
     type DocumentCreateParams as DocumentCreateParams,
     type DocumentListParams as DocumentListParams,
   };

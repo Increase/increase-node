@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CheckTransfers extends APIResource {
   /**
@@ -20,7 +21,7 @@ export class CheckTransfers extends APIResource {
    * });
    * ```
    */
-  create(body: CheckTransferCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
+  create(body: CheckTransferCreateParams, options?: RequestOptions): APIPromise<CheckTransfer> {
     return this._client.post('/check_transfers', { body, ...options });
   }
 
@@ -34,8 +35,8 @@ export class CheckTransfers extends APIResource {
    * );
    * ```
    */
-  retrieve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this._client.get(`/check_transfers/${checkTransferId}`, options);
+  retrieve(checkTransferID: string, options?: RequestOptions): APIPromise<CheckTransfer> {
+    return this._client.get(path`/check_transfers/${checkTransferID}`, options);
   }
 
   /**
@@ -50,18 +51,10 @@ export class CheckTransfers extends APIResource {
    * ```
    */
   list(
-    query?: CheckTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckTransfersPage, CheckTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CheckTransfersPage, CheckTransfer>;
-  list(
-    query: CheckTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckTransfersPage, CheckTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/check_transfers', CheckTransfersPage, { query, ...options });
+    query: CheckTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CheckTransfersPage, CheckTransfer> {
+    return this._client.getAPIList('/check_transfers', Page<CheckTransfer>, { query, ...options });
   }
 
   /**
@@ -74,8 +67,8 @@ export class CheckTransfers extends APIResource {
    * );
    * ```
    */
-  approve(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this._client.post(`/check_transfers/${checkTransferId}/approve`, options);
+  approve(checkTransferID: string, options?: RequestOptions): APIPromise<CheckTransfer> {
+    return this._client.post(path`/check_transfers/${checkTransferID}/approve`, options);
   }
 
   /**
@@ -89,8 +82,8 @@ export class CheckTransfers extends APIResource {
    * );
    * ```
    */
-  cancel(checkTransferId: string, options?: Core.RequestOptions): Core.APIPromise<CheckTransfer> {
-    return this._client.post(`/check_transfers/${checkTransferId}/cancel`, options);
+  cancel(checkTransferID: string, options?: RequestOptions): APIPromise<CheckTransfer> {
+    return this._client.post(path`/check_transfers/${checkTransferID}/cancel`, options);
   }
 
   /**
@@ -105,15 +98,15 @@ export class CheckTransfers extends APIResource {
    * ```
    */
   stopPayment(
-    checkTransferId: string,
+    checkTransferID: string,
     body: CheckTransferStopPaymentParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckTransfer> {
-    return this._client.post(`/check_transfers/${checkTransferId}/stop_payment`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<CheckTransfer> {
+    return this._client.post(path`/check_transfers/${checkTransferID}/stop_payment`, { body, ...options });
   }
 }
 
-export class CheckTransfersPage extends Page<CheckTransfer> {}
+export type CheckTransfersPage = Page<CheckTransfer>;
 
 /**
  * Check Transfers move funds from your Increase account by mailing a physical
@@ -1065,12 +1058,10 @@ export interface CheckTransferStopPaymentParams {
   reason?: 'mail_delivery_failed' | 'not_authorized' | 'valid_until_date_passed' | 'unknown';
 }
 
-CheckTransfers.CheckTransfersPage = CheckTransfersPage;
-
 export declare namespace CheckTransfers {
   export {
     type CheckTransfer as CheckTransfer,
-    CheckTransfersPage as CheckTransfersPage,
+    type CheckTransfersPage as CheckTransfersPage,
     type CheckTransferCreateParams as CheckTransferCreateParams,
     type CheckTransferListParams as CheckTransferListParams,
     type CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,

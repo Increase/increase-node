@@ -1,0 +1,6 @@
+{
+  "pkg": "increase",
+  "githubRepo": "https://github.com/stainless-sdks/increase-typescript",
+  "clientClass": "Increase",
+  "methods": []
+}

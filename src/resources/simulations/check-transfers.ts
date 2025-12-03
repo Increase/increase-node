@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CheckTransfersAPI from '../check-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class CheckTransfers extends APIResource {
   /**
@@ -19,10 +21,7 @@ export class CheckTransfers extends APIResource {
    *   );
    * ```
    */
-  mail(
-    checkTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CheckTransfersAPI.CheckTransfer> {
-    return this._client.post(`/simulations/check_transfers/${checkTransferId}/mail`, options);
+  mail(checkTransferID: string, options?: RequestOptions): APIPromise<CheckTransfersAPI.CheckTransfer> {
+    return this._client.post(path`/simulations/check_transfers/${checkTransferID}/mail`, options);
   }
 }

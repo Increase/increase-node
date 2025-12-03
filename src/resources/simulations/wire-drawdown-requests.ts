@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as WireDrawdownRequestsAPI from '../wire-drawdown-requests';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class WireDrawdownRequests extends APIResource {
   /**
@@ -17,10 +19,13 @@ export class WireDrawdownRequests extends APIResource {
    * ```
    */
   refuse(
-    wireDrawdownRequestId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
-    return this._client.post(`/simulations/wire_drawdown_requests/${wireDrawdownRequestId}/refuse`, options);
+    wireDrawdownRequestID: string,
+    options?: RequestOptions,
+  ): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
+    return this._client.post(
+      path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/refuse`,
+      options,
+    );
   }
 
   /**
@@ -35,9 +40,12 @@ export class WireDrawdownRequests extends APIResource {
    * ```
    */
   submit(
-    wireDrawdownRequestId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
-    return this._client.post(`/simulations/wire_drawdown_requests/${wireDrawdownRequestId}/submit`, options);
+    wireDrawdownRequestID: string,
+    options?: RequestOptions,
+  ): APIPromise<WireDrawdownRequestsAPI.WireDrawdownRequest> {
+    return this._client.post(
+      path`/simulations/wire_drawdown_requests/${wireDrawdownRequestID}/submit`,
+      options,
+    );
   }
 }

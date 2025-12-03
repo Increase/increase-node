@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundFednowTransfersAPI from '../inbound-fednow-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundFednowTransfers extends APIResource {
   /**
@@ -21,8 +22,8 @@ export class InboundFednowTransfers extends APIResource {
    */
   create(
     body: InboundFednowTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundFednowTransfersAPI.InboundFednowTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<InboundFednowTransfersAPI.InboundFednowTransfer> {
     return this._client.post('/simulations/inbound_fednow_transfers', { body, ...options });
   }
 }

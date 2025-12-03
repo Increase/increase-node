@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class BookkeepingEntries extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class BookkeepingEntries extends APIResource {
    *   );
    * ```
    */
-  retrieve(bookkeepingEntryId: string, options?: Core.RequestOptions): Core.APIPromise<BookkeepingEntry> {
-    return this._client.get(`/bookkeeping_entries/${bookkeepingEntryId}`, options);
+  retrieve(bookkeepingEntryID: string, options?: RequestOptions): APIPromise<BookkeepingEntry> {
+    return this._client.get(path`/bookkeeping_entries/${bookkeepingEntryID}`, options);
   }
 
   /**
@@ -33,22 +34,14 @@ export class BookkeepingEntries extends APIResource {
    * ```
    */
   list(
-    query?: BookkeepingEntryListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry>;
-  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry>;
-  list(
-    query: BookkeepingEntryListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntriesPage, BookkeepingEntry> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/bookkeeping_entries', BookkeepingEntriesPage, { query, ...options });
+    query: BookkeepingEntryListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<BookkeepingEntriesPage, BookkeepingEntry> {
+    return this._client.getAPIList('/bookkeeping_entries', Page<BookkeepingEntry>, { query, ...options });
   }
 }
 
-export class BookkeepingEntriesPage extends Page<BookkeepingEntry> {}
+export type BookkeepingEntriesPage = Page<BookkeepingEntry>;
 
 /**
  * Entries are T-account entries recording debits and credits. Your compliance
@@ -96,12 +89,10 @@ export interface BookkeepingEntryListParams extends PageParams {
   account_id?: string;
 }
 
-BookkeepingEntries.BookkeepingEntriesPage = BookkeepingEntriesPage;
-
 export declare namespace BookkeepingEntries {
   export {
     type BookkeepingEntry as BookkeepingEntry,
-    BookkeepingEntriesPage as BookkeepingEntriesPage,
+    type BookkeepingEntriesPage as BookkeepingEntriesPage,
     type BookkeepingEntryListParams as BookkeepingEntryListParams,
   };
 }

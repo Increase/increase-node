@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class WireDrawdownRequests extends APIResource {
   /**
@@ -32,10 +33,7 @@ export class WireDrawdownRequests extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: WireDrawdownRequestCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireDrawdownRequest> {
+  create(body: WireDrawdownRequestCreateParams, options?: RequestOptions): APIPromise<WireDrawdownRequest> {
     return this._client.post('/wire_drawdown_requests', { body, ...options });
   }
 
@@ -50,11 +48,8 @@ export class WireDrawdownRequests extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    wireDrawdownRequestId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireDrawdownRequest> {
-    return this._client.get(`/wire_drawdown_requests/${wireDrawdownRequestId}`, options);
+  retrieve(wireDrawdownRequestID: string, options?: RequestOptions): APIPromise<WireDrawdownRequest> {
+    return this._client.get(path`/wire_drawdown_requests/${wireDrawdownRequestID}`, options);
   }
 
   /**
@@ -69,25 +64,17 @@ export class WireDrawdownRequests extends APIResource {
    * ```
    */
   list(
-    query?: WireDrawdownRequestListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest>;
-  list(options?: Core.RequestOptions): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest>;
-  list(
-    query: WireDrawdownRequestListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/wire_drawdown_requests', WireDrawdownRequestsPage, {
+    query: WireDrawdownRequestListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<WireDrawdownRequestsPage, WireDrawdownRequest> {
+    return this._client.getAPIList('/wire_drawdown_requests', Page<WireDrawdownRequest>, {
       query,
       ...options,
     });
   }
 }
 
-export class WireDrawdownRequestsPage extends Page<WireDrawdownRequest> {}
+export type WireDrawdownRequestsPage = Page<WireDrawdownRequest>;
 
 /**
  * Wire drawdown requests enable you to request that someone else send you a wire.
@@ -446,12 +433,10 @@ export namespace WireDrawdownRequestListParams {
   }
 }
 
-WireDrawdownRequests.WireDrawdownRequestsPage = WireDrawdownRequestsPage;
-
 export declare namespace WireDrawdownRequests {
   export {
     type WireDrawdownRequest as WireDrawdownRequest,
-    WireDrawdownRequestsPage as WireDrawdownRequestsPage,
+    type WireDrawdownRequestsPage as WireDrawdownRequestsPage,
     type WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
     type WireDrawdownRequestListParams as WireDrawdownRequestListParams,
   };
