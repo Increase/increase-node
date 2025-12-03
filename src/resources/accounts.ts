@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Accounts extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Accounts extends APIResource {
    * });
    * ```
    */
-  create(body: AccountCreateParams, options?: Core.RequestOptions): Core.APIPromise<Account> {
+  create(body: AccountCreateParams, options?: RequestOptions): APIPromise<Account> {
     return this._client.post('/accounts', { body, ...options });
   }
 
@@ -30,8 +31,8 @@ export class Accounts extends APIResource {
    * );
    * ```
    */
-  retrieve(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
-    return this._client.get(`/accounts/${accountId}`, options);
+  retrieve(accountID: string, options?: RequestOptions): APIPromise<Account> {
+    return this._client.get(path`/accounts/${accountID}`, options);
   }
 
   /**
@@ -44,12 +45,8 @@ export class Accounts extends APIResource {
    * );
    * ```
    */
-  update(
-    accountId: string,
-    body: AccountUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Account> {
-    return this._client.patch(`/accounts/${accountId}`, { body, ...options });
+  update(accountID: string, body: AccountUpdateParams, options?: RequestOptions): APIPromise<Account> {
+    return this._client.patch(path`/accounts/${accountID}`, { body, ...options });
   }
 
   /**
@@ -63,16 +60,11 @@ export class Accounts extends APIResource {
    * }
    * ```
    */
-  list(query?: AccountListParams, options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountsPage, Account>;
   list(
-    query: AccountListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountsPage, Account> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/accounts', AccountsPage, { query, ...options });
+    query: AccountListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountsPage, Account> {
+    return this._client.getAPIList('/accounts', Page<Account>, { query, ...options });
   }
 
   /**
@@ -87,20 +79,11 @@ export class Accounts extends APIResource {
    * ```
    */
   balance(
-    accountId: string,
-    query?: AccountBalanceParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BalanceLookup>;
-  balance(accountId: string, options?: Core.RequestOptions): Core.APIPromise<BalanceLookup>;
-  balance(
-    accountId: string,
-    query: AccountBalanceParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BalanceLookup> {
-    if (isRequestOptions(query)) {
-      return this.balance(accountId, {}, query);
-    }
-    return this._client.get(`/accounts/${accountId}/balance`, { query, ...options });
+    accountID: string,
+    query: AccountBalanceParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<BalanceLookup> {
+    return this._client.get(path`/accounts/${accountID}/balance`, { query, ...options });
   }
 
   /**
@@ -113,12 +96,12 @@ export class Accounts extends APIResource {
    * );
    * ```
    */
-  close(accountId: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
-    return this._client.post(`/accounts/${accountId}/close`, options);
+  close(accountID: string, options?: RequestOptions): APIPromise<Account> {
+    return this._client.post(path`/accounts/${accountID}/close`, options);
   }
 }
 
-export class AccountsPage extends Page<Account> {}
+export type AccountsPage = Page<Account>;
 
 /**
  * Accounts are your bank accounts with Increase. They store money, receive
@@ -372,13 +355,11 @@ export interface AccountBalanceParams {
   at_time?: string;
 }
 
-Accounts.AccountsPage = AccountsPage;
-
 export declare namespace Accounts {
   export {
     type Account as Account,
     type BalanceLookup as BalanceLookup,
-    AccountsPage as AccountsPage,
+    type AccountsPage as AccountsPage,
     type AccountCreateParams as AccountCreateParams,
     type AccountUpdateParams as AccountUpdateParams,
     type AccountListParams as AccountListParams,

@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class RealTimePaymentsTransfers extends APIResource {
   /**
@@ -23,8 +24,8 @@ export class RealTimePaymentsTransfers extends APIResource {
    */
   create(
     body: RealTimePaymentsTransferCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfer> {
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfer> {
     return this._client.post('/real_time_payments_transfers', { body, ...options });
   }
 
@@ -40,10 +41,10 @@ export class RealTimePaymentsTransfers extends APIResource {
    * ```
    */
   retrieve(
-    realTimePaymentsTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfer> {
-    return this._client.get(`/real_time_payments_transfers/${realTimePaymentsTransferId}`, options);
+    realTimePaymentsTransferID: string,
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfer> {
+    return this._client.get(path`/real_time_payments_transfers/${realTimePaymentsTransferID}`, options);
   }
 
   /**
@@ -58,20 +59,10 @@ export class RealTimePaymentsTransfers extends APIResource {
    * ```
    */
   list(
-    query?: RealTimePaymentsTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer>;
-  list(
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer>;
-  list(
-    query: RealTimePaymentsTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/real_time_payments_transfers', RealTimePaymentsTransfersPage, {
+    query: RealTimePaymentsTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<RealTimePaymentsTransfersPage, RealTimePaymentsTransfer> {
+    return this._client.getAPIList('/real_time_payments_transfers', Page<RealTimePaymentsTransfer>, {
       query,
       ...options,
     });
@@ -89,10 +80,13 @@ export class RealTimePaymentsTransfers extends APIResource {
    * ```
    */
   approve(
-    realTimePaymentsTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfer> {
-    return this._client.post(`/real_time_payments_transfers/${realTimePaymentsTransferId}/approve`, options);
+    realTimePaymentsTransferID: string,
+    options?: RequestOptions,
+  ): APIPromise<RealTimePaymentsTransfer> {
+    return this._client.post(
+      path`/real_time_payments_transfers/${realTimePaymentsTransferID}/approve`,
+      options,
+    );
   }
 
   /**
@@ -106,15 +100,15 @@ export class RealTimePaymentsTransfers extends APIResource {
    *   );
    * ```
    */
-  cancel(
-    realTimePaymentsTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RealTimePaymentsTransfer> {
-    return this._client.post(`/real_time_payments_transfers/${realTimePaymentsTransferId}/cancel`, options);
+  cancel(realTimePaymentsTransferID: string, options?: RequestOptions): APIPromise<RealTimePaymentsTransfer> {
+    return this._client.post(
+      path`/real_time_payments_transfers/${realTimePaymentsTransferID}/cancel`,
+      options,
+    );
   }
 }
 
-export class RealTimePaymentsTransfersPage extends Page<RealTimePaymentsTransfer> {}
+export type RealTimePaymentsTransfersPage = Page<RealTimePaymentsTransfer>;
 
 /**
  * Real-Time Payments transfers move funds, within seconds, between your Increase
@@ -648,12 +642,10 @@ export namespace RealTimePaymentsTransferListParams {
   }
 }
 
-RealTimePaymentsTransfers.RealTimePaymentsTransfersPage = RealTimePaymentsTransfersPage;
-
 export declare namespace RealTimePaymentsTransfers {
   export {
     type RealTimePaymentsTransfer as RealTimePaymentsTransfer,
-    RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
+    type RealTimePaymentsTransfersPage as RealTimePaymentsTransfersPage,
     type RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
     type RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
   };

@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundMailItemsAPI from '../inbound-mail-items';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundMailItems extends APIResource {
   /**
@@ -20,8 +21,8 @@ export class InboundMailItems extends APIResource {
    */
   create(
     body: InboundMailItemCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundMailItemsAPI.InboundMailItem> {
+    options?: RequestOptions,
+  ): APIPromise<InboundMailItemsAPI.InboundMailItem> {
     return this._client.post('/simulations/inbound_mail_items', { body, ...options });
   }
 }

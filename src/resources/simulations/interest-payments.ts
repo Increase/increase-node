@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as TransactionsAPI from '../transactions';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InterestPayments extends APIResource {
   /**
@@ -20,8 +21,8 @@ export class InterestPayments extends APIResource {
    */
   create(
     body: InterestPaymentCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TransactionsAPI.Transaction> {
+    options?: RequestOptions,
+  ): APIPromise<TransactionsAPI.Transaction> {
     return this._client.post('/simulations/interest_payments', { body, ...options });
   }
 }

@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class PhysicalCardProfiles extends APIResource {
   /**
@@ -21,10 +22,7 @@ export class PhysicalCardProfiles extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: PhysicalCardProfileCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardProfile> {
+  create(body: PhysicalCardProfileCreateParams, options?: RequestOptions): APIPromise<PhysicalCardProfile> {
     return this._client.post('/physical_card_profiles', { body, ...options });
   }
 
@@ -39,11 +37,8 @@ export class PhysicalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    physicalCardProfileId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardProfile> {
-    return this._client.get(`/physical_card_profiles/${physicalCardProfileId}`, options);
+  retrieve(physicalCardProfileID: string, options?: RequestOptions): APIPromise<PhysicalCardProfile> {
+    return this._client.get(path`/physical_card_profiles/${physicalCardProfileID}`, options);
   }
 
   /**
@@ -58,18 +53,10 @@ export class PhysicalCardProfiles extends APIResource {
    * ```
    */
   list(
-    query?: PhysicalCardProfileListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile>;
-  list(options?: Core.RequestOptions): Core.PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile>;
-  list(
-    query: PhysicalCardProfileListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/physical_card_profiles', PhysicalCardProfilesPage, {
+    query: PhysicalCardProfileListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<PhysicalCardProfilesPage, PhysicalCardProfile> {
+    return this._client.getAPIList('/physical_card_profiles', Page<PhysicalCardProfile>, {
       query,
       ...options,
     });
@@ -86,11 +73,8 @@ export class PhysicalCardProfiles extends APIResource {
    *   );
    * ```
    */
-  archive(
-    physicalCardProfileId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardProfile> {
-    return this._client.post(`/physical_card_profiles/${physicalCardProfileId}/archive`, options);
+  archive(physicalCardProfileID: string, options?: RequestOptions): APIPromise<PhysicalCardProfile> {
+    return this._client.post(path`/physical_card_profiles/${physicalCardProfileID}/archive`, options);
   }
 
   /**
@@ -105,15 +89,18 @@ export class PhysicalCardProfiles extends APIResource {
    * ```
    */
   clone(
-    physicalCardProfileId: string,
+    physicalCardProfileID: string,
     body: PhysicalCardProfileCloneParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardProfile> {
-    return this._client.post(`/physical_card_profiles/${physicalCardProfileId}/clone`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<PhysicalCardProfile> {
+    return this._client.post(path`/physical_card_profiles/${physicalCardProfileID}/clone`, {
+      body,
+      ...options,
+    });
   }
 }
 
-export class PhysicalCardProfilesPage extends Page<PhysicalCardProfile> {}
+export type PhysicalCardProfilesPage = Page<PhysicalCardProfile>;
 
 /**
  * This contains artwork and metadata relating to a Physical Card's appearance. For
@@ -351,12 +338,10 @@ export namespace PhysicalCardProfileCloneParams {
   }
 }
 
-PhysicalCardProfiles.PhysicalCardProfilesPage = PhysicalCardProfilesPage;
-
 export declare namespace PhysicalCardProfiles {
   export {
     type PhysicalCardProfile as PhysicalCardProfile,
-    PhysicalCardProfilesPage as PhysicalCardProfilesPage,
+    type PhysicalCardProfilesPage as PhysicalCardProfilesPage,
     type PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams,
     type PhysicalCardProfileListParams as PhysicalCardProfileListParams,
     type PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams,

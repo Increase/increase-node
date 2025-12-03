@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as WireTransfersAPI from '../wire-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class WireTransfers extends APIResource {
   /**
@@ -19,11 +21,8 @@ export class WireTransfers extends APIResource {
    *   );
    * ```
    */
-  reverse(
-    wireTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireTransfersAPI.WireTransfer> {
-    return this._client.post(`/simulations/wire_transfers/${wireTransferId}/reverse`, options);
+  reverse(wireTransferID: string, options?: RequestOptions): APIPromise<WireTransfersAPI.WireTransfer> {
+    return this._client.post(path`/simulations/wire_transfers/${wireTransferID}/reverse`, options);
   }
 
   /**
@@ -39,10 +38,7 @@ export class WireTransfers extends APIResource {
    *   );
    * ```
    */
-  submit(
-    wireTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<WireTransfersAPI.WireTransfer> {
-    return this._client.post(`/simulations/wire_transfers/${wireTransferId}/submit`, options);
+  submit(wireTransferID: string, options?: RequestOptions): APIPromise<WireTransfersAPI.WireTransfer> {
+    return this._client.post(path`/simulations/wire_transfers/${wireTransferID}/submit`, options);
   }
 }

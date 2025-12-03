@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as PhysicalCardsAPI from '../physical-cards';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class PhysicalCards extends APIResource {
   /**
@@ -19,11 +21,11 @@ export class PhysicalCards extends APIResource {
    * ```
    */
   create(
-    physicalCardId: string,
+    physicalCardID: string,
     body: PhysicalCardCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(`/simulations/physical_cards/${physicalCardId}/tracking_updates`, {
+    options?: RequestOptions,
+  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/tracking_updates`, {
       body,
       ...options,
     });
@@ -44,11 +46,11 @@ export class PhysicalCards extends APIResource {
    * ```
    */
   advanceShipment(
-    physicalCardId: string,
+    physicalCardID: string,
     body: PhysicalCardAdvanceShipmentParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PhysicalCardsAPI.PhysicalCard> {
-    return this._client.post(`/simulations/physical_cards/${physicalCardId}/advance_shipment`, {
+    options?: RequestOptions,
+  ): APIPromise<PhysicalCardsAPI.PhysicalCard> {
+    return this._client.post(path`/simulations/physical_cards/${physicalCardID}/advance_shipment`, {
       body,
       ...options,
     });

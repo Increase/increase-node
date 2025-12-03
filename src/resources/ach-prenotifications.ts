@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class ACHPrenotifications extends APIResource {
   /**
@@ -19,10 +20,7 @@ export class ACHPrenotifications extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: ACHPrenotificationCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHPrenotification> {
+  create(body: ACHPrenotificationCreateParams, options?: RequestOptions): APIPromise<ACHPrenotification> {
     return this._client.post('/ach_prenotifications', { body, ...options });
   }
 
@@ -37,8 +35,8 @@ export class ACHPrenotifications extends APIResource {
    *   );
    * ```
    */
-  retrieve(achPrenotificationId: string, options?: Core.RequestOptions): Core.APIPromise<ACHPrenotification> {
-    return this._client.get(`/ach_prenotifications/${achPrenotificationId}`, options);
+  retrieve(achPrenotificationID: string, options?: RequestOptions): APIPromise<ACHPrenotification> {
+    return this._client.get(path`/ach_prenotifications/${achPrenotificationID}`, options);
   }
 
   /**
@@ -53,22 +51,14 @@ export class ACHPrenotifications extends APIResource {
    * ```
    */
   list(
-    query?: ACHPrenotificationListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification>;
-  list(
-    query: ACHPrenotificationListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ACHPrenotificationsPage, ACHPrenotification> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/ach_prenotifications', ACHPrenotificationsPage, { query, ...options });
+    query: ACHPrenotificationListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ACHPrenotificationsPage, ACHPrenotification> {
+    return this._client.getAPIList('/ach_prenotifications', Page<ACHPrenotification>, { query, ...options });
   }
 }
 
-export class ACHPrenotificationsPage extends Page<ACHPrenotification> {}
+export type ACHPrenotificationsPage = Page<ACHPrenotification>;
 
 /**
  * ACH Prenotifications are one way you can verify account and routing numbers by
@@ -637,12 +627,10 @@ export namespace ACHPrenotificationListParams {
   }
 }
 
-ACHPrenotifications.ACHPrenotificationsPage = ACHPrenotificationsPage;
-
 export declare namespace ACHPrenotifications {
   export {
     type ACHPrenotification as ACHPrenotification,
-    ACHPrenotificationsPage as ACHPrenotificationsPage,
+    type ACHPrenotificationsPage as ACHPrenotificationsPage,
     type ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
     type ACHPrenotificationListParams as ACHPrenotificationListParams,
   };

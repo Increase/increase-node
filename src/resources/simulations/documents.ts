@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as DocumentsAPI from '../documents';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Documents extends APIResource {
   /**
@@ -15,7 +16,7 @@ export class Documents extends APIResource {
    * });
    * ```
    */
-  create(body: DocumentCreateParams, options?: Core.RequestOptions): Core.APIPromise<DocumentsAPI.Document> {
+  create(body: DocumentCreateParams, options?: RequestOptions): APIPromise<DocumentsAPI.Document> {
     return this._client.post('/simulations/documents', { body, ...options });
   }
 }

@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -54,15 +53,6 @@ describe('resource realTimePaymentsTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.realTimePaymentsTransfers.retrieve('real_time_payments_transfer_iyuhl5kdn7ssmup83mvq', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.realTimePaymentsTransfers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -72,13 +62,6 @@ describe('resource realTimePaymentsTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.realTimePaymentsTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -117,15 +100,6 @@ describe('resource realTimePaymentsTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('approve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.realTimePaymentsTransfers.approve('real_time_payments_transfer_iyuhl5kdn7ssmup83mvq', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('cancel', async () => {
     const responsePromise = client.realTimePaymentsTransfers.cancel(
       'real_time_payments_transfer_iyuhl5kdn7ssmup83mvq',
@@ -137,14 +111,5 @@ describe('resource realTimePaymentsTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.realTimePaymentsTransfers.cancel('real_time_payments_transfer_iyuhl5kdn7ssmup83mvq', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

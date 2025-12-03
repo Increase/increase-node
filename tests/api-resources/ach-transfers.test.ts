@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -63,13 +62,6 @@ describe('resource achTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.achTransfers.retrieve('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.achTransfers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -79,13 +71,6 @@ describe('resource achTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.achTransfers.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -122,13 +107,6 @@ describe('resource achTransfers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('approve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.achTransfers.approve('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('cancel', async () => {
     const responsePromise = client.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q');
     const rawResponse = await responsePromise.asResponse();
@@ -138,12 +116,5 @@ describe('resource achTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.achTransfers.cancel('ach_transfer_uoxatyh3lt5evrsdvo7q', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

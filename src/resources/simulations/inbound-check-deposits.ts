@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as InboundCheckDepositsAPI from '../inbound-check-deposits';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class InboundCheckDeposits extends APIResource {
   /**
@@ -26,8 +27,8 @@ export class InboundCheckDeposits extends APIResource {
    */
   create(
     body: InboundCheckDepositCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
+    options?: RequestOptions,
+  ): APIPromise<InboundCheckDepositsAPI.InboundCheckDeposit> {
     return this._client.post('/simulations/inbound_check_deposits', { body, ...options });
   }
 }

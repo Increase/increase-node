@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -45,13 +44,6 @@ describe('resource cards', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cards.retrieve('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('update', async () => {
     const responsePromise = client.cards.update('card_oubs0hwk5rn6knuecxg2', {});
     const rawResponse = await responsePromise.asResponse();
@@ -72,13 +64,6 @@ describe('resource cards', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.cards.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -123,13 +108,6 @@ describe('resource cards', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('details: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.cards.details('card_oubs0hwk5rn6knuecxg2', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('updatePin: only required params', async () => {

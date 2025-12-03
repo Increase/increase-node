@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -18,15 +17,6 @@ describe('resource achTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('acknowledge: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.simulations.achTransfers.acknowledge('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 
   test('createNotificationOfChange: only required params', async () => {
@@ -81,14 +71,5 @@ describe('resource achTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('submit: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.simulations.achTransfers.submit('ach_transfer_uoxatyh3lt5evrsdvo7q', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

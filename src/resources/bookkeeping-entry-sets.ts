@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class BookkeepingEntrySets extends APIResource {
   /**
@@ -28,10 +29,7 @@ export class BookkeepingEntrySets extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: BookkeepingEntrySetCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingEntrySet> {
+  create(body: BookkeepingEntrySetCreateParams, options?: RequestOptions): APIPromise<BookkeepingEntrySet> {
     return this._client.post('/bookkeeping_entry_sets', { body, ...options });
   }
 
@@ -46,11 +44,8 @@ export class BookkeepingEntrySets extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    bookkeepingEntrySetId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<BookkeepingEntrySet> {
-    return this._client.get(`/bookkeeping_entry_sets/${bookkeepingEntrySetId}`, options);
+  retrieve(bookkeepingEntrySetID: string, options?: RequestOptions): APIPromise<BookkeepingEntrySet> {
+    return this._client.get(path`/bookkeeping_entry_sets/${bookkeepingEntrySetID}`, options);
   }
 
   /**
@@ -65,25 +60,17 @@ export class BookkeepingEntrySets extends APIResource {
    * ```
    */
   list(
-    query?: BookkeepingEntrySetListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet>;
-  list(options?: Core.RequestOptions): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet>;
-  list(
-    query: BookkeepingEntrySetListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/bookkeeping_entry_sets', BookkeepingEntrySetsPage, {
+    query: BookkeepingEntrySetListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<BookkeepingEntrySetsPage, BookkeepingEntrySet> {
+    return this._client.getAPIList('/bookkeeping_entry_sets', Page<BookkeepingEntrySet>, {
       query,
       ...options,
     });
   }
 }
 
-export class BookkeepingEntrySetsPage extends Page<BookkeepingEntrySet> {}
+export type BookkeepingEntrySetsPage = Page<BookkeepingEntrySet>;
 
 /**
  * Entry Sets are accounting entries that are transactionally applied. Your
@@ -201,12 +188,10 @@ export interface BookkeepingEntrySetListParams extends PageParams {
   transaction_id?: string;
 }
 
-BookkeepingEntrySets.BookkeepingEntrySetsPage = BookkeepingEntrySetsPage;
-
 export declare namespace BookkeepingEntrySets {
   export {
     type BookkeepingEntrySet as BookkeepingEntrySet,
-    BookkeepingEntrySetsPage as BookkeepingEntrySetsPage,
+    type BookkeepingEntrySetsPage as BookkeepingEntrySetsPage,
     type BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams,
     type BookkeepingEntrySetListParams as BookkeepingEntrySetListParams,
   };

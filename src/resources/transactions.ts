@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Transactions extends APIResource {
   /**
@@ -16,8 +17,8 @@ export class Transactions extends APIResource {
    * );
    * ```
    */
-  retrieve(transactionId: string, options?: Core.RequestOptions): Core.APIPromise<Transaction> {
-    return this._client.get(`/transactions/${transactionId}`, options);
+  retrieve(transactionID: string, options?: RequestOptions): APIPromise<Transaction> {
+    return this._client.get(path`/transactions/${transactionID}`, options);
   }
 
   /**
@@ -32,22 +33,14 @@ export class Transactions extends APIResource {
    * ```
    */
   list(
-    query?: TransactionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<TransactionsPage, Transaction>;
-  list(options?: Core.RequestOptions): Core.PagePromise<TransactionsPage, Transaction>;
-  list(
-    query: TransactionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<TransactionsPage, Transaction> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/transactions', TransactionsPage, { query, ...options });
+    query: TransactionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<TransactionsPage, Transaction> {
+    return this._client.getAPIList('/transactions', Page<Transaction>, { query, ...options });
   }
 }
 
-export class TransactionsPage extends Page<Transaction> {}
+export type TransactionsPage = Page<Transaction>;
 
 /**
  * Transactions are the immutable additions and removals of money from your bank
@@ -4367,12 +4360,10 @@ export namespace TransactionListParams {
   }
 }
 
-Transactions.TransactionsPage = TransactionsPage;
-
 export declare namespace Transactions {
   export {
     type Transaction as Transaction,
-    TransactionsPage as TransactionsPage,
+    type TransactionsPage as TransactionsPage,
     type TransactionListParams as TransactionListParams,
   };
 }

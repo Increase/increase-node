@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -41,13 +40,6 @@ describe('resource intrafiExclusions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.intrafiExclusions.retrieve('account_in71c4amph0vgo2qllky', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.intrafiExclusions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -57,13 +49,6 @@ describe('resource intrafiExclusions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.intrafiExclusions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {
@@ -85,14 +70,5 @@ describe('resource intrafiExclusions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('archive: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.intrafiExclusions.archive('intrafi_exclusion_ygfqduuzpau3jqof6jyh', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

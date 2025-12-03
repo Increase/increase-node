@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as ACHTransfersAPI from '../ach-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class ACHTransfers extends APIResource {
   /**
@@ -21,11 +23,8 @@ export class ACHTransfers extends APIResource {
    *   );
    * ```
    */
-  acknowledge(
-    achTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/acknowledge`, options);
+  acknowledge(achTransferID: string, options?: RequestOptions): APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(path`/simulations/ach_transfers/${achTransferID}/acknowledge`, options);
   }
 
   /**
@@ -45,14 +44,14 @@ export class ACHTransfers extends APIResource {
    * ```
    */
   createNotificationOfChange(
-    achTransferId: string,
+    achTransferID: string,
     body: ACHTransferCreateNotificationOfChangeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/create_notification_of_change`, {
-      body,
-      ...options,
-    });
+    options?: RequestOptions,
+  ): APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(
+      path`/simulations/ach_transfers/${achTransferID}/create_notification_of_change`,
+      { body, ...options },
+    );
   }
 
   /**
@@ -69,11 +68,11 @@ export class ACHTransfers extends APIResource {
    * ```
    */
   return(
-    achTransferId: string,
+    achTransferID: string,
     body: ACHTransferReturnParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/return`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(path`/simulations/ach_transfers/${achTransferID}/return`, { body, ...options });
   }
 
   /**
@@ -96,11 +95,11 @@ export class ACHTransfers extends APIResource {
    * ```
    */
   settle(
-    achTransferId: string,
+    achTransferID: string,
     body: ACHTransferSettleParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/settle`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(path`/simulations/ach_transfers/${achTransferID}/settle`, { body, ...options });
   }
 
   /**
@@ -119,8 +118,8 @@ export class ACHTransfers extends APIResource {
    *   );
    * ```
    */
-  submit(achTransferId: string, options?: Core.RequestOptions): Core.APIPromise<ACHTransfersAPI.ACHTransfer> {
-    return this._client.post(`/simulations/ach_transfers/${achTransferId}/submit`, options);
+  submit(achTransferID: string, options?: RequestOptions): APIPromise<ACHTransfersAPI.ACHTransfer> {
+    return this._client.post(path`/simulations/ach_transfers/${achTransferID}/submit`, options);
   }
 }
 

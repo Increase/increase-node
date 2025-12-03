@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class EventSubscriptions extends APIResource {
   /**
@@ -17,10 +18,7 @@ export class EventSubscriptions extends APIResource {
    *   });
    * ```
    */
-  create(
-    body: EventSubscriptionCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<EventSubscription> {
+  create(body: EventSubscriptionCreateParams, options?: RequestOptions): APIPromise<EventSubscription> {
     return this._client.post('/event_subscriptions', { body, ...options });
   }
 
@@ -35,8 +33,8 @@ export class EventSubscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(eventSubscriptionId: string, options?: Core.RequestOptions): Core.APIPromise<EventSubscription> {
-    return this._client.get(`/event_subscriptions/${eventSubscriptionId}`, options);
+  retrieve(eventSubscriptionID: string, options?: RequestOptions): APIPromise<EventSubscription> {
+    return this._client.get(path`/event_subscriptions/${eventSubscriptionID}`, options);
   }
 
   /**
@@ -51,11 +49,11 @@ export class EventSubscriptions extends APIResource {
    * ```
    */
   update(
-    eventSubscriptionId: string,
+    eventSubscriptionID: string,
     body: EventSubscriptionUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<EventSubscription> {
-    return this._client.patch(`/event_subscriptions/${eventSubscriptionId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<EventSubscription> {
+    return this._client.patch(path`/event_subscriptions/${eventSubscriptionID}`, { body, ...options });
   }
 
   /**
@@ -70,22 +68,14 @@ export class EventSubscriptions extends APIResource {
    * ```
    */
   list(
-    query?: EventSubscriptionListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<EventSubscriptionsPage, EventSubscription>;
-  list(options?: Core.RequestOptions): Core.PagePromise<EventSubscriptionsPage, EventSubscription>;
-  list(
-    query: EventSubscriptionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<EventSubscriptionsPage, EventSubscription> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/event_subscriptions', EventSubscriptionsPage, { query, ...options });
+    query: EventSubscriptionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<EventSubscriptionsPage, EventSubscription> {
+    return this._client.getAPIList('/event_subscriptions', Page<EventSubscription>, { query, ...options });
   }
 }
 
-export class EventSubscriptionsPage extends Page<EventSubscription> {}
+export type EventSubscriptionsPage = Page<EventSubscription>;
 
 /**
  * Webhooks are event notifications we send to you by HTTPS POST requests. Event
@@ -716,12 +706,10 @@ export interface EventSubscriptionListParams extends PageParams {
   idempotency_key?: string;
 }
 
-EventSubscriptions.EventSubscriptionsPage = EventSubscriptionsPage;
-
 export declare namespace EventSubscriptions {
   export {
     type EventSubscription as EventSubscription,
-    EventSubscriptionsPage as EventSubscriptionsPage,
+    type EventSubscriptionsPage as EventSubscriptionsPage,
     type EventSubscriptionCreateParams as EventSubscriptionCreateParams,
     type EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
     type EventSubscriptionListParams as EventSubscriptionListParams,

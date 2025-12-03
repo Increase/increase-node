@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundACHTransfers extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class InboundACHTransfers extends APIResource {
    *   );
    * ```
    */
-  retrieve(inboundACHTransferId: string, options?: Core.RequestOptions): Core.APIPromise<InboundACHTransfer> {
-    return this._client.get(`/inbound_ach_transfers/${inboundACHTransferId}`, options);
+  retrieve(inboundACHTransferID: string, options?: RequestOptions): APIPromise<InboundACHTransfer> {
+    return this._client.get(path`/inbound_ach_transfers/${inboundACHTransferID}`, options);
   }
 
   /**
@@ -33,18 +34,10 @@ export class InboundACHTransfers extends APIResource {
    * ```
    */
   list(
-    query?: InboundACHTransferListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundACHTransfersPage, InboundACHTransfer>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundACHTransfersPage, InboundACHTransfer>;
-  list(
-    query: InboundACHTransferListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundACHTransfersPage, InboundACHTransfer> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_ach_transfers', InboundACHTransfersPage, { query, ...options });
+    query: InboundACHTransferListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundACHTransfersPage, InboundACHTransfer> {
+    return this._client.getAPIList('/inbound_ach_transfers', Page<InboundACHTransfer>, { query, ...options });
   }
 
   /**
@@ -59,14 +52,14 @@ export class InboundACHTransfers extends APIResource {
    * ```
    */
   createNotificationOfChange(
-    inboundACHTransferId: string,
+    inboundACHTransferID: string,
     body: InboundACHTransferCreateNotificationOfChangeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfer> {
-    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/create_notification_of_change`, {
-      body,
-      ...options,
-    });
+    options?: RequestOptions,
+  ): APIPromise<InboundACHTransfer> {
+    return this._client.post(
+      path`/inbound_ach_transfers/${inboundACHTransferID}/create_notification_of_change`,
+      { body, ...options },
+    );
   }
 
   /**
@@ -81,11 +74,14 @@ export class InboundACHTransfers extends APIResource {
    * ```
    */
   decline(
-    inboundACHTransferId: string,
+    inboundACHTransferID: string,
     body: InboundACHTransferDeclineParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfer> {
-    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/decline`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<InboundACHTransfer> {
+    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/decline`, {
+      body,
+      ...options,
+    });
   }
 
   /**
@@ -101,18 +97,18 @@ export class InboundACHTransfers extends APIResource {
    * ```
    */
   transferReturn(
-    inboundACHTransferId: string,
+    inboundACHTransferID: string,
     body: InboundACHTransferTransferReturnParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundACHTransfer> {
-    return this._client.post(`/inbound_ach_transfers/${inboundACHTransferId}/transfer_return`, {
+    options?: RequestOptions,
+  ): APIPromise<InboundACHTransfer> {
+    return this._client.post(path`/inbound_ach_transfers/${inboundACHTransferID}/transfer_return`, {
       body,
       ...options,
     });
   }
 }
 
-export class InboundACHTransfersPage extends Page<InboundACHTransfer> {}
+export type InboundACHTransfersPage = Page<InboundACHTransfer>;
 
 /**
  * An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
@@ -926,12 +922,10 @@ export interface InboundACHTransferTransferReturnParams {
     | 'corporate_customer_advised_not_authorized';
 }
 
-InboundACHTransfers.InboundACHTransfersPage = InboundACHTransfersPage;
-
 export declare namespace InboundACHTransfers {
   export {
     type InboundACHTransfer as InboundACHTransfer,
-    InboundACHTransfersPage as InboundACHTransfersPage,
+    type InboundACHTransfersPage as InboundACHTransfersPage,
     type InboundACHTransferListParams as InboundACHTransferListParams,
     type InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
     type InboundACHTransferDeclineParams as InboundACHTransferDeclineParams,

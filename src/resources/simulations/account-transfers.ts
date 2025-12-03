@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as AccountTransfersAPI from '../account-transfers';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class AccountTransfers extends APIResource {
   /**
@@ -20,9 +22,9 @@ export class AccountTransfers extends APIResource {
    * ```
    */
   complete(
-    accountTransferId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<AccountTransfersAPI.AccountTransfer> {
-    return this._client.post(`/simulations/account_transfers/${accountTransferId}/complete`, options);
+    accountTransferID: string,
+    options?: RequestOptions,
+  ): APIPromise<AccountTransfersAPI.AccountTransfer> {
+    return this._client.post(path`/simulations/account_transfers/${accountTransferID}/complete`, options);
   }
 }

@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class AccountNumbers extends APIResource {
   /**
@@ -17,7 +18,7 @@ export class AccountNumbers extends APIResource {
    * });
    * ```
    */
-  create(body: AccountNumberCreateParams, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
+  create(body: AccountNumberCreateParams, options?: RequestOptions): APIPromise<AccountNumber> {
     return this._client.post('/account_numbers', { body, ...options });
   }
 
@@ -31,8 +32,8 @@ export class AccountNumbers extends APIResource {
    * );
    * ```
    */
-  retrieve(accountNumberId: string, options?: Core.RequestOptions): Core.APIPromise<AccountNumber> {
-    return this._client.get(`/account_numbers/${accountNumberId}`, options);
+  retrieve(accountNumberID: string, options?: RequestOptions): APIPromise<AccountNumber> {
+    return this._client.get(path`/account_numbers/${accountNumberID}`, options);
   }
 
   /**
@@ -46,11 +47,11 @@ export class AccountNumbers extends APIResource {
    * ```
    */
   update(
-    accountNumberId: string,
+    accountNumberID: string,
     body: AccountNumberUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<AccountNumber> {
-    return this._client.patch(`/account_numbers/${accountNumberId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<AccountNumber> {
+    return this._client.patch(path`/account_numbers/${accountNumberID}`, { body, ...options });
   }
 
   /**
@@ -65,22 +66,14 @@ export class AccountNumbers extends APIResource {
    * ```
    */
   list(
-    query?: AccountNumberListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountNumbersPage, AccountNumber>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountNumbersPage, AccountNumber>;
-  list(
-    query: AccountNumberListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountNumbersPage, AccountNumber> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/account_numbers', AccountNumbersPage, { query, ...options });
+    query: AccountNumberListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountNumbersPage, AccountNumber> {
+    return this._client.getAPIList('/account_numbers', Page<AccountNumber>, { query, ...options });
   }
 }
 
-export class AccountNumbersPage extends Page<AccountNumber> {}
+export type AccountNumbersPage = Page<AccountNumber>;
 
 /**
  * Each account can have multiple account and routing numbers. We recommend that
@@ -372,12 +365,10 @@ export namespace AccountNumberListParams {
   }
 }
 
-AccountNumbers.AccountNumbersPage = AccountNumbersPage;
-
 export declare namespace AccountNumbers {
   export {
     type AccountNumber as AccountNumber,
-    AccountNumbersPage as AccountNumbersPage,
+    type AccountNumbersPage as AccountNumbersPage,
     type AccountNumberCreateParams as AccountNumberCreateParams,
     type AccountNumberUpdateParams as AccountNumberUpdateParams,
     type AccountNumberListParams as AccountNumberListParams,

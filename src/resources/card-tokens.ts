@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CardTokens extends APIResource {
   /**
@@ -16,8 +17,8 @@ export class CardTokens extends APIResource {
    * );
    * ```
    */
-  retrieve(cardTokenId: string, options?: Core.RequestOptions): Core.APIPromise<CardToken> {
-    return this._client.get(`/card_tokens/${cardTokenId}`, options);
+  retrieve(cardTokenID: string, options?: RequestOptions): APIPromise<CardToken> {
+    return this._client.get(path`/card_tokens/${cardTokenID}`, options);
   }
 
   /**
@@ -32,18 +33,10 @@ export class CardTokens extends APIResource {
    * ```
    */
   list(
-    query?: CardTokenListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardTokensPage, CardToken>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CardTokensPage, CardToken>;
-  list(
-    query: CardTokenListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CardTokensPage, CardToken> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/card_tokens', CardTokensPage, { query, ...options });
+    query: CardTokenListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CardTokensPage, CardToken> {
+    return this._client.getAPIList('/card_tokens', Page<CardToken>, { query, ...options });
   }
 
   /**
@@ -59,12 +52,12 @@ export class CardTokens extends APIResource {
    *   );
    * ```
    */
-  capabilities(cardTokenId: string, options?: Core.RequestOptions): Core.APIPromise<CardTokenCapabilities> {
-    return this._client.get(`/card_tokens/${cardTokenId}/capabilities`, options);
+  capabilities(cardTokenID: string, options?: RequestOptions): APIPromise<CardTokenCapabilities> {
+    return this._client.get(path`/card_tokens/${cardTokenID}/capabilities`, options);
   }
 }
 
-export class CardTokensPage extends Page<CardToken> {}
+export type CardTokensPage = Page<CardToken>;
 
 /**
  * Card Tokens represent a tokenized card number that can be used for Card Push
@@ -188,13 +181,11 @@ export namespace CardTokenListParams {
   }
 }
 
-CardTokens.CardTokensPage = CardTokensPage;
-
 export declare namespace CardTokens {
   export {
     type CardToken as CardToken,
     type CardTokenCapabilities as CardTokenCapabilities,
-    CardTokensPage as CardTokensPage,
+    type CardTokensPage as CardTokensPage,
     type CardTokenListParams as CardTokenListParams,
   };
 }

@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Programs extends APIResource {
   /**
@@ -16,8 +17,8 @@ export class Programs extends APIResource {
    * );
    * ```
    */
-  retrieve(programId: string, options?: Core.RequestOptions): Core.APIPromise<Program> {
-    return this._client.get(`/programs/${programId}`, options);
+  retrieve(programID: string, options?: RequestOptions): APIPromise<Program> {
+    return this._client.get(path`/programs/${programID}`, options);
   }
 
   /**
@@ -31,20 +32,15 @@ export class Programs extends APIResource {
    * }
    * ```
    */
-  list(query?: ProgramListParams, options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;
-  list(options?: Core.RequestOptions): Core.PagePromise<ProgramsPage, Program>;
   list(
-    query: ProgramListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<ProgramsPage, Program> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/programs', ProgramsPage, { query, ...options });
+    query: ProgramListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<ProgramsPage, Program> {
+    return this._client.getAPIList('/programs', Page<Program>, { query, ...options });
   }
 }
 
-export class ProgramsPage extends Page<Program> {}
+export type ProgramsPage = Page<Program>;
 
 /**
  * Programs determine the compliance and commercial terms of Accounts. By default,
@@ -110,12 +106,10 @@ export interface Program {
 
 export interface ProgramListParams extends PageParams {}
 
-Programs.ProgramsPage = ProgramsPage;
-
 export declare namespace Programs {
   export {
     type Program as Program,
-    ProgramsPage as ProgramsPage,
+    type ProgramsPage as ProgramsPage,
     type ProgramListParams as ProgramListParams,
   };
 }

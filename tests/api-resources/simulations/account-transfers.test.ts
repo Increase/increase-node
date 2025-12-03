@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -20,14 +19,5 @@ describe('resource accountTransfers', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('complete: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.simulations.accountTransfers.complete('account_transfer_7k9qe1ysdgqztnt63l7n', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Increase.NotFoundError);
   });
 });

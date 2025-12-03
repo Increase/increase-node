@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Increase from 'increase';
-import { Response } from 'node-fetch';
 
 const client = new Increase({
   apiKey: 'My API Key',
@@ -20,13 +19,6 @@ describe('resource events', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.events.retrieve('event_001dzz0r20rzr4zrhrr1364hy80', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Increase.NotFoundError);
-  });
-
   test('list', async () => {
     const responsePromise = client.events.list();
     const rawResponse = await responsePromise.asResponse();
@@ -36,13 +28,6 @@ describe('resource events', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.events.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Increase.NotFoundError,
-    );
   });
 
   test('list: request options and params are passed correctly', async () => {

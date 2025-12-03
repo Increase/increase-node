@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CheckDeposits extends APIResource {
   /**
@@ -19,7 +20,7 @@ export class CheckDeposits extends APIResource {
    * });
    * ```
    */
-  create(body: CheckDepositCreateParams, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
+  create(body: CheckDepositCreateParams, options?: RequestOptions): APIPromise<CheckDeposit> {
     return this._client.post('/check_deposits', { body, ...options });
   }
 
@@ -33,8 +34,8 @@ export class CheckDeposits extends APIResource {
    * );
    * ```
    */
-  retrieve(checkDepositId: string, options?: Core.RequestOptions): Core.APIPromise<CheckDeposit> {
-    return this._client.get(`/check_deposits/${checkDepositId}`, options);
+  retrieve(checkDepositID: string, options?: RequestOptions): APIPromise<CheckDeposit> {
+    return this._client.get(path`/check_deposits/${checkDepositID}`, options);
   }
 
   /**
@@ -49,22 +50,14 @@ export class CheckDeposits extends APIResource {
    * ```
    */
   list(
-    query?: CheckDepositListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckDepositsPage, CheckDeposit>;
-  list(options?: Core.RequestOptions): Core.PagePromise<CheckDepositsPage, CheckDeposit>;
-  list(
-    query: CheckDepositListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<CheckDepositsPage, CheckDeposit> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/check_deposits', CheckDepositsPage, { query, ...options });
+    query: CheckDepositListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<CheckDepositsPage, CheckDeposit> {
+    return this._client.getAPIList('/check_deposits', Page<CheckDeposit>, { query, ...options });
   }
 }
 
-export class CheckDepositsPage extends Page<CheckDeposit> {}
+export type CheckDepositsPage = Page<CheckDeposit>;
 
 /**
  * Check Deposits allow you to deposit images of paper checks into your account.
@@ -575,12 +568,10 @@ export namespace CheckDepositListParams {
   }
 }
 
-CheckDeposits.CheckDepositsPage = CheckDepositsPage;
-
 export declare namespace CheckDeposits {
   export {
     type CheckDeposit as CheckDeposit,
-    CheckDepositsPage as CheckDepositsPage,
+    type CheckDepositsPage as CheckDepositsPage,
     type CheckDepositCreateParams as CheckDepositCreateParams,
     type CheckDepositListParams as CheckDepositListParams,
   };

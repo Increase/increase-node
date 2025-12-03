@@ -1,0 +1,6 @@
+{
+  "pkg": "increase",
+  "githubRepo": "https://github.com/Increase/increase-typescript",
+  "clientClass": "Increase",
+  "methods": []
+}

@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as CardPaymentsAPI from '../card-payments';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class CardFuelConfirmations extends APIResource {
   /**
@@ -21,8 +22,8 @@ export class CardFuelConfirmations extends APIResource {
    */
   create(
     body: CardFuelConfirmationCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardPaymentsAPI.CardPayment> {
+    options?: RequestOptions,
+  ): APIPromise<CardPaymentsAPI.CardPayment> {
     return this._client.post('/simulations/card_fuel_confirmations', { body, ...options });
   }
 }

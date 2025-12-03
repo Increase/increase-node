@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
 import * as DeclinedTransactionsAPI from '../declined-transactions';
 import * as PendingTransactionsAPI from '../pending-transactions';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class CardAuthorizations extends APIResource {
   /**
@@ -25,8 +26,8 @@ export class CardAuthorizations extends APIResource {
    */
   create(
     body: CardAuthorizationCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CardAuthorizationCreateResponse> {
+    options?: RequestOptions,
+  ): APIPromise<CardAuthorizationCreateResponse> {
     return this._client.post('/simulations/card_authorizations', { body, ...options });
   }
 }

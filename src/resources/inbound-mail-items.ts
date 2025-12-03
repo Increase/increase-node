@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InboundMailItems extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class InboundMailItems extends APIResource {
    *   );
    * ```
    */
-  retrieve(inboundMailItemId: string, options?: Core.RequestOptions): Core.APIPromise<InboundMailItem> {
-    return this._client.get(`/inbound_mail_items/${inboundMailItemId}`, options);
+  retrieve(inboundMailItemID: string, options?: RequestOptions): APIPromise<InboundMailItem> {
+    return this._client.get(path`/inbound_mail_items/${inboundMailItemID}`, options);
   }
 
   /**
@@ -33,18 +34,10 @@ export class InboundMailItems extends APIResource {
    * ```
    */
   list(
-    query?: InboundMailItemListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundMailItemsPage, InboundMailItem>;
-  list(options?: Core.RequestOptions): Core.PagePromise<InboundMailItemsPage, InboundMailItem>;
-  list(
-    query: InboundMailItemListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<InboundMailItemsPage, InboundMailItem> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/inbound_mail_items', InboundMailItemsPage, { query, ...options });
+    query: InboundMailItemListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<InboundMailItemsPage, InboundMailItem> {
+    return this._client.getAPIList('/inbound_mail_items', Page<InboundMailItem>, { query, ...options });
   }
 
   /**
@@ -62,15 +55,15 @@ export class InboundMailItems extends APIResource {
    * ```
    */
   action(
-    inboundMailItemId: string,
+    inboundMailItemID: string,
     body: InboundMailItemActionParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InboundMailItem> {
-    return this._client.post(`/inbound_mail_items/${inboundMailItemId}/action`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<InboundMailItem> {
+    return this._client.post(path`/inbound_mail_items/${inboundMailItemID}/action`, { body, ...options });
   }
 }
 
-export class InboundMailItemsPage extends Page<InboundMailItem> {}
+export type InboundMailItemsPage = Page<InboundMailItem>;
 
 /**
  * Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
@@ -233,12 +226,10 @@ export namespace InboundMailItemActionParams {
   }
 }
 
-InboundMailItems.InboundMailItemsPage = InboundMailItemsPage;
-
 export declare namespace InboundMailItems {
   export {
     type InboundMailItem as InboundMailItem,
-    InboundMailItemsPage as InboundMailItemsPage,
+    type InboundMailItemsPage as InboundMailItemsPage,
     type InboundMailItemListParams as InboundMailItemListParams,
     type InboundMailItemActionParams as InboundMailItemActionParams,
   };

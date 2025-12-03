@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
 
 export class RoutingNumbers extends APIResource {
   /**
@@ -23,13 +23,16 @@ export class RoutingNumbers extends APIResource {
    */
   list(
     query: RoutingNumberListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<RoutingNumberListResponsesPage, RoutingNumberListResponse> {
-    return this._client.getAPIList('/routing_numbers', RoutingNumberListResponsesPage, { query, ...options });
+    options?: RequestOptions,
+  ): PagePromise<RoutingNumberListResponsesPage, RoutingNumberListResponse> {
+    return this._client.getAPIList('/routing_numbers', Page<RoutingNumberListResponse>, {
+      query,
+      ...options,
+    });
   }
 }
 
-export class RoutingNumberListResponsesPage extends Page<RoutingNumberListResponse> {}
+export type RoutingNumberListResponsesPage = Page<RoutingNumberListResponse>;
 
 /**
  * Routing numbers are used to identify your bank in a financial transaction.
@@ -91,12 +94,10 @@ export interface RoutingNumberListParams extends PageParams {
   routing_number: string;
 }
 
-RoutingNumbers.RoutingNumberListResponsesPage = RoutingNumberListResponsesPage;
-
 export declare namespace RoutingNumbers {
   export {
     type RoutingNumberListResponse as RoutingNumberListResponse,
-    RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
+    type RoutingNumberListResponsesPage as RoutingNumberListResponsesPage,
     type RoutingNumberListParams as RoutingNumberListParams,
   };
 }

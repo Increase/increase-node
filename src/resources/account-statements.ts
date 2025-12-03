@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
-import { Page, type PageParams } from '../pagination';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { Page, type PageParams, PagePromise } from '../core/pagination';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class AccountStatements extends APIResource {
   /**
@@ -17,8 +18,8 @@ export class AccountStatements extends APIResource {
    *   );
    * ```
    */
-  retrieve(accountStatementId: string, options?: Core.RequestOptions): Core.APIPromise<AccountStatement> {
-    return this._client.get(`/account_statements/${accountStatementId}`, options);
+  retrieve(accountStatementID: string, options?: RequestOptions): APIPromise<AccountStatement> {
+    return this._client.get(path`/account_statements/${accountStatementID}`, options);
   }
 
   /**
@@ -33,22 +34,14 @@ export class AccountStatements extends APIResource {
    * ```
    */
   list(
-    query?: AccountStatementListParams,
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountStatementsPage, AccountStatement>;
-  list(options?: Core.RequestOptions): Core.PagePromise<AccountStatementsPage, AccountStatement>;
-  list(
-    query: AccountStatementListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.PagePromise<AccountStatementsPage, AccountStatement> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.getAPIList('/account_statements', AccountStatementsPage, { query, ...options });
+    query: AccountStatementListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): PagePromise<AccountStatementsPage, AccountStatement> {
+    return this._client.getAPIList('/account_statements', Page<AccountStatement>, { query, ...options });
   }
 }
 
-export class AccountStatementsPage extends Page<AccountStatement> {}
+export type AccountStatementsPage = Page<AccountStatement>;
 
 /**
  * Account Statements are generated monthly for every active Account. You can
@@ -143,12 +136,10 @@ export namespace AccountStatementListParams {
   }
 }
 
-AccountStatements.AccountStatementsPage = AccountStatementsPage;
-
 export declare namespace AccountStatements {
   export {
     type AccountStatement as AccountStatement,
-    AccountStatementsPage as AccountStatementsPage,
+    type AccountStatementsPage as AccountStatementsPage,
     type AccountStatementListParams as AccountStatementListParams,
   };
 }
