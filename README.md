@@ -9,11 +9,8 @@ The REST API documentation can be found on [increase.com](https://increase.com/d
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:Increase/increase-typescript.git
+npm install increase
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install increase`
 
 ## Usage
 
