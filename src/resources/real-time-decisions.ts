@@ -210,6 +210,12 @@ export namespace RealTimeDecision {
     additional_amounts: CardAuthorization.AdditionalAmounts;
 
     /**
+     * Present if and only if `decision` is `approve`. Contains information related to
+     * the approval of the authorization.
+     */
+    approval: CardAuthorization.Approval | null;
+
+    /**
      * The identifier of the Card that is being authorized.
      */
     card_id: string;
@@ -301,6 +307,14 @@ export namespace RealTimeDecision {
     network_risk_score: number | null;
 
     /**
+     * Whether or not the authorization supports partial approvals.
+     *
+     * - `supported` - This transaction supports partial approvals.
+     * - `not_supported` - This transaction does not support partial approvals.
+     */
+    partial_approval_capability: 'supported' | 'not_supported';
+
+    /**
      * If the authorization was made in-person with a physical card, the Physical Card
      * that was used.
      */
@@ -339,6 +353,8 @@ export namespace RealTimeDecision {
      *   voucher authorization, where funds are credited to the cardholder.
      * - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
      *   from an ATM or a point of sale.
+     * - `balance_inquiry` - A balance inquiry transaction is used to check the balance
+     *   of an account associated with a card.
      * - `unknown` - The processing category is unknown.
      */
     processing_category:
@@ -350,6 +366,7 @@ export namespace RealTimeDecision {
       | 'quasi_cash'
       | 'refund'
       | 'cash_disbursement'
+      | 'balance_inquiry'
       | 'unknown';
 
     /**
@@ -627,6 +644,18 @@ export namespace RealTimeDecision {
          */
         currency: string;
       }
+    }
+
+    /**
+     * Present if and only if `decision` is `approve`. Contains information related to
+     * the approval of the authorization.
+     */
+    export interface Approval {
+      /**
+       * If the authorization was partially approved, this field contains the approved
+       * amount in the minor unit of the settlement currency.
+       */
+      partial_amount: number | null;
     }
 
     /**
@@ -1180,6 +1209,14 @@ export namespace RealTimeDecisionActionParams {
        * guide.
        */
       cardholder_address_verification_result?: Approval.CardholderAddressVerificationResult;
+
+      /**
+       * If the transaction supports partial approvals
+       * (`partial_approval_capability: supported`) the `partial_amount` can be provided
+       * in the transaction's settlement currency to approve a lower amount than was
+       * requested.
+       */
+      partial_amount?: number;
     }
 
     export namespace Approval {
